@@ -1,0 +1,77 @@
+[
+  {
+    "id": 201,
+    "question": "Which vitamin is primarily responsible for calcium absorption in the body?",
+    "options": [
+      "Vitamin D",
+      "Vitamin C",
+      "Vitamin B12",
+      "Vitamin E"
+    ],
+    "correctAnswer": "Vitamin D",
+    "explanation": "Vitamin D plays a crucial role in calcium absorption in the intestines and maintaining proper calcium levels in the blood.",
+    "category": "Vitamins",
+    "difficulty": "Easy",
+    "tag": "Nutrition"
+  },
+  {
+    "id": 202,
+    "question": "What is the recommended daily intake of water for an average adult?",
+    "options": [
+      "About 2 liters (8 cups)",
+      "About 1 liter (4 cups)",
+      "About 4 liters (16 cups)",
+      "About 0.5 liters (2 cups)"
+    ],
+    "correctAnswer": "About 2 liters (8 cups)",
+    "explanation": "The general recommendation is about 8 cups or 2 liters of water per day, though individual needs may vary based on activity level and climate.",
+    "category": "Hydration",
+    "difficulty": "Easy",
+    "tag": "Nutrition"
+  },
+  {
+    "id": 203,
+    "question": "Which macronutrient provides 4 calories per gram?",
+    "options": [
+      "Protein and Carbohydrates",
+      "Fats",
+      "Fiber",
+      "Water"
+    ],
+    "correctAnswer": "Protein and Carbohydrates",
+    "explanation": "Both proteins and carbohydrates provide 4 calories per gram, while fats provide 9 calories per gram.",
+    "category": "Macronutrients",
+    "difficulty": "Medium",
+    "tag": "Nutrition"
+  },
+  {
+    "id": 204,
+    "question": "What condition results from severe vitamin C deficiency?",
+    "options": [
+      "Scurvy",
+      "Rickets",
+      "Beriberi",
+      "Pellagra"
+    ],
+    "correctAnswer": "Scurvy",
+    "explanation": "Scurvy is caused by severe vitamin C deficiency and is characterized by bleeding gums, weakness, and poor wound healing.",
+    "category": "Deficiency Diseases",
+    "difficulty": "Medium",
+    "tag": "Nutrition"
+  },
+  {
+    "id": 205,
+    "question": "Which mineral is essential for hemoglobin formation?",
+    "options": [
+      "Iron",
+      "Calcium",
+      "Zinc",
+      "Magnesium"
+    ],
+    "correctAnswer": "Iron",
+    "explanation": "Iron is a critical component of hemoglobin, the protein in red blood cells that carries oxygen throughout the body.",
+    "category": "Minerals",
+    "difficulty": "Easy",
+    "tag": "Nutrition"
+  }
+]

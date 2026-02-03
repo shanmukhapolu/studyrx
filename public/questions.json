@@ -1,0 +1,2447 @@
+[
+  {
+    "id": 1,
+    "question": "Which of the following macromolecules is not a polymer?",
+    "options": ["starch", "cellulose", "protein", "DNA", "phospholipid"],
+    "correctAnswer": "phospholipid",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Polymers are large molecules made of repeating monomer units. Starch, cellulose, protein, and DNA are all polymers, while phospholipids are made of glycerol, fatty acids, and a phosphate group but are not composed of repeating monomers in the same way, so they are not considered true polymers.",
+    "tag": "Official"
+  },
+  {
+    "id": 2,
+    "question": "Where are the large and small subunits of ribosomes assembled?",
+    "options": ["rough endoplasmic reticulum", "cytosol", "Golgi apparatus", "nucleolus", "smooth endoplasmic reticulum"],
+    "correctAnswer": "nucleolus",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Ribosomal subunits are assembled in the nucleolus from rRNA and ribosomal proteins. Once assembled, the subunits are exported to the cytoplasm where they combine to form functional ribosomes.",
+    "tag": "Official"
+  },
+  {
+    "id": 3,
+    "question": "What is the motor protein that is associated with microtubules in the flagella?",
+    "options": ["flagellin", "dynein", "kinesin", "actin", "myosin"],
+    "correctAnswer": "dynein",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Dynein is a motor protein that moves along microtubules and generates the sliding motion needed for flagella and cilia movement. It converts chemical energy from ATP into mechanical work.",
+    "tag": "Official"
+  },
+  {
+    "id": 4,
+    "question": "The uptake of which substance into cells requires receptor-mediated endocytosis?",
+    "options": ["glucose", "fructose", "LDL", "MHC", "testosterone"],
+    "correctAnswer": "LDL",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Low-density lipoprotein (LDL) particles are internalized by receptor-mediated endocytosis, a selective process where LDL binds to specific receptors on the cell surface and is then brought into the cell via vesicles.",
+    "tag": "Official"
+  },
+  {
+    "id": 5,
+    "question": "How many NADH molecules are produced per acetyl-CoA in the citric acid cycle?",
+    "options": ["1", "2", "3", "4", "6"],
+    "correctAnswer": "3",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Each acetyl-CoA that enters the citric acid cycle generates 3 NADH molecules, 1 FADH2, and 1 GTP (or ATP) through a series of oxidation reactions that release energy from acetyl groups.",
+    "tag": "Official"
+  },
+  {
+    "id": 6,
+    "question": "Which of the following does not function as a second messenger?",
+    "options": ["cAMP", "inositol triphosphate (IP3)", "diacylglycerol (DAG)", "sodium ion (Na+)", "calcium ion (Ca2+)"],
+    "correctAnswer": "sodium ion (Na+)",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Second messengers are small molecules or ions that relay signals from cell surface receptors to target molecules inside the cell. cAMP, IP3, DAG, and Ca2+ serve this role, while Na+ primarily contributes to membrane potential and ion gradients rather than signaling.",
+    "tag": "Official"
+  },
+  {
+    "id": 7,
+    "question": "Which of the following is not a difference between mitosis and meiosis?",
+    "options": ["separation of chromatids", "formation of tetrads", "crossing over", "synapsis", "formation of chiasmata"],
+    "correctAnswer": "separation of chromatids",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Separation of chromatids occurs in both mitosis and meiosis (specifically in anaphase), so it is not a distinguishing feature. The other options—tetrad formation, crossing over, synapsis, and chiasmata formation—are unique to meiosis.",
+    "tag": "Official"
+  },
+  {
+    "id": 8,
+    "question": "Which enzyme untwists the double-stranded DNA and separates the two strands?",
+    "options": ["ligase", "primase", "topoisomerase", "DNA Polymerase", "helicase"],
+    "correctAnswer": "helicase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Helicase unwinds the double-stranded DNA at replication forks, separating the strands to allow DNA polymerases to synthesize new DNA. Topoisomerase relieves supercoiling, but helicase performs the actual unwinding.",
+    "tag": "Official"
+  },
+  {
+    "id": 9,
+    "question": "What is the gel electrophoresis of mRNA followed by labeled-probe hybridization called?",
+    "options": ["Southern blotting", "Northern blotting", "Western blotting", "Eastern blotting", "in situ hybridization"],
+    "correctAnswer": "Northern blotting",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Northern blotting detects specific RNA sequences. RNA is separated by gel electrophoresis, transferred to a membrane, and hybridized with a labeled complementary probe.",
+    "tag": "Official"
+  },
+  {
+    "id": 10,
+    "question": "What is one method of gene duplication in sexual organisms?",
+    "options": ["reverse transcription", "genomic imprinting", "nondisjunction", "translocation", "unequal crossing-over"],
+    "correctAnswer": "unequal crossing-over",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Unequal crossing-over during meiosis occurs when homologous chromosomes misalign, resulting in duplication of genes on one chromosome and deletion on the other, a key mechanism of gene duplication.",
+    "tag": "Official"
+  },
+  {
+    "id": 11,
+    "question": "Which of the following is not a connective tissue?",
+    "options": ["tendon", "bone", "blood", "adipose tissue", "glia"],
+    "correctAnswer": "glia",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Glial cells are part of the nervous system, supporting neurons, and are not classified as connective tissue. Tendons, bone, blood, and adipose tissue are all types of connective tissue.",
+    "tag": "Official"
+  },
+  {
+    "id": 12,
+    "question": "Which water-soluble vitamin is needed by pregnant women to prevent birth defects?",
+    "options": ["thiamine", "riboflavin", "niacin", "folic acid", "ascorbic acid"],
+    "correctAnswer": "folic acid",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Folic acid (vitamin B9) is crucial during early pregnancy to prevent neural tube defects in the developing fetus. It is water-soluble and must be consumed regularly.",
+    "tag": "Official"
+  },
+  {
+    "id": 13,
+    "question": "Which cell secretes pepsinogen in the stomach?",
+    "options": ["parietal cell", "chief cell", "mucous cell", "goblet cell", "acinar cell"],
+    "correctAnswer": "chief cell",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Chief cells secrete pepsinogen, the inactive precursor of pepsin, which is converted to the active enzyme by stomach acid to aid in protein digestion.",
+    "tag": "Official"
+  },
+  {
+    "id": 14,
+    "question": "Which organ or tissue synthesizes erythropoietin, the hormone that stimulates red blood cell production?",
+    "options": ["kidney", "liver", "bone marrow", "pancreas", "heart"],
+    "correctAnswer": "kidney",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "The kidneys detect low oxygen levels in blood and secrete erythropoietin (EPO) to stimulate red blood cell production in the bone marrow.",
+    "tag": "Official"
+  },
+  {
+    "id": 15,
+    "question": "Which is by far the major mechanism of carbon dioxide transport in the blood?",
+    "options": ["bound to hemoglobin", "converted to bicarbonate ion and hydrogen ion", "dissolved in plasma", "as gas bubbles", "converted to glucose"],
+    "correctAnswer": "converted to bicarbonate ion and hydrogen ion",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Most CO2 in the blood reacts with water to form carbonic acid, which dissociates into bicarbonate and hydrogen ions. This allows efficient CO2 transport from tissues to the lungs.",
+    "tag": "Official"
+  },
+  {
+    "id": 16,
+    "question": "Which of the following is not a phagocyte?",
+    "options": ["neutrophil", "mast cell", "macrophage", "eosinophil", "dendritic cell"],
+    "correctAnswer": "mast cell",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Mast cells release histamine and other chemicals during inflammation but do not engulf pathogens. Neutrophils, macrophages, eosinophils, and dendritic cells are phagocytic cells.",
+    "tag": "Official"
+  },
+  {
+    "id": 17,
+    "question": "Which of the following hormone or compound has the least effect on blood pressure?",
+    "options": ["cortisol", "epinephrine", "angiotensin", "renin", "aldosterone"],
+    "correctAnswer": "cortisol",
+    "category": "Human Physiology",
+    "difficulty": "Hard",
+    "explanation": "Cortisol primarily regulates metabolism and stress responses. While it can influence blood pressure indirectly, the other compounds (epinephrine, angiotensin, renin, aldosterone) have more direct and potent effects on blood pressure.",
+    "tag": "Official"
+  },
+  {
+    "id": 18,
+    "question": "In which structure are sperm stored after their maturation in the testes?",
+    "options": ["seminiferous tubules", "epididymis", "vas deferens", "seminal vesicle", "prostate gland"],
+    "correctAnswer": "epididymis",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "After sperm are produced in the seminiferous tubules, they mature and are stored in the epididymis until ejaculation.",
+    "tag": "Official"
+  },
+  {
+    "id": 19,
+    "question": "Which of the following structures is or are formed from ectoderm?",
+    "options": ["dermis of skin", "lining of digestive tract", "lining of respiratory tracts", "skeleton", "teeth"],
+    "correctAnswer": "teeth",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "The ectoderm gives rise to structures like the epidermis, nervous system, and enamel of teeth. Dermis, digestive lining, respiratory lining, and skeleton originate from mesoderm or endoderm.",
+    "tag": "Official"
+  },
+  {
+    "id": 20,
+    "question": "What is the neurotransmitter secreted by the motor neurons at the neuromuscular junction?",
+    "options": ["GABA", "acetylcholine", "glutamate", "norepinephrine", "nitric oxide"],
+    "correctAnswer": "acetylcholine",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Motor neurons release acetylcholine at the neuromuscular junction to stimulate muscle contraction by activating receptors on the muscle cell membrane.",
+    "tag": "Official"
+  },
+  {
+    "id": 21,
+    "question": "Which of the following bacterial diseases does not involve a G protein?",
+    "options": ["cholera", "tetanus", "pertussis", "botulism", "diarrhea caused by E. coli heat-labile enterotoxin"],
+    "correctAnswer": "tetanus",
+    "category": "Human Disease",
+    "difficulty": "Hard",
+    "explanation": "Cholera, pertussis, and E. coli heat-labile enterotoxin affect G protein signaling pathways to cause their symptoms. Tetanus toxin acts by inhibiting neurotransmitter release at inhibitory neurons, independent of G proteins.",
+    "tag": "Official"
+  },
+  {
+    "id": 22,
+    "question": "Which of the following is not the result of aneuploidy?",
+    "options": ["Down syndrome", "Klinefelter syndrome", "William syndrome", "Turner syndrome", "Edwards syndrome"],
+    "correctAnswer": "William syndrome",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Aneuploidy is an abnormal number of chromosomes. Down syndrome, Klinefelter, Turner, and Edwards syndromes are caused by extra or missing chromosomes. William syndrome results from a deletion on chromosome 7, not aneuploidy.",
+    "tag": "Official"
+  },
+  {
+    "id": 23,
+    "question": "Which of the following is a proto-oncogene?",
+    "options": ["ras", "p53", "p21", "BRCA1", "APC"],
+    "correctAnswer": "ras",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Proto-oncogenes are normal genes that can become oncogenes when mutated. Ras is a classic proto-oncogene involved in cell signaling and growth. p53, p21, BRCA1, and APC are tumor suppressor genes.",
+    "tag": "Official"
+  },
+  {
+    "id": 24,
+    "question": "Which hormone is involved in diabetes insipidus?",
+    "options": ["insulin", "glucagon", "vasopressin", "thyroxine", "oxytocin"],
+    "correctAnswer": "vasopressin",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Diabetes insipidus is caused by insufficient vasopressin (antidiuretic hormone), leading to excessive urination and thirst. Insulin and glucagon regulate blood glucose, not water balance.",
+    "tag": "Official"
+  },
+  {
+    "id": 25,
+    "question": "Which compound causes the symptoms of both inflammation and allergy?",
+    "options": ["cytokine", "histamine", "pyrogen", "prostaglandin", "interferon"],
+    "correctAnswer": "histamine",
+    "category": "Human Disease",
+    "difficulty": "Easy",
+    "explanation": "Histamine is released from mast cells and basophils during immune responses, causing vasodilation, increased permeability, and allergy symptoms such as itching and swelling.",
+    "tag": "Official"
+  },
+  {
+    "id": 26,
+    "question": "What is the type of linkage between glucose molecules that forms the branches in glycogen?",
+    "options": ["alpha 1,4", "alpha 1,6", "beta 1,4", "beta 1,6"],
+    "correctAnswer": "alpha 1,6",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Glycogen has alpha 1,4 glycosidic linkages in the linear chains and alpha 1,6 linkages at branch points, which create the branched structure.",
+    "tag": "Official"
+  },
+  {
+    "id": 27,
+    "question": "Which of the following is not a fatty acid?",
+    "options": ["stearic acid", "palmitic acid", "aspartic acid", "oleic acid"],
+    "correctAnswer": "aspartic acid",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Aspartic acid is an amino acid, not a fatty acid. Stearic, palmitic, and oleic acids are all fatty acids.",
+    "tag": "Official"
+  },
+  {
+    "id": 28,
+    "question": "Which of the following is not a nonpolar amino acid?",
+    "options": ["threonine", "phenylalanine", "valine", "tryptophan"],
+    "correctAnswer": "threonine",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Threonine is polar due to its hydroxyl group. Phenylalanine, valine, and tryptophan are largely nonpolar.",
+    "tag": "Official"
+  },
+  {
+    "id": 29,
+    "question": "What type of chemical bonds join the phosphates to the sugars in the sugar-phosphate backbone of DNA?",
+    "options": ["glycosidic bond", "peptide bond", "phosphoanhydride bond", "phosphodiester bond"],
+    "correctAnswer": "phosphodiester bond",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Phosphodiester bonds link the 5' phosphate of one nucleotide to the 3' hydroxyl of the next nucleotide in DNA.",
+    "tag": "Official"
+  },
+  {
+    "id": 30,
+    "question": "Which of the following chemical interactions forms the secondary structures of proteins?",
+    "options": ["hydrogen bonds between side chains", "hydrogen bonds between backbone constituents", "peptide bonds", "covalent bonds between R groups"],
+    "correctAnswer": "hydrogen bonds between backbone constituents",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Alpha helices and beta sheets are stabilized by hydrogen bonds between the backbone N-H and C=O groups.",
+    "tag": "Official"
+  },
+  {
+    "id": 31,
+    "question": "Which protein complex helps polypeptides fold into their correct conformations?",
+    "options": ["ribosome", "proteosome", "chaperonin", "SRP"],
+    "correctAnswer": "chaperonin",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Chaperonins assist proteins to fold correctly, preventing misfolding and aggregation.",
+    "tag": "Official"
+  },
+  {
+    "id": 32,
+    "question": "Which of the following proteins is not a coiled-coil?",
+    "options": ["alpha-keratin", "collagen", "myosin", "tropomyosin"],
+    "correctAnswer": "collagen",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Collagen forms a triple helix, not a coiled-coil structure. Alpha-keratin, myosin, and tropomyosin are coiled-coil proteins.",
+    "tag": "Official"
+  },
+  {
+    "id": 33,
+    "question": "Which of the following proteins does not have a quaternary structure?",
+    "options": ["myoglobin", "CAP", "transthyretin", "neuraminidase"],
+    "correctAnswer": "myoglobin",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Myoglobin is a monomeric protein without quaternary structure. CAP, transthyretin, and neuraminidase are multimeric.",
+    "tag": "Official"
+  },
+  {
+    "id": 34,
+    "question": "Which amino acid is not generally phosphorylated by kinases?",
+    "options": ["serine", "threonine", "arginine", "tyrosine"],
+    "correctAnswer": "arginine",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Kinases typically phosphorylate serine, threonine, or tyrosine residues. Arginine is not commonly phosphorylated.",
+    "tag": "Official"
+  },
+  {
+    "id": 35,
+    "question": "Which of the following is found in noncompetitive inhibition of an enzyme?",
+    "options": ["increased Vmax", "same Vmax", "increased Km", "same Km"],
+    "correctAnswer": "same Km",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Noncompetitive inhibitors reduce Vmax without changing Km because they bind to a site other than the active site.",
+    "tag": "Official"
+  },
+  {
+    "id": 36,
+    "question": "In the Lineweaver Burk plot, what is the x-intercept?",
+    "options": ["Vmax", "Km", "1/Vmax", "-1/Km"],
+    "correctAnswer": "-1/Km",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "The x-intercept of a Lineweaver-Burk plot represents -1/Km for the enzyme-substrate interaction.",
+    "tag": "Official"
+  },
+  {
+    "id": 37,
+    "question": "What type of enzymes can adopt two or more slightly different conformations, and their activity can be regulated by a shift from one to another?",
+    "options": ["dimeric", "allosteric", "metamorphic", "reversible"],
+    "correctAnswer": "allosteric",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Allosteric enzymes can exist in multiple conformations (T and R states), and binding of effectors shifts the equilibrium between them.",
+    "tag": "Official"
+  },
+  {
+    "id": 38,
+    "question": "Which of the following transfers a phosphate from ATP to a protein?",
+    "options": ["kinase", "phosphorylase", "phosphatase", "phosphotransferase"],
+    "correctAnswer": "kinase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Kinases catalyze the transfer of phosphate groups from ATP to proteins or other molecules.",
+    "tag": "Official"
+  },
+  {
+    "id": 39,
+    "question": "Which of the following is an incorrect pairing of the chemical group and the amino acid that it attaches to on a protein?",
+    "options": ["acetyl group, lysine", "palmitic acid, cysteine", "methyl group, tyrosine", "phosphate, serine"],
+    "correctAnswer": "methyl group, tyrosine",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Methylation typically occurs on lysine or arginine residues, not tyrosine. The other pairings are correct.",
+    "tag": "Official"
+  },
+  {
+    "id": 40,
+    "question": "Which of the following will be isolated last using centrifugation?",
+    "options": ["mitochondria", "endoplasmic reticulum", "nuclei", "ribosomes"],
+    "correctAnswer": "ribosomes",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Ribosomes are the smallest and least dense of these organelles, so they sediment last during differential centrifugation.",
+    "tag": "Official"
+  },
+  {
+    "id": 41,
+    "question": "In what type of chromatography does the association of a protein and the matrix depend on the pH of the solution passing down the column?",
+    "options": ["paper chromatography", "Ion-exchange chromatography", "affinity chromatography", "gel-filtration chromatography"],
+    "correctAnswer": "Ion-exchange chromatography",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Ion-exchange chromatography separates proteins based on charge interactions, which are influenced by the pH of the buffer solution.",
+    "tag": "Official"
+  },
+  {
+    "id": 42,
+    "question": "In SDS-PAGE, which of the following is used to break the S-S linkages within proteins?",
+    "options": ["mercaptoethanol", "SDS", "polyacrylamide", "heat"],
+    "correctAnswer": "mercaptoethanol",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Mercaptoethanol reduces disulfide bonds (S-S) in proteins, allowing them to denature and migrate according to size in SDS-PAGE.",
+    "tag": "Official"
+  },
+  {
+    "id": 43,
+    "question": "Which of the following cannot be seen on a karyotype?",
+    "options": ["substitution", "translocation", "inversion", "duplication"],
+    "correctAnswer": "substitution",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Karyotypes reveal large structural changes in chromosomes like translocations, inversions, and duplications, but not single-base substitutions.",
+    "tag": "Official"
+  },
+  {
+    "id": 44,
+    "question": "The histone responsible for packing the 'beads-on-a-string' into a more compact chromatin fiber is",
+    "options": ["H1", "H2A", "H3", "H4"],
+    "correctAnswer": "H1",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "H1 histone binds to linker DNA between nucleosomes, helping fold the 'beads-on-a-string' structure into higher-order chromatin.",
+    "tag": "Official"
+  },
+  {
+    "id": 45,
+    "question": "Which of the following chemical modifications tends to turn euchromatin into heterochromatin?",
+    "options": ["histone acetylation", "histone phosphorylation", "histone methylation", "DNA methylation"],
+    "correctAnswer": "DNA methylation",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "DNA methylation of cytosines leads to chromatin condensation, turning active euchromatin into transcriptionally silent heterochromatin.",
+    "tag": "Official"
+  },
+  {
+    "id": 46,
+    "question": "Which step makes the addition of a DNA nucleotide in the polymerization of DNA irreversible?",
+    "options": ["formation of hydrogen bonds between complementary bases", "formation of the phosphodiester bond", "hydrolysis of phosphoanhydride bond in the nucleotide triphosphate", "hydrolysis of pyrophosphate"],
+    "correctAnswer": "hydrolysis of pyrophosphate",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "DNA polymerase catalyzes nucleotide addition, releasing pyrophosphate. The hydrolysis of pyrophosphate drives the reaction forward, making it effectively irreversible.",
+    "tag": "Official"
+  },
+  {
+    "id": 47,
+    "question": "Which of the following necessitates the synthesis of DNA in the 5’ to 3’ direction?",
+    "options": ["the need for RNA primers", "joining of Okazaki fragments", "DNA proofreading", "relief of overwinding upstream of replication fork"],
+    "correctAnswer": "the need for RNA primers",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "DNA polymerases can only add nucleotides to a pre-existing 3’ hydroxyl group provided by an RNA primer, enforcing 5’ to 3’ synthesis.",
+    "tag": "Official"
+  },
+  {
+    "id": 48,
+    "question": "Which enzyme removes RNA primers?",
+    "options": ["DNA polymerase I", "DNA polymerase II", "DNA polymerase III", "Ligase"],
+    "correctAnswer": "DNA polymerase I",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "DNA polymerase I removes RNA primers and replaces them with DNA nucleotides during replication.",
+    "tag": "Official"
+  },
+  {
+    "id": 49,
+    "question": "Which of the following enzymes unwinds the DNA double helix to begin DNA replication?",
+    "options": ["topoisomerase", "ligase", "helicase", "primase"],
+    "correctAnswer": "helicase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Helicase unwinds the double-stranded DNA at the replication fork, allowing polymerases to access the template strands.",
+    "tag": "Official"
+  },
+  {
+    "id": 50,
+    "question": "Which of the following DNA damages can lead to a substitution mutation?",
+    "options": ["depurination", "thymine dimer", "alkylation", "deamination"],
+    "correctAnswer": "deamination",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Deamination converts cytosine to uracil, which can pair incorrectly and result in a substitution mutation during replication.",
+    "tag": "Official"
+  },
+  {
+    "id": 51,
+    "question": "Which method of repair for double-stranded DNA breaks ensures no loss of nucleotides?",
+    "options": ["nucleotide excision repair", "homologous recombination", "mismatch repair", "nonhomologous end joining"],
+    "correctAnswer": "homologous recombination",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Homologous recombination uses a sister chromatid as a template to accurately repair double-stranded breaks without losing nucleotides.",
+    "tag": "Official"
+  },
+  {
+    "id": 52,
+    "question": "Which of the following is not a difference between DNA polymerase and RNA polymerase?",
+    "options": ["direction of movement", "nucleotides added", "ability to proofread", "need for primers"],
+    "correctAnswer": "direction of movement",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Both DNA and RNA polymerases synthesize in the 5' to 3' direction. Other features like proofreading, primer requirement, and nucleotides used differ.",
+    "tag": "Official"
+  },
+  {
+    "id": 53,
+    "question": "Which RNA polymerase transcribes genes that code for proteins?",
+    "options": ["RNA polymerase I", "RNA polymerase II", "RNA polymerase III", "RNA polymerase IV"],
+    "correctAnswer": "RNA polymerase II",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "RNA polymerase II synthesizes mRNA, which encodes proteins.",
+    "tag": "Official"
+  },
+  {
+    "id": 54,
+    "question": "Which general transcription factor binds to the TATA of the promoter on DNA first?",
+    "options": ["TFIIB", "TFIID", "TFIIF", "TFIIH"],
+    "correctAnswer": "TFIID",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "TFIID contains the TATA-binding protein (TBP) that recognizes and binds the TATA box, initiating the assembly of the transcription complex.",
+    "tag": "Official"
+  },
+  {
+    "id": 55,
+    "question": "Which chemical group signals proteasomes to degrade a protein when it is attached to the protein?",
+    "options": ["methyl", "phosphate", "acetyl", "ubiquitin"],
+    "correctAnswer": "ubiquitin",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Ubiquitin tags proteins for degradation by the proteasome.",
+    "tag": "Official"
+  },
+  {
+    "id": 56,
+    "question": "Which of the following is not a housekeeping protein?",
+    "options": ["actin", "ribosomal protein", "RNA polymerase", "immunoglobulin"],
+    "correctAnswer": "immunoglobulin",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Housekeeping proteins are constitutively expressed in most cells; immunoglobulins are specialized for B cells.",
+    "tag": "Official"
+  },
+  {
+    "id": 57,
+    "question": "Which RNA transcribed from the genome is cut by Dicer and incorporated into RISC to block mRNA translation?",
+    "options": ["siRNA", "snRNA", "miRNA", "piRNA"],
+    "correctAnswer": "miRNA",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "miRNAs are processed by Dicer and incorporated into RISC to post-transcriptionally regulate gene expression.",
+    "tag": "Official"
+  },
+  {
+    "id": 58,
+    "question": "All of the following can potentially generate genetic variation in the offspring except:",
+    "options": ["alternative RNA splicing", "mutation", "gene duplication", "exon shuffling"],
+    "correctAnswer": "alternative RNA splicing",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Alternative splicing affects mRNA diversity but does not change the DNA sequence passed to offspring.",
+    "tag": "Official"
+  },
+  {
+    "id": 59,
+    "question": "Which of the following is a retrotransposon that encodes a reverse transcriptase and can use an RNA intermediate to move from one part of the genome to another?",
+    "options": ["L1 element", "Alu sequence", "MER", "SVA"],
+    "correctAnswer": "L1 element",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "L1 elements are autonomous retrotransposons encoding reverse transcriptase, enabling RNA-mediated transposition.",
+    "tag": "Official"
+  },
+  {
+    "id": 60,
+    "question": "Which enzyme is transported to a specific sequence of DNA by a guide RNA and makes a double-stranded cut in the DNA?",
+    "options": ["restriction enzyme", "cas9", "DNA endonuclease", "topoisomerase"],
+    "correctAnswer": "cas9",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "CRISPR-Cas9 uses guide RNA to target specific DNA sequences for double-stranded cleavage.",
+    "tag": "Official"
+  },
+  {
+    "id": 61,
+    "question": "Which DNA library does not contain any introns?",
+    "options": ["synthetic mutant library", "genomic library", "chromosome library", "cDNA library"],
+    "correctAnswer": "cDNA library",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "cDNA libraries are made from mRNA templates and therefore lack introns.",
+    "tag": "Official"
+  },
+  {
+    "id": 62,
+    "question": "Which of the following is not associated with PCR?",
+    "options": ["DNA denaturation", "Taq DNA polymerase", "RNA primers", "DNA nucleotides"],
+    "correctAnswer": "RNA primers",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "PCR uses DNA primers, not RNA primers.",
+    "tag": "Official"
+  },
+  {
+    "id": 63,
+    "question": "In DNA fingerprinting, which DNA sequences are analyzed using PCR and gel electrophoresis to identify different individuals?",
+    "options": ["STR", "SNP", "RFLP", "SINE"],
+    "correctAnswer": "STR",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Short Tandem Repeats (STRs) vary in repeat number among individuals and are amplified for DNA fingerprinting.",
+    "tag": "Official"
+  },
+  {
+    "id": 64,
+    "question": "Which procedure involves sending a probe to locate DNA or RNA sequences in living cells and tissues?",
+    "options": ["RNA-seq", "gene knockdown", "in situ hybridization", "DNA microarray"],
+    "correctAnswer": "in situ hybridization",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "In situ hybridization uses labeled probes to detect specific nucleic acid sequences in cells or tissues.",
+    "tag": "Official"
+  },
+  {
+    "id": 65,
+    "question": "In the production of the membrane, which enzyme removes specific phospholipids from the side of the bilayer facing the exterior space to the monolayer that faces the cytosol?",
+    "options": ["scramblase", "transferase", "flippase", "floppase"],
+    "correctAnswer": "flippase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Flippases transport specific phospholipids from the outer to the inner leaflet of the membrane bilayer.",
+    "tag": "Official"
+  },
+  {
+    "id": 66,
+    "question": "What is the main component of the cell cortex in a red blood cell?",
+    "options": ["laminin", "actin", "myosin", "spectrin"],
+    "correctAnswer": "spectrin",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Spectrin forms a mesh-like network beneath the plasma membrane, giving red blood cells their flexibility and shape.",
+    "tag": "Official"
+  },
+  {
+    "id": 67,
+    "question": "Which of the following is not a product of glycolysis?",
+    "options": ["pyruvate", "NADH", "CO2", "ATP"],
+    "correctAnswer": "CO2",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Glycolysis produces pyruvate, ATP, and NADH. CO2 is produced in the citric acid cycle, not glycolysis.",
+    "tag": "Official"
+  },
+  {
+    "id": 68,
+    "question": "Which enzyme catalyzes the first irreversible step in glycolysis?",
+    "options": ["hexokinase", "phosphofructokinase", "phosphoglycerate kinase", "enolase"],
+    "correctAnswer": "phosphofructokinase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Phosphofructokinase catalyzes the committed step of glycolysis, converting fructose-6-phosphate to fructose-1,6-bisphosphate.",
+    "tag": "Official"
+  },
+  {
+    "id": 69,
+    "question": "How many NADH molecules are produced per glucose at the end of the citric acid cycle?",
+    "options": ["6", "8", "10", "12"],
+    "correctAnswer": "6",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Each acetyl-CoA produces 3 NADH. One glucose generates 2 acetyl-CoA, resulting in 6 NADH per glucose in the citric acid cycle.",
+    "tag": "Official"
+  },
+  {
+    "id": 70,
+    "question": "Which protein is not involved in vesicle budding from a membrane?",
+    "options": ["clathrin", "dynamin", "adaptin", "separase"],
+    "correctAnswer": "separase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Separase is involved in sister chromatid separation during mitosis, not vesicle formation.",
+    "tag": "Official"
+  },
+  {
+    "id": 71,
+    "question": "Which protein is not involved in vesicle docking onto a membrane?",
+    "options": ["tethering protein", "securin", "SNARE", "Rab"],
+    "correctAnswer": "securin",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Securin regulates anaphase; SNARE, Rab, and tethering proteins mediate vesicle docking and fusion.",
+    "tag": "Official"
+  },
+  {
+    "id": 72,
+    "question": "What is the monomeric GTPase that most RTKs activate?",
+    "options": ["Ran", "Rab", "Ras", "Rho"],
+    "correctAnswer": "Ras",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Ras is a small GTPase activated downstream of receptor tyrosine kinases, initiating signaling pathways.",
+    "tag": "Official"
+  },
+  {
+    "id": 73,
+    "question": "Which motor protein moves toward the plus end of a microtubule?",
+    "options": ["kinesin", "myosin", "dynein", "actin"],
+    "correctAnswer": "kinesin",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Kinesin moves cargo toward the plus end of microtubules; dynein moves toward the minus end.",
+    "tag": "Official"
+  },
+  {
+    "id": 74,
+    "question": "Which of the following does not play a role in apoptosis?",
+    "options": ["Fas", "Ras", "cytochrome c released from mitochondria", "Bcl2 proteins"],
+    "correctAnswer": "Ras",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Ras is a growth-promoting GTPase, not a direct regulator of apoptosis. Fas, cytochrome c, and Bcl2 are apoptosis regulators.",
+    "tag": "Official"
+  },
+  {
+    "id": 75,
+    "question": "Which of the following is not a tumor suppressor gene?",
+    "options": ["BRCA", "myc", "p53", "APC"],
+    "correctAnswer": "myc",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Myc is an oncogene that promotes cell proliferation. BRCA, p53, and APC are tumor suppressors.",
+    "tag": "Official"
+  },
+  {
+    "id": 76,
+    "question": "Which of the following is not a homeostatically regulated factor in the human body?",
+    "options": ["blood glucose concentration", "blood pH", "temperature", "blood antibody concentration"],
+    "correctAnswer": "blood antibody concentration",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Antibody levels vary and are not tightly regulated by homeostasis, unlike glucose, pH, and temperature.",
+    "tag": "Official"
+  },
+  {
+    "id": 77,
+    "question": "Which of the following processes is not an example of positive feedback?",
+    "options": ["childbirth", "insulin secretion", "blood clotting", "milk ejection"],
+    "correctAnswer": "insulin secretion",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Insulin secretion is negative feedback controlling blood glucose. Positive feedback amplifies the response, like childbirth or clotting.",
+    "tag": "Official"
+  },
+  {
+    "id": 78,
+    "question": "Which of the following does not contribute to the resting potential of a neuron?",
+    "options": ["potassium leak channels", "sodium leak channels", "sodium voltage-gated channels", "sodium-potassium pumps"],
+    "correctAnswer": "sodium voltage-gated channels",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Voltage-gated sodium channels open only during action potentials. Resting potential is maintained by leak channels and pumps.",
+    "tag": "Official"
+  },
+  {
+    "id": 79,
+    "question": "Which of the following is the main contributor to the falling phase of an action potential in a neuron?",
+    "options": ["Na+ influx", "Na+ efflux", "K+ influx", "K+ efflux"],
+    "correctAnswer": "K+ efflux",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The falling phase is caused by K+ leaving the cell through voltage-gated channels, repolarizing the membrane.",
+    "tag": "Official"
+  },
+  {
+    "id": 80,
+    "question": "What is the site on a neuron where action potentials are initiated by a graded potential that exceeds the threshold?",
+    "options": ["cell body", "dendrite", "axon hillock", "axon terminal"],
+    "correctAnswer": "axon hillock",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The axon hillock integrates incoming signals and initiates the action potential if threshold is reached.",
+    "tag": "Official"
+  },
+  {
+    "id": 81,
+    "question": "Which of the following neurotransmitters is made from tryptophan and acts in CNS in pathways involving mood, emotions, behavior, appetite, states of consciousness, and muscle movements?",
+    "options": ["dopamine", "serotonin", "acetylcholine", "glutamate"],
+    "correctAnswer": "serotonin",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Serotonin is synthesized from tryptophan and modulates many CNS functions.",
+    "tag": "Official"
+  },
+  {
+    "id": 82,
+    "question": "Which of the following second messengers activates Protein Kinase C?",
+    "options": ["cAMP", "Ca2+", "IP3", "DAG"],
+    "correctAnswer": "DAG",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Diacylglycerol (DAG) activates PKC in conjunction with Ca2+.",
+    "tag": "Official"
+  },
+  {
+    "id": 83,
+    "question": "Which of the following toxins blocks the inhibition of adenylyl cyclase, keeping the signal cAMP-mediated transduction pathway continuously active?",
+    "options": ["pertussis", "cholera", "botulinum", "tetanus"],
+    "correctAnswer": "cholera",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Cholera toxin ADP-ribosylates Gs protein, permanently activating adenylyl cyclase and raising cAMP levels.",
+    "tag": "Official"
+  },
+  {
+    "id": 84,
+    "question": "Which of the following controls the skeletal muscles?",
+    "options": ["enteric nervous system", "sympathetic nervous system", "parasympathetic nervous system", "somatic nervous system"],
+    "correctAnswer": "somatic nervous system",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Skeletal muscles are under voluntary control of the somatic nervous system.",
+    "tag": "Official"
+  },
+  {
+    "id": 85,
+    "question": "Which of the following glial cells in the brain induces the formation of the blood-brain barrier?",
+    "options": ["astrocytes", "oligodendrocytes", "microglia", "ependymal cells"],
+    "correctAnswer": "astrocytes",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Astrocytes regulate endothelial cells to maintain the blood-brain barrier.",
+    "tag": "Official"
+  },
+  {
+    "id": 86,
+    "question": "Which of the following glial cells in the brain are the immune defense cells of the CNS?",
+    "options": ["astrocytes", "oligodendrocytes", "microglia", "ependymal cells"],
+    "correctAnswer": "microglia",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Microglia act as macrophage-like immune cells in the CNS.",
+    "tag": "Official"
+  },
+  {
+    "id": 87,
+    "question": "Which lobe of the cerebral cortex contains the somatosensory cortex and receives sensory inputs from the entire body?",
+    "options": ["frontal lobe", "parietal lobe", "temporal lobe", "occipital lobe"],
+    "correctAnswer": "parietal lobe",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The postcentral gyrus in the parietal lobe is the primary somatosensory cortex.",
+    "tag": "Official"
+  },
+  {
+    "id": 88,
+    "question": "Which structure in the brain governs speaking ability and is associated with the motor areas of the cortex that control the muscles necessary for speaking?",
+    "options": ["Broca’s area", "limbic association cortex", "Wernicke’s area", "Pre-frontal association cortex"],
+    "correctAnswer": "Broca’s area",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Broca’s area in the frontal lobe is responsible for speech production.",
+    "tag": "Official"
+  },
+  {
+    "id": 89,
+    "question": "Which structures in the brain function in inhibiting muscle tone throughout the body and maintaining purposeful motor activity?",
+    "options": ["motor cortex", "cerebellum", "basal nuclei", "thalamus"],
+    "correctAnswer": "basal nuclei",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Basal nuclei modulate movement, suppress unwanted motions, and maintain posture and muscle tone.",
+    "tag": "Official"
+  },
+  {
+    "id": 90,
+    "question": "Which structure in the limbic system is especially important in processing inputs that give rise to the sensation of fear and anxiety?",
+    "options": ["hippocampus", "hypothalamus", "fornix", "amygdala"],
+    "correctAnswer": "amygdala",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "The amygdala processes fear, anxiety, and emotional responses.",
+    "tag": "Official"
+  },
+  {
+    "id": 91,
+    "question": "In long-term potentiation (LTP), an increase in the number of which receptor on the postsynaptic membrane leads to greater EPSP in response to the neurotransmitter glutamate?",
+    "options": ["GABAA receptors", "NMDA receptors", "AMPA receptors", "nACh receptors"],
+    "correctAnswer": "AMPA receptors",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "LTP strengthens synapses by increasing AMPA receptor density, enhancing excitatory postsynaptic potentials.",
+    "tag": "Official"
+  },
+  {
+    "id": 92,
+    "question": "Which structure runs through the brainstem into the thalamus and receives and integrates all incoming sensory synaptic input?",
+    "options": ["medulla oblongata", "pons", "midbrain", "reticular formation"],
+    "correctAnswer": "reticular formation",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "The reticular formation filters sensory input and regulates arousal and consciousness.",
+    "tag": "Official"
+  },
+  {
+    "id": 93,
+    "question": "Which of the following toxins irreversibly inhibits AChE, the acetylcholinesterase, at the neuromuscular junction?",
+    "options": ["Black Widow Spider venom", "Botulinum toxin", "curare", "organophosphates"],
+    "correctAnswer": "organophosphates",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Organophosphates phosphorylate AChE irreversibly, causing accumulation of acetylcholine.",
+    "tag": "Official"
+  },
+  {
+    "id": 94,
+    "question": "Which protein blocks the myosin binding site on the actin filament until Ca2+ ions are present?",
+    "options": ["troponin", "tropomyosin", "kinesin", "dynein"],
+    "correctAnswer": "tropomyosin",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Tropomyosin covers actin’s myosin binding sites; Ca2+ binding to troponin moves tropomyosin aside.",
+    "tag": "Official"
+  },
+  {
+    "id": 95,
+    "question": "Which heart valve prevents backflow of blood from the left ventricle to the left atrium?",
+    "options": ["pulmonary valve", "aortic valve", "mitral valve", "tricuspid valve"],
+    "correctAnswer": "mitral valve",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The mitral (bicuspid) valve separates left atrium and ventricle and prevents backflow during systole.",
+    "tag": "Official"
+  },
+  {
+    "id": 96,
+    "question": "Which part of the EKG represents the repolarization of the ventricles?",
+    "options": ["P wave", "PR segment", "QRS complex", "T wave"],
+    "correctAnswer": "T wave",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "T wave corresponds to ventricular repolarization on an ECG.",
+    "tag": "Official"
+  },
+  {
+    "id": 97,
+    "question": "According to the Frank-Starling law of the heart, the stroke volume from the ventricle depends on which of the following?",
+    "options": ["end diastolic volume", "blood pressure", "heart rate", "cardiac output"],
+    "correctAnswer": "end diastolic volume",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Stroke volume increases with the initial stretching of cardiac muscle fibers (preload) determined by EDV.",
+    "tag": "Official"
+  },
+  {
+    "id": 98,
+    "question": "In which of the following conditions is a coronary artery completely blocked by an embolus and the portion of the heart served by the vessel begins to die?",
+    "options": ["angina pectoris", "pulmonary embolism", "myocardial infarction", "cerebrovascular accident"],
+    "correctAnswer": "myocardial infarction",
+    "category": "Human Disease",
+    "difficulty": "Easy",
+    "explanation": "MI results from complete coronary blockage, leading to ischemia and necrosis of heart tissue.",
+    "tag": "Official"
+  },
+  {
+    "id": 99,
+    "question": "What type of circulatory shock is caused by histamine release in severe allergic reactions?",
+    "options": ["hypovolemic shock", "cardiogenic shock", "anaphylactic shock", "neurogenic shock"],
+    "correctAnswer": "anaphylactic shock",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Anaphylaxis causes systemic vasodilation and fluid loss due to histamine release, leading to shock.",
+    "tag": "Official"
+  },
+  {
+    "id": 100,
+    "question": "Which of the following does not bind to hemoglobin in red blood cells?",
+    "options": ["CO2", "H+", "HCO3-", "O2"],
+    "correctAnswer": "HCO3-",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "CO2 and H+ bind to hemoglobin; HCO3- is transported dissolved in plasma and exchanged via chloride shift.",
+    "tag": "Official"
+  },
+  {
+    "id": 101,
+    "question": "Which organ produces EPO, erythropoietin, which stimulates erythropoiesis by stem cells in the bone marrow?",
+    "options": ["liver", "pancreas", "spleen", "kidney"],
+    "correctAnswer": "kidney",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The kidney produces erythropoietin in response to low oxygen levels to stimulate RBC production.",
+    "tag": "Official"
+  },
+  {
+    "id": 102,
+    "question": "An increase of which of the following leukocytes is associated with allergic conditions and with internal parasite infestations?",
+    "options": ["basophils", "monocytes", "eosinophils", "neutrophils"],
+    "correctAnswer": "eosinophils",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Eosinophils are involved in parasitic infections and allergic responses.",
+    "tag": "Official"
+  },
+  {
+    "id": 103,
+    "question": "In the intrinsic pathway of the clotting cascade, the active form of which factor converts factor X to its active form, which in turn converts prothrombin to thrombin?",
+    "options": ["IX", "XI", "XII", "VII"],
+    "correctAnswer": "IX",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Activated factor IX (IXa) along with VIIIa forms the complex that activates factor X in the intrinsic pathway.",
+    "tag": "Official"
+  },
+  {
+    "id": 104,
+    "question": "What are body-produced chemicals that make bacteria more susceptible to phagocytosis?",
+    "options": ["complements", "opsonins", "cytokines", "pyrogens"],
+    "correctAnswer": "opsonins",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Opsonins (e.g., antibodies, complement proteins) tag pathogens for easier phagocytosis.",
+    "tag": "Official"
+  },
+  {
+    "id": 105,
+    "question": "In inflammation, histamine induced vasodilation and increased capillary permeability allow leukocytes to leave the blood vessels and migrate to the site of tissue injury. What is the physical process by which leukocytes leave the blood vessels through the capillary wall?",
+    "options": ["margination", "infiltration", "chemotaxis", "diapedesis"],
+    "correctAnswer": "diapedesis",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Diapedesis is the migration of leukocytes through capillary walls toward the site of infection or injury.",
+    "tag": "Official"
+  },
+  {
+    "id": 106,
+    "question": "Which disease is characterized by muscular rigidity and involuntary tremors at rest and is attributed to a deficiency of dopamine in the basal nuclei?",
+    "options": ["Huntington’s disease", "Creutzfeldt-Jakob disease", "Parkinson’s disease", "Lou Gehrig’s disease"],
+    "correctAnswer": "Parkinson’s disease",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Parkinson’s results from dopaminergic neuron loss in substantia nigra affecting basal nuclei function.",
+    "tag": "Official"
+  },
+  {
+    "id": 107,
+    "question": "Which toxin prevents the release of an inhibitory neurotransmitter, GABA, from inhibitory presynaptic inputs terminating at neurons that supply skeletal muscles, resulting in uncontrolled muscle spasms, cessation of breathing, and death?",
+    "options": ["botulinum toxin", "strychnine", "nerve gas", "tetanus toxin"],
+    "correctAnswer": "strychnine",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Strychnine blocks glycine/GABA receptors, causing continuous excitation and muscle spasms.",
+    "tag": "Official"
+  },
+  {
+    "id": 108,
+    "question": "The drugs used to treat elevated blood cholesterol level, statins, inhibit which enzyme along the cholesterol synthesis pathway?",
+    "options": ["HMG-CoA synthase", "HMG-CoA reductase", "mevalonate kinase", "squalene synthase"],
+    "correctAnswer": "HMG-CoA reductase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Statins inhibit HMG-CoA reductase, the rate-limiting enzyme in cholesterol biosynthesis.",
+    "tag": "Official"
+  },
+  {
+    "id": 109,
+    "question": "Which substance cannot cross the blood-brain barrier?",
+    "options": ["dopamine", "ghrelin", "barbiturate", "caffeine"],
+    "correctAnswer": "dopamine",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Dopamine cannot cross the BBB, which is why L-DOPA is used for Parkinson’s treatment.",
+    "tag": "Official"
+  },
+  {
+    "id": 110,
+    "question": "Which of the following is a language disorder caused by damage to specific cortical areas such as Broca’s and Wernicke’s areas?",
+    "options": ["dysarthria", "dyslexia", "apraxia", "aphasia"],
+    "correctAnswer": "aphasia",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Aphasia results from cortical damage affecting speech comprehension or production.",
+    "tag": "Official"
+  },
+  {
+    "id": 111,
+    "question": "In what type of amnesia is the patient unable to store memory in long-term storage for later retrieval after a traumatic brain injury?",
+    "options": ["dissociative amnesia", "retrograde amnesia", "anterograde amnesia", "transient global amnesia"],
+    "correctAnswer": "anterograde amnesia",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Anterograde amnesia prevents formation of new long-term memories after brain injury.",
+    "tag": "Official"
+  },
+  {
+    "id": 112,
+    "question": "Which brain disease is characterized by beta amyloid proteins and neurofibrillary tangles?",
+    "options": ["Parkinson’s disease", "Alzheimer’s disease", "Tay Sachs’ disease", "Creutzfeldt-Jakob disease"],
+    "correctAnswer": "Alzheimer’s disease",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Amyloid plaques and tau tangles are hallmarks of Alzheimer’s pathology.",
+    "tag": "Official"
+  },
+  {
+    "id": 113,
+    "question": "In which autoimmune disease do antibodies block, alter, or destroy the acetylcholine receptors at the neuromuscular junction, causing muscle weakness?",
+    "options": ["multiple sclerosis", "lupus", "Graves’ disease", "myasthenia gravis"],
+    "correctAnswer": "myasthenia gravis",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Myasthenia gravis involves autoimmune attack on nicotinic acetylcholine receptors.",
+    "tag": "Official"
+  },
+  {
+    "id": 114,
+    "question": "In which type of heart block do the nerve impulses generated in the SA node in the atrium fail to propagate to the ventricles?",
+    "options": ["first degree heart block", "second degree heart block", "third degree heart block", "fourth degree heart block"],
+    "correctAnswer": "third degree heart block",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Third-degree (complete) AV block prevents atrial impulses from reaching the ventricles.",
+    "tag": "Official"
+  },
+  {
+    "id": 115,
+    "question": "A young athlete in great health with no prior history of medical problems suddenly experiences shortness of breath and chest pain and dies shortly thereafter. What is the most likely cause of the young athlete’s death?",
+    "options": ["asthma", "heart attack", "stroke", "hypertrophic cardiomyopathy"],
+    "correctAnswer": "hypertrophic cardiomyopathy",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Hypertrophic cardiomyopathy is the most common cause of sudden cardiac death in young athletes.",
+    "tag": "Official"
+  },
+  {
+    "id": 116,
+    "question": "Epithelial cells that are wider than they are tall are called:",
+    "options": ["Squamous", "Columnar", "Cuboidal", "Stratified"],
+    "correctAnswer": "Squamous",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "Squamous epithelial cells are flat and wider than tall, ideal for diffusion.",
+    "tag": "Official"
+  },
+  {
+    "id": 117,
+    "question": "Which of the following can be classified as connective tissue?",
+    "options": ["Acini", "Exocrine glands", "Goblet cells", "Blood", "Dendrites of nerve cells"],
+    "correctAnswer": "Blood",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Blood is a specialized connective tissue because it has cells in a matrix (plasma).",
+    "tag": "Official"
+  },
+  {
+    "id": 118,
+    "question": "An organ is a structure that comprises at least __ of the primary tissues.",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": "2",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "An organ contains at least two primary tissue types functioning together.",
+    "tag": "Official"
+  },
+  {
+    "id": 119,
+    "question": "Which of the following best describes the role of caspases?",
+    "options": ["Genetic markers", "Executioners", "Suppressors", "Sequencers"],
+    "correctAnswer": "Executioners",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Caspases are proteases that execute apoptosis by cleaving cellular substrates.",
+    "tag": "Official"
+  },
+  {
+    "id": 120,
+    "question": "During which phase of the cell cycle would you expect chromatid pairs to first become clearly visible and easily identifiable under microscope?",
+    "options": ["Interphase", "Prophase", "Metaphase", "Anaphase", "Telophase"],
+    "correctAnswer": "Prophase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "During prophase, chromosomes condense and become visible as paired chromatids.",
+    "tag": "Official"
+  },
+  {
+    "id": 121,
+    "question": "In an alien species, enzymes work the same way as in humans. The following series of reactions controls the growth hormone production in this alien species:\n\nA + 2B -> 5C + D\n5C + E -> 3F + G\nG -> 2H + 2B\n\nWhich of the following is an enzyme in this series of elementary reaction steps?",
+    "options": ["A", "B", "G", "H"],
+    "correctAnswer": "G",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "G acts catalytically in the last reaction, producing 2H and regenerating 2B, fitting the role of an enzyme.",
+    "tag": "Official"
+  },
+  {
+    "id": 122,
+    "question": "In the same alien species reaction series, which of the following is an intermediary?",
+    "options": ["A", "B", "G", "H"],
+    "correctAnswer": "C",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "C is produced in one step and consumed in the next, making it an intermediate.",
+    "tag": "Official"
+  },
+  {
+    "id": 123,
+    "question": "Which of the following enzymes catalyzes the decomposition of hydrogen peroxide?",
+    "options": ["Catalase", "Carbonic anhydrase", "Amylase", "Lactate dehydrogenase", "Ribonuclease"],
+    "correctAnswer": "Catalase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Catalase rapidly breaks down hydrogen peroxide into water and oxygen.",
+    "tag": "Official"
+  },
+  {
+    "id": 124,
+    "question": "Which of the following best describes the term ischemia?",
+    "options": ["Conversion of noncarbohydrate molecules through pyruvic acid to glucose", "Crossing of organic molecules with phosphate groups through cell membranes", "Inadequate blood flow to an organ", "Trapping of glucose within skeletal muscles with large amount of glycogen"],
+    "correctAnswer": "Inadequate blood flow to an organ",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Ischemia is insufficient blood supply to tissues, limiting oxygen and nutrient delivery.",
+    "tag": "Official"
+  },
+  {
+    "id": 125,
+    "question": "Which of the following neurotransmitters is responsible for mediating muscle tone?",
+    "options": ["Acetylcholine", "Serotonin", "Norepinephrine", "L-DOPA", "GABA"],
+    "correctAnswer": "Acetylcholine",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Acetylcholine at the neuromuscular junction is critical for initiating muscle contraction and maintaining tone.",
+    "tag": "Official"
+  },
+  {
+    "id": 126,
+    "question": "Most antidepressants mimic the effect of which neurotransmitters?",
+    "options": ["Acetylcholine", "Serotonin", "Dopamine", "L-DOPA", "GABA"],
+    "correctAnswer": "Serotonin",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "SSRIs and other antidepressants primarily enhance serotonergic neurotransmission to improve mood.",
+    "tag": "Official"
+  },
+  {
+    "id": 127,
+    "question": "Which of the following is the result of Wernicke’s aphasia?",
+    "options": ["Inability to assign meaning to verbally communicated words", "Difficulty assigning facial features to specific individuals", "Speech that is rapid and fluid but without meaning", "Inability to speak fluently with mostly intact listening and understanding", "Paralysis of facial muscles"],
+    "correctAnswer": "Speech that is rapid and fluid but without meaning",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Wernicke’s aphasia results in fluent but nonsensical speech due to damage in Wernicke’s area.",
+    "tag": "Official"
+  },
+  {
+    "id": 128,
+    "question": "Which taste triggers G-proteins, which then causes calcium ions to be released from the endoplasmic reticulum?",
+    "options": ["Salty", "Sour", "Sweet", "Umami", "Bitter"],
+    "correctAnswer": ["Sweet", "Umami", "Bitter"],
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Sweet, umami, and bitter tastes use GPCR pathways that lead to IP3-mediated calcium release.",
+    "tag": "Official"
+  },
+  {
+    "id": 129,
+    "question": "Which of the following can be fixed by replacing the lens of the eye with a new plastic lens?",
+    "options": ["Retinal detachment", "Astigmatism", "Cataracts", "Glaucoma"],
+    "correctAnswer": "Cataracts",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Cataracts involve lens opacity, which can be corrected by lens replacement surgery.",
+    "tag": "Official"
+  },
+  {
+    "id": 130,
+    "question": "Which of the following systems cannot cause secondary hypertension?",
+    "options": ["Renal", "Endocrine", "Skeletal", "Nervous"],
+    "correctAnswer": "Skeletal",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Secondary hypertension can arise from renal, endocrine, or nervous system disorders, not the skeletal system.",
+    "tag": "Official"
+  },
+  {
+    "id": 131,
+    "question": "Which is the last chamber of the heart that blood exits out of before entering the rest of the body as oxygen-rich blood?",
+    "options": ["Right Ventricle", "Left Ventricle", "Right Atrium", "Left Atrium", "Pulmonary Trunk"],
+    "correctAnswer": "Left Ventricle",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The left ventricle pumps oxygenated blood into the aorta to supply the systemic circulation.",
+    "tag": "Official"
+  },
+  {
+    "id": 132,
+    "question": "Which of the following is not a late sign of some form of shock?",
+    "options": ["Decreased systolic pressure", "Cold, clammy skin", "Decreased urine volume", "Increased pH due to hyperventilation"],
+    "correctAnswer": "Increased pH due to hyperventilation",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Increased pH is not a typical late sign; late shock usually shows hypotension, cold skin, and low urine output.",
+    "tag": "Official"
+  },
+  {
+    "id": 133,
+    "question": "Gasses in the lung loosely follow the ideal gas law. According to Boyle’s law, a derivative of the ideal gas law, which of the following is true?",
+    "options": ["Pressure and volume are inversely proportional", "Pressure and volume are directly proportional", "Pressure and temperature are inversely proportional", "Pressure and temperature are directly proportional"],
+    "correctAnswer": "Pressure and volume are inversely proportional",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Boyle’s law states that at constant temperature, pressure and volume of a gas are inversely related.",
+    "tag": "Official"
+  },
+  {
+    "id": 134,
+    "question": "Which of the following conditions causes both hypoventilation and high blood pH?",
+    "options": ["Respiratory acidosis", "Respiratory alkalosis", "Metabolic acidosis", "Metabolic alkalosis"],
+    "correctAnswer": "Metabolic alkalosis",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Metabolic alkalosis leads to high blood pH; hypoventilation may occur as a compensatory response.",
+    "tag": "Official"
+  },
+  {
+    "id": 135,
+    "question": "Which of the following body regions has the highest two-point touch threshold distance?",
+    "options": ["Sole of foot", "Calf", "Forearm", "Thumb"],
+    "correctAnswer": "Sole of foot",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Sole of foot has lower receptor density; higher two-point discrimination threshold.",
+    "tag": "Official"
+  },
+  {
+    "id": 136,
+    "question": "Which of the following drugs blocks voltage-gated Sodium ion channels?",
+    "options": ["Botulinum toxin", "Curare", "Saxitoxin", "Nerve gas"],
+    "correctAnswer": "Saxitoxin",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Saxitoxin blocks voltage-gated Na+ channels, preventing action potentials.",
+    "tag": "Official"
+  },
+  {
+    "id": 137,
+    "question": "Which of the following is NOT a proposed function of astrocytes?",
+    "options": ["Takeup of potassium ions from extracellular fluid", "Takeup of sodium ions from the extracellular fluid", "Regulate neurogenesis in the adult brain", "Induce the formation of blood-brain barrier"],
+    "correctAnswer": "Takeup of sodium ions from the extracellular fluid",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Astrocytes regulate K+ and support neurons but do not significantly uptake Na+.",
+    "tag": "Official"
+  },
+  {
+    "id": 138,
+    "question": "Which of the following supports the function of neurons within sensory and autonomic ganglia?",
+    "options": ["Schwann cells", "Satellite cells", "Oligodendrocytes", "Microglia", "Astrocytes"],
+    "correctAnswer": "Satellite cells",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Satellite cells provide metabolic and structural support to neurons in ganglia.",
+    "tag": "Official"
+  },
+  {
+    "id": 139,
+    "question": "Which of the following does not affect the rate of diffusion across a membrane?",
+    "options": ["Magnitude of concentration differences across the membrane", "Permeability of the membrane to the diffusing substances", "Temperature of the solution", "Pressure of the surroundings", "Surface area of the membrane"],
+    "correctAnswer": "Pressure of the surroundings",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Diffusion rate depends on concentration gradient, membrane permeability, temperature, and surface area, but not external pressure.",
+    "tag": "Official"
+  },
+  {
+    "id": 140,
+    "question": "Which of the following is NOT an essential amino acid?",
+    "options": ["Lysine", "Tryptophan", "Proline", "Valine", "Leucine"],
+    "correctAnswer": "Proline",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Proline is non-essential; the others must be obtained from diet.",
+    "tag": "Official"
+  },
+  {
+    "id": 141,
+    "question": "Steroids are considered which of the following macromolecule?",
+    "options": ["Carbohydrates", "Lipids", "Triglycerides", "Phospholipids", "Proteins"],
+    "correctAnswer": "Lipids",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Steroids are lipid-based molecules, derived from cholesterol.",
+    "tag": "Official"
+  },
+  {
+    "id": 142,
+    "question": "Short-course antibiotics can curb antimicrobial resistance in children.",
+    "options": ["True", "False"],
+    "correctAnswer": "True",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Appropriate short courses reduce selection pressure for resistant bacteria.",
+    "tag": "Official"
+  },
+  {
+    "id": 143,
+    "question": "The CDC says that Zika infections have been reported in 50 states.",
+    "options": ["True", "False"],
+    "correctAnswer": "False",
+    "category": "Human Disease",
+    "difficulty": "Easy",
+    "explanation": "Zika infections are mostly reported in specific regions; not all 50 states.",
+    "tag": "Official"
+  },
+  {
+    "id": 144,
+    "question": "Which of the following in NOT relevant to the diagnosis of MRSA anymore:",
+    "options": ["Patterns of resistance", "Clinical presentation", "Clone evolution", "All of the above"],
+    "correctAnswer": "All of the above",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Modern diagnosis relies on molecular methods rather than these older markers.",
+    "tag": "Official"
+  },
+  {
+    "id": 145,
+    "question": "A 45-year-old patient presents with extreme fatigue and is found to have a mutation in the mitochondrial gene encoding Complex I of the electron transport chain. Which of the following would be the most direct consequence of this mutation?",
+    "options": ["Inability to convert pyruvate to acetyl-CoA", "Reduced oxidation of NADH to NAD+", "Increased production of FADH2 in the Citric Acid Cycle", "Failure of the cell to perform glycolysis"],
+    "correctAnswer": "Reduced oxidation of NADH to NAD+",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Complex I (NADH dehydrogenase) is responsible for the first step of the electron transport chain: transferring electrons from NADH to ubiquinone. A mutation here prevents the efficient recycling of NAD+, which is essential for maintaining the proton gradient for ATP synthesis.",
+    "tag": "Cellular Respiration"
+  },
+  {
+    "id": 146,
+    "question": "During an experiment, a researcher applies a drug that prevents the hydrolysis of GTP to GDP on the Ras protein. What is the likely effect on the cell signaling pathway?",
+    "options": ["The pathway will be permanently inactivated.", "The cell will stop responding to extracellular ligands.", "The pathway will remain constitutively active, potentially leading to uncontrolled cell division.", "The receptor tyrosine kinase will be degraded."],
+    "correctAnswer": "The pathway will remain constitutively active, potentially leading to uncontrolled cell division.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Ras is a G-protein that acts as a molecular switch. It is active when bound to GTP and inactive when it hydrolyzes GTP to GDP. If hydrolysis is blocked, Ras stays in the 'on' position, continuously sending growth signals even in the absence of a ligand.",
+    "tag": "Cell Signaling"
+  },
+  {
+    "id": 147,
+    "question": "Which of the following occurs during the 'fast block' to polyspermy in human fertilization?",
+    "options": ["Hardening of the zona pellucida", "A rapid change in the membrane potential of the egg plasma membrane", "The release of cortical granules into the perivitelline space", "The degradation of ZP3 receptors"],
+    "correctAnswer": "A rapid change in the membrane potential of the egg plasma membrane",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "The fast block to polyspermy involves the depolarization of the egg's plasma membrane (from negative to positive) immediately after the first sperm fuses. This prevents other sperm from adhering. The other options describe the 'slow block' (cortical reaction).",
+    "tag": "The Reproductive System"
+  },
+  {
+    "id": 148,
+    "question": "A patient is diagnosed with Hemophilia A, a condition where blood fails to clot properly due to a deficiency in Factor VIII. Which part of the clotting cascade is primarily affected?",
+    "options": ["Extrinsic pathway", "Intrinsic pathway", "Common pathway", "Fibrinolysis"],
+    "correctAnswer": "Intrinsic pathway",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "Factor VIII is a key component of the intrinsic pathway. It acts as a cofactor for Factor IXa to activate Factor X. A deficiency in Factor VIII disrupts this sequence, leading to impaired fibrin formation.",
+    "tag": "Blood Diseases"
+  },
+  {
+    "id": 149,
+    "question": "In the nephron, the majority of glucose and amino acid reabsorption occurs in which segment?",
+    "options": ["Descending limb of the Loop of Henle", "Distal convoluted tubule", "Proximal convoluted tubule", "Collecting duct"],
+    "correctAnswer": "Proximal convoluted tubule",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The proximal convoluted tubule (PCT) is the primary site for the reabsorption of essential solutes. Nearly 100% of glucose and amino acids are reabsorbed here through secondary active transport with sodium.",
+    "tag": "The Excretory System"
+  },
+  {
+    "id": 150,
+    "question": "A mutation in the RB (Retinoblastoma) gene prevents the RB protein from binding to the E2F transcription factor. How would this affect the cell cycle?",
+    "options": ["The cell will be arrested in G1 phase.", "The cell will bypass the G1/S checkpoint and divide uncontrollably.", "The cell will enter G0 phase permanently.", "Apoptosis will be inhibited by the absence of p53."],
+    "correctAnswer": "The cell will bypass the G1/S checkpoint and divide uncontrollably.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "The RB protein is a tumor suppressor that normally 'holds' E2F, preventing the transition from G1 to S phase. If RB cannot bind E2F, E2F is free to activate the transcription of S-phase genes, leading to premature and continuous cell cycle progression.",
+    "tag": "Cancer"
+  },
+  {
+    "id": 151,
+    "question": "Which of the following hormones is secreted by the posterior pituitary gland?",
+    "options": ["Growth Hormone (GH)", "Adrenocorticotropic Hormone (ACTH)", "Oxytocin", "Prolactin"],
+    "correctAnswer": "Oxytocin",
+    "category": "Human Physiology",
+    "difficulty": "Easy",
+    "explanation": "The posterior pituitary stores and releases Oxytocin and Antidiuretic Hormone (ADH), which are produced in the hypothalamus. GH, ACTH, and Prolactin are synthesized and secreted by the anterior pituitary.",
+    "tag": "The Endocrine System"
+  },
+  {
+    "id": 152,
+    "question": "A patient with Grave’s Disease has an overactive thyroid. Which laboratory result would you expect to see regarding their TSH (Thyroid Stimulating Hormone) levels?",
+    "options": ["High TSH due to hypersecretion by the pituitary", "Low TSH due to negative feedback from high T3/T4", "Normal TSH but high TRH", "High TSH due to iodine deficiency"],
+    "correctAnswer": "Low TSH due to negative feedback from high T3/T4",
+    "category": "Human Disease",
+    "difficulty": "Medium",
+    "explanation": "In Grave's Disease, antibodies mimic TSH and stimulate the thyroid to produce high levels of T3 and T4. These high levels of thyroid hormones signal the pituitary to stop producing TSH via negative feedback, resulting in very low TSH levels.",
+    "tag": "Endocrine System Diseases"
+  },
+  {
+    "id": 153,
+    "question": "Which enzyme is responsible for 'charging' a tRNA molecule with its corresponding amino acid?",
+    "options": ["RNA Polymerase II", "Peptidyl transferase", "Aminoacyl-tRNA synthetase", "Helicase"],
+    "correctAnswer": "Aminoacyl-tRNA synthetase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Aminoacyl-tRNA synthetase catalyzes the covalent attachment of an amino acid to its specific tRNA, a process requiring ATP. This ensures the correct amino acid is brought to the ribosome during translation.",
+    "tag": "Translation"
+  },
+  {
+    "id": 154,
+    "question": "During muscle contraction, what causes the 'power stroke' of the myosin head?",
+    "options": ["The binding of ATP to the myosin head", "The hydrolysis of ATP into ADP and Pi", "The release of Pi (inorganic phosphate) from the myosin head", "The binding of calcium to tropomyosin"],
+    "correctAnswer": "The release of Pi (inorganic phosphate) from the myosin head",
+    "category": "Human Physiology",
+    "difficulty": "Hard",
+    "explanation": "After the myosin head binds to actin, the release of inorganic phosphate (Pi) triggers the power stroke, where the myosin head pivots and pulls the actin filament. The release of ADP follows, and a new ATP is required for detachment.",
+    "tag": "The Muscular System"
+  },
+  {
+    "id": 155,
+    "question": "In a case of Multiple Sclerosis, the immune system attacks which structure to slow down neural signaling?",
+    "options": ["Nodes of Ranvier", "Dendritic spines", "Myelin sheath", "Synaptic vesicles"],
+    "correctAnswer": "Myelin sheath",
+    "category": "Human Disease",
+    "difficulty": "Easy",
+    "explanation": "Multiple Sclerosis is an autoimmune disorder where the myelin sheath of CNS neurons is destroyed. This leads to the loss of saltatory conduction, significantly slowing or stopping nerve impulses.",
+    "tag": "Nervous System Diseases"
+  },
+  {
+    "id": 156,
+    "question": "Which cell type is responsible for producing antibodies during a secondary immune response?",
+    "options": ["Cytotoxic T cells", "Natural Killer cells", "Plasma cells", "Helper T cells"],
+    "correctAnswer": "Plasma cells",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "While Memory B cells recognize the antigen in a secondary response, they must differentiate into Plasma cells to actually secrete the large quantities of antibodies needed to neutralize the pathogen.",
+    "tag": "The Immune System"
+  },
+  {
+    "id": 157,
+    "question": "What is the primary function of the surfactant produced by Type II alveolar cells?",
+    "options": ["To facilitate the diffusion of CO2", "To increase the surface tension of the alveoli", "To decrease the surface tension and prevent alveolar collapse", "To transport oxygen into the pulmonary capillaries"],
+    "correctAnswer": "To decrease the surface tension and prevent alveolar collapse",
+    "category": "Human Physiology",
+    "difficulty": "Medium",
+    "explanation": "Surfactant reduces the surface tension of the fluid lining the alveoli. This makes it easier to expand the lungs during inhalation and prevents the small air sacs from collapsing during exhalation.",
+    "tag": "The Respiratory System"
+  },
+  {
+    "id": 158,
+    "question": "In the lac operon of E. coli, what happens when lactose is present but glucose is absent?",
+    "options": ["The repressor binds the operator, and transcription is blocked.", "CAP binds the CAP-binding site, and the repressor is removed, leading to high transcription.", "The repressor binds the promoter, and cAMP levels are low.", "Lactose binds to the promoter to recruit RNA polymerase."],
+    "correctAnswer": "CAP binds the CAP-binding site, and the repressor is removed, leading to high transcription.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Lactose (as allolactose) binds the repressor to remove it from the operator. When glucose is low, cAMP levels rise, allowing CAP to bind the CAP-binding site, which strongly recruits RNA polymerase for high levels of transcription.",
+    "tag": "Gene Regulation"
+  },
+  {
+    "id": 159,
+    "question": "A patient presents with 'brittle bone disease' (Osteogenesis Imperfecta), which is caused by a defect in the synthesis of collagen. This disease primarily affects which tissue type?",
+    "options": ["Epithelial tissue", "Nervous tissue", "Connective tissue", "Muscle tissue"],
+    "correctAnswer": "Connective tissue",
+    "category": "Human Disease",
+    "difficulty": "Easy",
+    "explanation": "Bone is a type of connective tissue. Osteogenesis Imperfecta results from mutations in the genes that produce Type I collagen, a key structural protein in the extracellular matrix of bone.",
+    "tag": "Bone and Joint Diseases"
+  },
+  {
+    "id": 160,
+    "question": "Which of the following is the primary storage polysaccharide found in the liver and muscle cells of humans?",
+    "options": [
+      "Starch",
+      "Amylopectin",
+      "Chitin",
+      "Glycogen"
+    ],
+    "correctAnswer": "Glycogen",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Glycogen is the highly branched glucose polymer used by animals for energy storage. Starch and amylopectin are found in plants, and chitin is found in fungal cell walls and arthropod exoskeletons.",
+    "tag": "Macromolecules"
+  },
+  {
+    "id": 161,
+    "question": "Which type of covalent bond joins two amino acids together during translation?",
+    "options": [
+      "Glycosidic bond",
+      "Peptide bond",
+      "Phosphodiester bond",
+      "Ester linkage"
+    ],
+    "correctAnswer": "Peptide bond",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "A peptide bond forms through a dehydration reaction between the carboxyl group of one amino acid and the amino group of another.",
+    "tag": "Macromolecules"
+  },
+  {
+    "id": 162,
+    "question": "The secondary structure of a protein, such as an alpha-helix or a beta-pleated sheet, is primarily stabilized by which of the following?",
+    "options": [
+      "Disulfide bridges between cysteine R-groups",
+      "Ionic bonds between acidic and basic side chains",
+      "Hydrogen bonds between the carboxyl and amino groups of the polypeptide backbone",
+      "Hydrophobic interactions between nonpolar R-groups"
+    ],
+    "correctAnswer": "Hydrogen bonds between the carboxyl and amino groups of the polypeptide backbone",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Secondary structure relies on hydrogen bonding between the backbone constituents (the N-H and C=O groups). Interactions involving R-groups (side chains) define the tertiary structure.",
+    "tag": "Macromolecules"
+  },
+  {
+    "id": 163,
+    "question": "Which of the following describes a key structural difference between DNA and RNA?",
+    "options": [
+      "DNA uses uracil while RNA uses thymine.",
+      "DNA contains a 2'-hydroxyl group on its sugar, while RNA lacks it.",
+      "RNA is usually single-stranded and can fold into complex 3D shapes like ribozymes.",
+      "DNA nucleotides are joined by hydrogen bonds, while RNA use phosphodiester bonds."
+    ],
+    "correctAnswer": "RNA is usually single-stranded and can fold into complex 3D shapes like ribozymes.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "RNA contains ribose (which has a 2'-OH group) and is typically single-stranded, allowing it to fold upon itself to catalyze reactions. DNA uses deoxyribose and is typically a stable double helix.",
+    "tag": "Macromolecules"
+  },
+  {
+    "id": 164,
+    "question": "You are studying a mystery lipid that is solid at room temperature. Upon chemical treatment, you observe that the addition of hydrogen atoms does not change its melting point. What can you conclude about this lipid?",
+    "options": [
+      "It is a polyunsaturated fat.",
+      "It is a saturated fat.",
+      "It is a steroid lacking fatty acid chains.",
+      "It is a phospholipid with two cis-double bonds."
+    ],
+    "correctAnswer": "It is a saturated fat.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Saturated fats have no double bonds and are 'saturated' with hydrogen, making them solid at room temperature. Because they already have the maximum number of hydrogens, hydrogenation treatment would have no effect on their structure or melting point.",
+    "tag": "Macromolecules"
+  },
+  {
+    "id": 165,
+    "question": "In the context of protein folding, why is the 'hydrophobic collapse' considered a major driving force for the formation of tertiary structure in an aqueous environment?",
+    "options": [
+      "Hydrophobic R-groups form covalent bonds with each other to stabilize the core.",
+      "Water molecules increase in entropy when hydrophobic side chains are sequestered in the protein interior.",
+      "Hydrophilic side chains are pushed out of the protein by repulsive van der Waals forces.",
+      "The peptide bond itself is hydrophobic and must be shielded from water."
+    ],
+    "correctAnswer": "Water molecules increase in entropy when hydrophobic side chains are sequestered in the protein interior.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "When nonpolar side chains are exposed to water, water molecules form highly ordered 'clathrate' cages around them (decreasing entropy). By burying hydrophobic groups in the interior, these water molecules are released, increasing the entropy of the system, which is thermodynamically favorable.",
+    "tag": "Macromolecules"
+  },
+  {
+    "id": 166,
+    "question": "Which organelle is known as the 'post office' of the cell because it modifies, sorts, and packages proteins for secretion?",
+    "options": ["Nucleolus", "Golgi apparatus", "Smooth Endoplasmic Reticulum", "Lysosome"],
+    "correctAnswer": "Golgi apparatus",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "The Golgi apparatus receives proteins from the ER, attaches sugars (glycosylation) to act as 'zip codes,' and ships them to their final destinations in vesicles.",
+    "tag": "The Structures of the Cell"
+  },
+  {
+    "id": 167,
+    "question": "Which of the following organelles is primarily responsible for the synthesis of lipids and the detoxification of drugs or poisons?",
+    "options": ["Rough Endoplasmic Reticulum", "Smooth Endoplasmic Reticulum", "Peroxisome", "Ribosome"],
+    "correctAnswer": "Smooth Endoplasmic Reticulum",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Unlike the Rough ER, the Smooth ER lacks ribosomes and is the site for lipid synthesis, steroid production, and detoxification in liver cells.",
+    "tag": "The Structures of the Cell"
+  },
+  {
+    "id": 168,
+    "question": "A cell is treated with a chemical that prevents the assembly of microtubules. Which of the following processes would be most directly disrupted?",
+    "options": ["The formation of the cleavage furrow during cytokinesis", "The movement of chromosomes during anaphase", "The structural integrity of the nuclear lamina", "The passive diffusion of ions across the membrane"],
+    "correctAnswer": "The movement of chromosomes during anaphase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "The mitotic spindle is composed of microtubules. If they cannot assemble, the cell cannot pull sister chromatids apart. The cleavage furrow (Option A) is actually made of actin microfilaments.",
+    "tag": "The Structures of the Cell"
+  },
+  {
+    "id": 169,
+    "question": "Tay-Sachs disease is a fatal genetic disorder caused by the buildup of undigested lipids in nerve cells. This disease is most directly linked to the malfunction of which organelle?",
+    "options": ["Mitochondria", "Lysosome", "Centrosome", "Vacuoles"],
+    "correctAnswer": "Lysosome",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Lysosomes contain hydrolytic enzymes that break down macromolecules. In Tay-Sachs, a specific enzyme (Hexosaminidase A) is missing, leading to the toxic accumulation of lipids (gangliosides) within the lysosome.",
+    "tag": "The Structures of the Cell"
+  },
+  {
+    "id": 170,
+    "question": "Which of the following best describes the Endosymbiotic Theory regarding the origin of mitochondria and chloroplasts?",
+    "options": [
+      "They evolved from the invagination of the host cell's nuclear envelope.",
+      "They originated from ancestral prokaryotes that were engulfed by a host cell.",
+      "They are formed de novo from proteins and lipids in the cytoplasm.",
+      "They are specialized regions of the Rough ER that detached to become independent."
+    ],
+    "correctAnswer": "They originated from ancestral prokaryotes that were engulfed by a host cell.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Evidence includes the fact that mitochondria have their own circular DNA, 70S ribosomes (like bacteria), and a double membrane, suggesting they were once free-living proteobacteria engulfed by a primitive eukaryote.",
+    "tag": "The Structures of the Cell"
+  },
+  {
+    "id": 171,
+    "question": "The nuclear pore complex (NPC) regulates the traffic of molecules into and out of the nucleus. Which of the following molecules requires a specific 'Nuclear Localization Signal' (NLS) and importin proteins to enter the nucleus?",
+    "options": ["Oxygen and Carbon Dioxide", "Small ions like Na+ and K+", "DNA Polymerase", "mRNA transcripts"],
+    "correctAnswer": "DNA Polymerase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Small molecules and ions diffuse freely through the NPC. However, large proteins that function inside the nucleus (like DNA Polymerase or Transcription Factors) must be actively transported via the NLS-importin pathway. mRNA (Option D) is exported, not imported.",
+    "tag": "The Structures of the Cell"
+  },
+  {
+    "id": 172,
+    "question": "Which component of the plasma membrane is primarily responsible for maintaining fluidity at low temperatures by preventing the tight packing of phospholipids?",
+    "options": ["Peripheral proteins", "Cholesterol", "Glycolipids", "Saturated fatty acid tails"],
+    "correctAnswer": "Cholesterol",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Cholesterol acts as a 'fluidity buffer.' At low temperatures, it hinders solidification by disrupting the regular packing of phospholipids; at high temperatures, it helps stabilize the membrane by restricting movement.",
+    "tag": "Cell Membrane"
+  },
+  {
+    "id": 173,
+    "question": "The 'Fluid Mosaic Model' describes the plasma membrane as a mosaic of components. Which of the following best describes the 'fluid' aspect of this model?",
+    "options": [
+      "The rapid flip-flop of phospholipids from one leaflet to the other.",
+      "The lateral movement of phospholipids and proteins within the plane of the membrane.",
+      "The constant flow of water through the lipid bilayer.",
+      "The dissolving of the membrane during cell division."
+    ],
+    "correctAnswer": "The lateral movement of phospholipids and proteins within the plane of the membrane.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Phospholipids and many proteins can move laterally (side-to-side) quite easily. Transverse movement ('flip-flop') is actually very rare and usually requires specific enzymes like flippases.",
+    "tag": "Cell Membrane"
+  },
+  {
+    "id": 174,
+    "question": "Which structural feature of phospholipids is primarily responsible for the 'self-sealing' nature of the lipid bilayer in an aqueous environment?",
+    "options": [
+      "The presence of phosphate groups in the hydrophobic core.",
+      "The amphipathic nature of the molecules.",
+      "The covalent bonds between adjacent lipid tails.",
+      "The attachment of carbohydrates to the lipid heads."
+    ],
+    "correctAnswer": "The amphipathic nature of the molecules.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Amphipathic means having both a hydrophilic (water-loving) head and a hydrophobic (water-fearing) tail. In water, they spontaneously arrange to hide the tails, causing the membrane to reseal if punctured.",
+    "tag": "Cell Membrane"
+  },
+  {
+    "id": 175,
+    "question": "A researcher modifies a cell membrane to increase the proportion of unsaturated fatty acid tails in its phospholipids. What is the most likely effect on the membrane's physical properties?",
+    "options": [
+      "The membrane will become more rigid.",
+      "The membrane's transition temperature (Tm) will decrease.",
+      "The membrane will become thicker.",
+      "The membrane will lose its ability to host peripheral proteins."
+    ],
+    "correctAnswer": "The membrane's transition temperature (Tm) will decrease.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Unsaturated tails have 'kinks' due to double bonds, preventing them from packing tightly. This keeps the membrane fluid at lower temperatures, thus lowering the 'melting' or transition temperature.",
+    "tag": "Cell Membrane"
+  },
+  {
+    "id": 176,
+    "question": "Which of the following is a key functional difference between integral membrane proteins and peripheral membrane proteins?",
+    "options": [
+      "Integral proteins are only found on the extracellular surface.",
+      "Peripheral proteins are covalently bonded to the lipid tails.",
+      "Integral proteins contain hydrophobic transmembrane domains, whereas peripheral proteins associate via non-covalent interactions with the surface.",
+      "Only peripheral proteins are involved in cell signaling."
+    ],
+    "correctAnswer": "Integral proteins contain hydrophobic transmembrane domains, whereas peripheral proteins associate via non-covalent interactions with the surface.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Integral proteins penetrate the hydrophobic core (often as alpha-helices). Peripheral proteins are 'hangers-on' that stick to the edges or to other proteins through hydrogen bonds or electrostatic forces.",
+    "tag": "Cell Membrane"
+  },
+  {
+    "id": 177,
+    "question": "The 'Glycocalyx' is a fuzzy, carbohydrate-rich coat on the outer surface of the plasma membrane. Which molecules are the primary contributors to the formation of this structure?",
+    "options": [
+      "Cholesterol and Ergosterol",
+      "Glycoproteins and Glycolipids",
+      "Cytoskeletal actin and Myosin",
+      "Spectrin and Ankyrin"
+    ],
+    "correctAnswer": "Glycoproteins and Glycolipids",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "The glycocalyx consists of the carbohydrate side chains attached to proteins and lipids on the outer leaflet. It is crucial for cell-cell recognition, adhesion, and protection against mechanical damage.",
+    "tag": "Cell Membrane"
+  },
+  {
+    "id": 178,
+    "question": "Which of the following describes a process where a solute moves down its concentration gradient through a membrane protein without the requirement of metabolic energy?",
+    "options": ["Primary active transport", "Facilitated diffusion", "Simple diffusion", "Endocytosis"],
+    "correctAnswer": "Facilitated diffusion",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Facilitated diffusion is a passive process. Unlike simple diffusion, it requires a transport protein (channel or carrier) to help polar or large molecules cross the hydrophobic core of the membrane.",
+    "tag": "Passive and Active Transport"
+  },
+  {
+    "id": 179,
+    "question": "What is the primary energy source that drives secondary active transport in most animal cells?",
+    "options": [
+      "Direct hydrolysis of ATP",
+      "Light energy (photons)",
+      "An existing electrochemical gradient (usually Sodium)",
+      "The kinetic energy of water molecules (osmosis)"
+    ],
+    "correctAnswer": "An existing electrochemical gradient (usually Sodium)",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Secondary active transport 'piggybacks' off the gradient created by primary active transport. For example, the Na+/K+ pump uses ATP to create a Sodium gradient, and that gradient is then used to pull in other molecules like glucose.",
+    "tag": "Passive and Active Transport"
+  },
+  {
+    "id": 180,
+    "question": "A specific transport protein moves two different solutes across the membrane in opposite directions. This type of transporter is specifically classified as a:",
+    "options": ["Uniporter", "Symporter", "Antiporter", "Channel protein"],
+    "correctAnswer": "Antiporter",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Coupled transporters are categorized by direction: Symporters move two substances in the same direction, while Antiporters (or exchangers) move them in opposite directions.",
+    "tag": "Passive and Active Transport"
+  },
+  {
+    "id": 181,
+    "question": "Pinocytosis and receptor-mediated endocytosis are both forms of endocytosis. What is a defining characteristic of pinocytosis that distinguishes it from the receptor-mediated form?",
+    "options": [
+      "It requires the binding of a specific ligand to a membrane receptor.",
+      "It is a non-specific process used to internalize extracellular fluid and dissolved solutes.",
+      "It involves the formation of pseudopodia to engulf large bacteria.",
+      "It does not require any change in the shape of the plasma membrane."
+    ],
+    "correctAnswer": "It is a non-specific process used to internalize extracellular fluid and dissolved solutes.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Pinocytosis ('cell drinking') is 'constitutive' or non-specific; the cell simply gulps droplets of extracellular fluid. Receptor-mediated endocytosis is highly selective and only occurs when specific molecules trigger the receptors.",
+    "tag": "Passive and Active Transport"
+  },
+  {
+    "id": 182,
+    "question": "Consider a cell where the internal concentration of Ion X is 10 mM and the external concentration is 100 mM. If the cell's membrane potential is -70 mV and Ion X is a positively charged cation, which direction will Ion X move when a channel opens?",
+    "options": [
+      "It will move out of the cell because the concentration gradient is stronger than the electrical gradient.",
+      "It will move into the cell because both the concentration and electrical gradients favor inward movement.",
+      "It will not move because the system is at equilibrium.",
+      "It will move into the cell purely due to active transport pumps."
+    ],
+    "correctAnswer": "It will move into the cell because both the concentration and electrical gradients favor inward movement.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "The concentration gradient favors inward movement (100 mM -> 10 mM). Since the ion is positive (cation) and the inside of the cell is negative (-70 mV), the electrical gradient also pulls the ion inward. The combined electrochemical gradient results in a strong inward flux.",
+    "tag": "Passive and Active Transport"
+  },
+  {
+    "id": 183,
+    "question": "The multidrug resistance (MDR1) protein, also known as P-glycoprotein, is often overexpressed in cancer cells. It uses ATP to pump hydrophobic drugs out of the cytosol. This is an example of which transport mechanism?",
+    "options": [
+      "Facilitated diffusion",
+      "Primary active transport",
+      "Secondary active transport",
+      "Passive efflux"
+    ],
+    "correctAnswer": "Primary active transport",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "MDR1 is a member of the ABC (ATP-Binding Cassette) transporter family. These proteins directly hydrolyze ATP to provide the energy needed to pump substrates against their concentration gradients, classifying them as primary active transporters.",
+    "tag": "Passive and Active Transport"
+  },
+  {
+    "id": 184,
+    "question": "Which of the following describes the 'Induced Fit' model of enzyme-substrate interaction?",
+    "options": [
+      "The active site is a rigid shape that exactly matches the substrate like a lock and key.",
+      "The enzyme changes shape slightly to bind the substrate more firmly once it enters the active site.",
+      "The substrate is chemically modified before it can reach the enzyme.",
+      "The enzyme and substrate bind through strong, permanent covalent bonds."
+    ],
+    "correctAnswer": "The enzyme changes shape slightly to bind the substrate more firmly once it enters the active site.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Induced fit suggests the enzyme is flexible. When the substrate enters the active site, the enzyme shifts its shape to wrap around it, similar to a clasping handshake.",
+    "tag": "Metabolism and Enzymes"
+  },
+  {
+    "id": 185,
+    "question": "A non-protein organic molecule that is required for an enzyme to function, such as a vitamin derivative like NAD+ or FAD, is known as a:",
+    "options": ["Cofactor", "Coenzyme", "Apoenzyme", "Inhibitor"],
+    "correctAnswer": "Coenzyme",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Cofactors are inorganic helpers like metal ions (zinc, iron). Coenzymes are organic helpers, often derived from vitamins, that assist the enzyme in its chemical reaction.",
+    "tag": "Metabolism and Enzymes"
+  },
+  {
+    "id": 186,
+    "question": "In a series of enzymatic reactions (A -> B -> C -> D), the final product 'D' binds to an early enzyme in the pathway and shuts it down. What is the primary purpose of this feedback inhibition?",
+    "options": [
+      "To increase the speed of the chemical reaction.",
+      "To prevent the cell from wasting chemical resources by making more product than needed.",
+      "To permanently destroy the enzyme so it can be recycled.",
+      "To provide energy for the next step in the cycle."
+    ],
+    "correctAnswer": "To prevent the cell from wasting chemical resources by making more product than needed.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Feedback inhibition is a regulatory mechanism where the end product of a metabolic pathway acts as an inhibitor of an enzyme within that pathway to maintain homeostasis.",
+    "tag": "Metabolism and Enzymes"
+  },
+  {
+    "id": 187,
+    "question": "What specifically happens to the protein structure of an enzyme during denaturation caused by extreme heat or pH changes?",
+    "options": [
+      "The primary sequence of amino acids is broken apart into individual molecules.",
+      "The secondary and tertiary structures unfold due to the breaking of weak bonds like hydrogen bonds.",
+      "The enzyme is converted into a different type of protein with a new function.",
+      "The activation energy of the enzyme increases to a level that stops the reaction."
+    ],
+    "correctAnswer": "The secondary and tertiary structures unfold due to the breaking of weak bonds like hydrogen bonds.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Denaturation destroys the 3D shape of the protein. Since the function of an enzyme depends on the specific shape of its active site, losing that shape makes the enzyme inactive.",
+    "tag": "Metabolism and Enzymes"
+  },
+  {
+    "id": 188,
+    "question": "How does a noncompetitive inhibitor affect the rate of an enzymatic reaction differently than a competitive inhibitor?",
+    "options": [
+      "It binds to the active site, but only very loosely.",
+      "It binds to an allosteric site, changing the enzyme's shape and making the active site less effective.",
+      "Its effects can be completely reversed by adding more substrate.",
+      "It increases the affinity of the enzyme for its natural substrate."
+    ],
+    "correctAnswer": "It binds to an allosteric site, changing the enzyme's shape and making the active site less effective.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Competitive inhibitors fight for the active site. Noncompetitive inhibitors bind elsewhere (allosteric site). Because they change the enzyme's shape, adding more substrate doesn't help—the enzyme stays 'broken.'",
+    "tag": "Metabolism and Enzymes"
+  },
+  {
+    "id": 189,
+    "question": "Succinate dehydrogenase is an enzyme in the Krebs cycle. Malonate is a molecule that closely resembles the substrate succinate. When malonate binds to the active site, it prevents succinate from binding. Which of the following is true about malonate?",
+    "options": [
+      "It is an allosteric activator.",
+      "It is a competitive inhibitor and its effect can be overcome by increasing succinate concentration.",
+      "It is a coenzyme that speeds up the conversion of succinate.",
+      "It is a noncompetitive inhibitor that permanently denatures the enzyme."
+    ],
+    "correctAnswer": "It is a competitive inhibitor and its effect can be overcome by increasing succinate concentration.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Since malonate looks like the substrate and binds the active site, it is competitive. In competitive inhibition, if you flood the system with the real substrate (succinate), the enzyme is more likely to grab the real thing than the inhibitor.",
+    "tag": "Metabolism and Enzymes"
+  },
+  {
+    "id": 190,
+    "question": "Which stage of cellular respiration occurs in the cytosol and is the only stage that can proceed without the presence of oxygen?",
+    "options": [
+      "The Citric Acid Cycle",
+      "Glycolysis",
+      "Oxidative Phosphorylation",
+      "Pyruvate Oxidation"
+    ],
+    "correctAnswer": "Glycolysis",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Glycolysis breaks down one molecule of glucose into two molecules of pyruvate. Since it does not require oxygen and occurs in the cytoplasm, it is used by nearly all living organisms.",
+    "tag": "Cellular Respiration"
+  },
+  {
+    "id": 191,
+    "question": "What is the primary role of oxygen (O2) in the process of aerobic cellular respiration?",
+    "options": [
+      "To combine with carbon to form CO2",
+      "To donate electrons to the electron transport chain",
+      "To act as the final electron acceptor and form water",
+      "To catalyze the conversion of ADP to ATP"
+    ],
+    "correctAnswer": "To act as the final electron acceptor and form water",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Oxygen sits at the end of the electron transport chain. Its high electronegativity pulls electrons through the chain, eventually combining with protons to form water as a byproduct.",
+    "tag": "Cellular Respiration"
+  },
+  {
+    "id": 192,
+    "question": "In the absence of oxygen, why must a cell perform fermentation (such as lactic acid or ethanol fermentation)?",
+    "options": [
+      "To produce the massive amounts of ATP needed for survival.",
+      "To oxidize NADH back into NAD+ so that glycolysis can continue.",
+      "To prevent the cell from becoming too basic.",
+      "To create oxygen molecules from carbon dioxide."
+    ],
+    "correctAnswer": "To oxidize NADH back into NAD+ so that glycolysis can continue.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Glycolysis requires a steady supply of NAD+ to accept electrons. Without oxygen, the electron transport chain stops recycling NADH. Fermentation provides a pathway to dump those electrons, regenerating NAD+.",
+    "tag": "Cellular Respiration"
+  },
+  {
+    "id": 193,
+    "question": "During the Citric Acid Cycle (Krebs Cycle), most of the energy harvested from the original glucose molecule is transferred to which of the following?",
+    "options": [
+      "ATP and GTP",
+      "Oxygen and Water",
+      "NADH and FADH2",
+      "Pyruvate and Lactate"
+    ],
+    "correctAnswer": "NADH and FADH2",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "While the cycle produces a small amount of ATP/GTP, its primary function is to strip high-energy electrons from carbon compounds and load them onto electron shuttles (NADH and FADH2).",
+    "tag": "Cellular Respiration"
+  },
+  {
+    "id": 194,
+    "question": "The enzyme Phosphofructokinase-1 (PFK-1) is a major control point for glycolysis. Which of the following conditions would lead to the inhibition of this enzyme?",
+    "options": [
+      "High levels of ADP and AMP",
+      "High levels of ATP and Citrate",
+      "A sudden decrease in the concentration of Glucose",
+      "A decrease in the acidity of the cytosol"
+    ],
+    "correctAnswer": "High levels of ATP and Citrate",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "PFK-1 is regulated by feedback inhibition. If the cell has high ATP (energy) or high Citrate (a product of the Krebs cycle), it signals that energy needs are met, and the enzyme slows down glucose breakdown.",
+    "tag": "Cellular Respiration"
+  },
+  {
+    "id": 195,
+    "question": "Chemicals known as 'uncouplers,' such as DNP, allow protons to leak across the inner mitochondrial membrane. What is the most likely result of this 'leak' in a cell?",
+    "options": [
+      "ATP production increases because the cell works harder.",
+      "The electron transport chain stops moving electrons.",
+      "Oxygen consumption increases, but most of the energy is released as heat instead of ATP.",
+      "The cell switches entirely to anaerobic fermentation."
+    ],
+    "correctAnswer": "Oxygen consumption increases, but most of the energy is released as heat instead of ATP.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Uncouplers destroy the proton gradient needed by ATP synthase. The cell continues to burn fuel and consume oxygen to try and restore the gradient, but because the protons bypass the 'turbine,' the energy is lost as thermal energy (heat).",
+    "tag": "Cellular Respiration"
+  },
+  {
+    "id": 196,
+    "question": "A cell secretes a signaling molecule that binds to receptors on nearby neighboring cells, stimulating a local response. This type of signaling is specifically called:",
+    "options": [
+      "Endocrine signaling",
+      "Paracrine signaling",
+      "Autocrine signaling",
+      "Synaptic signaling"
+    ],
+    "correctAnswer": "Paracrine signaling",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Paracrine signaling involves local communication where signals travel short distances through the extracellular fluid to affect neighboring cells.",
+    "tag": "Cell Signaling"
+  },
+  {
+    "id": 197,
+    "question": "Which of the following describes the first step in a typical cell signaling pathway?",
+    "options": [
+      "The activation of a gene in the nucleus",
+      "The binding of a ligand to a specific receptor",
+      "The release of secondary messengers like cAMP",
+      "The phosphorylation of a target protein"
+    ],
+    "correctAnswer": "The binding of a ligand to a specific receptor",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Signal transduction begins with 'reception,' where a signal molecule (ligand) binds to a receptor, usually causing a change in the receptor's shape.",
+    "tag": "Cell Signaling"
+  },
+  {
+    "id": 198,
+    "question": "G protein-coupled receptors (GPCRs) are a major class of surface receptors. What happens to the G protein immediately after the receptor binds its ligand?",
+    "options": [
+      "It dissociates from the membrane and enters the nucleus.",
+      "It exchanges its bound GDP for GTP to become active.",
+      "It is phosphorylated by a protein kinase.",
+      "It directly opens an ion channel to allow calcium entry."
+    ],
+    "correctAnswer": "It exchanges its bound GDP for GTP to become active.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "G proteins act as molecular switches. When the receptor is activated, the G protein releases GDP and binds a fresh molecule of GTP, which allows it to move along the membrane and activate other enzymes.",
+    "tag": "Cell Signaling"
+  },
+  {
+    "id": 199,
+    "question": "Steroid hormones, such as testosterone and estrogen, differ from protein-based signaling molecules because their receptors are usually found:",
+    "options": [
+      "On the outer surface of the plasma membrane.",
+      "Inside the cytoplasm or the nucleus.",
+      "Attached to the Golgi apparatus.",
+      "Within the lumen of the rough endoplasmic reticulum."
+    ],
+    "correctAnswer": "Inside the cytoplasm or the nucleus.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Because steroids are lipid-soluble (hydrophobic), they can diffuse directly through the plasma membrane. Their receptors are intracellular and often act as transcription factors.",
+    "tag": "Cell Signaling"
+  },
+  {
+    "id": 200,
+    "question": "In the cAMP signaling pathway, the enzyme Adenylyl Cyclase is activated by a G protein. What is the specific role of Adenylyl Cyclase in this pathway?",
+    "options": [
+      "It converts ATP into cyclic AMP (cAMP).",
+      "It removes phosphate groups from target proteins.",
+      "It phosphorylates the receptor to turn it off.",
+      "It breaks down cAMP into AMP to end the signal."
+    ],
+    "correctAnswer": "It converts ATP into cyclic AMP (cAMP).",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Adenylyl Cyclase is an effector enzyme. Once activated, it produces the second messenger cAMP, which then goes on to activate Protein Kinase A (PKA).",
+    "tag": "Cell Signaling"
+  },
+  {
+    "id": 201,
+    "question": "Phospholipase C (PLC) is an enzyme activated by certain GPCRs. When active, it cleaves a membrane phospholipid into two second messengers. What are these two molecules?",
+    "options": [
+      "cAMP and cGMP",
+      "Sodium and Potassium ions",
+      "IP3 (inositol trisphosphate) and DAG (diacylglycerol)",
+      "Tyrosine and Kinase"
+    ],
+    "correctAnswer": "IP3 (inositol trisphosphate) and DAG (diacylglycerol)",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "PLC cleaves PIP2 into DAG, which stays in the membrane to activate Protein Kinase C, and IP3, which diffuses to the ER to trigger the release of calcium ions.",
+    "tag": "Cell Signaling"
+  },
+  {
+    "id": 202,
+    "question": "During which phase of mitosis do the chromosomes line up along the center of the cell in a single row?",
+    "options": [
+      "Prophase",
+      "Metaphase",
+      "Anaphase",
+      "Telophase"
+    ],
+    "correctAnswer": "Metaphase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "During metaphase, the spindle fibers pull the chromosomes until they are aligned along the metaphase plate, equidistant from the two spindle poles.",
+    "tag": "Mitosis"
+  },
+  {
+    "id": 203,
+    "question": "What is the primary function of the spindle fibers during the process of mitosis?",
+    "options": [
+      "To replicate the DNA molecules",
+      "To separate the sister chromatids and move them to opposite poles",
+      "To dissolve the nuclear envelope",
+      "To synthesize the proteins needed for cytokinesis"
+    ],
+    "correctAnswer": "To separate the sister chromatids and move them to opposite poles",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Spindle fibers, made of microtubules, attach to the kinetochores of chromosomes and provide the mechanical force necessary to pull chromatids apart during anaphase.",
+    "tag": "Mitosis"
+  },
+  {
+    "id": 204,
+    "question": "Which of the following describes the state of the DNA during Prophase of mitosis?",
+    "options": [
+      "It is being actively replicated by DNA polymerase.",
+      "It is in a loose, thread-like form called chromatin.",
+      "It condenses into tightly coiled, visible chromosomes.",
+      "It is being transcribed into mRNA for protein synthesis."
+    ],
+    "correctAnswer": "It condenses into tightly coiled, visible chromosomes.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "During prophase, the chromatin fibers become more tightly coiled, folding into discrete chromosomes that can be seen with a light microscope.",
+    "tag": "Mitosis"
+  },
+  {
+    "id": 205,
+    "question": "How does cytokinesis typically differ between animal cells and plant cells?",
+    "options": [
+      "Animal cells form a cell plate, while plant cells form a cleavage furrow.",
+      "Animal cells use microfilaments to pinch the cell in two, while plant cells build a new cell wall from vesicles.",
+      "Plant cells do not undergo cytokinesis; they only undergo nuclear division.",
+      "Animal cells divide their cytoplasm during anaphase, while plant cells wait until telophase."
+    ],
+    "correctAnswer": "Animal cells use microfilaments to pinch the cell in two, while plant cells build a new cell wall from vesicles.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "In animal cells, a contractile ring of actin microfilaments forms a cleavage furrow. Because plant cells have a rigid cell wall, they instead deposit vesicles from the Golgi to form a cell plate.",
+    "tag": "Mitosis"
+  },
+  {
+    "id": 206,
+    "question": "The 'Spindle Checkpoint' (also known as the M-checkpoint) prevents the transition from Metaphase to Anaphase until which condition is met?",
+    "options": [
+      "All DNA damage has been repaired by enzymes.",
+      "The cell has reached a sufficient size to divide.",
+      "All kinetochores are properly attached to spindle microtubules and are under tension.",
+      "The nuclear envelope has completely reformed around the chromosomes."
+    ],
+    "correctAnswer": "All kinetochores are properly attached to spindle microtubules and are under tension.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "This checkpoint ensures that each daughter cell will receive exactly one copy of every chromosome. If even one kinetochore is unattached, the cell halts the progression to anaphase.",
+    "tag": "Mitosis"
+  },
+  {
+    "id": 207,
+    "question": "Taxol is a chemotherapy drug that stabilizes microtubules, preventing them from shortening. Which specific process of mitosis would be most directly inhibited by the presence of Taxol?",
+    "options": [
+      "The condensation of chromosomes in Prophase",
+      "The breakdown of the nuclear envelope",
+      "The migration of chromatids toward opposite poles during Anaphase",
+      "The formation of the contractile ring during Cytokinesis"
+    ],
+    "correctAnswer": "The migration of chromatids toward opposite poles during Anaphase",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "Anaphase requires microtubules to depolymerize (shorten) at the kinetochore end to pull the chromosomes apart. By preventing this shortening, Taxol stops the chromosomes from separating, halting cell division.",
+    "tag": "Mitosis"
+  },
+  {
+    "id": 208,
+    "question": "What is the primary result of meiosis in humans?",
+    "options": [
+      "Two identical diploid daughter cells",
+      "Four identical haploid daughter cells",
+      "Four genetically unique haploid daughter cells",
+      "Two genetically unique diploid daughter cells"
+    ],
+    "correctAnswer": "Four genetically unique haploid daughter cells",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Meiosis involves two rounds of division that reduce the chromosome count by half (haploid) and introduce genetic variation, resulting in four distinct sperm or egg cells.",
+    "tag": "Meiosis"
+  },
+  {
+    "id": 209,
+    "question": "During which phase of meiosis do homologous chromosomes pair up to form tetrads?",
+    "options": [
+      "Prophase I",
+      "Prophase II",
+      "Metaphase I",
+      "Metaphase II"
+    ],
+    "correctAnswer": "Prophase I",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "In Prophase I, homologous chromosomes (one from each parent) find each other and pair up in a process called synapsis.",
+    "tag": "Meiosis"
+  },
+  {
+    "id": 210,
+    "question": "Which of the following events occurs during Meiosis I but NOT during Meiosis II?",
+    "options": [
+      "Sister chromatids separate and move to opposite poles.",
+      "The nuclear envelope breaks down and spindles form.",
+      "Homologous chromosomes separate while sister chromatids remain attached.",
+      "Cytokinesis divides the cytoplasm into two cells."
+    ],
+    "correctAnswer": "Homologous chromosomes separate while sister chromatids remain attached.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Meiosis I is the reductional division where homologous pairs are separated. Meiosis II is similar to mitosis, where the sister chromatids themselves are finally pulled apart.",
+    "tag": "Meiosis"
+  },
+  {
+    "id": 211,
+    "question": "Crossing over is a significant source of genetic variation. Where exactly does this process take place?",
+    "options": [
+      "Between sister chromatids of the same chromosome",
+      "Between non-sister chromatids of homologous chromosomes",
+      "Between the X and Y chromosomes in females",
+      "Between the centromeres of two different chromosomes"
+    ],
+    "correctAnswer": "Between non-sister chromatids of homologous chromosomes",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "Crossing over involves the physical exchange of DNA segments between non-sister chromatids of a homologous pair, creating new combinations of maternal and paternal genes.",
+    "tag": "Meiosis"
+  },
+  {
+    "id": 212,
+    "question": "Which of the following describes the 'Law of Independent Assortment' as it applies to Meiosis I?",
+    "options": [
+      "The two alleles for a single gene must always stay together.",
+      "The orientation of one homologous pair on the metaphase plate does not affect the orientation of other pairs.",
+      "Sister chromatids are randomly distributed into four different gametes.",
+      "DNA replication occurs randomly between the first and second meiotic divisions."
+    ],
+    "correctAnswer": "The orientation of one homologous pair on the metaphase plate does not affect the orientation of other pairs.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "During Metaphase I, homologous pairs line up randomly. Whether the 'maternal' or 'paternal' chromosome faces a certain pole is independent for each pair, leading to 2^23 possible combinations in humans.",
+    "tag": "Meiosis"
+  },
+  {
+    "id": 213,
+    "question": "If a cell with a diploid number of 12 (2n = 12) undergoes meiosis, but a pair of homologous chromosomes fails to separate during Meiosis I (nondisjunction), what will be the chromosome count in the resulting four gametes?",
+    "options": [
+      "All four will have 6 chromosomes.",
+      "Two will have 7, and two will have 5.",
+      "Two will have 6, one will have 7, and one will have 5.",
+      "All four will have 12 chromosomes."
+    ],
+    "correctAnswer": "Two will have 7, and two will have 5.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "In Meiosis I nondisjunction, one daughter cell gets both homologs (n+1) and the other gets none (n-1). After Meiosis II, this results in two gametes with 6+1=7 and two gametes with 6-1=5.",
+    "tag": "Meiosis"
+  },
+  {
+    "id": 214,
+    "question": "In pea plants, purple flowers (P) are dominant over white flowers (p). If a plant has the genotype Pp, what will be its phenotype?",
+    "options": [
+      "White flowers",
+      "Purple flowers",
+      "Light purple (lilac) flowers",
+      "Both purple and white spotted flowers"
+    ],
+    "correctAnswer": "Purple flowers",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "According to the Law of Dominance, the dominant allele (P) masks the expression of the recessive allele (p) in a heterozygous individual.",
+    "tag": "Mendelian Genetics"
+  },
+  {
+    "id": 215,
+    "question": "An organism that has two identical alleles for a particular gene (such as TT or tt) is described as being:",
+    "options": [
+      "Heterozygous",
+      "Homozygous",
+      "Hemizygous",
+      "Dihybrid"
+    ],
+    "correctAnswer": "Homozygous",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Easy",
+    "explanation": "Homozygous refers to having two of the same alleles. If the alleles are different (Tt), the organism is heterozygous.",
+    "tag": "Mendelian Genetics"
+  },
+  {
+    "id": 216,
+    "question": "Mendel's Law of Segregation states that during the formation of gametes, the two alleles for a single heritable character:",
+    "options": [
+      "Are joined together to form a new allele.",
+      "Separate from each other so that each gamete receives only one allele.",
+      "Always stay together in the same gamete.",
+      "Are both expressed simultaneously in every offspring."
+    ],
+    "correctAnswer": "Separate from each other so that each gamete receives only one allele.",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "The Law of Segregation ensures that an offspring receives one allele from each parent, restoring the diploid number after fertilization.",
+    "tag": "Mendelian Genetics"
+  },
+  {
+    "id": 217,
+    "question": "In a monohybrid cross between two heterozygous (Aa) individuals, what is the expected genotypic ratio of the offspring?",
+    "options": [
+      "3:1",
+      "9:3:3:1",
+      "1:2:1",
+      "1:1"
+    ],
+    "correctAnswer": "1:2:1",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Medium",
+    "explanation": "A Punnett square for Aa x Aa yields 1 AA, 2 Aa, and 1 aa. While the phenotypic ratio is 3:1 (dominant:recessive), the genotypic ratio is 1:2:1.",
+    "tag": "Mendelian Genetics"
+  },
+  {
+    "id": 218,
+    "question": "A researcher wants to determine the genotype of a pea plant with dominant purple flowers (P_). They perform a 'testcross' by breeding it with a white-flowered plant (pp). If half of the resulting offspring are purple and half are white, what was the genotype of the mystery parent?",
+    "options": [
+      "PP",
+      "Pp",
+      "pp",
+      "It is impossible to determine from this data."
+    ],
+    "correctAnswer": "Pp",
+    "explanation": "In a testcross, if the dominant parent is homozygous (PP), 100% of offspring would be purple (Pp). If it is heterozygous (Pp), 50% will be purple (Pp) and 50% will be white (pp).",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "tag": "Mendelian Genetics"
+  },
+  {
+    "id": 219,
+    "question": "In a dihybrid cross between two individuals heterozygous for two unlinked traits (AaBb x AaBb), what is the probability that an offspring will show the recessive phenotype for both traits (aabb)?",
+    "options": [
+      "1/4",
+      "3/16",
+      "1/16",
+      "9/16"
+    ],
+    "correctAnswer": "1/16",
+    "category": "Cell Biology & Genetics",
+    "difficulty": "Hard",
+    "explanation": "According to the Law of Independent Assortment, the probability of being 'aa' is 1/4 and 'bb' is 1/4. Using the multiplication rule (1/4 x 1/4), the probability of 'aabb' is 1/16.",
+    "tag": "Mendelian Genetics"
+  }
+]

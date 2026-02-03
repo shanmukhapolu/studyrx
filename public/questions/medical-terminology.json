@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "question": "What does the prefix 'tachy-' mean?",
+    "options": ["Fast", "Slow", "Above", "Below"],
+    "correctAnswer": "Fast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'tachy-' is derived from Greek and means 'fast' or 'rapid'. Examples include tachycardia (rapid heart rate) and tachypnea (rapid breathing).",
+    "tag": "Prefix"
+  },
+  {
+    "id": 2,
+    "question": "What does the suffix '-ectomy' indicate?",
+    "options": ["Surgical removal", "Incision", "Pain", "Inflammation"],
+    "correctAnswer": "Surgical removal",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-ectomy' means surgical removal or excision. For example, appendectomy is the surgical removal of the appendix.",
+    "tag": "Suffix"
+  },
+  {
+    "id": 3,
+    "question": "What does 'cardi/o' refer to?",
+    "options": ["Heart", "Lung", "Liver", "Kidney"],
+    "correctAnswer": "Heart",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "'Cardi/o' is a combining form that refers to the heart. Examples include cardiology (study of the heart) and cardiomegaly (enlarged heart).",
+    "tag": "Root Word"
+  },
+  {
+    "id": 4,
+    "question": "What does 'hypo-' mean?",
+    "options": ["Below/under", "Above/over", "Fast", "Slow"],
+    "correctAnswer": "Below/under",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'hypo-' means below, under, or deficient. Examples include hypotension (low blood pressure) and hypothermia (low body temperature).",
+    "tag": "Prefix"
+  },
+  {
+    "id": 5,
+    "question": "What does '-itis' mean?",
+    "options": ["Inflammation", "Pain", "Disease", "Removal"],
+    "correctAnswer": "Inflammation",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-itis' indicates inflammation of a specific organ or tissue. Examples include arthritis (joint inflammation) and bronchitis (bronchial tube inflammation).",
+    "tag": "Suffix"
+  }
+]
