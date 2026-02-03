@@ -10,7 +10,6 @@ import { HOSA_EVENTS } from "@/lib/events";
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slideWidth, setSlideWidth] = useState(85);
   const totalSlides = HOSA_EVENTS.length;
 
   useEffect(() => {
@@ -30,21 +29,6 @@ export default function HomePage() {
     });
 
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 768px)");
-
-    const updateSlideWidth = () => {
-      setSlideWidth(mediaQuery.matches ? 60 : 85);
-    };
-
-    updateSlideWidth();
-    mediaQuery.addEventListener("change", updateSlideWidth);
-
-    return () => {
-      mediaQuery.removeEventListener("change", updateSlideWidth);
-    };
   }, []);
 
   const nextSlide = () => {
@@ -357,18 +341,18 @@ export default function HomePage() {
             </div>
 
             {/* Event Slider */}
-            <div className="relative fade-in-section max-w-5xl mx-auto">
-              <div className="overflow-visible">
+            <div className="relative fade-in-section max-w-4xl mx-auto">
+              <div className="overflow-hidden rounded-2xl">
                 <div 
-                  className="flex transition-transform duration-500 ease-out gap-6"
-                  style={{ transform: `translateX(-${currentSlide * slideWidth}%)` }}
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                 >
                   {HOSA_EVENTS.map((event) => {
                     const IconComponent = event.icon;
                     return (
-                      <div key={event.id} className="min-w-[85%] md:min-w-[60%]">
+                      <div key={event.id} className="min-w-full px-2">
                         <Card className="border-2 border-primary/20 bg-gradient-to-br from-card/90 to-muted/50 backdrop-blur-sm shadow-none">
-                          <CardContent className="p-10 md:p-12">
+                          <CardContent className="p-12">
                             <div className="flex flex-col md:flex-row items-center gap-8">
                               <div className="flex-shrink-0 h-24 w-24 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center">
                                 <IconComponent className="h-12 w-12 text-primary" />
@@ -377,11 +361,8 @@ export default function HomePage() {
                                 <h3 className="mb-3 text-3xl font-bold text-foreground">
                                   {event.name}
                                 </h3>
-                                <p className="mb-4 text-lg text-muted-foreground leading-relaxed">
+                                <p className="mb-6 text-lg text-muted-foreground leading-relaxed">
                                   {event.description}
-                                </p>
-                                <p className="mb-6 text-sm font-semibold text-foreground/80">
-                                  {event.questionCountLabel}
                                 </p>
                                 <Button asChild size="lg" className="shadow-lg">
                                   <Link href={`/practice/${event.id}`}>
@@ -436,7 +417,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 text-foreground hover:text-foreground hover:bg-primary/5"
+                className="border-2 hover:bg-primary/5"
               >
                 <Link href="/events">
                   View All Events
