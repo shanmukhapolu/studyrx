@@ -152,6 +152,17 @@
     animation-fill-mode: backwards;
   }
 
+  .practice-step {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .practice-step.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;

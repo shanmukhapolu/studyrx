@@ -5,12 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, TrendingUp, Clock, BarChart3, CheckCircle2, Zap, Award, ChevronRight, ChevronLeft, MessageSquareText, Pill, Smile, Heart, Apple, ArrowRight, BarChart, Brain, RefreshCw, Users, Trophy, Sparkles, X, Check } from "lucide-react";
+import { Target, TrendingUp, Clock, BarChart3, Zap, ChevronRight, ChevronLeft, ArrowRight, BarChart, Brain, RefreshCw, Users, Trophy, Sparkles, X, Check } from "lucide-react";
 import { HOSA_EVENTS } from "@/lib/events";
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const eventsPerSlide = 1;
   const totalSlides = HOSA_EVENTS.length;
 
   useEffect(() => {
@@ -45,7 +44,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Grid Background Pattern */}
       <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
       
@@ -83,7 +82,12 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg border-2 hover:bg-primary/5">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-14 px-8 text-lg border-2 text-foreground hover:text-foreground hover:bg-primary/5"
+              >
                 <Link href="/events">
                   Browse Events
                 </Link>
@@ -255,11 +259,6 @@ export default function HomePage() {
                   <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                     Designed specifically for competitive event prep — not generic exam practice.
                   </p>
-                  <div className="inline-block px-6 py-3 bg-muted/50 rounded-full border border-border">
-                    <p className="text-sm text-muted-foreground italic">
-                      Future: testimonials, placements, chapter usage
-                    </p>
-                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -352,7 +351,7 @@ export default function HomePage() {
                     const IconComponent = event.icon;
                     return (
                       <div key={event.id} className="min-w-full px-2">
-                        <Card className="border-2 border-primary/20 bg-gradient-to-br from-card/90 to-muted/50 backdrop-blur-sm shadow-2xl">
+                        <Card className="border-2 border-primary/20 bg-gradient-to-br from-card/90 to-muted/50 backdrop-blur-sm shadow-none">
                           <CardContent className="p-12">
                             <div className="flex flex-col md:flex-row items-center gap-8">
                               <div className="flex-shrink-0 h-24 w-24 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center">
@@ -414,7 +413,12 @@ export default function HomePage() {
             </div>
 
             <div className="mt-12 text-center fade-in-section">
-              <Button asChild variant="outline" size="lg" className="border-2 hover:bg-primary/5">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 hover:bg-primary/5"
+              >
                 <Link href="/events">
                   View All Events
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -587,62 +591,46 @@ export default function HomePage() {
             </div>
 
             <div className="relative fade-in-section">
-              {/* Vertical Line */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-chart-3 hidden md:block" />
-              
-              <div className="space-y-16">
+              <div className="space-y-8 md:space-y-10">
                 {[
                   {
                     num: 1,
                     title: "Choose a competitive event",
                     desc: "Select from Medical Terminology, Pharmacology, Nutrition, and more",
-                    icon: Target,
-                    color: "primary",
-                    align: "right"
+                    color: "primary"
                   },
                   {
                     num: 2,
                     title: "Complete a focused practice session",
                     desc: "Answer event-specific questions with real-time feedback",
-                    icon: Brain,
-                    color: "accent",
-                    align: "left"
+                    color: "accent"
                   },
                   {
                     num: 3,
                     title: "Review accuracy, timing, and weak areas",
                     desc: "Detailed analytics show exactly where to improve",
-                    icon: BarChart3,
-                    color: "chart-3",
-                    align: "right"
+                    color: "chart-3"
                   },
                   {
                     num: 4,
                     title: "Revisit missed questions automatically",
                     desc: "Our redemption system ensures you master every topic",
-                    icon: RefreshCw,
-                    color: "chart-4",
-                    align: "left"
+                    color: "chart-4"
                   },
                 ].map((step, idx) => (
-                  <div key={idx} className={`grid md:grid-cols-2 gap-8 items-center ${step.align === 'left' ? 'md:flex-row-reverse' : ''}`}>
-                    <div className={step.align === 'right' ? 'md:text-right' : 'md:order-2'}>
-                      <div className={`inline-flex items-center gap-3 mb-4 ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
-                        <div className={`h-14 w-14 rounded-full bg-${step.color} text-white flex items-center justify-center font-bold text-xl shadow-lg`}>
-                          {step.num}
-                        </div>
+                  <div
+                    key={idx}
+                    className="fade-in-section practice-step grid grid-cols-[72px_1fr] items-start gap-6 rounded-2xl border border-border/60 bg-card/70 px-6 py-6 shadow-sm md:grid-cols-[96px_1fr]"
+                    style={{ transitionDelay: `${idx * 120}ms` }}
+                  >
+                    <div className="flex items-start justify-center pt-1">
+                      <div className={`h-14 w-14 rounded-full bg-${step.color}/15 text-foreground flex items-center justify-center font-bold text-xl`}>
+                        {step.num}
                       </div>
+                    </div>
+                    <div>
                       <h3 className="text-2xl font-bold text-foreground mb-2">{step.title}</h3>
                       <p className="text-muted-foreground text-lg">{step.desc}</p>
-                    </div>
-                    <div className={step.align === 'right' ? 'md:pr-16' : 'md:order-1 md:pl-16'}>
-                      <Card className={`border-${step.color}/20 bg-gradient-to-br from-${step.color}/5 to-transparent`}>
-                        <CardContent className="p-8">
-                          <div className={`h-32 bg-muted/50 rounded-xl flex items-center justify-center`}>
-                            <step.icon className={`h-16 w-16 text-${step.color}/40`} />
-                          </div>
-                        </CardContent>
-                      </Card>
                     </div>
                   </div>
                 ))}
