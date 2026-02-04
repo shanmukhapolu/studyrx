@@ -36,7 +36,7 @@ function EventsContent() {
           stats[eventId] = { correct: 0, total: 0 };
         }
         stats[eventId].total++;
-        if (attempt.correct) {
+        if (attempt.isCorrect) {
           stats[eventId].correct++;
         }
       });

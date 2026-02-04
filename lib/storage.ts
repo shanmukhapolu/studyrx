@@ -1,3 +1,5 @@
+import { getEventName } from "./events";
+
 export interface Question {
   id: number;
   question: string;
@@ -9,34 +11,48 @@ export interface Question {
   tag?: string;
 }
 
+export type SessionType = "practice" | "timed";
+
 export interface QuestionAttempt {
   questionId: number;
+  questionIndex: number;
   category: string;
   difficulty: string;
-  correct: boolean;
-  timeSpent: number;
-  timestamp: string;
+  isCorrect: boolean;
+  thinkTime: number;
+  explanationTime: number;
+  timestampStart: string;
+  timestampSubmit: string;
   isRedemption?: boolean;
   eventId?: string;
 }
 
 export interface SessionData {
   sessionId: string;
-  attempts: QuestionAttempt[];
-  startTime: string;
-  endTime?: string;
+  sessionType: SessionType;
   eventId?: string;
+  eventName: string;
+  startTimestamp: string;
+  endTimestamp?: string;
+  totalThinkTime: number;
+  totalExplanationTime: number;
+  totalQuestions: number;
+  correctCount: number;
+  accuracy: number;
+  attempts: QuestionAttempt[];
 }
 
 export interface UserStats {
   totalAttempts: number;
   correctAnswers: number;
-  averageTime: number;
+  averageThinkTime: number;
+  averageExplanationTime: number;
   categoryStats: {
     [category: string]: {
       attempts: number;
       correct: number;
-      averageTime: number;
+      averageThinkTime: number;
+      averageExplanationTime: number;
     };
   };
 }
@@ -48,12 +64,78 @@ const STORAGE_KEYS = {
   COMPLETED_QUESTIONS: "studyrx_completed_questions",
 } as const;
 
+const normalizeNumber = (value: unknown, fallback = 0) =>
+  typeof value === "number" && !Number.isNaN(value) ? value : fallback;
+
+const normalizeAttempt = (raw: any, index: number): QuestionAttempt => {
+  const timestampStart =
+    raw.timestampStart || raw.timestamp || raw.startTime || new Date().toISOString();
+  const timestampSubmit = raw.timestampSubmit || raw.timestamp || raw.endTime || timestampStart;
+
+  return {
+    questionId: normalizeNumber(raw.questionId ?? raw.id),
+    questionIndex: normalizeNumber(raw.questionIndex, index + 1),
+    category: raw.category ?? "Unknown",
+    difficulty: raw.difficulty ?? "Unknown",
+    isCorrect: raw.isCorrect ?? raw.correct ?? false,
+    thinkTime: normalizeNumber(raw.thinkTime ?? raw.timeSpent),
+    explanationTime: normalizeNumber(raw.explanationTime),
+    timestampStart,
+    timestampSubmit,
+    isRedemption: raw.isRedemption,
+    eventId: raw.eventId,
+  };
+};
+
+const calculateSessionTotals = (attempts: QuestionAttempt[]) => {
+  const totalThinkTime = attempts.reduce((sum, attempt) => sum + attempt.thinkTime, 0);
+  const totalExplanationTime = attempts.reduce(
+    (sum, attempt) => sum + attempt.explanationTime,
+    0
+  );
+  const totalQuestions = attempts.length;
+  const correctCount = attempts.filter((attempt) => attempt.isCorrect).length;
+  const accuracy = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
+
+  return {
+    totalThinkTime,
+    totalExplanationTime,
+    totalQuestions,
+    correctCount,
+    accuracy,
+  };
+};
+
+const normalizeSession = (raw: any): SessionData => {
+  const attempts = Array.isArray(raw.attempts)
+    ? raw.attempts.map((attempt: any, index: number) => normalizeAttempt(attempt, index))
+    : [];
+  const totals = calculateSessionTotals(attempts);
+  const eventId = raw.eventId || raw.event || attempts[0]?.eventId || "unknown";
+
+  return {
+    sessionId: raw.sessionId || `session_${raw.startTimestamp || raw.startTime || Date.now()}`,
+    sessionType: raw.sessionType || "practice",
+    eventId,
+    eventName: raw.eventName || getEventName(eventId),
+    startTimestamp: raw.startTimestamp || raw.startTime || new Date().toISOString(),
+    endTimestamp: raw.endTimestamp || raw.endTime,
+    totalThinkTime: normalizeNumber(raw.totalThinkTime, totals.totalThinkTime),
+    totalExplanationTime: normalizeNumber(raw.totalExplanationTime, totals.totalExplanationTime),
+    totalQuestions: normalizeNumber(raw.totalQuestions, totals.totalQuestions),
+    correctCount: normalizeNumber(raw.correctCount, totals.correctCount),
+    accuracy: normalizeNumber(raw.accuracy, totals.accuracy),
+    attempts,
+  };
+};
+
 export const storage = {
   // Sessions
   getAllSessions: (): SessionData[] => {
     if (typeof window !== "undefined") {
       const sessions = localStorage.getItem(STORAGE_KEYS.SESSIONS);
-      return sessions ? JSON.parse(sessions) : [];
+      const parsed = sessions ? JSON.parse(sessions) : [];
+      return Array.isArray(parsed) ? parsed.map(normalizeSession) : [];
     }
     return [];
   },
@@ -77,7 +159,7 @@ export const storage = {
   getCurrentSession: (): SessionData | null => {
     if (typeof window !== "undefined") {
       const session = localStorage.getItem(STORAGE_KEYS.CURRENT_SESSION);
-      return session ? JSON.parse(session) : null;
+      return session ? normalizeSession(JSON.parse(session)) : null;
     }
     return null;
   },
@@ -94,39 +176,49 @@ export const storage = {
     const allAttempts: QuestionAttempt[] = sessions.flatMap((s) => s.attempts);
 
     const categoryStats: UserStats["categoryStats"] = {};
-    
+
     for (const attempt of allAttempts) {
       if (!categoryStats[attempt.category]) {
         categoryStats[attempt.category] = {
           attempts: 0,
           correct: 0,
-          averageTime: 0,
+          averageThinkTime: 0,
+          averageExplanationTime: 0,
         };
       }
-      
+
       categoryStats[attempt.category].attempts++;
-      if (attempt.correct) {
+      if (attempt.isCorrect) {
         categoryStats[attempt.category].correct++;
       }
     }
 
-    // Calculate average times
     for (const category of Object.keys(categoryStats)) {
-      const categoryAttempts = allAttempts.filter(
-        (a) => a.category === category
+      const categoryAttempts = allAttempts.filter((a) => a.category === category);
+      const totalThinkTime = categoryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+      const totalExplanationTime = categoryAttempts.reduce(
+        (sum, a) => sum + a.explanationTime,
+        0
       );
-      const totalTime = categoryAttempts.reduce((sum, a) => sum + a.timeSpent, 0);
-      categoryStats[category].averageTime =
-        categoryAttempts.length > 0 ? totalTime / categoryAttempts.length : 0;
+      categoryStats[category].averageThinkTime =
+        categoryAttempts.length > 0 ? totalThinkTime / categoryAttempts.length : 0;
+      categoryStats[category].averageExplanationTime =
+        categoryAttempts.length > 0 ? totalExplanationTime / categoryAttempts.length : 0;
     }
 
-    const totalCorrect = allAttempts.filter((a) => a.correct).length;
-    const totalTime = allAttempts.reduce((sum, a) => sum + a.timeSpent, 0);
+    const totalCorrect = allAttempts.filter((a) => a.isCorrect).length;
+    const totalThinkTime = allAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+    const totalExplanationTime = allAttempts.reduce(
+      (sum, a) => sum + a.explanationTime,
+      0
+    );
 
     return {
       totalAttempts: allAttempts.length,
       correctAnswers: totalCorrect,
-      averageTime: allAttempts.length > 0 ? totalTime / allAttempts.length : 0,
+      averageThinkTime: allAttempts.length > 0 ? totalThinkTime / allAttempts.length : 0,
+      averageExplanationTime:
+        allAttempts.length > 0 ? totalExplanationTime / allAttempts.length : 0,
       categoryStats,
     };
   },
@@ -160,7 +252,7 @@ export const storage = {
     if (typeof window !== "undefined") {
       const key = `${STORAGE_KEYS.WRONG_QUESTIONS}_${eventId}`;
       const wrong = storage.getWrongQuestions(eventId);
-      const filtered = wrong.filter(id => id !== questionId);
+      const filtered = wrong.filter((id) => id !== questionId);
       localStorage.setItem(key, JSON.stringify(filtered));
     }
   },
@@ -195,12 +287,10 @@ export const storage = {
     if (typeof window !== "undefined") {
       const sessions = storage.getAllSessions();
       const events = new Set<string>();
-      sessions.forEach(session => {
-        session.attempts.forEach(attempt => {
-          if (attempt.eventId) {
-            events.add(attempt.eventId);
-          }
-        });
+      sessions.forEach((session) => {
+        if (session.eventId) {
+          events.add(session.eventId);
+        }
       });
       return Array.from(events);
     }
@@ -211,43 +301,53 @@ export const storage = {
   calculateEventStats: (eventId: string): UserStats => {
     const sessions = storage.getAllSessions();
     const eventAttempts = sessions
-      .flatMap(s => s.attempts)
-      .filter(a => a.eventId === eventId);
+      .flatMap((s) => s.attempts)
+      .filter((a) => a.eventId === eventId);
 
     const categoryStats: UserStats["categoryStats"] = {};
-    
+
     for (const attempt of eventAttempts) {
       if (!categoryStats[attempt.category]) {
         categoryStats[attempt.category] = {
           attempts: 0,
           correct: 0,
-          averageTime: 0,
+          averageThinkTime: 0,
+          averageExplanationTime: 0,
         };
       }
-      
+
       categoryStats[attempt.category].attempts++;
-      if (attempt.correct) {
+      if (attempt.isCorrect) {
         categoryStats[attempt.category].correct++;
       }
     }
 
-    // Calculate average times
     for (const category of Object.keys(categoryStats)) {
-      const categoryAttempts = eventAttempts.filter(
-        (a) => a.category === category
+      const categoryAttempts = eventAttempts.filter((a) => a.category === category);
+      const totalThinkTime = categoryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+      const totalExplanationTime = categoryAttempts.reduce(
+        (sum, a) => sum + a.explanationTime,
+        0
       );
-      const totalTime = categoryAttempts.reduce((sum, a) => sum + a.timeSpent, 0);
-      categoryStats[category].averageTime =
-        categoryAttempts.length > 0 ? totalTime / categoryAttempts.length : 0;
+      categoryStats[category].averageThinkTime =
+        categoryAttempts.length > 0 ? totalThinkTime / categoryAttempts.length : 0;
+      categoryStats[category].averageExplanationTime =
+        categoryAttempts.length > 0 ? totalExplanationTime / categoryAttempts.length : 0;
     }
 
-    const totalCorrect = eventAttempts.filter((a) => a.correct).length;
-    const totalTime = eventAttempts.reduce((sum, a) => sum + a.timeSpent, 0);
+    const totalCorrect = eventAttempts.filter((a) => a.isCorrect).length;
+    const totalThinkTime = eventAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+    const totalExplanationTime = eventAttempts.reduce(
+      (sum, a) => sum + a.explanationTime,
+      0
+    );
 
     return {
       totalAttempts: eventAttempts.length,
       correctAnswers: totalCorrect,
-      averageTime: eventAttempts.length > 0 ? totalTime / eventAttempts.length : 0,
+      averageThinkTime: eventAttempts.length > 0 ? totalThinkTime / eventAttempts.length : 0,
+      averageExplanationTime:
+        eventAttempts.length > 0 ? totalExplanationTime / eventAttempts.length : 0,
       categoryStats,
     };
   },
@@ -261,4 +361,9 @@ export const storage = {
       localStorage.removeItem(STORAGE_KEYS.COMPLETED_QUESTIONS);
     }
   },
+};
+
+export const sessionUtils = {
+  calculateSessionTotals,
+  normalizeSession,
 };

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { SessionLogList } from "@/components/session-log-list";
 import { storage, type SessionData, type UserStats } from "@/lib/storage";
 import { getEventName } from "@/lib/events";
 import {
@@ -153,10 +154,14 @@ function AnalyticsContent() {
 function GeneralStats({ sessions }: { sessions: SessionData[] }) {
   const allAttempts = sessions.flatMap((s) => s.attempts);
   const totalAttempts = allAttempts.length;
-  const correctAttempts = allAttempts.filter((a) => a.correct).length;
+  const correctAttempts = allAttempts.filter((a) => a.isCorrect).length;
   const overallAccuracy = totalAttempts > 0 ? (correctAttempts / totalAttempts) * 100 : 0;
-  const totalTime = allAttempts.reduce((sum, a) => a.timeSpent, 0);
-  const averageTime = totalAttempts > 0 ? totalTime / totalAttempts : 0;
+  const totalThinkTime = allAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+  const totalExplanationTime = allAttempts.reduce((sum, a) => sum + a.explanationTime, 0);
+  const averageThinkTime = totalAttempts > 0 ? totalThinkTime / totalAttempts : 0;
+  const averageExplanationTime = totalAttempts > 0 ? totalExplanationTime / totalAttempts : 0;
+  const thinkExplanationRatio =
+    totalExplanationTime > 0 ? totalThinkTime / totalExplanationTime : null;
 
   // Calculate per-event accuracy
   const eventStats: Record<string, { correct: number; total: number }> = {};
@@ -166,7 +171,7 @@ function GeneralStats({ sessions }: { sessions: SessionData[] }) {
       eventStats[eventId] = { correct: 0, total: 0 };
     }
     eventStats[eventId].total++;
-    if (attempt.correct) {
+    if (attempt.isCorrect) {
       eventStats[eventId].correct++;
     }
   });
@@ -180,10 +185,34 @@ function GeneralStats({ sessions }: { sessions: SessionData[] }) {
 
   const bestEvent = eventAccuracies[0];
 
+  const difficultyStats: Record<
+    string,
+    { attempts: number; totalThinkTime: number; totalExplanationTime: number }
+  > = {};
+  allAttempts.forEach((attempt) => {
+    if (!difficultyStats[attempt.difficulty]) {
+      difficultyStats[attempt.difficulty] = {
+        attempts: 0,
+        totalThinkTime: 0,
+        totalExplanationTime: 0,
+      };
+    }
+    difficultyStats[attempt.difficulty].attempts++;
+    difficultyStats[attempt.difficulty].totalThinkTime += attempt.thinkTime;
+    difficultyStats[attempt.difficulty].totalExplanationTime += attempt.explanationTime;
+  });
+
+  const difficultyData = Object.entries(difficultyStats).map(([difficulty, stats]) => ({
+    difficulty,
+    avgThinkTime: stats.attempts > 0 ? stats.totalThinkTime / stats.attempts : 0,
+    avgExplanationTime: stats.attempts > 0 ? stats.totalExplanationTime / stats.attempts : 0,
+    attempts: stats.attempts,
+  }));
+
   return (
     <div className="space-y-6">
       {/* Overview Stats */}
-      <div className="grid gap-6 md:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-3">
@@ -216,9 +245,9 @@ function GeneralStats({ sessions }: { sessions: SessionData[] }) {
               <div className="w-10 h-10 rounded-lg bg-chart-3/20 flex items-center justify-center">
                 <Clock className="h-5 w-5 text-chart-3" />
               </div>
-              <span className="text-sm text-muted-foreground font-medium">Avg Time</span>
+              <span className="text-sm text-muted-foreground font-medium">Avg Think Time</span>
             </div>
-            <div className="text-3xl font-bold font-mono">{averageTime.toFixed(1)}s</div>
+            <div className="text-3xl font-bold font-mono">{averageThinkTime.toFixed(1)}s</div>
             <div className="text-xs text-muted-foreground mt-1">Per question</div>
           </CardContent>
         </Card>
@@ -233,6 +262,34 @@ function GeneralStats({ sessions }: { sessions: SessionData[] }) {
             </div>
             <div className="text-3xl font-bold font-mono">{Object.keys(eventStats).length}</div>
             <div className="text-xs text-muted-foreground mt-1">{sessions.length} total sessions</div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-accent/20 bg-gradient-to-br from-accent/5 to-accent/10">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
+                <Zap className="h-5 w-5 text-accent" />
+              </div>
+              <span className="text-sm text-muted-foreground font-medium">Avg Explanation</span>
+            </div>
+            <div className="text-3xl font-bold font-mono">{averageExplanationTime.toFixed(1)}s</div>
+            <div className="text-xs text-muted-foreground mt-1">Per question</div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-border bg-card/50 backdrop-blur-sm">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                <AlertCircle className="h-5 w-5 text-muted-foreground" />
+              </div>
+              <span className="text-sm text-muted-foreground font-medium">Think : Explain</span>
+            </div>
+            <div className="text-3xl font-bold font-mono">
+              {thinkExplanationRatio === null ? "N/A" : `${thinkExplanationRatio.toFixed(2)}x`}
+            </div>
+            <div className="text-xs text-muted-foreground mt-1">Ratio overall</div>
           </CardContent>
         </Card>
       </div>
@@ -300,6 +357,49 @@ function GeneralStats({ sessions }: { sessions: SessionData[] }) {
           ))}
         </CardContent>
       </Card>
+
+      {difficultyData.length > 0 && (
+        <Card className="border-border bg-card/50 backdrop-blur-sm">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
+                <Clock className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <CardTitle className="text-2xl">Think vs Explanation by Difficulty</CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Average time spent before and after submitting answers
+                </p>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-3">
+              {difficultyData
+                .sort((a, b) => {
+                  const order: Record<string, number> = { Easy: 1, Medium: 2, Hard: 3 };
+                  return (order[a.difficulty] || 999) - (order[b.difficulty] || 999);
+                })
+                .map((diff) => (
+                  <div key={diff.difficulty} className="p-6 bg-muted/30 rounded-xl border border-border">
+                    <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wide font-semibold">
+                      {diff.difficulty}
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-sm text-muted-foreground">Avg Think</div>
+                      <div className="text-2xl font-bold font-mono">{diff.avgThinkTime.toFixed(1)}s</div>
+                      <div className="text-sm text-muted-foreground mt-2">Avg Explanation</div>
+                      <div className="text-2xl font-bold font-mono">
+                        {diff.avgExplanationTime.toFixed(1)}s
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-2">{diff.attempts} attempts</div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
@@ -318,7 +418,7 @@ function EventStats({ eventId, sessions }: { eventId: string; sessions: SessionD
 
   // Redemption stats
   const redemptionAttempts = eventAttempts.filter((a) => a.isRedemption);
-  const redemptionCorrect = redemptionAttempts.filter((a) => a.correct).length;
+  const redemptionCorrect = redemptionAttempts.filter((a) => a.isCorrect).length;
   const redemptionAccuracy = redemptionAttempts.length > 0 
     ? (redemptionCorrect / redemptionAttempts.length) * 100 
     : 0;
@@ -327,33 +427,40 @@ function EventStats({ eventId, sessions }: { eventId: string; sessions: SessionD
   const categoryData = Object.entries(stats.categoryStats).map(([category, catStats]) => ({
     category,
     accuracy: catStats.attempts > 0 ? (catStats.correct / catStats.attempts) * 100 : 0,
-    avgTime: catStats.averageTime,
+    avgThinkTime: catStats.averageThinkTime,
+    avgExplanationTime: catStats.averageExplanationTime,
     attempts: catStats.attempts,
     correct: catStats.correct,
   }));
 
   // Difficulty stats
-  const difficultyStats: Record<string, { attempts: number; correct: number; totalTime: number }> = {};
+  const difficultyStats: Record<
+    string,
+    { attempts: number; correct: number; totalThinkTime: number; totalExplanationTime: number }
+  > = {};
   
   for (const attempt of eventAttempts) {
     if (!difficultyStats[attempt.difficulty]) {
       difficultyStats[attempt.difficulty] = {
         attempts: 0,
         correct: 0,
-        totalTime: 0,
+        totalThinkTime: 0,
+        totalExplanationTime: 0,
       };
     }
     difficultyStats[attempt.difficulty].attempts++;
-    if (attempt.correct) {
+    if (attempt.isCorrect) {
       difficultyStats[attempt.difficulty].correct++;
     }
-    difficultyStats[attempt.difficulty].totalTime += attempt.timeSpent;
+    difficultyStats[attempt.difficulty].totalThinkTime += attempt.thinkTime;
+    difficultyStats[attempt.difficulty].totalExplanationTime += attempt.explanationTime;
   }
 
   const difficultyData = Object.entries(difficultyStats).map(([difficulty, stats]) => ({
     difficulty,
     accuracy: stats.attempts > 0 ? (stats.correct / stats.attempts) * 100 : 0,
-    avgTime: stats.attempts > 0 ? stats.totalTime / stats.attempts : 0,
+    avgThinkTime: stats.attempts > 0 ? stats.totalThinkTime / stats.attempts : 0,
+    avgExplanationTime: stats.attempts > 0 ? stats.totalExplanationTime / stats.attempts : 0,
     attempts: stats.attempts,
   }));
 
@@ -395,8 +502,8 @@ function EventStats({ eventId, sessions }: { eventId: string; sessions: SessionD
               </div>
               <span className="text-sm text-muted-foreground font-medium">Avg Time</span>
             </div>
-            <div className="text-3xl font-bold font-mono">{stats.averageTime.toFixed(1)}s</div>
-            <div className="text-xs text-muted-foreground mt-1">Per question</div>
+            <div className="text-3xl font-bold font-mono">{stats.averageThinkTime.toFixed(1)}s</div>
+            <div className="text-xs text-muted-foreground mt-1">Avg think time</div>
           </CardContent>
         </Card>
 
@@ -466,7 +573,7 @@ function EventStats({ eventId, sessions }: { eventId: string; sessions: SessionD
                   <div>
                     <h4 className="font-bold text-lg">{cat.category}</h4>
                     <p className="text-sm text-muted-foreground">
-                      {cat.correct} / {cat.attempts} correct • {cat.avgTime.toFixed(1)}s avg
+                      {cat.correct} / {cat.attempts} correct • {cat.avgThinkTime.toFixed(1)}s avg
                     </p>
                   </div>
                   <div className="text-3xl font-bold font-mono">{cat.accuracy.toFixed(1)}%</div>
@@ -511,7 +618,7 @@ function EventStats({ eventId, sessions }: { eventId: string; sessions: SessionD
                     {diff.accuracy.toFixed(1)}%
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    {diff.attempts} attempts • {diff.avgTime.toFixed(1)}s avg
+                    {diff.attempts} attempts • {diff.avgThinkTime.toFixed(1)}s think avg
                   </div>
                 </div>
               ))}
@@ -519,6 +626,25 @@ function EventStats({ eventId, sessions }: { eventId: string; sessions: SessionD
           </CardContent>
         </Card>
       )}
+
+      <Card className="border-border bg-card/50 backdrop-blur-sm">
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
+              <Zap className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <CardTitle className="text-2xl">Session Logs</CardTitle>
+              <p className="text-sm text-muted-foreground mt-1">
+                Review completed sessions for this event
+              </p>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <SessionLogList sessions={sessions} eventId={eventId} />
+        </CardContent>
+      </Card>
     </div>
   );
 }

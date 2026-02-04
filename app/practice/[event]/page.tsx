@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, use } from "react";
+import { useState, useEffect, useMemo, useRef, use } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -63,7 +63,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
-  const [startTime, setStartTime] = useState<number>(Date.now());
+  const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now());
+  const [explanationStartTime, setExplanationStartTime] = useState<number | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [totalAnswered, setTotalAnswered] = useState(0);
@@ -71,6 +72,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [loadError, setLoadError] = useState(false);
+  const pausedDurationRef = useRef(0);
+  const pauseStartRef = useRef<number | null>(null);
 
   const event = getEventById(eventId);
   const eventName = getEventName(eventId);
@@ -127,15 +130,45 @@ function PracticeContent({ eventId }: { eventId: string }) {
     }
   }, [currentQueueItem]);
 
+  useEffect(() => {
+    if (!hasStarted || isAnswered) return;
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (pauseStartRef.current === null) {
+          pauseStartRef.current = Date.now();
+        }
+      } else if (pauseStartRef.current !== null) {
+        pausedDurationRef.current += Date.now() - pauseStartRef.current;
+        pauseStartRef.current = null;
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [hasStarted, isAnswered]);
+
   const startPractice = () => {
+    const now = Date.now();
     const newSession: SessionData = {
-      sessionId: `session_${Date.now()}`,
+      sessionId: `session_${now}_${Math.random().toString(36).slice(2, 8)}`,
+      sessionType: "practice",
       attempts: [],
-      startTime: new Date().toISOString(),
+      startTimestamp: new Date(now).toISOString(),
       eventId,
+      eventName,
+      totalThinkTime: 0,
+      totalExplanationTime: 0,
+      totalQuestions: 0,
+      correctCount: 0,
+      accuracy: 0,
     };
     setSessionData(newSession);
-    setStartTime(Date.now());
+    setQuestionStartTime(now);
+    pausedDurationRef.current = 0;
+    pauseStartRef.current = null;
     setHasStarted(true);
   };
 
@@ -148,15 +181,24 @@ function PracticeContent({ eventId }: { eventId: string }) {
     if (!selectedAnswer || !sessionData || !currentQuestion || !currentQueueItem) return;
 
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+    const now = Date.now();
+    if (pauseStartRef.current !== null) {
+      pausedDurationRef.current += now - pauseStartRef.current;
+      pauseStartRef.current = null;
+    }
+    const thinkTimeMs = Math.max(0, now - questionStartTime - pausedDurationRef.current);
+    const thinkTime = Number((thinkTimeMs / 1000).toFixed(2));
 
     const attempt = {
       questionId: currentQuestion.id,
+      questionIndex: sessionData.attempts.length + 1,
       category: currentQuestion.category,
       difficulty: currentQuestion.difficulty,
-      correct: isCorrect,
-      timeSpent,
-      timestamp: new Date().toISOString(),
+      isCorrect,
+      thinkTime,
+      explanationTime: 0,
+      timestampStart: new Date(questionStartTime).toISOString(),
+      timestampSubmit: new Date(now).toISOString(),
       isRedemption: currentQueueItem.isRedemption,
       eventId,
     };
@@ -167,6 +209,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
     };
     setSessionData(updatedSession);
     storage.setCurrentSession(updatedSession);
+    setExplanationStartTime(now);
 
     setTotalAnswered(prev => prev + 1);
     
@@ -202,6 +245,25 @@ function PracticeContent({ eventId }: { eventId: string }) {
   };
 
   const handleNextQuestion = () => {
+    if (sessionData && explanationStartTime !== null) {
+      const now = Date.now();
+      const explanationTime = Number(((now - explanationStartTime) / 1000).toFixed(2));
+      const updatedAttempts = [...sessionData.attempts];
+      const lastAttempt = updatedAttempts[updatedAttempts.length - 1];
+      if (lastAttempt) {
+        updatedAttempts[updatedAttempts.length - 1] = {
+          ...lastAttempt,
+          explanationTime,
+        };
+      }
+      const updatedSession = {
+        ...sessionData,
+        attempts: updatedAttempts,
+      };
+      setSessionData(updatedSession);
+      storage.setCurrentSession(updatedSession);
+    }
+    setExplanationStartTime(null);
     const nextIndex = currentQueueIndex + 1;
     
     if (nextIndex >= questionQueue.length) {
@@ -213,14 +275,50 @@ function PracticeContent({ eventId }: { eventId: string }) {
     setCurrentQueueIndex(nextIndex);
     setSelectedAnswer(null);
     setIsAnswered(false);
-    setStartTime(Date.now());
+    const now = Date.now();
+    setQuestionStartTime(now);
+    pausedDurationRef.current = 0;
+    pauseStartRef.current = null;
   };
 
   const handleEndSession = () => {
     if (sessionData) {
+      let updatedSession = sessionData;
+      if (explanationStartTime !== null && sessionData.attempts.length > 0) {
+        const now = Date.now();
+        const explanationTime = Number(((now - explanationStartTime) / 1000).toFixed(2));
+        const updatedAttempts = [...sessionData.attempts];
+        const lastAttempt = updatedAttempts[updatedAttempts.length - 1];
+        if (lastAttempt) {
+          updatedAttempts[updatedAttempts.length - 1] = {
+            ...lastAttempt,
+            explanationTime,
+          };
+        }
+        updatedSession = {
+          ...sessionData,
+          attempts: updatedAttempts,
+        };
+      }
+      const totalThinkTime = updatedSession.attempts.reduce(
+        (sum, attempt) => sum + attempt.thinkTime,
+        0
+      );
+      const totalExplanationTime = updatedSession.attempts.reduce(
+        (sum, attempt) => sum + attempt.explanationTime,
+        0
+      );
+      const totalQuestions = updatedSession.attempts.length;
+      const correctCount = updatedSession.attempts.filter((attempt) => attempt.isCorrect).length;
+      const accuracy = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
       const finishedSession = {
-        ...sessionData,
-        endTime: new Date().toISOString(),
+        ...updatedSession,
+        endTimestamp: new Date().toISOString(),
+        totalThinkTime: Number(totalThinkTime.toFixed(2)),
+        totalExplanationTime: Number(totalExplanationTime.toFixed(2)),
+        totalQuestions,
+        correctCount,
+        accuracy: Number(accuracy.toFixed(2)),
       };
       storage.saveSession(finishedSession);
     }

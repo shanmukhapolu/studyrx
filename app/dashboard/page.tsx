@@ -32,8 +32,8 @@ export default function DashboardPage() {
     ? ((stats.correctAnswers / stats.totalAttempts) * 100).toFixed(1)
     : "0";
 
-  const avgTime = stats?.averageTime
-    ? stats.averageTime.toFixed(1)
+  const avgTime = stats?.averageThinkTime
+    ? stats.averageThinkTime.toFixed(1)
     : "0";
 
   return (
@@ -335,5 +335,4 @@ export default function DashboardPage() {
     </div>
   );
 }
-
 
