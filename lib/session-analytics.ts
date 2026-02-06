@@ -15,11 +15,11 @@ export interface SessionBreakdown {
 }
 
 export function formatDuration(totalSeconds: number) {
-  const seconds = Math.max(0, Math.floor(totalSeconds));
+  const seconds = Math.max(0, totalSeconds);
   const minutes = Math.floor(seconds / 60);
-  const remSeconds = seconds % 60;
-  if (minutes === 0) return `${remSeconds}s`;
-  return `${minutes}m ${remSeconds}s`;
+  const remSeconds = seconds - minutes * 60;
+  if (minutes === 0) return `${remSeconds.toFixed(1)}s`;
+  return `${minutes}m ${remSeconds.toFixed(1)}s`;
 }
 
 export function getSessionTotalTime(session: SessionData) {

@@ -58,17 +58,12 @@ function SessionLogContent() {
 
         {eventIds.map((eventId) => (
           <TabsContent key={eventId} value={eventId}>
-            <SessionTable
-              sessions={sessions.filter((session) => session.event === eventId)}
-              onSelect={setSelectedSession}
-            />
+            <SessionTable sessions={sessions.filter((session) => session.event === eventId)} onSelect={setSelectedSession} />
           </TabsContent>
         ))}
       </Tabs>
 
-      {selectedSession && (
-        <SessionDetailModal session={selectedSession} onClose={() => setSelectedSession(null)} />
-      )}
+      {selectedSession && <SessionDetailModal session={selectedSession} onClose={() => setSelectedSession(null)} />}
     </div>
   );
 }
@@ -88,6 +83,14 @@ function SessionTable({ sessions, onSelect }: { sessions: SessionData[]; onSelec
         <CardTitle>Past Sessions</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
+        <div className="hidden md:grid md:grid-cols-6 gap-2 px-4 text-xs uppercase tracking-wide text-muted-foreground">
+          <span>Date & Time</span>
+          <span>Event</span>
+          <span>Session Type</span>
+          <span>Accuracy</span>
+          <span>Questions</span>
+          <span>Total Time</span>
+        </div>
         {sessions.map((session) => (
           <button
             key={session.sessionId}
@@ -122,9 +125,7 @@ function SessionDetailModal({ session, onClose }: { session: SessionData; onClos
             <div className="flex items-start justify-between">
               <div>
                 <CardTitle className="text-2xl">Session Detail</CardTitle>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {new Date(session.startTimestamp).toLocaleString()} • {getEventName(session.event)}
-                </p>
+                <p className="text-sm text-muted-foreground mt-1">{new Date(session.startTimestamp).toLocaleString()} • {getEventName(session.event)}</p>
               </div>
               <button className="text-sm underline" onClick={onClose}>Close</button>
             </div>
@@ -155,9 +156,7 @@ function SessionDetailModal({ session, onClose }: { session: SessionData; onClos
               <h3 className="font-semibold mb-3">Avg Think Time by Difficulty</h3>
               <div className="flex gap-2 flex-wrap">
                 {Object.entries(breakdown.avgThinkByDifficulty).map(([difficulty, time]) => (
-                  <span key={difficulty} className="inline-flex rounded-full border px-3 py-1 text-xs">
-                    {difficulty}: {time.toFixed(1)}s
-                  </span>
+                  <span key={difficulty} className="inline-flex rounded-full border px-3 py-1 text-xs">{difficulty}: {time.toFixed(1)}s</span>
                 ))}
               </div>
             </div>
