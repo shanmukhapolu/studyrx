@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Home, Layers, BarChart3 } from "lucide-react";
+import { Home, Layers, BarChart3, History } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -28,6 +28,11 @@ const navItems = [
     title: "Analytics",
     href: "/analytics",
     icon: BarChart3,
+  },
+  {
+    title: "Sessions",
+    href: "/sessions",
+    icon: History,
   },
 ];
 

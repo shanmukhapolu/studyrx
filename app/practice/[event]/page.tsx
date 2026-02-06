@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, use } from "react";
+import { useState, useEffect, useMemo, use, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -63,7 +63,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
-  const [startTime, setStartTime] = useState<number>(Date.now());
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [totalAnswered, setTotalAnswered] = useState(0);
@@ -71,6 +70,40 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [loadError, setLoadError] = useState(false);
+
+  const questionShownAtRef = useRef<number>(Date.now());
+  const thinkHiddenStartRef = useRef<number | null>(null);
+  const thinkPausedMsRef = useRef(0);
+  const explanationStartedAtRef = useRef<number | null>(null);
+  const explanationHiddenStartRef = useRef<number | null>(null);
+  const explanationPausedMsRef = useRef(0);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        if (!isAnswered && thinkHiddenStartRef.current === null) {
+          thinkHiddenStartRef.current = Date.now();
+        }
+        if (isAnswered && explanationStartedAtRef.current && explanationHiddenStartRef.current === null) {
+          explanationHiddenStartRef.current = Date.now();
+        }
+      } else {
+        if (!isAnswered && thinkHiddenStartRef.current !== null) {
+          thinkPausedMsRef.current += Date.now() - thinkHiddenStartRef.current;
+          thinkHiddenStartRef.current = null;
+        }
+        if (isAnswered && explanationHiddenStartRef.current !== null) {
+          explanationPausedMsRef.current += Date.now() - explanationHiddenStartRef.current;
+          explanationHiddenStartRef.current = null;
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [hasStarted, isAnswered]);
 
   const event = getEventById(eventId);
   const eventName = getEventName(eventId);
@@ -128,14 +161,14 @@ function PracticeContent({ eventId }: { eventId: string }) {
   }, [currentQueueItem]);
 
   const startPractice = () => {
-    const newSession: SessionData = {
-      sessionId: `session_${Date.now()}`,
-      attempts: [],
-      startTime: new Date().toISOString(),
-      eventId,
-    };
+    const newSession: SessionData = storage.createSession(eventId, "practice");
     setSessionData(newSession);
-    setStartTime(Date.now());
+    questionShownAtRef.current = Date.now();
+    thinkHiddenStartRef.current = null;
+    thinkPausedMsRef.current = 0;
+    explanationStartedAtRef.current = null;
+    explanationHiddenStartRef.current = null;
+    explanationPausedMsRef.current = 0;
     setHasStarted(true);
   };
 
@@ -148,15 +181,28 @@ function PracticeContent({ eventId }: { eventId: string }) {
     if (!selectedAnswer || !sessionData || !currentQuestion || !currentQueueItem) return;
 
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+    if (thinkHiddenStartRef.current !== null) {
+      thinkPausedMsRef.current += Date.now() - thinkHiddenStartRef.current;
+      thinkHiddenStartRef.current = null;
+    }
+    const submitTime = Date.now();
+    const thinkTime = Math.max(
+      0,
+      Math.floor((submitTime - questionShownAtRef.current - thinkPausedMsRef.current) / 1000)
+    );
+    const timestampStart = new Date(questionShownAtRef.current).toISOString();
+    const timestampSubmit = new Date(submitTime).toISOString();
 
     const attempt = {
       questionId: currentQuestion.id,
+      questionIndex: sessionData.attempts.length + 1,
       category: currentQuestion.category,
       difficulty: currentQuestion.difficulty,
-      correct: isCorrect,
-      timeSpent,
-      timestamp: new Date().toISOString(),
+      isCorrect,
+      thinkTime,
+      explanationTime: 0,
+      timestampStart,
+      timestampSubmit,
       isRedemption: currentQueueItem.isRedemption,
       eventId,
     };
@@ -167,6 +213,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
     };
     setSessionData(updatedSession);
     storage.setCurrentSession(updatedSession);
+    explanationStartedAtRef.current = Date.now();
+    explanationHiddenStartRef.current = null;
+    explanationPausedMsRef.current = 0;
 
     setTotalAnswered(prev => prev + 1);
     
@@ -202,6 +251,47 @@ function PracticeContent({ eventId }: { eventId: string }) {
   };
 
   const handleNextQuestion = () => {
+    if (!sessionData || !currentQuestion) return;
+
+    if (explanationStartedAtRef.current !== null) {
+      if (explanationHiddenStartRef.current !== null) {
+        explanationPausedMsRef.current += Date.now() - explanationHiddenStartRef.current;
+        explanationHiddenStartRef.current = null;
+      }
+
+      const explanationTime = Math.max(
+        0,
+        Math.floor((Date.now() - explanationStartedAtRef.current - explanationPausedMsRef.current) / 1000)
+      );
+
+      const attemptsWithExplanation = sessionData.attempts.map((attempt, index, arr) => {
+        if (index !== arr.length - 1) return attempt;
+        return {
+          ...attempt,
+          explanationTime,
+        };
+      });
+
+      const totalQuestions = attemptsWithExplanation.length;
+      const sessionCorrectCount = attemptsWithExplanation.filter((a) => a.isCorrect).length;
+      const updatedSession = {
+        ...sessionData,
+        attempts: attemptsWithExplanation,
+        totalQuestions,
+        correctCount: sessionCorrectCount,
+        totalThinkTime: attemptsWithExplanation.reduce((sum, a) => sum + a.thinkTime, 0),
+        totalExplanationTime: attemptsWithExplanation.reduce((sum, a) => sum + a.explanationTime, 0),
+        accuracy: totalQuestions > 0 ? (sessionCorrectCount / totalQuestions) * 100 : 0,
+      };
+
+      setSessionData(updatedSession);
+      storage.setCurrentSession(updatedSession);
+    }
+
+    explanationStartedAtRef.current = null;
+    explanationHiddenStartRef.current = null;
+    explanationPausedMsRef.current = 0;
+
     const nextIndex = currentQueueIndex + 1;
     
     if (nextIndex >= questionQueue.length) {
@@ -213,14 +303,16 @@ function PracticeContent({ eventId }: { eventId: string }) {
     setCurrentQueueIndex(nextIndex);
     setSelectedAnswer(null);
     setIsAnswered(false);
-    setStartTime(Date.now());
+    questionShownAtRef.current = Date.now();
+    thinkHiddenStartRef.current = null;
+    thinkPausedMsRef.current = 0;
   };
 
   const handleEndSession = () => {
     if (sessionData) {
       const finishedSession = {
         ...sessionData,
-        endTime: new Date().toISOString(),
+        endTimestamp: new Date().toISOString(),
       };
       storage.saveSession(finishedSession);
     }
