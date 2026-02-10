@@ -519,7 +519,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
   return (
     <div className="flex-1 overflow-auto">
-      <div className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
+      <div className="border-b border-border/60 bg-card/70 backdrop-blur-xl sticky top-0 z-10">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -564,7 +564,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
       </div>
 
       <div className="container mx-auto px-6 py-12 max-w-4xl">
-        <Card className="border-primary/20 shadow-xl bg-card/50 backdrop-blur-sm">
+        <Card className="glass-card tech-border shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.accent/20),transparent_40%)] pointer-events-none" />
           <CardHeader>
             <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
               <div
@@ -572,6 +573,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 style={{ width: `${((currentQueueIndex + 1) / questionQueue.length) * 100}%` }}
               />
             </div>
+            <div className="text-xs text-muted-foreground font-mono mb-2">Question {currentQueueIndex + 1} / {questionQueue.length}</div>
             <div className="flex items-center gap-3 mb-4 flex-wrap">
               {currentQueueItem.isRedemption && (
                 <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 border border-accent/30 px-5 py-2 text-sm font-bold">
@@ -615,7 +617,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 const isCorrect = option === currentQuestion.correctAnswer;
                 const showResult = isAnswered;
 
-                let buttonClasses = "w-full justify-start text-left h-auto py-4 px-6 text-base font-medium transition-all bg-transparent hover:bg-primary/5";
+                let buttonClasses = "w-full justify-start text-left h-auto py-4 px-6 text-base font-medium transition-all bg-background/70 hover:bg-primary/10 hover:-translate-y-0.5";
                 
                 if (showResult) {
                   if (isCorrect) {

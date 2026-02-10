@@ -56,9 +56,13 @@ export default function DashboardPage() {
 
             {/* Main Content */}
             <main className="flex-1 p-6 space-y-6">
+              <div className="rounded-2xl glass-card tech-border p-5 bg-gradient-to-r from-primary/10 via-accent/5 to-transparent">
+                <h2 className="text-lg font-semibold flex items-center gap-2"><Sparkles className="h-5 w-5 text-primary" /> Study Command Center</h2>
+                <p className="text-sm text-muted-foreground mt-1">Track progress, launch practice quickly, and keep your prep streak alive.</p>
+              </div>
             {/* Quick Stats Overview */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="border-border">
+                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Questions Attempted
@@ -75,7 +79,7 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-border">
+                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Overall Accuracy
@@ -92,7 +96,7 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-border">
+                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Avg. Time per Question
@@ -109,7 +113,7 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-border">
+                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Total Sessions
@@ -128,7 +132,7 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
-              <Card className="border-primary/20 bg-gradient-to-br from-primary/10 to-transparent">
+              <Card className="glass-card tech-border bg-gradient-to-br from-primary/10 to-transparent">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Sparkles className="h-5 w-5 text-primary" />
@@ -153,7 +157,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-accent/20 bg-gradient-to-br from-accent/10 to-transparent">
+              <Card className="glass-card tech-border bg-gradient-to-br from-accent/10 to-transparent">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Zap className="h-5 w-5 text-accent" />
@@ -380,4 +384,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-

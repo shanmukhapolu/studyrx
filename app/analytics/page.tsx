@@ -43,8 +43,9 @@ function AnalyticsContent() {
   }
 
   return (
-    <div className="flex-1 overflow-auto p-6 space-y-6 bg-gradient-to-b from-background to-muted/20">
-      <header className="rounded-xl border border-primary/20 bg-card/80 backdrop-blur p-6 shadow-sm">
+    <div className="flex-1 overflow-auto p-6 space-y-6">
+      <header className="rounded-2xl glass-card tech-border p-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.primary/20),transparent_50%)] pointer-events-none" />
         <h1 className="text-3xl font-bold flex items-center gap-2"><Activity className="h-7 w-7 text-primary" /> Analytics HQ</h1>
         <p className="text-muted-foreground mt-2">Your full performance dashboard with timing intelligence and session deep-dives.</p>
       </header>
@@ -112,7 +113,7 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
         <Metric label="Think : Explanation Ratio" value={totalExplanation > 0 ? `${(totalThink / totalExplanation).toFixed(2)} : 1` : "N/A"} />
       </MetricGrid>
 
-      <Card className="border-primary/20 bg-gradient-to-r from-primary/10 to-accent/10">
+    <Card className="glass-card tech-border">
         <CardContent className="p-4 text-sm flex flex-wrap gap-3 items-center">
           <span className="inline-flex items-center gap-1"><Medal className="h-4 w-4 text-primary" /> Best: <strong>{bestEvent ? getEventName(bestEvent.eventId) : "N/A"}</strong></span>
           <span>• Worst: <strong>{worstEvent ? getEventName(worstEvent.eventId) : "N/A"}</strong></span>
@@ -157,7 +158,7 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gradient-to-r from-primary/10 to-transparent border-primary/20">
+    <Card className="glass-card tech-border">
         <CardContent className="p-4 flex items-center gap-2 text-lg font-semibold"><Sparkles className="h-5 w-5 text-primary" /> {getEventName(eventId)} Performance Zone</CardContent>
       </Card>
 
@@ -274,14 +275,14 @@ function SessionLogCard({ sessions, onOpenSession }: { sessions: SessionData[]; 
     .slice(0, 10);
 
   return (
-    <Card className="border-primary/20">
+    <Card className="glass-card tech-border">
       <CardHeader><CardTitle className="flex items-center gap-2"><Timer className="h-5 w-5 text-primary" /> Session Log</CardTitle></CardHeader>
       <CardContent className="space-y-2 text-sm">
         <div className="grid grid-cols-4 gap-2 text-xs uppercase tracking-wide text-muted-foreground px-3">
           <span>Date</span><span>Questions</span><span>Accuracy</span><span>Time</span>
         </div>
         {rows.map((session) => (
-          <button key={session.sessionId} onClick={() => onOpenSession(session)} className="w-full text-left grid grid-cols-4 gap-2 items-center rounded-lg border p-3 hover:bg-primary/5 hover:border-primary/40 transition-colors">
+          <button key={session.sessionId} onClick={() => onOpenSession(session)} className="w-full text-left grid grid-cols-4 gap-2 items-center rounded-lg border p-3 hover:bg-primary/10 hover:border-primary/50 transition-all hover:-translate-y-0.5">
             <span className="truncate">{new Date(session.startTimestamp).toLocaleString()}</span>
             <span>{session.totalQuestions} Q</span>
             <span>{session.accuracy.toFixed(1)}%</span>
@@ -295,7 +296,7 @@ function SessionLogCard({ sessions, onOpenSession }: { sessions: SessionData[]; 
 
 function BreakdownCard({ title, rows }: { title: string; rows: { label: string; value: string }[] }) {
   return (
-    <Card>
+    <Card className="glass-card">
       <CardHeader><CardTitle>{title}</CardTitle></CardHeader>
       <CardContent className="space-y-2 text-sm">
         {rows.map((row) => (
@@ -326,7 +327,7 @@ function Metric({ label, value, accent, compact }: { label: string; value: strin
   }
 
   return (
-    <Card className={accentClass}>
+    <Card className={`${accentClass} hover:-translate-y-0.5 transition-transform duration-200`}>
       <CardContent className="p-4">
         <div className="text-xs text-muted-foreground">{label}</div>
         <div className="text-2xl font-semibold break-words">{value}</div>
