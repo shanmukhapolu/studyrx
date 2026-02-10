@@ -70,6 +70,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [loadError, setLoadError] = useState(false);
+  const [liveThinkDisplay, setLiveThinkDisplay] = useState(0);
 
   const questionShownAtRef = useRef<number>(performance.now());
   const thinkHiddenStartRef = useRef<number | null>(null);
@@ -104,6 +105,25 @@ function PracticeContent({ eventId }: { eventId: string }) {
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, [hasStarted, isAnswered]);
+
+  useEffect(() => {
+    if (!hasStarted || isAnswered) {
+      setLiveThinkDisplay(0);
+      return;
+    }
+
+    const tick = () => {
+      const hiddenOffset =
+        thinkPausedMsRef.current +
+        (thinkHiddenStartRef.current ? performance.now() - thinkHiddenStartRef.current : 0);
+      const elapsed = Math.max(0, (performance.now() - questionShownAtRef.current - hiddenOffset) / 1000);
+      setLiveThinkDisplay(Math.round(elapsed * 10) / 10);
+    };
+
+    tick();
+    const interval = window.setInterval(tick, 100);
+    return () => window.clearInterval(interval);
+  }, [hasStarted, isAnswered, currentQueueIndex]);
 
   const event = getEventById(eventId);
   const eventName = getEventName(eventId);
@@ -520,6 +540,11 @@ function PracticeContent({ eventId }: { eventId: string }) {
               </div>
             </div>
             <div className="flex items-center gap-8">
+              <div className="hidden md:flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5">
+                <Brain className="h-4 w-4 text-primary" />
+                <span className="text-xs text-muted-foreground">Think</span>
+                <span className="font-mono text-sm font-bold text-primary">{liveThinkDisplay.toFixed(1)}s</span>
+              </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-accent" />
                 <span className="text-lg font-mono font-bold">{correctCount}</span>
@@ -541,6 +566,12 @@ function PracticeContent({ eventId }: { eventId: string }) {
       <div className="container mx-auto px-6 py-12 max-w-4xl">
         <Card className="border-primary/20 shadow-xl bg-card/50 backdrop-blur-sm">
           <CardHeader>
+            <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
+                style={{ width: `${((currentQueueIndex + 1) / questionQueue.length) * 100}%` }}
+              />
+            </div>
             <div className="flex items-center gap-3 mb-4 flex-wrap">
               {currentQueueItem.isRedemption && (
                 <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 border border-accent/30 px-5 py-2 text-sm font-bold">
