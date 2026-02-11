@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { storage, type Question, type SessionData } from "@/lib/storage";
+import { formatDuration } from "@/lib/session-analytics";
 import { getEventById, getEventName } from "@/lib/events";
 import { 
   Brain, 
@@ -71,6 +72,13 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [isComplete, setIsComplete] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [liveThinkDisplay, setLiveThinkDisplay] = useState(0);
+  const [sessionSummary, setSessionSummary] = useState<{
+    totalQuestions: number;
+    correct: number;
+    incorrect: number;
+    highestStreak: number;
+    sessionTime: number;
+  } | null>(null);
 
   const questionShownAtRef = useRef<number>(performance.now());
   const thinkHiddenStartRef = useRef<number | null>(null);
@@ -331,12 +339,42 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
   const handleEndSession = () => {
     if (sessionData) {
+      const totalQuestions = sessionData.attempts.length;
+      const correct = sessionData.attempts.filter((attempt) => attempt.isCorrect).length;
+      const highestStreak = sessionData.attempts.reduce(
+        (acc, attempt) => {
+          if (attempt.isCorrect) {
+            const current = acc.current + 1;
+            return {
+              current,
+              max: Math.max(acc.max, current),
+            };
+          }
+          return {
+            current: 0,
+            max: acc.max,
+          };
+        },
+        { current: 0, max: 0 }
+      ).max;
+
       const finishedSession = {
         ...sessionData,
         endTimestamp: new Date().toISOString(),
       };
+
       storage.saveSession(finishedSession);
+
+      setSessionSummary({
+        totalQuestions,
+        correct,
+        incorrect: totalQuestions - correct,
+        highestStreak,
+        sessionTime: finishedSession.totalThinkTime + finishedSession.totalExplanationTime,
+      });
+      return;
     }
+
     router.push("/events");
   };
 
@@ -519,6 +557,45 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
   return (
     <div className="flex-1 overflow-auto">
+      {sessionSummary && (
+        <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <Card className="max-w-2xl w-full glass-card tech-border">
+            <CardHeader>
+              <CardTitle className="text-3xl">Session Stats</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid gap-3 md:grid-cols-2">
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Total questions answered</div>
+                  <div className="text-2xl font-bold">{sessionSummary.totalQuestions}</div>
+                </div>
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Correct questions</div>
+                  <div className="text-2xl font-bold text-accent">{sessionSummary.correct}</div>
+                </div>
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Incorrect questions</div>
+                  <div className="text-2xl font-bold text-destructive">{sessionSummary.incorrect}</div>
+                </div>
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Highest streak</div>
+                  <div className="text-2xl font-bold">{sessionSummary.highestStreak}</div>
+                </div>
+                <div className="rounded-lg border p-4 md:col-span-2">
+                  <div className="text-xs text-muted-foreground">Session time</div>
+                  <div className="text-2xl font-bold">{formatDuration(sessionSummary.sessionTime)}</div>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <Button className="flex-1" onClick={() => router.push("/events")}>Back to Events</Button>
+                <Button variant="outline" className="flex-1 bg-transparent" onClick={handleRestart}>Practice Again</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
       <div className="border-b border-border/60 bg-card/70 backdrop-blur-xl sticky top-0 z-10">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-4">
