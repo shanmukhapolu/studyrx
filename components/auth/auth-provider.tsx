@@ -127,7 +127,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       },
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = await signUpWithEmail(email, password);
-        session = await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim());
+        session = await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim(), session.user.uid);
 
         try {
           await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });

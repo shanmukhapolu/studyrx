@@ -22,13 +22,42 @@ const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE = "https://securetoken.googleapis.com/v1";
 const RTDB_BASE = FIREBASE_DATABASE_URL;
 
+function decodeJwtPayload(token: string): Record<string, unknown> | null {
+  try {
+    const payload = token.split(".")[1];
+    if (!payload) return null;
+    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const padded = normalized + "=".repeat((4 - (normalized.length % 4)) % 4);
+    const json = atob(padded);
+    return JSON.parse(json) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+function resolveUid(data: any): string {
+  const direct = data?.localId || data?.user_id || data?.userId;
+  if (typeof direct === "string" && direct.length > 0) return direct;
+
+  const token = typeof data?.idToken === "string" ? data.idToken : null;
+  if (token) {
+    const payload = decodeJwtPayload(token);
+    const fromToken = (payload?.user_id || payload?.sub) as string | undefined;
+    if (typeof fromToken === "string" && fromToken.length > 0) {
+      return fromToken;
+    }
+  }
+
+  return "";
+}
+
 function toSession(data: any): AuthSession {
   return {
     idToken: data.idToken,
     refreshToken: data.refreshToken,
     expiresIn: Number(data.expiresIn || 3600),
     user: {
-      uid: data.localId,
+      uid: resolveUid(data),
       email: data.email,
       displayName: data.displayName,
     },
@@ -78,13 +107,17 @@ export async function signInWithGoogleIdToken(idToken: string) {
   return toSession(data);
 }
 
-export async function updateDisplayName(idToken: string, displayName: string) {
+export async function updateDisplayName(idToken: string, displayName: string, fallbackUid?: string) {
   const data = await authRequest("accounts:update", {
     idToken,
     displayName,
     returnSecureToken: true,
   });
-  return toSession(data);
+  const session = toSession(data);
+  if (!session.user.uid && fallbackUid) {
+    session.user.uid = fallbackUid;
+  }
+  return session;
 }
 
 export async function refreshIdToken(refreshToken: string) {
