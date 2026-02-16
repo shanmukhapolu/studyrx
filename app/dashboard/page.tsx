@@ -150,12 +150,12 @@ export default function DashboardPage() {
                 <CardContent className="space-y-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Accuracy Goal</span>
-                    <span className="font-semibold">{Math.min(Number(accuracy), 85).toFixed(1)} / 85%</span>
+                    <span className="font-semibold">{Math.min(Number(accuracy), 100).toFixed(1)} / 100%</span>
                   </div>
                   <div className="h-3 rounded-full bg-muted overflow-hidden">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
-                      style={{ width: `${Math.min((Number(accuracy) / 85) * 100, 100)}%` }}
+                      style={{ width: `${Math.min(Number(accuracy), 100)}%` }}
                     />
                   </div>
                   <p className="text-xs text-muted-foreground">

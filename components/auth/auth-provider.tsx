@@ -51,6 +51,18 @@ function readSession(): (AuthSession & { expiresAt: number }) | null {
   }
 }
 
+
+function profileFromDisplayName(displayName?: string | null): UserProfile | null {
+  const normalized = (displayName || "").trim();
+  if (!normalized) return null;
+
+  const [firstName = "", ...rest] = normalized.split(/\s+/);
+  return {
+    firstName,
+    lastName: rest.join(" "),
+  };
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -87,7 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (!mounted) return;
 
         setUser(session.user);
-        setProfile(fetchedProfile);
+        setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
       } catch {
         localStorage.removeItem(STORAGE_KEY);
       } finally {
@@ -111,7 +123,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         saveSession(session);
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
-        setProfile(fetchedProfile);
+        setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
       },
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = await signUpWithEmail(email, password);
@@ -123,19 +135,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       },
       signInWithGoogleCredential: async (credential) => {
         const session = await signInWithGoogleIdToken(credential);
-        const displayName = session.user.displayName || "";
-        const [firstName = "", ...rest] = displayName.split(" ");
-        const lastName = rest.join(" ");
+        const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" };
 
-        await saveUserProfile(session.idToken, session.user.uid, {
-          firstName,
-          lastName,
-        });
+        if (parsedProfile.firstName || parsedProfile.lastName) {
+          await saveUserProfile(session.idToken, session.user.uid, parsedProfile);
+        }
 
         saveSession(session);
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
-        setProfile(fetchedProfile || { firstName, lastName });
+        setProfile(fetchedProfile || parsedProfile);
       },
       signOut: () => {
         localStorage.removeItem(STORAGE_KEY);

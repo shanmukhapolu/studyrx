@@ -38,7 +38,9 @@ const navItems = [
 export function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { profile, signOut } = useAuth();
+  const { profile, user, signOut } = useAuth();
+  const fallbackName = user?.displayName?.trim() || "Student";
+  const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
 
   return (
     <Sidebar>
@@ -78,7 +80,7 @@ export function AppSidebar() {
       <SidebarFooter className="border-t border-sidebar-border p-4">
         <div className="space-y-3">
           <p className="text-sm font-medium text-sidebar-foreground truncate">
-            {[profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || profile?.firstName || "Student"}
+            {resolvedName}
           </p>
           <Button
             size="sm"

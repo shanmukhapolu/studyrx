@@ -111,7 +111,9 @@ export async function refreshIdToken(refreshToken: string) {
 }
 
 export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
-  await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`, {
+  const fullName = `${profile.firstName} ${profile.lastName}`.trim();
+
+  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}/profile.json?auth=${encodeURIComponent(idToken)}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -122,22 +124,59 @@ export async function saveUserProfile(idToken: string, uid: string, profile: Use
       updatedAt: new Date().toISOString(),
     }),
   });
+
+  if (!profileRes.ok) {
+    // Some stricter rulesets may not allow this optional profile object path.
+    // We still persist the required display name string at /name below.
+    console.warn("Profile object write blocked by rules; continuing with /name fallback.");
+  }
+
+  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(fullName),
+  });
+
+  if (!nameRes.ok) {
+    const text = await nameRes.text().catch(() => "");
+    throw new Error(`Failed to save display name: ${nameRes.status} ${text}`);
+  }
 }
 
 export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
-  const res = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`);
+  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}/profile.json?auth=${encodeURIComponent(idToken)}`);
+  if (profileRes.ok) {
+    const profileData = await profileRes.json();
+    if (profileData && (profileData.firstName || profileData.lastName)) {
+      return {
+        firstName: profileData.firstName || "",
+        lastName: profileData.lastName || "",
+      };
+    }
+  }
 
-  if (!res.ok) {
+  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`);
+  if (!nameRes.ok) {
     return null;
   }
 
-  const data = await res.json();
-  if (!data) {
+  const nameData = await nameRes.json();
+  if (!nameData) {
     return null;
+  }
+
+  if (typeof nameData === "string") {
+    const [firstName = "", ...rest] = nameData.trim().split(/\s+/);
+    return {
+      firstName,
+      lastName: rest.join(" "),
+    };
   }
 
   return {
-    firstName: data.firstName || "",
-    lastName: data.lastName || "",
+    firstName: nameData.firstName || "",
+    lastName: nameData.lastName || "",
   };
 }

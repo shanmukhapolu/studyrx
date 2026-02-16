@@ -107,10 +107,30 @@ async function dbGet<T>(path: string, fallback: T): Promise<T> {
 async function dbSet(path: string, value: unknown) {
   if (typeof window === "undefined") return;
   const { url } = getUserPath(path);
-  await fetch(url, {
+  const res = await fetch(url, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(value),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Failed to write ${path}: ${res.status} ${text}`);
+  }
+}
+
+type EventRecord = {
+  sessions?: Record<string, Partial<SessionData>>;
+  wrongQuestions?: number[];
+  completedQuestions?: number[];
+};
+
+function normalizeEventSessions(events: Record<string, EventRecord> | null | undefined): SessionData[] {
+  if (!events) return [];
+
+  return Object.entries(events).flatMap(([eventId, eventData]) => {
+    const sessions = eventData?.sessions ?? {};
+    return Object.values(sessions).map((session) => normalizeSession({ ...session, event: session.event ?? eventId }));
   });
 }
 
@@ -178,18 +198,27 @@ export const storage = {
   }),
 
   getAllSessions: async (): Promise<SessionData[]> => {
-    const raw = await dbGet<Record<string, Partial<SessionData>>>("sessions", {});
-    return Object.values(raw || {}).map(normalizeSession);
+    const events = await dbGet<Record<string, EventRecord>>("events", {});
+    return normalizeEventSessions(events);
   },
 
   saveSession: async (session: SessionData) => {
     const immutableSession = normalizeSession({ ...session, endTimestamp: session.endTimestamp ?? new Date().toISOString() });
-    await dbSet(`sessions/${immutableSession.sessionId}`, immutableSession);
-    await dbSet("currentSession", null);
+    await dbSet(`events/${immutableSession.event}/sessions/${immutableSession.sessionId}`, immutableSession);
+
+    try {
+      await dbSet("currentSession", null);
+    } catch {
+      // Optional runtime key might be blocked by stricter DB rules; completed session is already persisted.
+    }
   },
 
   setCurrentSession: async (session: SessionData) => {
-    await dbSet("currentSession", normalizeSession(session));
+    try {
+      await dbSet("currentSession", normalizeSession(session));
+    } catch {
+      // Optional runtime key might be blocked by stricter DB rules.
+    }
   },
 
   getCurrentSession: async (): Promise<SessionData | null> => {
@@ -198,7 +227,11 @@ export const storage = {
   },
 
   clearCurrentSession: async () => {
-    await dbSet("currentSession", null);
+    try {
+      await dbSet("currentSession", null);
+    } catch {
+      // Optional runtime key might be blocked by stricter DB rules.
+    }
   },
 
   calculateStats: async (): Promise<UserStats> => {
@@ -232,31 +265,33 @@ export const storage = {
   },
 
   getWrongQuestions: async (eventId: string): Promise<number[]> => {
-    return dbGet<number[]>(`wrongQuestions/${eventId}`, []);
+    const eventData = await dbGet<EventRecord | null>(`events/${eventId}`, null);
+    return eventData?.wrongQuestions ?? [];
   },
 
   addWrongQuestion: async (eventId: string, questionId: number) => {
     const wrong = await storage.getWrongQuestions(eventId);
     if (!wrong.includes(questionId)) {
       wrong.push(questionId);
-      await dbSet(`wrongQuestions/${eventId}`, wrong);
+      await dbSet(`events/${eventId}/wrongQuestions`, wrong);
     }
   },
 
   removeWrongQuestion: async (eventId: string, questionId: number) => {
     const wrong = await storage.getWrongQuestions(eventId);
-    await dbSet(`wrongQuestions/${eventId}`, wrong.filter((id) => id !== questionId));
+    await dbSet(`events/${eventId}/wrongQuestions`, wrong.filter((id) => id !== questionId));
   },
 
   getCompletedQuestions: async (eventId: string): Promise<number[]> => {
-    return dbGet<number[]>(`completedQuestions/${eventId}`, []);
+    const eventData = await dbGet<EventRecord | null>(`events/${eventId}`, null);
+    return eventData?.completedQuestions ?? [];
   },
 
   addCompletedQuestion: async (eventId: string, questionId: number) => {
     const completed = await storage.getCompletedQuestions(eventId);
     if (!completed.includes(questionId)) {
       completed.push(questionId);
-      await dbSet(`completedQuestions/${eventId}`, completed);
+      await dbSet(`events/${eventId}/completedQuestions`, completed);
     }
   },
 
@@ -296,9 +331,11 @@ export const storage = {
   },
 
   resetAllData: async () => {
-    await dbSet("sessions", {});
-    await dbSet("currentSession", null);
-    await dbSet("wrongQuestions", {});
-    await dbSet("completedQuestions", {});
+    await dbSet("events", {});
+    try {
+      await dbSet("currentSession", null);
+    } catch {
+      // Optional runtime key might be blocked by stricter DB rules.
+    }
   },
 };
