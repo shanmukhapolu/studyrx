@@ -82,6 +82,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
     highestStreak: number;
     sessionTime: number;
   } | null>(null);
+  const [isEndingSession, setIsEndingSession] = useState(false);
+  const [sessionSaveError, setSessionSaveError] = useState<string | null>(null);
 
   const questionShownAtRef = useRef<number>(performance.now());
   const thinkHiddenStartRef = useRef<number | null>(null);
@@ -341,44 +343,82 @@ function PracticeContent({ eventId }: { eventId: string }) {
   };
 
   const handleEndSession = async () => {
-    if (sessionData) {
-      const totalQuestions = sessionData.attempts.length;
-      const correct = sessionData.attempts.filter((attempt) => attempt.isCorrect).length;
-      const highestStreak = sessionData.attempts.reduce(
-        (acc, attempt) => {
-          if (attempt.isCorrect) {
-            const current = acc.current + 1;
-            return {
-              current,
-              max: Math.max(acc.max, current),
-            };
-          }
-          return {
-            current: 0,
-            max: acc.max,
-          };
-        },
-        { current: 0, max: 0 }
-      ).max;
+    if (!sessionData) {
+      router.push("/events");
+      return;
+    }
 
-      const finishedSession = {
-        ...sessionData,
-        endTimestamp: new Date().toISOString(),
+    setIsEndingSession(true);
+    setSessionSaveError(null);
+
+    const attemptsWithFinalExplanation = [...sessionData.attempts];
+
+    if (isAnswered && explanationStartedAtRef.current !== null && attemptsWithFinalExplanation.length > 0) {
+      if (explanationHiddenStartRef.current !== null) {
+        explanationPausedMsRef.current += performance.now() - explanationHiddenStartRef.current;
+        explanationHiddenStartRef.current = null;
+      }
+
+      const explanationTime = Math.max(
+        0,
+        Math.round(((performance.now() - explanationStartedAtRef.current - explanationPausedMsRef.current) / 1000) * 10) / 10
+      );
+
+      const lastAttemptIndex = attemptsWithFinalExplanation.length - 1;
+      attemptsWithFinalExplanation[lastAttemptIndex] = {
+        ...attemptsWithFinalExplanation[lastAttemptIndex],
+        explanationTime,
       };
+    }
 
+    const totalQuestions = attemptsWithFinalExplanation.length;
+    const correct = attemptsWithFinalExplanation.filter((attempt) => attempt.isCorrect).length;
+    const totalThinkTime = attemptsWithFinalExplanation.reduce((sum, attempt) => sum + attempt.thinkTime, 0);
+    const totalExplanationTime = attemptsWithFinalExplanation.reduce((sum, attempt) => sum + attempt.explanationTime, 0);
+    const highestStreak = attemptsWithFinalExplanation.reduce(
+      (acc, attempt) => {
+        if (attempt.isCorrect) {
+          const current = acc.current + 1;
+          return {
+            current,
+            max: Math.max(acc.max, current),
+          };
+        }
+        return {
+          current: 0,
+          max: acc.max,
+        };
+      },
+      { current: 0, max: 0 }
+    ).max;
+
+    const finishedSession: SessionData = {
+      ...sessionData,
+      attempts: attemptsWithFinalExplanation,
+      totalQuestions,
+      correctCount: correct,
+      totalThinkTime,
+      totalExplanationTime,
+      accuracy: totalQuestions > 0 ? (correct / totalQuestions) * 100 : 0,
+      endTimestamp: new Date().toISOString(),
+    };
+
+    try {
       await storage.saveSession(finishedSession);
-
+      setSessionData(finishedSession);
       setSessionSummary({
         totalQuestions,
         correct,
         incorrect: totalQuestions - correct,
         highestStreak,
-        sessionTime: finishedSession.totalThinkTime + finishedSession.totalExplanationTime,
+        sessionTime: totalThinkTime + totalExplanationTime,
       });
-      return;
+    } catch (error) {
+      console.error("Failed to save session", error);
+      setSessionSaveError("Couldn't save your session. Please try ending again.");
+    } finally {
+      setIsEndingSession(false);
     }
-
-    router.push("/events");
   };
 
   const handleRestart = () => {
@@ -636,24 +676,28 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 <span className="text-sm text-muted-foreground hidden sm:inline">incorrect</span>
               </div>
             </div>
-            <Button onClick={handleEndSession} variant="outline" size="sm" className="bg-transparent font-semibold">
-              End Session
+            <Button
+              onClick={handleEndSession}
+              variant="outline"
+              size="sm"
+              className="bg-transparent font-semibold"
+              disabled={isEndingSession}
+            >
+              {isEndingSession ? "Saving..." : "End Session"}
             </Button>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-6 py-12 max-w-4xl">
+        {sessionSaveError && (
+          <div className="mb-4 rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+            {sessionSaveError}
+          </div>
+        )}
         <Card className="glass-card tech-border shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.accent/20),transparent_40%)] pointer-events-none" />
           <CardHeader>
-            <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
-                style={{ width: `${((currentQueueIndex + 1) / questionQueue.length) * 100}%` }}
-              />
-            </div>
-            <div className="text-xs text-muted-foreground font-mono mb-2">Question {currentQueueIndex + 1} / {questionQueue.length}</div>
             <div className="flex items-center gap-3 mb-4 flex-wrap">
               {currentQueueItem.isRedemption && (
                 <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 border border-accent/30 px-5 py-2 text-sm font-bold">
