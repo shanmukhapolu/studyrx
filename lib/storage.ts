@@ -1,3 +1,5 @@
+import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+
 export interface Question {
   id: number;
   question: string;
@@ -60,17 +62,56 @@ export interface UserStats {
   };
 }
 
-const STORAGE_KEYS = {
-  SESSIONS: "studyrx_sessions",
-  CURRENT_SESSION: "studyrx_current_session",
-  WRONG_QUESTIONS: "studyrx_wrong_questions",
-  COMPLETED_QUESTIONS: "studyrx_completed_questions",
-} as const;
-
 function createDeterministicSessionId() {
   const now = Date.now();
   const seed = Math.random().toString(36).slice(2, 8);
   return `session_${now}_${seed}`;
+}
+
+function getStoredAuth() {
+  if (typeof window === "undefined") return null;
+  const raw = localStorage.getItem("studyrx_auth_session");
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as { user: { uid: string }; idToken: string };
+  } catch {
+    return null;
+  }
+}
+
+function getUserPath(path: string) {
+  const auth = getStoredAuth();
+  if (!auth?.user?.uid || !auth?.idToken) {
+    throw new Error("Not authenticated");
+  }
+
+  return {
+    url: `${FIREBASE_DATABASE_URL}/users/${auth.user.uid}/${path}.json?auth=${encodeURIComponent(auth.idToken)}`,
+    uid: auth.user.uid,
+  };
+}
+
+async function dbGet<T>(path: string, fallback: T): Promise<T> {
+  if (typeof window === "undefined") return fallback;
+  try {
+    const { url } = getUserPath(path);
+    const res = await fetch(url);
+    if (!res.ok) return fallback;
+    const data = await res.json();
+    return (data ?? fallback) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+async function dbSet(path: string, value: unknown) {
+  if (typeof window === "undefined") return;
+  const { url } = getUserPath(path);
+  await fetch(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(value),
+  });
 }
 
 function normalizeAttempt(attempt: Partial<QuestionAttempt>, index: number, eventFallback = "unknown"): QuestionAttempt {
@@ -97,9 +138,7 @@ function normalizeAttempt(attempt: Partial<QuestionAttempt>, index: number, even
 
 function normalizeSession(session: Partial<SessionData>): SessionData {
   const event = session.event ?? session.eventId ?? "unknown";
-  const attempts = (session.attempts ?? []).map((attempt, index) =>
-    normalizeAttempt(attempt, index, event)
-  );
+  const attempts = (session.attempts ?? []).map((attempt, index) => normalizeAttempt(attempt, index, event));
   const correctCount = attempts.filter((a) => a.isCorrect).length;
   const totalThinkTime = attempts.reduce((sum, a) => sum + a.thinkTime, 0);
   const totalExplanationTime = attempts.reduce((sum, a) => sum + a.explanationTime, 0);
@@ -138,73 +177,43 @@ export const storage = {
     eventId: event,
   }),
 
-  // Sessions
-  getAllSessions: (): SessionData[] => {
-    if (typeof window !== "undefined") {
-      const sessions = localStorage.getItem(STORAGE_KEYS.SESSIONS);
-      const parsed: Partial<SessionData>[] = sessions ? JSON.parse(sessions) : [];
-      return parsed.map(normalizeSession);
-    }
-    return [];
+  getAllSessions: async (): Promise<SessionData[]> => {
+    const raw = await dbGet<Record<string, Partial<SessionData>>>("sessions", {});
+    return Object.values(raw || {}).map(normalizeSession);
   },
 
-  saveSession: (session: SessionData) => {
-    if (typeof window !== "undefined") {
-      const sessions = storage.getAllSessions();
-      const immutableSession = normalizeSession({
-        ...session,
-        endTimestamp: session.endTimestamp ?? new Date().toISOString(),
-      });
-      sessions.push(immutableSession);
-      localStorage.setItem(STORAGE_KEYS.SESSIONS, JSON.stringify(sessions));
-      localStorage.removeItem(STORAGE_KEYS.CURRENT_SESSION);
-    }
+  saveSession: async (session: SessionData) => {
+    const immutableSession = normalizeSession({ ...session, endTimestamp: session.endTimestamp ?? new Date().toISOString() });
+    await dbSet(`sessions/${immutableSession.sessionId}`, immutableSession);
+    await dbSet("currentSession", null);
   },
 
-  // Current Session (temporary storage)
-  setCurrentSession: (session: SessionData) => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(STORAGE_KEYS.CURRENT_SESSION, JSON.stringify(normalizeSession(session)));
-    }
+  setCurrentSession: async (session: SessionData) => {
+    await dbSet("currentSession", normalizeSession(session));
   },
 
-  getCurrentSession: (): SessionData | null => {
-    if (typeof window !== "undefined") {
-      const session = localStorage.getItem(STORAGE_KEYS.CURRENT_SESSION);
-      return session ? normalizeSession(JSON.parse(session)) : null;
-    }
-    return null;
+  getCurrentSession: async (): Promise<SessionData | null> => {
+    const session = await dbGet<Partial<SessionData> | null>("currentSession", null);
+    return session ? normalizeSession(session) : null;
   },
 
-  clearCurrentSession: () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem(STORAGE_KEYS.CURRENT_SESSION);
-    }
+  clearCurrentSession: async () => {
+    await dbSet("currentSession", null);
   },
 
-  // Stats calculation
-  calculateStats: (): UserStats => {
-    const sessions = storage.getAllSessions();
-    const allAttempts: QuestionAttempt[] = sessions.flatMap((s) => s.attempts);
+  calculateStats: async (): Promise<UserStats> => {
+    const sessions = await storage.getAllSessions();
+    const allAttempts = sessions.flatMap((s) => s.attempts);
 
     const categoryStats: UserStats["categoryStats"] = {};
-
     for (const attempt of allAttempts) {
       if (!categoryStats[attempt.category]) {
-        categoryStats[attempt.category] = {
-          attempts: 0,
-          correct: 0,
-          averageTime: 0,
-        };
+        categoryStats[attempt.category] = { attempts: 0, correct: 0, averageTime: 0 };
       }
-
       categoryStats[attempt.category].attempts++;
-      if (attempt.isCorrect) {
-        categoryStats[attempt.category].correct++;
-      }
+      if (attempt.isCorrect) categoryStats[attempt.category].correct++;
     }
 
-    // Calculate average times
     for (const category of Object.keys(categoryStats)) {
       const categoryAttempts = allAttempts.filter((a) => a.category === category);
       const totalTime = categoryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
@@ -222,103 +231,53 @@ export const storage = {
     };
   },
 
-  // Wrong questions for redemption (per event)
-  getWrongQuestions: (eventId?: string): number[] => {
-    if (typeof window !== "undefined") {
-      if (eventId) {
-        const key = `${STORAGE_KEYS.WRONG_QUESTIONS}_${eventId}`;
-        const wrong = localStorage.getItem(key);
-        return wrong ? JSON.parse(wrong) : [];
-      }
-      const wrong = localStorage.getItem(STORAGE_KEYS.WRONG_QUESTIONS);
-      return wrong ? JSON.parse(wrong) : [];
-    }
-    return [];
+  getWrongQuestions: async (eventId: string): Promise<number[]> => {
+    return dbGet<number[]>(`wrongQuestions/${eventId}`, []);
   },
 
-  addWrongQuestion: (eventId: string, questionId: number) => {
-    if (typeof window !== "undefined") {
-      const key = `${STORAGE_KEYS.WRONG_QUESTIONS}_${eventId}`;
-      const wrong = storage.getWrongQuestions(eventId);
-      if (!wrong.includes(questionId)) {
-        wrong.push(questionId);
-        localStorage.setItem(key, JSON.stringify(wrong));
-      }
+  addWrongQuestion: async (eventId: string, questionId: number) => {
+    const wrong = await storage.getWrongQuestions(eventId);
+    if (!wrong.includes(questionId)) {
+      wrong.push(questionId);
+      await dbSet(`wrongQuestions/${eventId}`, wrong);
     }
   },
 
-  removeWrongQuestion: (eventId: string, questionId: number) => {
-    if (typeof window !== "undefined") {
-      const key = `${STORAGE_KEYS.WRONG_QUESTIONS}_${eventId}`;
-      const wrong = storage.getWrongQuestions(eventId);
-      const filtered = wrong.filter((id) => id !== questionId);
-      localStorage.setItem(key, JSON.stringify(filtered));
+  removeWrongQuestion: async (eventId: string, questionId: number) => {
+    const wrong = await storage.getWrongQuestions(eventId);
+    await dbSet(`wrongQuestions/${eventId}`, wrong.filter((id) => id !== questionId));
+  },
+
+  getCompletedQuestions: async (eventId: string): Promise<number[]> => {
+    return dbGet<number[]>(`completedQuestions/${eventId}`, []);
+  },
+
+  addCompletedQuestion: async (eventId: string, questionId: number) => {
+    const completed = await storage.getCompletedQuestions(eventId);
+    if (!completed.includes(questionId)) {
+      completed.push(questionId);
+      await dbSet(`completedQuestions/${eventId}`, completed);
     }
   },
 
-  // Completed questions tracking (per event)
-  getCompletedQuestions: (eventId?: string): number[] => {
-    if (typeof window !== "undefined") {
-      if (eventId) {
-        const key = `${STORAGE_KEYS.COMPLETED_QUESTIONS}_${eventId}`;
-        const completed = localStorage.getItem(key);
-        return completed ? JSON.parse(completed) : [];
-      }
-      const completed = localStorage.getItem(STORAGE_KEYS.COMPLETED_QUESTIONS);
-      return completed ? JSON.parse(completed) : [];
-    }
-    return [];
+  getPracticedEvents: async (): Promise<string[]> => {
+    const sessions = await storage.getAllSessions();
+    return Array.from(new Set(sessions.map((session) => session.event)));
   },
 
-  addCompletedQuestion: (eventId: string, questionId: number) => {
-    if (typeof window !== "undefined") {
-      const key = `${STORAGE_KEYS.COMPLETED_QUESTIONS}_${eventId}`;
-      const completed = storage.getCompletedQuestions(eventId);
-      if (!completed.includes(questionId)) {
-        completed.push(questionId);
-        localStorage.setItem(key, JSON.stringify(completed));
-      }
-    }
-  },
-
-  // Get list of events that have been practiced
-  getPracticedEvents: (): string[] => {
-    if (typeof window !== "undefined") {
-      const sessions = storage.getAllSessions();
-      const events = new Set<string>();
-      sessions.forEach((session) => {
-        if (session.event) {
-          events.add(session.event);
-        }
-      });
-      return Array.from(events);
-    }
-    return [];
-  },
-
-  // Calculate stats for a specific event
-  calculateEventStats: (eventId: string): UserStats => {
-    const sessions = storage.getAllSessions();
+  calculateEventStats: async (eventId: string): Promise<UserStats> => {
+    const sessions = await storage.getAllSessions();
     const eventAttempts = sessions.flatMap((s) => s.attempts).filter((a) => a.eventId === eventId);
 
     const categoryStats: UserStats["categoryStats"] = {};
-
     for (const attempt of eventAttempts) {
       if (!categoryStats[attempt.category]) {
-        categoryStats[attempt.category] = {
-          attempts: 0,
-          correct: 0,
-          averageTime: 0,
-        };
+        categoryStats[attempt.category] = { attempts: 0, correct: 0, averageTime: 0 };
       }
-
       categoryStats[attempt.category].attempts++;
-      if (attempt.isCorrect) {
-        categoryStats[attempt.category].correct++;
-      }
+      if (attempt.isCorrect) categoryStats[attempt.category].correct++;
     }
 
-    // Calculate average times
     for (const category of Object.keys(categoryStats)) {
       const categoryAttempts = eventAttempts.filter((a) => a.category === category);
       const totalTime = categoryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
@@ -336,13 +295,10 @@ export const storage = {
     };
   },
 
-  // Reset all data
-  resetAllData: () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem(STORAGE_KEYS.SESSIONS);
-      localStorage.removeItem(STORAGE_KEYS.CURRENT_SESSION);
-      localStorage.removeItem(STORAGE_KEYS.WRONG_QUESTIONS);
-      localStorage.removeItem(STORAGE_KEYS.COMPLETED_QUESTIONS);
-    }
+  resetAllData: async () => {
+    await dbSet("sessions", {});
+    await dbSet("currentSession", null);
+    await dbSet("wrongQuestions", {});
+    await dbSet("completedQuestions", {});
   },
 };

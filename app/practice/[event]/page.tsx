@@ -156,7 +156,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
       const questions: Question[] = await res.json();
       setAllQuestions(questions);
       
-      const completedQuestions = storage.getCompletedQuestions(eventId);
+      const completedQuestions = await storage.getCompletedQuestions(eventId);
       
       const remainingQuestions = questions.filter(
         q => !completedQuestions.includes(q.id)
@@ -244,7 +244,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
       attempts: [...sessionData.attempts, attempt],
     };
     setSessionData(updatedSession);
-    storage.setCurrentSession(updatedSession);
+    void storage.setCurrentSession(updatedSession);
     explanationStartedAtRef.current = performance.now();
     explanationHiddenStartRef.current = null;
     explanationPausedMsRef.current = 0;
@@ -253,14 +253,14 @@ function PracticeContent({ eventId }: { eventId: string }) {
     
     if (isCorrect) {
       setCorrectCount(prev => prev + 1);
-      storage.addCompletedQuestion(eventId, currentQuestion.id);
+      void storage.addCompletedQuestion(eventId, currentQuestion.id);
       if (currentQueueItem.isRedemption) {
-        storage.removeWrongQuestion(eventId, currentQuestion.id);
+        void storage.removeWrongQuestion(eventId, currentQuestion.id);
       }
     } else {
       setIncorrectCount(prev => prev + 1);
       if (!currentQueueItem.isRedemption) {
-        storage.addWrongQuestion(eventId, currentQuestion.id);
+        void storage.addWrongQuestion(eventId, currentQuestion.id);
       }
       
       const remainingInQueue = questionQueue.length - currentQueueIndex - 1;
@@ -317,7 +317,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
       };
 
       setSessionData(updatedSession);
-      storage.setCurrentSession(updatedSession);
+      void storage.setCurrentSession(updatedSession);
     }
 
     explanationStartedAtRef.current = null;
@@ -340,7 +340,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
     thinkPausedMsRef.current = 0;
   };
 
-  const handleEndSession = () => {
+  const handleEndSession = async () => {
     if (sessionData) {
       const totalQuestions = sessionData.attempts.length;
       const correct = sessionData.attempts.filter((attempt) => attempt.isCorrect).length;
@@ -366,7 +366,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
         endTimestamp: new Date().toISOString(),
       };
 
-      storage.saveSession(finishedSession);
+      await storage.saveSession(finishedSession);
 
       setSessionSummary({
         totalQuestions,

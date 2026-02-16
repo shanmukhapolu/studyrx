@@ -14,6 +14,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 
 const navItems = [
@@ -56,21 +57,6 @@ export function AppSidebar() {
         </Link>
       </SidebarHeader>
       <SidebarContent className="p-4">
-        <div className="mb-4 rounded-lg border border-sidebar-border bg-sidebar-accent px-3 py-2">
-          <p className="text-xs text-sidebar-foreground/70">Hi {profile?.firstName || "Student"}</p>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="mt-1 h-7 px-2 text-xs"
-            onClick={() => {
-              signOut();
-              router.push("/auth/signin");
-            }}
-          >
-            Sign out
-          </Button>
-        </div>
-
         <SidebarMenu className="space-y-2">
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
@@ -89,6 +75,23 @@ export function AppSidebar() {
           ))}
         </SidebarMenu>
       </SidebarContent>
+      <SidebarFooter className="border-t border-sidebar-border p-4">
+        <div className="space-y-3">
+          <p className="text-sm font-medium text-sidebar-foreground truncate">
+            {[profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || profile?.firstName || "Student"}
+          </p>
+          <Button
+            size="sm"
+            className="w-full"
+            onClick={() => {
+              signOut();
+              router.push("/auth/signin");
+            }}
+          >
+            Sign out
+          </Button>
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }

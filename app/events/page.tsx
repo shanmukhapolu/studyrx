@@ -29,31 +29,35 @@ function EventsContent() {
   const [eventStats, setEventStats] = useState<Record<string, { attempted: number; accuracy: number }>>({});
 
   useEffect(() => {
-    const sessions = storage.getAllSessions();
-    const stats: Record<string, { correct: number; total: number }> = {};
+    const loadEventStats = async () => {
+      const sessions = await storage.getAllSessions();
+      const stats: Record<string, { correct: number; total: number }> = {};
 
-    sessions.forEach(session => {
-      session.attempts.forEach(attempt => {
-        const eventId = (attempt as any).eventId || "unknown";
-        if (!stats[eventId]) {
-          stats[eventId] = { correct: 0, total: 0 };
-        }
-        stats[eventId].total++;
-        if (attempt.isCorrect) {
-          stats[eventId].correct++;
-        }
+      sessions.forEach((session) => {
+        session.attempts.forEach((attempt) => {
+          const attemptEventId = attempt.eventId || session.event || "unknown";
+          if (!stats[attemptEventId]) {
+            stats[attemptEventId] = { correct: 0, total: 0 };
+          }
+          stats[attemptEventId].total++;
+          if (attempt.isCorrect) {
+            stats[attemptEventId].correct++;
+          }
+        });
       });
-    });
 
-    const formattedStats: Record<string, { attempted: number; accuracy: number }> = {};
-    Object.entries(stats).forEach(([eventId, data]) => {
-      formattedStats[eventId] = {
-        attempted: data.total,
-        accuracy: data.total > 0 ? (data.correct / data.total) * 100 : 0
-      };
-    });
+      const formattedStats: Record<string, { attempted: number; accuracy: number }> = {};
+      Object.entries(stats).forEach(([attemptEventId, data]) => {
+        formattedStats[attemptEventId] = {
+          attempted: data.total,
+          accuracy: data.total > 0 ? (data.correct / data.total) * 100 : 0,
+        };
+      });
 
-    setEventStats(formattedStats);
+      setEventStats(formattedStats);
+    };
+
+    loadEventStats();
   }, []);
 
   return (

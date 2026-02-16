@@ -1,4 +1,4 @@
-import { FIREBASE_API_KEY, FIREBASE_PROJECT_ID } from "@/lib/firebase-config";
+import { FIREBASE_API_KEY, FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
 
 export interface AuthUser {
   uid: string;
@@ -20,7 +20,7 @@ export interface UserProfile {
 
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE = "https://securetoken.googleapis.com/v1";
-const FIRESTORE_BASE = `https://firestore.googleapis.com/v1/projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents`;
+const RTDB_BASE = FIREBASE_DATABASE_URL;
 
 function toSession(data: any): AuthSession {
   return {
@@ -110,41 +110,34 @@ export async function refreshIdToken(refreshToken: string) {
   };
 }
 
-function profilePayload(profile: UserProfile) {
-  return {
-    fields: {
-      firstName: { stringValue: profile.firstName },
-      lastName: { stringValue: profile.lastName },
-      updatedAt: { timestampValue: new Date().toISOString() },
-    },
-  };
-}
-
 export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
-  await fetch(`${FIRESTORE_BASE}/users/${uid}?updateMask.fieldPaths=firstName&updateMask.fieldPaths=lastName&updateMask.fieldPaths=updatedAt`, {
-    method: "PATCH",
+  await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${idToken}`,
     },
-    body: JSON.stringify(profilePayload(profile)),
+    body: JSON.stringify({
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      updatedAt: new Date().toISOString(),
+    }),
   });
 }
 
 export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
-  const res = await fetch(`${FIRESTORE_BASE}/users/${uid}`, {
-    headers: {
-      Authorization: `Bearer ${idToken}`,
-    },
-  });
+  const res = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`);
 
   if (!res.ok) {
     return null;
   }
 
   const data = await res.json();
+  if (!data) {
+    return null;
+  }
+
   return {
-    firstName: data?.fields?.firstName?.stringValue || "",
-    lastName: data?.fields?.lastName?.stringValue || "",
+    firstName: data.firstName || "",
+    lastName: data.lastName || "",
   };
 }

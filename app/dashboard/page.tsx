@@ -14,11 +14,14 @@ import { useAuth } from "@/components/auth/auth-provider";
 export default function DashboardPage() {
   const { profile } = useAuth();
   const [stats, setStats] = useState<UserStats | null>(null);
+  const [totalSessions, setTotalSessions] = useState(0);
 
   useEffect(() => {
-    const loadStats = () => {
-      const calculatedStats = storage.calculateStats();
+    const loadStats = async () => {
+      const calculatedStats = await storage.calculateStats();
       setStats(calculatedStats);
+      const sessions = await storage.getAllSessions();
+      setTotalSessions(sessions.length);
     };
 
     loadStats();
@@ -126,7 +129,7 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent>
                     <div className="text-3xl font-bold text-foreground">
-                      {storage.getAllSessions().length}
+                      {totalSessions}
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">
                       Completed practice sessions

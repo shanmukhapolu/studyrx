@@ -31,7 +31,12 @@ function AnalyticsContent() {
   const [selectedSession, setSelectedSession] = useState<SessionData | null>(null);
 
   useEffect(() => {
-    setSessions(storage.getAllSessions());
+    const loadSessions = async () => {
+      const loadedSessions = await storage.getAllSessions();
+      setSessions(loadedSessions);
+    };
+
+    loadSessions();
   }, []);
 
   const practicedEvents = useMemo(() => {
