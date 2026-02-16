@@ -113,24 +113,6 @@ export async function refreshIdToken(refreshToken: string) {
 export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
   const fullName = `${profile.firstName} ${profile.lastName}`.trim();
 
-  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}/profile.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      firstName: profile.firstName,
-      lastName: profile.lastName,
-      updatedAt: new Date().toISOString(),
-    }),
-  });
-
-  if (!profileRes.ok) {
-    // Some stricter rulesets may not allow this optional profile object path.
-    // We still persist the required display name string at /name below.
-    console.warn("Profile object write blocked by rules; continuing with /name fallback.");
-  }
-
   const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`, {
     method: "PUT",
     headers: {
@@ -146,17 +128,6 @@ export async function saveUserProfile(idToken: string, uid: string, profile: Use
 }
 
 export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
-  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}/profile.json?auth=${encodeURIComponent(idToken)}`);
-  if (profileRes.ok) {
-    const profileData = await profileRes.json();
-    if (profileData && (profileData.firstName || profileData.lastName)) {
-      return {
-        firstName: profileData.firstName || "",
-        lastName: profileData.lastName || "",
-      };
-    }
-  }
-
   const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`);
   if (!nameRes.ok) {
     return null;
@@ -175,6 +146,7 @@ export async function getUserProfile(idToken: string, uid: string): Promise<User
     };
   }
 
+  // Legacy compatibility in case older data used object shape.
   return {
     firstName: nameData.firstName || "",
     lastName: nameData.lastName || "",
