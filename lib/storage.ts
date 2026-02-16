@@ -1,4 +1,5 @@
 import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { refreshIdToken } from "@/lib/firebase-auth-rest";
 
 export interface Question {
   id: number;
@@ -68,19 +69,94 @@ function createDeterministicSessionId() {
   return `session_${now}_${seed}`;
 }
 
-function getStoredAuth() {
-  if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem("studyrx_auth_session");
-  if (!raw) return null;
+type StoredAuthSession = {
+  idToken: string;
+  refreshToken: string;
+  expiresIn: number;
+  expiresAt?: number;
+  user: {
+    uid: string;
+    email?: string;
+    displayName?: string;
+  };
+};
+
+function decodeJwtPayload(token: string): Record<string, unknown> | null {
   try {
-    return JSON.parse(raw) as { user: { uid: string }; idToken: string };
+    const payload = token.split(".")[1];
+    if (!payload) return null;
+    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const padded = normalized + "=".repeat((4 - (normalized.length % 4)) % 4);
+    const json = atob(padded);
+    return JSON.parse(json) as Record<string, unknown>;
   } catch {
     return null;
   }
 }
 
-function getUserPath(path: string) {
-  const auth = getStoredAuth();
+function readStoredAuth(): StoredAuthSession | null {
+  if (typeof window === "undefined") return null;
+  const raw = localStorage.getItem("studyrx_auth_session");
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as StoredAuthSession;
+  } catch {
+    return null;
+  }
+}
+
+function resolveUidFromToken(idToken: string): string {
+  const payload = decodeJwtPayload(idToken);
+  const uid = (payload?.user_id || payload?.sub) as string | undefined;
+  return typeof uid === "string" ? uid : "";
+}
+
+async function getStoredAuth(): Promise<StoredAuthSession | null> {
+  const session = readStoredAuth();
+  if (!session) return null;
+
+  let current = session;
+
+  if ((!current.user?.uid || current.user.uid.length === 0) && current.idToken) {
+    const decodedUid = resolveUidFromToken(current.idToken);
+    if (decodedUid) {
+      current = {
+        ...current,
+        user: {
+          ...current.user,
+          uid: decodedUid,
+        },
+      };
+      localStorage.setItem("studyrx_auth_session", JSON.stringify(current));
+    }
+  }
+
+  const expiresAt = current.expiresAt ?? 0;
+  if (current.refreshToken && expiresAt > 0 && expiresAt <= Date.now() + 30_000) {
+    try {
+      const refreshed = await refreshIdToken(current.refreshToken);
+      current = {
+        ...current,
+        idToken: refreshed.idToken,
+        refreshToken: refreshed.refreshToken,
+        expiresIn: refreshed.expiresIn,
+        expiresAt: Date.now() + refreshed.expiresIn * 1000,
+        user: {
+          ...current.user,
+          uid: refreshed.uid || current.user.uid,
+        },
+      };
+      localStorage.setItem("studyrx_auth_session", JSON.stringify(current));
+    } catch {
+      return current;
+    }
+  }
+
+  return current;
+}
+
+async function getUserPath(path: string) {
+  const auth = await getStoredAuth();
   if (!auth?.user?.uid || !auth?.idToken) {
     throw new Error("Not authenticated");
   }
@@ -94,7 +170,7 @@ function getUserPath(path: string) {
 async function dbGet<T>(path: string, fallback: T): Promise<T> {
   if (typeof window === "undefined") return fallback;
   try {
-    const { url } = getUserPath(path);
+    const { url } = await getUserPath(path);
     const res = await fetch(url);
     if (!res.ok) return fallback;
     const data = await res.json();
@@ -106,7 +182,7 @@ async function dbGet<T>(path: string, fallback: T): Promise<T> {
 
 async function dbSet(path: string, value: unknown) {
   if (typeof window === "undefined") return;
-  const { url } = getUserPath(path);
+  const { url } = await getUserPath(path);
   const res = await fetch(url, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
