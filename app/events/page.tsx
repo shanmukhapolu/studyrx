@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage } from "@/lib/storage";
 import { HOSA_EVENTS } from "@/lib/events";
 import { Play, TrendingUp } from "lucide-react";
@@ -14,10 +15,12 @@ import { Play, TrendingUp } from "lucide-react";
 export default function EventsPage() {
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <EventsContent />
-      </SidebarInset>
+      <AuthGuard>
+        <AppSidebar />
+        <SidebarInset>
+          <EventsContent />
+        </SidebarInset>
+      </AuthGuard>
     </SidebarProvider>
   );
 }
@@ -36,7 +39,7 @@ function EventsContent() {
           stats[eventId] = { correct: 0, total: 0 };
         }
         stats[eventId].total++;
-        if (attempt.correct) {
+        if (attempt.isCorrect) {
           stats[eventId].correct++;
         }
       });

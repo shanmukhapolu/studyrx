@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, use } from "react";
+import { useState, useEffect, useMemo, use, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage, type Question, type SessionData } from "@/lib/storage";
+import { formatDuration } from "@/lib/session-analytics";
 import { getEventById, getEventName } from "@/lib/events";
 import { 
   Brain, 
@@ -46,10 +48,12 @@ export default function PracticePage({ params }: { params: Promise<{ event: stri
   
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <PracticeContent eventId={resolvedParams.event} />
-      </SidebarInset>
+      <AuthGuard>
+        <AppSidebar />
+        <SidebarInset>
+          <PracticeContent eventId={resolvedParams.event} />
+        </SidebarInset>
+      </AuthGuard>
     </SidebarProvider>
   );
 }
@@ -63,7 +67,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
-  const [startTime, setStartTime] = useState<number>(Date.now());
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [totalAnswered, setTotalAnswered] = useState(0);
@@ -71,6 +74,67 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [loadError, setLoadError] = useState(false);
+  const [liveThinkDisplay, setLiveThinkDisplay] = useState(0);
+  const [sessionSummary, setSessionSummary] = useState<{
+    totalQuestions: number;
+    correct: number;
+    incorrect: number;
+    highestStreak: number;
+    sessionTime: number;
+  } | null>(null);
+
+  const questionShownAtRef = useRef<number>(performance.now());
+  const thinkHiddenStartRef = useRef<number | null>(null);
+  const thinkPausedMsRef = useRef(0);
+  const explanationStartedAtRef = useRef<number | null>(null);
+  const explanationHiddenStartRef = useRef<number | null>(null);
+  const explanationPausedMsRef = useRef(0);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        if (!isAnswered && thinkHiddenStartRef.current === null) {
+          thinkHiddenStartRef.current = performance.now();
+        }
+        if (isAnswered && explanationStartedAtRef.current && explanationHiddenStartRef.current === null) {
+          explanationHiddenStartRef.current = performance.now();
+        }
+      } else {
+        if (!isAnswered && thinkHiddenStartRef.current !== null) {
+          thinkPausedMsRef.current += performance.now() - thinkHiddenStartRef.current;
+          thinkHiddenStartRef.current = null;
+        }
+        if (isAnswered && explanationHiddenStartRef.current !== null) {
+          explanationPausedMsRef.current += performance.now() - explanationHiddenStartRef.current;
+          explanationHiddenStartRef.current = null;
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [hasStarted, isAnswered]);
+
+  useEffect(() => {
+    if (!hasStarted || isAnswered) {
+      setLiveThinkDisplay(0);
+      return;
+    }
+
+    const tick = () => {
+      const hiddenOffset =
+        thinkPausedMsRef.current +
+        (thinkHiddenStartRef.current ? performance.now() - thinkHiddenStartRef.current : 0);
+      const elapsed = Math.max(0, (performance.now() - questionShownAtRef.current - hiddenOffset) / 1000);
+      setLiveThinkDisplay(Math.round(elapsed * 10) / 10);
+    };
+
+    tick();
+    const interval = window.setInterval(tick, 100);
+    return () => window.clearInterval(interval);
+  }, [hasStarted, isAnswered, currentQueueIndex]);
 
   const event = getEventById(eventId);
   const eventName = getEventName(eventId);
@@ -128,14 +192,14 @@ function PracticeContent({ eventId }: { eventId: string }) {
   }, [currentQueueItem]);
 
   const startPractice = () => {
-    const newSession: SessionData = {
-      sessionId: `session_${Date.now()}`,
-      attempts: [],
-      startTime: new Date().toISOString(),
-      eventId,
-    };
+    const newSession: SessionData = storage.createSession(eventId, "practice");
     setSessionData(newSession);
-    setStartTime(Date.now());
+    questionShownAtRef.current = performance.now();
+    thinkHiddenStartRef.current = null;
+    thinkPausedMsRef.current = 0;
+    explanationStartedAtRef.current = null;
+    explanationHiddenStartRef.current = null;
+    explanationPausedMsRef.current = 0;
     setHasStarted(true);
   };
 
@@ -148,15 +212,29 @@ function PracticeContent({ eventId }: { eventId: string }) {
     if (!selectedAnswer || !sessionData || !currentQuestion || !currentQueueItem) return;
 
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+    if (thinkHiddenStartRef.current !== null) {
+      thinkPausedMsRef.current += performance.now() - thinkHiddenStartRef.current;
+      thinkHiddenStartRef.current = null;
+    }
+    const submitTime = performance.now();
+    const thinkTime = Math.max(
+      0,
+      Math.round(((submitTime - questionShownAtRef.current - thinkPausedMsRef.current) / 1000) * 10) / 10
+    );
+    const nowIso = new Date().toISOString();
+    const timestampStart = new Date(Date.now() - (submitTime - questionShownAtRef.current)).toISOString();
+    const timestampSubmit = nowIso;
 
     const attempt = {
       questionId: currentQuestion.id,
+      questionIndex: sessionData.attempts.length + 1,
       category: currentQuestion.category,
       difficulty: currentQuestion.difficulty,
-      correct: isCorrect,
-      timeSpent,
-      timestamp: new Date().toISOString(),
+      isCorrect,
+      thinkTime,
+      explanationTime: 0,
+      timestampStart,
+      timestampSubmit,
       isRedemption: currentQueueItem.isRedemption,
       eventId,
     };
@@ -167,6 +245,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
     };
     setSessionData(updatedSession);
     storage.setCurrentSession(updatedSession);
+    explanationStartedAtRef.current = performance.now();
+    explanationHiddenStartRef.current = null;
+    explanationPausedMsRef.current = 0;
 
     setTotalAnswered(prev => prev + 1);
     
@@ -202,6 +283,47 @@ function PracticeContent({ eventId }: { eventId: string }) {
   };
 
   const handleNextQuestion = () => {
+    if (!sessionData || !currentQuestion) return;
+
+    if (explanationStartedAtRef.current !== null) {
+      if (explanationHiddenStartRef.current !== null) {
+        explanationPausedMsRef.current += performance.now() - explanationHiddenStartRef.current;
+        explanationHiddenStartRef.current = null;
+      }
+
+      const explanationTime = Math.max(
+        0,
+        Math.round(((performance.now() - explanationStartedAtRef.current - explanationPausedMsRef.current) / 1000) * 10) / 10
+      );
+
+      const attemptsWithExplanation = sessionData.attempts.map((attempt, index, arr) => {
+        if (index !== arr.length - 1) return attempt;
+        return {
+          ...attempt,
+          explanationTime,
+        };
+      });
+
+      const totalQuestions = attemptsWithExplanation.length;
+      const sessionCorrectCount = attemptsWithExplanation.filter((a) => a.isCorrect).length;
+      const updatedSession = {
+        ...sessionData,
+        attempts: attemptsWithExplanation,
+        totalQuestions,
+        correctCount: sessionCorrectCount,
+        totalThinkTime: attemptsWithExplanation.reduce((sum, a) => sum + a.thinkTime, 0),
+        totalExplanationTime: attemptsWithExplanation.reduce((sum, a) => sum + a.explanationTime, 0),
+        accuracy: totalQuestions > 0 ? (sessionCorrectCount / totalQuestions) * 100 : 0,
+      };
+
+      setSessionData(updatedSession);
+      storage.setCurrentSession(updatedSession);
+    }
+
+    explanationStartedAtRef.current = null;
+    explanationHiddenStartRef.current = null;
+    explanationPausedMsRef.current = 0;
+
     const nextIndex = currentQueueIndex + 1;
     
     if (nextIndex >= questionQueue.length) {
@@ -213,17 +335,49 @@ function PracticeContent({ eventId }: { eventId: string }) {
     setCurrentQueueIndex(nextIndex);
     setSelectedAnswer(null);
     setIsAnswered(false);
-    setStartTime(Date.now());
+    questionShownAtRef.current = performance.now();
+    thinkHiddenStartRef.current = null;
+    thinkPausedMsRef.current = 0;
   };
 
   const handleEndSession = () => {
     if (sessionData) {
+      const totalQuestions = sessionData.attempts.length;
+      const correct = sessionData.attempts.filter((attempt) => attempt.isCorrect).length;
+      const highestStreak = sessionData.attempts.reduce(
+        (acc, attempt) => {
+          if (attempt.isCorrect) {
+            const current = acc.current + 1;
+            return {
+              current,
+              max: Math.max(acc.max, current),
+            };
+          }
+          return {
+            current: 0,
+            max: acc.max,
+          };
+        },
+        { current: 0, max: 0 }
+      ).max;
+
       const finishedSession = {
         ...sessionData,
-        endTime: new Date().toISOString(),
+        endTimestamp: new Date().toISOString(),
       };
+
       storage.saveSession(finishedSession);
+
+      setSessionSummary({
+        totalQuestions,
+        correct,
+        incorrect: totalQuestions - correct,
+        highestStreak,
+        sessionTime: finishedSession.totalThinkTime + finishedSession.totalExplanationTime,
+      });
+      return;
     }
+
     router.push("/events");
   };
 
@@ -406,7 +560,46 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
   return (
     <div className="flex-1 overflow-auto">
-      <div className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
+      {sessionSummary && (
+        <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <Card className="max-w-2xl w-full glass-card tech-border">
+            <CardHeader>
+              <CardTitle className="text-3xl">Session Stats</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid gap-3 md:grid-cols-2">
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Total questions answered</div>
+                  <div className="text-2xl font-bold">{sessionSummary.totalQuestions}</div>
+                </div>
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Correct questions</div>
+                  <div className="text-2xl font-bold text-accent">{sessionSummary.correct}</div>
+                </div>
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Incorrect questions</div>
+                  <div className="text-2xl font-bold text-destructive">{sessionSummary.incorrect}</div>
+                </div>
+                <div className="rounded-lg border p-4">
+                  <div className="text-xs text-muted-foreground">Highest streak</div>
+                  <div className="text-2xl font-bold">{sessionSummary.highestStreak}</div>
+                </div>
+                <div className="rounded-lg border p-4 md:col-span-2">
+                  <div className="text-xs text-muted-foreground">Session time</div>
+                  <div className="text-2xl font-bold">{formatDuration(sessionSummary.sessionTime)}</div>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <Button className="flex-1" onClick={() => router.push("/events")}>Back to Events</Button>
+                <Button variant="outline" className="flex-1 bg-transparent" onClick={handleRestart}>Practice Again</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      <div className="border-b border-border/60 bg-card/70 backdrop-blur-xl sticky top-0 z-10">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -427,6 +620,11 @@ function PracticeContent({ eventId }: { eventId: string }) {
               </div>
             </div>
             <div className="flex items-center gap-8">
+              <div className="hidden md:flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5">
+                <Brain className="h-4 w-4 text-primary" />
+                <span className="text-xs text-muted-foreground">Think</span>
+                <span className="font-mono text-sm font-bold text-primary">{liveThinkDisplay.toFixed(1)}s</span>
+              </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-accent" />
                 <span className="text-lg font-mono font-bold">{correctCount}</span>
@@ -446,8 +644,16 @@ function PracticeContent({ eventId }: { eventId: string }) {
       </div>
 
       <div className="container mx-auto px-6 py-12 max-w-4xl">
-        <Card className="border-primary/20 shadow-xl bg-card/50 backdrop-blur-sm">
+        <Card className="glass-card tech-border shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.accent/20),transparent_40%)] pointer-events-none" />
           <CardHeader>
+            <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
+                style={{ width: `${((currentQueueIndex + 1) / questionQueue.length) * 100}%` }}
+              />
+            </div>
+            <div className="text-xs text-muted-foreground font-mono mb-2">Question {currentQueueIndex + 1} / {questionQueue.length}</div>
             <div className="flex items-center gap-3 mb-4 flex-wrap">
               {currentQueueItem.isRedemption && (
                 <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 border border-accent/30 px-5 py-2 text-sm font-bold">
@@ -491,7 +697,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 const isCorrect = option === currentQuestion.correctAnswer;
                 const showResult = isAnswered;
 
-                let buttonClasses = "w-full justify-start text-left h-auto py-4 px-6 text-base font-medium transition-all bg-transparent hover:bg-primary/5";
+                let buttonClasses = "w-full justify-start text-left h-auto py-4 px-6 text-base font-medium transition-all bg-background/70 hover:bg-primary/10 hover:-translate-y-0.5";
                 
                 if (showResult) {
                   if (isCorrect) {

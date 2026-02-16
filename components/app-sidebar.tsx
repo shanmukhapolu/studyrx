@@ -3,7 +3,10 @@
 import Image from "next/image";
 import { Home, Layers, BarChart3 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
+import { useAuth } from "@/components/auth/auth-provider";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -33,26 +36,41 @@ const navItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { profile, signOut } = useAuth();
 
   return (
     <Sidebar>
       <SidebarHeader className="border-b border-sidebar-border p-6">
         <Link href="/dashboard" className="flex items-center gap-4">
-          <Image 
-            src="/logo.png" 
-            alt="StudyRx Logo" 
-            width={40} 
+          <Image
+            src="/logo.png"
+            alt="StudyRx Logo"
+            width={40}
             height={40}
             className="h-10 w-10"
           />
           <div className="flex flex-col">
-            <span className="text-xl font-bold text-sidebar-foreground">
-              StudyRx
-            </span>
+            <span className="text-xl font-bold text-sidebar-foreground">StudyRx</span>
           </div>
         </Link>
       </SidebarHeader>
       <SidebarContent className="p-4">
+        <div className="mb-4 rounded-lg border border-sidebar-border bg-sidebar-accent px-3 py-2">
+          <p className="text-xs text-sidebar-foreground/70">Hi {profile?.firstName || "Student"}</p>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="mt-1 h-7 px-2 text-xs"
+            onClick={() => {
+              signOut();
+              router.push("/auth/signin");
+            }}
+          >
+            Sign out
+          </Button>
+        </div>
+
         <SidebarMenu className="space-y-2">
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>

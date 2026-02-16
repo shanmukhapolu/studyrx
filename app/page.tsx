@@ -77,7 +77,7 @@ export default function HomePage() {
             
             <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-300">
               <Button asChild size="lg" className="h-14 px-8 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                <Link href="/dashboard">
+                <Link href="/auth/signup">
                   Start Practicing
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
