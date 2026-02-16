@@ -128,7 +128,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = await signUpWithEmail(email, password);
         session = await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim());
-        await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
+
+        try {
+          await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
+        } catch (error) {
+          console.warn("Profile write skipped during signup; continuing with Auth displayName fallback.", error);
+        }
+
         saveSession(session);
         setUser(session.user);
         setProfile({ firstName, lastName });
@@ -138,7 +144,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" };
 
         if (parsedProfile.firstName || parsedProfile.lastName) {
-          await saveUserProfile(session.idToken, session.user.uid, parsedProfile);
+          try {
+            await saveUserProfile(session.idToken, session.user.uid, parsedProfile);
+          } catch (error) {
+            console.warn("Profile write skipped during Google sign-in; continuing with Auth displayName fallback.", error);
+          }
         }
 
         saveSession(session);
