@@ -125,12 +125,39 @@ type EventRecord = {
   completedQuestions?: number[];
 };
 
+type PersistedSessionRecord = Omit<SessionData, "attempts"> & {
+  attempts: string;
+};
+
+
 function normalizeEventSessions(events: Record<string, EventRecord> | null | undefined): SessionData[] {
   if (!events) return [];
 
   return Object.entries(events).flatMap(([eventId, eventData]) => {
     const sessions = eventData?.sessions ?? {};
-    return Object.values(sessions).map((session) => normalizeSession({ ...session, event: session.event ?? eventId }));
+    return Object.values(sessions).map((rawSession) => {
+      const sessionWithAttempts = { ...rawSession } as Partial<SessionData> & { attempts?: string | QuestionAttempt[] };
+      let parsedAttempts: QuestionAttempt[] = [];
+
+      if (typeof sessionWithAttempts.attempts === "string") {
+        try {
+          const parsed = JSON.parse(sessionWithAttempts.attempts);
+          if (Array.isArray(parsed)) {
+            parsedAttempts = parsed as QuestionAttempt[];
+          }
+        } catch {
+          parsedAttempts = [];
+        }
+      } else if (Array.isArray(sessionWithAttempts.attempts)) {
+        parsedAttempts = sessionWithAttempts.attempts;
+      }
+
+      return normalizeSession({
+        ...sessionWithAttempts,
+        event: sessionWithAttempts.event ?? eventId,
+        attempts: parsedAttempts,
+      });
+    });
   });
 }
 
@@ -204,7 +231,13 @@ export const storage = {
 
   saveSession: async (session: SessionData) => {
     const immutableSession = normalizeSession({ ...session, endTimestamp: session.endTimestamp ?? new Date().toISOString() });
-    await dbSet(`events/${immutableSession.event}/sessions/${immutableSession.sessionId}`, immutableSession);
+
+    const persistedSession: PersistedSessionRecord = {
+      ...immutableSession,
+      attempts: JSON.stringify(immutableSession.attempts),
+    };
+
+    await dbSet(`events/${immutableSession.event}/sessions/${immutableSession.sessionId}`, persistedSession);
 
     try {
       await dbSet("currentSession", null);
