@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -13,6 +13,14 @@ import { Input } from "@/components/ui/input";
 const PASSWORD_RULE = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{6,}$/;
 
 export default function SignUpPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center p-4 text-muted-foreground">Loading sign up...</div>}>
+      <SignUpContent />
+    </Suspense>
+  );
+}
+
+function SignUpContent() {
   const { signUp, signInWithGoogleCredential, user } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
