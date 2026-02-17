@@ -169,7 +169,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
         } catch (error) {
-          console.warn("Profile write skipped during signup; continuing with Auth displayName fallback.", error);
+          console.warn("Profile write skipped during signup; attempting fresh sign-in token.", error);
+          try {
+            session = ensureSessionUid(await signInWithEmail(email, password));
+            await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
+          } catch (recoveryError) {
+            console.warn("Signup recovery profile write also failed; continuing with Auth displayName fallback.", recoveryError);
+          }
         }
 
         saveSession(session);
