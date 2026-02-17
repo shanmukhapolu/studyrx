@@ -698,6 +698,13 @@ function PracticeContent({ eventId }: { eventId: string }) {
         <Card className="glass-card tech-border shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.accent/20),transparent_40%)] pointer-events-none" />
           <CardHeader>
+            <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
+                style={{ width: `${((currentQueueIndex + 1) / questionQueue.length) * 100}%` }}
+              />
+            </div>
+            <div className="text-xs text-muted-foreground font-mono mb-2">Question {currentQueueIndex + 1} / {questionQueue.length}</div>
             <div className="flex items-center gap-3 mb-4 flex-wrap">
               {currentQueueItem.isRedemption && (
                 <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 border border-accent/30 px-5 py-2 text-sm font-bold">
