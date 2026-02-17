@@ -132,7 +132,8 @@ async function getStoredAuth(options?: { forceRefresh?: boolean }): Promise<Stor
   }
 
   const expiresAt = current.expiresAt ?? 0;
-  const shouldRefresh = Boolean(current.refreshToken) && (options?.forceRefresh || (expiresAt > 0 && expiresAt <= Date.now() + 30_000));
+  const missingUid = !current.user?.uid || current.user.uid.length === 0;
+  const shouldRefresh = Boolean(current.refreshToken) && (missingUid || options?.forceRefresh || (expiresAt > 0 && expiresAt <= Date.now() + 30_000));
   if (shouldRefresh) {
     try {
       const refreshed = await refreshIdToken(current.refreshToken);
@@ -410,16 +411,24 @@ export const storage = {
   },
 
   addWrongQuestion: async (eventId: string, questionId: number) => {
-    const wrong = await storage.getWrongQuestions(eventId);
-    if (!wrong.includes(questionId)) {
-      wrong.push(questionId);
-      await dbSet(`events/${eventId}/wrongQuestions`, wrong);
+    try {
+      const wrong = await storage.getWrongQuestions(eventId);
+      if (!wrong.includes(questionId)) {
+        wrong.push(questionId);
+        await dbSet(`events/${eventId}/wrongQuestions`, wrong);
+      }
+    } catch (error) {
+      console.warn("Unable to persist wrong question", error);
     }
   },
 
   removeWrongQuestion: async (eventId: string, questionId: number) => {
-    const wrong = await storage.getWrongQuestions(eventId);
-    await dbSet(`events/${eventId}/wrongQuestions`, wrong.filter((id) => id !== questionId));
+    try {
+      const wrong = await storage.getWrongQuestions(eventId);
+      await dbSet(`events/${eventId}/wrongQuestions`, wrong.filter((id) => id !== questionId));
+    } catch (error) {
+      console.warn("Unable to remove wrong question", error);
+    }
   },
 
   getCompletedQuestions: async (eventId: string): Promise<number[]> => {
@@ -428,10 +437,14 @@ export const storage = {
   },
 
   addCompletedQuestion: async (eventId: string, questionId: number) => {
-    const completed = await storage.getCompletedQuestions(eventId);
-    if (!completed.includes(questionId)) {
-      completed.push(questionId);
-      await dbSet(`events/${eventId}/completedQuestions`, completed);
+    try {
+      const completed = await storage.getCompletedQuestions(eventId);
+      if (!completed.includes(questionId)) {
+        completed.push(questionId);
+        await dbSet(`events/${eventId}/completedQuestions`, completed);
+      }
+    } catch (error) {
+      console.warn("Unable to persist completed question", error);
     }
   },
 

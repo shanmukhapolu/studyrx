@@ -1,7 +1,6 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import { AuthProvider } from '@/components/auth/auth-provider'
 import './globals.css'
 
@@ -27,7 +26,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans antialiased`}>
         <AuthProvider>{children}</AuthProvider>
-        <Analytics />
       </body>
     </html>
   )

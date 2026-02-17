@@ -30,11 +30,12 @@ const STORAGE_KEY = "studyrx_auth_session";
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 function saveSession(session: AuthSession) {
-  const expiresAt = Date.now() + session.expiresIn * 1000;
+  const normalized = ensureSessionUid(session);
+  const expiresAt = Date.now() + normalized.expiresIn * 1000;
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify({
-      ...session,
+      ...normalized,
       expiresAt,
     })
   );
@@ -51,6 +52,38 @@ function readSession(): (AuthSession & { expiresAt: number }) | null {
   }
 }
 
+
+
+function decodeJwtPayload(token: string): Record<string, unknown> | null {
+  try {
+    const payload = token.split(".")[1];
+    if (!payload) return null;
+    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const padded = normalized + "=".repeat((4 - (normalized.length % 4)) % 4);
+    const json = atob(padded);
+    return JSON.parse(json) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+function ensureSessionUid<T extends AuthSession>(session: T): T {
+  if (session.user.uid) return session;
+
+  const payload = decodeJwtPayload(session.idToken);
+  const uid = (payload?.user_id || payload?.sub) as string | undefined;
+  if (!uid) {
+    throw new Error("Authentication session missing user ID. Please sign in again.");
+  }
+
+  return {
+    ...session,
+    user: {
+      ...session.user,
+      uid,
+    },
+  };
+}
 
 function profileFromDisplayName(displayName?: string | null): UserProfile | null {
   const normalized = (displayName || "").trim();
@@ -95,6 +128,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
         }
 
+        session = ensureSessionUid(session as AuthSession) as typeof session;
+
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         if (!mounted) return;
 
@@ -119,15 +154,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       profile,
       loading,
       signIn: async (email, password) => {
-        const session = await signInWithEmail(email, password);
+        let session = ensureSessionUid(await signInWithEmail(email, password));
         saveSession(session);
+        session = ensureSessionUid(session as AuthSession) as typeof session;
+
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
       },
       signUp: async ({ firstName, lastName, email, password }) => {
-        let session = await signUpWithEmail(email, password);
-        session = await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim(), session.user.uid);
+        let session = ensureSessionUid(await signUpWithEmail(email, password));
+        session = ensureSessionUid(await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim(), session.user.uid));
 
         try {
           await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
@@ -140,7 +177,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setProfile({ firstName, lastName });
       },
       signInWithGoogleCredential: async (credential) => {
-        const session = await signInWithGoogleIdToken(credential);
+        let session = ensureSessionUid(await signInWithGoogleIdToken(credential));
         const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" };
 
         if (parsedProfile.firstName || parsedProfile.lastName) {
@@ -152,6 +189,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
 
         saveSession(session);
+        session = ensureSessionUid(session as AuthSession) as typeof session;
+
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || parsedProfile);
