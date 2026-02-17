@@ -111,7 +111,7 @@ function resolveUidFromToken(idToken: string): string {
   return typeof uid === "string" ? uid : "";
 }
 
-async function getStoredAuth(): Promise<StoredAuthSession | null> {
+async function getStoredAuth(options?: { forceRefresh?: boolean }): Promise<StoredAuthSession | null> {
   const session = readStoredAuth();
   if (!session) return null;
 
@@ -132,7 +132,8 @@ async function getStoredAuth(): Promise<StoredAuthSession | null> {
   }
 
   const expiresAt = current.expiresAt ?? 0;
-  if (current.refreshToken && expiresAt > 0 && expiresAt <= Date.now() + 30_000) {
+  const shouldRefresh = Boolean(current.refreshToken) && (options?.forceRefresh || (expiresAt > 0 && expiresAt <= Date.now() + 30_000));
+  if (shouldRefresh) {
     try {
       const refreshed = await refreshIdToken(current.refreshToken);
       current = {
@@ -143,7 +144,7 @@ async function getStoredAuth(): Promise<StoredAuthSession | null> {
         expiresAt: Date.now() + refreshed.expiresIn * 1000,
         user: {
           ...current.user,
-          uid: refreshed.uid || current.user.uid,
+          uid: refreshed.uid || current.user.uid || resolveUidFromToken(refreshed.idToken),
         },
       };
       localStorage.setItem("studyrx_auth_session", JSON.stringify(current));
@@ -155,8 +156,8 @@ async function getStoredAuth(): Promise<StoredAuthSession | null> {
   return current;
 }
 
-async function getUserPath(path: string) {
-  const auth = await getStoredAuth();
+async function getUserPath(path: string, options?: { forceRefresh?: boolean }) {
+  const auth = await getStoredAuth(options);
   if (!auth?.user?.uid || !auth?.idToken) {
     throw new Error("Not authenticated");
   }
@@ -164,14 +165,29 @@ async function getUserPath(path: string) {
   return {
     url: `${FIREBASE_DATABASE_URL}/users/${auth.user.uid}/${path}.json?auth=${encodeURIComponent(auth.idToken)}`,
     uid: auth.user.uid,
+    idToken: auth.idToken,
   };
 }
 
 async function dbGet<T>(path: string, fallback: T): Promise<T> {
   if (typeof window === "undefined") return fallback;
   try {
-    const { url } = await getUserPath(path);
-    const res = await fetch(url);
+    const primary = await getUserPath(path);
+    let res = await fetch(primary.url, {
+      headers: {
+        Authorization: `Bearer ${primary.idToken}`,
+      },
+    });
+
+    if ((res.status === 401 || res.status === 403)) {
+      const retry = await getUserPath(path, { forceRefresh: true });
+      res = await fetch(retry.url, {
+        headers: {
+          Authorization: `Bearer ${retry.idToken}`,
+        },
+      });
+    }
+
     if (!res.ok) return fallback;
     const data = await res.json();
     return (data ?? fallback) as T;
@@ -182,12 +198,27 @@ async function dbGet<T>(path: string, fallback: T): Promise<T> {
 
 async function dbSet(path: string, value: unknown) {
   if (typeof window === "undefined") return;
-  const { url } = await getUserPath(path);
-  const res = await fetch(url, {
+  let request = await getUserPath(path);
+  let res = await fetch(request.url, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${request.idToken}`,
+    },
     body: JSON.stringify(value),
   });
+
+  if (res.status === 401 || res.status === 403) {
+    request = await getUserPath(path, { forceRefresh: true });
+    res = await fetch(request.url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${request.idToken}`,
+      },
+      body: JSON.stringify(value),
+    });
+  }
 
   if (!res.ok) {
     const text = await res.text().catch(() => "");
