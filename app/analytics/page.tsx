@@ -4,6 +4,7 @@ import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { Activity, Flame, Medal, Orbit, Sparkles, Target, Timer } from "lucide-react";
 
 import { AppSidebar } from "@/components/app-sidebar";
+import { AuthGuard } from "@/components/auth/auth-guard";
 import { QuestionTimelineChart } from "@/components/question-timeline-chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
@@ -15,10 +16,12 @@ import { storage, type QuestionAttempt, type SessionData } from "@/lib/storage";
 export default function AnalyticsPage() {
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <AnalyticsContent />
-      </SidebarInset>
+      <AuthGuard>
+        <AppSidebar />
+        <SidebarInset>
+          <AnalyticsContent />
+        </SidebarInset>
+      </AuthGuard>
     </SidebarProvider>
   );
 }
@@ -28,7 +31,12 @@ function AnalyticsContent() {
   const [selectedSession, setSelectedSession] = useState<SessionData | null>(null);
 
   useEffect(() => {
-    setSessions(storage.getAllSessions());
+    const loadSessions = async () => {
+      const loadedSessions = await storage.getAllSessions();
+      setSessions(loadedSessions);
+    };
+
+    loadSessions();
   }, []);
 
   const practicedEvents = useMemo(() => {

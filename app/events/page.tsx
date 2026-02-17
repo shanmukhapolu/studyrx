@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage } from "@/lib/storage";
 import { HOSA_EVENTS } from "@/lib/events";
 import { Play, TrendingUp } from "lucide-react";
@@ -14,10 +15,12 @@ import { Play, TrendingUp } from "lucide-react";
 export default function EventsPage() {
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <EventsContent />
-      </SidebarInset>
+      <AuthGuard>
+        <AppSidebar />
+        <SidebarInset>
+          <EventsContent />
+        </SidebarInset>
+      </AuthGuard>
     </SidebarProvider>
   );
 }
@@ -26,31 +29,35 @@ function EventsContent() {
   const [eventStats, setEventStats] = useState<Record<string, { attempted: number; accuracy: number }>>({});
 
   useEffect(() => {
-    const sessions = storage.getAllSessions();
-    const stats: Record<string, { correct: number; total: number }> = {};
+    const loadEventStats = async () => {
+      const sessions = await storage.getAllSessions();
+      const stats: Record<string, { correct: number; total: number }> = {};
 
-    sessions.forEach(session => {
-      session.attempts.forEach(attempt => {
-        const eventId = (attempt as any).eventId || "unknown";
-        if (!stats[eventId]) {
-          stats[eventId] = { correct: 0, total: 0 };
-        }
-        stats[eventId].total++;
-        if (attempt.isCorrect) {
-          stats[eventId].correct++;
-        }
+      sessions.forEach((session) => {
+        session.attempts.forEach((attempt) => {
+          const attemptEventId = attempt.eventId || session.event || "unknown";
+          if (!stats[attemptEventId]) {
+            stats[attemptEventId] = { correct: 0, total: 0 };
+          }
+          stats[attemptEventId].total++;
+          if (attempt.isCorrect) {
+            stats[attemptEventId].correct++;
+          }
+        });
       });
-    });
 
-    const formattedStats: Record<string, { attempted: number; accuracy: number }> = {};
-    Object.entries(stats).forEach(([eventId, data]) => {
-      formattedStats[eventId] = {
-        attempted: data.total,
-        accuracy: data.total > 0 ? (data.correct / data.total) * 100 : 0
-      };
-    });
+      const formattedStats: Record<string, { attempted: number; accuracy: number }> = {};
+      Object.entries(stats).forEach(([attemptEventId, data]) => {
+        formattedStats[attemptEventId] = {
+          attempted: data.total,
+          accuracy: data.total > 0 ? (data.correct / data.total) * 100 : 0,
+        };
+      });
 
-    setEventStats(formattedStats);
+      setEventStats(formattedStats);
+    };
+
+    loadEventStats();
   }, []);
 
   return (

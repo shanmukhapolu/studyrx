@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage, type Question, type SessionData } from "@/lib/storage";
 import { formatDuration } from "@/lib/session-analytics";
 import { getEventById, getEventName } from "@/lib/events";
@@ -47,10 +48,12 @@ export default function PracticePage({ params }: { params: Promise<{ event: stri
   
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <PracticeContent eventId={resolvedParams.event} />
-      </SidebarInset>
+      <AuthGuard>
+        <AppSidebar />
+        <SidebarInset>
+          <PracticeContent eventId={resolvedParams.event} />
+        </SidebarInset>
+      </AuthGuard>
     </SidebarProvider>
   );
 }
@@ -79,6 +82,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
     highestStreak: number;
     sessionTime: number;
   } | null>(null);
+  const [isEndingSession, setIsEndingSession] = useState(false);
+  const [sessionSaveError, setSessionSaveError] = useState<string | null>(null);
 
   const questionShownAtRef = useRef<number>(performance.now());
   const thinkHiddenStartRef = useRef<number | null>(null);
@@ -153,7 +158,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
       const questions: Question[] = await res.json();
       setAllQuestions(questions);
       
-      const completedQuestions = storage.getCompletedQuestions(eventId);
+      const completedQuestions = await storage.getCompletedQuestions(eventId);
       
       const remainingQuestions = questions.filter(
         q => !completedQuestions.includes(q.id)
@@ -241,7 +246,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
       attempts: [...sessionData.attempts, attempt],
     };
     setSessionData(updatedSession);
-    storage.setCurrentSession(updatedSession);
+    void storage.setCurrentSession(updatedSession);
     explanationStartedAtRef.current = performance.now();
     explanationHiddenStartRef.current = null;
     explanationPausedMsRef.current = 0;
@@ -250,14 +255,14 @@ function PracticeContent({ eventId }: { eventId: string }) {
     
     if (isCorrect) {
       setCorrectCount(prev => prev + 1);
-      storage.addCompletedQuestion(eventId, currentQuestion.id);
+      void storage.addCompletedQuestion(eventId, currentQuestion.id);
       if (currentQueueItem.isRedemption) {
-        storage.removeWrongQuestion(eventId, currentQuestion.id);
+        void storage.removeWrongQuestion(eventId, currentQuestion.id);
       }
     } else {
       setIncorrectCount(prev => prev + 1);
       if (!currentQueueItem.isRedemption) {
-        storage.addWrongQuestion(eventId, currentQuestion.id);
+        void storage.addWrongQuestion(eventId, currentQuestion.id);
       }
       
       const remainingInQueue = questionQueue.length - currentQueueIndex - 1;
@@ -314,7 +319,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
       };
 
       setSessionData(updatedSession);
-      storage.setCurrentSession(updatedSession);
+      void storage.setCurrentSession(updatedSession);
     }
 
     explanationStartedAtRef.current = null;
@@ -337,45 +342,83 @@ function PracticeContent({ eventId }: { eventId: string }) {
     thinkPausedMsRef.current = 0;
   };
 
-  const handleEndSession = () => {
-    if (sessionData) {
-      const totalQuestions = sessionData.attempts.length;
-      const correct = sessionData.attempts.filter((attempt) => attempt.isCorrect).length;
-      const highestStreak = sessionData.attempts.reduce(
-        (acc, attempt) => {
-          if (attempt.isCorrect) {
-            const current = acc.current + 1;
-            return {
-              current,
-              max: Math.max(acc.max, current),
-            };
-          }
-          return {
-            current: 0,
-            max: acc.max,
-          };
-        },
-        { current: 0, max: 0 }
-      ).max;
+  const handleEndSession = async () => {
+    if (!sessionData) {
+      router.push("/events");
+      return;
+    }
 
-      const finishedSession = {
-        ...sessionData,
-        endTimestamp: new Date().toISOString(),
+    setIsEndingSession(true);
+    setSessionSaveError(null);
+
+    const attemptsWithFinalExplanation = [...sessionData.attempts];
+
+    if (isAnswered && explanationStartedAtRef.current !== null && attemptsWithFinalExplanation.length > 0) {
+      if (explanationHiddenStartRef.current !== null) {
+        explanationPausedMsRef.current += performance.now() - explanationHiddenStartRef.current;
+        explanationHiddenStartRef.current = null;
+      }
+
+      const explanationTime = Math.max(
+        0,
+        Math.round(((performance.now() - explanationStartedAtRef.current - explanationPausedMsRef.current) / 1000) * 10) / 10
+      );
+
+      const lastAttemptIndex = attemptsWithFinalExplanation.length - 1;
+      attemptsWithFinalExplanation[lastAttemptIndex] = {
+        ...attemptsWithFinalExplanation[lastAttemptIndex],
+        explanationTime,
       };
+    }
 
-      storage.saveSession(finishedSession);
+    const totalQuestions = attemptsWithFinalExplanation.length;
+    const correct = attemptsWithFinalExplanation.filter((attempt) => attempt.isCorrect).length;
+    const totalThinkTime = attemptsWithFinalExplanation.reduce((sum, attempt) => sum + attempt.thinkTime, 0);
+    const totalExplanationTime = attemptsWithFinalExplanation.reduce((sum, attempt) => sum + attempt.explanationTime, 0);
+    const highestStreak = attemptsWithFinalExplanation.reduce(
+      (acc, attempt) => {
+        if (attempt.isCorrect) {
+          const current = acc.current + 1;
+          return {
+            current,
+            max: Math.max(acc.max, current),
+          };
+        }
+        return {
+          current: 0,
+          max: acc.max,
+        };
+      },
+      { current: 0, max: 0 }
+    ).max;
 
+    const finishedSession: SessionData = {
+      ...sessionData,
+      attempts: attemptsWithFinalExplanation,
+      totalQuestions,
+      correctCount: correct,
+      totalThinkTime,
+      totalExplanationTime,
+      accuracy: totalQuestions > 0 ? (correct / totalQuestions) * 100 : 0,
+      endTimestamp: new Date().toISOString(),
+    };
+
+    try {
+      await storage.saveSession(finishedSession);
+      setSessionData(finishedSession);
       setSessionSummary({
         totalQuestions,
         correct,
         incorrect: totalQuestions - correct,
         highestStreak,
-        sessionTime: finishedSession.totalThinkTime + finishedSession.totalExplanationTime,
+        sessionTime: totalThinkTime + totalExplanationTime,
       });
-      return;
+    } catch (error) {
+      console.error("Failed to save session", error);
+      setSessionSaveError("Couldn't save your session. Please try ending again.");
+    } finally {
+      setIsEndingSession(false);
     }
-
-    router.push("/events");
   };
 
   const handleRestart = () => {
@@ -633,14 +676,25 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 <span className="text-sm text-muted-foreground hidden sm:inline">incorrect</span>
               </div>
             </div>
-            <Button onClick={handleEndSession} variant="outline" size="sm" className="bg-transparent font-semibold">
-              End Session
+            <Button
+              onClick={handleEndSession}
+              variant="outline"
+              size="sm"
+              className="bg-transparent font-semibold"
+              disabled={isEndingSession}
+            >
+              {isEndingSession ? "Saving..." : "End Session"}
             </Button>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-6 py-12 max-w-4xl">
+        {sessionSaveError && (
+          <div className="mb-4 rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+            {sessionSaveError}
+          </div>
+        )}
         <Card className="glass-card tech-border shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.accent/20),transparent_40%)] pointer-events-none" />
           <CardHeader>

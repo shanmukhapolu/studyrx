@@ -8,14 +8,20 @@ import { Brain, Clock, Target, TrendingUp, Play, ExternalLink, BookOpen, Video, 
 import { storage, type UserStats } from "@/lib/storage";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { AuthGuard } from "@/components/auth/auth-guard";
+import { useAuth } from "@/components/auth/auth-provider";
 
 export default function DashboardPage() {
+  const { profile } = useAuth();
   const [stats, setStats] = useState<UserStats | null>(null);
+  const [totalSessions, setTotalSessions] = useState(0);
 
   useEffect(() => {
-    const loadStats = () => {
-      const calculatedStats = storage.calculateStats();
+    const loadStats = async () => {
+      const calculatedStats = await storage.calculateStats();
       setStats(calculatedStats);
+      const sessions = await storage.getAllSessions();
+      setTotalSessions(sessions.length);
     };
 
     loadStats();
@@ -39,8 +45,9 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen w-full">
       <SidebarProvider>
-        <AppSidebar />
-        <SidebarInset>
+        <AuthGuard>
+          <AppSidebar />
+          <SidebarInset>
           <div className="flex flex-col flex-1">
             {/* Header */}
             <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -48,7 +55,7 @@ export default function DashboardPage() {
                 <div className="flex-1">
                   <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
                   <p className="text-sm text-muted-foreground">
-                    Welcome back! Your practice overview and resources.
+                    Hi {profile?.firstName || "there"}, how&apos;s it going? Your practice overview and resources.
                   </p>
                 </div>
               </div>
@@ -122,7 +129,7 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent>
                     <div className="text-3xl font-bold text-foreground">
-                      {storage.getAllSessions().length}
+                      {totalSessions}
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">
                       Completed practice sessions
@@ -143,12 +150,12 @@ export default function DashboardPage() {
                 <CardContent className="space-y-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Accuracy Goal</span>
-                    <span className="font-semibold">{Math.min(Number(accuracy), 85).toFixed(1)} / 85%</span>
+                    <span className="font-semibold">{Math.min(Number(accuracy), 100).toFixed(1)} / 100%</span>
                   </div>
                   <div className="h-3 rounded-full bg-muted overflow-hidden">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
-                      style={{ width: `${Math.min((Number(accuracy) / 85) * 100, 100)}%` }}
+                      style={{ width: `${Math.min(Number(accuracy), 100)}%` }}
                     />
                   </div>
                   <p className="text-xs text-muted-foreground">
@@ -379,7 +386,8 @@ export default function DashboardPage() {
               </Card>
             </main>
           </div>
-        </SidebarInset>
+          </SidebarInset>
+        </AuthGuard>
       </SidebarProvider>
     </div>
   );

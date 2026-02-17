@@ -50,6 +50,14 @@ export default function HomePage() {
       
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-border/50">
+        <div className="absolute top-6 right-6 z-20 flex gap-3">
+          <Button asChild variant="outline" className="border-primary/30 bg-background/80 backdrop-blur-sm">
+            <Link href="/auth/signin">Log In</Link>
+          </Button>
+          <Button asChild className="shadow-none">
+            <Link href="/auth/signup">Sign Up</Link>
+          </Button>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-transparent" />
         <div className="container relative mx-auto px-6 py-24 md:py-32 lg:py-40">
           <div className="mx-auto max-w-5xl text-center">
@@ -77,7 +85,7 @@ export default function HomePage() {
             
             <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-300">
               <Button asChild size="lg" className="h-14 px-8 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                <Link href="/dashboard">
+                <Link href="/auth/signup">
                   Start Practicing
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
