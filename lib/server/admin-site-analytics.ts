@@ -1,4 +1,4 @@
-import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { firestoreGetDocument, firestoreListCollection, firestoreSetDocument } from "@/lib/firestore-rest";
 
 export interface SiteAnalyticsSummary {
   generatedAt: string;
@@ -25,7 +25,6 @@ type Attempt = {
 
 type SessionRecord = {
   event?: string;
-  totalQuestions?: number;
   totalThinkTime?: number;
   totalExplanationTime?: number;
   attempts?: string | Attempt[];
@@ -44,43 +43,28 @@ function parseAttempts(raw: SessionRecord["attempts"]): Attempt[] {
   }
 }
 
-function buildCacheKey() {
-  return "adminAggregates/siteAnalytics";
-}
-
 export async function getSiteAnalytics(idToken: string, options?: { forceRefresh?: boolean }): Promise<SiteAnalyticsSummary> {
-  const cachePath = buildCacheKey();
-
   if (!options?.forceRefresh) {
-    const cacheRes = await fetch(`${FIREBASE_DATABASE_URL}/${cachePath}.json?auth=${encodeURIComponent(idToken)}`, { cache: "no-store" });
-    if (cacheRes.ok) {
-      const cached = await cacheRes.json();
-      if (cached?.generatedAt) {
-        const ageMs = Date.now() - new Date(cached.generatedAt).getTime();
-        if (ageMs >= 0 && ageMs < 15 * 60 * 1000) {
-          return cached as SiteAnalyticsSummary;
-        }
+    const cached = await firestoreGetDocument(idToken, "adminAggregates/siteAnalytics");
+    if (cached?.generatedAt) {
+      const ageMs = Date.now() - new Date(cached.generatedAt).getTime();
+      if (ageMs >= 0 && ageMs < 15 * 60 * 1000) {
+        return cached as SiteAnalyticsSummary;
       }
     }
   }
 
-  const [usersRes, questionsRes] = await Promise.all([
-    fetch(`${FIREBASE_DATABASE_URL}/users.json?auth=${encodeURIComponent(idToken)}`, { cache: "no-store" }),
-    fetch(`${FIREBASE_DATABASE_URL}/questions.json?auth=${encodeURIComponent(idToken)}`, { cache: "no-store" }),
+  const [users, questions] = await Promise.all([
+    firestoreListCollection(idToken, "users"),
+    firestoreListCollection(idToken, "questions"),
   ]);
-
-  const usersData = usersRes.ok ? ((await usersRes.json()) as Record<string, any> | null) : null;
-  const questionsData = questionsRes.ok ? ((await questionsRes.json()) as Record<string, any> | null) : null;
-
-  const users = Object.entries(usersData || {});
-  const questions = Object.values(questionsData || {});
 
   const questionsByEvent: Record<string, number> = {};
   const questionsByDifficulty: Record<string, number> = {};
 
-  for (const raw of questions) {
-    const eventId = String((raw as any)?.eventId || "unknown");
-    const difficulty = String((raw as any)?.difficulty || "unknown");
+  for (const q of questions) {
+    const eventId = String(q.data?.eventId || "unknown");
+    const difficulty = String(q.data?.difficulty || "unknown");
     questionsByEvent[eventId] = (questionsByEvent[eventId] || 0) + 1;
     questionsByDifficulty[difficulty] = (questionsByDifficulty[difficulty] || 0) + 1;
   }
@@ -92,31 +76,32 @@ export async function getSiteAnalytics(idToken: string, options?: { forceRefresh
   let activeUsersLast14Days = 0;
   let totalPracticeTimeSeconds = 0;
   let totalSessions = 0;
-
   const threshold = Date.now() - 14 * 24 * 60 * 60 * 1000;
 
-  for (const [, user] of users) {
-    const lastLoginAt = new Date(String(user?.lastLoginAt || 0)).getTime();
+  for (const user of users) {
+    const userData = user.data || {};
+    const lastLoginAt = new Date(String(userData.lastLoginAt || 0)).getTime();
     let userActive = Number.isFinite(lastLoginAt) && lastLoginAt >= threshold;
 
-    totalPracticeTimeSeconds += Number(user?.totalPracticeSeconds || 0);
+    totalPracticeTimeSeconds += Number(userData.totalPracticeSeconds || 0);
 
-    const events = (user?.events || {}) as Record<string, { sessions?: Record<string, SessionRecord> }>;
-    for (const [eventId, eventData] of Object.entries(events)) {
-      const sessions = Object.values(eventData?.sessions || {});
+    const events = await firestoreListCollection(idToken, `users/${user.id}/events`);
+    for (const eventDoc of events) {
+      const eventId = eventDoc.id;
+      const sessions = await firestoreListCollection(idToken, `users/${user.id}/events/${eventId}/sessions`);
       if (sessions.length > 0) {
         eventPracticeCounts[eventId] = (eventPracticeCounts[eventId] || 0) + sessions.length;
       }
 
-      for (const session of sessions) {
+      for (const sessionRow of sessions) {
+        const session = (sessionRow.data || {}) as SessionRecord;
         totalSessions += 1;
+
         const computedDuration = Number(session.totalThinkTime || 0) + Number(session.totalExplanationTime || 0);
         if (computedDuration > 0) totalPracticeTimeSeconds += computedDuration;
 
         const sessionEnd = new Date(String(session.endTimestamp || 0)).getTime();
-        if (!userActive && Number.isFinite(sessionEnd) && sessionEnd >= threshold) {
-          userActive = true;
-        }
+        if (!userActive && Number.isFinite(sessionEnd) && sessionEnd >= threshold) userActive = true;
 
         const attempts = parseAttempts(session.attempts);
         for (const attempt of attempts) {
@@ -124,15 +109,11 @@ export async function getSiteAnalytics(idToken: string, options?: { forceRefresh
           const difficulty = String(attempt.difficulty || "unknown");
           const isCorrect = Boolean(attempt.isCorrect ?? attempt.correct ?? false);
 
-          if (!accuracyByEvent[attemptEvent]) {
-            accuracyByEvent[attemptEvent] = { attempts: 0, correct: 0, accuracy: 0 };
-          }
+          if (!accuracyByEvent[attemptEvent]) accuracyByEvent[attemptEvent] = { attempts: 0, correct: 0, accuracy: 0 };
           accuracyByEvent[attemptEvent].attempts += 1;
           if (isCorrect) accuracyByEvent[attemptEvent].correct += 1;
 
-          if (!accuracyByDifficulty[difficulty]) {
-            accuracyByDifficulty[difficulty] = { attempts: 0, correct: 0, accuracy: 0 };
-          }
+          if (!accuracyByDifficulty[difficulty]) accuracyByDifficulty[difficulty] = { attempts: 0, correct: 0, accuracy: 0 };
           accuracyByDifficulty[difficulty].attempts += 1;
           if (isCorrect) accuracyByDifficulty[difficulty].correct += 1;
         }
@@ -145,7 +126,6 @@ export async function getSiteAnalytics(idToken: string, options?: { forceRefresh
   for (const stat of Object.values(accuracyByEvent)) {
     stat.accuracy = stat.attempts > 0 ? (stat.correct / stat.attempts) * 100 : 0;
   }
-
   for (const stat of Object.values(accuracyByDifficulty)) {
     stat.accuracy = stat.attempts > 0 ? (stat.correct / stat.attempts) * 100 : 0;
   }
@@ -168,11 +148,6 @@ export async function getSiteAnalytics(idToken: string, options?: { forceRefresh
     eventPracticeCounts,
   };
 
-  await fetch(`${FIREBASE_DATABASE_URL}/${cachePath}.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(summary),
-  }).catch(() => undefined);
-
+  await firestoreSetDocument(idToken, "adminAggregates/siteAnalytics", summary as any).catch(() => undefined);
   return summary;
 }

@@ -210,7 +210,7 @@ Built with ❤️ for students preparing for USMDO
 
 ## Role-Based Access Control (RBAC)
 
-StudyRx now stores a role per user in Firebase RTDB:
+StudyRx now stores a role per user in Firebase Firestore:
 
 - `users/{uid}/name`
 - `users/{uid}/role` where role is `"user"` or `"admin"`
@@ -239,14 +239,14 @@ StudyRx now stores a role per user in Firebase RTDB:
 FIREBASE_ADMIN_ID_TOKEN=<admin_user_id_token> TARGET_UID=<uid_to_promote> npm run promote:admin
 ```
 
-This writes `users/{TARGET_UID}/role = "admin"` via Firebase RTDB REST.
+This writes `users/{TARGET_UID}/role = "admin"` via Firebase Firestore REST.
 
-### Recommended RTDB rules
+### Recommended Firestore rules
 
-Use `database.rules.json` to ensure role changes are server/admin controlled, then deploy:
+Use `firestore.rules` to ensure role changes are server/admin controlled, then deploy:
 
 ```bash
-firebase deploy --only database
+firebase deploy --only firestore:rules
 ```
 
 
@@ -258,9 +258,9 @@ Admin sidebar for role `"admin"` uses dedicated navigation:
 - Questions (`/admin/questions`)
 - Site Analytics (`/admin/site-analytics`)
 
-## Question Bank in RTDB
+## Question Bank in Firestore
 
-Questions now live in Firebase RTDB at `questions/{questionId}` with this shape:
+Questions now live in Firebase Firestore at `questions/{questionId}` with this shape:
 
 - `question`
 - `options` (array of 4)
@@ -279,11 +279,11 @@ Questions now live in Firebase RTDB at `questions/{questionId}` with this shape:
 
 ### Practice question source
 
-Practice pages now load from RTDB filtered by `eventId` instead of JSON files.
+Practice pages now load from Firestore filtered by `eventId` instead of JSON files.
 
 ### Migration tooling
 
-To seed RTDB from `public/questions/*.json`:
+To seed Firestore from `public/questions/*.json`:
 
 ```bash
 FIREBASE_ADMIN_ID_TOKEN=<admin_user_id_token> npm run import:questions
@@ -296,3 +296,11 @@ FIREBASE_ADMIN_ID_TOKEN=<admin_user_id_token> npm run import:questions
 - The endpoint computes platform-wide aggregates (users, questions, usage, accuracy) across all users and events.
 - To reduce cost at scale, computed results are materialized in `adminAggregates/siteAnalytics` and reused for 15 minutes unless `?refresh=1` is passed.
 - Personal `/analytics` remains user-scoped and is intentionally not mixed with admin metrics.
+
+
+## Firestore migration notes
+
+- App data now uses Firestore collections/documents instead of Realtime Database paths.
+- Key collections: `users`, `questions`, `adminAggregates`, `deletedUsers`.
+- User sessions are stored under `users/{uid}/events/{eventId}/sessions/{sessionId}`.
+- Copy `firestore.rules` into Firebase console rules editor (or deploy with CLI).

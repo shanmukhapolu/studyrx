@@ -1,5 +1,5 @@
-import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
 import { refreshIdToken } from "@/lib/firebase-auth-rest";
+import { firestoreDeleteDocument, firestoreGetDocument, firestoreListCollection, firestorePatchDocument, firestoreSetDocument } from "@/lib/firestore-rest";
 
 export interface Question {
   id: number;
@@ -159,73 +159,112 @@ async function getStoredAuth(options?: { forceRefresh?: boolean }): Promise<Stor
   return current;
 }
 
-async function getUserPath(path: string, options?: { forceRefresh?: boolean }) {
+async function getUserAuth(options?: { forceRefresh?: boolean }) {
   const auth = await getStoredAuth(options);
   if (!auth?.user?.uid || !auth?.idToken) {
     throw new Error("Not authenticated");
   }
 
   return {
-    url: `${FIREBASE_DATABASE_URL}/users/${auth.user.uid}/${path}.json?auth=${encodeURIComponent(auth.idToken)}`,
     uid: auth.user.uid,
     idToken: auth.idToken,
   };
 }
 
+function parsePath(path: string) {
+  const parts = path.split("/").filter(Boolean);
+  return parts;
+}
+
 async function dbGet<T>(path: string, fallback: T): Promise<T> {
   if (typeof window === "undefined") return fallback;
-  try {
-    const primary = await getUserPath(path);
-    let res = await fetch(primary.url, {
-      headers: {
-        Authorization: `Bearer ${primary.idToken}`,
-      },
-    });
 
-    if ((res.status === 401 || res.status === 403)) {
-      const retry = await getUserPath(path, { forceRefresh: true });
-      res = await fetch(retry.url, {
-        headers: {
-          Authorization: `Bearer ${retry.idToken}`,
-        },
-      });
+  const read = async (idToken: string, uid: string): Promise<T> => {
+    const parts = parsePath(path);
+
+    if (parts.length === 1 && parts[0] === "events") {
+      const events = await firestoreListCollection(idToken, `users/${uid}/events`);
+      const mapped: Record<string, any> = {};
+      for (const event of events) {
+        const eventId = event.id;
+        const eventData = event.data || {};
+        const sessions = await firestoreListCollection(idToken, `users/${uid}/events/${eventId}/sessions`);
+        mapped[eventId] = {
+          ...eventData,
+          sessions: Object.fromEntries(sessions.map((session) => [session.id, session.data])),
+        };
+      }
+      return mapped as T;
     }
 
-    if (!res.ok) return fallback;
-    const data = await res.json();
-    return (data ?? fallback) as T;
-  } catch {
+    if (parts.length === 2 && parts[0] === "events") {
+      const eventDoc = await firestoreGetDocument(idToken, `users/${uid}/events/${parts[1]}`);
+      return ((eventDoc || null) as T) ?? fallback;
+    }
+
+    if (parts.length === 3 && parts[0] === "events") {
+      const eventDoc = await firestoreGetDocument(idToken, `users/${uid}/events/${parts[1]}`);
+      return (((eventDoc || {})[parts[2]] ?? fallback) as T);
+    }
+
+    if (parts.length === 1 && (parts[0] === "currentSession" || parts[0] === "totalPracticeSeconds")) {
+      const userDoc = await firestoreGetDocument(idToken, `users/${uid}`);
+      return (((userDoc || {})[parts[0]] ?? fallback) as T);
+    }
+
     return fallback;
+  };
+
+  try {
+    const primary = await getUserAuth();
+    return await read(primary.idToken, primary.uid);
+  } catch {
+    try {
+      const retry = await getUserAuth({ forceRefresh: true });
+      return await read(retry.idToken, retry.uid);
+    } catch {
+      return fallback;
+    }
   }
 }
 
 async function dbSet(path: string, value: unknown) {
   if (typeof window === "undefined") return;
-  let request = await getUserPath(path);
-  let res = await fetch(request.url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${request.idToken}`,
-    },
-    body: JSON.stringify(value),
-  });
 
-  if (res.status === 401 || res.status === 403) {
-    request = await getUserPath(path, { forceRefresh: true });
-    res = await fetch(request.url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${request.idToken}`,
-      },
-      body: JSON.stringify(value),
-    });
-  }
+  const write = async (idToken: string, uid: string) => {
+    const parts = parsePath(path);
 
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`Failed to write ${path}: ${res.status} ${text}`);
+    if (parts[0] === "events" && parts.length === 4 && parts[2] === "sessions") {
+      const [_, eventId, __, sessionId] = parts;
+      await firestoreSetDocument(idToken, `users/${uid}/events/${eventId}/sessions/${sessionId}`, value as Record<string, any>);
+      return;
+    }
+
+    if (parts[0] === "events" && parts.length === 3) {
+      const [_, eventId, field] = parts;
+      await firestorePatchDocument(idToken, `users/${uid}/events/${eventId}`, { [field]: value as any });
+      return;
+    }
+
+    if (parts[0] === "currentSession") {
+      await firestorePatchDocument(idToken, `users/${uid}`, { currentSession: value as any });
+      return;
+    }
+
+    if (parts[0] === "totalPracticeSeconds") {
+      await firestorePatchDocument(idToken, `users/${uid}`, { totalPracticeSeconds: Number(value || 0) });
+      return;
+    }
+
+    throw new Error(`Unsupported write path: ${path}`);
+  };
+
+  try {
+    const primary = await getUserAuth();
+    await write(primary.idToken, primary.uid);
+  } catch {
+    const retry = await getUserAuth({ forceRefresh: true });
+    await write(retry.idToken, retry.uid);
   }
 }
 

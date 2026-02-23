@@ -1,4 +1,5 @@
-import { FIREBASE_API_KEY, FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { FIREBASE_API_KEY } from "@/lib/firebase-config";
+import { firestoreDeleteDocument, firestoreGetDocument, firestoreListCollection, firestorePatchDocument, firestoreSetDocument } from "@/lib/firestore-rest";
 
 export interface AuthUser {
   uid: string;
@@ -33,7 +34,6 @@ export interface AdminUserRecord extends UserProfile {
 
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE = "https://securetoken.googleapis.com/v1";
-const RTDB_BASE = FIREBASE_DATABASE_URL;
 
 function decodeJwtPayload(token: string): Record<string, unknown> | null {
   try {
@@ -174,29 +174,17 @@ function composeName(firstName: string, lastName: string) {
 
 export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
   const fullName = composeName(profile.firstName, profile.lastName);
-
-  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: fullName,
-      firstName: profile.firstName,
-      lastName: profile.lastName,
-      role: profile.role,
-      email: profile.email,
-      createdAt: profile.createdAt,
-      lastLoginAt: profile.lastLoginAt,
-      loginCount: profile.loginCount,
-      totalPracticeSeconds: profile.totalPracticeSeconds,
-    }),
+  await firestoreSetDocument(idToken, `users/${uid}`, {
+    name: fullName,
+    firstName: profile.firstName,
+    lastName: profile.lastName,
+    role: profile.role,
+    email: profile.email,
+    createdAt: profile.createdAt,
+    lastLoginAt: profile.lastLoginAt,
+    loginCount: profile.loginCount,
+    totalPracticeSeconds: profile.totalPracticeSeconds,
   });
-
-  if (!profileRes.ok) {
-    const text = await profileRes.text().catch(() => "");
-    throw new Error(`Failed to save profile: ${profileRes.status} ${text}`);
-  }
 }
 
 export async function touchUserLogin(idToken: string, uid: string, input: { email: string; fallbackName: string }) {
@@ -224,15 +212,8 @@ export async function touchUserLogin(idToken: string, uid: string, input: { emai
 }
 
 export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
-  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`);
-  if (!profileRes.ok) {
-    return null;
-  }
-
-  const profileData = await profileRes.json();
-  if (!profileData) {
-    return null;
-  }
+  const profileData = await firestoreGetDocument(idToken, `users/${uid}`);
+  if (!profileData) return null;
 
   const role = profileData.role === "admin" ? "admin" : "user";
   const name = typeof profileData.name === "string"
@@ -253,11 +234,8 @@ export async function getUserProfile(idToken: string, uid: string): Promise<User
 }
 
 export async function listUsers(idToken: string): Promise<AdminUserRecord[]> {
-  const res = await fetch(`${RTDB_BASE}/users.json?auth=${encodeURIComponent(idToken)}`);
-  if (!res.ok) throw new Error("Failed to list users");
-
-  const data = (await res.json()) as Record<string, any> | null;
-  return Object.entries(data || {}).map(([uid, raw]) => {
+  const docs = await firestoreListCollection(idToken, "users");
+  return docs.map(({ id: uid, data: raw }) => {
     const name = typeof raw?.name === "string" ? raw.name : composeName(String(raw?.firstName || ""), String(raw?.lastName || ""));
     const split = splitName(name);
     return {
@@ -278,48 +256,23 @@ export async function listUsers(idToken: string): Promise<AdminUserRecord[]> {
 export async function updateUserName(idToken: string, uid: string, name: string) {
   const trimmed = name.trim();
   const split = splitName(trimmed);
-  const res = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name: trimmed,
-      firstName: split.firstName,
-      lastName: split.lastName,
-      updatedAt: new Date().toISOString(),
-    }),
+  await firestorePatchDocument(idToken, `users/${uid}`, {
+    name: trimmed,
+    firstName: split.firstName,
+    lastName: split.lastName,
+    updatedAt: new Date().toISOString(),
   });
-
-  if (!res.ok) throw new Error("Failed to update user name");
 }
 
 export async function deleteUserData(idToken: string, uid: string) {
-  const res = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "DELETE",
-  });
-  if (!res.ok) throw new Error("Failed to delete user data");
+  await firestoreDeleteDocument(idToken, `users/${uid}`);
 }
 
 export async function getUserRole(idToken: string, uid: string): Promise<UserRole> {
-  const roleRes = await fetch(`${RTDB_BASE}/users/${uid}/role.json?auth=${encodeURIComponent(idToken)}`);
-  if (!roleRes.ok) {
-    return "user";
-  }
-
-  const role = await roleRes.json();
-  return role === "admin" ? "admin" : "user";
+  const doc = await firestoreGetDocument(idToken, `users/${uid}`);
+  return doc?.role === "admin" ? "admin" : "user";
 }
 
 export async function setUserRole(idToken: string, uid: string, role: UserRole) {
-  const roleRes = await fetch(`${RTDB_BASE}/users/${uid}/role.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(role),
-  });
-
-  if (!roleRes.ok) {
-    const text = await roleRes.text().catch(() => "");
-    throw new Error(`Failed to set role: ${roleRes.status} ${text}`);
-  }
+  await firestorePatchDocument(idToken, `users/${uid}`, { role });
 }

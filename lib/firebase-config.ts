@@ -12,3 +12,4 @@ export const firebaseConfig = {
 export const FIREBASE_API_KEY = firebaseConfig.apiKey;
 export const FIREBASE_PROJECT_ID = firebaseConfig.projectId;
 export const FIREBASE_DATABASE_URL = firebaseConfig.databaseURL;
+export const FIRESTORE_REST_BASE_URL = `https://firestore.googleapis.com/v1/projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents`;

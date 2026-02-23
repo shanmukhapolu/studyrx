@@ -3,11 +3,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const databaseUrl = process.env.FIREBASE_DATABASE_URL || "https://studyrx2026-default-rtdb.firebaseio.com";
+const projectId = process.env.FIREBASE_PROJECT_ID || "studyrx2026";
 const adminIdToken = process.env.FIREBASE_ADMIN_ID_TOKEN;
+const firestoreBase = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents`;
 
 if (!adminIdToken) {
-  console.error("Usage: FIREBASE_ADMIN_ID_TOKEN=... node scripts/import-questions-json.mjs");
+  console.error("Usage: FIREBASE_ADMIN_ID_TOKEN=... [FIREBASE_PROJECT_ID=...] node scripts/import-questions-json.mjs");
   process.exit(1);
 }
 
@@ -17,6 +18,15 @@ const files = (await fs.readdir(folder)).filter((name) => name.endsWith(".json")
 function normalizeDifficulty(value) {
   if (value === "Medium" || value === "Hard") return value;
   return "Easy";
+}
+
+function toValue(value) {
+  if (value === null || value === undefined) return { nullValue: null };
+  if (typeof value === "string") return { stringValue: value };
+  if (typeof value === "boolean") return { booleanValue: value };
+  if (typeof value === "number") return Number.isInteger(value) ? { integerValue: String(value) } : { doubleValue: value };
+  if (Array.isArray(value)) return { arrayValue: { values: value.map(toValue) } };
+  return { mapValue: { fields: Object.fromEntries(Object.entries(value).map(([k, v]) => [k, toValue(v)])) } };
 }
 
 for (const file of files) {
@@ -43,10 +53,11 @@ for (const file of files) {
       updatedAt: new Date().toISOString(),
     };
 
-    const res = await fetch(`${databaseUrl}/questions.json?auth=${encodeURIComponent(adminIdToken)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+    const id = `q_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    const res = await fetch(`${firestoreBase}/questions/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${adminIdToken}` },
+      body: JSON.stringify({ fields: Object.fromEntries(Object.entries(payload).map(([k, v]) => [k, toValue(v)])) }),
     });
 
     if (!res.ok) {

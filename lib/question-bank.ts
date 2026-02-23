@@ -1,4 +1,10 @@
-import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import {
+  firestoreDeleteDocument,
+  firestoreListCollection,
+  firestorePatchDocument,
+  firestoreRunQuery,
+  firestoreSetDocument,
+} from "@/lib/firestore-rest";
 
 export type QuestionDifficulty = "Easy" | "Medium" | "Hard";
 
@@ -59,18 +65,19 @@ export function normalizeDbQuestion(id: string, raw: any): DbQuestion {
 }
 
 export async function fetchQuestionsByEvent(idToken: string, eventId: string): Promise<DbQuestion[]> {
-  const query = new URLSearchParams({
-    auth: idToken,
-    orderBy: JSON.stringify("eventId"),
-    equalTo: JSON.stringify(eventId),
-  });
+  const query = {
+    from: [{ collectionId: "questions" }],
+    where: {
+      fieldFilter: {
+        field: { fieldPath: "eventId" },
+        op: "EQUAL",
+        value: { stringValue: eventId },
+      },
+    },
+  };
 
-  const res = await fetch(`${FIREBASE_DATABASE_URL}/questions.json?${query.toString()}`);
-  if (!res.ok) return [];
-  const data = (await res.json()) as Record<string, unknown> | null;
-  if (!data) return [];
-
-  return Object.entries(data).map(([qid, value]) => normalizeDbQuestion(qid, value));
+  const docs = await firestoreRunQuery(idToken, query);
+  return docs.map((doc) => normalizeDbQuestion(doc.id, doc.data));
 }
 
 export interface QuestionAdminQuery {
@@ -83,11 +90,7 @@ export interface QuestionAdminQuery {
 }
 
 export async function fetchQuestionsForAdmin(idToken: string, query: QuestionAdminQuery) {
-  const res = await fetch(`${FIREBASE_DATABASE_URL}/questions.json?auth=${encodeURIComponent(idToken)}`);
-  if (!res.ok) throw new Error("Failed to load questions");
-
-  const data = (await res.json()) as Record<string, unknown> | null;
-  const all = Object.entries(data || {}).map(([qid, value]) => normalizeDbQuestion(qid, value));
+  const all = (await firestoreListCollection(idToken, "questions")).map((doc) => normalizeDbQuestion(doc.id, doc.data));
 
   const search = (query.search || "").trim().toLowerCase();
   const filtered = all.filter((item) => {
@@ -112,46 +115,26 @@ export async function fetchQuestionsForAdmin(idToken: string, query: QuestionAdm
 
 export async function createQuestion(idToken: string, input: QuestionInput) {
   const now = new Date().toISOString();
-  const payload = {
+  const id = `q_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  await firestoreSetDocument(idToken, `questions/${id}`, {
     ...input,
     options: ensureOptions(input.options),
     searchText: buildSearchText(input),
     createdAt: now,
     updatedAt: now,
-  };
-
-  const res = await fetch(`${FIREBASE_DATABASE_URL}/questions.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
   });
-
-  if (!res.ok) throw new Error("Failed to create question");
-  const body = await res.json();
-  return String(body?.name || "");
+  return id;
 }
 
 export async function updateQuestion(idToken: string, questionId: string, input: QuestionInput) {
-  const payload = {
+  await firestorePatchDocument(idToken, `questions/${questionId}`, {
     ...input,
     options: ensureOptions(input.options),
     searchText: buildSearchText(input),
     updatedAt: new Date().toISOString(),
-  };
-
-  const res = await fetch(`${FIREBASE_DATABASE_URL}/questions/${questionId}.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
   });
-
-  if (!res.ok) throw new Error("Failed to update question");
 }
 
 export async function deleteQuestion(idToken: string, questionId: string) {
-  const res = await fetch(`${FIREBASE_DATABASE_URL}/questions/${questionId}.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "DELETE",
-  });
-
-  if (!res.ok) throw new Error("Failed to delete question");
+  await firestoreDeleteDocument(idToken, `questions/${questionId}`);
 }

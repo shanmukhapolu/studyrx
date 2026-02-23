@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { firestoreDeleteDocument, firestoreSetDocument } from "@/lib/firestore-rest";
 import { sendPasswordResetEmail, updateUserName } from "@/lib/firebase-auth-rest";
 import { assertAdmin, getUidFromToken } from "@/lib/server/admin-auth";
 
@@ -53,21 +53,15 @@ export async function POST(request: Request, context: { params: Promise<{ uid: s
       return NextResponse.json({ error: "Confirmation text must be DELETE" }, { status: 400 });
     }
 
-    await fetch(`${FIREBASE_DATABASE_URL}/deletedUsers/${uid}.json?auth=${encodeURIComponent(gate.idToken)}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        deletedBy: gate.requesterUid,
-        deletedAt: new Date().toISOString(),
-      }),
+    await firestoreSetDocument(gate.idToken, `deletedUsers/${uid}`, {
+      deletedBy: gate.requesterUid,
+      deletedAt: new Date().toISOString(),
     });
 
-    await fetch(`${FIREBASE_DATABASE_URL}/users/${uid}.json?auth=${encodeURIComponent(gate.idToken)}`, {
-      method: "DELETE",
-    });
+    await firestoreDeleteDocument(gate.idToken, `users/${uid}`);
     return NextResponse.json({
       ok: true,
-      warning: "Auth account deletion requires Firebase Admin SDK/service credentials. RTDB profile and access data were removed.",
+      warning: "Auth account deletion requires Firebase Admin SDK/service credentials. Firestore profile and access data were removed.",
     });
   }
 

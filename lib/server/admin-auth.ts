@@ -1,4 +1,4 @@
-import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { firestoreGetDocument } from "@/lib/firestore-rest";
 
 export type ServerUserRole = "user" | "admin";
 
@@ -22,13 +22,8 @@ export function getUidFromToken(idToken: string): string | null {
 }
 
 export async function getRoleForUid(idToken: string, uid: string): Promise<ServerUserRole> {
-  const res = await fetch(`${FIREBASE_DATABASE_URL}/users/${uid}/role.json?auth=${encodeURIComponent(idToken)}`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) return "user";
-  const role = await res.json();
-  return role === "admin" ? "admin" : "user";
+  const userDoc = await firestoreGetDocument(idToken, `users/${uid}`);
+  return userDoc?.role === "admin" ? "admin" : "user";
 }
 
 export async function assertAdmin(idToken: string, uid?: string | null): Promise<boolean> {
