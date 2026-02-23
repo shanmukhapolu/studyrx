@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AdminGuard } from "@/components/auth/admin-guard";
 import { AppSidebar } from "@/components/app-sidebar";
@@ -30,10 +30,13 @@ export default function AdminUsersPage() {
   const [editingName, setEditingName] = useState("");
   const [busyUid, setBusyUid] = useState<string | null>(null);
 
-  const token = useMemo(() => {
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
     const raw = localStorage.getItem(STORAGE_KEY);
     const parsed = raw ? JSON.parse(raw) : null;
-    return (parsed?.idToken as string | undefined) || null;
+    setToken((parsed?.idToken as string | undefined) || null);
   }, []);
 
   const loadUsers = async () => {
