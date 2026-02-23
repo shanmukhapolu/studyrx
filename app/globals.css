@@ -74,6 +74,26 @@
   --sidebar-ring: oklch(0.60 0.24 264);
 }
 
+
+.admin-sidebar {
+  --sidebar: oklch(0.18 0.02 18);
+  --sidebar-foreground: oklch(0.96 0.01 18);
+  --sidebar-primary: oklch(0.56 0.22 24);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.28 0.03 20);
+  --sidebar-accent-foreground: oklch(0.96 0.01 18);
+  --sidebar-border: oklch(0.34 0.03 18);
+  --sidebar-ring: oklch(0.62 0.22 24);
+}
+
+.admin-badge {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--sidebar-primary) 78%, white 22%);
+}
+
 @theme inline {
   --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Home, Layers, BarChart3 } from "lucide-react";
+import { Home, Layers, BarChart3, Users, FileQuestion, LineChart } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -17,7 +17,13 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 
-const navItems = [
+type NavItem = {
+  title: string;
+  href: string;
+  icon: typeof Home;
+};
+
+const userNavItems: NavItem[] = [
   {
     title: "Dashboard",
     href: "/dashboard",
@@ -35,17 +41,38 @@ const navItems = [
   },
 ];
 
+const adminNavItems: NavItem[] = [
+  {
+    title: "Users",
+    href: "/admin/users",
+    icon: Users,
+  },
+  {
+    title: "Questions",
+    href: "/admin/questions",
+    icon: FileQuestion,
+  },
+  {
+    title: "Site Analytics",
+    href: "/admin/site-analytics",
+    icon: LineChart,
+  },
+];
+
 export function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const { profile, user, signOut } = useAuth();
   const fallbackName = user?.displayName?.trim() || "Student";
   const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
+  const isAdmin = profile?.role === "admin";
+  const navItems = isAdmin ? adminNavItems : userNavItems;
+  const homeHref = isAdmin ? "/admin/users" : "/dashboard";
 
   return (
-    <Sidebar>
+    <Sidebar className={isAdmin ? "admin-sidebar" : undefined}>
       <SidebarHeader className="border-b border-sidebar-border p-6">
-        <Link href="/dashboard" className="flex items-center gap-4">
+        <Link href={homeHref} className="flex items-center gap-4">
           <Image
             src="/logo.png"
             alt="StudyRx Logo"
@@ -55,6 +82,7 @@ export function AppSidebar() {
           />
           <div className="flex flex-col">
             <span className="text-xl font-bold text-sidebar-foreground">StudyRx</span>
+            {isAdmin ? <span className="admin-badge">ADMIN</span> : null}
           </div>
         </Link>
       </SidebarHeader>

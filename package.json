@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "promote:admin": "node scripts/bootstrap-promote-admin.mjs",
+    "import:questions": "node scripts/import-questions-json.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

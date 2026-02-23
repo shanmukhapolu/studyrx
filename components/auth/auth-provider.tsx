@@ -6,6 +6,7 @@ import {
   getUserProfile,
   refreshIdToken,
   saveUserProfile,
+  touchUserLogin,
   signInWithEmail,
   signInWithGoogleIdToken,
   signUpWithEmail,
@@ -13,6 +14,7 @@ import {
   type AuthSession,
   type AuthUser,
   type UserProfile,
+  type UserRole,
 } from "@/lib/firebase-auth-rest";
 
 interface AuthContextValue {
@@ -26,8 +28,39 @@ interface AuthContextValue {
 }
 
 const STORAGE_KEY = "studyrx_auth_session";
+const AUTH_COOKIE_KEY = "studyrx_auth_token";
+const UID_COOKIE_KEY = "studyrx_auth_uid";
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+
+
+function syncAuthCookies(session: AuthSession | null) {
+  if (typeof document === "undefined") return;
+
+  if (!session) {
+    document.cookie = `${AUTH_COOKIE_KEY}=; Max-Age=0; Path=/; SameSite=Lax`;
+    document.cookie = `${UID_COOKIE_KEY}=; Max-Age=0; Path=/; SameSite=Lax`;
+    return;
+  }
+
+  const maxAge = Math.max(0, Math.floor(session.expiresIn));
+  document.cookie = `${AUTH_COOKIE_KEY}=${encodeURIComponent(session.idToken)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+  document.cookie = `${UID_COOKIE_KEY}=${encodeURIComponent(session.user.uid)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+}
+
+function normalizeRole(profile: Partial<UserProfile> & { firstName: string; lastName: string }): UserProfile {
+  const now = new Date().toISOString();
+  return {
+    firstName: profile.firstName,
+    lastName: profile.lastName,
+    role: (profile.role || "user") as UserRole,
+    email: profile.email || "",
+    createdAt: profile.createdAt || now,
+    lastLoginAt: profile.lastLoginAt || now,
+    loginCount: Number(profile.loginCount || 0),
+    totalPracticeSeconds: Number(profile.totalPracticeSeconds || 0),
+  };
+}
 
 function saveSession(session: AuthSession) {
   const normalized = ensureSessionUid(session);
@@ -39,6 +72,7 @@ function saveSession(session: AuthSession) {
       expiresAt,
     })
   );
+  syncAuthCookies(normalized);
 }
 
 function readSession(): (AuthSession & { expiresAt: number }) | null {
@@ -93,6 +127,12 @@ function profileFromDisplayName(displayName?: string | null): UserProfile | null
   return {
     firstName,
     lastName: rest.join(" "),
+    role: "user",
+    email: "",
+    createdAt: new Date().toISOString(),
+    lastLoginAt: new Date().toISOString(),
+    loginCount: 0,
+    totalPracticeSeconds: 0,
   };
 }
 
@@ -126,6 +166,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             expiresAt: Date.now() + refreshed.expiresIn * 1000,
           };
           localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+          syncAuthCookies(session as AuthSession);
         }
 
         session = ensureSessionUid(session as AuthSession) as typeof session;
@@ -134,9 +175,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (!mounted) return;
 
         setUser(session.user);
-        setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
+        setProfile(normalizeRole(fetchedProfile || profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" }));
       } catch {
         localStorage.removeItem(STORAGE_KEY);
+        syncAuthCookies(null);
       } finally {
         if (mounted) setLoading(false);
       }
@@ -158,21 +200,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         saveSession(session);
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
-        const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
+        const touched = await touchUserLogin(session.idToken, session.user.uid, {
+          email: session.user.email,
+          fallbackName: session.user.displayName || "",
+        });
         setUser(session.user);
-        setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
+        setProfile(normalizeRole(touched));
       },
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = ensureSessionUid(await signUpWithEmail(email, password));
         session = ensureSessionUid(await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim(), session.user.uid));
 
         try {
-          await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
+          await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName, role: "user", email, createdAt: new Date().toISOString(), lastLoginAt: new Date().toISOString(), loginCount: 1, totalPracticeSeconds: 0 });
         } catch (error) {
           console.warn("Profile write skipped during signup; attempting fresh sign-in token.", error);
           try {
             session = ensureSessionUid(await signInWithEmail(email, password));
-            await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
+            await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName, role: "user", email, createdAt: new Date().toISOString(), lastLoginAt: new Date().toISOString(), loginCount: 1, totalPracticeSeconds: 0 });
           } catch (recoveryError) {
             console.warn("Signup recovery profile write also failed; continuing with Auth displayName fallback.", recoveryError);
           }
@@ -180,15 +225,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         saveSession(session);
         setUser(session.user);
-        setProfile({ firstName, lastName });
+        const touched = await touchUserLogin(session.idToken, session.user.uid, {
+          email: session.user.email,
+          fallbackName: `${firstName} ${lastName}`.trim(),
+        });
+        setProfile(normalizeRole(touched));
       },
       signInWithGoogleCredential: async (credential) => {
         let session = ensureSessionUid(await signInWithGoogleIdToken(credential));
-        const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" };
+        const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "", role: "user" as const, email: session.user.email, createdAt: new Date().toISOString(), lastLoginAt: new Date().toISOString(), loginCount: 0, totalPracticeSeconds: 0 };
 
         if (parsedProfile.firstName || parsedProfile.lastName) {
           try {
-            await saveUserProfile(session.idToken, session.user.uid, parsedProfile);
+            await saveUserProfile(session.idToken, session.user.uid, normalizeRole({ ...parsedProfile, email: session.user.email }));
           } catch (error) {
             console.warn("Profile write skipped during Google sign-in; continuing with Auth displayName fallback.", error);
           }
@@ -197,12 +246,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         saveSession(session);
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
-        const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
+        const touched = await touchUserLogin(session.idToken, session.user.uid, {
+          email: session.user.email,
+          fallbackName: session.user.displayName || "",
+        });
         setUser(session.user);
-        setProfile(fetchedProfile || parsedProfile);
+        setProfile(normalizeRole(touched));
       },
       signOut: () => {
         localStorage.removeItem(STORAGE_KEY);
+        syncAuthCookies(null);
         setUser(null);
         setProfile(null);
       },

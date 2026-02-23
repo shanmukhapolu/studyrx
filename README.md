@@ -207,3 +207,92 @@ Footer on all pages:
 ---
 
 Built with ❤️ for students preparing for USMDO
+
+## Role-Based Access Control (RBAC)
+
+StudyRx now stores a role per user in Firebase RTDB:
+
+- `users/{uid}/name`
+- `users/{uid}/role` where role is `"user"` or `"admin"`
+
+### Runtime behavior
+
+- New signups are always created with role `"user"`.
+- Auth bootstrap loads profile + role and keeps it in auth context.
+- `/admin/*` is protected in two places:
+  - Client-side via `AdminGuard`
+  - Server-side via `middleware.ts` role checks
+- `/api/admin/*` endpoints require admin role on the server.
+
+### Promoting existing users
+
+#### Option A: Admin Backoffice UI
+
+1. Sign in as an existing admin user.
+2. Go to `/admin`.
+3. Go to **Users** in the admin sidebar (`/admin/users`).
+4. Enter the target Firebase Auth UID and click **Promote to admin**.
+
+#### Option B: One-time script
+
+```bash
+FIREBASE_ADMIN_ID_TOKEN=<admin_user_id_token> TARGET_UID=<uid_to_promote> npm run promote:admin
+```
+
+This writes `users/{TARGET_UID}/role = "admin"` via Firebase RTDB REST.
+
+### Recommended RTDB rules
+
+Use `database.rules.json` to ensure role changes are server/admin controlled, then deploy:
+
+```bash
+firebase deploy --only database
+```
+
+
+### Admin navigation
+
+Admin sidebar for role `"admin"` uses dedicated navigation:
+
+- Users (`/admin/users`)
+- Questions (`/admin/questions`)
+- Site Analytics (`/admin/site-analytics`)
+
+## Question Bank in RTDB
+
+Questions now live in Firebase RTDB at `questions/{questionId}` with this shape:
+
+- `question`
+- `options` (array of 4)
+- `correctAnswerIndex`
+- `explanation`
+- `eventId`
+- `category`
+- `difficulty`
+- `tags`
+- `searchText`
+- `createdAt`, `updatedAt`
+
+### Admin CRUD
+
+`/admin/questions` includes create, edit, delete, pagination, indexed filters (event/difficulty/category), and full-text search using `searchText`.
+
+### Practice question source
+
+Practice pages now load from RTDB filtered by `eventId` instead of JSON files.
+
+### Migration tooling
+
+To seed RTDB from `public/questions/*.json`:
+
+```bash
+FIREBASE_ADMIN_ID_TOKEN=<admin_user_id_token> npm run import:questions
+```
+
+
+## Admin site analytics architecture
+
+- Admin metrics are fetched server-side from a privileged endpoint: `GET /api/admin/site-analytics`.
+- The endpoint computes platform-wide aggregates (users, questions, usage, accuracy) across all users and events.
+- To reduce cost at scale, computed results are materialized in `adminAggregates/siteAnalytics` and reused for 15 minutes unless `?refresh=1` is passed.
+- Personal `/analytics` remains user-scoped and is intentionally not mixed with admin metrics.

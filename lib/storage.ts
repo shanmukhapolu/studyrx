@@ -3,10 +3,12 @@ import { refreshIdToken } from "@/lib/firebase-auth-rest";
 
 export interface Question {
   id: number;
+  sourceId?: string;
   question: string;
   options: string[];
-  correctAnswer: string;
-  category: "Cell Biology & Genetics" | "Human Physiology" | "Human Disease";
+  correctAnswerIndex: number;
+  correctAnswer?: string; // legacy compatibility for old records
+  category: string;
   difficulty: "Easy" | "Medium" | "Hard";
   explanation: string;
   tag?: string;
@@ -346,6 +348,14 @@ export const storage = {
     };
 
     await dbSet(`events/${immutableSession.event}/sessions/${immutableSession.sessionId}`, persistedSession);
+
+    try {
+      const currentPracticeSeconds = await dbGet<number>("totalPracticeSeconds", 0);
+      const increment = Math.round((immutableSession.totalThinkTime + immutableSession.totalExplanationTime) || 0);
+      await dbSet("totalPracticeSeconds", Math.max(0, currentPracticeSeconds + increment));
+    } catch {
+      // Best effort profile metric.
+    }
 
     try {
       await dbSet("currentSession", null);

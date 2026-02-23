@@ -13,9 +13,22 @@ export interface AuthSession {
   user: AuthUser;
 }
 
+export type UserRole = "user" | "admin";
+
 export interface UserProfile {
   firstName: string;
   lastName: string;
+  role: UserRole;
+  email: string;
+  createdAt: string;
+  lastLoginAt: string;
+  loginCount: number;
+  totalPracticeSeconds: number;
+}
+
+export interface AdminUserRecord extends UserProfile {
+  uid: string;
+  name: string;
 }
 
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
@@ -120,6 +133,13 @@ export async function updateDisplayName(idToken: string, displayName: string, fa
   return session;
 }
 
+export async function sendPasswordResetEmail(email: string) {
+  await authRequest("accounts:sendOobCode", {
+    requestType: "PASSWORD_RESET",
+    email,
+  });
+}
+
 export async function refreshIdToken(refreshToken: string) {
   const res = await fetch(`${SECURE_TOKEN_BASE}/token?key=${FIREBASE_API_KEY}`, {
     method: "POST",
@@ -143,45 +163,163 @@ export async function refreshIdToken(refreshToken: string) {
   };
 }
 
-export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
-  const fullName = `${profile.firstName} ${profile.lastName}`.trim();
+function splitName(fullName: string) {
+  const [firstName = "", ...rest] = fullName.trim().split(/\s+/);
+  return { firstName, lastName: rest.join(" ") };
+}
 
-  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`, {
+function composeName(firstName: string, lastName: string) {
+  return `${firstName} ${lastName}`.trim();
+}
+
+export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
+  const fullName = composeName(profile.firstName, profile.lastName);
+
+  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: fullName,
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      role: profile.role,
+      email: profile.email,
+      createdAt: profile.createdAt,
+      lastLoginAt: profile.lastLoginAt,
+      loginCount: profile.loginCount,
+      totalPracticeSeconds: profile.totalPracticeSeconds,
+    }),
+  });
+
+  if (!profileRes.ok) {
+    const text = await profileRes.text().catch(() => "");
+    throw new Error(`Failed to save profile: ${profileRes.status} ${text}`);
+  }
+}
+
+export async function touchUserLogin(idToken: string, uid: string, input: { email: string; fallbackName: string }) {
+  const existing = await getUserProfile(idToken, uid);
+  const now = new Date().toISOString();
+  const base: UserProfile = existing || {
+    ...splitName(input.fallbackName),
+    role: "user",
+    email: input.email,
+    createdAt: now,
+    lastLoginAt: now,
+    loginCount: 0,
+    totalPracticeSeconds: 0,
+  };
+
+  const next: UserProfile = {
+    ...base,
+    email: input.email || base.email,
+    lastLoginAt: now,
+    loginCount: (base.loginCount || 0) + 1,
+  };
+
+  await saveUserProfile(idToken, uid, next);
+  return next;
+}
+
+export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
+  const profileRes = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`);
+  if (!profileRes.ok) {
+    return null;
+  }
+
+  const profileData = await profileRes.json();
+  if (!profileData) {
+    return null;
+  }
+
+  const role = profileData.role === "admin" ? "admin" : "user";
+  const name = typeof profileData.name === "string"
+    ? profileData.name
+    : composeName(String(profileData.firstName || ""), String(profileData.lastName || ""));
+  const split = splitName(name);
+
+  return {
+    firstName: split.firstName,
+    lastName: split.lastName,
+    role,
+    email: String(profileData.email || ""),
+    createdAt: String(profileData.createdAt || new Date().toISOString()),
+    lastLoginAt: String(profileData.lastLoginAt || profileData.createdAt || new Date().toISOString()),
+    loginCount: Number(profileData.loginCount || 0),
+    totalPracticeSeconds: Number(profileData.totalPracticeSeconds || 0),
+  };
+}
+
+export async function listUsers(idToken: string): Promise<AdminUserRecord[]> {
+  const res = await fetch(`${RTDB_BASE}/users.json?auth=${encodeURIComponent(idToken)}`);
+  if (!res.ok) throw new Error("Failed to list users");
+
+  const data = (await res.json()) as Record<string, any> | null;
+  return Object.entries(data || {}).map(([uid, raw]) => {
+    const name = typeof raw?.name === "string" ? raw.name : composeName(String(raw?.firstName || ""), String(raw?.lastName || ""));
+    const split = splitName(name);
+    return {
+      uid,
+      name,
+      firstName: split.firstName,
+      lastName: split.lastName,
+      role: raw?.role === "admin" ? "admin" : "user",
+      email: String(raw?.email || ""),
+      createdAt: String(raw?.createdAt || ""),
+      lastLoginAt: String(raw?.lastLoginAt || ""),
+      loginCount: Number(raw?.loginCount || 0),
+      totalPracticeSeconds: Number(raw?.totalPracticeSeconds || 0),
+    };
+  });
+}
+
+export async function updateUserName(idToken: string, uid: string, name: string) {
+  const trimmed = name.trim();
+  const split = splitName(trimmed);
+  const res = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: trimmed,
+      firstName: split.firstName,
+      lastName: split.lastName,
+      updatedAt: new Date().toISOString(),
+    }),
+  });
+
+  if (!res.ok) throw new Error("Failed to update user name");
+}
+
+export async function deleteUserData(idToken: string, uid: string) {
+  const res = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) throw new Error("Failed to delete user data");
+}
+
+export async function getUserRole(idToken: string, uid: string): Promise<UserRole> {
+  const roleRes = await fetch(`${RTDB_BASE}/users/${uid}/role.json?auth=${encodeURIComponent(idToken)}`);
+  if (!roleRes.ok) {
+    return "user";
+  }
+
+  const role = await roleRes.json();
+  return role === "admin" ? "admin" : "user";
+}
+
+export async function setUserRole(idToken: string, uid: string, role: UserRole) {
+  const roleRes = await fetch(`${RTDB_BASE}/users/${uid}/role.json?auth=${encodeURIComponent(idToken)}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(fullName),
+    body: JSON.stringify(role),
   });
 
-  if (!nameRes.ok) {
-    const text = await nameRes.text().catch(() => "");
-    throw new Error(`Failed to save display name: ${nameRes.status} ${text}`);
+  if (!roleRes.ok) {
+    const text = await roleRes.text().catch(() => "");
+    throw new Error(`Failed to set role: ${roleRes.status} ${text}`);
   }
-}
-
-export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
-  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`);
-  if (!nameRes.ok) {
-    return null;
-  }
-
-  const nameData = await nameRes.json();
-  if (!nameData) {
-    return null;
-  }
-
-  if (typeof nameData === "string") {
-    const [firstName = "", ...rest] = nameData.trim().split(/\s+/);
-    return {
-      firstName,
-      lastName: rest.join(" "),
-    };
-  }
-
-  // Legacy compatibility in case older data used object shape.
-  return {
-    firstName: nameData.firstName || "",
-    lastName: nameData.lastName || "",
-  };
 }

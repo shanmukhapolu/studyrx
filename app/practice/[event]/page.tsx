@@ -12,6 +12,7 @@ import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage, type Question, type SessionData } from "@/lib/storage";
 import { formatDuration } from "@/lib/session-analytics";
 import { getEventById, getEventName } from "@/lib/events";
+import { fetchQuestionsByEvent } from "@/lib/question-bank";
 import { 
   Brain, 
   CheckCircle2, 
@@ -43,6 +44,11 @@ interface QueueItem {
   isRedemption: boolean;
 }
 
+interface ShuffledOption {
+  label: string;
+  optionIndex: number;
+}
+
 export default function PracticePage({ params }: { params: Promise<{ event: string }> }) {
   const resolvedParams = use(params);
   
@@ -63,8 +69,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [questionQueue, setQuestionQueue] = useState<QueueItem[]>([]);
   const [currentQueueIndex, setCurrentQueueIndex] = useState(0);
-  const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [shuffledOptions, setShuffledOptions] = useState<ShuffledOption[]>([]);
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
@@ -152,26 +158,47 @@ function PracticeContent({ eventId }: { eventId: string }) {
     }
 
     try {
-      const res = await fetch(event.questionBankFile);
-      if (!res.ok) throw new Error("Failed to load questions");
-      
-      const questions: Question[] = await res.json();
+      const raw = localStorage.getItem("studyrx_auth_session");
+      const parsed = raw ? JSON.parse(raw) : null;
+      const idToken = parsed?.idToken as string | undefined;
+      if (!idToken) throw new Error("Missing auth token");
+
+      const dbQuestions = await fetchQuestionsByEvent(idToken, eventId);
+      const questions: Question[] = dbQuestions.map((item, index) => {
+        const legacyIndex = item.correctAnswer ? item.options.findIndex((option) => option === item.correctAnswer) : -1;
+        const resolvedCorrectAnswerIndex = Number.isInteger(item.correctAnswerIndex)
+          ? item.correctAnswerIndex
+          : legacyIndex >= 0
+            ? legacyIndex
+            : 0;
+
+        return {
+          id: index + 1,
+          sourceId: item.id,
+          question: item.question,
+          options: item.options,
+          correctAnswerIndex: Math.min(3, Math.max(0, resolvedCorrectAnswerIndex)),
+          correctAnswer: item.correctAnswer,
+          category: item.category || "General",
+          difficulty: item.difficulty,
+          explanation: item.explanation,
+          tag: item.tags?.[0],
+        };
+      });
+
       setAllQuestions(questions);
-      
+
       const completedQuestions = await storage.getCompletedQuestions(eventId);
-      
-      const remainingQuestions = questions.filter(
-        q => !completedQuestions.includes(q.id)
-      );
-      
+      const remainingQuestions = questions.filter((q) => !completedQuestions.includes(q.id));
+
       if (remainingQuestions.length === 0) {
         setIsComplete(true);
         setShowConfetti(true);
       } else {
         const shuffled = shuffleArray(remainingQuestions);
-        const queue: QueueItem[] = shuffled.map(q => ({
+        const queue: QueueItem[] = shuffled.map((q) => ({
           questionId: q.id,
-          isRedemption: false
+          isRedemption: false,
         }));
         setQuestionQueue(queue);
       }
@@ -189,9 +216,10 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
   useEffect(() => {
     if (currentQuestion) {
-      setShuffledOptions(shuffleArray(currentQuestion.options));
+      const indexed = currentQuestion.options.map((label, optionIndex) => ({ label, optionIndex }));
+      setShuffledOptions(shuffleArray(indexed));
     }
-  }, [currentQueueItem]);
+  }, [currentQueueItem, currentQuestion]);
 
   const startPractice = () => {
     const newSession: SessionData = storage.createSession(eventId, "practice");
@@ -205,15 +233,15 @@ function PracticeContent({ eventId }: { eventId: string }) {
     setHasStarted(true);
   };
 
-  const handleAnswerSelect = (answer: string) => {
+  const handleAnswerSelect = (answerIndex: number) => {
     if (isAnswered) return;
-    setSelectedAnswer(answer);
+    setSelectedAnswerIndex(answerIndex);
   };
 
   const handleSubmitAnswer = () => {
-    if (!selectedAnswer || !sessionData || !currentQuestion || !currentQueueItem) return;
+    if (selectedAnswerIndex === null || !sessionData || !currentQuestion || !currentQueueItem) return;
 
-    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    const isCorrect = selectedAnswerIndex === currentQuestion.correctAnswerIndex;
     if (thinkHiddenStartRef.current !== null) {
       thinkPausedMsRef.current += performance.now() - thinkHiddenStartRef.current;
       thinkHiddenStartRef.current = null;
@@ -335,7 +363,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
     }
 
     setCurrentQueueIndex(nextIndex);
-    setSelectedAnswer(null);
+    setSelectedAnswerIndex(null);
     setIsAnswered(false);
     questionShownAtRef.current = performance.now();
     thinkHiddenStartRef.current = null;
@@ -744,8 +772,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
           <CardContent className="space-y-6">
             <div className="space-y-3">
               {shuffledOptions.map((option, index) => {
-                const isSelected = selectedAnswer === option;
-                const isCorrect = option === currentQuestion.correctAnswer;
+                const isSelected = selectedAnswerIndex === option.optionIndex;
+                const isCorrect = option.optionIndex === currentQuestion.correctAnswerIndex;
                 const showResult = isAnswered;
 
                 let buttonClasses = "w-full justify-start text-left h-auto py-4 px-6 text-base font-medium transition-all bg-background/70 hover:bg-primary/10 hover:-translate-y-0.5";
@@ -764,14 +792,14 @@ function PracticeContent({ eventId }: { eventId: string }) {
                   <Button
                     key={`${currentQueueIndex}-${index}`}
                     variant="outline"
-                    onClick={() => handleAnswerSelect(option)}
+                    onClick={() => handleAnswerSelect(option.optionIndex)}
                     disabled={isAnswered}
                     className={buttonClasses}
                   >
                     <span className="mr-4 flex-shrink-0 font-mono text-sm text-muted-foreground font-bold">
                       {String.fromCharCode(65 + index)}
                     </span>
-                    <span className="flex-1">{option}</span>
+                    <span className="flex-1">{option.label}</span>
                     {showResult && isCorrect && (
                       <CheckCircle2 className="h-5 w-5 ml-3 flex-shrink-0" />
                     )}
@@ -799,7 +827,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
             {!isAnswered && (
               <Button
                 onClick={handleSubmitAnswer}
-                disabled={!selectedAnswer}
+                disabled={selectedAnswerIndex === null}
                 className="w-full h-12 text-base font-semibold"
                 size="lg"
               >
