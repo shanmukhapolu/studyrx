@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { touchUserLogin, updateDisplayName } from "@/lib/firebase-auth-rest";
+import { touchUserLogin } from "@/lib/firebase-auth-rest";
 import { getUidFromToken } from "@/lib/server/admin-auth";
 
 export async function POST(request: Request) {
@@ -29,14 +29,6 @@ export async function POST(request: Request) {
   }
 
   const preferredName = [firstName, lastName].filter(Boolean).join(" ") || displayName;
-
-  if (preferredName) {
-    try {
-      await updateDisplayName(idToken, preferredName, uid);
-    } catch {
-      // Display name update is optional; profile bootstrap still proceeds.
-    }
-  }
 
   const profile = await touchUserLogin(idToken, uid, {
     email,

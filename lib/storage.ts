@@ -1,4 +1,3 @@
-import { refreshIdToken } from "@/lib/firebase-auth-rest";
 import { firestoreDeleteDocument, firestoreGetDocument, firestoreListCollection, firestorePatchDocument, firestoreSetDocument } from "@/lib/firestore-rest";
 
 export interface Question {
@@ -113,54 +112,31 @@ function resolveUidFromToken(idToken: string): string {
   return typeof uid === "string" ? uid : "";
 }
 
-async function getStoredAuth(options?: { forceRefresh?: boolean }): Promise<StoredAuthSession | null> {
+async function getStoredAuth(): Promise<StoredAuthSession | null> {
   const session = readStoredAuth();
   if (!session) return null;
 
-  let current = session;
-
-  if ((!current.user?.uid || current.user.uid.length === 0) && current.idToken) {
-    const decodedUid = resolveUidFromToken(current.idToken);
+  if ((!session.user?.uid || session.user.uid.length === 0) && session.idToken) {
+    const decodedUid = resolveUidFromToken(session.idToken);
     if (decodedUid) {
-      current = {
-        ...current,
+      const next = {
+        ...session,
         user: {
-          ...current.user,
+          ...session.user,
           uid: decodedUid,
         },
       };
-      localStorage.setItem("studyrx_auth_session", JSON.stringify(current));
+      localStorage.setItem("studyrx_auth_session", JSON.stringify(next));
+      return next;
     }
   }
 
-  const expiresAt = current.expiresAt ?? 0;
-  const missingUid = !current.user?.uid || current.user.uid.length === 0;
-  const shouldRefresh = Boolean(current.refreshToken) && (missingUid || options?.forceRefresh || (expiresAt > 0 && expiresAt <= Date.now() + 30_000));
-  if (shouldRefresh) {
-    try {
-      const refreshed = await refreshIdToken(current.refreshToken);
-      current = {
-        ...current,
-        idToken: refreshed.idToken,
-        refreshToken: refreshed.refreshToken,
-        expiresIn: refreshed.expiresIn,
-        expiresAt: Date.now() + refreshed.expiresIn * 1000,
-        user: {
-          ...current.user,
-          uid: refreshed.uid || current.user.uid || resolveUidFromToken(refreshed.idToken),
-        },
-      };
-      localStorage.setItem("studyrx_auth_session", JSON.stringify(current));
-    } catch {
-      return current;
-    }
-  }
-
-  return current;
+  return session;
 }
 
-async function getUserAuth(options?: { forceRefresh?: boolean }) {
-  const auth = await getStoredAuth(options);
+async function getUserAuth() {
+
+  const auth = await getStoredAuth();
   if (!auth?.user?.uid || !auth?.idToken) {
     throw new Error("Not authenticated");
   }
@@ -220,7 +196,7 @@ async function dbGet<T>(path: string, fallback: T): Promise<T> {
     return await read(primary.idToken, primary.uid);
   } catch {
     try {
-      const retry = await getUserAuth({ forceRefresh: true });
+      const retry = await getUserAuth();
       return await read(retry.idToken, retry.uid);
     } catch {
       return fallback;
@@ -263,7 +239,7 @@ async function dbSet(path: string, value: unknown) {
     const primary = await getUserAuth();
     await write(primary.idToken, primary.uid);
   } catch {
-    const retry = await getUserAuth({ forceRefresh: true });
+    const retry = await getUserAuth();
     await write(retry.idToken, retry.uid);
   }
 }

@@ -1,19 +1,21 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-
 import {
-  getUserProfile,
-  refreshIdToken,
-  signInWithEmail,
-  signInWithGoogleIdToken,
-  signUpWithEmail,
-  updateDisplayName,
-  type AuthSession,
-  type AuthUser,
-  type UserProfile,
-  type UserRole,
-} from "@/lib/firebase-auth-rest";
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithCredential,
+  signInWithEmailAndPassword,
+  signOut as firebaseSignOut,
+  updateProfile,
+  type User,
+} from "firebase/auth";
+
+import { auth, db } from "@/lib/firebase";
+import { doc, increment, serverTimestamp, setDoc } from "firebase/firestore";
+
+import { getUserProfile, type AuthSession, type AuthUser, type UserProfile, type UserRole } from "@/lib/firebase-auth-rest";
 
 interface AuthContextValue {
   user: AuthUser | null;
@@ -31,21 +33,6 @@ const UID_COOKIE_KEY = "studyrx_auth_uid";
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
-
-function syncAuthCookies(session: AuthSession | null) {
-  if (typeof document === "undefined") return;
-
-  if (!session) {
-    document.cookie = `${AUTH_COOKIE_KEY}=; Max-Age=0; Path=/; SameSite=Lax`;
-    document.cookie = `${UID_COOKIE_KEY}=; Max-Age=0; Path=/; SameSite=Lax`;
-    return;
-  }
-
-  const maxAge = Math.max(0, Math.floor(session.expiresIn));
-  document.cookie = `${AUTH_COOKIE_KEY}=${encodeURIComponent(session.idToken)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
-  document.cookie = `${UID_COOKIE_KEY}=${encodeURIComponent(session.user.uid)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
-}
-
 function normalizeRole(profile: Partial<UserProfile> & { firstName: string; lastName: string }): UserProfile {
   const now = new Date().toISOString();
   return {
@@ -57,63 +44,6 @@ function normalizeRole(profile: Partial<UserProfile> & { firstName: string; last
     lastLoginAt: profile.lastLoginAt || now,
     loginCount: Number(profile.loginCount || 0),
     totalPracticeSeconds: Number(profile.totalPracticeSeconds || 0),
-  };
-}
-
-function saveSession(session: AuthSession) {
-  const normalized = ensureSessionUid(session);
-  const expiresAt = Date.now() + normalized.expiresIn * 1000;
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      ...normalized,
-      expiresAt,
-    })
-  );
-  syncAuthCookies(normalized);
-}
-
-function readSession(): (AuthSession & { expiresAt: number }) | null {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return null;
-
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
-
-
-function decodeJwtPayload(token: string): Record<string, unknown> | null {
-  try {
-    const payload = token.split(".")[1];
-    if (!payload) return null;
-    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
-    const padded = normalized + "=".repeat((4 - (normalized.length % 4)) % 4);
-    const json = atob(padded);
-    return JSON.parse(json) as Record<string, unknown>;
-  } catch {
-    return null;
-  }
-}
-
-function ensureSessionUid<T extends AuthSession>(session: T): T {
-  if (session.user.uid) return session;
-
-  const payload = decodeJwtPayload(session.idToken);
-  const uid = (payload?.user_id || payload?.sub) as string | undefined;
-  if (!uid) {
-    throw new Error("Authentication session missing user ID. Please sign in again.");
-  }
-
-  return {
-    ...session,
-    user: {
-      ...session.user,
-      uid,
-    },
   };
 }
 
@@ -134,108 +64,102 @@ function profileFromDisplayName(displayName?: string | null): UserProfile | null
   };
 }
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+async function toSession(firebaseUser: User): Promise<AuthSession & { expiresAt: number }> {
+  const tokenResult = await firebaseUser.getIdTokenResult();
+  const expiresAt = Date.parse(tokenResult.expirationTime);
+  const expiresIn = Math.max(1, Math.floor((expiresAt - Date.now()) / 1000));
 
-  const bootstrapProfile = async (session: AuthSession, input?: { firstName?: string; lastName?: string }) => {
-    const displayName = session.user.displayName || "";
-    const firstName = input?.firstName || "";
-    const lastName = input?.lastName || "";
-
-    const doRequest = async (idToken: string) => {
-      const res = await fetch("/api/auth/bootstrap-profile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${idToken}`,
-        },
-        body: JSON.stringify({
-          email: session.user.email,
-          firstName,
-          lastName,
-          displayName,
-        }),
-      });
-      const body = await res.json().catch(() => ({}));
-      return { res, body };
-    };
-
-    let currentSession = session;
-    let response = await doRequest(currentSession.idToken);
-
-    if (response.res.status === 401) {
-      const refreshed = await refreshIdToken(currentSession.refreshToken);
-      currentSession = {
-        ...currentSession,
-        idToken: refreshed.idToken,
-        refreshToken: refreshed.refreshToken,
-        expiresIn: refreshed.expiresIn,
-        user: {
-          ...currentSession.user,
-          uid: refreshed.uid || currentSession.user.uid,
-        },
-      };
-      saveSession(currentSession);
-      response = await doRequest(currentSession.idToken);
-    }
-
-    if (!response.res.ok) {
-      throw new Error(response.body?.error || "Failed to bootstrap user profile");
-    }
-
-    return normalizeRole(response.body.profile || profileFromDisplayName(displayName) || { firstName, lastName });
+  return {
+    idToken: tokenResult.token,
+    refreshToken: firebaseUser.refreshToken || "",
+    expiresIn,
+    expiresAt,
+    user: {
+      uid: firebaseUser.uid,
+      email: firebaseUser.email || "",
+      displayName: firebaseUser.displayName || undefined,
+    },
   };
+}
 
+function syncAuthCookies(session: AuthSession | null) {
+  if (typeof document === "undefined") return;
+
+  if (!session) {
+    document.cookie = `${AUTH_COOKIE_KEY}=; Max-Age=0; Path=/; SameSite=Lax`;
+    document.cookie = `${UID_COOKIE_KEY}=; Max-Age=0; Path=/; SameSite=Lax`;
+    return;
+  }
+
+  const maxAge = Math.max(0, Math.floor(session.expiresIn));
+  document.cookie = `${AUTH_COOKIE_KEY}=${encodeURIComponent(session.idToken)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+  document.cookie = `${UID_COOKIE_KEY}=${encodeURIComponent(session.user.uid)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+}
+
+function saveSession(session: AuthSession & { expiresAt?: number }) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+  syncAuthCookies(session);
+}
+
+async function bootstrapProfile(session: AuthSession, input?: { firstName?: string; lastName?: string }) {
+  const displayName = session.user.displayName || "";
+  const firstName = input?.firstName || "";
+  const lastName = input?.lastName || "";
+
+  const res = await fetch("/api/auth/bootstrap-profile", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${session.idToken}`,
+    },
+    body: JSON.stringify({
+      email: session.user.email,
+      firstName,
+      lastName,
+      displayName,
+    }),
+  });
+
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(body?.error || "Failed to bootstrap user profile");
+  }
+
+  return normalizeRole(body.profile || profileFromDisplayName(displayName) || { firstName, lastName });
+}
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let mounted = true;
-
-    const bootstrap = async () => {
-      const existing = readSession();
-      if (!existing) {
-        if (mounted) setLoading(false);
+    const unsub = onAuthStateChanged(auth, async (firebaseUser: User | null) => {
+      if (!firebaseUser) {
+        localStorage.removeItem(STORAGE_KEY);
+        syncAuthCookies(null);
+        setUser(null);
+        setProfile(null);
+        setLoading(false);
         return;
       }
 
       try {
-        let session = existing;
-        if (existing.expiresAt <= Date.now() + 30_000) {
-          const refreshed = await refreshIdToken(existing.refreshToken);
-          session = {
-            idToken: refreshed.idToken,
-            refreshToken: refreshed.refreshToken,
-            expiresIn: refreshed.expiresIn,
-            user: {
-              ...existing.user,
-              uid: refreshed.uid,
-            },
-            expiresAt: Date.now() + refreshed.expiresIn * 1000,
-          };
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-          syncAuthCookies(session as AuthSession);
-        }
-
-        session = ensureSessionUid(session as AuthSession) as typeof session;
-
+        const session = await toSession(firebaseUser);
+        saveSession(session);
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
-        if (!mounted) return;
 
         setUser(session.user);
         setProfile(normalizeRole(fetchedProfile || profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" }));
       } catch {
-        localStorage.removeItem(STORAGE_KEY);
-        syncAuthCookies(null);
+        setUser(null);
+        setProfile(null);
       } finally {
-        if (mounted) setLoading(false);
+        setLoading(false);
       }
-    };
+    });
 
-    bootstrap();
-    return () => {
-      mounted = false;
-    };
+    return () => unsub();
   }, []);
 
   const value = useMemo<AuthContextValue>(
@@ -244,34 +168,64 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       profile,
       loading,
       signIn: async (email, password) => {
-        let session = ensureSessionUid(await signInWithEmail(email, password));
-        saveSession(session);
-        session = ensureSessionUid(session as AuthSession) as typeof session;
-
-        const bootstrapped = await bootstrapProfile(session);
-        setUser(session.user);
-        setProfile(bootstrapped);
+        try {
+          const cred = await signInWithEmailAndPassword(auth, email, password);
+          const session = await toSession(cred.user);
+          saveSession(session);
+          const bootstrapped = await bootstrapProfile(session);
+          setUser(session.user);
+          setProfile(bootstrapped);
+        } catch (error: any) {
+          console.log(error?.code);
+          console.log(error?.message);
+          throw error;
+        }
       },
       signUp: async ({ firstName, lastName, email, password }) => {
-        let session = ensureSessionUid(await signUpWithEmail(email, password));
-        session = ensureSessionUid(await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim(), session.user.uid));
+        try {
+          const cred = await createUserWithEmailAndPassword(auth, email, password);
+          await updateProfile(cred.user, { displayName: `${firstName} ${lastName}`.trim() });
 
-        saveSession(session);
-        setUser(session.user);
+          await setDoc(doc(db, "users", cred.user.uid), {
+            firstName,
+            lastName,
+            name: `${firstName} ${lastName}`.trim(),
+            email,
+            role: "user",
+            createdAt: serverTimestamp(),
+            lastLoginAt: serverTimestamp(),
+            loginCount: increment(1),
+            totalPracticeSeconds: 0,
+          }, { merge: true });
 
-        const bootstrapped = await bootstrapProfile(session, { firstName, lastName });
-        setProfile(bootstrapped);
+          const session = await toSession(cred.user);
+          saveSession(session);
+          const bootstrapped = await bootstrapProfile(session, { firstName, lastName });
+          setUser(session.user);
+          setProfile(bootstrapped);
+        } catch (error: any) {
+          console.log(error?.code);
+          console.log(error?.message);
+          throw error;
+        }
       },
       signInWithGoogleCredential: async (credential) => {
-        let session = ensureSessionUid(await signInWithGoogleIdToken(credential));
-        saveSession(session);
-        session = ensureSessionUid(session as AuthSession) as typeof session;
-
-        const bootstrapped = await bootstrapProfile(session);
-        setUser(session.user);
-        setProfile(bootstrapped);
+        try {
+          const googleCredential = GoogleAuthProvider.credential(credential);
+          const cred = await signInWithCredential(auth, googleCredential);
+          const session = await toSession(cred.user);
+          saveSession(session);
+          const bootstrapped = await bootstrapProfile(session);
+          setUser(session.user);
+          setProfile(bootstrapped);
+        } catch (error: any) {
+          console.log(error?.code);
+          console.log(error?.message);
+          throw error;
+        }
       },
       signOut: () => {
+        void firebaseSignOut(auth);
         localStorage.removeItem(STORAGE_KEY);
         syncAuthCookies(null);
         setUser(null);
