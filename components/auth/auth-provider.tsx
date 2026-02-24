@@ -5,8 +5,6 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import {
   getUserProfile,
   refreshIdToken,
-  saveUserProfile,
-  touchUserLogin,
   signInWithEmail,
   signInWithGoogleIdToken,
   signUpWithEmail,
@@ -137,6 +135,34 @@ function profileFromDisplayName(displayName?: string | null): UserProfile | null
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+
+  const bootstrapProfile = async (session: AuthSession, input?: { firstName?: string; lastName?: string }) => {
+    const displayName = session.user.displayName || "";
+    const firstName = input?.firstName || "";
+    const lastName = input?.lastName || "";
+
+    const res = await fetch("/api/auth/bootstrap-profile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.idToken}`,
+      },
+      body: JSON.stringify({
+        email: session.user.email,
+        firstName,
+        lastName,
+        displayName,
+      }),
+    });
+
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(body?.error || "Failed to bootstrap user profile");
+    }
+
+    return normalizeRole(body.profile || profileFromDisplayName(displayName) || { firstName, lastName });
+  };
+
   const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -200,58 +226,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         saveSession(session);
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
-        const touched = await touchUserLogin(session.idToken, session.user.uid, {
-          email: session.user.email,
-          fallbackName: session.user.displayName || "",
-        });
+        const bootstrapped = await bootstrapProfile(session);
         setUser(session.user);
-        setProfile(normalizeRole(touched));
+        setProfile(bootstrapped);
       },
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = ensureSessionUid(await signUpWithEmail(email, password));
         session = ensureSessionUid(await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim(), session.user.uid));
 
-        try {
-          await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName, role: "user", email, createdAt: new Date().toISOString(), lastLoginAt: new Date().toISOString(), loginCount: 1, totalPracticeSeconds: 0 });
-        } catch (error) {
-          console.warn("Profile write skipped during signup; attempting fresh sign-in token.", error);
-          try {
-            session = ensureSessionUid(await signInWithEmail(email, password));
-            await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName, role: "user", email, createdAt: new Date().toISOString(), lastLoginAt: new Date().toISOString(), loginCount: 1, totalPracticeSeconds: 0 });
-          } catch (recoveryError) {
-            console.warn("Signup recovery profile write also failed; continuing with Auth displayName fallback.", recoveryError);
-          }
-        }
-
         saveSession(session);
         setUser(session.user);
-        const touched = await touchUserLogin(session.idToken, session.user.uid, {
-          email: session.user.email,
-          fallbackName: `${firstName} ${lastName}`.trim(),
-        });
-        setProfile(normalizeRole(touched));
+
+        const bootstrapped = await bootstrapProfile(session, { firstName, lastName });
+        setProfile(bootstrapped);
       },
       signInWithGoogleCredential: async (credential) => {
         let session = ensureSessionUid(await signInWithGoogleIdToken(credential));
-        const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "", role: "user" as const, email: session.user.email, createdAt: new Date().toISOString(), lastLoginAt: new Date().toISOString(), loginCount: 0, totalPracticeSeconds: 0 };
-
-        if (parsedProfile.firstName || parsedProfile.lastName) {
-          try {
-            await saveUserProfile(session.idToken, session.user.uid, normalizeRole({ ...parsedProfile, email: session.user.email }));
-          } catch (error) {
-            console.warn("Profile write skipped during Google sign-in; continuing with Auth displayName fallback.", error);
-          }
-        }
-
         saveSession(session);
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
-        const touched = await touchUserLogin(session.idToken, session.user.uid, {
-          email: session.user.email,
-          fallbackName: session.user.displayName || "",
-        });
+        const bootstrapped = await bootstrapProfile(session);
         setUser(session.user);
-        setProfile(normalizeRole(touched));
+        setProfile(bootstrapped);
       },
       signOut: () => {
         localStorage.removeItem(STORAGE_KEY);
