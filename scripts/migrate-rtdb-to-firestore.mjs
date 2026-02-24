@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import admin from "firebase-admin";
+import admin from "../vendor/firebase-admin/index.js";
 
 function parseArgs(argv) {
   const args = {};

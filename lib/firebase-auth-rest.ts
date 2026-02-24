@@ -1,5 +1,5 @@
 import { FIREBASE_API_KEY, firestoreDb } from "@/lib/firebase-config";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "@/vendor/firebase/firestore";
 
 export interface AuthUser {
   uid: string;

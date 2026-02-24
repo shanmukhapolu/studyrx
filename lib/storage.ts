@@ -9,7 +9,7 @@ import {
   query,
   setDoc,
   updateDoc,
-} from "firebase/firestore";
+} from "@/vendor/firebase/firestore";
 
 export interface Question {
   id: number;

@@ -113,9 +113,6 @@ importers:
       embla-carousel-react:
         specifier: 8.5.1
         version: 8.5.1(react@19.2.0)
-      firebase:
-        specifier: file:vendor/firebase
-        version: file:vendor/firebase
       input-otp:
         specifier: 1.4.1
         version: 1.4.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -177,9 +174,6 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.0.0
-      firebase-admin:
-        specifier: file:vendor/firebase-admin
-        version: file:vendor/firebase-admin
       postcss:
         specifier: ^8.5
         version: 8.5.0
@@ -1105,12 +1099,6 @@ packages:
   fast-equals@5.4.0:
     resolution: {integrity: sha512-jt2DW/aNFNwke7AUd+Z+e6pz39KO5rzdbbFCg2sGafS4mk13MI7Z8O5z9cADNn5lhGODIgLwug6TZO2ctf7kcw==}
     engines: {node: '>=6.0.0'}
-
-  firebase-admin@file:vendor/firebase-admin:
-    resolution: {directory: vendor/firebase-admin, type: directory}
-
-  firebase@file:vendor/firebase:
-    resolution: {directory: vendor/firebase, type: directory}
 
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
@@ -2375,10 +2363,6 @@ snapshots:
   eventemitter3@4.0.7: {}
 
   fast-equals@5.4.0: {}
-
-  firebase-admin@file:vendor/firebase-admin: {}
-
-  firebase@file:vendor/firebase: {}
 
   fraction.js@4.3.7: {}
 

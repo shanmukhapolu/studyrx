@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "@/vendor/firebase/firestore";
 
 import {
   getUserProfile,
