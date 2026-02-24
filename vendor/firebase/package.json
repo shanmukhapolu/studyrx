@@ -1,0 +1,10 @@
+{
+  "name": "firebase",
+  "version": "11.0.0-local",
+  "type": "module",
+  "exports": {
+    "./app": "./app.js",
+    "./auth": "./auth.js",
+    "./firestore": "./firestore.js"
+  }
+}
