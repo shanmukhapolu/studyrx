@@ -5,28 +5,62 @@ service cloud.firestore {
       return request.auth != null;
     }
 
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function userDoc(uid) {
+      return get(/databases/$(database)/documents/users/$(uid));
+    }
+
     function isAdmin() {
-      return signedIn() &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+      return signedIn() && userDoc(request.auth.uid).data.role == "admin";
+    }
+
+    function hasOnlyAllowedUserFields() {
+      return request.resource.data.keys().hasOnly([
+        "name", "firstName", "lastName", "email", "role",
+        "createdAt", "lastLoginAt", "loginCount", "totalPracticeSeconds",
+        "updatedAt", "currentSession"
+      ]);
+    }
+
+    function isValidUserProfile() {
+      return request.resource.data.email is string &&
+        request.resource.data.role in ["user", "admin"] &&
+        request.resource.data.loginCount is int && request.resource.data.loginCount >= 0 &&
+        request.resource.data.totalPracticeSeconds is number && request.resource.data.totalPracticeSeconds >= 0;
+    }
+
+    function isValidQuestion() {
+      return request.resource.data.question is string && request.resource.data.question.size() > 0 &&
+        request.resource.data.options is list && request.resource.data.options.size() == 4 &&
+        request.resource.data.correctAnswerIndex is int && request.resource.data.correctAnswerIndex >= 0 && request.resource.data.correctAnswerIndex <= 3 &&
+        request.resource.data.explanation is string && request.resource.data.explanation.size() > 0 &&
+        request.resource.data.eventId is string && request.resource.data.eventId.size() > 0 &&
+        request.resource.data.category is string && request.resource.data.category.size() > 0 &&
+        request.resource.data.difficulty in ["Easy", "Medium", "Hard"];
     }
 
     match /users/{uid} {
-      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
-      allow create, update: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow read: if isSelf(uid) || isAdmin();
+      allow create: if isSelf(uid) && hasOnlyAllowedUserFields() && isValidUserProfile();
+      allow update: if (isSelf(uid) || isAdmin()) && hasOnlyAllowedUserFields() && isValidUserProfile();
       allow delete: if isAdmin();
 
       match /events/{eventId} {
-        allow read, write: if signedIn() && (request.auth.uid == uid || isAdmin());
+        allow read, write: if isSelf(uid) || isAdmin();
 
         match /sessions/{sessionId} {
-          allow read, write: if signedIn() && (request.auth.uid == uid || isAdmin());
+          allow read, write: if isSelf(uid) || isAdmin();
         }
       }
     }
 
     match /questions/{questionId} {
       allow read: if signedIn();
-      allow create, update, delete: if isAdmin();
+      allow create, update: if isAdmin() && isValidQuestion();
+      allow delete: if isAdmin();
     }
 
     match /adminAggregates/{docId} {

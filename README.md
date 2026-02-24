@@ -300,7 +300,13 @@ FIREBASE_ADMIN_ID_TOKEN=<admin_user_id_token> npm run import:questions
 
 ## Firestore migration notes
 
-- App data now uses Firestore collections/documents instead of Realtime Database paths.
+- Realtime Database is removed from app data paths; app data now uses Firestore collections/documents only.
 - Key collections: `users`, `questions`, `adminAggregates`, `deletedUsers`.
 - User sessions are stored under `users/{uid}/events/{eventId}/sessions/{sessionId}`.
 - Copy `firestore.rules` into Firebase console rules editor (or deploy with CLI).
+
+
+### Account bootstrap
+
+- On sign up/sign in, the app ensures `users/{uid}` exists in Firestore.
+- Basic fields are always written/maintained: `email`, `role`, `createdAt`, `lastLoginAt`, `loginCount`, `totalPracticeSeconds`, plus name fields.
