@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Home, Layers, BarChart3 } from "lucide-react";
+import { Home, Layers, BarChart3, Users, ShieldCheck, FileQuestion } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 
-const navItems = [
+const studentNavItems = [
   {
     title: "Dashboard",
     href: "/dashboard",
@@ -35,17 +35,24 @@ const navItems = [
   },
 ];
 
+const adminNavItems = [
+  { title: "Users", href: "/admin?tab=users", icon: Users },
+  { title: "Questions", href: "/admin?tab=questions", icon: FileQuestion },
+  { title: "Site Analytics", href: "/admin?tab=analytics", icon: ShieldCheck },
+];
+
 export function AppSidebar() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const { profile, user, signOut } = useAuth();
+  const { profile, user, signOut, isAdmin } = useAuth();
   const fallbackName = user?.displayName?.trim() || "Student";
   const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
 
   return (
-    <Sidebar>
+    <Sidebar className={isAdmin ? "bg-sidebar/95 border-r-2 border-amber-500/30" : ""}>
       <SidebarHeader className="border-b border-sidebar-border p-6">
-        <Link href="/dashboard" className="flex items-center gap-4">
+        <Link href={isAdmin ? "/admin" : "/dashboard"} className="flex items-center gap-4">
           <Image
             src="/logo.png"
             alt="StudyRx Logo"
@@ -55,16 +62,23 @@ export function AppSidebar() {
           />
           <div className="flex flex-col">
             <span className="text-xl font-bold text-sidebar-foreground">StudyRx</span>
+            {isAdmin && <span className="text-xs tracking-[0.25em] text-amber-400 font-semibold">ADMIN</span>}
           </div>
         </Link>
       </SidebarHeader>
       <SidebarContent className="p-4">
         <SidebarMenu className="space-y-2">
-          {navItems.map((item) => (
+          {(isAdmin ? adminNavItems : studentNavItems).map((item) => {
+            const itemTab = item.href.split("tab=")[1];
+            const active = isAdmin
+              ? pathname === "/admin" && searchParams.get("tab") === itemTab
+              : pathname === item.href;
+
+            return (
             <SidebarMenuItem key={item.href}>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === item.href}
+                isActive={active}
                 tooltip={item.title}
                 className="py-6"
               >
@@ -74,7 +88,7 @@ export function AppSidebar() {
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          ))}
+          )})}
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border p-4">

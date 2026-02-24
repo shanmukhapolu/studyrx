@@ -14,11 +14,13 @@ import {
   type AuthUser,
   type UserProfile,
 } from "@/lib/firebase-auth-rest";
+import { getIsAdmin, touchUserProfileOnSignIn } from "@/lib/admin";
 
 interface AuthContextValue {
   user: AuthUser | null;
   profile: UserProfile | null;
   loading: boolean;
+  isAdmin: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (input: { firstName: string; lastName: string; email: string; password: string }) => Promise<void>;
   signInWithGoogleCredential: (credential: string) => Promise<void>;
@@ -100,6 +102,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -131,10 +134,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
+        const adminState = await getIsAdmin(session.user.uid).catch(() => false);
         if (!mounted) return;
 
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
+        setIsAdmin(adminState);
       } catch {
         localStorage.removeItem(STORAGE_KEY);
       } finally {
@@ -153,14 +158,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       user,
       profile,
       loading,
+      isAdmin,
       signIn: async (email, password) => {
         let session = ensureSessionUid(await signInWithEmail(email, password));
         saveSession(session);
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
+        await touchUserProfileOnSignIn(session.user.uid, session.user.email).catch(() => null);
+        const adminState = await getIsAdmin(session.user.uid).catch(() => false);
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
+        setIsAdmin(adminState);
       },
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = ensureSessionUid(await signUpWithEmail(email, password));
@@ -179,8 +188,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
 
         saveSession(session);
+        await touchUserProfileOnSignIn(session.user.uid, session.user.email).catch(() => null);
+        const adminState = await getIsAdmin(session.user.uid).catch(() => false);
         setUser(session.user);
         setProfile({ firstName, lastName });
+        setIsAdmin(adminState);
       },
       signInWithGoogleCredential: async (credential) => {
         let session = ensureSessionUid(await signInWithGoogleIdToken(credential));
@@ -198,16 +210,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
+        await touchUserProfileOnSignIn(session.user.uid, session.user.email).catch(() => null);
+        const adminState = await getIsAdmin(session.user.uid).catch(() => false);
         setUser(session.user);
         setProfile(fetchedProfile || parsedProfile);
+        setIsAdmin(adminState);
       },
       signOut: () => {
         localStorage.removeItem(STORAGE_KEY);
         setUser(null);
         setProfile(null);
+        setIsAdmin(false);
       },
     }),
-    [loading, profile, user]
+    [isAdmin, loading, profile, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

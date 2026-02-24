@@ -2,7 +2,7 @@ import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
 import { refreshIdToken } from "@/lib/firebase-auth-rest";
 
 export interface Question {
-  id: number;
+  id: string;
   question: string;
   options: string[];
   correctAnswer: string;
@@ -15,7 +15,7 @@ export interface Question {
 export type SessionType = "practice" | "timed";
 
 export interface QuestionAttempt {
-  questionId: number;
+  questionId: string;
   questionIndex: number;
   category: string;
   difficulty: string;
@@ -229,9 +229,15 @@ async function dbSet(path: string, value: unknown) {
 
 type EventRecord = {
   sessions?: Record<string, Partial<SessionData>>;
-  wrongQuestions?: number[];
-  completedQuestions?: number[];
+  wrongQuestions?: string[];
+  completedQuestions?: string[];
 };
+
+function normalizeQuestionId(id: unknown): string {
+  if (typeof id === "string") return id;
+  if (typeof id === "number") return String(id);
+  return "";
+}
 
 type PersistedSessionRecord = Omit<SessionData, "attempts"> & {
   attempts: string;
@@ -274,7 +280,7 @@ function normalizeAttempt(attempt: Partial<QuestionAttempt>, index: number, even
   const thinkTime = attempt.thinkTime ?? attempt.timeSpent ?? 0;
 
   return {
-    questionId: attempt.questionId ?? -1,
+    questionId: normalizeQuestionId(attempt.questionId) || `legacy-${index + 1}`,
     questionIndex: attempt.questionIndex ?? index + 1,
     category: attempt.category ?? "Unknown",
     difficulty: attempt.difficulty ?? "Unknown",
@@ -405,12 +411,12 @@ export const storage = {
     };
   },
 
-  getWrongQuestions: async (eventId: string): Promise<number[]> => {
+  getWrongQuestions: async (eventId: string): Promise<string[]> => {
     const eventData = await dbGet<EventRecord | null>(`events/${eventId}`, null);
-    return eventData?.wrongQuestions ?? [];
+    return (eventData?.wrongQuestions ?? []).map((id) => normalizeQuestionId(id)).filter(Boolean);
   },
 
-  addWrongQuestion: async (eventId: string, questionId: number) => {
+  addWrongQuestion: async (eventId: string, questionId: string) => {
     try {
       const wrong = await storage.getWrongQuestions(eventId);
       if (!wrong.includes(questionId)) {
@@ -422,7 +428,7 @@ export const storage = {
     }
   },
 
-  removeWrongQuestion: async (eventId: string, questionId: number) => {
+  removeWrongQuestion: async (eventId: string, questionId: string) => {
     try {
       const wrong = await storage.getWrongQuestions(eventId);
       await dbSet(`events/${eventId}/wrongQuestions`, wrong.filter((id) => id !== questionId));
@@ -431,12 +437,12 @@ export const storage = {
     }
   },
 
-  getCompletedQuestions: async (eventId: string): Promise<number[]> => {
+  getCompletedQuestions: async (eventId: string): Promise<string[]> => {
     const eventData = await dbGet<EventRecord | null>(`events/${eventId}`, null);
-    return eventData?.completedQuestions ?? [];
+    return (eventData?.completedQuestions ?? []).map((id) => normalizeQuestionId(id)).filter(Boolean);
   },
 
-  addCompletedQuestion: async (eventId: string, questionId: number) => {
+  addCompletedQuestion: async (eventId: string, questionId: string) => {
     try {
       const completed = await storage.getCompletedQuestions(eventId);
       if (!completed.includes(questionId)) {

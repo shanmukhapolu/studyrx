@@ -12,6 +12,7 @@ import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage, type Question, type SessionData } from "@/lib/storage";
 import { formatDuration } from "@/lib/session-analytics";
 import { getEventById, getEventName } from "@/lib/events";
+import { getQuestionsForEvent } from "@/lib/admin";
 import { 
   Brain, 
   CheckCircle2, 
@@ -39,7 +40,7 @@ function shuffleArray<T>(array: T[]): T[] {
 
 // Queue item tracks question id and whether it's a redemption attempt
 interface QueueItem {
-  questionId: number;
+  questionId: string;
   isRedemption: boolean;
 }
 
@@ -152,17 +153,12 @@ function PracticeContent({ eventId }: { eventId: string }) {
     }
 
     try {
-      const res = await fetch(event.questionBankFile);
-      if (!res.ok) throw new Error("Failed to load questions");
-      
-      const questions: Question[] = await res.json();
+      const questions: Question[] = await getQuestionsForEvent(eventId);
       setAllQuestions(questions);
       
       const completedQuestions = await storage.getCompletedQuestions(eventId);
       
-      const remainingQuestions = questions.filter(
-        q => !completedQuestions.includes(q.id)
-      );
+      const remainingQuestions = questions.filter((q) => !completedQuestions.includes(q.id));
       
       if (remainingQuestions.length === 0) {
         setIsComplete(true);

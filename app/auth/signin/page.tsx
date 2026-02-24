@@ -19,7 +19,7 @@ export default function SignInPage() {
 }
 
 function SignInContent() {
-  const { signIn, signInWithGoogleCredential, user } = useAuth();
+  const { signIn, signInWithGoogleCredential, user, isAdmin } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
 
@@ -32,9 +32,9 @@ function SignInContent() {
 
   useEffect(() => {
     if (user) {
-      router.replace(next);
+      router.replace(isAdmin ? "/admin" : next);
     }
-  }, [next, router, user]);
+  }, [isAdmin, next, router, user]);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -42,7 +42,6 @@ function SignInContent() {
     setLoading(true);
     try {
       await signIn(email, password);
-      router.replace(next);
     } catch (err) {
       setError((err as Error).message || "Sign in failed");
     } finally {
@@ -70,7 +69,6 @@ function SignInContent() {
             setLoading(true);
             try {
               await signInWithGoogleCredential(credential);
-              router.replace(next);
             } catch (err) {
               setError((err as Error).message || "Google sign in failed");
             } finally {
