@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { touchUserLogin, updateDisplayName } from "@/lib/firebase-auth-rest";
@@ -5,7 +6,9 @@ import { getUidFromToken } from "@/lib/server/admin-auth";
 
 export async function POST(request: Request) {
   const authHeader = request.headers.get("authorization") || "";
-  const idToken = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  const bearerToken = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  const cookieToken = (await cookies()).get("studyrx_auth_token")?.value || null;
+  const idToken = bearerToken || cookieToken;
   if (!idToken) {
     return NextResponse.json({ error: "Missing bearer token" }, { status: 401 });
   }

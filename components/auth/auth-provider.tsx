@@ -141,26 +141,48 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const firstName = input?.firstName || "";
     const lastName = input?.lastName || "";
 
-    const res = await fetch("/api/auth/bootstrap-profile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session.idToken}`,
-      },
-      body: JSON.stringify({
-        email: session.user.email,
-        firstName,
-        lastName,
-        displayName,
-      }),
-    });
+    const doRequest = async (idToken: string) => {
+      const res = await fetch("/api/auth/bootstrap-profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({
+          email: session.user.email,
+          firstName,
+          lastName,
+          displayName,
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      return { res, body };
+    };
 
-    const body = await res.json().catch(() => ({}));
-    if (!res.ok) {
-      throw new Error(body?.error || "Failed to bootstrap user profile");
+    let currentSession = session;
+    let response = await doRequest(currentSession.idToken);
+
+    if (response.res.status === 401) {
+      const refreshed = await refreshIdToken(currentSession.refreshToken);
+      currentSession = {
+        ...currentSession,
+        idToken: refreshed.idToken,
+        refreshToken: refreshed.refreshToken,
+        expiresIn: refreshed.expiresIn,
+        user: {
+          ...currentSession.user,
+          uid: refreshed.uid || currentSession.user.uid,
+        },
+      };
+      saveSession(currentSession);
+      response = await doRequest(currentSession.idToken);
     }
 
-    return normalizeRole(body.profile || profileFromDisplayName(displayName) || { firstName, lastName });
+    if (!response.res.ok) {
+      throw new Error(response.body?.error || "Failed to bootstrap user profile");
+    }
+
+    return normalizeRole(response.body.profile || profileFromDisplayName(displayName) || { firstName, lastName });
   };
 
   const [user, setUser] = useState<AuthUser | null>(null);
