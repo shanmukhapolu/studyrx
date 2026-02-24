@@ -1,3 +1,7 @@
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDlbc-WqchqRUso8Oso6Tesy18XlS7hcQA",
   authDomain: "studyrx2026.firebaseapp.com",
@@ -11,4 +15,7 @@ export const firebaseConfig = {
 
 export const FIREBASE_API_KEY = firebaseConfig.apiKey;
 export const FIREBASE_PROJECT_ID = firebaseConfig.projectId;
-export const FIREBASE_DATABASE_URL = firebaseConfig.databaseURL;
+
+export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
+export const firebaseAuth = getAuth(firebaseApp);
+export const firestoreDb = getFirestore(firebaseApp);

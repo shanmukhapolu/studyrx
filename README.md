@@ -207,3 +207,38 @@ Footer on all pages:
 ---
 
 Built with ❤️ for students preparing for USMDO
+
+## Firestore Migration Plan (Realtime DB → Firestore)
+
+### Recommended Firestore structure after migration
+
+- `users/{uid}`
+  - user profile fields (`email`, `name`, `firstName`, `lastName`, `role`, timestamps)
+  - optional `currentSession` field for in-progress state
+  - subcollection `events/{eventId}`
+    - `sessions` map keyed by session ID
+    - `wrongQuestions` array
+    - `completedQuestions` array
+- Any other top-level Realtime DB keys should map 1:1 to Firestore collections with the same collection ID.
+
+### Run the migration script
+
+1. Export Realtime DB JSON from Firebase Console.
+2. Download a Firebase service account JSON with Firestore write access.
+3. Run:
+
+```bash
+npm run migrate:rtdb:firestore -- --input ./rtdb-export.json --projectId studyrx2026 --serviceAccount ./service-account.json
+```
+
+Optional dry-run:
+
+```bash
+npm run migrate:rtdb:firestore -- --input ./rtdb-export.json --projectId studyrx2026 --serviceAccount ./service-account.json --dryRun true
+```
+
+The migration script preserves:
+- Top-level collection names
+- Document IDs from top-level RTDB keys
+- Nested document payloads (including timestamp-like objects)
+- `users` documents are automatically augmented with `role: "user"` when missing.

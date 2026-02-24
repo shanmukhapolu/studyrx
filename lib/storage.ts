@@ -1,5 +1,15 @@
-import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { firestoreDb } from "@/lib/firebase-config";
 import { refreshIdToken } from "@/lib/firebase-auth-rest";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 export interface Question {
   id: number;
@@ -157,14 +167,20 @@ async function getStoredAuth(options?: { forceRefresh?: boolean }): Promise<Stor
   return current;
 }
 
-async function getUserPath(path: string, options?: { forceRefresh?: boolean }) {
+function buildNestedObject(pathSegments: string[], value: unknown) {
+  return pathSegments
+    .slice()
+    .reverse()
+    .reduce<unknown>((acc, key) => ({ [key]: acc }), value) as Record<string, unknown>;
+}
+
+async function getUserIdentity(options?: { forceRefresh?: boolean }) {
   const auth = await getStoredAuth(options);
   if (!auth?.user?.uid || !auth?.idToken) {
     throw new Error("Not authenticated");
   }
 
   return {
-    url: `${FIREBASE_DATABASE_URL}/users/${auth.user.uid}/${path}.json?auth=${encodeURIComponent(auth.idToken)}`,
     uid: auth.user.uid,
     idToken: auth.idToken,
   };
@@ -172,58 +188,122 @@ async function getUserPath(path: string, options?: { forceRefresh?: boolean }) {
 
 async function dbGet<T>(path: string, fallback: T): Promise<T> {
   if (typeof window === "undefined") return fallback;
-  try {
-    const primary = await getUserPath(path);
-    let res = await fetch(primary.url, {
-      headers: {
-        Authorization: `Bearer ${primary.idToken}`,
-      },
-    });
 
-    if ((res.status === 401 || res.status === 403)) {
-      const retry = await getUserPath(path, { forceRefresh: true });
-      res = await fetch(retry.url, {
-        headers: {
-          Authorization: `Bearer ${retry.idToken}`,
-        },
+  try {
+    const identity = await getUserIdentity();
+    const segments = path.split("/").filter(Boolean);
+
+    if (path === "events") {
+      const eventsQuery = query(collection(firestoreDb, "users", identity.uid, "events"));
+      const snapshot = await getDocs(eventsQuery);
+      const eventsMap: Record<string, unknown> = {};
+      snapshot.forEach((eventDoc) => {
+        eventsMap[eventDoc.id] = eventDoc.data();
       });
+      return (eventsMap as T) ?? fallback;
     }
 
-    if (!res.ok) return fallback;
-    const data = await res.json();
-    return (data ?? fallback) as T;
-  } catch {
+    if (segments[0] === "events" && segments.length >= 2) {
+      const eventId = segments[1];
+      const eventDoc = await getDoc(doc(firestoreDb, "users", identity.uid, "events", eventId));
+      if (!eventDoc.exists()) return fallback;
+
+      const eventData = eventDoc.data() as Record<string, unknown>;
+      const nested = segments.slice(2).reduce<unknown>((acc, key) => {
+        if (acc && typeof acc === "object" && key in (acc as Record<string, unknown>)) {
+          return (acc as Record<string, unknown>)[key];
+        }
+        return undefined;
+      }, eventData);
+
+      if (segments.length === 2) return eventData as T;
+      return (nested ?? fallback) as T;
+    }
+
+    if (path === "currentSession") {
+      const userDoc = await getDoc(doc(firestoreDb, "users", identity.uid));
+      if (!userDoc.exists()) return fallback;
+      const currentSession = userDoc.data().currentSession;
+      return (currentSession ?? fallback) as T;
+    }
+
+    const userDoc = await getDoc(doc(firestoreDb, "users", identity.uid));
+    if (!userDoc.exists()) return fallback;
+
+    const data = userDoc.data() as Record<string, unknown>;
+    const nestedValue = segments.reduce<unknown>((acc, key) => {
+      if (acc && typeof acc === "object" && key in (acc as Record<string, unknown>)) {
+        return (acc as Record<string, unknown>)[key];
+      }
+      return undefined;
+    }, data);
+
+    return (nestedValue ?? fallback) as T;
+  } catch (error) {
+    console.error(`Firestore read failed for ${path}`, error);
     return fallback;
   }
 }
 
 async function dbSet(path: string, value: unknown) {
   if (typeof window === "undefined") return;
-  let request = await getUserPath(path);
-  let res = await fetch(request.url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${request.idToken}`,
-    },
-    body: JSON.stringify(value),
-  });
 
-  if (res.status === 401 || res.status === 403) {
-    request = await getUserPath(path, { forceRefresh: true });
-    res = await fetch(request.url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${request.idToken}`,
-      },
-      body: JSON.stringify(value),
-    });
-  }
+  let identity = await getUserIdentity();
+  const attemptWrite = async () => {
+    const segments = path.split("/").filter(Boolean);
 
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`Failed to write ${path}: ${res.status} ${text}`);
+    if (path === "events") {
+      if (value && typeof value === "object" && Object.keys(value as Record<string, unknown>).length === 0) {
+        const eventsSnapshot = await getDocs(query(collection(firestoreDb, "users", identity.uid, "events")));
+        await Promise.all(eventsSnapshot.docs.map((eventDoc) => deleteDoc(eventDoc.ref)));
+        return;
+      }
+
+      throw new Error("Writing raw events object is not supported unless resetting to empty object.");
+    }
+
+    if (segments[0] === "events" && segments.length >= 2) {
+      const eventId = segments[1];
+      const eventRef = doc(firestoreDb, "users", identity.uid, "events", eventId);
+
+      if (segments.length === 2) {
+        await setDoc(eventRef, (value as Record<string, unknown>) || {}, { merge: true });
+        return;
+      }
+
+      const nestedPath = segments.slice(2).join(".");
+      await setDoc(eventRef, {}, { merge: true });
+      await updateDoc(eventRef, {
+        [nestedPath]: value,
+      });
+      return;
+    }
+
+    if (path === "currentSession") {
+      await setDoc(
+        doc(firestoreDb, "users", identity.uid),
+        { currentSession: value },
+        { merge: true }
+      );
+      return;
+    }
+
+    const nestedObject = buildNestedObject(segments, value);
+    await setDoc(doc(firestoreDb, "users", identity.uid), nestedObject, { merge: true });
+  };
+
+  try {
+    await attemptWrite();
+  } catch (error) {
+    if ((error as { code?: string })?.code === "permission-denied") {
+      await getUserIdentity({ forceRefresh: true });
+      identity = await getUserIdentity();
+      await attemptWrite();
+      return;
+    }
+
+    console.error(`Firestore write failed for ${path}`, error);
+    throw error;
   }
 }
 

@@ -1,4 +1,5 @@
-import { FIREBASE_API_KEY, FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { FIREBASE_API_KEY, firestoreDb } from "@/lib/firebase-config";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export interface AuthUser {
   uid: string;
@@ -20,7 +21,6 @@ export interface UserProfile {
 
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE = "https://securetoken.googleapis.com/v1";
-const RTDB_BASE = FIREBASE_DATABASE_URL;
 
 function decodeJwtPayload(token: string): Record<string, unknown> | null {
   try {
@@ -144,44 +144,57 @@ export async function refreshIdToken(refreshToken: string) {
 }
 
 export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
+  void idToken;
+
   const fullName = `${profile.firstName} ${profile.lastName}`.trim();
+  const userRef = doc(firestoreDb, "users", uid);
 
-  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
+  await setDoc(
+    userRef,
+    {
+      name: fullName,
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      role: "user",
+      updatedAt: new Date().toISOString(),
     },
-    body: JSON.stringify(fullName),
-  });
-
-  if (!nameRes.ok) {
-    const text = await nameRes.text().catch(() => "");
-    throw new Error(`Failed to save display name: ${nameRes.status} ${text}`);
-  }
+    { merge: true }
+  );
 }
 
 export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
-  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`);
-  if (!nameRes.ok) {
-    return null;
-  }
+  void idToken;
 
-  const nameData = await nameRes.json();
-  if (!nameData) {
-    return null;
-  }
+  try {
+    const userSnapshot = await getDoc(doc(firestoreDb, "users", uid));
+    if (!userSnapshot.exists()) {
+      return null;
+    }
 
-  if (typeof nameData === "string") {
-    const [firstName = "", ...rest] = nameData.trim().split(/\s+/);
-    return {
-      firstName,
-      lastName: rest.join(" "),
+    const data = userSnapshot.data() as {
+      name?: string;
+      firstName?: string;
+      lastName?: string;
     };
-  }
 
-  // Legacy compatibility in case older data used object shape.
-  return {
-    firstName: nameData.firstName || "",
-    lastName: nameData.lastName || "",
-  };
+    if (typeof data.firstName === "string" || typeof data.lastName === "string") {
+      return {
+        firstName: data.firstName || "",
+        lastName: data.lastName || "",
+      };
+    }
+
+    if (typeof data.name === "string") {
+      const [firstName = "", ...rest] = data.name.trim().split(/\s+/);
+      return {
+        firstName,
+        lastName: rest.join(" "),
+      };
+    }
+
+    return null;
+  } catch (error) {
+    console.error("Failed to read Firestore profile", error);
+    return null;
+  }
 }

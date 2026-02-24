@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
 
 import {
   getUserProfile,
@@ -14,6 +15,7 @@ import {
   type AuthUser,
   type UserProfile,
 } from "@/lib/firebase-auth-rest";
+import { firestoreDb } from "@/lib/firebase-config";
 
 interface AuthContextValue {
   user: AuthUser | null;
@@ -28,6 +30,28 @@ interface AuthContextValue {
 const STORAGE_KEY = "studyrx_auth_session";
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+
+
+async function ensureFirestoreUserDocument(input: {
+  uid: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+}) {
+  const fullName = `${input.firstName || ""} ${input.lastName || ""}`.trim();
+  await setDoc(
+    doc(firestoreDb, "users", input.uid),
+    {
+      role: "user",
+      email: input.email || null,
+      firstName: input.firstName || "",
+      lastName: input.lastName || "",
+      name: fullName,
+      updatedAt: new Date().toISOString(),
+    },
+    { merge: true }
+  );
+}
 
 function saveSession(session: AuthSession) {
   const normalized = ensureSessionUid(session);
@@ -167,11 +191,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         session = ensureSessionUid(await updateDisplayName(session.idToken, `${firstName} ${lastName}`.trim(), session.user.uid));
 
         try {
+          await ensureFirestoreUserDocument({
+            uid: session.user.uid,
+            email: session.user.email || email,
+            firstName,
+            lastName,
+          });
           await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
         } catch (error) {
           console.warn("Profile write skipped during signup; attempting fresh sign-in token.", error);
           try {
             session = ensureSessionUid(await signInWithEmail(email, password));
+            await ensureFirestoreUserDocument({
+              uid: session.user.uid,
+              email: session.user.email || email,
+              firstName,
+              lastName,
+            });
             await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
           } catch (recoveryError) {
             console.warn("Signup recovery profile write also failed; continuing with Auth displayName fallback.", recoveryError);
@@ -188,6 +224,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         if (parsedProfile.firstName || parsedProfile.lastName) {
           try {
+            await ensureFirestoreUserDocument({
+              uid: session.user.uid,
+              email: session.user.email,
+              firstName: parsedProfile.firstName,
+              lastName: parsedProfile.lastName,
+            });
             await saveUserProfile(session.idToken, session.user.uid, parsedProfile);
           } catch (error) {
             console.warn("Profile write skipped during Google sign-in; continuing with Auth displayName fallback.", error);
