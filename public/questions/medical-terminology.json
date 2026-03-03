@@ -1,52 +1,3677 @@
 [
   {
     "id": 1,
-    "question": "What does the prefix 'tachy-' mean?",
-    "options": ["Fast", "Slow", "Above", "Below"],
-    "correctAnswer": "Fast",
+    "question": "A patient with 'dermatitis' should seek a consultation with which specialist?",
+    "options": ["Cardiologist", "Dermatologist", "Neurologist", "Gastroenterologist"],
+    "correctAnswer": "Dermatologist",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "The prefix 'tachy-' is derived from Greek and means 'fast' or 'rapid'. Examples include tachycardia (rapid heart rate) and tachypnea (rapid breathing).",
-    "tag": "Prefix"
+    "explanation": "The root 'derm/o' means skin, and '-itis' means inflammation. A dermatologist specializes in skin conditions.",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 2,
-    "question": "What does the suffix '-ectomy' indicate?",
-    "options": ["Surgical removal", "Incision", "Pain", "Inflammation"],
-    "correctAnswer": "Surgical removal",
+    "question": "Which of the following describes a 'subcutaneous' injection?",
+    "options": ["Inside the muscle", "Within a vein", "Under the skin", "Above the skin"],
+    "correctAnswer": "Under the skin",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "The suffix '-ectomy' means surgical removal or excision. For example, appendectomy is the surgical removal of the appendix.",
-    "tag": "Suffix"
+    "explanation": "The prefix 'sub-' means under or below, and 'cutane/o' refers to the skin.",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 3,
-    "question": "What does 'cardi/o' refer to?",
-    "options": ["Heart", "Lung", "Liver", "Kidney"],
-    "correctAnswer": "Heart",
+    "question": "A patient is experiencing 'gastrodynia.' Where is their pain located?",
+    "options": ["In the chest", "In the head", "In the stomach", "In the joints"],
+    "correctAnswer": "In the stomach",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'Cardi/o' is a combining form that refers to the heart. Examples include cardiology (study of the heart) and cardiomegaly (enlarged heart).",
-    "tag": "Root Word"
+    "explanation": "The root 'gastr/o' refers to the stomach, and the suffix '-dynia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 4,
-    "question": "What does 'hypo-' mean?",
-    "options": ["Below/under", "Above/over", "Fast", "Slow"],
-    "correctAnswer": "Below/under",
+    "question": "If a physician performs a 'biopsy,' what is the primary goal?",
+    "options": ["To remove an organ", "To view living tissue", "To stop bleeding", "To record heart activity"],
+    "correctAnswer": "To view living tissue",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "The prefix 'hypo-' means below, under, or deficient. Examples include hypotension (low blood pressure) and hypothermia (low body temperature).",
-    "tag": "Prefix"
+    "difficulty": "Easy",
+    "explanation": "The root 'bi/o' means life, and '-opsy' means to view or examine.",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 5,
-    "question": "What does '-itis' mean?",
-    "options": ["Inflammation", "Pain", "Disease", "Removal"],
-    "correctAnswer": "Inflammation",
+    "question": "A patient is prescribed 'prenatal' vitamins. When should these be taken?",
+    "options": ["After birth", "During birth", "Before birth", "Instead of birth"],
+    "correctAnswer": "Before birth",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "The suffix '-itis' indicates inflammation of a specific organ or tissue. Examples include arthritis (joint inflammation) and bronchitis (bronchial tube inflammation).",
-    "tag": "Suffix"
+    "explanation": "The prefix 'pre-' means before, and 'nat/o' refers to birth.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 6,
+    "question": "A 'microscope' is a tool used to do which of the following?",
+    "options": ["View large objects", "View small objects", "Hear quiet sounds", "Measure temperature"],
+    "correctAnswer": "View small objects",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'micro-' means small, and '-scope' means an instrument for viewing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 7,
+    "question": "A nurse notes 'hematuria' in a patient's chart. What did the nurse find in the urine?",
+    "options": ["Sugar", "Protein", "Blood", "Bacteria"],
+    "correctAnswer": "Blood",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hemat/o' means blood, and '-uria' refers to a condition of the urine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 8,
+    "question": "If a patient has 'bilateral' knee pain, which knees are affected?",
+    "options": ["Only the left", "Only the right", "Both the left and right", "Neither"],
+    "correctAnswer": "Both the left and right",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two, and 'later/o' means side. Bilateral means two sides.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 9,
+    "question": "What is being performed during a 'cystoscopy'?",
+    "options": ["Removal of a cyst", "Visual examination of the bladder", "Incision into the gallbladder", "Crushing of a stone"],
+    "correctAnswer": "Visual examination of the bladder",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cyst/o' refers to a sac or the urinary bladder, and '-scopy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 10,
+    "question": "A patient is told they have 'hypoglycemia.' What is 'low' in this patient?",
+    "options": ["Blood pressure", "Blood sugar", "Body temperature", "Heart rate"],
+    "correctAnswer": "Blood sugar",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hypo-' means below or deficient, and 'glyc/o' refers to sugar.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 11,
+    "question": "A 'pathologist' is a person who primarily studies what?",
+    "options": ["The heart", "Disease", "The mind", "Bones"],
+    "correctAnswer": "Disease",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'path/o' means disease, and '-logist' means one who studies.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 12,
+    "question": "A patient has an 'osteoma.' Based on the suffix, what is this condition?",
+    "options": ["An inflammation of the bone", "A tumor of the bone", "A softening of the bone", "A break in the bone"],
+    "correctAnswer": "A tumor of the bone",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 13,
+    "question": "Which term describes a heart rate that is 'tachycardic'?",
+    "options": ["Slow", "Normal", "Fast", "Absent"],
+    "correctAnswer": "Fast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'tachy-' means fast or rapid, and '-cardia' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 14,
+    "question": "A 'neurologist' treats disorders of which system?",
+    "options": ["Digestive", "Nervous", "Skeletal", "Muscular"],
+    "correctAnswer": "Nervous",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' refers to the nerves or the nervous system.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 15,
+    "question": "A patient is diagnosed with 'nephromegaly.' What has happened to their kidney?",
+    "options": ["It has shrunk", "It is inflamed", "It is enlarged", "It has a stone"],
+    "correctAnswer": "It is enlarged",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' means kidney, and '-megaly' means enlargement.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+"id": 16,
+"question": "A patient with 'adenopathy' is experiencing a disease of which structure?",
+"options": ["A muscle", "A gland", "A nerve", "A joint"],
+"correctAnswer": "A gland",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The root 'aden/o' refers to a gland, and '-pathy' means disease.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 17,
+"question": "If a medical record mentions 'dyspnea,' what is the patient having difficulty with?",
+"options": ["Swallowing", "Digestion", "Breathing", "Walking"],
+"correctAnswer": "Breathing",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The prefix 'dys-' means difficult or painful, and '-pnea' refers to breathing.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 18,
+"question": "A patient is undergoing an 'appendectomy.' What is the surgeon doing?",
+"options": ["Repairing the appendix", "Viewing the appendix", "Removing the appendix", "Incising the appendix"],
+"correctAnswer": "Removing the appendix",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The suffix '-ectomy' indicates surgical removal or excision.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 19,
+"question": "A physician notes that a patient is 'afebrile.' What does this mean regarding the patient's temperature?",
+"options": ["They have a high fever", "They have a low fever", "They are without a fever", "Their temperature is fluctuating"],
+"correctAnswer": "They are without a fever",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The prefix 'a-' means without or not, and 'febr/o' refers to fever.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 20,
+"question": "If a patient has 'polyarthritis,' how many joints are inflamed?",
+"options": ["None", "Only one", "Many", "Only the large joints"],
+"correctAnswer": "Many",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The prefix 'poly-' means many, and 'arthr/o' means joint.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 21,
+"question": "A patient is diagnosed with 'myalgia' after a heavy workout. What is their symptom?",
+"options": ["Muscle weakness", "Muscle pain", "Muscle cramping", "Muscle tearing"],
+"correctAnswer": "Muscle pain",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The root 'my/o' means muscle, and the suffix '-algia' means pain.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 22,
+"question": "Which term describes a procedure where a surgeon makes an 'incision into' the trachea?",
+"options": ["Tracheotomy", "Tracheectomy", "Tracheoscopy", "Tracheoplasty"],
+"correctAnswer": "Tracheotomy",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The suffix '-otomy' means to make an incision or cut into.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 23,
+"question": "An 'encephalogram' is a record of the activity of which organ?",
+"options": ["The heart", "The liver", "The brain", "The lungs"],
+"correctAnswer": "The brain",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The root 'encephal/o' refers to the brain, and '-gram' means a record or picture.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 24,
+"question": "A patient is told they have 'postoperative' instructions. When should they follow them?",
+"options": ["Before surgery", "During surgery", "After surgery", "Instead of surgery"],
+"correctAnswer": "After surgery",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The prefix 'post-' means after, and 'operative' refers to the surgical procedure.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 25,
+"question": "If a technician is performing a 'mammography,' what are they doing?",
+"options": ["Surgically removing a breast", "Visualizing the breast with a scope", "Recording an image of the breast", "Repairing the breast tissue"],
+"correctAnswer": "Recording an image of the breast",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The root 'mamm/o' means breast, and '-graphy' means the process of recording an image.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 26,
+"question": "A patient with 'hypotension' has blood pressure that is:",
+"options": ["Varying", "Above normal", "Below normal", "Undetectable"],
+"correctAnswer": "Below normal",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The prefix 'hypo-' means below, under, or deficient.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 27,
+"question": "The term 'nephritis' refers to the inflammation of which organ?",
+"options": ["The liver", "The bladder", "The kidney", "The gallbladder"],
+"correctAnswer": "The kidney",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The root 'nephr/o' refers to the kidney, and '-itis' means inflammation.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 28,
+"question": "A patient is diagnosed with 'lipoma.' What is this condition?",
+"options": ["A blood clot", "A fatty tumor", "A skin rash", "A bone infection"],
+"correctAnswer": "A fatty tumor",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The root 'lip/o' means fat, and '-oma' means tumor or mass.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 29,
+"question": "Which prefix means 'within' or 'inside'?",
+"options": ["Inter-", "Intra-", "Extra-", "Epi-"],
+"correctAnswer": "Intra-",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "'Intra-' means within or inside (e.g., intravenous), whereas 'inter-' means between.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+"id": 30,
+"question": "A 'cardiologist' specializes in the study of which organ?",
+"options": ["The lungs", "The brain", "The heart", "The stomach"],
+"correctAnswer": "The heart",
+"category": "Medical Terminology",
+"difficulty": "Easy",
+"explanation": "The root 'cardi/o' refers to the heart, and '-logist' means one who studies or specializes in.",
+"tag": "Roots, Prefixes, Suffixes"
+},
+{
+    "id": 31,
+    "question": "A patient is diagnosed with 'osteomalacia.' Based on the suffix, what is happening to their bones?",
+    "options": ["They are hardening", "They are softening", "They are breaking", "They are growing"],
+    "correctAnswer": "They are softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and the suffix '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 32,
+    "question": "Which of the following terms describes a 'slow' heart rate?",
+    "options": ["Tachycardia", "Bradycardia", "Normocardia", "Afebrile"],
+    "correctAnswer": "Bradycardia",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'brady-' means slow, and '-cardia' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 33,
+    "question": "A patient with 'leukemia' has a condition primarily affecting which type of blood cells?",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Plasma cells"],
+    "correctAnswer": "White blood cells",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'leuk/o' means white, and '-emia' refers to a blood condition.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 34,
+    "question": "If a physician performs a 'thoracotomy,' where is the incision being made?",
+    "options": ["The abdomen", "The chest", "The skull", "The throat"],
+    "correctAnswer": "The chest",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'thorac/o' means chest, and '-otomy' means to make an incision or cut into.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 35,
+    "question": "A patient is experiencing 'neuralgia.' What is their primary symptom?",
+    "options": ["Nerve inflammation", "Nerve pain", "Nerve death", "Nerve repair"],
+    "correctAnswer": "Nerve pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' means nerve, and '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 36,
+    "question": "Which prefix indicates that a condition is 'above' or 'excessive'?",
+    "options": ["Hypo-", "Hyper-", "Sub-", "Infra-"],
+    "correctAnswer": "Hyper-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hyper-' means above, excessive, or beyond.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 37,
+    "question": "A 'gastroscopy' involves the visual examination of which organ?",
+    "options": ["The gallbladder", "The stomach", "The intestines", "The liver"],
+    "correctAnswer": "The stomach",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' means stomach, and '-scopy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 38,
+    "question": "A patient has 'cyanosis' of the fingertips. What color would you expect to see?",
+    "options": ["Red", "Blue", "Yellow", "White"],
+    "correctAnswer": "Blue",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The combining form 'cyan/o' means blue.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 39,
+    "question": "If a patient is 'unconscious,' which prefix is used to indicate 'not'?",
+    "options": ["Uni-", "Un-", "Under-", "Ultra-"],
+    "correctAnswer": "Un-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'un-' means not, as in not conscious.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 40,
+    "question": "A 'myoma' is a tumor located in which type of tissue?",
+    "options": ["Bone", "Nerve", "Muscle", "Fat"],
+    "correctAnswer": "Muscle",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 41,
+    "question": "A patient undergoes a 'colostomy.' What is the surgeon creating?",
+    "options": ["An incision into the colon", "A permanent opening in the colon", "The removal of the colon", "A visual exam of the colon"],
+    "correctAnswer": "A permanent opening in the colon",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-ostomy' means to create a new permanent opening or mouth.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 42,
+    "question": "The term 'nephropathy' refers to a disease of which organ?",
+    "options": ["The liver", "The kidney", "The spleen", "The pancreas"],
+    "correctAnswer": "The kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' means kidney, and '-pathy' means disease.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 43,
+    "question": "A patient is experiencing 'hemorrhage.' What is occurring?",
+    "options": ["Excessive sweating", "Excessive bleeding", "Excessive vomiting", "Excessive urination"],
+    "correctAnswer": "Excessive bleeding",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hem/o' means blood, and '-rrhage' means bursting forth or excessive flow.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 44,
+    "question": "Which prefix means 'half'?",
+    "options": ["Multi-", "Semi-", "Poly-", "Pan-"],
+    "correctAnswer": "Semi-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'semi-' (or 'hemi-') means half or partial.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 45,
+    "question": "A patient with 'rhinitis' has inflammation of which structure?",
+    "options": ["The throat", "The nose", "The ear", "The eye"],
+    "correctAnswer": "The nose",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'rhin/o' means nose, and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 46,
+    "question": "A patient is scheduled for an 'arthroscopy.' What is the surgeon using to perform this procedure?",
+    "options": ["A scalpel for a large incision", "A specialized viewing instrument", "An ultrasound machine", "A laser for tissue removal"],
+    "correctAnswer": "A specialized viewing instrument",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'arthr/o' means joint and '-scopy' means visual examination using an instrument (scope).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 47,
+    "question": "If a patient has 'monocytic' leukemia, what does the prefix 'mono-' indicate about the affected cells?",
+    "options": ["They are shaped like circles", "They have one nucleus", "They are very small", "They are numerous"],
+    "correctAnswer": "They have one nucleus",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'mono-' means one or single.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 48,
+    "question": "A physician notes that a patient is experiencing 'dysphagia.' What is the patient having trouble with?",
+    "options": ["Speaking", "Walking", "Swallowing", "Urinating"],
+    "correctAnswer": "Swallowing",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'dys-' means difficult or painful, and '-phagia' refers to eating or swallowing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 49,
+    "question": "A 'laparotomy' involves an incision into which part of the body?",
+    "options": ["The chest", "The skull", "The abdominal wall", "The spinal column"],
+    "correctAnswer": "The abdominal wall",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'lapar/o' refers to the abdomen or abdominal wall, and '-otomy' means incision.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 50,
+    "question": "If a patient's condition is described as 'idiopathic,' what do we know about its cause?",
+    "options": ["It is caused by a virus", "It is caused by the physician", "The cause is unknown", "It is a genetic condition"],
+    "correctAnswer": "The cause is unknown",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'idi/o' means individual or distinct, often used in medicine to mean 'unknown' or 'arising spontaneously'.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 51,
+    "question": "A patient is diagnosed with 'osteoporosis.' What is the primary characteristic of this condition?",
+    "options": ["Bone inflammation", "Porous or brittle bones", "Bone cancer", "Softening of the bones"],
+    "correctAnswer": "Porous or brittle bones",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone and '-porosis' means porous or full of holes.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 52,
+    "question": "The term 'pericardium' refers to the structure located where in relation to the heart?",
+    "options": ["Inside the heart", "Outside or around the heart", "Below the heart", "Between the chambers"],
+    "correctAnswer": "Outside or around the heart",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'peri-' means around or surrounding, and 'cardi/o' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 53,
+    "question": "Which suffix would be used to describe the 'enlargement' of an organ like the liver?",
+    "options": ["-oma", "-megaly", "-osis", "-pathy"],
+    "correctAnswer": "-megaly",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-megaly' means enlargement (e.g., hepatomegaly).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 54,
+    "question": "A patient with 'cholecystitis' is experiencing inflammation of which organ?",
+    "options": ["The bladder", "The gallbladder", "The colon", "The liver"],
+    "correctAnswer": "The gallbladder",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The combining form 'cholecyst/o' refers specifically to the gallbladder.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 55,
+    "question": "If a technician is asked to perform a 'myogram,' what are they recording?",
+    "options": ["Heart rhythm", "Brain waves", "Muscle activity", "Bone density"],
+    "correctAnswer": "Muscle activity",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle and '-gram' means a record or recording.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 56,
+    "question": "A patient has 'anhidrosis.' What is this patient unable to do?",
+    "options": ["Breathe", "Sweat", "Urinate", "Sleep"],
+    "correctAnswer": "Sweat",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'an-' means without, and 'hidr/o' refers to sweat.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 57,
+    "question": "Which term describes a medication that is given 'by mouth'?",
+    "options": ["Ocular", "Aural", "Oral", "Nasal"],
+    "correctAnswer": "Oral",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'or/o' means mouth.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 58,
+    "question": "A patient is diagnosed with 'erythema.' What is the primary sign on their skin?",
+    "options": ["Blue tint", "Yellow tint", "Redness", "White patches"],
+    "correctAnswer": "Redness",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'erythem/o' or 'erythr/o' means red.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 59,
+    "question": "What is the meaning of the prefix 'multi-' as in 'multigravida'?",
+    "options": ["None", "One", "Many", "Half"],
+    "correctAnswer": "Many",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'multi-' means many or much.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 60,
+    "question": "If a patient has a 'splenectomy,' which organ was removed?",
+    "options": ["The stomach", "The spleen", "The spine", "The gallbladder"],
+    "correctAnswer": "The spleen",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'splen/o' refers to the spleen.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 61,
+    "question": "A patient is diagnosed with 'osteomalacia.' Based on the suffix, what is occurring to their bones?",
+    "options": ["They are hardening", "They are softening", "They are breaking", "They are shrinking"],
+    "correctAnswer": "They are softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone and the suffix '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 62,
+    "question": "A physician notes that a patient is 'afebrile.' What does this mean regarding the patient's temperature?",
+    "options": ["They have a high fever", "They have a low-grade fever", "They are without a fever", "Their temperature is fluctuating"],
+    "correctAnswer": "They are without a fever",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'a-' means without or not, and 'febr/o' refers to fever.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 63,
+    "question": "A patient with 'polyuria' is experiencing which of the following?",
+    "options": ["Painful urination", "Absence of urine", "Excessive or frequent urination", "Blood in the urine"],
+    "correctAnswer": "Excessive or frequent urination",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'poly-' means many or much, and '-uria' refers to urine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 64,
+    "question": "If a medical record mentions 'rhinorrhea,' what is the patient experiencing?",
+    "options": ["A nosebleed", "A runny nose", "A broken nose", "Difficulty breathing through the nose"],
+    "correctAnswer": "A runny nose",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'rhin/o' means nose and '-rrhea' means flow or discharge.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 65,
+    "question": "Which term describes the surgical 'crushing' of a stone, such as a kidney stone?",
+    "options": ["Lithotomy", "Lithotripsy", "Litholysis", "Lithogenesis"],
+    "correctAnswer": "Lithotripsy",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'lith/o' means stone and the suffix '-tripsy' means to crush.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 66,
+    "question": "A patient is told they have 'myalgia' after starting a new exercise routine. What is their symptom?",
+    "options": ["Muscle weakness", "Muscle pain", "Muscle cramping", "Muscle loss"],
+    "correctAnswer": "Muscle pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle and '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 67,
+    "question": "An 'electrocardiogram' (ECG) provides a record of the electrical activity of which organ?",
+    "options": ["The brain", "The heart", "The stomach", "The skeletal muscles"],
+    "correctAnswer": "The heart",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cardi/o' means heart and '-gram' means a record or picture.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 68,
+    "question": "If a patient has 'bilateral' hearing loss, which ears are affected?",
+    "options": ["Only the left ear", "Only the right ear", "Both the left and right ears", "Neither ear"],
+    "correctAnswer": "Both the left and right ears",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two and 'later/o' means side.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 69,
+    "question": "A patient is undergoing a 'mammography.' What is the purpose of this procedure?",
+    "options": ["To surgically remove a breast", "To record an image of the breast", "To repair breast tissue", "To view the breast with a scope"],
+    "correctAnswer": "To record an image of the breast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'mamm/o' means breast and '-graphy' means the process of recording an image.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 70,
+    "question": "Which suffix indicates that a physician is 'viewing' the inside of a body cavity with an instrument?",
+    "options": ["-graphy", "-scopy", "-gram", "-opsy"],
+    "correctAnswer": "-scopy",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-scopy' refers to a visual examination (e.g., endoscopy).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 71,
+    "question": "A patient has 'hyperglycemia.' What is elevated in their blood?",
+    "options": ["Blood pressure", "Blood sugar", "Cholesterol", "Red blood cells"],
+    "correctAnswer": "Blood sugar",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hyper-' means excessive and 'glyc/o' refers to sugar.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 72,
+    "question": "The term 'nephritis' refers to the inflammation of which organ?",
+    "options": ["The liver", "The bladder", "The kidney", "The gallbladder"],
+    "correctAnswer": "The kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' refers to the kidney and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 73,
+    "question": "A patient is prescribed 'postoperative' medication. When should they take it?",
+    "options": ["Before surgery", "During surgery", "After surgery", "Instead of surgery"],
+    "correctAnswer": "After surgery",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'post-' means after.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 74,
+    "question": "If a patient's heart rate is 'bradycardic,' how is it described?",
+    "options": ["Irregular", "Faster than normal", "Slower than normal", "Stronger than normal"],
+    "correctAnswer": "Slower than normal",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'brady-' means slow and '-cardia' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 75,
+    "question": "A 'neurologist' specializes in the study of which system?",
+    "options": ["Digestive", "Nervous", "Skeletal", "Muscular"],
+    "correctAnswer": "Nervous",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' refers to the nerves or the nervous system.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 61,
+    "question": "A patient is diagnosed with 'osteomalacia.' Based on the suffix, what is occurring to their bones?",
+    "options": ["They are hardening", "They are softening", "They are breaking", "They are shrinking"],
+    "correctAnswer": "They are softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone and the suffix '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 62,
+    "question": "A physician notes that a patient is 'afebrile.' What does this mean regarding the patient's temperature?",
+    "options": ["They have a high fever", "They have a low-grade fever", "They are without a fever", "Their temperature is fluctuating"],
+    "correctAnswer": "They are without a fever",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'a-' means without or not, and 'febr/o' refers to fever.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 63,
+    "question": "A patient with 'polyuria' is experiencing which of the following?",
+    "options": ["Painful urination", "Absence of urine", "Excessive or frequent urination", "Blood in the urine"],
+    "correctAnswer": "Excessive or frequent urination",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'poly-' means many or much, and '-uria' refers to urine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 64,
+    "question": "If a medical record mentions 'rhinorrhea,' what is the patient experiencing?",
+    "options": ["A nosebleed", "A runny nose", "A broken nose", "Difficulty breathing through the nose"],
+    "correctAnswer": "A runny nose",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'rhin/o' means nose and '-rrhea' means flow or discharge.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 65,
+    "question": "Which term describes the surgical 'crushing' of a stone, such as a kidney stone?",
+    "options": ["Lithotomy", "Lithotripsy", "Litholysis", "Lithogenesis"],
+    "correctAnswer": "Lithotripsy",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'lith/o' means stone and the suffix '-tripsy' means to crush.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 66,
+    "question": "A patient is told they have 'myalgia' after starting a new exercise routine. What is their symptom?",
+    "options": ["Muscle weakness", "Muscle pain", "Muscle cramping", "Muscle loss"],
+    "correctAnswer": "Muscle pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle and '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 67,
+    "question": "An 'electrocardiogram' (ECG) provides a record of the electrical activity of which organ?",
+    "options": ["The brain", "The heart", "The stomach", "The skeletal muscles"],
+    "correctAnswer": "The heart",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cardi/o' means heart and '-gram' means a record or picture.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 68,
+    "question": "If a patient has 'bilateral' hearing loss, which ears are affected?",
+    "options": ["Only the left ear", "Only the right ear", "Both the left and right ears", "Neither ear"],
+    "correctAnswer": "Both the left and right ears",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two and 'later/o' means side.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 69,
+    "question": "A patient is undergoing a 'mammography.' What is the purpose of this procedure?",
+    "options": ["To surgically remove a breast", "To record an image of the breast", "To repair breast tissue", "To view the breast with a scope"],
+    "correctAnswer": "To record an image of the breast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'mamm/o' means breast and '-graphy' means the process of recording an image.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 70,
+    "question": "Which suffix indicates that a physician is 'viewing' the inside of a body cavity with an instrument?",
+    "options": ["-graphy", "-scopy", "-gram", "-opsy"],
+    "correctAnswer": "-scopy",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-scopy' refers to a visual examination (e.g., endoscopy).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 71,
+    "question": "A patient has 'hyperglycemia.' What is elevated in their blood?",
+    "options": ["Blood pressure", "Blood sugar", "Cholesterol", "Red blood cells"],
+    "correctAnswer": "Blood sugar",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hyper-' means excessive and 'glyc/o' refers to sugar.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 72,
+    "question": "The term 'nephritis' refers to the inflammation of which organ?",
+    "options": ["The liver", "The bladder", "The kidney", "The gallbladder"],
+    "correctAnswer": "The kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' refers to the kidney and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 73,
+    "question": "A patient is prescribed 'postoperative' medication. When should they take it?",
+    "options": ["Before surgery", "During surgery", "After surgery", "Instead of surgery"],
+    "correctAnswer": "After surgery",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'post-' means after.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 74,
+    "question": "If a patient's heart rate is 'bradycardic,' how is it described?",
+    "options": ["Irregular", "Faster than normal", "Slower than normal", "Stronger than normal"],
+    "correctAnswer": "Slower than normal",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'brady-' means slow and '-cardia' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 75,
+    "question": "A 'neurologist' specializes in the study of which system?",
+    "options": ["Digestive", "Nervous", "Skeletal", "Muscular"],
+    "correctAnswer": "Nervous",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' refers to the nerves or the nervous system.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 91,
+    "question": "A patient with 'gastritis' is experiencing inflammation of which organ?",
+    "options": ["The liver", "The stomach", "The gallbladder", "The small intestine"],
+    "correctAnswer": "The stomach",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' refers to the stomach, and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 92,
+    "question": "Which prefix would be used to describe a medication administered 'around' the heart?",
+    "options": ["Endo-", "Peri-", "Sub-", "Inter-"],
+    "correctAnswer": "Peri-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'peri-' means around or surrounding.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 93,
+    "question": "If a patient is diagnosed with 'hepatomegaly,' what has happened to their liver?",
+    "options": ["It has shrunk", "It is inflamed", "It is enlarged", "It has stopped functioning"],
+    "correctAnswer": "It is enlarged",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hepat/o' means liver, and '-megaly' means enlargement.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 94,
+    "question": "A patient is undergoing a 'cystectomy.' Based on the suffix, what is the surgeon doing?",
+    "options": ["Repairing a cyst", "Removing a sac or the bladder", "Incision into a cyst", "Viewing a sac"],
+    "correctAnswer": "Removing a sac or the bladder",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cyst/o' means sac or bladder, and '-ectomy' means surgical removal.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 95,
+    "question": "A physician describes a patient's breathing as 'eupnea.' What does the prefix 'eu-' indicate?",
+    "options": ["Fast", "Slow", "Normal/Good", "Difficult"],
+    "correctAnswer": "Normal/Good",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'eu-' means good, normal, or well.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 96,
+    "question": "If a technician is performing a 'venogram,' what are they recording an image of?",
+    "options": ["An artery", "A vein", "A nerve", "A muscle"],
+    "correctAnswer": "A vein",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'ven/o' refers to a vein, and '-gram' is a record or image.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 97,
+    "question": "A patient with 'polyneuritis' has inflammation of how many nerves?",
+    "options": ["One", "Many", "None", "The central nerve only"],
+    "correctAnswer": "Many",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'poly-' means many, and 'neur/o' means nerve.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 98,
+    "question": "What is the primary objective of a 'laparoscopy'?",
+    "options": ["To remove the abdominal wall", "To visually examine the abdominal cavity", "To repair a bone in the leg", "To record heart sounds"],
+    "correctAnswer": "To visually examine the abdominal cavity",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'lapar/o' means abdomen, and '-scopy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 99,
+    "question": "A patient is suffering from 'otitis.' Which organ is affected?",
+    "options": ["The eye", "The ear", "The mouth", "The nose"],
+    "correctAnswer": "The ear",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'ot/o' refers to the ear.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 100,
+    "question": "If a patient is 'anemic,' what is the literal meaning of the prefix 'an-'?",
+    "options": ["Excessive", "Without or not", "Under", "Double"],
+    "correctAnswer": "Without or not",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'an-' (or 'a-') means without or not.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 101,
+    "question": "A 'myoma' is a tumor made of which type of tissue?",
+    "options": ["Fat", "Bone", "Muscle", "Skin"],
+    "correctAnswer": "Muscle",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 102,
+    "question": "A patient is diagnosed with 'hydrocephalus.' Based on the root 'hydr/o,' what is accumulating?",
+    "options": ["Blood", "Air", "Water or fluid", "Fat"],
+    "correctAnswer": "Water or fluid",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hydr/o' means water or fluid, and 'cephal/o' means head.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 103,
+    "question": "The term 'nephrolith' refers to what?",
+    "options": ["A kidney stone", "A kidney tumor", "Kidney inflammation", "Kidney failure"],
+    "correctAnswer": "A kidney stone",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' means kidney, and 'lith' means stone.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 104,
+    "question": "Which prefix means 'across' or 'through'?",
+    "options": ["Trans-", "Inter-", "Intra-", "Sub-"],
+    "correctAnswer": "Trans-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'trans-' means across or through (e.g., transfusion).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 105,
+    "question": "A 'radiologist' specializes in the use of what to diagnose disease?",
+    "options": ["Drugs", "Surgery", "X-rays or radiation", "Physical therapy"],
+    "correctAnswer": "X-rays or radiation",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'radi/o' refers to radiation or X-rays.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 106,
+    "question": "A patient is diagnosed with 'osteomalacia.' Based on the suffix, what is happening to their bones?",
+    "options": ["They are hardening", "They are softening", "They are breaking", "They are shrinking"],
+    "correctAnswer": "They are softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone and the suffix '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 107,
+    "question": "A physician notes that a patient is 'afebrile.' What does this mean regarding the patient's temperature?",
+    "options": ["They have a high fever", "They have a low-grade fever", "They are without a fever", "Their temperature is fluctuating"],
+    "correctAnswer": "They are without a fever",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'a-' means without or not, and 'febr/o' refers to fever.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 108,
+    "question": "A patient with 'polyuria' is experiencing which of the following?",
+    "options": ["Painful urination", "Absence of urine", "Excessive or frequent urination", "Blood in the urine"],
+    "correctAnswer": "Excessive or frequent urination",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'poly-' means many or much, and '-uria' refers to urine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 109,
+    "question": "If a medical record mentions 'rhinorrhea,' what is the patient experiencing?",
+    "options": ["A nosebleed", "A runny nose", "A broken nose", "Difficulty breathing through the nose"],
+    "correctAnswer": "A runny nose",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'rhin/o' means nose and '-rrhea' means flow or discharge.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 110,
+    "question": "Which term describes the surgical 'crushing' of a stone, such as a kidney stone?",
+    "options": ["Lithotomy", "Lithotripsy", "Litholysis", "Lithogenesis"],
+    "correctAnswer": "Lithotripsy",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'lith/o' means stone and the suffix '-tripsy' means to crush.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 111,
+    "question": "A patient is told they have 'myalgia' after starting a new exercise routine. What is their symptom?",
+    "options": ["Muscle weakness", "Muscle pain", "Muscle cramping", "Muscle loss"],
+    "correctAnswer": "Muscle pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle and '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 112,
+    "question": "An 'electrocardiogram' (ECG) provides a record of the electrical activity of which organ?",
+    "options": ["The brain", "The heart", "The stomach", "The skeletal muscles"],
+    "correctAnswer": "The heart",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cardi/o' means heart and '-gram' means a record or picture.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 113,
+    "question": "If a patient has 'bilateral' hearing loss, which ears are affected?",
+    "options": ["Only the left ear", "Only the right ear", "Both the left and right ears", "Neither ear"],
+    "correctAnswer": "Both the left and right ears",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two and 'later/o' means side.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 114,
+    "question": "A patient is undergoing a 'mammography.' What is the purpose of this procedure?",
+    "options": ["To surgically remove a breast", "To record an image of the breast", "To repair breast tissue", "To view the breast with a scope"],
+    "correctAnswer": "To record an image of the breast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'mamm/o' means breast and '-graphy' means the process of recording an image.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 115,
+    "question": "Which suffix indicates that a physician is 'viewing' the inside of a body cavity with an instrument?",
+    "options": ["-graphy", "-scopy", "-gram", "-opsy"],
+    "correctAnswer": "-scopy",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-scopy' refers to a visual examination (e.g., endoscopy).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 116,
+    "question": "A patient has 'hyperglycemia.' What is elevated in their blood?",
+    "options": ["Blood pressure", "Blood sugar", "Cholesterol", "Red blood cells"],
+    "correctAnswer": "Blood sugar",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hyper-' means excessive and 'glyc/o' refers to sugar.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 117,
+    "question": "The term 'nephritis' refers to the inflammation of which organ?",
+    "options": ["The liver", "The bladder", "The kidney", "The gallbladder"],
+    "correctAnswer": "The kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' refers to the kidney and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 118,
+    "question": "A patient is prescribed 'postoperative' medication. When should they take it?",
+    "options": ["Before surgery", "During surgery", "After surgery", "Instead of surgery"],
+    "correctAnswer": "After surgery",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'post-' means after.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 119,
+    "question": "If a patient's heart rate is 'bradycardic,' how is it described?",
+    "options": ["Irregular", "Faster than normal", "Slower than normal", "Stronger than normal"],
+    "correctAnswer": "Slower than normal",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'brady-' means slow and '-cardia' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 120,
+    "question": "A 'neurologist' specializes in the study of which system?",
+    "options": ["Digestive", "Nervous", "Skeletal", "Muscular"],
+    "correctAnswer": "Nervous",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' refers to the nerves or the nervous system.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 121,
+    "question": "A patient is diagnosed with 'polydipsia.' What is the patient experiencing?",
+    "options": ["Excessive hunger", "Excessive thirst", "Excessive urination", "Excessive sweating"],
+    "correctAnswer": "Excessive thirst",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'poly-' means many or much, and the root 'dips/o' refers to thirst.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 122,
+    "question": "If a physician performs a 'thoracentesis,' what is the primary objective?",
+    "options": ["To remove the lungs", "To puncture the chest wall to drain fluid", "To repair a rib fracture", "To view the interior of the heart"],
+    "correctAnswer": "To puncture the chest wall to drain fluid",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'thorac/o' means chest, and the suffix '-centesis' means surgical puncture to remove fluid.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 123,
+    "question": "A patient with 'glossitis' has inflammation of which structure?",
+    "options": ["The gums", "The tongue", "The throat", "The eyelids"],
+    "correctAnswer": "The tongue",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gloss/o' refers to the tongue, and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 124,
+    "question": "Which prefix would be used to describe a heart located 'outside' its normal position?",
+    "options": ["Endo-", "Ecto-", "Meso-", "Hypo-"],
+    "correctAnswer": "Ecto-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'ecto-' means out or outside.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 125,
+    "question": "A patient is experiencing 'hematemesis.' What is occurring?",
+    "options": ["Coughing up blood", "Vomiting blood", "Blood in the stool", "Blood in the urine"],
+    "correctAnswer": "Vomiting blood",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hemat/o' means blood, and '-emesis' means vomiting.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 126,
+    "question": "If a patient has 'myositis,' what is inflamed?",
+    "options": ["Bone tissue", "Muscle tissue", "Nerve tissue", "Skin tissue"],
+    "correctAnswer": "Muscle tissue",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' (or 'myos/o') means muscle, and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 127,
+    "question": "A patient is diagnosed with 'osteomalacia.' Based on the suffix, what is the nature of this bone condition?",
+    "options": ["Hardening", "Softening", "Enlargement", "Narrowing"],
+    "correctAnswer": "Softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 128,
+    "question": "A physician uses a 'nephroscope' to look inside which organ?",
+    "options": ["The liver", "The bladder", "The kidney", "The stomach"],
+    "correctAnswer": "The kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' means kidney, and '-scope' is an instrument for visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 129,
+    "question": "Which prefix means 'fast' or 'rapid'?",
+    "options": ["Brady-", "Tachy-", "Eu-", "Dys-"],
+    "correctAnswer": "Tachy-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'tachy-' means fast or rapid.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 130,
+    "question": "A patient with 'leukopenia' has a deficiency of which cells?",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Clotting factors"],
+    "correctAnswer": "White blood cells",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'leuk/o' means white, and '-penia' means deficiency.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 131,
+    "question": "If a surgeon performs a 'colostomy,' what are they creating?",
+    "options": ["An incision into the colon", "A permanent opening to the outside of the body", "Removal of the colon", "A repair of the colon"],
+    "correctAnswer": "A permanent opening to the outside of the body",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'col/o' means colon, and '-ostomy' means to create an artificial opening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 132,
+    "question": "A patient is experiencing 'neuralgia.' What is the patient feeling?",
+    "options": ["Muscle pain", "Nerve pain", "Bone pain", "Joint pain"],
+    "correctAnswer": "Nerve pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' means nerve, and '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 133,
+    "question": "Which suffix means 'to secrete'?",
+    "options": ["-crine", "-crit", "-cyte", "-cele"],
+    "correctAnswer": "-crine",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-crine' means to secrete (e.g., endocrine).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 134,
+    "question": "A patient has 'bilateral' edema. Where is the swelling located?",
+    "options": ["On one side of the body", "On both sides of the body", "Only in the upper body", "In the center of the body"],
+    "correctAnswer": "On both sides of the body",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two, and 'later/o' means side.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 135,
+    "question": "A 'phlebotomist' is a professional who primarily does what?",
+    "options": ["Studies the heart", "Cuts into veins to draw blood", "Performs surgery on the lungs", "Treats skin diseases"],
+    "correctAnswer": "Cuts into veins to draw blood",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'phleb/o' means vein, and '-otomy' (hidden in phlebotomy) means incision.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 136,
+    "question": "A patient is diagnosed with 'hepatoma.' Based on the root word, where is the tumor located?",
+    "options": ["The heart", "The liver", "The lungs", "The stomach"],
+    "correctAnswer": "The liver",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hepat/o' means liver, and the suffix '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 137,
+    "question": "If a physician is performing a 'tracheotomy,' what are they doing to the trachea?",
+    "options": ["Removing it", "Repairing it", "Making an incision into it", "Viewing it with a scope"],
+    "correctAnswer": "Making an incision into it",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'trache/o' refers to the trachea (windpipe), and the suffix '-otomy' means to cut into or make an incision.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 138,
+    "question": "A patient is experiencing 'arthrodynia.' What is their primary symptom?",
+    "options": ["Joint pain", "Joint swelling", "Muscle weakness", "Bone fracture"],
+    "correctAnswer": "Joint pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'arthr/o' means joint, and the suffix '-dynia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 139,
+    "question": "Which prefix means 'large' or 'long'?",
+    "options": ["Micro-", "Macro-", "Multi-", "Mono-"],
+    "correctAnswer": "Macro-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'macro-' means large or long (e.g., macrophage).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 140,
+    "question": "A patient has 'cyanoderma.' What color is the patient's skin?",
+    "options": ["Red", "White", "Yellow", "Blue"],
+    "correctAnswer": "Blue",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cyan/o' means blue, and 'derm/o' means skin.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 141,
+    "question": "If a patient is told they have 'myopathy,' what is wrong?",
+    "options": ["They have a bone disease", "They have a muscle disease", "They have a nerve disease", "They have a skin disease"],
+    "correctAnswer": "They have a muscle disease",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and the suffix '-pathy' means disease.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 142,
+    "question": "A patient is prescribed an 'antibiotic.' What does the prefix 'anti-' mean?",
+    "options": ["Against", "Before", "After", "With"],
+    "correctAnswer": "Against",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'anti-' means against or opposing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 143,
+    "question": "A 'neurologist' is a specialist who studies which system?",
+    "options": ["Skeletal", "Digestive", "Nervous", "Reproductive"],
+    "correctAnswer": "Nervous",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' means nerve, and '-logist' means one who studies.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 144,
+    "question": "If a person has 'gastromegaly,' what has happened to their stomach?",
+    "options": ["It is inflamed", "It is enlarged", "It has been removed", "It is shrinking"],
+    "correctAnswer": "It is enlarged",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' means stomach, and the suffix '-megaly' means enlargement.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 145,
+    "question": "Which term describes a 'slow' heart rate?",
+    "options": ["Tachycardia", "Bradycardia", "Eupnea", "Dysphagia"],
+    "correctAnswer": "Bradycardia",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'brady-' means slow, and '-cardia' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 146,
+    "question": "A patient with 'adenitis' has inflammation of which structure?",
+    "options": ["A bone", "A gland", "A joint", "A muscle"],
+    "correctAnswer": "A gland",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'aden/o' means gland, and the suffix '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 147,
+    "question": "What is the primary function of a 'mammogram'?",
+    "options": ["To remove a breast tumor", "To record an image of the breast", "To measure breast temperature", "To repair breast tissue"],
+    "correctAnswer": "To record an image of the breast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'mamm/o' means breast, and the suffix '-gram' means a record or image.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 148,
+    "question": "A patient is diagnosed with 'osteoma.' What is this condition?",
+    "options": ["Bone inflammation", "A bone tumor", "Bone softening", "Bone loss"],
+    "correctAnswer": "A bone tumor",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and the suffix '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 149,
+    "question": "If a patient is 'anemic,' what is the meaning of the prefix 'an-'?",
+    "options": ["Above", "Below", "Without/Not", "Through"],
+    "correctAnswer": "Without/Not",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'an-' (or 'a-') means without, lack of, or not.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 150,
+    "question": "A 'cystoscopy' is a visual examination of which organ?",
+    "options": ["The liver", "The stomach", "The bladder", "The brain"],
+    "correctAnswer": "The bladder",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cyst/o' refers to the bladder (or a sac), and '-scopy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 151,
+    "question": "A patient with 'gastralgia' is experiencing which of the following?",
+    "options": ["Stomach inflammation", "Stomach pain", "Stomach tumor", "Stomach enlargement"],
+    "correctAnswer": "Stomach pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' means stomach, and the suffix '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 152,
+    "question": "If a physician describes a patient's breathing as 'tachypnea,' how is it described?",
+    "options": ["Slow", "Normal", "Rapid", "Difficult"],
+    "correctAnswer": "Rapid",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'tachy-' means fast or rapid, and the suffix '-pnea' refers to breathing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 153,
+    "question": "A patient is undergoing a 'nephrectomy.' What is the surgeon doing?",
+    "options": ["Repairing the kidney", "Removing the kidney", "Viewing the kidney", "Incising the kidney"],
+    "correctAnswer": "Removing the kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' refers to the kidney, and the suffix '-ectomy' means surgical removal.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 154,
+    "question": "Which prefix means 'inside' or 'within'?",
+    "options": ["Exo-", "Endo-", "Peri-", "Para-"],
+    "correctAnswer": "Endo-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'endo-' means within or inside (e.g., endocardium).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 155,
+    "question": "A patient has 'erythrocytopenia.' What is deficient in this patient's blood?",
+    "options": ["White blood cells", "Platelets", "Red blood cells", "Plasma"],
+    "correctAnswer": "Red blood cells",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'erythr/o' means red, 'cyt/o' means cell, and the suffix '-penia' means deficiency.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 156,
+    "question": "If a technician is performing a 'myography,' what is being recorded?",
+    "options": ["Heart activity", "Brain activity", "Muscle activity", "Skin sensitivity"],
+    "correctAnswer": "Muscle activity",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and the suffix '-graphy' means the process of recording.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 157,
+    "question": "A patient is diagnosed with 'cholelithiasis.' What are they suffering from?",
+    "options": ["Gallbladder inflammation", "Gallstones", "Liver enlargement", "Bile duct infection"],
+    "correctAnswer": "Gallstones",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'chol/e' means bile, 'lith/o' means stone, and '-iasis' refers to a condition.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 158,
+    "question": "Which suffix would be used to indicate 'inflammation'?",
+    "options": ["-osis", "-itis", "-oma", "-pathy"],
+    "correctAnswer": "-itis",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-itis' universally denotes inflammation (e.g., arthritis, rhinitis).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 159,
+    "question": "A 'biopsy' involves the examination of which type of tissue?",
+    "options": ["Dead tissue", "Living tissue", "Artificial tissue", "Nervous tissue only"],
+    "correctAnswer": "Living tissue",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'bi/o' means life, and '-opsy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 160,
+    "question": "A patient has 'bilateral' hip pain. Where is the pain located?",
+    "options": ["On only the left hip", "On only the right hip", "On both hips", "In the center of the pelvis"],
+    "correctAnswer": "On both hips",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two, and 'later/o' refers to a side.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 161,
+    "question": "The term 'pericarditis' refers to inflammation located where?",
+    "options": ["Inside the heart", "In the heart muscle", "Around the heart", "In the heart valves"],
+    "correctAnswer": "Around the heart",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'peri-' means around or surrounding, and 'cardi/o' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 162,
+    "question": "A patient is experiencing 'hematuria.' What did the nurse find in the urine?",
+    "options": ["Sugar", "Protein", "Blood", "Pus"],
+    "correctAnswer": "Blood",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hemat/o' means blood, and '-uria' refers to a condition of the urine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 163,
+    "question": "Which prefix means 'below' or 'under'?",
+    "options": ["Hyper-", "Hypo-", "Super-", "Meta-"],
+    "correctAnswer": "Hypo-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hypo-' means below, under, or deficient (e.g., hypodermic).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 164,
+    "question": "A patient has an 'osteoma.' What is this?",
+    "options": ["A bone infection", "A bone tumor", "A broken bone", "A soft bone"],
+    "correctAnswer": "A bone tumor",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and the suffix '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 165,
+    "question": "If a physician performs a 'rhinoplasty,' which organ is being reshaped?",
+    "options": ["The ear", "The eye", "The nose", "The throat"],
+    "correctAnswer": "The nose",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'rhin/o' means nose, and the suffix '-plasty' means surgical repair or reconstruction.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 166,
+    "question": "A patient is diagnosed with 'osteomalacia.' Based on the suffix, what is the nature of this bone condition?",
+    "options": ["Hardening", "Softening", "Enlargement", "Narrowing"],
+    "correctAnswer": "Softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 167,
+    "question": "A physician uses a 'nephroscope' to look inside which organ?",
+    "options": ["The liver", "The bladder", "The kidney", "The stomach"],
+    "correctAnswer": "The kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' means kidney, and '-scope' is an instrument for visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 168,
+    "question": "Which prefix means 'fast' or 'rapid'?",
+    "options": ["Brady-", "Tachy-", "Eu-", "Dys-"],
+    "correctAnswer": "Tachy-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'tachy-' means fast or rapid.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 169,
+    "question": "A patient with 'leukopenia' has a deficiency of which cells?",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Clotting factors"],
+    "correctAnswer": "White blood cells",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'leuk/o' means white, and '-penia' means deficiency.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 170,
+    "question": "If a surgeon performs a 'colostomy,' what are they creating?",
+    "options": ["An incision into the colon", "A permanent opening to the outside of the body", "Removal of the colon", "A repair of the colon"],
+    "correctAnswer": "A permanent opening to the outside of the body",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'col/o' means colon, and '-ostomy' means to create an artificial opening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 171,
+    "question": "A patient is experiencing 'neuralgia.' What is the patient feeling?",
+    "options": ["Muscle pain", "Nerve pain", "Bone pain", "Joint pain"],
+    "correctAnswer": "Nerve pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' means nerve, and '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 172,
+    "question": "Which suffix means 'to secrete'?",
+    "options": ["-crine", "-crit", "-cyte", "-cele"],
+    "correctAnswer": "-crine",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-crine' means to secrete (e.g., endocrine).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 173,
+    "question": "A patient has 'bilateral' edema. Where is the swelling located?",
+    "options": ["On one side of the body", "On both sides of the body", "Only in the upper body", "In the center of the body"],
+    "correctAnswer": "On both sides of the body",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two, and 'later/o' means side.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 174,
+    "question": "A 'phlebotomist' is a professional who primarily does what?",
+    "options": ["Studies the heart", "Cuts into veins to draw blood", "Performs surgery on the lungs", "Treats skin diseases"],
+    "correctAnswer": "Cuts into veins to draw blood",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'phleb/o' means vein, and '-otomy' (hidden in phlebotomy) means incision.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 175,
+    "question": "A patient is diagnosed with 'hepatoma.' Based on the root word, where is the tumor located?",
+    "options": ["The heart", "The liver", "The lungs", "The stomach"],
+    "correctAnswer": "The liver",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hepat/o' means liver, and the suffix '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 176,
+    "question": "If a physician is performing a 'tracheotomy,' what are they doing to the trachea?",
+    "options": ["Removing it", "Repairing it", "Making an incision into it", "Viewing it with a scope"],
+    "correctAnswer": "Making an incision into it",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'trache/o' refers to the trachea (windpipe), and the suffix '-otomy' means to cut into or make an incision.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 177,
+    "question": "A patient is experiencing 'arthrodynia.' What is their primary symptom?",
+    "options": ["Joint pain", "Joint swelling", "Muscle weakness", "Bone fracture"],
+    "correctAnswer": "Joint pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'arthr/o' means joint, and the suffix '-dynia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 178,
+    "question": "Which prefix means 'large' or 'long'?",
+    "options": ["Micro-", "Macro-", "Multi-", "Mono-"],
+    "correctAnswer": "Macro-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'macro-' means large or long (e.g., macrophage).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 179,
+    "question": "A patient has 'cyanoderma.' What color is the patient's skin?",
+    "options": ["Red", "White", "Yellow", "Blue"],
+    "correctAnswer": "Blue",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cyan/o' means blue, and 'derm/o' means skin.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 180,
+    "question": "If a patient is told they have 'myopathy,' what is wrong?",
+    "options": ["They have a bone disease", "They have a muscle disease", "They have a nerve disease", "They have a skin disease"],
+    "correctAnswer": "They have a muscle disease",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and the suffix '-pathy' means disease.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 181,
+    "question": "A patient is prescribed an 'antibiotic.' What does the prefix 'anti-' mean?",
+    "options": ["Against", "Before", "After", "With"],
+    "correctAnswer": "Against",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'anti-' means against or opposing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 182,
+    "question": "A 'neurologist' is a specialist who studies which system?",
+    "options": ["Skeletal", "Digestive", "Nervous", "Reproductive"],
+    "correctAnswer": "Nervous",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'neur/o' means nerve, and '-logist' means one who studies.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 183,
+    "question": "If a person has 'gastromegaly,' what has happened to their stomach?",
+    "options": ["It is inflamed", "It is enlarged", "It has been removed", "It is shrinking"],
+    "correctAnswer": "It is enlarged",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' means stomach, and the suffix '-megaly' means enlargement.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 184,
+    "question": "Which term describes a 'slow' heart rate?",
+    "options": ["Tachycardia", "Bradycardia", "Eupnea", "Dysphagia"],
+    "correctAnswer": "Bradycardia",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'brady-' means slow, and '-cardia' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 185,
+    "question": "A patient with 'adenitis' has inflammation of which structure?",
+    "options": ["A bone", "A gland", "A joint", "A muscle"],
+    "correctAnswer": "A gland",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'aden/o' means gland, and the suffix '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 186,
+    "question": "What is the primary function of a 'mammogram'?",
+    "options": ["To remove a breast tumor", "To record an image of the breast", "To measure breast temperature", "To repair breast tissue"],
+    "correctAnswer": "To record an image of the breast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'mamm/o' means breast, and the suffix '-gram' means a record or image.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 187,
+    "question": "A patient is diagnosed with 'osteoma.' What is this condition?",
+    "options": ["Bone inflammation", "A bone tumor", "Bone softening", "Bone loss"],
+    "correctAnswer": "A bone tumor",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and the suffix '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 188,
+    "question": "If a patient is 'anemic,' what is the meaning of the prefix 'an-'?",
+    "options": ["Above", "Below", "Without/Not", "Through"],
+    "correctAnswer": "Without/Not",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'an-' (or 'a-') means without, lack of, or not.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 189,
+    "question": "A 'cystoscopy' is a visual examination of which organ?",
+    "options": ["The liver", "The stomach", "The bladder", "The brain"],
+    "correctAnswer": "The bladder",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'cyst/o' refers to the bladder (or a sac), and '-scopy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 190,
+    "question": "A patient with 'gastralgia' is experiencing which of the following?",
+    "options": ["Stomach inflammation", "Stomach pain", "Stomach tumor", "Stomach enlargement"],
+    "correctAnswer": "Stomach pain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' means stomach, and the suffix '-algia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 191,
+    "question": "If a physician describes a patient's breathing as 'tachypnea,' how is it described?",
+    "options": ["Slow", "Normal", "Rapid", "Difficult"],
+    "correctAnswer": "Rapid",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'tachy-' means fast or rapid, and the suffix '-pnea' refers to breathing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 192,
+    "question": "A patient is undergoing a 'nephrectomy.' What is the surgeon doing?",
+    "options": ["Repairing the kidney", "Removing the kidney", "Viewing the kidney", "Incising the kidney"],
+    "correctAnswer": "Removing the kidney",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' refers to the kidney, and the suffix '-ectomy' means surgical removal.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 193,
+    "question": "Which prefix means 'inside' or 'within'?",
+    "options": ["Exo-", "Endo-", "Peri-", "Para-"],
+    "correctAnswer": "Endo-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'endo-' means within or inside (e.g., endocardium).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 194,
+    "question": "A patient has 'erythrocytopenia.' What is deficient in this patient's blood?",
+    "options": ["White blood cells", "Platelets", "Red blood cells", "Plasma"],
+    "correctAnswer": "Red blood cells",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'erythr/o' means red, 'cyt/o' means cell, and the suffix '-penia' means deficiency.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 195,
+    "question": "If a technician is performing a 'myography,' what is being recorded?",
+    "options": ["Heart activity", "Brain activity", "Muscle activity", "Skin sensitivity"],
+    "correctAnswer": "Muscle activity",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and the suffix '-graphy' means the process of recording.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 196,
+    "question": "A patient is diagnosed with 'cholelithiasis.' What are they suffering from?",
+    "options": ["Gallbladder inflammation", "Gallstones", "Liver enlargement", "Bile duct infection"],
+    "correctAnswer": "Gallstones",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'chol/e' means bile, 'lith/o' means stone, and '-iasis' refers to a condition.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 197,
+    "question": "Which suffix would be used to indicate 'inflammation'?",
+    "options": ["-osis", "-itis", "-oma", "-pathy"],
+    "correctAnswer": "-itis",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-itis' universally denotes inflammation (e.g., arthritis, rhinitis).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 198,
+    "question": "A 'biopsy' involves the examination of which type of tissue?",
+    "options": ["Dead tissue", "Living tissue", "Artificial tissue", "Nervous tissue only"],
+    "correctAnswer": "Living tissue",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'bi/o' means life, and '-opsia' or '-opsy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 199,
+    "question": "A patient has 'bilateral' hip pain. Where is the pain located?",
+    "options": ["On only the left hip", "On only the right hip", "On both hips", "In the center of the pelvis"],
+    "correctAnswer": "On both hips",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'bi-' means two, and 'later/o' refers to a side.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 200,
+    "question": "The term 'pericarditis' refers to inflammation located where?",
+    "options": ["Inside the heart", "In the heart muscle", "Around the heart", "In the heart valves"],
+    "correctAnswer": "Around the heart",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'peri-' means around or surrounding, and 'cardi/o' refers to the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 201,
+    "question": "A patient is experiencing 'hematuria.' What did the nurse find in the urine?",
+    "options": ["Sugar", "Protein", "Blood", "Pus"],
+    "correctAnswer": "Blood",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'hemat/o' means blood, and '-uria' refers to a condition of the urine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 202,
+    "question": "Which prefix means 'below' or 'under'?",
+    "options": ["Hyper-", "Hypo-", "Super-", "Meta-"],
+    "correctAnswer": "Hypo-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hypo-' means below, under, or deficient (e.g., hypodermic).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 203,
+    "question": "A patient has an 'osteoma.' What is this?",
+    "options": ["A bone infection", "A bone tumor", "A broken bone", "A soft bone"],
+    "correctAnswer": "A bone tumor",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and the suffix '-oma' means tumor or mass.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 204,
+    "question": "If a physician performs a 'rhinoplasty,' which organ is being reshaped?",
+    "options": ["The ear", "The eye", "The nose", "The throat"],
+    "correctAnswer": "The nose",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'rhin/o' means nose, and the suffix '-plasty' means surgical repair or reconstruction.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 205,
+    "question": "A patient is diagnosed with 'myomalacia.' What is happening to their muscle tissue?",
+    "options": ["It is hardening", "It is softening", "It is enlarging", "It is shrinking"],
+    "correctAnswer": "It is softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 206,
+    "question": "The term 'nephrolithiasis' refers to the presence of what?",
+    "options": ["Kidney stones", "Kidney infection", "Kidney failure", "Kidney tumors"],
+    "correctAnswer": "Kidney stones",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' means kidney, and 'lith/o' means stone.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 207,
+    "question": "A 'gastroscopy' is a procedure used to do what?",
+    "options": ["Remove the stomach", "Repair the stomach", "View the inside of the stomach", "Incise the stomach"],
+    "correctAnswer": "View the inside of the stomach",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' means stomach, and '-scopy' means visual examination with an instrument.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 208,
+    "question": "Which prefix means 'large'?",
+    "options": ["Micro-", "Macro-", "Mono-", "Multi-"],
+    "correctAnswer": "Macro-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'macro-' means large, whereas 'micro-' means small.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 209,
+    "question": "A patient with 'adenopathy' has a disease of which structure?",
+    "options": ["A gland", "A joint", "A nerve", "A muscle"],
+    "correctAnswer": "A gland",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'aden/o' means gland, and '-pathy' means disease.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 210,
+    "question": "If a patient is 'afebrile,' what does this tell you about their condition?",
+    "options": ["They have a high fever", "They are without a fever", "They have a contagious disease", "They are in pain"],
+    "correctAnswer": "They are without a fever",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'a-' means without or not, and 'febr/o' refers to fever.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 211,
+    "question": "A patient with 'encephalitis' has inflammation of which organ?",
+    "options": ["The heart", "The brain", "The spinal cord", "The liver"],
+    "correctAnswer": "The brain",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'encephal/o' refers to the brain, and '-itis' means inflammation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 212,
+    "question": "Which prefix means 'across' or 'through'?",
+    "options": ["Inter-", "Intra-", "Trans-", "Sub-"],
+    "correctAnswer": "Trans-",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'trans-' means across or through (e.g., transfusion).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 213,
+    "question": "If a physician performs a 'myotomy,' what are they doing?",
+    "options": ["Removing a muscle", "Repairing a muscle", "Incision into a muscle", "Viewing a muscle"],
+    "correctAnswer": "Incision into a muscle",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'my/o' means muscle, and the suffix '-otomy' means to cut into or make an incision.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 214,
+    "question": "A patient is experiencing 'gastrodynia.' Where is their pain located?",
+    "options": ["The stomach", "The chest", "The head", "The joints"],
+    "correctAnswer": "The stomach",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'gastr/o' refers to the stomach, and '-dynia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 215,
+    "question": "Which suffix means 'surgical puncture to remove fluid'?",
+    "options": ["-ectomy", "-centesis", "-plasty", "-stomy"],
+    "correctAnswer": "-centesis",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The suffix '-centesis' refers to a surgical puncture for fluid removal (e.g., amniocentesis).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 216,
+    "question": "A patient is diagnosed with 'osteomalacia.' What is the primary characteristic of this condition?",
+    "options": ["Bone hardening", "Bone softening", "Bone infection", "Bone tumor"],
+    "correctAnswer": "Bone softening",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'oste/o' means bone, and '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 217,
+    "question": "If a patient has 'monocytic' cells, how many nuclei or parts do they primarily have?",
+    "options": ["One", "Two", "Many", "None"],
+    "correctAnswer": "One",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'mono-' means one or single.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 218,
+    "question": "A 'laparoscope' is an instrument used to view the inside of which area?",
+    "options": ["The chest", "The skull", "The abdominal cavity", "The joints"],
+    "correctAnswer": "The abdominal cavity",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'lapar/o' refers to the abdomen or abdominal wall.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 219,
+    "question": "A patient is suffering from 'otitis media.' Which organ is primarily affected?",
+    "options": ["The eye", "The ear", "The nose", "The mouth"],
+    "correctAnswer": "The ear",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'ot/o' means ear; otitis media is an infection of the middle ear.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 220,
+    "question": "The term 'nephromegaly' describes which condition of the kidney?",
+    "options": ["Inflammation", "Enlargement", "Tumor", "Stone formation"],
+    "correctAnswer": "Enlargement",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'nephr/o' means kidney, and '-megaly' means enlargement.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 221,
+    "question": "A patient with 'dysphagia' is having difficulty doing what?",
+    "options": ["Breathing", "Speaking", "Swallowing", "Walking"],
+    "correctAnswer": "Swallowing",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'dys-' means difficult or painful, and '-phagia' refers to eating or swallowing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 222,
+    "question": "Which term describes an 'excessive' amount of sugar in the blood?",
+    "options": ["Hypoglycemia", "Hyperglycemia", "Euglycemia", "Aglycemia"],
+    "correctAnswer": "Hyperglycemia",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'hyper-' means excessive or above normal, and 'glyc/o' refers to sugar.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 223,
+    "question": "A 'mammogram' is a record or image of which organ?",
+    "options": ["The heart", "The liver", "The breast", "The lungs"],
+    "correctAnswer": "The breast",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'mamm/o' means breast, and '-gram' is a record or image.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 224,
+    "question": "If a patient is diagnosed with 'lipoma,' what is the nature of their tumor?",
+    "options": ["Bony", "Fatty", "Muscular", "Nervous"],
+    "correctAnswer": "Fatty",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'lip/o' means fat, and '-oma' means tumor.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 225,
+    "question": "The prefix 'pseudo-' as in 'pseudopod' means what?",
+    "options": ["True", "False", "Large", "Hidden"],
+    "correctAnswer": "False",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'pseudo-' means false (e.g., pseudopregnancy).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 226,
+    "question": "A patient presents with 'steatorrhea.' Based on the morphology of the term, what would a clinician expect to find in the patient's stool?",
+    "options": ["Fresh red blood", "Excessive fat content", "Hardened calcium deposits", "Large amounts of mucus"],
+    "correctAnswer": "Excessive fat content",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'steat/o' refers to fat or sebum, and the suffix '-rrhea' means flow or discharge. Steatorrhea is often a sign of malabsorption.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 227,
+    "question": "If a surgeon is performing a 'salpingo-oophorectomy,' which structures are being removed?",
+    "options": ["The uterus and cervix", "The fallopian tubes and ovaries", "The bladder and urethra", "The gallbladder and bile duct"],
+    "correctAnswer": "The fallopian tubes and ovaries",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'salping/o' refers to a tube (usually the fallopian tube) and 'oophor/o' refers to the ovary. '-ectomy' is excision.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 228,
+    "question": "A patient exhibits 'dactylomegaly.' Which part of their anatomy is abnormally large?",
+    "options": ["Their tongue", "Their fingers or toes", "Their skin cells", "Their tear glands"],
+    "correctAnswer": "Their fingers or toes",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'dactyl/o' refers to digits (fingers or toes), and '-megaly' means enlargement.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 229,
+    "question": "Which term describes a 'lack of muscle coordination' during voluntary movements?",
+    "options": ["Atrophy", "Ataxia", "Aphasia", "Asthenia"],
+    "correctAnswer": "Ataxia",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'a-' means without, and 'tax/o' refers to order or coordination. Ataxia is often related to cerebellar dysfunction.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 230,
+    "question": "A physician notes 'blepharoptosis' in a physical exam. What is the patient experiencing?",
+    "options": ["Inflammation of the eyelid", "Drooping of the upper eyelid", "Inversion of the eyelashes", "Paralysis of the eye muscles"],
+    "correctAnswer": "Drooping of the upper eyelid",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'blephar/o' means eyelid, and the suffix '-ptosis' means drooping or sagging.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 231,
+    "question": "A patient with 'pancytopenia' shows a decrease in which of the following?",
+    "options": ["Only white blood cells", "Only red blood cells and platelets", "All cellular components of the blood", "Only the liquid plasma portion"],
+    "correctAnswer": "All cellular components of the blood",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'pan-' means all, 'cyt/o' means cell, and '-penia' means deficiency. This indicates low RBCs, WBCs, and platelets.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 232,
+    "question": "The term 'oliguria' refers to a level of urine output that is:",
+    "options": ["Painful", "Excessive", "Scanty or diminished", "Completely absent"],
+    "correctAnswer": "Scanty or diminished",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'olig/o' means few or little. Oliguria is clinically defined as low urine output (typically <400mL/day in adults).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 233,
+    "question": "In the term 'poikilocytosis,' what does the prefix 'poikilo-' indicate about the red blood cells?",
+    "options": ["They are varied or irregular in shape", "They are pale in color", "They are larger than normal", "They are clumping together"],
+    "correctAnswer": "They are varied or irregular in shape",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'poikilo-' means varied or irregular. Poikilocytosis is the presence of abnormally shaped red blood cells in the blood.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 234,
+    "question": "Which of the following procedures involves the 'surgical fixation' of a displaced kidney?",
+    "options": ["Nephrolithotomy", "Nephropexy", "Nephrostomy", "Nephrolysis"],
+    "correctAnswer": "Nephropexy",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'nephr/o' means kidney, and the suffix '-pexy' means surgical fixation or suspension.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 235,
+    "question": "A patient diagnosed with 'glossodynia' would most likely complain of:",
+    "options": ["A painful tongue", "Difficulty speaking", "A sore throat", "Loss of taste"],
+    "correctAnswer": "A painful tongue",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'gloss/o' means tongue, and the suffix '-dynia' means pain.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 236,
+    "question": "If a condition is described as 'retroperitoneal,' where is it located?",
+    "options": ["Within the peritoneal cavity", "Beside the peritoneum", "Behind the peritoneum", "Above the peritoneum"],
+    "correctAnswer": "Behind the peritoneum",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'retro-' means behind or backward. Organs like the kidneys are located retroperitoneally.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 237,
+    "question": "A patient with 'myelomalacia' is experiencing what pathological change?",
+    "options": ["Hardening of the bone marrow", "Softening of the spinal cord", "Inflammation of the muscles", "Cancer of the lymph nodes"],
+    "correctAnswer": "Softening of the spinal cord",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'myel/o' can refer to bone marrow OR the spinal cord. In the context of '-malacia' (softening), it typically refers to the spinal cord.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 238,
+    "question": "Which term describes a 'dry' condition of the skin?",
+    "options": ["Xeroderma", "Scleroderma", "Erythroderma", "Ichthyosis"],
+    "correctAnswer": "Xeroderma",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'xer/o' means dry, and 'derm/o' means skin.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 239,
+    "question": "The term 'hematochezia' refers to:",
+    "options": ["Vomiting of blood", "The passage of fresh blood through the anus", "Blood in the sputum", "Blood in the urine"],
+    "correctAnswer": "The passage of fresh blood through the anus",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'hemat/o' means blood, and the suffix '-chezia' refers to defecation/stool.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 240,
+    "question": "An 'orchiorrhaphy' is a surgical procedure for which of the following?",
+    "options": ["Suturing of a testicle", "Removal of a testis", "Incision into the scrotum", "Fixation of an undescended testis"],
+    "correctAnswer": "Suturing of a testicle",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'orchi/o' refers to the testis, and the suffix '-rrhaphy' means suture or repair.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 241,
+    "question": "A patient presents with 'ankyloglossia.' What is the clinical manifestation of this condition?",
+    "options": ["Inflammation of the tongue", "A 'tied' or restricted tongue", "An abnormally large tongue", "A fungal infection of the tongue"],
+    "correctAnswer": "A 'tied' or restricted tongue",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'ankyl/o' means stiff, fused, or restricted, and 'gloss/o' means tongue. This is commonly known as being 'tongue-tied.'",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 242,
+    "question": "The term 'onychomycosis' refers to which of the following?",
+    "options": ["An ingrown hair", "A fungal infection of the nail", "A bacterial infection of the skin", "Softening of the bone"],
+    "correctAnswer": "A fungal infection of the nail",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'onych/o' means nail, 'myc/o' means fungus, and '-osis' means abnormal condition.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 243,
+    "question": "A clinician performs an 'arthrocentesis' on a swollen knee. What is the goal of this procedure?",
+    "options": ["To surgically fuse the joint", "To remove fluid from the joint space", "To replace the joint with a prosthesis", "To view the joint with a camera"],
+    "correctAnswer": "To remove fluid from the joint space",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'arthr/o' means joint, and the suffix '-centesis' means surgical puncture to remove fluid.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 244,
+    "question": "Which term describes 'the abnormal development or growth of cells, tissues, or organs'?",
+    "options": ["Hypertrophy", "Atrophy", "Dysplasia", "Anaplasia"],
+    "correctAnswer": "Dysplasia",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'dys-' means bad or difficult, and '-plasia' means formation or growth. Dysplasia is often a precursor to cancer.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 245,
+    "question": "A patient is suffering from 'presbyopia.' What is the root cause of this vision change?",
+    "options": ["Clouding of the lens", "Aging of the eye", "Increased intraocular pressure", "Curvature of the cornea"],
+    "correctAnswer": "Aging of the eye",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'presby/o' means old age, and '-opia' refers to vision. Presbyopia is the age-related loss of near-focusing ability.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 246,
+    "question": "The suffix '-ectasia' (as in 'bronchiectasis') means which of the following?",
+    "options": ["Narrowing", "Stretching or dilation", "Rupture", "Obstruction"],
+    "correctAnswer": "Stretching or dilation",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-ectasia' or '-ectasis' refers to expansion, stretching, or dilation of a tubular structure.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 247,
+    "question": "A patient with 'pyopneumothorax' has which three components in their chest cavity?",
+    "options": ["Blood, air, and pus", "Pus, air, and the chest cavity", "Bile, air, and fluid", "Fluid, gas, and blood"],
+    "correctAnswer": "Pus, air, and the chest cavity",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'py/o' means pus, 'pneum/o' means air, and 'thorax' refers to the chest.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 248,
+    "question": "If a patient has 'leukocytopenia,' what is the primary concern?",
+    "options": ["Inability to clot blood", "Increased risk of infection", "Severe anemia", "Excessive bruising"],
+    "correctAnswer": "Increased risk of infection",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The term means a deficiency ('-penia') of white blood cells ('leuk/o' + 'cyt/o'), which are essential for fighting infection.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 249,
+    "question": "Which term describes 'the surgical fixation of a prolapsed uterus'?",
+    "options": ["Hysterectomy", "Hysteropexy", "Hysteroscopy", "Hysterotomy"],
+    "correctAnswer": "Hysteropexy",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'hyster/o' means uterus, and '-pexy' means surgical fixation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 250,
+    "question": "A patient has 'xerophthalmia.' What is their primary complaint?",
+    "options": ["Double vision", "Night blindness", "Dry eyes", "Excessive tearing"],
+    "correctAnswer": "Dry eyes",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'xer/o' means dry, and 'ophthalm/o' refers to the eye.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 251,
+    "question": "The term 'adenohypophysis' refers to which part of the pituitary gland?",
+    "options": ["The posterior lobe", "The anterior lobe", "The stalk (infundibulum)", "The hypothalamus"],
+    "correctAnswer": "The anterior lobe",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'aden/o' means gland, and 'hypophysis' refers to the pituitary gland. The 'glandular' part is the anterior lobe.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 252,
+    "question": "What is the meaning of the suffix '-clasis' as in 'osteoclasis'?",
+    "options": ["To grow", "To break", "To bind", "To soften"],
+    "correctAnswer": "To break",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-clasis' means to break or smash. Osteoclasis is the surgical destruction of bone to correct a deformity.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 253,
+    "question": "A 'laparocholangioscopy' involves the visual examination of which structures?",
+    "options": ["The stomach and intestines", "The abdomen and bile vessels", "The liver and gallbladder", "The kidneys and ureters"],
+    "correctAnswer": "The abdomen and bile vessels",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'lapar/o' means abdomen, 'cholangi/o' means bile vessel, and '-scopy' means visual examination.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 254,
+    "question": "If a physician notes 'dystonia' in a patient, what are they observing?",
+    "options": ["Abnormal muscle tone", "Difficulty swallowing", "Painful urination", "Lack of coordination"],
+    "correctAnswer": "Abnormal muscle tone",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'dys-' means bad or abnormal, and 'ton/o' refers to tone or tension.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 255,
+    "question": "Which prefix means 'beside, beyond, or around'?",
+    "options": ["Para-", "Peri-", "Meta-", "Dia-"],
+    "correctAnswer": "Para-",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'para-' means beside, beyond, or near (e.g., parathyroid glands, which are beside the thyroid).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 256,
+    "question": "A patient presents with 'aniso-coria.' Upon examination, what would the nurse observe?",
+    "options": ["Involuntary eye movement", "Pupils of unequal size", "Double vision", "Drooping of the upper eyelid"],
+    "correctAnswer": "Pupils of unequal size",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'aniso-' means unequal, and 'cor/o' refers to the pupil. Anisocoria is a common finding in head injuries.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 257,
+    "question": "Which of the following terms describes the 'surgical crushing' of a nerve?",
+    "options": ["Neurolysis", "Neurotripsy", "Neuroclasis", "Neurotomy"],
+    "correctAnswer": "Neurotripsy",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'neur/o' means nerve, and the suffix '-tripsy' means to crush (similar to lithotripsy for stones).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 258,
+    "question": "A patient is diagnosed with 'leukocytoblastosis.' What does this term indicate about the cells involved?",
+    "options": ["They are mature white blood cells", "They are embryonic or immature white blood cells", "They are destroyed white blood cells", "They are abnormally shaped white blood cells"],
+    "correctAnswer": "They are embryonic or immature white blood cells",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'leuk/o' means white, 'cyt/o' means cell, and '-blast' refers to an embryonic or immature stage of development.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 259,
+    "question": "The term 'salpingocyesis' refers to which clinical condition?",
+    "options": ["Inflammation of the fallopian tubes", "Ectopic pregnancy in the fallopian tube", "Surgical repair of the fallopian tube", "A tumor within the fallopian tube"],
+    "correctAnswer": "Ectopic pregnancy in the fallopian tube",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'salping/o' means fallopian tube, and the suffix '-cyesis' means pregnancy.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 260,
+    "question": "Which prefix means 'backward' or 'behind'?",
+    "options": ["Retro-", "Antero-", "Latero-", "Medi/o-"],
+    "correctAnswer": "Retro-",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'retro-' means backward or behind (e.g., retroperitoneal means behind the peritoneum).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 261,
+    "question": "A physician notes 'hematochezia' in a patient's chart. This specifically refers to:",
+    "options": ["Vomiting blood", "Passing bright red blood in the stool", "Passing dark, tarry stools", "Coughing up blood"],
+    "correctAnswer": "Passing bright red blood in the stool",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'hemat/o' means blood, and '-chezia' refers to defecation. This is distinct from 'melena,' which is dark/tarry stool.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 262,
+    "question": "A patient is undergoing an 'orchiopexy.' What is the purpose of this procedure?",
+    "options": ["To remove a testicle", "To surgically fix an undescended testicle", "To repair a hernia in the scrotum", "To drain fluid from the scrotum"],
+    "correctAnswer": "To surgically fix an undescended testicle",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'orchi/o' refers to the testis, and the suffix '-pexy' means surgical fixation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 263,
+    "question": "The term 'dacryolith' refers to a 'stone' located in which structure?",
+    "options": ["The bladder", "The tear duct or lacrimal sac", "The gallbladder", "The kidney"],
+    "correctAnswer": "The tear duct or lacrimal sac",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'dacry/o' means tear or lacrimal duct, and the suffix '-lith' means stone.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 264,
+    "question": "Which suffix indicates 'an instrument for cutting'?",
+    "options": ["-tomy", "-tome", "-stomy", "-ectomy"],
+    "correctAnswer": "-tome",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-tome' refers to an instrument used to cut (e.g., a dermatome cuts thin slices of skin).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 265,
+    "question": "A patient with 'splenomyelomalacia' is experiencing what?",
+    "options": ["Hardening of the spleen and bone marrow", "Softening of the spleen and spinal cord", "Inflammation of the spleen and muscles", "Enlargement of the spleen and kidneys"],
+    "correctAnswer": "Softening of the spleen and spinal cord",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'splen/o' is spleen, 'myel/o' can be spinal cord, and '-malacia' is softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 266,
+    "question": "If a patient has 'xerostomia,' what is their primary symptom?",
+    "options": ["Dry skin", "Dry mouth", "Dry eyes", "Lack of sweating"],
+    "correctAnswer": "Dry mouth",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'xer/o' means dry, and 'stom/o' (or 'stomat/o') refers to the mouth.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 267,
+    "question": "Which term describes 'the study of causes' (of diseases)?",
+    "options": ["Epidemiology", "Pathology", "Etiology", "Physiology"],
+    "correctAnswer": "Etiology",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'eti/o' means cause, and '-logy' is the study of.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 268,
+    "question": "A 'laparo-hyster-ectomy' involves the removal of the uterus through which approach?",
+    "options": ["Through the vagina", "Through the abdominal wall", "Through a small incision in the chest", "By way of the pelvic floor"],
+    "correctAnswer": "Through the abdominal wall",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'lapar/o' means abdomen, and 'hyster/o' means uterus.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 269,
+    "question": "The term 'ischo-phonia' refers to which symptom?",
+    "options": ["A loud voice", "A stutter or stammer", "A loss of voice", "A high-pitched voice"],
+    "correctAnswer": "A stutter or stammer",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'ischo-' means to suppress or restrain, and 'phon/o' means voice/sound.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 270,
+    "question": "Which of the following describes a 'slow' respiratory rate?",
+    "options": ["Bradypnea", "Tachypnea", "Apnea", "Eupnea"],
+    "correctAnswer": "Bradypnea",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'brady-' means slow, and the suffix '-pnea' means breathing.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 271,
+    "question": "A patient is diagnosed with 'xeromycteria.' What is the primary clinical finding?",
+    "options": ["Dryness of the skin", "Dryness of the nasal mucous membranes", "Lack of saliva production", "Dryness of the conjunctiva"],
+    "correctAnswer": "Dryness of the nasal mucous membranes",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'xer/o' means dry and 'mycter/o' refers to the nose or nasal cavity. It is a more specific term than 'rhinitis sicca.'",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 272,
+    "question": "The term 'prosopoplegia' refers to paralysis of which area?",
+    "options": ["The lower limbs", "The diaphragm", "The face", "The tongue"],
+    "correctAnswer": "The face",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'prosop/o' means face, and the suffix '-plegia' means paralysis. This is a synonym for facial palsy.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 273,
+    "question": "Which of the following describes 'rhizotomy'?",
+    "options": ["Surgical incision into a joint", "Surgical resection of a spinal nerve root", "Removal of a portion of the liver", "Incising the root of a tooth"],
+    "correctAnswer": "Surgical resection of a spinal nerve root",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'rhiz/o' means root. In a neurosurgical context, rhizotomy involves cutting nerve roots to relieve pain or spasticity.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 274,
+    "question": "A patient presents with 'telangiectasia.' What is the morphological description of this condition?",
+    "options": ["Dilation of the small terminal blood vessels", "Constriction of the major arteries", "Rupture of the capillaries", "Inflammation of the veins"],
+    "correctAnswer": "Dilation of the small terminal blood vessels",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'tel/e' means end/far, 'angi/o' means vessel, and '-ectasia' means dilation. These are often called 'spider veins.'",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 275,
+    "question": "What is the specific meaning of the suffix '-schisis' as seen in 'palatoschisis'?",
+    "options": ["To bind together", "To burst forth", "A cleft or splitting", "Softening"],
+    "correctAnswer": "A cleft or splitting",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-schisis' means split or fissure. Palatoschisis is the medical term for a cleft palate.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 276,
+    "question": "If a physician notes 'poikiloderma' on a patient's arm, what are they observing?",
+    "options": ["Skin that is cold to the touch", "Skin with variegated pigmentation and atrophy", "Hardened, thickened skin", "Uniformly reddened skin"],
+    "correctAnswer": "Skin with variegated pigmentation and atrophy",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'poikilo-' means varied or irregular, and 'derm/o' means skin. It presents as a mix of hyperpigmentation and thinning.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 277,
+    "question": "A patient is undergoing a 'syndesmopexy.' Which structures are being surgically fixed?",
+    "options": ["Tendons", "Ligaments", "Muscles", "Nerves"],
+    "correctAnswer": "Ligaments",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'syndesm/o' refers to a ligament (literally 'binding together'), and '-pexy' means surgical fixation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 278,
+    "question": "The term 'opisthotonus' describes a position of the body characterized by:",
+    "options": ["Bending forward", "Bending backward/arching", "Twisting to the side", "Rigid straightness"],
+    "correctAnswer": "Bending backward/arching",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'opistho-' means backward or behind. Opisthotonus is a state of severe hyperextension and spasticity.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 279,
+    "question": "In the term 'phacomalacia,' which structure is undergoing pathological change?",
+    "options": ["The retina", "The lens of the eye", "The cornea", "The iris"],
+    "correctAnswer": "The lens of the eye",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'phac/o' (or 'phak/o') means lens, and '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 280,
+    "question": "Which of the following prefixes means 'near, beside, or beyond'?",
+    "options": ["Para-", "Peri-", "Meta-", "Dia-"],
+    "correctAnswer": "Para-",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Para- means beside or near. Peri- means around. Meta- means change or beyond. Dia- means through or across.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 281,
+    "question": "A clinician identifies 'laparothoracoscopy.' What areas are being examined?",
+    "options": ["The heart and lungs", "The abdominal and thoracic cavities", "The stomach and esophagus", "The liver and gallbladder"],
+    "correctAnswer": "The abdominal and thoracic cavities",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "This term combines 'lapar/o' (abdomen) and 'thorac/o' (chest) with '-scopy' (visual examination).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 282,
+    "question": "What is the meaning of the suffix '-tresia' as in 'atresia'?",
+    "options": ["Feeding", "Dilation", "Opening", "Crushing"],
+    "correctAnswer": "Opening",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-tresia' means opening. 'Atresia' means the absence of a normal body opening or passage (a- = without).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 283,
+    "question": "A patient suffers from 'hematonephrosis.' What is accumulated in the kidney?",
+    "options": ["Pus", "Urine", "Blood", "Water"],
+    "correctAnswer": "Blood",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'hemat/o' means blood, and 'nephr/o' means kidney. This is blood distending the renal pelvis.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 284,
+    "question": "Which root refers specifically to the 'calyx' of the kidney?",
+    "options": ["Cali/o", "Pyel/o", "Nephr/o", "Ren/o"],
+    "correctAnswer": "Cali/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Cali/o (or calic/o) refers to the renal calyx. Pyel/o refers to the renal pelvis.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 285,
+    "question": "The term 'onychocryptosis' is the medical name for which common condition?",
+    "options": ["Fungal nail infection", "Brittle nails", "Ingrown nail", "Nail biting"],
+    "correctAnswer": "Ingrown nail",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'onych/o' means nail and 'crypt/o' means hidden. An ingrown nail is 'hidden' in the surrounding skin.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 286,
+    "question": "A patient is diagnosed with 'cholecystectasia.' What is occurring in the gallbladder?",
+    "options": ["Formation of stones", "Surgical removal", "Dilation or distension", "Inflammation of the lining"],
+    "correctAnswer": "Dilation or distension",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'cholecyst/o' means gallbladder, and '-ectasia' means stretching or dilation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 287,
+    "question": "Which of the following terms describes 'the surgical fixation of a displaced spleen'?",
+    "options": ["Splenopexy", "Splenorrhaphy", "Splenotomy", "Splenolysis"],
+    "correctAnswer": "Splenopexy",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'splen/o' means spleen, and the suffix '-pexy' means surgical fixation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 288,
+    "question": "If a physician identifies 'trichotillomania,' what behavior is the patient exhibiting?",
+    "options": ["Fear of hair", "An obsessive urge to pull out one's own hair", "Excessive hair growth", "Loss of hair due to stress"],
+    "correctAnswer": "An obsessive urge to pull out one's own hair",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'trich/o' means hair, 'till/o' means to pull, and '-mania' means madness or obsession.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 289,
+    "question": "The term 'pyopneumopericardium' indicates the presence of which components around the heart?",
+    "options": ["Blood and air", "Pus and gas", "Fluid and blood", "Pus and water"],
+    "correctAnswer": "Pus and gas",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'py/o' means pus, 'pneum/o' means air or gas, and 'pericardium' is the sac around the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 290,
+    "question": "Which root refers specifically to the 'renal pelvis'?",
+    "options": ["Nephr/o", "Ren/o", "Pyel/o", "Cyst/o"],
+    "correctAnswer": "Pyel/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Pyel/o is the specific root for the renal pelvis. Nephr/o and Ren/o refer to the kidney as a whole.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 291,
+    "question": "A patient presents with 'glossopharyngeal' neuralgia. Which structures are involved in this pain?",
+    "options": ["The tongue and throat", "The jaw and teeth", "The ear and nose", "The lips and cheeks"],
+    "correctAnswer": "The tongue and throat",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'gloss/o' means tongue and 'pharyng/o' means throat (pharynx).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 292,
+    "question": "The suffix '-phoresis' as in 'electrophoresis' literally means:",
+    "options": ["To break down", "To carry or transmit", "To measure", "To visualize"],
+    "correctAnswer": "To carry or transmit",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-phoresis' means carrying or transmission. Electrophoresis carries particles via an electric field.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 293,
+    "question": "A physician notes 'myelophthisis' in a bone marrow report. What is occurring?",
+    "options": ["Hardening of the marrow", "Wasting or replacement of the hematopoietic tissue", "Excessive production of red cells", "Inflammation of the bone marrow"],
+    "correctAnswer": "Wasting or replacement of the hematopoietic tissue",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'myel/o' means marrow and '-phthisis' means wasting or decay.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 294,
+    "question": "Which prefix means 'dry'?",
+    "options": ["Xer/o", "Ichthy/o", "Scler/o", "Steat/o"],
+    "correctAnswer": "Xer/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Xer/o means dry (e.g., xeroderma). Ichthy/o means fish/scaly, Scler/o means hard, and Steat/o means fat.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 295,
+    "question": "The term 'syndactyly' refers to which congenital anomaly?",
+    "options": ["Extra fingers or toes", "Webbed or fused fingers or toes", "Missing digits", "Abnormally short digits"],
+    "correctAnswer": "Webbed or fused fingers or toes",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'syn-' means together or joined, and 'dactyl/o' means digits (fingers/toes).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 296,
+    "question": "A 'dacryocystitis' is the inflammation of which structure?",
+    "options": ["The tear sac", "The gallbladder", "The urinary bladder", "The salivary gland"],
+    "correctAnswer": "The tear sac",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'dacry/o' means tear and 'cyst/o' means sac or bladder.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 297,
+    "question": "In the term 'phacoclast,' what is the purpose of the instrument?",
+    "options": ["To repair the retina", "To break the lens of the eye", "To measure eye pressure", "To remove the vitreous humor"],
+    "correctAnswer": "To break the lens of the eye",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'phac/o' means lens and the suffix '-clast' means to break (often used in cataract surgery).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 298,
+    "question": "Which term refers to 'the inability to recognize objects by touch'?",
+    "options": ["Agraphia", "Agnosia", "Astereognosis", "Apraxia"],
+    "correctAnswer": "Astereognosis",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'a-' means without, 'stere/o' means solid/three-dimensional, and 'gnos/o' means knowledge.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 299,
+    "question": "A patient with 'sialolithiasis' has which of the following?",
+    "options": ["Stones in the salivary gland", "Infection of the sinus", "Hardening of the skin", "Enlarged lymph nodes"],
+    "correctAnswer": "Stones in the salivary gland",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'sial/o' means saliva/salivary gland and '-lithiasis' means the presence of stones.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 300,
+    "question": "The term 'onychomalacia' describes what pathological change in the nails?",
+    "options": ["Thickening", "Fungal growth", "Abnormal softening", "Loss of pigmentation"],
+    "correctAnswer": "Abnormal softening",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'onych/o' means nail and '-malacia' means softening.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 301,
+    "question": "A 65-year-old male presents to the clinic complaining of 'nocturia' and a weak urinary stream. During the physical exam, the physician notes 'prostatomegaly.' Based on the breakdown of these terms, what is the most likely physiological cause of his frequent nighttime urination?",
+    "options": [
+      "Inflammation of the bladder lining",
+      "An enlarged prostate gland pressing on the urethra",
+      "A stone lodged in the renal pelvis",
+      "A congenital narrowing of the ureters"
+    ],
+    "correctAnswer": "An enlarged prostate gland pressing on the urethra",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The term 'prostatomegaly' combines 'prostat/o' (prostate) and '-megaly' (enlargement). In older men, an enlarged prostate can compress the urethra, leading to 'nocturia' ('noct/i' = night; '-uria' = urination), as the bladder cannot empty fully and feels full more frequently at night.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 302,
+    "question": "A patient is scheduled for a 'cholecystoduodenostomy' to bypass an obstruction in the common bile duct. By analyzing the word parts, which two anatomical structures is the surgeon connecting?",
+    "options": [
+      "The gallbladder and the first part of the small intestine",
+      "The liver and the stomach",
+      "The gallbladder and the large intestine",
+      "The common bile duct and the pancreas"
+    ],
+    "correctAnswer": "The gallbladder and the first part of the small intestine",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The term is composed of 'cholecyst/o' (gallbladder), 'duoden/o' (duodenum, the first part of the small intestine), and '-stomy' (creating a new permanent opening). This procedure creates a channel for bile to flow directly from the gallbladder into the gut.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 303,
+    "question": "A neurologist observes 'hemiparesis' in a patient following a cerebrovascular accident (CVA). How does this symptom differ from 'hemiplegia' based on their respective suffixes?",
+    "options": [
+      "Hemiparesis is total paralysis, while hemiplegia is slight weakness",
+      "Hemiparesis refers to weakness on one side, while hemiplegia refers to total paralysis on one side",
+      "Hemiparesis affects the lower limbs, while hemiplegia affects the upper limbs",
+      "Hemiparesis is temporary, while hemiplegia is always permanent"
+    ],
+    "correctAnswer": "Hemiparesis refers to weakness on one side, while hemiplegia refers to total paralysis on one side",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "Both terms use 'hemi-' (half/one side). However, the suffix '-paresis' means slight paralysis or weakness, whereas '-plegia' means total paralysis. Distinguishing between weakness and total loss of function is critical for stroke assessment.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 304,
+    "question": "During a prenatal screening, a 30-year-old pregnant woman is diagnosed with 'polyhydramnios.' Based on your knowledge of prefixes and roots, what does this condition involve?",
+    "options": [
+      "A deficiency of amniotic fluid",
+      "An excessive amount of amniotic fluid",
+      "Multiple fetuses within one amniotic sac",
+      "Inflammation of the amniotic sac"
+    ],
+    "correctAnswer": "An excessive amount of amniotic fluid",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'poly-' means many or much, 'hydr/o' means water/fluid, and 'amnios' refers to the amnion (amniotic sac). Polyhydramnios is the clinical term for an overabundance of amniotic fluid surrounding the fetus, which can lead to complications during delivery.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 305,
+    "question": "A patient with chronic kidney disease presents with 'erythropoietin' deficiency. Which pathological condition would you expect to see as a direct result, based on the suffix '-poiesis'?",
+    "options": [
+      "Leukemia (excessive white blood cells)",
+      "Anemia (lack of red blood cell production)",
+      "Thrombocytopenia (low platelets)",
+      "Polycythemia (thickened blood)"
+    ],
+    "correctAnswer": "Anemia (lack of red blood cell production)",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'erythr/o' means red, and '-poiesis' means formation or production. Erythropoietin is a hormone that stimulates the production of red blood cells. A deficiency results in decreased production, leading to anemia.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 306,
+    "question": "Following a severe allergic reaction, a patient experiences 'laryngospasm.' How would the medical team describe the physical state of the patient's airway based on the suffix '-spasm'?",
+    "options": [
+      "A permanent closure requiring surgery",
+      "A sudden, involuntary contraction of the laryngeal muscles",
+      "Inflammation and swelling of the vocal cords",
+      "The presence of a foreign object in the throat"
+    ],
+    "correctAnswer": "A sudden, involuntary contraction of the laryngeal muscles",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The suffix '-spasm' denotes a sudden, involuntary contraction of muscles. In 'laryngospasm' ('laryng/o' = larynx), the muscles of the larynx constrict, which can temporarily block the airway and cause respiratory distress.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 307,
+    "question": "An ENT specialist identifies 'otosclerosis' in a patient with progressive hearing loss. Using the component parts of the word, what is happening internally to the patient's ear?",
+    "options": [
+      "The eardrum has a hole in it",
+      "There is an abnormal hardening of the bony tissue in the ear",
+      "The auditory nerve is undergoing atrophy",
+      "Fluid is trapped behind the tympanic membrane"
+    ],
+    "correctAnswer": "There is an abnormal hardening of the bony tissue in the ear",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'ot/o' means ear, and the suffix '-sclerosis' means abnormal hardening. In otosclerosis, the small bones (ossicles) of the middle ear harden, preventing them from vibrating properly to transmit sound.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 308,
+    "question": "A cardiologist notes 'cardiomyopathy' in a patient's history. Based on the term's construction, which of the following best describes the patient's condition?",
+    "options": [
+      "A blockage in the coronary arteries",
+      "Inflammation of the outer lining of the heart",
+      "A general disease or disorder of the heart muscle",
+      "An irregular heart rhythm originating in the atria"
+    ],
+    "correctAnswer": "A general disease or disorder of the heart muscle",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "This term is a combination of 'cardi/o' (heart), 'my/o' (muscle), and '-pathy' (disease). Cardiomyopathy is a broad term for conditions where the heart muscle is structurally or functionally abnormal.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 309,
+    "question": "A patient undergoes a 'thoracentesis' to alleviate 'dyspnea' caused by a pleural effusion. What is the clinician doing to the patient, and why?",
+    "options": [
+      "Removing the entire lung to treat cancer",
+      "Surgically puncturing the chest wall to drain excess fluid",
+      "Placing a tube in the trachea to assist with breathing",
+      "Incisng the diaphragm to expand lung capacity"
+    ],
+    "correctAnswer": "Surgically puncturing the chest wall to drain excess fluid",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'thorac/o' means chest, and '-centesis' means surgical puncture to remove fluid. This is done to treat 'dyspnea' ('dys-' = difficult; '-pnea' = breathing) by removing fluid that compresses the lungs.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 310,
+    "question": "A dermatologist describes a lesion as 'subungual.' Where exactly should the nurse look for this lesion?",
+    "options": [
+      "On the palm of the hand",
+      "Underneath the fingernail or toenail",
+      "Just below the surface of the scalp",
+      "Between the fingers in the webbing"
+    ],
+    "correctAnswer": "Underneath the fingernail or toenail",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'sub-' means under or below, and 'ungu/o' is the root for nail. A subungual hematoma, for example, is a collection of blood trapped under a nail.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 311,
+    "question": "A patient with 'gastroparesis' complains of feeling full even after eating very small amounts. Based on the term, what is the underlying mechanical issue?",
+    "options": [
+      "A blockage at the pyloric sphincter",
+      "Partial paralysis or slow movement of the stomach muscles",
+      "Excessive acid production causing ulcers",
+      "Inflammation of the stomach lining"
+    ],
+    "correctAnswer": "Partial paralysis or slow movement of the stomach muscles",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "Combining 'gastr/o' (stomach) and '-paresis' (partial paralysis), gastroparesis is a condition where the stomach cannot empty itself of food in a normal fashion because the muscles are weak or not functioning.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 312,
+    "question": "A lab report indicates 'hypochromic' red blood cells. How would these cells appear under a microscope compared to normal cells?",
+    "options": [
+      "They would be smaller than average",
+      "They would have a deeper, darker red color",
+      "They would be paler than normal due to low hemoglobin",
+      "They would have irregular, jagged edges"
+    ],
+    "correctAnswer": "They would be paler than normal due to low hemoglobin",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'hypo-' means deficient or below, and 'chrom/o' means color. Hypochromic cells lack the normal intensity of red color, usually because they contain less hemoglobin, as seen in iron-deficiency anemia.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 313,
+    "question": "An orthopedic surgeon performs a 'tenorrhaphy' on a professional athlete. What is being repaired?",
+    "options": [
+      "A fractured bone in the foot",
+      "A torn ligament in the knee",
+      "A ruptured tendon",
+      "A severely strained muscle"
+    ],
+    "correctAnswer": "A ruptured tendon",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'ten/o' refers to a tendon, and the suffix '-rrhaphy' means suture or surgical repair. Tenorrhaphy is the specific procedure used to sew the ends of a severed or torn tendon back together.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 314,
+    "question": "A patient presents with 'meningomyelocele.' Based on the construction of this complex term, which structures are protruding through a defect in the vertebral column?",
+    "options": [
+      "Only the spinal cord",
+      "Only the meninges (protective membranes)",
+      "Both the meninges and the spinal cord",
+      "The spinal nerves and the surrounding muscle"
+    ],
+    "correctAnswer": "Both the meninges and the spinal cord",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The term includes 'mening/o' (meninges), 'myel/o' (spinal cord), and '-cele' (hernia or protrusion). This is a severe form of spina bifida where both the protective membranes and the cord itself push through the spine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 315,
+    "question": "A gastroenterologist uses an endoscope to identify 'esophageal atresia' in a newborn. What is the physical nature of this congenital anomaly?",
+    "options": [
+      "The esophagus is abnormally narrow",
+      "The esophagus ends in a blind pouch and does not connect to the stomach",
+      "The esophagus is inflamed due to acid reflux",
+      "The esophagus is connected to the trachea by a fistula"
+    ],
+    "correctAnswer": "The esophagus ends in a blind pouch and does not connect to the stomach",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root is 'esophag/o' and the suffix is '-atresia,' which means the absence of a normal opening or passage. In esophageal atresia, the esophagus fails to develop a continuous passage to the stomach during gestation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 316,
+    "question": "A 50-year-old patient presents with chronic flank pain. An ultrasound reveals 'nephrolithiasis' and subsequent 'hydronephrosis.' Based on these terms, what is the most likely physiological sequence of events?",
+    "options": [
+      "A kidney infection caused a stone to form in the bladder",
+      "A kidney stone is obstructing urine flow, causing the kidney to swell with fluid",
+      "The kidney is shrinking due to a lack of blood flow from a stone",
+      "A tumor in the kidney is secreting excessive amounts of water"
+    ],
+    "correctAnswer": "A kidney stone is obstructing urine flow, causing the kidney to swell with fluid",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "Analyzing the terms: 'nephr/o' (kidney) + 'lith/o' (stone) + '-iasis' (condition) indicates kidney stones. 'hydr/o' (water/fluid) + 'nephr/o' (kidney) + '-osis' (condition) describes the distension of the renal pelvis due to obstructed urine outflow. The stone ('lith') is the cause of the fluid backup ('hydro').",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 317,
+    "question": "A patient with severe 'thrombocytopenia' is cautioned against taking aspirin or participating in contact sports. Based on the suffix '-penia,' what is the primary hematological concern for this patient?",
+    "options": [
+      "An inability to produce enough white blood cells to fight infection",
+      "An abnormally high count of red blood cells making the blood too thick",
+      "A deficiency of platelets leading to an increased risk of uncontrolled bleeding",
+      "The presence of immature, cancerous cells in the bone marrow"
+    ],
+    "correctAnswer": "A deficiency of platelets leading to an increased risk of uncontrolled bleeding",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The term is built from 'thromb/o' (clot/platelet), 'cyt/o' (cell), and '-penia' (deficiency). Since platelets are essential for the coagulation process, a 'cytopenia' of these specific cells means the patient cannot form clots effectively, making minor injuries potentially dangerous.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 318,
+    "question": "A patient is diagnosed with 'myasthenia gravis.' The hallmark symptom is exercise-induced 'amyosthenia' that improves with rest. How does the suffix '-sthenia' help define this condition?",
+    "options": [
+      "It refers to the volume of the muscle",
+      "It refers to the strength or vigor of the muscle",
+      "It refers to the coordination of muscle movement",
+      "It refers to the electrical conductivity of the nerve"
+    ],
+    "correctAnswer": "It refers to the strength or vigor of the muscle",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'my/o' means muscle and 'sthen/o' means strength. The prefix 'a-' means without. Therefore, 'amyosthenia' is a lack of muscle strength. Myasthenia gravis is an autoimmune neuromuscular disorder characterized by varying degrees of weakness of the skeletal muscles.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 319,
+    "question": "During a physical exam, a physician notes 'dactylospasm' in a patient with a history of electrolyte imbalances. Which of the following best describes the patient's physical presentation?",
+    "options": [
+      "Involuntary contraction of the muscles in the fingers or toes",
+      "Inflammation of the joints in the hand",
+      "Numbness and tingling in the fingertips",
+      "Abnormal lengthening of the digits"
+    ],
+    "correctAnswer": "Involuntary contraction of the muscles in the fingers or toes",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'dactyl/o' refers to digits (fingers or toes) and '-spasm' refers to a sudden, involuntary muscle contraction. This is a common clinical sign in conditions like hypocalcemia (low calcium), which irritates the nerves supplying the extremities.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 320,
+    "question": "A patient is undergoing a 'salpingectomy' due to an 'ectopic' pregnancy. Based on the prefix 'ec-' and the root 'salping/o,' where was the pregnancy located?",
+    "options": [
+      "Inside the uterine cavity",
+      "Outside its normal location, specifically within the fallopian tube",
+      "Behind the ovaries in the pelvic cavity",
+      "Attached to the outside of the cervix"
+    ],
+    "correctAnswer": "Outside its normal location, specifically within the fallopian tube",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'ec-' (or 'ecto-') means out or outside, and 'top/o' means place; thus, 'ectopic' means out of place. 'salping/o' refers to the fallopian tube, and '-ectomy' is excision. An ectopic pregnancy most commonly occurs when a fertilized egg implants in the tube rather than the uterus.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 321,
+    "question": "A patient's chart mentions 'leukocytosis' in response to an acute appendicitis. How should the nurse interpret this laboratory finding?",
+    "options": [
+      "The patient has a dangerously low white blood cell count",
+      "There is an abnormal increase in the number of white blood cells, indicating infection",
+      "The white blood cells are abnormally large but normal in count",
+      "The patient's white blood cells are attacking their own healthy tissue"
+    ],
+    "correctAnswer": "There is an abnormal increase in the number of white blood cells, indicating infection",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'leuk/o' means white, 'cyt/o' means cell, and '-osis' means an abnormal condition or increase. Leukocytosis is a classic physiological response where the bone marrow ramps up production of white cells to combat an inflammatory or infectious process like appendicitis.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 322,
+    "question": "An elderly patient with 'dysphagia' is at high risk for 'aspiration pneumonia.' What is the primary functional impairment described by the term 'dysphagia'?",
+    "options": [
+      "Difficulty speaking clearly (slurred speech)",
+      "Difficulty swallowing food or liquids",
+      "Painful digestion or 'upset stomach'",
+      "Shortness of breath during exertion"
+    ],
+    "correctAnswer": "Difficulty swallowing food or liquids",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'dys-' means difficult or painful, and the suffix '-phagia' comes from the Greek for 'to eat' or 'swallow.' Patients with dysphagia may have trouble moving food from the mouth to the stomach, which can lead to food 'going down the wrong pipe' into the lungs (aspiration).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 323,
+    "question": "A surgeon performs an 'arthrodesis' on a patient with debilitating 'osteoarthritis.' What is the intended outcome of this specific surgical suffix?",
+    "options": [
+      "To surgically remove the diseased joint",
+      "To surgically fuse the joint to prevent movement and relieve pain",
+      "To repair the joint using a synthetic graft",
+      "To drain excess inflammatory fluid from the joint space"
+    ],
+    "correctAnswer": "To surgically fuse the joint to prevent movement and relieve pain",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "While many joint surgeries end in '-plasty' (repair/replacement), the suffix '-desis' specifically means binding or surgical fusion. In an 'arthrodesis' ('arthr/o' = joint), the bones are joined together to eliminate painful motion in a severely damaged joint.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 324,
+    "question": "A patient with liver failure develops 'bilirubinemia.' Based on the suffix '-emia,' where is the excess bilirubin located?",
+    "options": [
+      "In the bile ducts",
+      "In the urine",
+      "In the blood",
+      "In the interstitial tissues"
+    ],
+    "correctAnswer": "In the blood",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The suffix '-emia' specifically refers to a condition of the blood. While bilirubin may eventually leak into the tissues (causing jaundice), the term 'bilirubinemia' describes the laboratory finding of elevated levels within the bloodstream.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 325,
+    "question": "A cardiologist identifies a 'septal' defect in a neonatal patient. Which of the following best describes the 'septum' in an anatomical context?",
+    "options": [
+      "A valve that prevents backflow of blood",
+      "A wall or partition dividing two cavities",
+      "The outer protective layer of an organ",
+      "A vessel that carries oxygenated blood"
+    ],
+    "correctAnswer": "A wall or partition dividing two cavities",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'sept/o' means partition or wall. In cardiology, the 'interventricular septum' is the muscular wall that separates the left and right ventricles. A 'septal defect' is a hole in that wall that allows blood to mix between the two sides of the heart.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 326,
+    "question": "A patient presents with 'pancytopenia' after undergoing chemotherapy. Which of the following laboratory results would be consistent with this term?",
+    "options": [
+      "High red blood cells, low white blood cells, normal platelets",
+      "Low red blood cells, low white blood cells, and low platelets",
+      "Normal cell counts but abnormal cell shapes",
+      "High white blood cells indicating an immune reaction"
+    ],
+    "correctAnswer": "Low red blood cells, low white blood cells, and low platelets",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'pan-' means all, 'cyt/o' means cell, and '-penia' means deficiency. 'Pancytopenia' describes a global depression of all the formed elements of the blood, a common side effect of drugs that suppress bone marrow function.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 327,
+    "question": "A dermatologist performs a 'biopsy' on a suspicious mole and determines it is 'melanoma.' What does the root 'melan/o' tell you about the appearance of this tumor?",
+    "options": [
+      "It is bright red and vascular",
+      "It is white and waxy",
+      "It is black or darkly pigmented",
+      "It is yellow and contains fat"
+    ],
+    "correctAnswer": "It is black or darkly pigmented",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'melan/o' means black. Melanocytes are cells that produce melanin, the pigment responsible for skin color. A 'melanoma' is a tumor ('-oma') arising from these pigment-producing cells, typically appearing as a dark or variegated lesion.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 328,
+    "question": "Following abdominal surgery, a patient develops 'atelectasis.' By looking at the roots 'atel/o' and '-ectasis,' what has happened to the patient's lungs?",
+    "options": [
+      "The lungs are over-expanded with air",
+      "The lungs are filled with inflammatory fluid",
+      "The lungs have 'imperfect expansion' or have partially collapsed",
+      "The lining of the lungs is severely inflamed"
+    ],
+    "correctAnswer": "The lungs have 'imperfect expansion' or have partially collapsed",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'atel/o' means imperfect or incomplete, and '-ectasis' means expansion or dilation. 'Atelectasis' is the clinical term for the collapse of alveoli, preventing the gas exchange required for oxygenation.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 329,
+    "question": "A patient with uncontrolled diabetes mellitus is found to have 'glycosuria.' What is the kidney's role in this finding based on the word's construction?",
+    "options": [
+      "The kidney is failing to filter protein",
+      "The kidney is excreting glucose into the urine",
+      "The kidney is producing too much sugar",
+      "The kidney is inflamed due to high sugar levels"
+    ],
+    "correctAnswer": "The kidney is excreting glucose into the urine",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'glyc/o' means sugar/glucose and the suffix '-uria' means a condition of the urine. When blood sugar levels exceed the 'renal threshold,' the kidneys can no longer reabsorb the excess glucose, leading to its presence in the urine.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 330,
+    "question": "An ophthalmologist identifies 'blepharoptosis' in a patient with a nerve injury. What would a bystander notice about the patient's face?",
+    "options": [
+      "The patient's eyeball is protruding",
+      "The patient's upper eyelid is drooping",
+      "The patient is squinting uncontrollably",
+      "The patient's pupil is dilated"
+    ],
+    "correctAnswer": "The patient's upper eyelid is drooping",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'blephar/o' refers to the eyelid and the suffix '-ptosis' refers to drooping or sagging. This condition can be caused by weakness of the levator muscle or damage to the nerves that control it.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 331,
+    "question": "A 45-year-old female presents with severe right upper quadrant pain that radiates to her shoulder. The physician suspects 'cholelithiasis' leading to 'cholecystitis.' Based on these terms, what is the chronological progression of her condition?",
+    "options": [
+      "Inflammation of the gallbladder caused stones to form",
+      "The presence of gallstones led to the inflammation of the gallbladder",
+      "The gallbladder is shrinking and producing less bile",
+      "A tumor in the gallbladder is causing stone-like calcifications"
+    ],
+    "correctAnswer": "The presence of gallstones led to the inflammation of the gallbladder",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "Breakdown: 'chol/e' (bile) + 'lith' (stone) + '-iasis' (condition) refers to the presence of stones. 'cholecyst/o' (gallbladder) + '-itis' (inflammation) refers to the inflammatory response. In clinical practice, gallstones often obstruct the cystic duct, which then triggers the inflammation known as cholecystitis.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 332,
+    "question": "A patient with a history of chronic smoking presents with 'hemoptysis.' Based on the suffix '-ptysis,' what is the patient's primary symptom?",
+    "options": [
+      "Vomiting blood from the stomach",
+      "Coughing up blood from the respiratory tract",
+      "Passing blood through the urinary tract",
+      "Bleeding from the nasal cavity"
+    ],
+    "correctAnswer": "Coughing up blood from the respiratory tract",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'hemat/o' (shortened to 'hem-') means blood, and the suffix '-ptysis' means spitting or coughing up. This is distinct from 'hematemesis' ('-emesis' = vomiting), which involves blood from the digestive tract.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 333,
+    "question": "Following a traumatic head injury, a patient exhibits 'biphasic' patterns of consciousness. Based on the prefix 'bi-' and the root 'phas/o,' how would you describe this patient's state?",
+    "options": [
+      "The patient is unable to speak entirely",
+      "The patient is experiencing two distinct stages or periods of consciousness",
+      "The patient can only see out of one eye",
+      "The patient has lost motor function on both sides of the body"
+    ],
+    "correctAnswer": "The patient is experiencing two distinct stages or periods of consciousness",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'bi-' means two, and the root 'phas/o' means stage or period (not to be confused with 'phasia' for speech). A biphasic clinical course involves an initial symptom period, a temporary recovery (lucid interval), and then a second symptomatic period.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 334,
+    "question": "A patient is diagnosed with 'osteomalacia' due to a severe Vitamin D deficiency. Based on the suffix '-malacia,' what is the physical state of the patient's skeletal system?",
+    "options": [
+      "The bones are becoming abnormally brittle and hard",
+      "The bones are becoming abnormally soft",
+      "The bones are growing excess spurs",
+      "The bone marrow is being replaced by fat"
+    ],
+    "correctAnswer": "The bones are becoming abnormally soft",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'oste/o' means bone, and the suffix '-malacia' means softening. Osteomalacia is often referred to as 'adult rickets,' where the bone matrix fails to mineralize properly, leading to structural weakness.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 335,
+    "question": "A physician uses a 'sphygmomanometer' to check a patient's vital signs. Based on the root 'sphygm/o,' what specific physiological occurrence is being measured?",
+    "options": [
+      "The rate of respiration",
+      "The temperature of the core body",
+      "The pulse or pressure of the arterial blood",
+      "The electrical activity of the heart"
+    ],
+    "correctAnswer": "The pulse or pressure of the arterial blood",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'sphygm/o' refers to the pulse. Combined with 'man/o' (pressure/thin) and '-meter' (measuring instrument), this device is the standard tool for measuring blood pressure.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 336,
+    "question": "A patient is scheduled for an 'adenoidectomy.' Based on the term's construction, which structure is the surgeon removing?",
+    "options": [
+      "A set of lymph nodes in the groin",
+      "The gland-like lymphatic tissue in the nasopharynx",
+      "The adrenal glands above the kidneys",
+      "The master gland at the base of the brain"
+    ],
+    "correctAnswer": "The gland-like lymphatic tissue in the nasopharynx",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'aden/o' means gland, and 'oid' means resembling. The 'adenoids' are gland-resembling lymphatic tissues located behind the nose. The suffix '-ectomy' indicates surgical removal.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 337,
+    "question": "A laboratory report indicates a patient has 'anisocytosis.' How would the technician describe the red blood cells found in the smear?",
+    "options": [
+      "The cells are all abnormally small",
+      "The cells are all abnormally large",
+      "The cells are of unequal or varied sizes",
+      "The cells are of varied or irregular shapes"
+    ],
+    "correctAnswer": "The cells are of unequal or varied sizes",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'an-' means not, and 'iso-' means equal; thus 'aniso-' means unequal. 'cyt/o' (cell) + '-osis' (condition) refers to the state of the cells. This is often seen in various types of anemia.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 338,
+    "question": "During a neurological exam, a patient displays 'dysmetria.' When asked to touch their nose, they 'over-shoot' the target. Based on the root 'metr/o,' what is the patient having difficulty with?",
+    "options": [
+      "The ability to feel pain",
+      "The ability to measure or judge distance",
+      "The ability to remember the command",
+      "The ability to maintain rhythm"
+    ],
+    "correctAnswer": "The ability to measure or judge distance",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'dys-' means difficult or impaired, and the root 'metr/o' means to measure. Dysmetria is a type of ataxia where the patient cannot accurately 'measure' the distance required for a coordinated movement.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 339,
+    "question": "A patient with 'splenomegaly' is told to avoid contact sports. What is the anatomical concern, and why?",
+    "options": [
+      "The spleen is inflamed and might cause an infection",
+      "The spleen is enlarged and is at high risk of rupturing upon impact",
+      "The spleen is missing, making the patient immunocompromised",
+      "The spleen is producing too many red blood cells, causing thick blood"
+    ],
+    "correctAnswer": "The spleen is enlarged and is at high risk of rupturing upon impact",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'splen/o' refers to the spleen, and '-megaly' means enlargement. An enlarged spleen extends beyond the protection of the rib cage, making it vulnerable to life-threatening hemorrhage if struck.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 340,
+    "question": "An OB/GYN identifies 'retroflexion' of the uterus in a patient. Which way is the organ tilted compared to its normal position?",
+    "options": [
+      "Forward toward the bladder",
+      "Backward toward the rectum",
+      "To the side toward the ovaries",
+      "Downward toward the vaginal canal"
+    ],
+    "correctAnswer": "Backward toward the rectum",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The prefix 'retro-' means backward or behind, and 'flex/o' means to bend or tilt. In retroflexion, the body of the uterus is tilted posteriorly.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 341,
+    "question": "A patient's chart notes 'hematochezia.' Based on the roots, what did the patient observe in their stool?",
+    "options": [
+      "Dark, tarry, foul-smelling waste",
+      "Bright red, fresh blood",
+      "Clear mucus without waste",
+      "White, clay-colored deposits"
+    ],
+    "correctAnswer": "Bright red, fresh blood",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'hemat/o' means blood, and '-chezia' refers to defecation. Hematochezia typically indicates a lower gastrointestinal bleed, as the blood has not been digested (which would turn it dark/tarry, a condition called melena).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 342,
+    "question": "A patient is diagnosed with 'xeroderma.' What would the nurse expect to find during the integumentary assessment?",
+    "options": [
+      "Excessively oily skin",
+      "Abnormally dry, rough skin",
+      "Yellowing of the skin (jaundice)",
+      "Red, itchy hives"
+    ],
+    "correctAnswer": "Abnormally dry, rough skin",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'xer/o' means dry, and 'derm/o' means skin. Xeroderma is a common condition, especially in elderly patients or those with certain vitamin deficiencies.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 343,
+    "question": "A patient complains of 'pyrosis' after eating spicy food. What is the common name for this symptom based on the root 'pyr/o'?",
+    "options": [
+      "Nausea",
+      "Heartburn",
+      "Diarrhea",
+      "Bloating"
+    ],
+    "correctAnswer": "Heartburn",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'pyr/o' means fire or heat, and '-osis' means condition. 'Pyrosis' is the medical term for the burning sensation in the chest caused by acid reflux (heartburn).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 344,
+    "question": "A patient is undergoing 'orthodontic' treatment. Based on the roots 'orth/o' and 'odont/o,' what is the goal of the specialist?",
+    "options": [
+      "To whiten the teeth",
+      "To straighten or correct the alignment of the teeth",
+      "To perform root canal surgery",
+      "To remove impacted wisdom teeth"
+    ],
+    "correctAnswer": "To straighten or correct the alignment of the teeth",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'orth/o' means straight or correct, and 'odont/o' means teeth. An orthodontist specializes in correcting malocclusions (bad bites).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 345,
+    "question": "A patient is diagnosed with 'pancreatitis.' If this condition leads to 'steatorrhea,' what has changed in the patient's stool?",
+    "options": [
+      "It contains excessive blood",
+      "It contains excessive fat",
+      "It has become extremely hard and dry",
+      "It has become clear and watery"
+    ],
+    "correctAnswer": "It contains excessive fat",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'steat/o' means fat or sebum, and the suffix '-rrhea' means flow or discharge. Steatorrhea occurs when the pancreas fails to produce enough enzymes to digest fats, leading to fatty, foul-smelling stools.",
+    "tag": "Roots, Prefixes, Suffixes"
   }
 ]
