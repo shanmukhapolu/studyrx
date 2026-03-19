@@ -639,6 +639,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
   }
 
   if (isComplete) {
+    const isLimitedSession = settings.sessionQuestionLimit !== "unlimited";
     return (
       <div className="flex-1 overflow-auto p-8 relative">
         {showConfetti && (
@@ -659,14 +660,16 @@ function PracticeContent({ eventId }: { eventId: string }) {
               </div>
               <CardTitle className="text-5xl font-bold">Congratulations!</CardTitle>
               <p className="text-muted-foreground text-xl font-light">
-                You've completed all questions for {eventName}!
+                {isLimitedSession ? `You've completed your ${eventName} session!` : `You've completed all questions for ${eventName}!`}
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl text-center border border-primary/20">
-                <h3 className="text-3xl font-bold mb-3">Event Complete</h3>
+                <h3 className="text-3xl font-bold mb-3">{isLimitedSession ? "Session Complete" : "Event Complete"}</h3>
                 <p className="text-muted-foreground text-lg">
-                  You've mastered all available questions. Keep reviewing to maintain your knowledge!
+                  {isLimitedSession
+                    ? "Nice work. Review your results or jump into another session whenever you're ready."
+                    : "You've mastered all available questions. Keep reviewing to maintain your knowledge!"}
                 </p>
               </div>
 

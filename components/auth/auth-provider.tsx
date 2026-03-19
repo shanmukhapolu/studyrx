@@ -231,12 +231,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setProfile(fetchedProfile || parsedProfile);
       },
       updateName: async ({ firstName, lastName }) => {
-        let session = await getFreshSession();
+        const currentSession = await getFreshSession();
         const displayName = `${firstName} ${lastName}`.trim();
-        session = ensureSessionUid(await updateDisplayName(session.idToken, displayName, session.user.uid));
-        await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
-        saveSession(session);
-        setUser(session.user);
+        const updatedSession = ensureSessionUid(await updateDisplayName(currentSession.idToken, displayName, currentSession.user.uid));
+        await saveUserProfile(updatedSession.idToken || currentSession.idToken, currentSession.user.uid, { firstName, lastName });
+
+        const mergedSession: AuthSession = {
+          ...currentSession,
+          idToken: updatedSession.idToken || currentSession.idToken,
+          refreshToken: updatedSession.refreshToken || currentSession.refreshToken,
+          expiresIn: updatedSession.expiresIn || currentSession.expiresIn,
+          user: {
+            ...currentSession.user,
+            ...updatedSession.user,
+            uid: currentSession.user.uid,
+            displayName,
+          },
+        };
+
+        saveSession(mergedSession);
+        setUser(mergedSession.user);
         setProfile({ firstName, lastName });
       },
       sendPasswordReset: async () => {
