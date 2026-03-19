@@ -4,7 +4,7 @@ import { FormEvent, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { GoogleSignInButton } from "@/components/auth/google-signin-button";
+import { GoogleAuthButton } from "@/components/auth/google-auth-button";
 import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,7 +19,7 @@ export default function SignInPage() {
 }
 
 function SignInContent() {
-  const { signIn, signInWithGoogleCredential, user } = useAuth();
+  const { signIn, signInWithGoogle, user } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
 
@@ -65,11 +65,11 @@ function SignInContent() {
           </form>
 
           <div className="text-center text-sm text-muted-foreground">or</div>
-          <GoogleSignInButton onCredential={async (credential) => {
+          <GoogleAuthButton label="Continue with Google" disabled={loading} onClick={async () => {
             setError("");
             setLoading(true);
             try {
-              await signInWithGoogleCredential(credential);
+              await signInWithGoogle();
               router.replace(next);
             } catch (err) {
               setError((err as Error).message || "Google sign in failed");

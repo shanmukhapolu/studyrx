@@ -6,14 +6,15 @@ import {
   getUserProfile,
   refreshIdToken,
   saveUserProfile,
+  sendPasswordResetEmail,
   signInWithEmail,
-  signInWithGoogleIdToken,
   signUpWithEmail,
   updateDisplayName,
   type AuthSession,
   type AuthUser,
   type UserProfile,
 } from "@/lib/firebase-auth-rest";
+import { signInWithGooglePopup } from "@/lib/firebase-web";
 
 interface AuthContextValue {
   user: AuthUser | null;
@@ -21,7 +22,9 @@ interface AuthContextValue {
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (input: { firstName: string; lastName: string; email: string; password: string }) => Promise<void>;
-  signInWithGoogleCredential: (credential: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
+  updateName: (input: { firstName: string; lastName: string }) => Promise<void>;
+  sendPasswordReset: () => Promise<void>;
   signOut: () => void;
 }
 
@@ -94,6 +97,32 @@ function profileFromDisplayName(displayName?: string | null): UserProfile | null
     firstName,
     lastName: rest.join(" "),
   };
+}
+
+async function getFreshSession() {
+  const existing = readSession();
+  if (!existing) {
+    throw new Error("Not authenticated");
+  }
+
+  let session = ensureSessionUid(existing as AuthSession) as AuthSession & { expiresAt?: number };
+  if ((session.expiresAt ?? 0) <= Date.now() + 30_000) {
+    const refreshed = await refreshIdToken(session.refreshToken);
+    session = ensureSessionUid({
+      ...session,
+      idToken: refreshed.idToken,
+      refreshToken: refreshed.refreshToken,
+      expiresIn: refreshed.expiresIn,
+      expiresAt: Date.now() + refreshed.expiresIn * 1000,
+      user: {
+        ...session.user,
+        uid: refreshed.uid || session.user.uid,
+      },
+    } as AuthSession & { expiresAt?: number });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+  }
+
+  return session;
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -182,8 +211,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(session.user);
         setProfile({ firstName, lastName });
       },
-      signInWithGoogleCredential: async (credential) => {
-        let session = ensureSessionUid(await signInWithGoogleIdToken(credential));
+      signInWithGoogle: async () => {
+        let session = ensureSessionUid(await signInWithGooglePopup());
         const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" };
 
         if (parsedProfile.firstName || parsedProfile.lastName) {
@@ -201,13 +230,47 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(session.user);
         setProfile(fetchedProfile || parsedProfile);
       },
+      updateName: async ({ firstName, lastName }) => {
+        const currentSession = await getFreshSession();
+        const displayName = `${firstName} ${lastName}`.trim();
+        const updatedSession = ensureSessionUid(await updateDisplayName(currentSession.idToken, displayName, currentSession.user.uid));
+        await saveUserProfile(updatedSession.idToken || currentSession.idToken, currentSession.user.uid, { firstName, lastName });
+
+        const existing = readSession();
+        if (existing) {
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify({
+              ...existing,
+              user: {
+                ...existing.user,
+                displayName,
+              },
+            })
+          );
+        }
+
+        setUser({
+          ...currentSession.user,
+          displayName,
+        });
+        setProfile({ firstName, lastName });
+      },
+      sendPasswordReset: async () => {
+        const existing = readSession();
+        const email = existing?.user?.email || user?.email;
+        if (!email) {
+          throw new Error("No email address found for this account.");
+        }
+        await sendPasswordResetEmail(email);
+      },
       signOut: () => {
         localStorage.removeItem(STORAGE_KEY);
         setUser(null);
         setProfile(null);
       },
     }),
-    [loading, profile, user]
+    [loading, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
