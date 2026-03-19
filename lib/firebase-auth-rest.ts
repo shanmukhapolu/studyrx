@@ -21,6 +21,7 @@ export interface UserProfile {
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE = "https://securetoken.googleapis.com/v1";
 const RTDB_BASE = FIREBASE_DATABASE_URL;
+const AUTH_SESSION_STORAGE_KEY = "studyrx_auth_session";
 
 function decodeJwtPayload(token: string): Record<string, unknown> | null {
   try {
@@ -63,6 +64,10 @@ function toSession(data: any): AuthSession {
     },
   };
 }
+
+type StoredAuthSession = AuthSession & {
+  expiresAt?: number;
+};
 
 async function authRequest(endpoint: string, body: Record<string, unknown>) {
   const res = await fetch(`${AUTH_BASE}/${endpoint}?key=${FIREBASE_API_KEY}`, {
@@ -143,13 +148,69 @@ export async function refreshIdToken(refreshToken: string) {
   };
 }
 
-export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
+function readStoredAuthSession(): StoredAuthSession | null {
+  if (typeof window === "undefined") return null;
+
+  const raw = window.localStorage.getItem(AUTH_SESSION_STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw) as StoredAuthSession;
+  } catch {
+    return null;
+  }
+}
+
+async function resolveWritableIdToken(idToken?: string) {
+  if (idToken && idToken.length > 0) {
+    return idToken;
+  }
+
+  const stored = readStoredAuthSession();
+  if (!stored?.refreshToken && !stored?.idToken) {
+    throw new Error("Missing authentication token for profile write.");
+  }
+
+  if (stored?.idToken && (stored.expiresAt ?? 0) > Date.now() + 30_000) {
+    return stored.idToken;
+  }
+
+  if (!stored?.refreshToken) {
+    return stored?.idToken ?? "";
+  }
+
+  const refreshed = await refreshIdToken(stored.refreshToken);
+  const nextSession: StoredAuthSession = {
+    ...stored,
+    idToken: refreshed.idToken,
+    refreshToken: refreshed.refreshToken,
+    expiresIn: refreshed.expiresIn,
+    expiresAt: Date.now() + refreshed.expiresIn * 1000,
+    user: {
+      ...stored.user,
+      uid: refreshed.uid || stored.user.uid,
+    },
+  };
+  window.localStorage.setItem(AUTH_SESSION_STORAGE_KEY, JSON.stringify(nextSession));
+  return nextSession.idToken;
+}
+
+export async function sendPasswordResetEmail(email: string) {
+  await authRequest("accounts:sendOobCode", {
+    requestType: "PASSWORD_RESET",
+    email,
+  });
+}
+
+export async function saveUserProfile(idToken: string | undefined, uid: string, profile: UserProfile) {
+  const writableIdToken = await resolveWritableIdToken(idToken);
   const fullName = `${profile.firstName} ${profile.lastName}`.trim();
 
-  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`, {
+  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(writableIdToken)}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${writableIdToken}`,
     },
     body: JSON.stringify(fullName),
   });
