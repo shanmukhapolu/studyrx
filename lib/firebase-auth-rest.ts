@@ -102,16 +102,6 @@ export async function signInWithEmail(email: string, password: string) {
   return toSession(data);
 }
 
-export async function signInWithGoogleIdToken(idToken: string) {
-  const data = await authRequest("accounts:signInWithIdp", {
-    requestUri: window.location.origin,
-    postBody: `id_token=${idToken}&providerId=google.com`,
-    returnSecureToken: true,
-    returnIdpCredential: true,
-  });
-  return toSession(data);
-}
-
 export async function updateDisplayName(idToken: string, displayName: string, fallbackUid?: string) {
   const data = await authRequest("accounts:update", {
     idToken,

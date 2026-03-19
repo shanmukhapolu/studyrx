@@ -8,13 +8,13 @@ import {
   saveUserProfile,
   sendPasswordResetEmail,
   signInWithEmail,
-  signInWithGoogleIdToken,
   signUpWithEmail,
   updateDisplayName,
   type AuthSession,
   type AuthUser,
   type UserProfile,
 } from "@/lib/firebase-auth-rest";
+import { signInWithGooglePopup } from "@/lib/firebase-web";
 
 interface AuthContextValue {
   user: AuthUser | null;
@@ -22,7 +22,7 @@ interface AuthContextValue {
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (input: { firstName: string; lastName: string; email: string; password: string }) => Promise<void>;
-  signInWithGoogleCredential: (credential: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   updateName: (input: { firstName: string; lastName: string }) => Promise<void>;
   sendPasswordReset: () => Promise<void>;
   signOut: () => void;
@@ -211,8 +211,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(session.user);
         setProfile({ firstName, lastName });
       },
-      signInWithGoogleCredential: async (credential) => {
-        let session = ensureSessionUid(await signInWithGoogleIdToken(credential));
+      signInWithGoogle: async () => {
+        let session = ensureSessionUid(await signInWithGooglePopup());
         const parsedProfile = profileFromDisplayName(session.user.displayName) || { firstName: "", lastName: "" };
 
         if (parsedProfile.firstName || parsedProfile.lastName) {
