@@ -3,6 +3,7 @@
 import { FormEvent, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Chrome } from "lucide-react";
 
 import { GoogleAuthButton } from "@/components/auth/google-auth-button";
 import { useAuth } from "@/components/auth/auth-provider";
@@ -97,7 +98,10 @@ function SignUpContent() {
             } finally {
               setLoading(false);
             }
-          }} />
+          }}>
+            <Chrome className="mr-2 h-4 w-4" />
+            Continue with Google
+          </Button>
 
           <p className="text-sm text-center">Already have an account? <Link className="underline" href="/auth/signin">Sign in</Link></p>
         </CardContent>
