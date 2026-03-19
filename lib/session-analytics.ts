@@ -59,11 +59,12 @@ export function buildSessionBreakdown(session: SessionData): SessionBreakdown {
       longestIncorrectStreak = Math.max(longestIncorrectStreak, currentIncorrect);
     }
 
-    if (!topicStats[attempt.category]) {
-      topicStats[attempt.category] = { attempts: 0, correct: 0 };
+    const topic = attempt.tag?.trim() || attempt.category;
+    if (!topicStats[topic]) {
+      topicStats[topic] = { attempts: 0, correct: 0 };
     }
-    topicStats[attempt.category].attempts += 1;
-    if (attempt.isCorrect) topicStats[attempt.category].correct += 1;
+    topicStats[topic].attempts += 1;
+    if (attempt.isCorrect) topicStats[topic].correct += 1;
 
     if (!difficultyStats[attempt.difficulty]) {
       difficultyStats[attempt.difficulty] = { thinkTotal: 0, count: 0 };

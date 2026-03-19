@@ -231,6 +231,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
       questionId: currentQuestion.id,
       questionIndex: sessionData.attempts.length + 1,
       category: currentQuestion.category,
+      tag: currentQuestion.tag,
       difficulty: currentQuestion.difficulty,
       isCorrect,
       thinkTime,

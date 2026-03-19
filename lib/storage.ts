@@ -18,6 +18,7 @@ export interface QuestionAttempt {
   questionId: number;
   questionIndex: number;
   category: string;
+  tag?: string;
   difficulty: string;
   isCorrect: boolean;
   thinkTime: number;
@@ -277,6 +278,7 @@ function normalizeAttempt(attempt: Partial<QuestionAttempt>, index: number, even
     questionId: attempt.questionId ?? -1,
     questionIndex: attempt.questionIndex ?? index + 1,
     category: attempt.category ?? "Unknown",
+    tag: attempt.tag,
     difficulty: attempt.difficulty ?? "Unknown",
     isCorrect,
     thinkTime,
@@ -459,17 +461,18 @@ export const storage = {
 
     const categoryStats: UserStats["categoryStats"] = {};
     for (const attempt of eventAttempts) {
-      if (!categoryStats[attempt.category]) {
-        categoryStats[attempt.category] = { attempts: 0, correct: 0, averageTime: 0 };
+      const topic = attempt.tag?.trim() || attempt.category;
+      if (!categoryStats[topic]) {
+        categoryStats[topic] = { attempts: 0, correct: 0, averageTime: 0 };
       }
-      categoryStats[attempt.category].attempts++;
-      if (attempt.isCorrect) categoryStats[attempt.category].correct++;
+      categoryStats[topic].attempts++;
+      if (attempt.isCorrect) categoryStats[topic].correct++;
     }
 
-    for (const category of Object.keys(categoryStats)) {
-      const categoryAttempts = eventAttempts.filter((a) => a.category === category);
-      const totalTime = categoryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
-      categoryStats[category].averageTime = categoryAttempts.length > 0 ? totalTime / categoryAttempts.length : 0;
+    for (const topic of Object.keys(categoryStats)) {
+      const topicAttempts = eventAttempts.filter((a) => (a.tag?.trim() || a.category) === topic);
+      const totalTime = topicAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+      categoryStats[topic].averageTime = topicAttempts.length > 0 ? totalTime / topicAttempts.length : 0;
     }
 
     const totalCorrect = eventAttempts.filter((a) => a.isCorrect).length;

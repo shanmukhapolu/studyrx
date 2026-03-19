@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, useEffect, useMemo, useState } from "react";
-import { Activity, Flame, Medal, Orbit, Sparkles, Target, Timer } from "lucide-react";
+import { Activity, Flame, Medal, Orbit, Sparkles, Target, Timer, TrendingUp } from "lucide-react";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
@@ -109,7 +109,8 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
   const worstEvent = sortedEvents[sortedEvents.length - 1];
   const mostTimeEvent = [...sortedEvents].sort((a, b) => b.totalTime - a.totalTime)[0];
 
-  const difficulty = getDifficultyTimeSplits(attempts);
+  const difficulty = getDifficultyBreakdown(attempts);
+  const masteryProjection = getTimeToMastery(attempts);
   const redemptionAttempts = attempts.filter((a) => a.isRedemption);
   const redemptionCorrect = redemptionAttempts.filter((a) => a.isCorrect).length;
 
@@ -129,12 +130,14 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
       </SectionCard>
 
       <SectionCard title="Time Intelligence" subtitle="Think vs explanation behavior" icon={<Orbit className="h-5 w-5 text-accent" />}>
-        <MetricGrid>
-          <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} />
-          <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} />
-          <Metric label="Think : Explanation Ratio" value={totalExplanation > 0 ? `${(totalThink / totalExplanation).toFixed(2)} : 1` : "N/A"} />
-          <Metric label="Events" value={`${sortedEvents.length}`} />
-        </MetricGrid>
+        <div className="grid gap-3 lg:grid-cols-[1.4fr_minmax(0,1fr)]">
+          <MetricGrid className="md:grid-cols-3">
+            <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} />
+            <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} />
+            <Metric label="Events" value={`${sortedEvents.length}`} />
+          </MetricGrid>
+          <MasteryProjectionCard projection={masteryProjection} />
+        </div>
       </SectionCard>
 
       <SectionCard title="Event Insights" subtitle="Best/worst and performance by event" icon={<Medal className="h-5 w-5 text-primary" />}>
@@ -144,11 +147,11 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
         <BreakdownRows rows={sortedEvents.map((event) => ({ label: getEventName(event.eventId), value: `${event.accuracy.toFixed(1)}% (${event.correct}/${event.questions})` }))} />
       </SectionCard>
 
-      <SectionCard title="Difficulty Breakdown" subtitle="Pacing by level" icon={<Flame className="h-5 w-5 text-chart-3" />}>
+      <SectionCard title="Difficulty Breakdown" subtitle="Pacing and performance by level" icon={<Flame className="h-5 w-5 text-chart-3" />}>
         <div className="grid gap-3 md:grid-cols-3">
-          <SimpleBreakdownCard title="Overall by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${(s.attempts ? s.think / s.attempts : 0).toFixed(1)}s avg think` }))} />
-          <SimpleBreakdownCard title="Think Time" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${(s.attempts ? s.think / s.attempts : 0).toFixed(1)}s` }))} />
-          <SimpleBreakdownCard title="Explanation Time" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${(s.attempts ? s.explanation / s.attempts : 0).toFixed(1)}s` }))} />
+          <SimpleBreakdownCard title="Overall by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.avgThinkTime.toFixed(1)}s avg think` }))} />
+          <SimpleBreakdownCard title="Accuracy by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.accuracy.toFixed(1)}%` }))} />
+          <SimpleBreakdownCard title="Correct / Total" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.correct}/${s.attempts}` }))} />
         </div>
       </SectionCard>
 
@@ -183,18 +186,20 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
 
   const redemptionAttempts = attempts.filter((a) => a.isRedemption);
   const redemptionCorrect = redemptionAttempts.filter((a) => a.isCorrect).length;
-  const category = groupByCategory(attempts);
-  const sortedCategories = Object.entries(category)
+  const topicStats = groupByTopic(attempts);
+  const sortedCategories = Object.entries(topicStats)
     .map(([name, stats]) => ({
       name,
       accuracy: stats.attempts ? (stats.correct / stats.attempts) * 100 : 0,
+      avgThinkTime: stats.attempts ? stats.totalThink / stats.attempts : 0,
       ...stats,
     }))
     .sort((a, b) => b.accuracy - a.accuracy);
 
   const bestCategory = sortedCategories[0]?.name ?? "N/A";
   const worstCategory = sortedCategories[sortedCategories.length - 1]?.name ?? "N/A";
-  const difficulty = getDifficultyTimeSplits(attempts);
+  const difficulty = getDifficultyBreakdown(attempts);
+  const masteryProjection = getTimeToMastery(attempts);
   const streak = getHighestStreak(attempts);
   const avgSessionLength = sessions.length ? sessions.reduce((s, session) => s + getSessionTotalTime(session), 0) / sessions.length : 0;
 
@@ -217,11 +222,13 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
       </SectionCard>
 
       <SectionCard title="Time Intelligence" subtitle="Think/explanation pacing" icon={<Orbit className="h-5 w-5 text-accent" />}>
-        <MetricGrid>
-          <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} />
-          <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} />
-          <Metric label="Think : Explanation Ratio" value={totalExplanation > 0 ? `${(totalThink / totalExplanation).toFixed(2)} : 1` : "N/A"} />
-        </MetricGrid>
+        <div className="grid gap-3 lg:grid-cols-[1.4fr_minmax(0,1fr)]">
+          <MetricGrid className="md:grid-cols-2">
+            <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} />
+            <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} />
+          </MetricGrid>
+          <MasteryProjectionCard projection={masteryProjection} />
+        </div>
       </SectionCard>
 
       <SectionCard
@@ -237,18 +244,18 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
         </MetricGrid>
       </SectionCard>
 
-      <SectionCard title="Category Mastery" subtitle="Topic strengths and weaknesses" icon={<Medal className="h-5 w-5 text-primary" />}>
+      <SectionCard title="Topic Mastery" subtitle="Subtopic strengths, weaknesses, and pacing for this event" icon={<Medal className="h-5 w-5 text-primary" />}>
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-3 text-sm mb-3">
-          Best category: <strong>{bestCategory}</strong> • Worst category: <strong>{worstCategory}</strong>
+          Best topic: <strong>{bestCategory}</strong> • Worst topic: <strong>{worstCategory}</strong>
         </div>
-        <BreakdownRows rows={sortedCategories.map((cat) => ({ label: cat.name, value: `${cat.accuracy.toFixed(1)}% (${cat.correct}/${cat.attempts})` }))} />
+        <BreakdownRows rows={sortedCategories.map((cat) => ({ label: cat.name, value: `${cat.accuracy.toFixed(1)}% • ${cat.correct}/${cat.attempts} • ${cat.avgThinkTime.toFixed(1)}s avg` }))} />
       </SectionCard>
 
-      <SectionCard title="Difficulty Breakdown" subtitle="Per-difficulty pacing" icon={<Flame className="h-5 w-5 text-chart-3" />}>
+      <SectionCard title="Difficulty Breakdown" subtitle="Pacing and performance by level" icon={<Flame className="h-5 w-5 text-chart-3" />}>
         <div className="grid gap-3 md:grid-cols-3">
-          <SimpleBreakdownCard title="Overall by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${(s.attempts ? s.think / s.attempts : 0).toFixed(1)}s avg think` }))} />
-          <SimpleBreakdownCard title="Think Time" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${(s.attempts ? s.think / s.attempts : 0).toFixed(1)}s` }))} />
-          <SimpleBreakdownCard title="Explanation Time" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${(s.attempts ? s.explanation / s.attempts : 0).toFixed(1)}s` }))} />
+          <SimpleBreakdownCard title="Overall by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.avgThinkTime.toFixed(1)}s avg think` }))} />
+          <SimpleBreakdownCard title="Accuracy by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.accuracy.toFixed(1)}%` }))} />
+          <SimpleBreakdownCard title="Correct / Total" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.correct}/${s.attempts}` }))} />
         </div>
       </SectionCard>
 
@@ -314,14 +321,73 @@ function groupByEvent(sessions: SessionData[]) {
   return result;
 }
 
-function groupByCategory(attempts: QuestionAttempt[]) {
-  const result: Record<string, { attempts: number; correct: number }> = {};
+function getAttemptTopic(attempt: QuestionAttempt) {
+  return attempt.tag?.trim() || attempt.category;
+}
+
+function groupByTopic(attempts: QuestionAttempt[]) {
+  const result: Record<string, { attempts: number; correct: number; totalThink: number }> = {};
   attempts.forEach((attempt) => {
-    if (!result[attempt.category]) result[attempt.category] = { attempts: 0, correct: 0 };
-    result[attempt.category].attempts += 1;
-    if (attempt.isCorrect) result[attempt.category].correct += 1;
+    const topic = getAttemptTopic(attempt);
+    if (!result[topic]) result[topic] = { attempts: 0, correct: 0, totalThink: 0 };
+    result[topic].attempts += 1;
+    result[topic].totalThink += attempt.thinkTime;
+    if (attempt.isCorrect) result[topic].correct += 1;
   });
   return result;
+}
+
+
+interface MasteryProjection {
+  currentAccuracy: number;
+  targetAccuracy: number;
+  questionsNeeded: number;
+  projectedTotalQuestions: number;
+  timeNeededSeconds: number;
+}
+
+function getDifficultyBreakdown(attempts: QuestionAttempt[]) {
+  const timeSplits = getDifficultyTimeSplits(attempts);
+  return Object.fromEntries(
+    Object.entries(timeSplits).map(([difficulty, stats]) => {
+      const correct = attempts.filter((attempt) => attempt.difficulty === difficulty && attempt.isCorrect).length;
+      const accuracy = stats.attempts ? (correct / stats.attempts) * 100 : 0;
+      return [difficulty, {
+        ...stats,
+        correct,
+        accuracy,
+        avgThinkTime: stats.attempts ? stats.think / stats.attempts : 0,
+      }];
+    })
+  );
+}
+
+function getTimeToMastery(attempts: QuestionAttempt[], targetAccuracy = 90): MasteryProjection {
+  const totalQuestions = attempts.length;
+  const correct = attempts.filter((attempt) => attempt.isCorrect).length;
+  const currentAccuracy = totalQuestions ? (correct / totalQuestions) * 100 : 0;
+  const avgThinkTime = totalQuestions ? attempts.reduce((sum, attempt) => sum + attempt.thinkTime, 0) / totalQuestions : 0;
+
+  if (totalQuestions === 0 || currentAccuracy >= targetAccuracy) {
+    return {
+      currentAccuracy,
+      targetAccuracy,
+      questionsNeeded: 0,
+      projectedTotalQuestions: totalQuestions,
+      timeNeededSeconds: 0,
+    };
+  }
+
+  const targetRatio = targetAccuracy / 100;
+  const questionsNeeded = Math.max(0, Math.ceil((targetRatio * totalQuestions - correct) / (1 - targetRatio)));
+
+  return {
+    currentAccuracy,
+    targetAccuracy,
+    questionsNeeded,
+    projectedTotalQuestions: totalQuestions + questionsNeeded,
+    timeNeededSeconds: questionsNeeded * avgThinkTime,
+  };
 }
 
 function getHighestStreak(attempts: QuestionAttempt[]) {
@@ -391,6 +457,28 @@ function BreakdownRows({ rows }: { rows: { label: string; value: string }[] }) {
   );
 }
 
+function MasteryProjectionCard({ projection }: { projection: MasteryProjection }) {
+  const alreadyMastered = projection.questionsNeeded === 0;
+
+  return (
+    <div className="rounded-xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card to-accent/5 p-4">
+      <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+        <TrendingUp className="h-4 w-4" />
+        Time to Mastery
+      </div>
+      <div className="mt-2 text-3xl font-bold">{alreadyMastered ? "Mastered" : formatDuration(projection.timeNeededSeconds)}</div>
+      <div className="mt-1 text-sm text-muted-foreground">
+        {alreadyMastered ? "You are already at or above the 90% target." : `Estimated time to reach ${projection.targetAccuracy.toFixed(0)}% accuracy.`}
+      </div>
+      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        <Metric label="Current Accuracy" value={`${projection.currentAccuracy.toFixed(1)}%`} compact accent="accent" />
+        <Metric label="Questions Needed Right" value={`${projection.questionsNeeded}`} compact accent="primary" />
+        <Metric label="Projected Total Questions" value={`${projection.projectedTotalQuestions}`} compact />
+      </div>
+    </div>
+  );
+}
+
 function SimpleBreakdownCard({ title, rows }: { title: string; rows: { label: string; value: string }[] }) {
   return (
     <div className="rounded-xl border bg-card/60 p-3">
@@ -400,8 +488,8 @@ function SimpleBreakdownCard({ title, rows }: { title: string; rows: { label: st
   );
 }
 
-function MetricGrid({ children }: { children: ReactNode }) {
-  return <div className="grid gap-3 md:grid-cols-4">{children}</div>;
+function MetricGrid({ children, className }: { children: ReactNode; className?: string }) {
+  return <div className={`grid gap-3 ${className ?? "md:grid-cols-4"}`}>{children}</div>;
 }
 
 function Metric({ label, value, accent, compact }: { label: string; value: string; accent?: "primary" | "accent" | "orange"; compact?: boolean }) {
