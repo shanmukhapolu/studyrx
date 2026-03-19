@@ -99,6 +99,32 @@ function profileFromDisplayName(displayName?: string | null): UserProfile | null
   };
 }
 
+async function getFreshSession() {
+  const existing = readSession();
+  if (!existing) {
+    throw new Error("Not authenticated");
+  }
+
+  let session = ensureSessionUid(existing as AuthSession) as AuthSession & { expiresAt?: number };
+  if ((session.expiresAt ?? 0) <= Date.now() + 30_000) {
+    const refreshed = await refreshIdToken(session.refreshToken);
+    session = ensureSessionUid({
+      ...session,
+      idToken: refreshed.idToken,
+      refreshToken: refreshed.refreshToken,
+      expiresIn: refreshed.expiresIn,
+      expiresAt: Date.now() + refreshed.expiresIn * 1000,
+      user: {
+        ...session.user,
+        uid: refreshed.uid || session.user.uid,
+      },
+    } as AuthSession & { expiresAt?: number });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+  }
+
+  return session;
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -205,12 +231,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setProfile(fetchedProfile || parsedProfile);
       },
       updateName: async ({ firstName, lastName }) => {
-        const existing = readSession();
-        if (!existing) {
-          throw new Error("Not authenticated");
-        }
-
-        let session = ensureSessionUid(existing as AuthSession);
+        let session = await getFreshSession();
         const displayName = `${firstName} ${lastName}`.trim();
         session = ensureSessionUid(await updateDisplayName(session.idToken, displayName, session.user.uid));
         await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
