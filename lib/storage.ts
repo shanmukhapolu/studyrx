@@ -18,6 +18,7 @@ export interface QuestionAttempt {
   questionId: number;
   questionIndex: number;
   category: string;
+  tag?: string;
   difficulty: string;
   isCorrect: boolean;
   thinkTime: number;
@@ -62,6 +63,22 @@ export interface UserStats {
     };
   };
 }
+
+export type SessionQuestionLimit = 10 | 25 | 50 | 100 | "unlimited";
+
+export interface UserSettings {
+  accuracyGoal: number;
+  sessionQuestionLimit: SessionQuestionLimit;
+  showExplanationTime: boolean;
+  redemptionRoundEnabled: boolean;
+}
+
+export const DEFAULT_USER_SETTINGS: UserSettings = {
+  accuracyGoal: 90,
+  sessionQuestionLimit: 25,
+  showExplanationTime: true,
+  redemptionRoundEnabled: true,
+};
 
 function createDeterministicSessionId() {
   const now = Date.now();
@@ -277,6 +294,7 @@ function normalizeAttempt(attempt: Partial<QuestionAttempt>, index: number, even
     questionId: attempt.questionId ?? -1,
     questionIndex: attempt.questionIndex ?? index + 1,
     category: attempt.category ?? "Unknown",
+    tag: attempt.tag,
     difficulty: attempt.difficulty ?? "Unknown",
     isCorrect,
     thinkTime,
@@ -377,7 +395,7 @@ export const storage = {
 
   calculateStats: async (): Promise<UserStats> => {
     const sessions = await storage.getAllSessions();
-    const allAttempts = sessions.flatMap((s) => s.attempts);
+    const allAttempts = sessions.flatMap((s) => s.attempts).filter((attempt) => !attempt.isRedemption);
 
     const categoryStats: UserStats["categoryStats"] = {};
     for (const attempt of allAttempts) {
@@ -455,21 +473,22 @@ export const storage = {
 
   calculateEventStats: async (eventId: string): Promise<UserStats> => {
     const sessions = await storage.getAllSessions();
-    const eventAttempts = sessions.flatMap((s) => s.attempts).filter((a) => a.eventId === eventId);
+    const eventAttempts = sessions.flatMap((s) => s.attempts).filter((a) => a.eventId === eventId && !a.isRedemption);
 
     const categoryStats: UserStats["categoryStats"] = {};
     for (const attempt of eventAttempts) {
-      if (!categoryStats[attempt.category]) {
-        categoryStats[attempt.category] = { attempts: 0, correct: 0, averageTime: 0 };
+      const topic = attempt.tag?.trim() || attempt.category;
+      if (!categoryStats[topic]) {
+        categoryStats[topic] = { attempts: 0, correct: 0, averageTime: 0 };
       }
-      categoryStats[attempt.category].attempts++;
-      if (attempt.isCorrect) categoryStats[attempt.category].correct++;
+      categoryStats[topic].attempts++;
+      if (attempt.isCorrect) categoryStats[topic].correct++;
     }
 
-    for (const category of Object.keys(categoryStats)) {
-      const categoryAttempts = eventAttempts.filter((a) => a.category === category);
-      const totalTime = categoryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
-      categoryStats[category].averageTime = categoryAttempts.length > 0 ? totalTime / categoryAttempts.length : 0;
+    for (const topic of Object.keys(categoryStats)) {
+      const topicAttempts = eventAttempts.filter((a) => (a.tag?.trim() || a.category) === topic);
+      const totalTime = topicAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+      categoryStats[topic].averageTime = topicAttempts.length > 0 ? totalTime / topicAttempts.length : 0;
     }
 
     const totalCorrect = eventAttempts.filter((a) => a.isCorrect).length;
@@ -490,5 +509,21 @@ export const storage = {
     } catch {
       // Optional runtime key might be blocked by stricter DB rules.
     }
+  },
+
+  getSettings: async (): Promise<UserSettings> => {
+    const raw = await dbGet<Partial<UserSettings> | null>("settings", null);
+    return {
+      ...DEFAULT_USER_SETTINGS,
+      ...(raw ?? {}),
+    };
+  },
+
+  saveSettings: async (settings: Partial<UserSettings>) => {
+    const current = await storage.getSettings();
+    await dbSet("settings", {
+      ...current,
+      ...settings,
+    });
   },
 };

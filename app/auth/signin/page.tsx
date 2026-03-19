@@ -3,8 +3,8 @@
 import { FormEvent, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Chrome } from "lucide-react";
 
-import { GoogleSignInButton } from "@/components/auth/google-signin-button";
 import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,7 +19,7 @@ export default function SignInPage() {
 }
 
 function SignInContent() {
-  const { signIn, signInWithGoogleCredential, user } = useAuth();
+  const { signIn, signInWithGoogle, user } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
 
@@ -65,18 +65,21 @@ function SignInContent() {
           </form>
 
           <div className="text-center text-sm text-muted-foreground">or</div>
-          <GoogleSignInButton onCredential={async (credential) => {
+          <Button variant="outline" className="w-full bg-transparent" disabled={loading} onClick={async () => {
             setError("");
             setLoading(true);
             try {
-              await signInWithGoogleCredential(credential);
+              await signInWithGoogle();
               router.replace(next);
             } catch (err) {
               setError((err as Error).message || "Google sign in failed");
             } finally {
               setLoading(false);
             }
-          }} />
+          }}>
+            <Chrome className="mr-2 h-4 w-4" />
+            Continue with Google
+          </Button>
 
           <p className="text-sm text-center">New here? <Link className="underline" href="/auth/signup">Create an account</Link></p>
         </CardContent>

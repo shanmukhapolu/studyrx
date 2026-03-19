@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Home, Layers, BarChart3 } from "lucide-react";
+import { BarChart3, ChevronUp, Home, Layers, LogOut, Settings, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -41,6 +41,7 @@ export function AppSidebar() {
   const { profile, user, signOut } = useAuth();
   const fallbackName = user?.displayName?.trim() || "Student";
   const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
+  const firstLabel = profile?.firstName || resolvedName;
 
   return (
     <Sidebar>
@@ -78,21 +79,40 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border p-4">
-        <div className="space-y-3">
-          <p className="text-sm font-medium text-sidebar-foreground truncate">
-            {resolvedName}
-          </p>
-          <Button
-            size="sm"
-            className="w-full"
-            onClick={() => {
-              signOut();
-              router.push("/auth/signin");
-            }}
-          >
-            Sign out
-          </Button>
-        </div>
+        <details className="group rounded-xl border border-sidebar-border/70 bg-sidebar-accent/30">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <UserRound className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold text-sidebar-foreground">{resolvedName}</p>
+                <p className="truncate text-xs text-sidebar-foreground/70">{user?.email || `${firstLabel}'s account`}</p>
+              </div>
+            </div>
+            <ChevronUp className="h-4 w-4 shrink-0 text-sidebar-foreground/70 transition-transform group-open:rotate-180" />
+          </summary>
+
+          <div className="space-y-2 border-t border-sidebar-border/60 px-3 py-3">
+            <Button asChild size="sm" variant="outline" className="w-full justify-start bg-transparent">
+              <Link href="/settings">
+                <Settings className="mr-2 h-4 w-4" />
+                Settings
+              </Link>
+            </Button>
+            <Button
+              size="sm"
+              className="w-full justify-start"
+              onClick={() => {
+                signOut();
+                router.push("/auth/signin");
+              }}
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Sign out
+            </Button>
+          </div>
+        </details>
       </SidebarFooter>
     </Sidebar>
   );
