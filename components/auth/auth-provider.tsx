@@ -236,21 +236,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const updatedSession = ensureSessionUid(await updateDisplayName(currentSession.idToken, displayName, currentSession.user.uid));
         await saveUserProfile(updatedSession.idToken || currentSession.idToken, currentSession.user.uid, { firstName, lastName });
 
-        const mergedSession: AuthSession = {
-          ...currentSession,
-          idToken: updatedSession.idToken || currentSession.idToken,
-          refreshToken: updatedSession.refreshToken || currentSession.refreshToken,
-          expiresIn: updatedSession.expiresIn || currentSession.expiresIn,
-          user: {
-            ...currentSession.user,
-            ...updatedSession.user,
-            uid: currentSession.user.uid,
-            displayName,
-          },
-        };
+        const existing = readSession();
+        if (existing) {
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify({
+              ...existing,
+              user: {
+                ...existing.user,
+                displayName,
+              },
+            })
+          );
+        }
 
-        saveSession(mergedSession);
-        setUser(mergedSession.user);
+        setUser({
+          ...currentSession.user,
+          displayName,
+        });
         setProfile({ firstName, lastName });
       },
       sendPasswordReset: async () => {
