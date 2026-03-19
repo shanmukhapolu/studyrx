@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Chrome } from "lucide-react";
 
+import { GoogleAuthButton } from "@/components/auth/google-auth-button";
 import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -86,7 +87,7 @@ function SignUpContent() {
           </form>
 
           <div className="text-center text-sm text-muted-foreground">or</div>
-          <Button variant="outline" className="w-full bg-transparent" disabled={loading} onClick={async () => {
+          <GoogleAuthButton label="Continue with Google" disabled={loading} onClick={async () => {
             setError("");
             setLoading(true);
             try {
