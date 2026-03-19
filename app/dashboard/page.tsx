@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Clock, Target, TrendingUp, Play, ExternalLink, BookOpen, Video, FolderOpen, Sparkles, Zap } from "lucide-react";
-import { storage, type UserStats } from "@/lib/storage";
+import { DEFAULT_USER_SETTINGS, storage, type UserSettings, type UserStats } from "@/lib/storage";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
@@ -15,6 +15,7 @@ export default function DashboardPage() {
   const { profile } = useAuth();
   const [stats, setStats] = useState<UserStats | null>(null);
   const [totalSessions, setTotalSessions] = useState(0);
+  const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
 
   useEffect(() => {
     const loadStats = async () => {
@@ -22,6 +23,8 @@ export default function DashboardPage() {
       setStats(calculatedStats);
       const sessions = await storage.getAllSessions();
       setTotalSessions(sessions.length);
+      const loadedSettings = await storage.getSettings();
+      setSettings(loadedSettings);
     };
 
     loadStats();
@@ -150,12 +153,12 @@ export default function DashboardPage() {
                 <CardContent className="space-y-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Accuracy Goal</span>
-                    <span className="font-semibold">{Math.min(Number(accuracy), 100).toFixed(1)} / 100%</span>
+                    <span className="font-semibold">{Math.min(Number(accuracy), 100).toFixed(1)} / {settings.accuracyGoal}%</span>
                   </div>
                   <div className="h-3 rounded-full bg-muted overflow-hidden">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
-                      style={{ width: `${Math.min(Number(accuracy), 100)}%` }}
+                      style={{ width: `${Math.min((Number(accuracy) / settings.accuracyGoal) * 100, 100)}%` }}
                     />
                   </div>
                   <p className="text-xs text-muted-foreground">

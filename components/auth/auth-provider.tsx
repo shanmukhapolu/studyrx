@@ -6,6 +6,7 @@ import {
   getUserProfile,
   refreshIdToken,
   saveUserProfile,
+  sendPasswordResetEmail,
   signInWithEmail,
   signInWithGoogleIdToken,
   signUpWithEmail,
@@ -22,6 +23,8 @@ interface AuthContextValue {
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (input: { firstName: string; lastName: string; email: string; password: string }) => Promise<void>;
   signInWithGoogleCredential: (credential: string) => Promise<void>;
+  updateName: (input: { firstName: string; lastName: string }) => Promise<void>;
+  sendPasswordReset: () => Promise<void>;
   signOut: () => void;
 }
 
@@ -201,13 +204,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(session.user);
         setProfile(fetchedProfile || parsedProfile);
       },
+      updateName: async ({ firstName, lastName }) => {
+        const existing = readSession();
+        if (!existing) {
+          throw new Error("Not authenticated");
+        }
+
+        let session = ensureSessionUid(existing as AuthSession);
+        const displayName = `${firstName} ${lastName}`.trim();
+        session = ensureSessionUid(await updateDisplayName(session.idToken, displayName, session.user.uid));
+        await saveUserProfile(session.idToken, session.user.uid, { firstName, lastName });
+        saveSession(session);
+        setUser(session.user);
+        setProfile({ firstName, lastName });
+      },
+      sendPasswordReset: async () => {
+        const existing = readSession();
+        const email = existing?.user?.email || user?.email;
+        if (!email) {
+          throw new Error("No email address found for this account.");
+        }
+        await sendPasswordResetEmail(email);
+      },
       signOut: () => {
         localStorage.removeItem(STORAGE_KEY);
         setUser(null);
         setProfile(null);
       },
     }),
-    [loading, profile, user]
+    [loading, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

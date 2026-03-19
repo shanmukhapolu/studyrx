@@ -64,6 +64,22 @@ export interface UserStats {
   };
 }
 
+export type SessionQuestionLimit = 10 | 25 | 50 | 100 | "unlimited";
+
+export interface UserSettings {
+  accuracyGoal: number;
+  sessionQuestionLimit: SessionQuestionLimit;
+  showExplanationTime: boolean;
+  redemptionRoundEnabled: boolean;
+}
+
+export const DEFAULT_USER_SETTINGS: UserSettings = {
+  accuracyGoal: 90,
+  sessionQuestionLimit: 25,
+  showExplanationTime: true,
+  redemptionRoundEnabled: true,
+};
+
 function createDeterministicSessionId() {
   const now = Date.now();
   const seed = Math.random().toString(36).slice(2, 8);
@@ -379,7 +395,7 @@ export const storage = {
 
   calculateStats: async (): Promise<UserStats> => {
     const sessions = await storage.getAllSessions();
-    const allAttempts = sessions.flatMap((s) => s.attempts);
+    const allAttempts = sessions.flatMap((s) => s.attempts).filter((attempt) => !attempt.isRedemption);
 
     const categoryStats: UserStats["categoryStats"] = {};
     for (const attempt of allAttempts) {
@@ -457,7 +473,7 @@ export const storage = {
 
   calculateEventStats: async (eventId: string): Promise<UserStats> => {
     const sessions = await storage.getAllSessions();
-    const eventAttempts = sessions.flatMap((s) => s.attempts).filter((a) => a.eventId === eventId);
+    const eventAttempts = sessions.flatMap((s) => s.attempts).filter((a) => a.eventId === eventId && !a.isRedemption);
 
     const categoryStats: UserStats["categoryStats"] = {};
     for (const attempt of eventAttempts) {
@@ -493,5 +509,21 @@ export const storage = {
     } catch {
       // Optional runtime key might be blocked by stricter DB rules.
     }
+  },
+
+  getSettings: async (): Promise<UserSettings> => {
+    const raw = await dbGet<Partial<UserSettings> | null>("settings", null);
+    return {
+      ...DEFAULT_USER_SETTINGS,
+      ...(raw ?? {}),
+    };
+  },
+
+  saveSettings: async (settings: Partial<UserSettings>) => {
+    const current = await storage.getSettings();
+    await dbSet("settings", {
+      ...current,
+      ...settings,
+    });
   },
 };

@@ -11,7 +11,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getEventName } from "@/lib/events";
 import { buildSessionBreakdown, formatDuration, getDifficultyTimeSplits, getSessionTotalTime } from "@/lib/session-analytics";
-import { storage, type QuestionAttempt, type SessionData } from "@/lib/storage";
+import { DEFAULT_USER_SETTINGS, storage, type QuestionAttempt, type SessionData, type UserSettings } from "@/lib/storage";
 
 export default function AnalyticsPage() {
   return (
@@ -29,11 +29,14 @@ export default function AnalyticsPage() {
 function AnalyticsContent() {
   const [sessions, setSessions] = useState<SessionData[]>([]);
   const [selectedSession, setSelectedSession] = useState<SessionData | null>(null);
+  const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
 
   useEffect(() => {
     const loadSessions = async () => {
       const loadedSessions = await storage.getAllSessions();
+      const loadedSettings = await storage.getSettings();
       setSessions(loadedSessions);
+      setSettings(loadedSettings);
     };
 
     loadSessions();
@@ -66,34 +69,35 @@ function AnalyticsContent() {
         </TabsList>
 
         <TabsContent value="general">
-          <GeneralStats sessions={sessions} onOpenSession={setSelectedSession} />
+          <GeneralStats sessions={sessions} settings={settings} onOpenSession={setSelectedSession} />
         </TabsContent>
 
         {practicedEvents.map((eventId) => (
           <TabsContent key={eventId} value={eventId}>
-            <EventStats sessions={sessions.filter((s) => s.event === eventId)} eventId={eventId} onOpenSession={setSelectedSession} />
+            <EventStats sessions={sessions.filter((s) => s.event === eventId)} eventId={eventId} settings={settings} onOpenSession={setSelectedSession} />
           </TabsContent>
         ))}
       </Tabs>
 
-      {selectedSession && <SessionDetailModal session={selectedSession} onClose={() => setSelectedSession(null)} />}
+      {selectedSession && <SessionDetailModal session={selectedSession} settings={settings} onClose={() => setSelectedSession(null)} />}
     </div>
   );
 }
 
-function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; onOpenSession: (session: SessionData) => void }) {
+function GeneralStats({ sessions, settings, onOpenSession }: { sessions: SessionData[]; settings: UserSettings; onOpenSession: (session: SessionData) => void }) {
   const attempts = sessions.flatMap((s) => s.attempts);
-  const totalQuestions = attempts.length;
-  const correct = attempts.filter((a) => a.isCorrect).length;
+  const primaryAttempts = attempts.filter((attempt) => !attempt.isRedemption);
+  const totalQuestions = primaryAttempts.length;
+  const correct = primaryAttempts.filter((a) => a.isCorrect).length;
   const incorrect = totalQuestions - correct;
-  const totalThink = attempts.reduce((sum, a) => sum + a.thinkTime, 0);
-  const totalExplanation = attempts.reduce((sum, a) => sum + a.explanationTime, 0);
+  const totalThink = primaryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+  const totalExplanation = primaryAttempts.reduce((sum, a) => sum + a.explanationTime, 0);
   const totalTime = totalThink + totalExplanation;
   const avgTime = totalQuestions ? totalThink / totalQuestions : 0;
-  const avgCorrectTime = correct ? attempts.filter((a) => a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / correct : 0;
-  const avgWrongTime = incorrect ? attempts.filter((a) => !a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / incorrect : 0;
+  const avgCorrectTime = correct ? primaryAttempts.filter((a) => a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / correct : 0;
+  const avgWrongTime = incorrect ? primaryAttempts.filter((a) => !a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / incorrect : 0;
 
-  const streak = getHighestStreak(attempts);
+  const streak = getHighestStreak(primaryAttempts);
   const avgSessionLength = sessions.length ? sessions.reduce((s, session) => s + getSessionTotalTime(session), 0) / sessions.length : 0;
 
   const events = groupByEvent(sessions);
@@ -109,8 +113,8 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
   const worstEvent = sortedEvents[sortedEvents.length - 1];
   const mostTimeEvent = [...sortedEvents].sort((a, b) => b.totalTime - a.totalTime)[0];
 
-  const difficulty = getDifficultyBreakdown(attempts);
-  const masteryProjection = getTimeToMastery(attempts);
+  const difficulty = getDifficultyBreakdown(primaryAttempts);
+  const masteryProjection = getTimeToMastery(primaryAttempts, settings.accuracyGoal);
   const redemptionAttempts = attempts.filter((a) => a.isRedemption);
   const redemptionCorrect = redemptionAttempts.filter((a) => a.isCorrect).length;
 
@@ -131,11 +135,11 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
 
       <SectionCard title="Time Intelligence" subtitle="Think vs explanation behavior" icon={<Orbit className="h-5 w-5 text-accent" />}>
         <div className="grid gap-3 lg:grid-cols-[1.4fr_minmax(0,1fr)]">
-          <MetricGrid className="md:grid-cols-3">
-            <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} />
-            <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} />
-            <Metric label="Events" value={`${sortedEvents.length}`} />
-          </MetricGrid>
+          <div className="grid content-start gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} compact />
+            {settings.showExplanationTime && <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} compact />}
+            <Metric label="Events" value={`${sortedEvents.length}`} compact />
+          </div>
           <MasteryProjectionCard projection={masteryProjection} />
         </div>
       </SectionCard>
@@ -149,9 +153,9 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
 
       <SectionCard title="Difficulty Breakdown" subtitle="Pacing and performance by level" icon={<Flame className="h-5 w-5 text-chart-3" />}>
         <div className="grid gap-3 md:grid-cols-3">
-          <SimpleBreakdownCard title="Overall by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.avgThinkTime.toFixed(1)}s avg think` }))} />
-          <SimpleBreakdownCard title="Accuracy by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.accuracy.toFixed(1)}%` }))} />
-          <SimpleBreakdownCard title="Correct / Total" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.correct}/${s.attempts}` }))} />
+          <SimpleBreakdownCard title="Overall by Difficulty" rows={getOrderedDifficultyEntries(difficulty).map(([d, s]) => ({ label: d, value: `${s.avgThinkTime.toFixed(1)}s avg think` }))} />
+          <SimpleBreakdownCard title="Accuracy by Difficulty" rows={getOrderedDifficultyEntries(difficulty).map(([d, s]) => ({ label: d, value: `${s.accuracy.toFixed(1)}%` }))} />
+          <SimpleBreakdownCard title="Correct / Total" rows={getOrderedDifficultyEntries(difficulty).map(([d, s]) => ({ label: d, value: `${s.correct}/${s.attempts}` }))} />
         </div>
       </SectionCard>
 
@@ -173,20 +177,21 @@ function GeneralStats({ sessions, onOpenSession }: { sessions: SessionData[]; on
   );
 }
 
-function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionData[]; eventId: string; onOpenSession: (session: SessionData) => void }) {
+function EventStats({ sessions, eventId, settings, onOpenSession }: { sessions: SessionData[]; eventId: string; settings: UserSettings; onOpenSession: (session: SessionData) => void }) {
   const attempts = sessions.flatMap((s) => s.attempts);
-  const totalQuestions = attempts.length;
-  const correct = attempts.filter((a) => a.isCorrect).length;
+  const primaryAttempts = attempts.filter((attempt) => !attempt.isRedemption);
+  const totalQuestions = primaryAttempts.length;
+  const correct = primaryAttempts.filter((a) => a.isCorrect).length;
   const incorrect = totalQuestions - correct;
-  const totalThink = attempts.reduce((sum, a) => sum + a.thinkTime, 0);
-  const totalExplanation = attempts.reduce((sum, a) => sum + a.explanationTime, 0);
+  const totalThink = primaryAttempts.reduce((sum, a) => sum + a.thinkTime, 0);
+  const totalExplanation = primaryAttempts.reduce((sum, a) => sum + a.explanationTime, 0);
   const avgTime = totalQuestions ? totalThink / totalQuestions : 0;
-  const avgCorrectTime = correct ? attempts.filter((a) => a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / correct : 0;
-  const avgWrongTime = incorrect ? attempts.filter((a) => !a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / incorrect : 0;
+  const avgCorrectTime = correct ? primaryAttempts.filter((a) => a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / correct : 0;
+  const avgWrongTime = incorrect ? primaryAttempts.filter((a) => !a.isCorrect).reduce((s, a) => s + a.thinkTime, 0) / incorrect : 0;
 
   const redemptionAttempts = attempts.filter((a) => a.isRedemption);
   const redemptionCorrect = redemptionAttempts.filter((a) => a.isCorrect).length;
-  const topicStats = groupByTopic(attempts);
+  const topicStats = groupByTopic(primaryAttempts);
   const sortedCategories = Object.entries(topicStats)
     .map(([name, stats]) => ({
       name,
@@ -198,9 +203,9 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
 
   const bestCategory = sortedCategories[0]?.name ?? "N/A";
   const worstCategory = sortedCategories[sortedCategories.length - 1]?.name ?? "N/A";
-  const difficulty = getDifficultyBreakdown(attempts);
-  const masteryProjection = getTimeToMastery(attempts);
-  const streak = getHighestStreak(attempts);
+  const difficulty = getDifficultyBreakdown(primaryAttempts);
+  const masteryProjection = getTimeToMastery(primaryAttempts, settings.accuracyGoal);
+  const streak = getHighestStreak(primaryAttempts);
   const avgSessionLength = sessions.length ? sessions.reduce((s, session) => s + getSessionTotalTime(session), 0) / sessions.length : 0;
 
   return (
@@ -223,10 +228,10 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
 
       <SectionCard title="Time Intelligence" subtitle="Think/explanation pacing" icon={<Orbit className="h-5 w-5 text-accent" />}>
         <div className="grid gap-3 lg:grid-cols-[1.4fr_minmax(0,1fr)]">
-          <MetricGrid className="md:grid-cols-2">
-            <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} />
-            <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} />
-          </MetricGrid>
+          <div className={`grid content-start gap-2 ${settings.showExplanationTime ? "sm:grid-cols-2" : "sm:grid-cols-1"} lg:grid-cols-1 xl:grid-cols-2`}>
+            <Metric label="Avg Think Time" value={`${(totalQuestions ? totalThink / totalQuestions : 0).toFixed(1)}s`} compact />
+            {settings.showExplanationTime && <Metric label="Avg Explanation Time" value={`${(totalQuestions ? totalExplanation / totalQuestions : 0).toFixed(1)}s`} compact />}
+          </div>
           <MasteryProjectionCard projection={masteryProjection} />
         </div>
       </SectionCard>
@@ -253,9 +258,9 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
 
       <SectionCard title="Difficulty Breakdown" subtitle="Pacing and performance by level" icon={<Flame className="h-5 w-5 text-chart-3" />}>
         <div className="grid gap-3 md:grid-cols-3">
-          <SimpleBreakdownCard title="Overall by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.avgThinkTime.toFixed(1)}s avg think` }))} />
-          <SimpleBreakdownCard title="Accuracy by Difficulty" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.accuracy.toFixed(1)}%` }))} />
-          <SimpleBreakdownCard title="Correct / Total" rows={Object.entries(difficulty).map(([d, s]) => ({ label: d, value: `${s.correct}/${s.attempts}` }))} />
+          <SimpleBreakdownCard title="Overall by Difficulty" rows={getOrderedDifficultyEntries(difficulty).map(([d, s]) => ({ label: d, value: `${s.avgThinkTime.toFixed(1)}s avg think` }))} />
+          <SimpleBreakdownCard title="Accuracy by Difficulty" rows={getOrderedDifficultyEntries(difficulty).map(([d, s]) => ({ label: d, value: `${s.accuracy.toFixed(1)}%` }))} />
+          <SimpleBreakdownCard title="Correct / Total" rows={getOrderedDifficultyEntries(difficulty).map(([d, s]) => ({ label: d, value: `${s.correct}/${s.attempts}` }))} />
         </div>
       </SectionCard>
 
@@ -264,7 +269,7 @@ function EventStats({ sessions, eventId, onOpenSession }: { sessions: SessionDat
   );
 }
 
-function SessionDetailModal({ session, onClose }: { session: SessionData; onClose: () => void }) {
+function SessionDetailModal({ session, settings, onClose }: { session: SessionData; settings: UserSettings; onClose: () => void }) {
   const breakdown = buildSessionBreakdown(session);
   const avgThinkTime = session.totalQuestions > 0 ? session.totalThinkTime / session.totalQuestions : 0;
   const avgExplanationTime = session.totalQuestions > 0 ? session.totalExplanationTime / session.totalQuestions : 0;
@@ -287,9 +292,9 @@ function SessionDetailModal({ session, onClose }: { session: SessionData; onClos
               <Metric label="Accuracy" value={`${session.accuracy.toFixed(1)}%`} compact />
               <Metric label="Total Questions" value={`${session.totalQuestions}`} compact />
               <Metric label="Total Think Time" value={formatDuration(session.totalThinkTime)} compact />
-              <Metric label="Total Explanation Time" value={formatDuration(session.totalExplanationTime)} compact />
+              {settings.showExplanationTime && <Metric label="Total Explanation Time" value={formatDuration(session.totalExplanationTime)} compact />}
               <Metric label="Avg Think / Q" value={`${avgThinkTime.toFixed(1)}s`} compact />
-              <Metric label="Avg Explanation / Q" value={`${avgExplanationTime.toFixed(1)}s`} compact />
+              {settings.showExplanationTime && <Metric label="Avg Explanation / Q" value={`${avgExplanationTime.toFixed(1)}s`} compact />}
             </div>
 
             <div>
@@ -313,9 +318,10 @@ function SessionDetailModal({ session, onClose }: { session: SessionData; onClos
 function groupByEvent(sessions: SessionData[]) {
   const result: Record<string, { questions: number; correct: number; totalTime: number }> = {};
   sessions.forEach((session) => {
+    const primaryAttempts = session.attempts.filter((attempt) => !attempt.isRedemption);
     if (!result[session.event]) result[session.event] = { questions: 0, correct: 0, totalTime: 0 };
-    result[session.event].questions += session.attempts.length;
-    result[session.event].correct += session.attempts.filter((a) => a.isCorrect).length;
+    result[session.event].questions += primaryAttempts.length;
+    result[session.event].correct += primaryAttempts.filter((a) => a.isCorrect).length;
     result[session.event].totalTime += getSessionTotalTime(session);
   });
   return result;
@@ -346,6 +352,8 @@ interface MasteryProjection {
   timeNeededSeconds: number;
 }
 
+const difficultyOrder = ["Easy", "Medium", "Hard"] as const;
+
 function getDifficultyBreakdown(attempts: QuestionAttempt[]) {
   const timeSplits = getDifficultyTimeSplits(attempts);
   return Object.fromEntries(
@@ -360,6 +368,13 @@ function getDifficultyBreakdown(attempts: QuestionAttempt[]) {
       }];
     })
   );
+}
+
+function getOrderedDifficultyEntries<T>(difficultyMap: Record<string, T>) {
+  return [
+    ...difficultyOrder.filter((difficulty) => difficulty in difficultyMap).map((difficulty) => [difficulty, difficultyMap[difficulty]] as const),
+    ...Object.entries(difficultyMap).filter(([difficulty]) => !difficultyOrder.includes(difficulty as typeof difficultyOrder[number])),
+  ];
 }
 
 function getTimeToMastery(attempts: QuestionAttempt[], targetAccuracy = 90): MasteryProjection {

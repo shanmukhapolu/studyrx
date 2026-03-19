@@ -143,6 +143,13 @@ export async function refreshIdToken(refreshToken: string) {
   };
 }
 
+export async function sendPasswordResetEmail(email: string) {
+  await authRequest("accounts:sendOobCode", {
+    requestType: "PASSWORD_RESET",
+    email,
+  });
+}
+
 export async function saveUserProfile(idToken: string, uid: string, profile: UserProfile) {
   const fullName = `${profile.firstName} ${profile.lastName}`.trim();
 
