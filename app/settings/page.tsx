@@ -259,9 +259,14 @@ function ToggleRow({
   onChange: (checked: boolean) => void;
 }) {
   return (
-    <div className="flex items-start justify-between gap-4 rounded-xl border p-4">
-      <div>
-        <div className="text-sm font-medium">{label}</div>
+    <div className="flex items-start justify-between gap-4 rounded-2xl border border-primary/15 bg-gradient-to-r from-card via-card to-primary/5 p-4 shadow-sm">
+      <div className="space-y-1">
+        <div className="flex items-center gap-2">
+          <div className="text-sm font-medium">{label}</div>
+          <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${checked ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`}>
+            {checked ? "On" : "Off"}
+          </span>
+        </div>
         <p className="mt-1 text-sm text-muted-foreground">{description}</p>
       </div>
       <button
@@ -269,9 +274,9 @@ function ToggleRow({
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className={`relative h-7 w-12 rounded-full transition-colors ${checked ? "bg-primary" : "bg-muted"}`}
+        className={`relative h-8 w-14 rounded-full border transition-all duration-200 ${checked ? "border-primary/40 bg-gradient-to-r from-primary to-accent shadow-[0_0_20px_rgba(99,102,241,0.25)]" : "border-border bg-muted"}`}
       >
-        <span className={`absolute top-1 h-5 w-5 rounded-full bg-white transition-transform ${checked ? "translate-x-6" : "translate-x-1"}`} />
+        <span className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-md transition-transform duration-200 ${checked ? "translate-x-7" : "translate-x-1"}`} />
       </button>
     </div>
   );
