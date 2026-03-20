@@ -101,7 +101,7 @@ function SignUpContent() {
           }}>
             <Chrome className="mr-2 h-4 w-4" />
             Continue with Google
-          </Button>
+          </GoogleAuthButton>
 
           <p className="text-sm text-center">Already have an account? <Link className="underline" href="/auth/signin">Sign in</Link></p>
         </CardContent>
