@@ -1,4 +1,4 @@
-import { MessageSquareText, Pill, Smile, Heart, Apple } from "lucide-react";
+import { MessageSquareText, Pill, Smile, Heart, Apple, SpellCheck2, SquareActivity } from "lucide-react";
 
 export interface HosaEvent {
   id: string;
@@ -12,35 +12,49 @@ export const HOSA_EVENTS: HosaEvent[] = [
   {
     id: "medical-terminology",
     name: "Medical Terminology",
-    description: "Test your knowledge of medical terms, prefixes, suffixes, and root words",
+    description: "Assess knowledge of medical vocabulary, including prefixes, suffixes, root words, and their application across clinical settings",
     icon: MessageSquareText,
     questionBankFile: "/questions/medical-terminology.json"
   },
   {
+    id: "medical-spelling",
+    name: "Medical Spelling",
+    description: "Assess knowledge of accurate spelling and recognition of complex medical terms derived from prefixes, suffixes, and root words",
+    icon: SpellCheck2,
+    questionBankFile: "/questions/medical-spelling.json"
+  },
+  {
+    id: "respiratory-therapy",
+    name: "Respiratory Therapy",
+    description: "Assess knowledge of respiratory system anatomy, diseases, diagnostic methods, and therapeutic interventions in patient care.",
+    icon: SquareActivity,
+    questionBankFile: "/questions/respiratory-therapy.json"
+  },
+  {
     id: "nutrition",
     name: "Nutrition",
-    description: "Explore dietary principles, nutrients, and health-related nutrition concepts",
+    description: "Assess knowledge of nutrients, dietary principles, metabolism, and their role in health, disease prevention, and patient care",
     icon: Apple,
     questionBankFile: "/questions/nutrition.json"
   },
   {
     id: "pharmacology",
     name: "Pharmacology",
-    description: "Study medications, drug interactions, and pharmaceutical principles",
+    description: "Assess knowledge of drug classifications, mechanisms of action, therapeutic uses, side effects, and safe medication practices",
     icon: Pill,
     questionBankFile: "/questions/pharmacology.json"
   },
   {
     id: "dental-terminology",
     name: "Dental Terminology",
-    description: "Master dental-specific terms, procedures, and oral health vocabulary",
+    description: "Assess knowledge of dental anatomy, procedures, diseases, and terminology used in oral health care",
     icon: Smile,
     questionBankFile: "/questions/dental-terminology.json"
   },
   {
     id: "behavioral-health",
     name: "Behavioral Health",
-    description: "Learn about mental health conditions, treatments, and psychological concepts",
+    description: "Assess knowledge of mental health disorders, psychological concepts, and therapeutic approaches used in behavioral health care",
     icon: Heart,
     questionBankFile: "/questions/behavioral-health.json"
   }
