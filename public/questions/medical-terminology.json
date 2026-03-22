@@ -71,12 +71,12 @@
   },
   {
     "id": 8,
-    "question": "The prefix 'dys-' as used in 'dyspnea' or 'dysphagia' means:",
-    "options": ["Easy", "Painful or difficult", "Without", "Excessive"],
+    "question": "A HOSA student reviewing a patient's chart for 'dyspnea' and 'dysphagia' recognizes that the prefix 'dys-' refers to which type of functioning?",
+    "options": ["Absence of function", "Painful or difficult", "Excessive movement", "Below normal levels"],
     "correctAnswer": "Painful or difficult",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'Dys-' denotes bad, difficult, painful, or disordered functioning.",
+    "explanation": "'Dys-' denotes bad, difficult, painful, or disordered functioning, as seen in difficult breathing (dyspnea) or difficult swallowing (dysphagia) [1].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -141,12 +141,12 @@
   },
   {
     "id": 15,
-    "question": "The prefix 'pre-' means:",
-    "options": ["After", "During", "Before", "Around"],
-    "correctAnswer": "Before",
+    "question": "When preparing a patient for a 'preoperative' assessment, a healthcare provider understands the prefix 'pre-' refers to which timing?",
+    "options": ["Following a procedure", "Occurring during a task", "Occurring before an event", "Surrounding a structure"],
+    "correctAnswer": "Occurring before an event",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'Pre-' means before or in front of, such as 'preoperative' (before surgery).",
+    "explanation": "'Pre-' means before or in front of, such as 'preoperative,' which occurs before a surgical procedure [2].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -301,13 +301,12 @@
   },
   {
     "id": 31,
-    "year": 2026,
-    "question": "What is the meaning of the suffix '-rrhea'?",
-    "options": ["Pain", "Rupture", "Flow or discharge", "Suturing"],
+    "question": "A patient presenting with 'rhinorrhea' or 'diarrhea' is experiencing a condition described by the suffix '-rrhea,' which indicates:",
+    "options": ["Abnormal rupture", "Flow or discharge", "Surgical suturing", "Localized pain"],
     "correctAnswer": "Flow or discharge",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'-rrhea' refers to flow or discharge, as in diarrhea (flow through) or rhinorrhea (runny nose).",
+    "explanation": "The suffix '-rrhea' refers to a flow or discharge, such as a runny nose (rhinorrhea) or flow through the bowels (diarrhea) [3].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -332,22 +331,22 @@
   },
   {
     "id": 34,
-    "question": "Which suffix means 'softening'?",
-    "options": ["-malacia", "-sclerosis", "-stenosis", "-ptosis"],
-    "correctAnswer": "-malacia",
+    "question": "A HOSA student observes a surgical procedure for 'cheiloplasty' following a facial injury. Based on the combining form, which structure is being repaired?",
+    "options": ["The nose", "The lips", "The eyelids", "The ears"],
+    "correctAnswer": "The lips",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'-malacia' means abnormal softening (e.g., osteomalacia is softening of the bones).",
+    "explanation": "'Cheil/o' is the Greek combining form for the lips; the suffix '-plasty' indicates surgical repair or reconstruction [2, 3].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 35,
-    "question": "The prefix 'bi-' means:",
-    "options": ["One", "Three", "Four", "Two"],
-    "correctAnswer": "Two",
+    "question": "A clinical note describing a 'bilateral' condition indicates the involvement of how many sides?",
+    "options": ["A single side", "Three distinct areas", "Four quadrants", "Two specific sides"],
+    "correctAnswer": "Two specific sides",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'Bi-' means two or twice (e.g., bilateral means pertaining to two sides).",
+    "explanation": "'Bi-' means two or twice; therefore, a bilateral condition pertains to two sides of the body [4].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -482,12 +481,12 @@
   },
   {
     "id": 49,
-    "question": "What is the meaning of the prefix 'multi-'?",
-    "options": ["None", "One", "Two", "Many"],
-    "correctAnswer": "Many",
+    "question": "In obstetrics, a woman classified as 'multigravida' has experienced which of the following regarding her pregnancy history?",
+    "options": ["No previous pregnancies", "Exactly one pregnancy", "Two or more pregnancies", "A single viable birth"],
+    "correctAnswer": "Two or more pregnancies",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'Multi-' means many or much (e.g., multigravida refers to a woman who has been pregnant many times).",
+    "explanation": "'Multi-' means many or much; a multigravida is a woman who has been pregnant multiple times [5].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -592,13 +591,13 @@
   },
   {
     "id": 60,
-    "question": "Which suffix means 'narrowing'?",
-    "options": ["-ectasia", "-stenosis", "-ptosis", "-malacia"],
-    "correctAnswer": "-stenosis",
+    "question": "A HOSA student reviewing a chart for a patient with exceptionally dry skin notes the use of which combining form?",
+    "options": ["Kraur/o", "Xen/o", "Hapl/o", "Ectr/o"],
+    "correctAnswer": "Kraur/o",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'-stenosis' means abnormal narrowing of a passage or opening.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Hard",
+    "explanation": "The root 'kraur/o' is defined in the sources as meaning 'dry' [1, 3, 4].",
+    "tag": "Integumentary System"
   },
   {
     "id": 61,
@@ -642,13 +641,13 @@
   },
   {
     "id": 65,
-    "question": "If a patient is diagnosed with 'cholelithiasis,' what is the meaning of the root 'lith/o'?",
-    "options": ["Bile", "Stone", "Gallbladder", "Fat"],
-    "correctAnswer": "Stone",
+    "question": "A geriatric patient who is 'edentulous' is characterized by having:",
+    "options": ["No teeth", "Softened bones", "A curved spine", "Cloudy vision"],
+    "correctAnswer": "No teeth",
+    "explanation": "According to Appendix A, 'edentul/o' means without teeth.",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Lith/o' means stone or calculus. Cholelithiasis is the presence of gallstones.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "tag": "Digestive System"
   },
   {
     "id": 66,
@@ -932,13 +931,13 @@
   },
   {
     "id": 94,
-    "question": "The combining form 'ankyl/o' means:",
-    "options": ["Stiff or crooked", "Ankle", "Angular", "Broken"],
-    "correctAnswer": "Stiff or crooked",
+    "question": "A medical illustration showing 'dendritic' structures is depicting something that is:",
+    "options": ["Branching or tree-like", "Straight and linear", "Spiral-shaped", "Star-shaped"],
+    "correctAnswer": "Branching or tree-like",
+    "explanation": "The combining form 'dendr/o' means branching or resembling a tree.",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Ankyl/o' means stiff, crooked, or fused, as in ankylosis (stiffening of a joint).",
-    "tag": "Roots, Prefixes, Suffixes"
+    "tag": "Overview of Body"
   },
   {
     "id": 95,
@@ -1022,22 +1021,22 @@
   },
   {
     "id": 103,
-    "question": "What is the meaning of the suffix '-ectasis'?",
-    "options": ["Narrowing", "Dilation or expansion", "Surgical removal", "Pain"],
-    "correctAnswer": "Dilation or expansion",
+    "question": "A patient reports experiencing 'nocturia' multiple times per night. What does the prefix 'noct/i' indicate about this condition?",
+    "options": ["It is painful", "It occurs at night", "It is excessive", "It involves blood"],
+    "correctAnswer": "It occurs at night",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'-ectasis' refers to the stretching, dilation, or expansion of a tubular structure.",
+    "difficulty": "Easy",
+    "explanation": "The prefix 'noct/i' means night; nocturia refers specifically to frequent urination during the night [19].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 104,
-    "question": "The prefix 'nulli-' refers to:",
-    "options": ["Many", "First", "None", "Few"],
-    "correctAnswer": "None",
+    "question": "If a patient is described as having 'heterochromia' of the irises, what does the prefix 'hetero-' indicate?",
+    "options": ["Same", "Large", "Different", "Hidden"],
+    "correctAnswer": "Different",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Nulli-' means none; a nullipara is a woman who has never given birth to a viable infant.",
+    "explanation": "The prefix 'hetero-' means different. Heterochromia refers to a difference in coloration, most commonly of the eyes [9].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1050,14 +1049,14 @@
     "explanation": "'Myc/o' refers to fungus; for example, mycosis is a fungal infection.",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 106,
-    "question": "Which suffix means 'to separate' or 'destruction'?",
-    "options": ["-crit", "-lysis", "-poiesis", "-stasis"],
-    "correctAnswer": "-lysis",
+    "question": "The suffix '-facient' is used in medical terminology to describe something that:",
+    "options": ["Causes or makes happen", "Slows down function", "Prevents movement", "Sutures tissue"],
+    "correctAnswer": "Causes or makes happen",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'-lysis' means destruction, dissolution, or breakdown of cells or substances.",
+    "explanation": "The suffix '-facient' means to cause or make happen [5, 6].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1082,33 +1081,38 @@
   },
   {
     "id": 109,
-    "question": "The suffix '-ptosis' refers to:",
-    "options": ["Drooping", "Spasm", "Hardening", "Flow"],
-    "correctAnswer": "Drooping",
+    "question": "The 'phrenic nerve' is essential for respiration. Which anatomical structure does the root 'phren/o' refer to in this context?",
+    "options": ["Lungs", "Mind", "Diaphragm", "Heart"],
+    "correctAnswer": "Diaphragm",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'-ptosis' means drooping, sagging, or prolapse, such as blepharoptosis (drooping eyelid).",
+    "explanation": "'Phren/o' refers to the diaphragm or the mind. The phrenic nerve specifically stimulates the diaphragm for breathing [11], [15].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 110,
-    "question": "The prefix 'eu-' means:",
-    "options": ["Bad", "New", "Good or normal", "Outside"],
-    "correctAnswer": "Good or normal",
+    "question": "A respiratory therapist records that a patient has 'eupnea.' What does the prefix 'eu-' indicate about the patient's breathing status?",
+    "options": ["It is disordered", "It is a new onset", "It is good or normal", "It is occurring outside"],
+    "correctAnswer": "It is good or normal",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Eu-' means good, normal, or well, as in eupnea (normal breathing).",
+    "explanation": "The prefix 'eu-' means good, normal, or well; eupnea describes a normal, healthy breathing pattern [6].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 111,
-    "question": "The combining form 'lith/o' refers to:",
-    "options": ["Light", "Stone", "Liquid", "Fat"],
-    "correctAnswer": "Stone",
+    "question": "A HOSA student documenting a postural deformity for a geriatric patient notes 'kyphosis.' According to the glossary, this condition is defined as which of the following?",
+    "options": [
+      "Abnormal forward curvature of the upper spine",
+      "Abnormal lateral curvature of the spine",
+      "Abnormal forward curvature of the lower spine",
+      "Incomplete closure of the vertebral column"
+    ],
+    "correctAnswer": "Abnormal forward curvature of the upper spine",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Lith/o' means stone or calculus, as in lithotripsy (crushing of stones).",
-    "tag": "Roots, Prefixes, Suffixes"
+    "explanation": "The Glossary specifically defines kyphosis as the abnormal forward curvature of the upper spine [1].",
+    "tag": "Skeletal System"
   },
   {
     "id": 112,
@@ -1140,24 +1144,24 @@
     "explanation": "'Orth/o' means straight or correct, as in orthopedics.",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 115,
-    "question": "The suffix '-malacia' refers to:",
-    "options": ["Hardening", "Softening", "Enlargement", "Shrinking"],
-    "correctAnswer": "Softening",
+    "question": "A patient diagnosed with 'agitophasia' is experiencing a condition related to which characteristic?",
+    "options": ["Rapidity or restlessness", "Loss of coordination", "Inability to swallow", "Excessive sweating"],
+    "correctAnswer": "Rapidity or restlessness",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'-malacia' means abnormal softening of a tissue.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Hard",
+    "explanation": "The combining form 'agit/o' refers to rapidity or restlessness [7].",
+    "tag": "Nervous/Special Senses"
   },
   {
     "id": 116,
-    "question": "The prefix 'brady-' is the opposite of:",
-    "options": ["Tachy-", "Poly-", "Hypo-", "A-"],
-    "correctAnswer": "Tachy-",
+    "question": "Which of the following suffixes refers specifically to an 'affirmation' or 'positive statement'?",
+    "options": ["-cataphasia", "-orexia", "-phasia", "-geusia"],
+    "correctAnswer": "-cataphasia",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'Brady-' means slow, while its opposite 'tachy-' means fast.",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, the suffix '-cataphasia' means affirmation [1, 2].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1292,12 +1296,12 @@
   },
   {
     "id": 130,
-    "question": "The prefix 'per-' means:",
-    "options": ["Through", "Around", "Excessive", "Beside"],
-    "correctAnswer": "Through",
+    "question": "In a clinical setting, a physician describes a medication as 'amphoteric,' meaning it can act as both an acid and a base. What does 'amphi-' mean?",
+    "options": ["Against", "Through", "Both sides", "Within"],
+    "correctAnswer": "Both sides",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'Per-' means through, as in 'perfusion' (the passage of fluid through the vessels).",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'amphi-' (or amphi-) refers to both sides, around, or double [7].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1360,14 +1364,14 @@
     "explanation": "'Mega-' (and 'megalo-') means large or great (e.g., megalomania).",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 137,
-    "question": "The combining form 'necr/o' means:",
-    "options": ["New", "Nerve", "Death", "Night"],
-    "correctAnswer": "Death",
+    "question": "Which of the following combining forms refers specifically to something that is 'simple' or 'single'?",
+    "options": ["Hapl/o", "Poly-", "Amphi-", "Multi-"],
+    "correctAnswer": "Hapl/o",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Necr/o' refers to death. Necrosis is the death of living tissue.",
+    "explanation": "The combining form 'hapl/o' means simple or single [2].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1520,20 +1524,15 @@
     "explanation": "'Tel-' or 'tele-' means end, far, or complete. Combined with 'angi' (vessel) and 'ectasia' (dilation).",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 149,
-    "question": "What is the meaning of the root 'poikil/o' in the term 'poikilocytosis'?",
-    "options": [
-      "Same",
-      "Varied or irregular",
-      "Pointed",
-      "Dark"
-    ],
-    "correctAnswer": "Varied or irregular",
+    "question": "A patient diagnosed with a 'concussion' has experienced an injury where the brain was literally:",
+    "options": ["Shaken together", "Bruised internally", "Cut or lacerated", "Deprived of oxygen"],
+    "correctAnswer": "Shaken together",
+    "explanation": "The combining form 'concuss/o' means shaken together or violently agitated.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Poikil/o' means varied or irregular. Poikilocytosis is the presence of abnormally shaped red blood cells.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Medium",
+    "tag": "Nervous/Special Senses"
   },
   {
     "id": 150,
@@ -1552,17 +1551,17 @@
   },
   {
     "id": 151,
-    "question": "The suffix '-tresia' (as in 'atresia') means:",
+    "question": "During a neurological assessment, a clinician observes 'anisocoria' in a patient's eyes. What is the defining characteristic of this condition?",
     "options": [
-      "To crush",
-      "Opening",
-      "Feeding",
-      "Growth"
+      "The pupils are of unequal size",
+      "The patient has lost color vision",
+      "The crystalline lens is opaque",
+      "The eyes are misaligned laterally"
     ],
-    "correctAnswer": "Opening",
+    "correctAnswer": "The pupils are of unequal size",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'-tresia' means opening. 'Atresia' is the congenital absence or closure of a normal body opening.",
+    "explanation": "'Aniso-' means unequal and 'cor/o' refers to the pupil. Anisocoria is often a sign of underlying neurological trauma or disease.",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1582,17 +1581,12 @@
   },
   {
     "id": 153,
-    "question": "The term 'leiodermia' refers to:",
-    "options": [
-      "Abnormally scaly skin",
-      "Abnormally smooth skin",
-      "Thickened skin",
-      "Inflamed skin"
-    ],
-    "correctAnswer": "Abnormally smooth skin",
+    "question": "The combining form 'cis/o' is used to describe which action?",
+    "options": ["To cut", "To bind", "To flow", "To stretch"],
+    "correctAnswer": "To cut",
+    "explanation": "Appendix A defines the root 'cis/o' as meaning 'to cut'.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Lei/o' means smooth. Leiodermia is a condition characterized by abnormal smoothness of the skin.",
+    "difficulty": "Medium",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1702,23 +1696,23 @@
   },
   {
     "id": 161,
-    "question": "The term 'anhidrosis' refers to the inability to sweat. Which combining form in this term specifically refers to 'sweat'?",
-    "options": ["Hydr/o", "Hidr/o", "Hygro/o", "Hist/o"],
-    "correctAnswer": "Hidr/o",
+    "question": "An elderly patient is diagnosed with 'presbyopia.' Which of the following is the literal meaning of the prefix 'presby-'?",
+    "options": ["Vision", "Old age", "Distant", "Dim"],
+    "correctAnswer": "Old age",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Hidr/o' means sweat. It is frequently confused with 'hydr/o', which means water. Anhidrosis is the absence of sweating.",
+    "explanation": "'Presby-' means old age. Presbyopia is the loss of near-vision that occurs naturally with aging [17].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 162,
-    "question": "In the term 'opisthotonus,' a condition of severe muscle arching, the prefix 'opistho-' means:",
-    "options": ["Forward", "Backward", "Sideways", "Upward"],
-    "correctAnswer": "Backward",
+    "question": "A patient is diagnosed with 'gynecomastia.' Based on the roots, which physiological change is the patient experiencing?",
+    "options": ["Female-pattern hair loss", "Enlarged male breast tissue", "Lack of milk production", "Inflammation of the ovary"],
+    "correctAnswer": "Enlarged male breast tissue",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Opistho-' is a Greek prefix meaning backward or behind. Opisthotonus is an extrapyramidal effect where the body arches backward.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Medium",
+    "explanation": "'Gynec/o' (female) + 'mast/o' (breast). Gynecomastia is the development of mammary glands in males [8].",
+    "tag": "Endocrine System"
   },
   {
     "id": 163,
@@ -1732,32 +1726,32 @@
   },
   {
     "id": 164,
-    "question": "The term 'telangiectasia' involves the root 'tel-'. What does this root mean in a medical context?",
-    "options": ["Distance", "End or completion", "Thin", "Vessel"],
-    "correctAnswer": "End or completion",
+    "question": "During an eye exam, a technician assesses the 'phakic' status of a patient. Which structure are they evaluating?",
+    "options": ["The colored iris", "The clear cornea", "The crystalline lens", "The vitreous humor"],
+    "correctAnswer": "The crystalline lens",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Tel-' or 'tele-' means end, far, or complete. In telangiectasia, it refers to the dilation of the terminal (end) blood vessels.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "explanation": "'Phak/o' is the root for the lens of the eye [9, 10].",
+    "tag": "Nervous/Special Senses"
   },
   {
     "id": 165,
-    "question": "If a physician describes a 'pancytopenia,' what is the literal meaning of the prefix 'pan-'?",
-    "options": ["Partial", "Painful", "All", "Rapid"],
-    "correctAnswer": "All",
+    "question": "An optometrist uses a 'pupillometer' to measure 'corectopia.' Based on the root 'cor/o', which part of the eye is displaced?",
+    "options": ["The white sclera", "The central pupil", "The vascular choroid", "The optic nerve"],
+    "correctAnswer": "The central pupil",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Pan-' means all. Pancytopenia is a deficiency of all three cellular components of the blood (RBCs, WBCs, and platelets).",
-    "tag": "Roots, Prefixes, Suffixes"
+    "explanation": "'Core/o' is a root for the pupil [9]. Corectopia is the displacement of the pupil from its normal center.",
+    "tag": "Nervous/Special Senses"
   },
-  {
+   {
     "id": 166,
-    "question": "The term 'steatorrhea' refers to excess fat in the stool. Which root refers to 'fat'?",
-    "options": ["Ather/o", "Steat/o", "Scoli/o", "Sten/o"],
-    "correctAnswer": "Steat/o",
+    "question": "Which combining form is used to describe something that is 'wedge-shaped'?",
+    "options": ["Cune/o", "Spher/o", "Platy-", "Gyr/o"],
+    "correctAnswer": "Cune/o",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Steat/o' refers to fat or sebum. 'Ather/o' refers to fatty plaque (as in atherosclerosis).",
+    "explanation": "The root 'cune/o' means wedge or wedge-shaped [10].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1772,72 +1766,77 @@
   },
   {
     "id": 168,
-    "question": "The combining form 'phas/o' (as in aphasia) refers to which of the following?",
-    "options": ["Eating", "Speech", "Walking", "Digestion"],
-    "correctAnswer": "Speech",
+    "question": "The combining form 'apic/o' refers to which specific part of a structure?",
+    "options": ["The apex or tip", "The base or foundation", "The middle section", "The outer covering"],
+    "correctAnswer": "The apex or tip",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Phas/o' means speech. Aphasia is the loss of ability to understand or express speech.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Medium",
+    "explanation": "The sources define 'apic/o' as referring to the apex or tip [7].",
+    "tag": "Overview of Body"
   },
   {
     "id": 169,
-    "question": "In the term 'poikilocytosis,' what is the meaning of the combining form 'poikil/o'?",
-    "options": ["Same", "Varied or irregular", "Pointed", "Colorless"],
-    "correctAnswer": "Varied or irregular",
+    "question": "The root 'bary-' is used to describe a sensation or condition that is:",
+    "options": ["Heavy, dull, or hard", "Sharp and severe", "Light and airy", "Cold and numbing"],
+    "correctAnswer": "Heavy, dull, or hard",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Poikil/o' means varied or irregular. Poikilocytosis refers to red blood cells that are irregularly shaped.",
+    "explanation": "The root 'bary-' refers to characteristics that are heavy, dull, or hard [7, 8].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 170,
-    "question": "The suffix '-tresia' (as in biliary atresia) refers to:",
-    "options": ["Perforation", "Opening", "Crushing", "Nourishment"],
-    "correctAnswer": "Opening",
+    "question": "A patient undergoing chemotherapy reports severe 'xerostomia.' Based on the roots, which symptom is the patient experiencing?",
+    "options": [
+      "Inflammation of the tongue",
+      "Difficult or painful swallowing",
+      "Abnormal dryness of the mouth",
+      "Excessive production of saliva"
+    ],
+    "correctAnswer": "Abnormal dryness of the mouth",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'-tresia' means opening. 'Atresia' (a- + tresia) means the absence of a normal opening or passage.",
+    "explanation": "'Xer/o' means dry and 'stomat/o' means mouth. Xerostomia is a common clinical side effect of medications and radiation therapy.",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 171,
-    "question": "Which prefix means 'backward' or 'again' and is used in the term 'anaplasia'?",
-    "options": ["Ana-", "Anti-", "Ante-", "A-"],
-    "correctAnswer": "Ana-",
+    "question": "In the term 'syndrome,' the root 'drom/o' refers to the act of:",
+    "options": ["Running", "Walking", "Sitting", "Turning"],
+    "correctAnswer": "Running",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Ana-' can mean up, toward, or backward. In 'anaplasia,' it refers to cells reverting to a more primitive (backward) form.",
+    "difficulty": "Medium",
+    "explanation": "The root 'drom/o' or the suffix '-drome' means running [12, 13].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 172,
-    "question": "The term 'prosopagnosia' refers to the inability to recognize faces. Which root means 'face'?",
-    "options": ["Phren/o", "Prosop/o", "Phak/o", "Pseud/o"],
-    "correctAnswer": "Prosop/o",
+    "question": "The root 'cali/o' refers to which anatomical structure, typically found in the renal system?",
+    "options": ["Calyx", "Bladder", "Kidney filter", "Ureter"],
+    "correctAnswer": "Calyx",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Prosop/o' is the Greek root for face. '-agnosia' means without knowledge or recognition.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "explanation": "The combining form 'cali/o' refers to the calyx [2].",
+    "tag": "Urinary System"
   },
   {
     "id": 173,
-    "question": "Which combining form means 'hidden'?",
-    "options": ["Crypt/o", "Chrom/o", "Cortic/o", "Cyan/o"],
-    "correctAnswer": "Crypt/o",
+    "question": "In the term 'abulia,' the suffix '-bulia' refers to which psychological faculty?",
+    "options": ["The will", "Memory", "Speech", "Coordination"],
+    "correctAnswer": "The will",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Crypt/o' means hidden. Cryptorchidism, for example, is the condition of a 'hidden' (undescended) testicle.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "explanation": "The suffix '-bulia' or '-boulia' refers to the will [2].",
+    "tag": "Nervous/Special Senses"
   },
-  {
+   {
     "id": 174,
-    "question": "The suffix '-phoresis' (as in electrophoresis or diaphoresis) means:",
-    "options": ["To carry or transmission", "To view", "To destroy", "To record"],
-    "correctAnswer": "To carry or transmission",
+    "question": "Which combining form refers to a 'congenital absence' of a body part?",
+    "options": ["Ectr/o", "Atel/o", "Nulli-", "A-"],
+    "correctAnswer": "Ectr/o",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'-phoresis' means carrying, transmission, or bearing.",
+    "explanation": "The root 'ectr/o' refers to a congenital absence [1, 14].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1852,32 +1851,32 @@
   },
   {
     "id": 176,
-    "question": "What does the combining form 'ichthy/o' mean?",
-    "options": ["Itching", "Dry", "Fish-like/scaly", "Irritated"],
-    "correctAnswer": "Fish-like/scaly",
+    "question": "Which combining form refers specifically to 'steam' or 'vapor'?",
+    "options": ["Atmo-", "Aer/o", "Phys/o", "Pneum/o"],
+    "correctAnswer": "Atmo-",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Ichthy/o' means fish. Ichthyosis is a skin condition characterized by dry, scaly skin resembling fish scales.",
+    "explanation": "The root 'atmo-' refers to steam or vapor, as seen in instruments like an atmometer [7].",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 177,
-    "question": "The term 'leiomyoma' contains the root 'lei/o', which means:",
-    "options": ["Striated", "Smooth", "Heart", "Small"],
-    "correctAnswer": "Smooth",
+    "question": "In the term 'coarctation,' the root word parts refer to which mechanical process?",
+    "options": ["Pressing together or narrowing", "Expanding or dilating", "Twisting or rotating", "Breaking or crushing"],
+    "correctAnswer": "Pressing together or narrowing",
+    "explanation": "The combining form 'coarct/o' or 'coarctat/o' means to press together or narrow.",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Lei/o' means smooth. A leiomyoma is a benign tumor of smooth muscle tissue.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "tag": "Cardiovascular & Lymphatic"
   },
   {
     "id": 178,
-    "question": "The prefix 'nulli-' (as in nullipara) means:",
-    "options": ["Many", "First", "None", "Small"],
-    "correctAnswer": "None",
+    "question": "A patient presents with 'acrocyanosis.' Based on the root 'acr/o', which parts of the body are showing a bluish discoloration?",
+    "options": ["The head and neck", "The internal organs", "The extremities", "The trunk"],
+    "correctAnswer": "The extremities",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Nulli-' means none. A nullipara is a woman who has never given birth to a viable infant.",
+    "explanation": "'Acr/o' refers to the extremities (limbs) or top. Acrocyanosis is a bluish discoloration of the hands and feet [18].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1940,24 +1939,24 @@
     "explanation": "'Opistho-' means backward or behind. Opisthogastric refers to the area behind the stomach.",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 185,
-    "question": "The suffix '-chalasia' (as in achalasia) literally translates to:",
-    "options": ["Contraction", "Relaxation", "Narrowing", "Rupture"],
-    "correctAnswer": "Relaxation",
+    "question": "Which of the following suffixes refers specifically to the act of 'walking'?",
+    "options": ["-basia", "-praxia", "-kinesia", "-stasis"],
+    "correctAnswer": "-basia",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'-chalasia' means relaxation. Achalasia (a- + chalasia) is the failure of a muscle (like the LES) to relax.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "explanation": "The suffix '-basia' refers to walking, as in the term 'brachybasia' [7, 8].",
+    "tag": "Muscular System"
   },
   {
     "id": 186,
-    "question": "Which combining form refers to the 'iris'?",
-    "options": ["Irid/o", "Core/o", "Phak/o", "Hyal/o"],
-    "correctAnswer": "Irid/o",
+    "question": "If a patient is prescribed 'balneotherapy,' they are receiving treatment involving which of the following?",
+    "options": ["Baths", "Sunlight", "Extreme cold", "Movement"],
+    "correctAnswer": "Baths",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Irid/o' is the combining form for the iris. 'Core/o' is the pupil; 'Phak/o' is the lens; 'Hyal/o' is the vitreous humor.",
+    "explanation": "The combining form 'balne/o' refers to a bath [8].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -1980,35 +1979,35 @@
     "explanation": "'Pyret/o' (and 'pyr/o') refers to fever or fire. An antipyretic is a medication used to reduce fever.",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 189,
-    "question": "The term 'ankyloglossia' describes a condition commonly known as 'tongue-tie.' What does the root 'ankyl/o' mean?",
-    "options": ["Short", "Stiff or crooked", "Thick", "Double"],
-    "correctAnswer": "Stiff or crooked",
+    "question": "If a patient is described as having 'dextrocardia,' their heart is located on which side?",
+    "options": ["The right side", "The left side", "The middle", "The back"],
+    "correctAnswer": "The right side",
+    "explanation": "The combining form 'dextr/o' refers to the right side.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Ankyl/o' means stiff, crooked, or fused. In ankyloglossia, the tongue is 'fused' or restricted by the lingual frenulum.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Easy",
+    "tag": "Cardiovascular & Lymphatic"
   },
-  {
+   {
     "id": 190,
-    "question": "Which suffix refers to 'surgical crushing'?",
-    "options": ["-clasis", "-tripsy", "-desis", "-pexy"],
-    "correctAnswer": "-tripsy",
+    "question": "A school screening identifies a student with 'scoliosis.' The root 'scoli/o' refers to which type of spinal curvature?",
+    "options": ["Humped", "Forward", "Crooked or sideways", "Straight"],
+    "correctAnswer": "Crooked or sideways",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'-tripsy' means to crush, as in lithotripsy (crushing of stones). '-clasis' means to break.",
+    "explanation": "'Scoli/o' means crooked, bent, or sideways. Scoliosis is an abnormal lateral curvature of the spine [14].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 191,
-    "question": "The combining form 'phren/o' can refer to the mind or which anatomical structure?",
-    "options": ["Lungs", "Diaphragm", "Heart", "Spleen"],
-    "correctAnswer": "Diaphragm",
+    "question": "In physical assessment, the combining form 'erect/o' refers to a position that is:",
+    "options": ["Upright", "Face down", "Tilted", "Curved"],
+    "correctAnswer": "Upright",
+    "explanation": "Appendix A defines 'erect/o' as meaning upright.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Phren/o' has dual meanings in medical terminology: the mind or the diaphragm (e.g., the phrenic nerve).",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Easy",
+    "tag": "Overview of Body"
   },
   {
     "id": 192,
@@ -2062,12 +2061,12 @@
   },
   {
     "id": 197,
-    "question": "The suffix '-grade' (as in retrograde) means:",
-    "options": ["Level", "To go", "Fast", "Condition"],
-    "correctAnswer": "To go",
+    "question": "The suffix '-grade', as seen in the term 'retrograde,' refers to which of the following actions?",
+    "options": ["To go or step", "To stop or stay", "To turn or twist", "To cut or excise"],
+    "correctAnswer": "To go or step",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'-grade' means to go or step (e.g., retrograde means to go backward).",
+    "explanation": "The suffix '-grade' means a step or to go [3, 4].",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
@@ -2090,15 +2089,15 @@
     "explanation": "'Oligo-' means few, scanty, or little. Oligodendrocytes are cells with 'few branches.'",
     "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 200,
-    "question": "The term 'xerophthalmia' involves the combining form 'xer/o'. What does it mean?",
-    "options": ["Yellow", "Dry", "Hard", "Blind"],
-    "correctAnswer": "Dry",
+    "question": "A patient receiving a 'xenograft' is receiving tissue from which of the following?",
+    "options": ["A different species", "Their own body", "An identical twin", "A synthetic source"],
+    "correctAnswer": "A different species",
+    "explanation": "The combining form 'xen/o' means strange or foreign matter; a xenograft is a transplant between different species.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Xer/o' means dry. Xerophthalmia is abnormal dryness of the conjunctiva and cornea.",
-    "tag": "Roots, Prefixes, Suffixes"
+    "difficulty": "Medium",
+    "tag": "Integumentary System"
   },
   {
     "id": 201,
@@ -2250,14 +2249,19 @@
     "explanation": "The pleural cavities (within the thoracic cavity) each house a lung.",
     "tag": "Overview of Body"
   },
-  {
+   {
     "id": 216,
-    "question": "A 'parasagittal' plane is best described as:",
-    "options": ["A plane that divides the body into equal left and right halves", "A plane that divides the body into unequal left and right portions", "A plane that is parallel to the ground", "A plane that divides the body into front and back"],
-    "correctAnswer": "A plane that divides the body into unequal left and right portions",
+    "question": "A surgeon makes an incision along a 'parasagittal' plane. How does this plane divide the body?",
+    "options": [
+      "Into equal left and right halves",
+      "Into unequal left and right sides",
+      "Into superior and inferior parts",
+      "Into anterior and posterior parts"
+    ],
+    "correctAnswer": "Into unequal left and right sides",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "A 'midsagittal' plane is exactly in the middle; 'parasagittal' is any sagittal plane that is offset from the midline.",
+    "explanation": "A midsagittal plane is centered; a parasagittal plane is offset, creating unequal left and right portions [11].",
     "tag": "Overview of Body"
   },
   {
@@ -2342,13 +2346,13 @@
   },
   {
     "id": 225,
-    "question": "Which body plane is synonymous with the 'coronal' plane?",
-    "options": ["Horizontal", "Frontal", "Median", "Sagittal"],
-    "correctAnswer": "Frontal",
+    "question": "The prefix 'holo-' means:",
+    "options": ["Entire or complete", "Half or partial", "Same or similar", "Against or opposed"],
+    "correctAnswer": "Entire or complete",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "The frontal and coronal planes are identical, dividing the body into anterior and posterior portions.",
-    "tag": "Overview of Body"
+    "explanation": "The prefix 'holo-' means entire or complete [17].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 226,
@@ -2630,15 +2634,15 @@
     "explanation": "'-desis' means binding or fixation, such as in arthrodesis (surgical fusion of a joint).",
     "tag": "Skeletal System"
   },
-  {
+ {
     "id": 254,
-    "question": "The root 'orth/o' in the term 'orthopedics' literally means:",
-    "options": ["Bone", "Foot", "Straight", "Joint"],
-    "correctAnswer": "Straight",
+    "question": "A patient with '-emphraxis' is suffering from which condition?",
+    "options": ["Stoppage or obstruction", "Abnormal softening", "Excessive growth", "Surgical repair"],
+    "correctAnswer": "Stoppage or obstruction",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'Orth/o' means straight or correct; originally, orthopedics was the study of 'straightening' children's deformities.",
-    "tag": "Skeletal System"
+    "difficulty": "Hard",
+    "explanation": "The suffix '-emphraxis' refers to a stoppage or obstruction [14].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 255,
@@ -2722,12 +2726,12 @@
   },
   {
     "id": 263,
-    "question": "The suffix '-clasis' as used in 'osteoclasis' refers to:",
-    "options": ["Surgical breaking", "Surgical crushing", "Surgical repair", "Surgical fusion"],
-    "correctAnswer": "Surgical breaking",
+    "question": "Which combining form refers specifically to the 'clavicle' (collar bone)?",
+    "options": ["Cleid/o", "Cost/o", "Spondyl/o", "Scapul/o"],
+    "correctAnswer": "Cleid/o",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'-clasis' means to break; osteoclasis is the intentional breaking of a bone to correct a deformity.",
+    "explanation": "The root 'cleid/o' refers to the clavicle [9].",
     "tag": "Skeletal System"
   },
   {
@@ -2772,13 +2776,13 @@
   },
   {
     "id": 268,
-    "question": "Which type of joint is an 'amphiarthrosis'?",
-    "options": ["Freely movable joint", "Immovable joint", "Slightly movable joint", "A joint held by sutures"],
-    "correctAnswer": "Slightly movable joint",
+    "question": "The suffix '-crasia' refers to which of the following?",
+    "options": ["A mixture or temperament", "A surgical breaking", "A condition of hardening", "A lack of coordination"],
+    "correctAnswer": "A mixture or temperament",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'Amphi-' (both sides/around) + 'arthr/o' (joint). These joints allow for limited motion (e.g., pubic symphysis).",
-    "tag": "Skeletal System"
+    "difficulty": "Hard",
+    "explanation": "The suffix '-crasia' means a mixture (good or bad) or temperament [10].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 269,
@@ -2950,14 +2954,14 @@
     "explanation": "The olecranon is the large process of the ulna that forms the 'tip' of the elbow.",
     "tag": "Skeletal System"
   },
-  {
+   {
     "id": 286,
-    "question": "Which suffix refers to 'surgical crushing' in the context of orthopedic procedures?",
-    "options": ["-clasis", "-tripsy", "-pexy", "-stasis"],
-    "correctAnswer": "-tripsy",
+    "question": "A patient is noted to have 'lordosis.' Which of the following describes this abnormal spinal condition?",
+    "options": ["Sideways curvature", "Humpback appearance", "Swayback (anterior) curvature", "Total lack of curvature"],
+    "correctAnswer": "Swayback (anterior) curvature",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'-tripsy' means crushing. While commonly used for stones (lithotripsy), it applies to the surgical crushing of any structure.",
+    "explanation": "Lordosis is an abnormal inward or anterior curvature of the lumbar spine, often called swayback [12].",
     "tag": "Skeletal System"
   },
   {
@@ -3120,14 +3124,14 @@
     "explanation": "'-itis' is the suffix for inflammation; 'myos' is a root for muscle.",
     "tag": "Muscular System"
   },
-  {
+   {
     "id": 303,
-    "question": "Which suffix refers to 'pain' as used in the term 'myalgia'?",
-    "options": ["-itis", "-algia", "-oma", "-osis"],
-    "correctAnswer": "-algia",
+    "question": "A patient is diagnosed with 'myalgia.' Which of the following suffixes is a synonym for '-algia' that could also describe this condition?",
+    "options": ["-itis", "-dynia", "-oma", "-osis"],
+    "correctAnswer": "-dynia",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'-algia' denotes pain or a painful condition.",
+    "difficulty": "Medium",
+    "explanation": "Both the suffixes '-algia' and '-dynia' mean pain, making them clinical synonyms for conditions like myalgia [8-10].",
     "tag": "Muscular System"
   },
   {
@@ -3162,13 +3166,13 @@
   },
   {
     "id": 307,
-    "question": "The combining form 'leiomy/o' refers to which type of muscle?",
-    "options": ["Skeletal", "Heart", "Smooth", "Striated"],
-    "correctAnswer": "Smooth",
+    "question": "Which combining form is used to describe 'spherical' bacteria?",
+    "options": ["Cocc/o", "Bacill/o", "Spir/o", "Staphyl/o"],
+    "correctAnswer": "Cocc/o",
+    "explanation": "Appendix A defines 'cocc/o' as referring to spherical bacteria.",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'Lei/o' means smooth; 'my/o' means muscle.",
-    "tag": "Muscular System"
+    "difficulty": "Medium",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 308,
@@ -3412,12 +3416,12 @@
   },
   {
     "id": 332,
-    "question": "The term 'tonus' (or muscle tone) refers to:",
-    "options": ["Maximum strength of a muscle", "The state of continuous partial contraction", "A muscle cramp", "Total relaxation"],
-    "correctAnswer": "The state of continuous partial contraction",
+    "question": "During a physical examination, a doctor assesses a patient's 'tonus.' This term is medically defined as:",
+    "options": ["The maximum force of a muscle", "Continuous partial contraction", "A sudden involuntary cramp", "Total muscle fiber relaxation"],
+    "correctAnswer": "Continuous partial contraction",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "Tonus maintains posture and keeps muscles ready for action.",
+    "explanation": "Tonus (muscle tone) is the state of continuous partial contraction that maintains posture and readiness [11].",
     "tag": "Muscular System"
   },
   {
@@ -3672,12 +3676,12 @@
   },
   {
     "id": 358,
-    "question": "The suffix '-ectasis' as in 'bronchiectasis' means:",
-    "options": ["Narrowing", "Stretching/Dilation", "Inflammation", "Infection"],
-    "correctAnswer": "Stretching/Dilation",
+    "question": "During a cardiac assessment, a physician notes signs of 'ischemia.' This term literally means that blood flow is being:",
+    "options": ["Increased", "Stopped completely", "Held back", "Bursting forth"],
+    "correctAnswer": "Held back",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'-ectasis' refers to the dilation or expansion of a tubular structure.",
+    "difficulty": "Medium",
+    "explanation": "'Isch/o' means to hold back. Ischemia is a deficiency in blood supply to a body part due to functional constriction or actual obstruction [16].",
     "tag": "Respiratory System"
   },
   {
@@ -3732,12 +3736,12 @@
   },
   {
     "id": 364,
-    "question": "The term 'pulmonary' pertains to the:",
-    "options": ["Heart", "Lungs", "Ribs", "Blood vessels"],
-    "correctAnswer": "Lungs",
+    "question": "A student must identify the Latin root for 'lung' to correctly define 'pulmonary.' Which combining form should they use?",
+    "options": ["Cardi/o", "Pulmon/o", "Pneum/o", "Capn/o"],
+    "correctAnswer": "Pulmon/o",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'Pulmon/o' is the Latin root for lung.",
+    "explanation": "'Pulmon/o' is the Latin root for lung, while 'pneum/o' is the Greek root for air or lungs [12, 13].",
     "tag": "Respiratory System"
   },
   {
@@ -3830,14 +3834,14 @@
     "explanation": "'-centesis' refers to a surgical puncture to remove fluid.",
     "tag": "Respiratory System"
   },
-  {
+   {
     "id": 374,
-    "question": "The combining form 'phren/o' refers to which muscle?",
-    "options": ["Intercostal muscle", "Diaphragm", "Pectoral muscle", "Sternocleidomastoid"],
-    "correctAnswer": "Diaphragm",
+    "question": "The condition 'pneumoconiosis' is a lung disease caused by the inhalation of which substance?",
+    "options": ["Dust", "Coal", "Iron", "Sand"],
+    "correctAnswer": "Dust",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'Phren/o' can refer to the mind or the diaphragm (e.g., phrenic nerve).",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'coni/o' means dust [10, 11].",
     "tag": "Respiratory System"
   },
   {
@@ -4050,15 +4054,15 @@
     "explanation": "Tidal volume (TV) is about 500 mL in a healthy adult.",
     "tag": "Respiratory System"
   },
-  {
+ {
     "id": 396,
-    "question": "Which specific combining form refers to the 'diaphragm' in the context of nerves?",
-    "options": ["Phren/o", "Pleuro/o", "Thorac/o", "Spir/o"],
-    "correctAnswer": "Phren/o",
+    "question": "A dermatologist treating a patient with a thick 'eschar' is dealing with which of the following?",
+    "options": ["A scab", "An open ulcer", "A localized bruise", "A fungal infection"],
+    "correctAnswer": "A scab",
+    "explanation": "The root 'eschar/o' refers to a scab.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "The phrenic nerve controls the diaphragm.",
-    "tag": "Respiratory System"
+    "difficulty": "Medium",
+    "tag": "Integumentary System"
   },
   {
     "id": 397,
@@ -4412,13 +4416,13 @@
   },
   {
     "id": 432,
-    "question": "What is 'steatorrhea'?",
-    "options": ["Discharge of pus in the stool", "Discharge of fat in the stool", "Blood in the stool", "Watery diarrhea"],
-    "correctAnswer": "Discharge of fat in the stool",
+    "question": "The combining form 'didym/o' can refer to a twin or which of the following organs?",
+    "options": ["Testis", "Ovary", "Kidney", "Lung"],
+    "correctAnswer": "Testis",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Steat/o' (fat) + '-rrhea' (flow/discharge).",
-    "tag": "Digestive System"
+    "explanation": "The root 'didym/o' means a twin or testis [12].",
+    "tag": "Reproductive System"
   },
   {
     "id": 433,
@@ -4451,13 +4455,13 @@
     "tag": "Digestive System"
   },
   {
-    "id": 336,
-    "question": "The condition 'intussusception' is best described as:",
-    "options": ["A twisting of the intestine on itself", "The telescoping of one part of the small intestine into another", "A blockage caused by a hard mass of stool", "The protrusion of the stomach through the diaphragm"],
-    "correctAnswer": "The telescoping of one part of the small intestine into another",
+    "id": 436,
+    "question": "An infant presents with an intestinal obstruction diagnosed as 'intussusception.' Which of the following describes this pathology?",
+    "options": ["The twisting of a bowel segment", "The telescoping of the intestine", "The failure of a valve to open", "The protrusion through a muscle"],
+    "correctAnswer": "The telescoping of the intestine",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "This leads to intestinal obstruction and is most common in infants.",
+    "explanation": "Intussusception is the telescoping of one part of the small intestine into another, often causing obstruction [14].",
     "tag": "Digestive System"
   },
   {
@@ -4482,12 +4486,17 @@
   },
   {
     "id": 439,
-    "question": "What is 'borborygmus'?",
-    "options": ["A type of intestinal parasite", "The rumbling noise caused by gas moving through the intestines", "The surgical removal of the appendix", "A narrowing of the esophagus"],
-    "correctAnswer": "The rumbling noise caused by gas moving through the intestines",
+    "question": "A nurse records 'borborygmus' in a patient's chart. What clinical sign does this term describe?",
+    "options": [
+      "Rumbling intestinal gas noises",
+      "Chronic infection of the bowel",
+      "Surgical removal of a cyst",
+      "Narrowing of the pyloric valve"
+    ],
+    "correctAnswer": "Rumbling intestinal gas noises",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "This is a clinical term for hyperactive bowel sounds.",
+    "explanation": "Borborygmus refers to rumbling noises caused by the movement of gas through the intestines [5].",
     "tag": "Digestive System"
   },
   {
@@ -4510,14 +4519,14 @@
     "explanation": "Hydrochloric acid (HCl) activates pepsinogen; intrinsic factor is needed for Vitamin B12 absorption.",
     "tag": "Digestive System"
   },
-  {
+   {
     "id": 442,
-    "question": "What is 'achalasia'?",
-    "options": ["The inability of the lower esophageal sphincter to relax", "The rapid emptying of the stomach into the duodenum", "A type of autoimmune liver disease", "The presence of multiple polyps in the colon"],
-    "correctAnswer": "The inability of the lower esophageal sphincter to relax",
+    "question": "A patient with 'achalasia' has difficulty swallowing. This condition is caused by which physiological failure?",
+    "options": ["A sphincter failing to relax", "The stomach emptying too fast", "An autoimmune liver response", "Multiple polyps in the colon"],
+    "correctAnswer": "A sphincter failing to relax",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'A-' (without) + 'chalasia' (relaxation). It makes swallowing very difficult.",
+    "explanation": "Achalasia (a- + chalasia) is the failure of the lower esophageal sphincter to relax [16, 17].",
     "tag": "Digestive System"
   },
   {
@@ -4542,12 +4551,12 @@
   },
   {
     "id": 445,
-    "question": "The 'Islets of Langerhans' are found in which organ?",
-    "options": ["Liver", "Spleen", "Pancreas", "Gallbladder"],
-    "correctAnswer": "Pancreas",
+    "question": "In which of the following organs are the endocrine structures known as the 'Islets of Langerhans' located?",
+    "options": ["The Pancreas", "The Liver", "The Spleen", "The Gallbladder"],
+    "correctAnswer": "The Pancreas",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "These are the endocrine clusters that produce insulin and glucagon.",
+    "explanation": "The Islets of Langerhans are the specialized endocrine clusters found within the pancreas [6].",
     "tag": "Digestive System"
   },
   {
@@ -4612,13 +4621,13 @@
   },
   {
     "id": 452,
-    "question": "The term 'bradycardia' refers to a heart rate that is:",
-    "options": ["Fast", "Slow", "Irregular", "Stopped"],
-    "correctAnswer": "Slow",
+    "question": "The root 'erethism/o' is used to describe which state?",
+    "options": ["Irritation", "Numbness", "Growth", "Death"],
+    "correctAnswer": "Irritation",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'Brady-' (slow) + 'card' (heart).",
-    "tag": "Cardiovascular & Lymphatic"
+    "difficulty": "Hard",
+    "explanation": "The root 'erethism/o' refers to irritation [5, 14].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 453,
@@ -4642,23 +4651,23 @@
   },
   {
     "id": 455,
-    "question": "The combining form 'hemat/o' refers to:",
-    "options": ["Heart", "Hormone", "Blood", "Liver"],
-    "correctAnswer": "Blood",
+    "question": "Which prefix means 'wide' or 'broad'?",
+    "options": ["Eury-", "Macro-", "Mega-", "Platy-"],
+    "correctAnswer": "Eury-",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'Hemat/o' (or hem/o) refers to blood.",
-    "tag": "Cardiovascular & Lymphatic"
+    "difficulty": "Medium",
+    "explanation": "The prefix 'eury-' means wide or broad [14].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
-  {
+   {
     "id": 456,
-    "question": "Which suffix refers to a 'deficiency' or 'reduction in number'?",
-    "options": ["-emia", "-penia", "-poiesis", "-lytic"],
-    "correctAnswer": "-penia",
+    "question": "Which numerical prefix represents 'one quintillion' (10^18)?",
+    "options": ["Exa-", "Peta-", "Tera-", "Giga-"],
+    "correctAnswer": "Exa-",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'-penia' means deficiency (e.g., leukopenia).",
-    "tag": "Cardiovascular & Lymphatic"
+    "difficulty": "Hard",
+    "explanation": "According to numerical value charts, 'exa-' represents 10^18 [14, 15].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 457,
@@ -4702,13 +4711,13 @@
   },
   {
     "id": 461,
-    "question": "A 'hemorrhage' is the ______ of blood.",
-    "options": ["Bursting forth", "Stoppage", "Formation", "Thinning"],
-    "correctAnswer": "Bursting forth",
+    "question": "The combining form 'chrys/o' refers to which of the following colors?",
+    "options": ["Gold", "Green", "Silver", "Yellow"],
+    "correctAnswer": "Gold",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'-rrhage' or '-rrhagia' means bursting forth.",
-    "tag": "Cardiovascular & Lymphatic"
+    "difficulty": "Hard",
+    "explanation": "According to the sources, 'chrys/o' refers to the color gold [9].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 462,
@@ -4760,15 +4769,15 @@
     "explanation": "'Ather/o' (fatty plaque) + 'scler/o' (hardening).",
     "tag": "Cardiovascular & Lymphatic"
   },
-  {
+   {
     "id": 467,
-    "question": "The term 'ischemia' refers to:",
-    "options": ["Excessive blood flow", "Death of heart tissue", "Deficient supply of oxygenated blood to a body part", "An irregular heartbeat"],
-    "correctAnswer": "Deficient supply of oxygenated blood to a body part",
+    "question": "The roots 'ferr/i' and 'ferr/o' refer to which element?",
+    "options": ["Iron", "Copper", "Sodium", "Potassium"],
+    "correctAnswer": "Iron",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Isch/o' (to hold back) + '-emia' (blood).",
-    "tag": "Cardiovascular & Lymphatic"
+    "explanation": "The roots 'ferr/i' and 'ferr/o' refer to iron [6].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 468,
@@ -4810,14 +4819,19 @@
     "explanation": "'Echo-' refers to sound waves.",
     "tag": "Cardiovascular & Lymphatic"
   },
-  {
+   {
     "id": 472,
-    "question": "What is an 'aneurysm'?",
-    "options": ["A blockage in a vein", "A localized weak spot or balloon-like enlargement of an arterial wall", "An infection of the heart valves", "A blood clot that has moved"],
-    "correctAnswer": "A localized weak spot or balloon-like enlargement of an arterial wall",
+    "question": "While reviewing an angiogram, a cardiologist notes an 'aneurysm.' This pathology is defined as:",
+    "options": [
+      "A traveling blood clot",
+      "A balloon-like enlargement",
+      "A hardened arterial wall",
+      "A narrowing of a vessel"
+    ],
+    "correctAnswer": "A balloon-like enlargement",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "Aneurysms are dangerous because they can rupture.",
+    "explanation": "An aneurysm is a localized weak spot or balloon-like enlargement of an arterial wall [12].",
     "tag": "Cardiovascular & Lymphatic"
   },
   {
@@ -4953,11 +4967,11 @@
   {
     "id": 486,
     "question": "Which term describes 'the abnormal backflow of blood' through a heart valve that doesn't close properly?",
-    "options": ["Stenosis", "Regurgitation", "Atresia", "Prolapse"],
+    "options": ["Valvular stenosis", "Regurgitation", "Arterial aneurysm", "Mitral prolapse"],
     "correctAnswer": "Regurgitation",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "Regurgitation is the backward flow of blood, distinct from stenosis (narrowing).",
+    "explanation": "Regurgitation is the backward flow of blood through a defective heart valve [1]. Stenosis refers to narrowing, while an aneurysm is a balloon-like enlargement.",
     "tag": "Cardiovascular & Lymphatic"
   },
   {
@@ -5002,13 +5016,13 @@
   },
   {
     "id": 491,
-    "question": "The term 'poikilocytosis' refers to an abnormal ______ of red blood cells.",
-    "options": ["Size", "Color", "Shape", "Count"],
-    "correctAnswer": "Shape",
+    "question": "The term 'incontinence' refers to a failure of which physiological action?",
+    "options": ["Holding together or control", "Waste production", "Blood circulation", "Hormone regulation"],
+    "correctAnswer": "Holding together or control",
+    "explanation": "The root 'contin/o' means to hold together; incontinence is the inability to control excretory functions.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Poikilo-' means varied or irregular; '-cytosis' refers to cells.",
-    "tag": "Cardiovascular & Lymphatic"
+    "difficulty": "Medium",
+    "tag": "Urinary System"
   },
   {
     "id": 492,
@@ -5060,14 +5074,14 @@
     "explanation": "Bruits are often caused by narrowing (stenosis) of an artery.",
     "tag": "Cardiovascular & Lymphatic"
   },
-  {
+   {
     "id": 497,
-    "question": "What is 'Raynaud's phenomenon'?",
-    "options": ["A type of heart failure", "Intermittent attacks of pallor and cyanosis in the fingers/toes due to arterial spasm", "A blockage in the pulmonary artery", "The inflammation of the lymphatic vessels"],
-    "correctAnswer": "Intermittent attacks of pallor and cyanosis in the fingers/toes due to arterial spasm",
+    "question": "A patient with 'Raynaud's phenomenon' experiences pallor and cyanosis in the extremities. This is caused by:",
+    "options": ["Chronic right-sided heart failure", "Intermittent arterial spasms", "A blockage in the pulmonary artery", "Inflammation of the lymph vessels"],
+    "correctAnswer": "Intermittent arterial spasms",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "Triggered by cold or stress, it involves severe vasoconstriction.",
+    "explanation": "Raynaud's involves intermittent attacks of pallor and cyanosis in the fingers or toes due to arterial spasms [19].",
     "tag": "Cardiovascular & Lymphatic"
   },
   {
@@ -5080,13 +5094,19 @@
     "explanation": "Commonly known as 'heart strings,' they prevent the valves from inverting.",
     "tag": "Cardiovascular & Lymphatic"
   },
-  {
+   {
     "id": 499,
-    "question": "Which specific condition involves 'the absence of a normal heart valve opening'?",
-    "options": ["Stenosis", "Atresia", "Regurgitation", "Prolapse"],
-    "correctAnswer": "Atresia",
+    "question": "A trauma patient is diagnosed with 'hypovolemia' following significant blood loss. This condition is physiologically defined as:",
+    "options": [
+      "Increased blood viscosity",
+      "Decreased total blood volume",
+      "High levels of blood sugar",
+      "Abnormal blood clotting speed"
+    ],
+    "correctAnswer": "Decreased total blood volume",
+    "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "Atresia is the congenital absence or closure of an opening.",
+    "explanation": "'Hypo-' (low) + 'vol/o' (volume) + '-emia' (blood condition). Hypovolemia is a critical state often leading to shock.",
     "tag": "Cardiovascular & Lymphatic"
   },
   {
@@ -5129,15 +5149,15 @@
     "explanation": "'-plegia' refers to total paralysis; '-paresis' refers to partial weakness.",
     "tag": "Nervous/Special Senses"
   },
-  {
+   {
     "id": 504,
-    "question": "The combining form 'myel/o' refers to the spinal cord or the:",
-    "options": ["Muscle", "Bone marrow", "Meninges", "Nerve root"],
-    "correctAnswer": "Bone marrow",
+    "question": "Which of the following combining forms refers to the act of 'flowing'?",
+    "options": ["Rhe/o", "Phag/o", "Stasis", "Ptosis"],
+    "correctAnswer": "Rhe/o",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'Myel/o' is shared between the spinal cord and bone marrow (e.g., myelitis).",
-    "tag": "Nervous/Special Senses"
+    "difficulty": "Medium",
+    "explanation": "The combining form 'rhe/o' means flow [7].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 505,
@@ -5219,14 +5239,14 @@
     "explanation": "The cerebrum is the largest part of the brain.",
     "tag": "Nervous/Special Senses"
   },
-  {
+   {
     "id": 513,
-    "question": "Which term refers to 'fainting'?",
-    "options": ["Vertigo", "Syncope", "Tinnitus", "Aphasia"],
-    "correctAnswer": "Syncope",
+    "question": "A first responder treats a patient for 'syncope.' For which clinical event is this the medical term?",
+    "options": ["A sense of spinning dizziness", "A sudden loss of consciousness", "A ringing sensation in the ears", "The inability to express speech"],
+    "correctAnswer": "A sudden loss of consciousness",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "Syncope is the medical term for a sudden loss of consciousness due to low blood flow.",
+    "explanation": "Syncope is the medical term for fainting or a sudden loss of consciousness [20].",
     "tag": "Nervous/Special Senses"
   },
   {
@@ -5241,13 +5261,13 @@
   },
   {
     "id": 515,
-    "question": "Which combining form refers to 'the mind'?",
-    "options": ["Psych/o", "Somat/o", "Phren/o", "Both Psych/o and Phren/o"],
-    "correctAnswer": "Both Psych/o and Phren/o",
+    "question": "The medical term 'exacerbation' refers to a condition that has been:",
+    "options": ["Aggravated or irritated", "Soothed or relieved", "Surgically removed", "Completely cured"],
+    "correctAnswer": "Aggravated or irritated",
+    "explanation": "Appendix A defines 'exacerb/o' as meaning to aggravate or irritate.",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "Both roots can refer to the mind, though 'phren/o' also refers to the diaphragm.",
-    "tag": "Nervous/Special Senses"
+    "difficulty": "Medium",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 516,
@@ -5331,13 +5351,13 @@
   },
   {
     "id": 524,
-    "question": "The term 'presbyopia' refers to vision changes caused by:",
-    "options": ["Infection", "Genetics", "Aging", "Diabetes"],
-    "correctAnswer": "Aging",
+    "question": "The prefix 'galvano-' refers to which of the following?",
+    "options": ["Direct electric current", "Radiation", "Sound waves", "Heat"],
+    "correctAnswer": "Direct electric current",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'Presby-' means old age; this is the loss of near-vision as we age.",
-    "tag": "Nervous/Special Senses"
+    "difficulty": "Hard",
+    "explanation": "The prefix 'galvano-' refers to a direct electric current [6].",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 525,
@@ -5390,7 +5410,7 @@
     "tag": "Nervous/Special Senses"
   },
   {
-    "id": 330,
+    "id": 530,
     "question": "The suffix '-taxia' refers to:",
     "options": ["Sensation", "Coordination/Order", "Paralysis", "Speech"],
     "correctAnswer": "Coordination/Order",
@@ -5461,12 +5481,17 @@
   },
   {
     "id": 537,
-    "question": "What is the difference between 'Wernicke's aphasia' and 'Broca's aphasia'?",
-    "options": ["Broca's is receptive; Wernicke's is expressive", "Broca's involves motor speech; Wernicke's involves language comprehension", "Broca's involves reading; Wernicke's involves writing", "Broca's is permanent; Wernicke's is temporary"],
-    "correctAnswer": "Broca's involves motor speech; Wernicke's involves language comprehension",
+    "question": "A patient diagnosed with 'Broca's aphasia' is primarily struggling with which pathological state?",
+    "options": [
+      "Expressive aphasia (producing words)",
+      "Receptive aphasia (understanding words)",
+      "Sensory ataxia (coordinating movement)",
+      "Visual agnosia (recognizing objects)"
+    ],
+    "correctAnswer": "Expressive aphasia (producing words)",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "Broca's (expressive) patients struggle to produce words; Wernicke's (receptive) patients speak fluidly but nonsense.",
+    "explanation": "Patients with Broca's (expressive) aphasia struggle to produce words, while Wernicke's (receptive) patients struggle to understand them [8].",
     "tag": "Nervous/Special Senses"
   },
   {
@@ -5479,15 +5504,15 @@
     "explanation": "It is a critical sign of pressure within the skull.",
     "tag": "Nervous/Special Senses"
   },
-  {
+   {
     "id": 539,
-    "question": "Which term describes 'the inability to perform purposeful movements' despite having the physical ability to do so?",
-    "options": ["Ataxia", "Apraxia", "Akinesia", "Aphasia"],
-    "correctAnswer": "Apraxia",
+    "question": "A nurse reporting 'hematochezia' is describing the presence of blood during which process?",
+    "options": ["Defecation", "Urination", "Vomiting", "Sweating"],
+    "correctAnswer": "Defecation",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'A-' (without) + 'praxia' (action/work). It is a deficit in motor planning.",
-    "tag": "Nervous/Special Senses"
+    "difficulty": "Medium",
+    "explanation": "The suffix '-chezia' refers to defecation [9].",
+    "tag": "Digestive System"
   },
   {
     "id": 540,
@@ -5641,12 +5666,12 @@
   },
   {
     "id": 555,
-    "question": "What is the meaning of the root 'toxic/o' in 'thyrotoxicosis'?",
-    "options": ["Fast", "Poison", "Large", "Hidden"],
+    "question": "In the medical term 'thyrotoxicosis,' what is the literal meaning of the root 'toxic/o'?",
+    "options": ["Poison", "Sugar", "Fever", "Fat"],
     "correctAnswer": "Poison",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "Thyrotoxicosis is a condition of excessive thyroid hormone (poisoning the system).",
+    "explanation": "The root 'toxic/o' refers to poison; thyrotoxicosis is essentially poisoning of the system by excessive thyroid hormone [9].",
     "tag": "Endocrine System"
   },
   {
@@ -5861,13 +5886,13 @@
   },
   {
     "id": 577,
-    "question": "What is 'gynecomastia'?",
-    "options": ["Female-pattern hair loss", "Excessive development of mammary glands in males", "A type of ovarian cyst", "Infertility in women"],
-    "correctAnswer": "Excessive development of mammary glands in males",
+    "question": "Which combining form specifically refers to an 'ulcer'?",
+    "options": ["Helc/o", "Onc/o", "Cele", "Penia"],
+    "correctAnswer": "Helc/o",
     "category": "Medical Terminology",
-    "difficulty": "Medium",
-    "explanation": "'Gynec/o' (female) + 'mast/o' (breast).",
-    "tag": "Endocrine System"
+    "difficulty": "Hard",
+    "explanation": "The root 'helc/o' is used to denote an ulcer.",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 578,
@@ -5941,13 +5966,13 @@
   },
   {
     "id": 585,
-    "question": "The 'Islets of Langerhans' are the ______ of the pancreas.",
-    "options": ["Ductal cells", "Endocrine clusters", "Enzyme-producing sacs", "Structural fibers"],
-    "correctAnswer": "Endocrine clusters",
+    "question": "The combining form 'gnath/o' refers to which part of the body?",
+    "options": ["Jaw", "Chin", "Cheek", "Neck"],
+    "correctAnswer": "Jaw",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "They contain Alpha, Beta, and Delta cells.",
-    "tag": "Endocrine System"
+    "explanation": "The root 'gnath/o' means jaw [17].",
+    "tag": "Overview of Body"
   },
   {
     "id": 586,
@@ -6231,13 +6256,17 @@
   },
   {
     "id": 614,
-    "year": "2026",
-    "question": "A 'mammogram' is a record or image of the:",
-    "options": ["Uterus", "Breast", "Ovaries", "Cervix"],
-    "correctAnswer": "Breast",
+    "question": "A patient is referred for 'mastopexy.' Which of the following describes the goal of this surgical procedure?",
+    "options": [
+      "Surgical removal of the breast",
+      "Surgical fixation of the breast",
+      "Surgical repair of the uterus",
+      "Surgical incision into the ovary"
+    ],
+    "correctAnswer": "Surgical fixation of the breast",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'Mamm/o' and 'mast/o' both refer to the breast.",
+    "difficulty": "Medium",
+    "explanation": "'Mast/o' means breast and '-pexy' means surgical fixation [13, 14].",
     "tag": "Reproductive System"
   },
   {
@@ -6370,14 +6399,14 @@
     "explanation": "'Retro-' (backward) + '-version' (turning).",
     "tag": "Reproductive System"
   },
-  {
+   {
     "id": 628,
-    "question": "Which combining form refers to 'ovum' or 'egg'?",
-    "options": ["Ov/o", "O/o", "Ovul/o", "All of the above"],
-    "correctAnswer": "All of the above",
+    "question": "Which of the following combining forms refers to the 'ovum' or 'egg'?",
+    "options": ["O/o", "Orchi/o", "Hyster/o", "Salping/o"],
+    "correctAnswer": "O/o",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "All three are used to describe the female gamete.",
+    "explanation": "The combining form 'o/o' refers to the egg or ovum [11].",
     "tag": "Reproductive System"
   },
   {
@@ -6610,24 +6639,24 @@
     "explanation": "'Dermat/o' (Greek) and 'cutane/o' (Latin) both refer to the skin.",
     "tag": "Integumentary System"
   },
-  {
+  { 
     "id": 652,
-    "question": "The term 'erythema' refers to:",
-    "options": ["Whiteness", "Redness", "Blueness", "Yellowness"],
-    "correctAnswer": "Redness",
+    "question": "A dermatologist observes 'erythema' on a patient's forearm. Which clinical appearance is associated with this term?",
+    "options": ["A loss of skin pigmentation", "A localized redness of the skin", "A bluish tint from low oxygen", "A yellowish hue from bilirubin"],
+    "correctAnswer": "A localized redness of the skin",
     "category": "Medical Terminology",
     "difficulty": "Easy",
-    "explanation": "'Erythem/o' and 'erythr/o' refer to red.",
+    "explanation": "The terms 'erythem/o' and 'erythr/o' refer to the color red; erythema is redness of the skin [21].",
     "tag": "Integumentary System"
   },
   {
     "id": 653,
-    "question": "Which suffix refers to 'inflammation'?",
-    "options": ["-osis", "-itis", "-oma", "-derma"],
-    "correctAnswer": "-itis",
+    "question": "A patient with liver failure presents with 'jaundice.' Which color-related medical term is synonymous with this condition?",
+    "options": ["Erythroderma", "Xanthoderma", "Cyanoderma", "Melanoderma"],
+    "correctAnswer": "Xanthoderma",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "Example: 'dermatitis' is inflammation of the skin.",
+    "difficulty": "Medium",
+    "explanation": "'Xanth/o' means yellow; xanthoderma is the yellowing of the skin, common in liver disease [15].",
     "tag": "Integumentary System"
   },
   {
@@ -6702,13 +6731,13 @@
   },
   {
     "id": 661,
-    "question": "What does 'xeroderma' mean?",
-    "options": ["Hard skin", "Dry skin", "Red skin", "Soft skin"],
-    "correctAnswer": "Dry skin",
+    "question": "Which combining form refers specifically to 'anxiety' or feeling 'uneasy'?",
+    "options": ["Anxi/o", "Psych/o", "Phren/o", "Mogi-"],
+    "correctAnswer": "Anxi/o",
+    "explanation": "Appendix A defines 'anxi/o' as anxiety, anxious, or uneasy.",
     "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "'Xer/o' means dry.",
-    "tag": "Integumentary System"
+    "difficulty": "Medium",
+    "tag": "Roots, Prefixes, Suffixes"
   },
   {
     "id": 662,
@@ -7012,12 +7041,12 @@
   },
   {
     "id": 692,
-    "question": "What is 'xerophthalmia'?",
-    "options": ["Dry skin", "Dry eyes caused by Vitamin A deficiency or systemic disease", "Dry mouth", "Loss of vision"],
-    "correctAnswer": "Dry eyes caused by Vitamin A deficiency or systemic disease",
+    "question": "The clinical term 'alopecia areata' refers to hair loss that is:",
+    "options": ["Occurring in patches", "Total across the body", "Caused by stress", "Permanent"],
+    "correctAnswer": "Occurring in patches",
+    "explanation": "According to Appendix A, the combining form 'areat/o' means occurring in patches or circumscribed areas.",
     "category": "Medical Terminology",
-    "difficulty": "Hard",
-    "explanation": "'Xer/o' (dry) + 'ophthalm/o' (eye).",
+    "difficulty": "Medium",
     "tag": "Integumentary System"
   },
   {
@@ -7090,14 +7119,14 @@
     "explanation": "'An-' (without) + 'hidr/o' (sweat).",
     "tag": "Integumentary System"
   },
-  {
+   {
     "id": 700,
-    "question": "What is 'Mohs surgery'?",
-    "options": ["The use of lasers to remove tattoos", "A precise surgical technique to treat skin cancer by removing layers of tissue and examining them under a microscope", "A procedure to tighten skin", "The use of extreme cold to freeze warts"],
-    "correctAnswer": "A precise surgical technique to treat skin cancer by removing layers of tissue and examining them under a microscope",
+    "question": "A patient is scheduled for 'Mohs surgery' to treat skin cancer. What is a primary characteristic of this technique?",
+    "options": ["Removal of tissue using lasers", "Microscopic layer-by-layer excision", "Tensioning skin for a facelift", "Freezing tissue with liquid nitrogen"],
+    "correctAnswer": "Microscopic layer-by-layer excision",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "It ensures all margins are clear while sparing as much healthy tissue as possible.",
+    "explanation": "Mohs surgery involves removing layers of tissue and examining them under a microscope to ensure clear margins [22].",
     "tag": "Integumentary System"
   },
   {
@@ -7121,15 +7150,20 @@
     "tag": "Urinary System"
   },
   {
-    "id": 703,
-    "question": "Which suffix refers to 'crushing'?",
-    "options": ["-tripsy", "-ptosis", "-ectasia", "-pexy"],
-    "correctAnswer": "-tripsy",
-    "category": "Medical Terminology",
-    "difficulty": "Easy",
-    "explanation": "Example: 'lithotripsy' is the crushing of stones.",
-    "tag": "Urinary System"
-  },
+  "id": 703,
+  "question": "A clinical report notes 'urethrorrhagia' following a traumatic pelvic injury. Based on the combining form and suffix, what is occurring in the tube that carries urine out of the body?",
+  "options": [
+    "Abnormal narrowing of the passage",
+    "Surgical suturing of the tissue",
+    "Bursting forth of blood",
+    "Involuntary muscle contraction"
+  ],
+  "correctAnswer": "Bursting forth of blood",
+  "category": "Medical Terminology",
+  "difficulty": "Medium",
+  "explanation": "The suffix '-rrhagia' (or -rrhage) refers to bursting forth, typically of blood [1, 2]. The combining form 'urethr/o' refers specifically to the urethra, the tube leading from the bladder to the exterior of the body [3].",
+  "tag": "Urinary System"
+},
   {
     "id": 704,
     "question": "The term 'polyuria' indicates:",
@@ -7290,14 +7324,14 @@
     "explanation": "Can be stress, urge, or overflow incontinence.",
     "tag": "Urinary System"
   },
-  {
+ {
     "id": 720,
-    "question": "What is 'hydronephrosis'?",
-    "options": ["Water on the kidney", "Dilation of the renal pelvis and calyces due to obstruction of urine flow", "A kidney cyst", "Failure of the kidney to produce urine"],
-    "correctAnswer": "Dilation of the renal pelvis and calyces due to obstruction of urine flow",
+    "question": "An ultrasound reveals 'hydronephrosis' in a patient's left kidney. Which of the following describes this condition?",
+    "options": ["The presence of renal cysts", "A bacterial infection of the pelvis", "Kidney dilation due to obstruction", "Total failure of urine production"],
+    "correctAnswer": "Kidney dilation due to obstruction",
     "category": "Medical Terminology",
     "difficulty": "Medium",
-    "explanation": "'Hydr/o' (water) + 'nephr/o' (kidney) + '-osis' (condition).",
+    "explanation": "Hydronephrosis is the dilation of the renal pelvis and calyces caused by an obstruction of urine flow [23].",
     "tag": "Urinary System"
   },
   {
@@ -7452,12 +7486,17 @@
   },
   {
     "id": 736,
-    "question": "What is 'glomerulonephritis'?",
-    "options": ["A viral infection of the bladder", "An autoimmune or post-infectious inflammation of the kidney's filters", "The formation of many kidney cysts", "A blockage in the ureter"],
-    "correctAnswer": "An autoimmune or post-infectious inflammation of the kidney's filters",
+    "question": "A biopsy confirms 'glomerulonephritis.' Which of the following describes this specific pathological state?",
+    "options": [
+      "Infection of the bladder wall",
+      "Inflammation of kidney filters",
+      "Obstruction of the renal pelvis",
+      "Hardening of the renal artery"
+    ],
+    "correctAnswer": "Inflammation of kidney filters",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "It often leads to hematuria and proteinuria.",
+    "explanation": "Glomerulonephritis is inflammation of the glomeruli, the filtering units of the kidney [16].",
     "tag": "Urinary System"
   },
   {
@@ -7470,14 +7509,19 @@
     "explanation": "This leads to low blood protein (hypoalbuminemia) and severe swelling (edema).",
     "tag": "Urinary System"
   },
-  {
+   {
     "id": 738,
-    "question": "What is 'nephrogenic diabetes insipidus'?",
-    "options": ["High blood sugar causing kidney damage", "The kidneys' inability to respond to ADH", "A lack of insulin production", "A condition where the bladder is overactive"],
-    "correctAnswer": "The kidneys' inability to respond to ADH",
+    "question": "A patient with 'nephrogenic diabetes insipidus' is suffering from a condition characterized by which of the following?",
+    "options": [
+      "Renal resistance to ADH",
+      "Lack of ADH production",
+      "Excessive insulin secretion",
+      "Overactive bladder muscles"
+    ],
+    "correctAnswer": "Renal resistance to ADH",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "This results in the excretion of massive amounts of very dilute urine.",
+    "explanation": "Nephrogenic diabetes insipidus involves renal resistance to Antidiuretic Hormone (ADH) [12].",
     "tag": "Urinary System"
   },
   {
@@ -7599,5 +7643,610 @@
     "difficulty": "Hard",
     "explanation": "It is the most common kidney cancer in children.",
     "tag": "Urinary System"
+  },
+  {
+    "id": 751,
+    "question": "A HOSA student reads a report regarding 'abruptio placentae.' Based on the combining form abrupt/o, what does this condition literally involve?",
+    "options": ["Breaking away from", "Inflammation of", "Surgical repair of", "Abnormal softening of"],
+    "correctAnswer": "Breaking away from",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'abrupt/o' is defined as meaning 'broken away from' [1, 2].",
+    "tag": "Reproductive System"
+  },
+  {
+    "id": 752,
+    "question": "A patient diagnosed with 'agoraphobia' has a pathological fear specifically related to which of the following?",
+    "options": ["Marketplaces or open spaces", "Heights and high places", "Enclosed or small spaces", "Spiders and insects"],
+    "correctAnswer": "Marketplaces or open spaces",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "According to the sources, the root 'agor/a' refers to a marketplace [3, 4].",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 753,
+    "question": "Which combining form refers specifically to a sensation or condition that is 'dull' or 'dim'?",
+    "options": ["Ambly/o", "Glauc/o", "Presby/o", "Scoto-"],
+    "correctAnswer": "Ambly/o",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'ambly/o' means dull or dim, as seen in the term amblyopia [5, 6].",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 754,
+    "question": "If a surgeon is performing a procedure in the 'axillary' region, they are working in which part of the body?",
+    "options": ["The armpit", "The groin", "The lower back", "The neck"],
+    "correctAnswer": "The armpit",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "Appendix A defines 'axill/o' as referring to the armpit [7].",
+    "tag": "Overview of Body"
+  },
+  {
+    "id": 755,
+    "question": "The combining form 'bifid/o' is used to describe a structure that is:",
+    "options": ["Split or divided into two parts", "Joined together permanently", "Abnormally small", "Hardened and fibrous"],
+    "correctAnswer": "Split or divided into two parts",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'bifid/o' means split or divided into two parts [7].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 756,
+    "question": "A dentist treating a patient for 'bruxism' is addressing what pathological habit?",
+    "options": ["Grinding the teeth", "Excessive plaque buildup", "Inability to swallow", "Bleeding of the gums"],
+    "correctAnswer": "Grinding the teeth",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'brux/o' specifically means to grind [8].",
+    "tag": "Digestive System"
+  },
+  {
+    "id": 757,
+    "question": "A patient presenting with 'intermittent claudication' is experiencing a condition where they:",
+    "options": ["Limp", "Sweat excessively", "Lose their voice", "Cannot sleep"],
+    "correctAnswer": "Limp",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'claudicat/o' means to limp [9].",
+    "tag": "Muscular System"
+  },
+  {
+    "id": 758,
+    "question": "The 'deltoid' muscle is named such because its shape resembles which of the following?",
+    "options": ["A triangular shape", "A circular ridge", "A long thread", "A square block"],
+    "correctAnswer": "A triangular shape",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'delt/o' refers to the Greek letter delta, which is a triangular shape [10].",
+    "tag": "Muscular System"
+  },
+  {
+    "id": 759,
+    "question": "Which combining form refers to a structure that is 'sieve-like'?",
+    "options": ["Ethm/o", "Cribri-", "Spongi/o", "Reticul/o"],
+    "correctAnswer": "Ethm/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The sources define 'ethm/o' as a sieve, typically referring to the ethmoid bone [11].",
+    "tag": "Skeletal System"
+  },
+  {
+    "id": 760,
+    "question": "The medical term for 'rectal gas' is derived from which combining form?",
+    "options": ["Flatul/o", "Aer/o", "Phys/o", "Copr/o"],
+    "correctAnswer": "Flatul/o",
+    "category": "Medical Terminology",
+    "difficulty": "Easy",
+    "explanation": "The root 'flatul/o' refers to flatus or rectal gas [12, 13].",
+    "tag": "Digestive System"
+  },
+  {
+    "id": 761,
+    "question": "A plastic surgeon performing a 'genioplasty' is focusing on the surgical reconstruction of which facial structure?",
+    "options": ["The chin", "The cheek", "The nose", "The jaw"],
+    "correctAnswer": "The chin",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, the combining form 'geni/o' refers specifically to the chin.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 762,
+    "question": "Which combining form is used in medical terminology to refer specifically to 'moisture'?",
+    "options": ["Hygr/o", "Hydr/o", "Xer/o", "Aque/o"],
+    "correctAnswer": "Hygr/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The sources define 'hygr/o' as moisture, distinct from 'hydr/o' (water).",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 763,
+    "question": "The combining form 'lampr/o' would be used to describe a structure or substance that is:",
+    "options": ["Clear", "Dark", "Rough", "Opaque"],
+    "correctAnswer": "Clear",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Appendix A defines 'lampr/o' as meaning clear.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 764,
+    "question": "A patient suffering from 'mogigraphia' is experiencing which of the following pathological states?",
+    "options": ["Difficulty writing", "Difficulty walking", "Difficulty swallowing", "Difficulty breathing"],
+    "correctAnswer": "Difficulty writing",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The prefix 'mogi-' means difficult, and 'graph/o' refers to writing.",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 765,
+    "question": "The combining form 'piez/o' (as seen in the term 'piesesthesia') refers to which specific sensation?",
+    "options": ["Pressure", "Heat", "Cold", "Pain"],
+    "correctAnswer": "Pressure",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The roots 'piez/o' and 'pies/i' refer to pressure.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 766,
+    "question": "In medical terminology, which of the following combining forms refers specifically to the 'leg'?",
+    "options": ["Scel/o", "Pod/o", "Ped/o", "Chir/o"],
+    "correctAnswer": "Scel/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The sources define 'scel/o' or the suffix '-scelia' as referring to the leg.",
+    "tag": "Overview of Body"
+  },
+  {
+    "id": 767,
+    "question": "A clinical note describing a patient’s complexion as 'tephrous' indicates that the skin appears:",
+    "options": ["Gray or ashen", "Red and flushed", "Yellow and jaundiced", "Blue and cyanotic"],
+    "correctAnswer": "Gray or ashen",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'tephr/o' refers to the color gray or an ashen appearance.",
+    "tag": "Integumentary System"
+  },
+  {
+    "id": 768,
+    "question": "Which combining form refers specifically to the 'scrotum'?",
+    "options": ["Osche/o", "Orchi/o", "Balan/o", "Epididym/o"],
+    "correctAnswer": "Osche/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, 'osche/o' refers to the scrotum.",
+    "tag": "Reproductive System"
+  },
+  {
+    "id": 769,
+    "question": "The combining form 'loph/o' is used to describe which type of anatomical structure?",
+    "options": ["A ridge", "A curve", "A spiral", "A hollow"],
+    "correctAnswer": "A ridge",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'loph/o' means a ridge.",
+    "tag": "Skeletal System"
+  },
+  {
+    "id": 770,
+    "question": "A patient diagnosed with a 'helcoma' is suffering from which of the following?",
+    "options": ["An ulcer", "A tumor", "A scar", "A localized infection"],
+    "correctAnswer": "An ulcer",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'helc/o' specifically refers to an ulcer.",
+    "tag": "Integumentary System"
+  },
+  {
+    "id": 771,
+    "question": "A HOSA student studying hematology learns that an 'acanthocyte' is an abnormal red blood cell. Based on the combining form acanth/o, what is the defining physical characteristic of this cell?",
+    "options": ["It is thorny or spiny", "It is perfectly spherical", "It is pale and colorless", "It is exceptionally large"],
+    "correctAnswer": "It is thorny or spiny",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Appendix A defines 'acanth/o' as meaning thorny or spiny.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 772,
+    "question": "A patient diagnosed with 'akinetopsia' has a rare neurological condition. What is this patient specifically unable to perceive?",
+    "options": ["Objects in motion", "The color red", "Depth and distance", "Faces of family members"],
+    "correctAnswer": "Objects in motion",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The Glossary defines 'akinetopsia' as the inability to see objects in motion.",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 773,
+    "question": "If a clinical report describes a patient as having 'camptocormia,' the patient is exhibiting which physical sign?",
+    "options": ["An abnormally bent trunk", "A long, narrow face", "A hairy tongue", "A blue-tinted complexion"],
+    "correctAnswer": "An abnormally bent trunk",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the BarCharts source, the combining form 'campt/o' means bent.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 774,
+    "question": "The term 'dolichofacial' is used in physical assessments to describe a face that is:",
+    "options": ["Abnormally long", "Abnormally wide", "Perfectly symmetrical", "Noticeably flattened"],
+    "correctAnswer": "Abnormally long",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'dolich/o' is defined in the sources as meaning long.",
+    "tag": "Overview of Body"
+  },
+  {
+    "id": 775,
+    "question": "A patient with an 'eleoma' has a tumor-like mass caused by the presence of which substance in the tissue?",
+    "options": ["Oil", "Pus", "Calcium", "Blood"],
+    "correctAnswer": "Oil",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'ele/o' specifically refers to oil.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 776,
+    "question": "In medical terminology, the condition 'gelosis' refers to the accumulation of a substance in the tissues that has a tendency to:",
+    "options": ["Freeze or congeal", "Liquefy and flow", "Harden like stone", "Vaporize into gas"],
+    "correctAnswer": "Freeze or congeal",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'gel/o' means to freeze or congeal.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 777,
+    "question": "Which prefix refers specifically to a structure or position that is 'erect' or 'straight'?",
+    "options": ["Ithy-", "Ankyl/o", "Scoli/o", "Lord/o"],
+    "correctAnswer": "Ithy-",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Appendix A defines the prefix 'ithy-' as meaning erect or straight.",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 778,
+    "question": "The term 'meromicrosomia' describes a condition where there is abnormal smallness of which of the following?",
+    "options": ["A specific part of the body", "The entire body as a whole", "The internal organs only", "The extremities"],
+    "correctAnswer": "A specific part of the body",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'mer/o' means part; therefore, meromicrosomia refers to smallness of a part.",
+    "tag": "Overview of Body"
+  },
+  {
+    "id": 779,
+    "question": "A HOSA student learns that 'pselaphesia' is a term related to which of the five senses?",
+    "options": ["Touch", "Taste", "Smell", "Hearing"],
+    "correctAnswer": "Touch",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the BarCharts Terminology Sets, 'pselaphes/o' is a root referring to touch.",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 780,
+    "question": "An ophthalmologist examining the 'canthus' is focusing on which specific part of the eye?",
+    "options": ["The corner of the eye", "The colored iris", "The clear cornea", "The protective eyelid"],
+    "correctAnswer": "The corner of the eye",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "Appendix A defines 'canth/o' as referring to the corner of the eye.",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 781,
+    "question": "A newborn is diagnosed with 'plagiocephaly.' Based on the root word parts, what is the defining characteristic of this condition?",
+    "options": ["A slanting or oblique head shape", "An abnormally small skull", "The premature fusion of sutures", "Excessive fluid in the brain"],
+    "correctAnswer": "A slanting or oblique head shape",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, the combining form 'plagi/o' means slanting or oblique [1].",
+    "tag": "Skeletal System"
+  },
+  {
+    "id": 782,
+    "question": "A pharmacologist describing a substance as having 'picric' properties is referring to which sensory characteristic?",
+    "options": ["Bitterness", "Sweetness", "A pungent odor", "A cooling sensation"],
+    "correctAnswer": "Bitterness",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The sources define the root 'picr/o' as meaning bitter [1].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 783,
+    "question": "The clinical term 'tapinocephaly' is used to describe a skull that is abnormally:",
+    "options": ["Low", "High", "Wide", "Pointed"],
+    "correctAnswer": "Low",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'tapin/o' is used in medical terminology to describe something that is low [2].",
+    "tag": "Skeletal System"
+  },
+  {
+    "id": 784,
+    "question": "The combining form 'zym/o' is used in medical terminology to refer to which of the following?",
+    "options": ["An enzyme or ferment", "A protective barrier", "A state of sleep", "The process of filtering"],
+    "correctAnswer": "An enzyme or ferment",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "According to the sources, 'zym/o' refers to an enzyme or ferment [3].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 785,
+    "question": "An anatomist describing a bone as 'scaphoid' is noting that its shape resembles which of the following?",
+    "options": ["A boat", "A wedge", "A hammer", "A stirrup"],
+    "correctAnswer": "A boat",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'scaph/o' refers to a scapha, which is boat-shaped [4].",
+    "tag": "Skeletal System"
+  },
+  {
+    "id": 786,
+    "question": "If a pathological process involves 'phanerosis,' it means a condition or substance has become:",
+    "options": ["Visible or apparent", "Hidden or concealed", "Liquid or flowing", "Hardened or rigid"],
+    "correctAnswer": "Visible or apparent",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'phaner/o' means visible or apparent [1].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 787,
+    "question": "A HOSA student learns that a patient with 'schistoglossia' has a tongue that is:",
+    "options": ["Split or cleft", "Abnormally large", "Hairy in appearance", "Stiff and immobile"],
+    "correctAnswer": "Split or cleft",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The sources define the combining form 'schist/o' as meaning split or cleft [4].",
+    "tag": "Digestive System"
+  },
+  {
+    "id": 788,
+    "question": "A patient diagnosed with 'actinic' keratosis has a skin condition caused by exposure to which of the following?",
+    "options": ["Light or radiation", "Extreme cold", "Chemical irritants", "Fungal spores"],
+    "correctAnswer": "Light or radiation",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "Appendix A defines 'actin/o' as light, and BarCharts defines it as ray or radiation [5, 6].",
+    "tag": "Integumentary System"
+  },
+  {
+    "id": 789,
+    "question": "The combining form 'lox/o' (as seen in the term 'loxotomy') refers to a position or cut that is:",
+    "options": ["Oblique or slanting", "Directly vertical", "Perfectly horizontal", "Circular"],
+    "correctAnswer": "Oblique or slanting",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'lox/o' is defined as meaning oblique or slanting [7].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 790,
+    "question": "In the medical term 'pylephlebitis,' the root 'pyl/e' refers specifically to which anatomical structure?",
+    "options": ["The portal vein", "The gate of the stomach", "The renal pelvis", "The hair follicle"],
+    "correctAnswer": "The portal vein",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, the root 'pyl/e' refers specifically to the portal vein [8].",
+    "tag": "Cardiovascular & Lymphatic"
+  },
+  {
+    "id": 791,
+    "question": "A researcher describing a 'vacant' or 'empty' space within a tissue sample would use which of the following combining forms?",
+    "options": ["Ken/o", "Cavit/o", "Hapl/o", "Atel/o"],
+    "correctAnswer": "Ken/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, the combining form 'ken/o' means empty [1, 2].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 792,
+    "question": "A laboratory technician notes that a specific enzyme is 'frigolabile.' Based on the suffix -labile, what is the characteristic of this enzyme?",
+    "options": ["It is unstable or perishable in the cold", "It is activated by extreme heat", "It is resistant to chemical breakdown", "It is found only in frozen tissue"],
+    "correctAnswer": "It is unstable or perishable in the cold",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-labile' is defined as meaning unstable or perishable [1, 3].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 793,
+    "question": "A patient diagnosed with 'dysmasesis' is experiencing difficulty with which of the following physiological actions?",
+    "options": ["Chewing", "Swallowing", "Speaking", "Digesting"],
+    "correctAnswer": "Chewing",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The suffix '-masesis' refers specifically to mastication or chewing [3, 4].",
+    "tag": "Digestive System"
+  },
+  {
+    "id": 794,
+    "question": "In medical terminology, the root 'nom/o' (as seen in the term 'nomotopic') refers to which of the following?",
+    "options": ["Custom or law", "Name or title", "Number or count", "Place or location"],
+    "correctAnswer": "Custom or law",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'nom/o' is defined in the sources as meaning custom or law [1, 3].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 795,
+    "question": "The term 'phylogenesis' refers to the origin and evolution of a specific group. What is the literal meaning of the root 'phyl/o'?",
+    "options": ["Race, species, or type", "Leaf or plant-like", "Love or affinity", "Protection or guard"],
+    "correctAnswer": "Race, species, or type",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Appendix A and BarCharts define the combining form 'phyl/o' as race, species, or type [3, 5, 6].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 796,
+    "question": "A HOSA student studying cellular biology learns that 'pinocytosis' is a process where the cell takes in fluids. What does the root 'pin/o' literally mean?",
+    "options": ["To drink", "To eat", "To fold", "To push"],
+    "correctAnswer": "To drink",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'pin/o' is defined as meaning to drink [3, 5, 7].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 797,
+    "question": "During a physical assessment, a clinician uses a 'plessimeter.' Based on the root 'pless/i', this instrument is related to the act of:",
+    "options": ["Striking", "Measuring", "Listening", "Viewing"],
+    "correctAnswer": "Striking",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'pless/i' means striking [8].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 798,
+    "question": "If a patient is suffering from a condition related to 'ponograph' readings, they are being evaluated for which of the following?",
+    "options": ["Fatigue or pain", "Heart rate variability", "Lung capacity", "Bone density"],
+    "correctAnswer": "Fatigue or pain",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'pon/o' refers to fatigue, overwork, or pain [8].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 799,
+    "question": "Which of the following combining forms describes a structure that is 'thick' or 'dense'?",
+    "options": ["Pykn/o", "Lept/o", "Malacia", "Penia"],
+    "correctAnswer": "Pykn/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'pykn/o' (or pycn/o) means thick or dense [13].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 800,
+    "question": "A pathology report describing 'tyroid' material (not to be confused with thyroid) indicates a substance with which appearance?",
+    "options": [
+      "Cheese-like substance",
+      "Thyroid gland tissue",
+      "Wedge-shaped structure",
+      "Star-shaped cell"
+    ],
+    "correctAnswer": "Cheese-like substance",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'tyr/o' refers specifically to cheese or caseous material [14].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 801,
+    "question": "A student observing a neurology clinic notes a diagnostic report mentioning a 'kymograph.' Which characteristic is this instrument primarily used to measure?",
+    "options": ["Waves", "Muscle strength", "Bacterial growth", "Skin thickness"],
+    "correctAnswer": "Waves",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'kym/o' specifically refers to waves [1, 2].",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 802,
+    "question": "Which combining form would be used to describe a structure or substance that is 'sand-like' in appearance?",
+    "options": ["Psamm/o", "Lith/o", "Coni/o", "Petr/o"],
+    "correctAnswer": "Psamm/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, 'psamm/o' refers to sand or sand-like material [3, 4].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 803,
+    "question": "If a patient is receiving 'palliative' care, the treatment is intended to:",
+    "options": ["Soothe or relieve", "Cure the disease", "Prevent infection", "Suture a wound"],
+    "correctAnswer": "Soothe or relieve",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The root 'palliat/o' means to soothe or relieve [1, 5].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 804,
+    "question": "In the study of 'nosology,' a healthcare professional is focusing on which area of medicine?",
+    "options": ["The classification of diseases", "The study of the mind", "The treatment of the elderly", "The measurement of hearing"],
+    "correctAnswer": "The classification of diseases",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'nos/o' refers to disease, and nosology is its scientific classification [1, 6].",
+    "tag": "Overview of Body"
+  },
+  {
+    "id": 805,
+    "question": "Which combining form refers specifically to a 'plant' or something plant-like?",
+    "options": ["Phyt/o", "Bio-", "Zo/o", "Phyc/o"],
+    "correctAnswer": "Phyt/o",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'phyt/o' or the suffix '-phyte' means plant [1, 7].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 806,
+    "question": "A patient diagnosed with 'sapruria' has a condition involving which characteristic in their urine?",
+    "options": ["Rotten or decayed matter", "Excessive sugar", "Presence of stones", "High nitrogen levels"],
+    "correctAnswer": "Rotten or decayed matter",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The combining form 'sapr/o' means rotten or decay [8, 9].",
+    "tag": "Urinary System"
+  },
+  {
+    "id": 807,
+    "question": "The combining form 'taph/o' is used in medical terminology to refer to which of the following?",
+    "options": ["A grave", "A surgical incision", "A state of sleep", "A localized swelling"],
+    "correctAnswer": "A grave",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "According to the sources, 'taph/o' refers to a grave [10].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 808,
+    "question": "Which numerical prefix refers specifically to 'one and a half'?",
+    "options": ["Sesqui-", "Demi-", "Hemi-", "Semi-"],
+    "correctAnswer": "Sesqui-",
+    "category": "Medical Terminology",
+    "difficulty": "Medium",
+    "explanation": "The numerical value for 'sesqui-' is one and a half [11, 12].",
+    "tag": "Roots, Prefixes, Suffixes"
+  },
+  {
+    "id": 809,
+    "question": "A student learns that 'keraunophobia' is an abnormal fear of which environmental phenomenon?",
+    "options": ["Lightning", "High altitudes", "Open spaces", "Water"],
+    "correctAnswer": "Lightning",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "The root 'keraun/o' refers to lightning [2].",
+    "tag": "Nervous/Special Senses"
+  },
+  {
+    "id": 810,
+    "question": "The combining form 'areol/o' refers to which of the following structural descriptions?",
+    "options": ["A little open space", "A circular ridge", "A dark pigment", "A protective sheath"],
+    "correctAnswer": "A little open space",
+    "category": "Medical Terminology",
+    "difficulty": "Hard",
+    "explanation": "Appendix A defines 'areol/o' as a little open space or the space around a nipple [13].",
+    "tag": "Overview of Body"
   }
 ]

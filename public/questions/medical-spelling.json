@@ -62,7 +62,7 @@
   {
     "id": 7,
     "question": "Which of the following is the correct spelling for 'inflammation of the liver'?",
-    "options": ["Hepatitis", "Heppatitis", "Hepatytis", "Hepatitiss"],
+    "options": ["Hepatitis", "Heppatitis", "Hepatytis", "Hematitis"],
     "correctAnswer": "Hepatitis",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -82,7 +82,7 @@
   {
     "id": 9,
     "question": "Which of the following is the correct spelling for the 'kneecap'?",
-    "options": ["Patella", "Patela", "Pattela", "Patellah"],
+    "options": ["Patella", "Patela", "Pattela", "Patilla"],
     "correctAnswer": "Patella",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -169,10 +169,10 @@
     "explanation": "Erythr/o (red) + -cyte (cell).",
     "tag": ""
   },
-  {
+   {
     "id": 18,
     "question": "Which of the following is the correct spelling for 'an instrument for viewing small objects'?",
-    "options": ["Microscope", "Microcope", "Mikroscope", "Microscop"],
+    "options": ["Microscope", "Microcope", "Microsscope", "Microscop"],
     "correctAnswer": "Microscope",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -292,7 +292,7 @@
   {
     "id": 30,
     "question": "Which of the following is the correct spelling for the 'thigh bone'?",
-    "options": ["Femur", "Feemur", "Femar", "Femure"],
+    "options": ["Femur", "Femore", "Femar", "Femure"],
     "correctAnswer": "Femur",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -445,7 +445,7 @@
     "options": ["Sphygmomanometer", "Sphygmomanomiter", "Sphygnomanometer", "Sphigmomanometer"],
     "correctAnswer": "Sphygmomanometer",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "One of the most notoriously misspelled medical terms; contains 'sphygmo' (pulse).",
     "tag": ""
   },
@@ -479,10 +479,10 @@
     "explanation": "A common sign in hormonal disorders like PCOS.",
     "tag": ""
   },
-  {
+ {
     "id": 49,
     "question": "Which of the following is the correct spelling for 'an instrument for listening to chest sounds'?",
-    "options": ["Stethoscope", "Stethiscope", "Stethiscope", "Stethoscop"],
+    "options": ["Stethoscope", "Stethiscope", "Stethascope", "Stethoscop"],
     "correctAnswer": "Stethoscope",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -582,7 +582,7 @@
   {
     "id": 59,
     "question": "Which of the following is the correct spelling for 'the surgical removal of a kidney'?",
-    "options": ["Nephrectomy", "Nephrectomie", "Nephrectemy", "Nephrectomy"],
+    "options": ["Nephrectomy", "Nephrectomie", "Nephrectemy", "Nephroectomy"],
     "correctAnswer": "Nephrectomy",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -592,7 +592,7 @@
   {
     "id": 60,
     "question": "Which of the following is the correct spelling for 'the clear fluid of the blood'?",
-    "options": ["Plasma", "Plassma", "Plazma", "Plasmah"],
+    "options": ["Plasma", "Plassma", "Plazma", "Plasmae"],
     "correctAnswer": "Plasma",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -662,7 +662,7 @@
   {
     "id": 67,
     "question": "Which of the following is the correct spelling for 'involuntary muscle contraction'?",
-    "options": ["Spasm", "Spasum", "Spasme", "Spazzum"],
+    "options": ["Spasm", "Spasome", "Spasme", "Spazzum"],
     "correctAnswer": "Spasm",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -699,10 +699,10 @@
     "explanation": "Carcin/o (cancer) + -gen (producing).",
     "tag": ""
   },
-  {
+   {
     "id": 71,
     "question": "Which of the following is the correct spelling for 'pertaining to the heart and blood vessels'?",
-    "options": ["Cardiovascular", "Cardiovaskular", "Cardiovaskulor", "Cardeovascular"],
+    "options": ["Cardiovascular", "Cardiovascullar", "Cardiovaskulor", "Cardeovascular"],
     "correctAnswer": "Cardiovascular",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -721,12 +721,12 @@
   },
   {
     "id": 73,
-    "question": "Which of the following is the correct spelling for 'the breastbone'?",
-    "options": ["Sternum", "Sturnum", "Sternam", "Sternem"],
-    "correctAnswer": "Sternum",
+    "question": "Which of the following is the correct spelling for the distressing urge to evacuate the rectum or bladder?",
+    "options": ["Tenesmus", "Tenesmis", "Tenasmus", "Tenessmus"],
+    "correctAnswer": "Tenesmus",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "A flat bone located in the middle of the chest.",
+    "difficulty": "Hard",
+    "explanation": "Derived from the Greek 'teinesmos'.",
     "tag": ""
   },
   {
@@ -759,14 +759,14 @@
     "explanation": "An- (without) + algesia (pain).",
     "tag": ""
   },
-  {
+ {
     "id": 77,
-    "question": "Which of the following is the correct spelling for 'the throat'?",
-    "options": ["Pharynx", "Pharynyx", "Farynx", "Pharinx"],
-    "correctAnswer": "Pharynx",
+    "question": "Which of the following is the correct spelling for the condition characterized by the absence of hydrochloric acid in the gastric juice?",
+    "options": ["Achlorhydria", "Achlorhydrya", "Aclorhydria", "Achloridria"],
+    "correctAnswer": "Achlorhydria",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Uses 'ph' for the f-sound and 'y' before the 'nx'.",
+    "difficulty": "Hard",
+    "explanation": "Note the 'y' and 'ia' sequence; it is a clinical marker for severe chronic gastritis.",
     "tag": ""
   },
   {
@@ -795,17 +795,17 @@
     "options": ["Electroencephalogram", "Electroensephalogram", "Electrokardiogram", "Electroencephalogrem"],
     "correctAnswer": "Electroencephalogram",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Electro- + encephal/o + -gram.",
     "tag": ""
   },
-  {
+   {
     "id": 81,
     "question": "Which of the following is the correct spelling for 'pertaining to the eye'?",
-    "options": ["Ophthalmic", "Opthalmic", "Ophthalmic", "Ophalmic"],
+    "options": ["Ophthalmic", "Opthalmic", "Ophthalmyc", "Ophalmic"],
     "correctAnswer": "Ophthalmic",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Common trap: It requires two 'h's (ph and th).",
     "tag": ""
   },
@@ -819,14 +819,14 @@
     "explanation": "Hypo- + glyc/o + -emia.",
     "tag": ""
   },
-  {
+   {
     "id": 83,
-    "question": "Which of the following is the correct spelling for 'chronic airway inflammation'?",
-    "options": ["Asthma", "Astma", "Ashtma", "Asthama"],
-    "correctAnswer": "Asthma",
+    "question": "Which of the following is the correct spelling for the condition of an undescended testicle?",
+    "options": ["Cryptorchidism", "Cryptorkidism", "Criptorchidism", "Cryptorchidizm"],
+    "correctAnswer": "Cryptorchidism",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "A Greek term containing a silent 'th'.",
+    "difficulty": "Hard",
+    "explanation": "Requires the Greek 'y' and the 'ch'.",
     "tag": ""
   },
   {
@@ -839,10 +839,10 @@
     "explanation": "Contains a silent 'p' at the start.",
     "tag": ""
   },
-  {
+   {
     "id": 85,
     "question": "Which of the following is the correct spelling for 'the small intestine's first part'?",
-    "options": ["Duodenum", "Duodenum", "Duodunum", "Duodenem"],
+    "options": ["Duodenum", "Duodanum", "Duodunum", "Duodenem"],
     "correctAnswer": "Duodenum",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -852,41 +852,41 @@
   {
     "id": 86,
     "question": "Which of the following is the correct spelling for 'inflammation of the pancreas'?",
-    "options": ["Pancreatitis", "Pancreatitis", "Pancrititis", "Pancreatytis"],
+    "options": ["Pancreatitis", "Pancreatitisiss", "Pancrititis", "Pancreatytis"],
     "correctAnswer": "Pancreatitis",
     "category": "Medical Spelling",
     "difficulty": "Easy",
     "explanation": "Pancreat/o + -itis.",
     "tag": ""
   },
-  {
+   {
     "id": 87,
-    "question": "Which of the following is the correct spelling for 'a slow heart rate'?",
-    "options": ["Bradycardia", "Bradicardia", "Bradycardya", "Bradycardeia"],
-    "correctAnswer": "Bradycardia",
+    "question": "Which of the following is the correct spelling for the act of listening to sounds from the heart, lungs, or other organs?",
+    "options": ["Auscultation", "Auscultasion", "Ascultation", "Auscultatian"],
+    "correctAnswer": "Auscultation",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Brady- (slow) + cardi/o.",
+    "difficulty": "Medium",
+    "explanation": "From the Latin 'auscultare' (to listen). Note the 'au' diphthong.",
     "tag": ""
   },
   {
     "id": 88,
-    "question": "Which of the following is the correct spelling for 'yellowing of eyes and skin'?",
-    "options": ["Jaundice", "Jaundiss", "Jandice", "Jaundise"],
-    "correctAnswer": "Jaundice",
+    "question": "Which of the following is the correct spelling for the inability to breathe except in an upright position?",
+    "options": ["Orthopnea", "Orthopnia", "Ortopnea", "Orthopneea"],
+    "correctAnswer": "Orthopnea",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "From the French word 'jaune' meaning yellow.",
+    "difficulty": "Medium",
+    "explanation": "Combines 'ortho-' (straight) and '-pnea' (breathing).",
     "tag": ""
   },
   {
     "id": 89,
-    "question": "Which of the following is the correct spelling for 'the voice box'?",
-    "options": ["Larynx", "Larynyx", "Larenyx", "Larinx"],
-    "correctAnswer": "Larynx",
+    "question": "Which of the following is the correct spelling for the condition of having an abnormally low sperm count?",
+    "options": ["Oligospermia", "Olygospermia", "Oligospermea", "Oligospermya"],
+    "correctAnswer": "Oligospermia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Note the placement of the 'y' and the 'nx' ending.",
+    "difficulty": "Medium",
+    "explanation": "From oligo- (few) and sperm/o. Distractors target the connecting vowel and suffix.",
     "tag": ""
   },
   {
@@ -905,98 +905,98 @@
     "options": ["Ophthalmology", "Opthalmology", "Ophthalmollogy", "Ophalmology"],
     "correctAnswer": "Ophthalmology",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Contains two 'h's and the double 'l' in -logy is not correct.",
     "tag": ""
   },
   {
     "id": 92,
-    "question": "Which of the following is the correct spelling for 'nosebleed'?",
-    "options": ["Epistaxis", "Epistaxiss", "Epystaxis", "Epistaxas"],
-    "correctAnswer": "Epistaxis",
+    "question": "Which of the following is the correct spelling for the abnormal keratinization of cells?",
+    "options": ["Dyskeratosis", "Diskeratosis", "Dyskeratossis", "Dyskeratosys"],
+    "correctAnswer": "Dyskeratosis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Hemorrhage from the nose.",
+    "difficulty": "Medium",
+    "explanation": "Combines 'dys-' and 'kerato-'.",
     "tag": ""
   },
   {
     "id": 93,
-    "question": "Which of the following is the correct spelling for 'itching'?",
-    "options": ["Pruritus", "Pruritis", "Pruritas", "Prurituss"],
-    "correctAnswer": "Pruritus",
+    "question": "Which of the following is the correct spelling for the surgical division of the vagus nerve?",
+    "options": ["Vagotomy", "Vagotomey", "Vaggotomy", "Vagotomie"],
+    "correctAnswer": "Vagotomy",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Commonly confused with -itis; ends in -us.",
+    "difficulty": "Medium",
+    "explanation": "Combines 'vag/o' and '-tomy'.",
     "tag": ""
   },
   {
     "id": 94,
-    "question": "Which of the following is the correct spelling for 'muscle pain'?",
-    "options": ["Myalgia", "Mialgia", "Myalgya", "Myalgie"],
-    "correctAnswer": "Myalgia",
+    "question": "Which of the following is the correct spelling for the inflammation of the lacrimal (tear) sac?",
+    "options": ["Dacryocystitis", "Dacriocystitis", "Dacryosistitis", "Dacryocystytis"],
+    "correctAnswer": "Dacryocystitis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "My/o (muscle) + -algia (pain).",
+    "difficulty": "Hard",
+    "explanation": "Combines dacry/o (tear) and cyst/o (sac). The 'y' in the first root is a common error point.",
     "tag": ""
   },
   {
     "id": 95,
-    "question": "Which of the following is the correct spelling for 'the study of the heart'?",
-    "options": ["Cardiology", "Cardiollogy", "Cardeology", "Kardiology"],
-    "correctAnswer": "Cardiology",
+    "question": "Which of the following is the correct spelling for the sleep disorder characterized by sudden attacks of sleep?",
+    "options": ["Narcolepsy", "Narcalepsy", "Narcolepsey", "Narcolepssy"],
+    "correctAnswer": "Narcolepsy",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Cardi/o (heart) + -logy.",
+    "difficulty": "Medium",
+    "explanation": "Note the 'e' and terminal 'y'.",
     "tag": ""
   },
   {
     "id": 96,
-    "question": "Which of the following is the correct spelling for 'the breastbone'?",
-    "options": ["Sternum", "Sturnum", "Sternam", "Sternem"],
-    "correctAnswer": "Sternum",
+    "question": "Which of the following is the correct spelling for the presence of excessive urea and other nitrogenous waste in the blood?",
+    "options": ["Uremia", "Ureamea", "Uremya", "Urremia"],
+    "correctAnswer": "Uremia",
     "category": "Medical Spelling",
     "difficulty": "Easy",
-    "explanation": "Located in the center of the chest.",
+    "explanation": "Requires the 'e' following the 'r'.",
     "tag": ""
   },
   {
     "id": 97,
-    "question": "Which of the following is the correct spelling for 'difficulty swallowing'?",
-    "options": ["Dysphagia", "Dysphagea", "Disphagia", "Dysphagya"],
-    "correctAnswer": "Dysphagia",
+    "question": "Which of the following is the correct spelling for the condition of excessively dry skin?",
+    "options": ["Xeroderma", "Zeroderma", "Xerodurma", "Xerodermma"],
+    "correctAnswer": "Xeroderma",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Dys- (difficult) + -phagia (swallowing).",
+    "difficulty": "Medium",
+    "explanation": "Starts with 'X', from the Greek root for 'dry'.",
     "tag": ""
   },
   {
     "id": 98,
-    "question": "Which of the following is the correct spelling for 'inflammation of the kidney'?",
-    "options": ["Nephritis", "Nephretis", "Nephrytis", "Nephritiss"],
-    "correctAnswer": "Nephritis",
+    "question": "Which of the following is the correct spelling for the clinical state of having unequal pupil sizes?",
+    "options": ["Anisocoria", "Anisocorya", "Anisocorea", "Anisicoria"],
+    "correctAnswer": "Anisocoria",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Nephr/o (kidney) + -itis.",
+    "difficulty": "Hard",
+    "explanation": "Note the connecting vowel 'o' and the 'ia' ending.",
     "tag": ""
   },
   {
     "id": 99,
-    "question": "Which of the following is the correct spelling for 'white blood cell'?",
-    "options": ["Leukocyte", "Leukosyte", "Lucocyte", "Leukocyt"],
-    "correctAnswer": "Leukocyte",
+    "question": "Which of the following is the correct spelling for a herniation of the urinary bladder into the vagina?",
+    "options": ["Cystocele", "Cistocele", "Cystocelle", "Cystoceel"],
+    "correctAnswer": "Cystocele",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Leuk/o (white) + -cyte (cell).",
+    "difficulty": "Medium",
+    "explanation": "Combines 'cyst/o' and the suffix '-cele'.",
     "tag": ""
   },
   {
     "id": 100,
-    "question": "Which of the following is the correct spelling for 'surgical repair of the nose'?",
-    "options": ["Rhinoplasty", "Rhinoplastie", "Rynoplasty", "Rhinoplastey"],
-    "correctAnswer": "Rhinoplasty",
+    "question": "Which of the following is the correct spelling for the inflammation of the small pouches in the digestive tract?",
+    "options": ["Diverticulitis", "Divertyculitis", "Diverticullitis", "Diverticulistis"],
+    "correctAnswer": "Diverticulitis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Rhin/o (nose) + -plasty (repair).",
+    "difficulty": "Medium",
+    "explanation": "Note the single 'l' and 'u'.",
     "tag": ""
   },
   {
@@ -1015,7 +1015,7 @@
     "options": ["Cholecystitis", "Colecystitis", "Cholecistitis", "Cholecystytis"],
     "correctAnswer": "Cholecystitis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Chol/e (bile) + cyst (bladder) + -itis.",
     "tag": ""
   },
@@ -1029,10 +1029,10 @@
     "explanation": "Ped/o (child) + iatric (treatment) + -ian (specialist).",
     "tag": ""
   },
-  {
+   {
     "id": 104,
     "question": "Which of the following is the correct spelling for 'the surgical creation of an opening in the colon'?",
-    "options": ["Colostomy", "Colostomie", "Colostemy", "Colostomy"],
+    "options": ["Colostomy", "Colostomie", "Colostemy", "Colostoma"],
     "correctAnswer": "Colostomy",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -1045,7 +1045,7 @@
     "options": ["Hemorrhage", "Hemmorage", "Hemorrage", "Hemorhage"],
     "correctAnswer": "Hemorrhage",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Note the double 'r' and the 'h' after the 'm'.",
     "tag": ""
   },
@@ -1055,28 +1055,28 @@
     "options": ["Aneurysm", "Anuerism", "Aneurism", "Anurysm"],
     "correctAnswer": "Aneurysm",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Contains 'eu' and ends in 'ysm'.",
     "tag": ""
   },
   {
     "id": 107,
-    "question": "Which of the following is the correct spelling for 'the collarbone'?",
-    "options": ["Clavicle", "Clavical", "Clavicull", "Clavicule"],
-    "correctAnswer": "Clavicle",
+    "question": "Which of the following is the correct spelling for a surgical incision of the perineum to enlarge the vaginal opening during childbirth?",
+    "options": ["Episiotomy", "Episiostomy", "Episeotomy", "Episiotomie"],
+    "correctAnswer": "Episiotomy",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Ends in -icle.",
+    "difficulty": "Medium",
+    "explanation": "Note the connecting vowel 'o'.",
     "tag": ""
   },
-  {
+   {
     "id": 108,
-    "question": "Which of the following is the correct spelling for 'inflammation of the joints'?",
-    "options": ["Arthritis", "Artheritis", "Arthrytis", "Arthritiss"],
-    "correctAnswer": "Arthritis",
+    "question": "Which of the following is the correct spelling for a disease of the nerve roots?",
+    "options": ["Radiculopathy", "Radiculopethy", "Radiculopathie", "Radiculopathey"],
+    "correctAnswer": "Radiculopathy",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Commonly misspelled with an extra 'e'.",
+    "difficulty": "Medium",
+    "explanation": "Requires the connecting vowel 'o'.",
     "tag": ""
   },
   {
@@ -1085,7 +1085,7 @@
     "options": ["Ecchymosis", "Echymosis", "Ecchymosiss", "Eccymosis"],
     "correctAnswer": "Ecchymosis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Note the double 'c' and double 'h'.",
     "tag": ""
   },
@@ -1106,7 +1106,7 @@
     "correctAnswer": "Dysphasia",
     "category": "Medical Spelling",
     "difficulty": "Easy",
-    "explanation": "Dys- (difficult) + -phasia (speech). Do not confuse with dysphagia (swallowing).",
+    "explanation": "Dys- (difficult) + -phasia (speech).",
     "tag": ""
   },
   {
@@ -1115,7 +1115,7 @@
     "options": ["Arrhythmia", "Arrythmia", "Arrhythmea", "Arythmia"],
     "correctAnswer": "Arrhythmia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Contains a double 'r' and two 'h's.",
     "tag": ""
   },
@@ -1139,10 +1139,10 @@
     "explanation": "Bronch/o (airway) + -itis.",
     "tag": ""
   },
-  {
+   {
     "id": 115,
     "question": "Which of the following is the correct spelling for 'a state of profound unconsciousness'?",
-    "options": ["Coma", "Comah", "Comma", "Koma"],
+    "options": ["Coma", "Comae", "Comma", "Comia"],
     "correctAnswer": "Coma",
     "category": "Medical Spelling",
     "difficulty": "Easy",
@@ -1181,12 +1181,12 @@
   },
   {
     "id": 119,
-    "question": "Which of the following is the correct spelling for 'the thigh bone'?",
-    "options": ["Femur", "Feemur", "Femar", "Femure"],
-    "correctAnswer": "Femur",
+    "question": "Which of the following is the correct spelling for an abnormal inward curvature of the lumbar spine?",
+    "options": ["Lordosis", "Lordosiss", "Lardosis", "Lordosys"],
+    "correctAnswer": "Lordosis",
     "category": "Medical Spelling",
     "difficulty": "Easy",
-    "explanation": "The longest bone in the body.",
+    "explanation": "Also known as 'swayback'.",
     "tag": ""
   },
   {
@@ -1195,38 +1195,38 @@
     "options": ["Tympanoplasty", "Timpanoplasty", "Tympanoplastie", "Tympanoplastey"],
     "correctAnswer": "Tympanoplasty",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "explanation": "Tympan/o (eardrum) + -plasty.",
     "tag": ""
   },
   {
     "id": 121,
-    "question": "Which of the following is the correct spelling for 'lack of enough red blood cells'?",
-    "options": ["Anemia", "Annemia", "Anemya", "Anemie"],
-    "correctAnswer": "Anemia",
+    "question": "Which of the following is the correct spelling for a life-threatening systemic inflammatory response to infection?",
+    "options": ["Septicemia", "Septicemea", "Septecemia", "Septicimia"],
+    "correctAnswer": "Septicemia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "From Greek 'an-' (without) + 'haima' (blood).",
+    "difficulty": "Medium",
+    "explanation": "Note the 'e' in 'emia'.",
     "tag": ""
   },
-  {
+   {
     "id": 122,
-    "question": "Which of the following is the correct spelling for 'the voice box'?",
-    "options": ["Larynx", "Larynyx", "Larenyx", "Larinx"],
-    "correctAnswer": "Larynx",
+    "question": "Which of the following is the correct spelling for the reduction in the number of all types of blood cells?",
+    "options": ["Pancytopenia", "Pancitopenia", "Pancyttopenia", "Pancytopenea"],
+    "correctAnswer": "Pancytopenia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Note the 'y' and the 'nx' ending.",
+    "difficulty": "Hard",
+    "explanation": "Pan- (all) + cyt/o (cell) + -penia (deficiency).",
     "tag": ""
   },
-  {
+   {
     "id": 123,
-    "question": "Which of the following is the correct spelling for 'excessive body hair'?",
-    "options": ["Hirsutism", "Hersutism", "Hirsutizm", "Hirsutissm"],
-    "correctAnswer": "Hirsutism",
+    "question": "Which of the following is the correct spelling for 'hemorrhage into the spinal cord'?",
+    "options": ["Hematomyelia", "Hematomyelya", "Hematomielia", "Hematomyellitis"],
+    "correctAnswer": "Hematomyelia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Commonly seen in hormonal imbalances.",
+    "difficulty": "Hard",
+    "explanation": "Hemat/o (blood) + myel/o (spinal cord).",
     "tag": ""
   },
   {
@@ -1239,74 +1239,74 @@
     "explanation": "Hemi- (half) + -plegia (paralysis).",
     "tag": ""
   },
-  {
+   {
     "id": 125,
-    "question": "Which of the following is the correct spelling for 'the breastbone'?",
-    "options": ["Sternum", "Sturnum", "Sternam", "Sternem"],
-    "correctAnswer": "Sternum",
+    "question": "Which of the following is the correct spelling for the sensation of spinning or dizziness?",
+    "options": ["Vertigo", "Vertego", "Virtygo", "Vertiggo"],
+    "correctAnswer": "Vertigo",
     "category": "Medical Spelling",
     "difficulty": "Easy",
-    "explanation": "Located in the chest center.",
+    "explanation": "Note the single 'g' and the 'i'.",
     "tag": ""
   },
   {
     "id": 126,
-    "question": "Which of the following is the correct spelling for 'an instrument for listening to the heart'?",
-    "options": ["Stethoscope", "Stethiscope", "Stethoscop", "Stethiscop"],
-    "correctAnswer": "Stethoscope",
+    "question": "Which of the following is the correct spelling for the yellow-orange tint of cerebrospinal fluid?",
+    "options": ["Xanthochromia", "Zanthochromia", "Xanthochromya", "Xantochromia"],
+    "correctAnswer": "Xanthochromia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Steth/o (chest) + -scope.",
+    "difficulty": "Hard",
+    "explanation": "Starts with 'X', from the Greek for 'yellow'.",
     "tag": ""
   },
   {
     "id": 127,
-    "question": "Which of the following is the correct spelling for 'inflammation of the brain'?",
-    "options": ["Encephalitis", "Ensephalitis", "Encephalytis", "Encephallitis"],
-    "correctAnswer": "Encephalitis",
+    "question": "Which of the following is the correct spelling for a hard, stony mass of feces in the intestinal tract?",
+    "options": ["Fecolith", "Feccolith", "Fecolithe", "Fecalith"],
+    "correctAnswer": "Fecolith",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Encephal/o (brain) + -itis.",
+    "difficulty": "Medium",
+    "explanation": "Note the 'o' connecting vowel.",
     "tag": ""
   },
   {
     "id": 128,
-    "question": "Which of the following is the correct spelling for 'nosebleed'?",
-    "options": ["Epistaxis", "Epystaxis", "Epistaxas", "Epistaxiss"],
-    "correctAnswer": "Epistaxis",
+    "question": "Which of the following is the correct spelling for the excessive development of breast tissue in males?",
+    "options": ["Gynaecomastia", "Gynecomastia", "Gynaecomastya", "Gynacomastia"],
+    "correctAnswer": "Gynaecomastia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Clinical term for nasal hemorrhage.",
+    "difficulty": "Hard",
+    "explanation": "Uses the British-Latin 'ae' sequence which is common in formal medical orthography.",
     "tag": ""
   },
-  {
+ {
     "id": 129,
-    "question": "Which of the following is the correct spelling for 'the study of diseases'?",
-    "options": ["Pathology", "Pathollogy", "Pathelogy", "Patholagy"],
-    "correctAnswer": "Pathology",
+    "question": "Which of the following is the correct spelling for a surgical procedure to remove stones from the kidney through an incision?",
+    "options": ["Nephrolithotomy", "Nephrolitotomy", "Nephrolythotomy", "Nephrolithotomie"],
+    "correctAnswer": "Nephrolithotomy",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Path/o (disease) + -logy.",
+    "difficulty": "Hard",
+    "explanation": "A triple-root word (nephro/litho/tomy).",
     "tag": ""
   },
   {
     "id": 130,
-    "question": "Which of the following is the correct spelling for 'yellowing of the skin'?",
-    "options": ["Jaundice", "Jaundiss", "Jandice", "Jaundise"],
-    "correctAnswer": "Jaundice",
+    "question": "Which of the following is the correct spelling for the sensation of 'pins and needles'?",
+    "options": ["Paresthesia", "Parasthesia", "Parethesia", "Paresthezea"],
+    "correctAnswer": "Paresthesia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Caused by excess bilirubin.",
+    "difficulty": "Medium",
+    "explanation": "Note the 'e' in the second syllable and the 'ia' ending.",
     "tag": ""
   },
   {
     "id": 131,
-    "question": "Which of the following is the correct spelling for 'a slow heart rate'?",
-    "options": ["Bradycardia", "Bradicardia", "Bradycardya", "Bradycardeia"],
-    "correctAnswer": "Bradycardia",
+    "question": "Which of the following is the correct spelling for the monitoring of the concentration or partial pressure of carbon dioxide in respiratory gases?",
+    "options": ["Capnography", "Capnographia", "Capnografeia", "Cappnography"],
+    "correctAnswer": "Capnography",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Brady- (slow) + card/i.",
+    "difficulty": "Medium",
+    "explanation": "From 'capnos' (smoke/carbon dioxide).",
     "tag": ""
   },
   {
@@ -1321,182 +1321,182 @@
   },
   {
     "id": 133,
-    "question": "Which of the following is the correct spelling for 'loss of appetite'?",
-    "options": ["Anorexia", "Annorexia", "Anorexea", "Anorexsia"],
-    "correctAnswer": "Anorexia",
+    "question": "Which of the following is the correct spelling for a telescoping of one part of the intestine into another?",
+    "options": ["Intussusception", "Intussusseption", "Intususception", "Intussuscepton"],
+    "correctAnswer": "Intussusception",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Commonly used in clinical and psychiatric contexts.",
+    "difficulty": "Hard",
+    "explanation": "Note the triple 's' in the middle.",
     "tag": ""
   },
-  {
+   {
     "id": 134,
-    "question": "Which of the following is the correct spelling for 'surgical removal of the uterus'?",
-    "options": ["Hysterectomy", "Hysterectomie", "Histerectomy", "Hysterectemy"],
-    "correctAnswer": "Hysterectomy",
+    "question": "Which of the following is the correct spelling for a difficult birth or labored delivery?",
+    "options": ["Dystocia", "Distocia", "Dystocya", "Dystocea"],
+    "correctAnswer": "Dystocia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Hyster/o (uterus) + -ectomy.",
+    "difficulty": "Medium",
+    "explanation": "Note the Greek 'y' and 'ia' ending.",
     "tag": ""
   },
-  {
+   {
     "id": 135,
-    "question": "Which of the following is the correct spelling for 'muscle weakness'?",
-    "options": ["Myasthenia", "Miasthinia", "Myastheanea", "Myastheneia"],
-    "correctAnswer": "Myasthenia",
+    "question": "Which of the following is the correct spelling for an incision into the abdominal wall?",
+    "options": ["Laparotomy", "Laparotomei", "Laparostomy", "Laparotamy"],
+    "correctAnswer": "Laparotomy",
     "category": "Medical Spelling",
     "difficulty": "Easy",
-    "explanation": "My/o (muscle) + -asthenia (weakness).",
+    "explanation": "Combines 'lapar/o' and '-tomy'.",
     "tag": ""
   },
   {
     "id": 136,
-    "question": "Which of the following is the correct spelling for 'the clear fluid of the blood'?",
-    "options": ["Plasma", "Plassma", "Plazma", "Plasmah"],
-    "correctAnswer": "Plasma",
+    "question": "Which of the following is the correct spelling for the softening and drying of the cornea?",
+    "options": ["Keratomalacia", "Keratomalasia", "Kerratomalacia", "Keratomalacea"],
+    "correctAnswer": "Keratomalacia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Makes up about 55% of total blood volume.",
+    "difficulty": "Medium",
+    "explanation": "Combines 'kerat/o' and '-malacia'.",
     "tag": ""
   },
-  {
+   {
     "id": 137,
-    "question": "Which of the following is the correct spelling for 'pertaining to the eye'?",
-    "options": ["Ophthalmic", "Opthalmic", "Ophalmic", "Ophthalmyc"],
-    "correctAnswer": "Ophthalmic",
+    "question": "Which of the following is the correct spelling for an inflammation of the vertebrae?",
+    "options": ["Spondylitis", "Spondilitis", "Spondylityis", "Spondylitiss"],
+    "correctAnswer": "Spondylitis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Remember the 'ph' followed by 'th'.",
+    "difficulty": "Medium",
+    "explanation": "Requires the Greek 'y'.",
     "tag": ""
   },
   {
     "id": 138,
-    "question": "Which of the following is the correct spelling for 'chronic airway disease'?",
-    "options": ["Asthma", "Astma", "Ashtma", "Asthama"],
-    "correctAnswer": "Asthma",
+    "question": "Which of the following is the correct spelling for double vision?",
+    "options": ["Diplopia", "Dyplopia", "Diplopya", "Diplopea"],
+    "correctAnswer": "Diplopia",
     "category": "Medical Spelling",
     "difficulty": "Easy",
-    "explanation": "Features a silent 'th' sound.",
+    "explanation": "Requires the 'i' following the 'D'.",
     "tag": ""
   },
   {
     "id": 139,
-    "question": "Which of the following is the correct spelling for 'inflammation of the liver'?",
-    "options": ["Hepatitis", "Heppatitis", "Hepatytis", "Hepatitiss"],
-    "correctAnswer": "Hepatitis",
+    "question": "Which of the following is the correct spelling for a condition caused by a medical treatment or a physician's advice?",
+    "options": ["Iatrogenic", "Iatragenic", "Iatrogennic", "Iotrogenic"],
+    "correctAnswer": "Iatrogenic",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Hepat/o (liver) + -itis.",
+    "difficulty": "Hard",
+    "explanation": "From the Greek 'iatros' (physician). The 'ia' diphthong at the start is frequently misspelled.",
     "tag": ""
   },
-  {
+   {
     "id": 140,
-    "question": "Which of the following is the correct spelling for 'high blood sugar'?",
-    "options": ["Hyperglycemia", "Hiperglycemia", "Hyperglicemia", "Hyperglycemya"],
-    "correctAnswer": "Hyperglycemia",
+    "question": "Which of the following is the correct spelling for 'pertaining to the spleen and kidney'?",
+    "options": ["Splenorenal", "Spleenorenal", "Splenorenel", "Splenorennal"],
+    "correctAnswer": "Splenorenal",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Hyper- (excessive) + glyc/o + -emia.",
+    "difficulty": "Medium",
+    "explanation": "Splen/o + renal (kidney).",
     "tag": ""
   },
   {
     "id": 141,
-    "question": "Which of the following is the correct spelling for 'difficulty breathing'?",
-    "options": ["Dyspnea", "Dispnea", "Dyspnia", "Dyspneea"],
-    "correctAnswer": "Dyspnea",
+    "question": "Which of the following is the correct spelling for the medical term for rumbling or gurgling noises made by the movement of gas in the intestines?",
+    "options": ["Borborygmus", "Borborygmas", "Borborygmous", "Borborigmus"],
+    "correctAnswer": "Borborygmus",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Dys- (difficult) + -pnea (breathing).",
+    "difficulty": "Hard",
+    "explanation": "An onomatopoeic term from Greek; requires the 'y' in the middle and 'us' at the end.",
     "tag": ""
   },
   {
     "id": 142,
-    "question": "Which of the following is the correct spelling for 'inflammation of the lungs'?",
-    "options": ["Pneumonia", "Numonia", "Pneumonnea", "Pneumonya"],
-    "correctAnswer": "Pneumonia",
+    "question": "Which of the following is the correct spelling for an inflammation of the uvea (the middle layer of the eye)?",
+    "options": ["Uveitis", "Uveytis", "Uveitice", "Uvitis"],
+    "correctAnswer": "Uveitis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Starts with a silent 'p'.",
+    "difficulty": "Medium",
+    "explanation": "Note the single 't'.",
     "tag": ""
   },
-  {
+   {
     "id": 143,
-    "question": "Which of the following is the correct spelling for 'shortness of sight'?",
-    "options": ["Myopia", "Miopia", "Myoppia", "Myopeia"],
-    "correctAnswer": "Myopia",
+    "question": "Which of the following is the correct spelling for 'atrophy of the nails'?",
+    "options": ["Onychoatrophy", "Onichoatrophy", "Onychotrophy", "Onychotrophy"],
+    "correctAnswer": "Onychoatrophy",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Also called nearsightedness.",
+    "difficulty": "Hard",
+    "explanation": "Onych/o (nail) + atrophy (wasting).",
     "tag": ""
   },
   {
     "id": 144,
-    "question": "Which of the following is the correct spelling for 'inflammation of the skin'?",
-    "options": ["Dermatitis", "Dermititis", "Dermatytis", "Durmatitis"],
-    "correctAnswer": "Dermatitis",
+    "question": "Which of the following is the correct spelling for 'a severe deficiency of white blood cells'?",
+    "options": ["Agranulocytosis", "Agranulocitosis", "Agranulocytossis", "Agranulocytosys"],
+    "correctAnswer": "Agranulocytosis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Dermat/o (skin) + -itis.",
+    "difficulty": "Hard",
+    "explanation": "A- (without) + granul/o + cytosis (cell condition).",
     "tag": ""
   },
   {
     "id": 145,
-    "question": "Which of the following is the correct spelling for 'the tailbone'?",
-    "options": ["Coccyx", "Coccix", "Coccyks", "Cocyx"],
-    "correctAnswer": "Coccyx",
+    "question": "Which of the following is the correct spelling for 'surgical repair of the eyelid'?",
+    "options": ["Blepharoplasty", "Blefaroplasty", "Blepharyplasty", "Blepharoplastey"],
+    "correctAnswer": "Blepharoplasty",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Ends in -yx.",
+    "difficulty": "Medium",
+    "explanation": "Blephar/o (eyelid) + -plasty (surgical repair).",
     "tag": ""
   },
   {
     "id": 146,
-    "question": "Which of the following is the correct spelling for 'a drug that reduces fever'?",
-    "options": ["Antipyretic", "Antipyretick", "Antipiretic", "Antipyrettic"],
-    "correctAnswer": "Antipyretic",
+    "question": "Which of the following is the correct spelling for the destruction or rupture of red blood cells?",
+    "options": ["Hemolysis", "Hemolysiss", "Heemolysis", "Hemolosis"],
+    "correctAnswer": "Hemolysis",
     "category": "Medical Spelling",
     "difficulty": "Easy",
-    "explanation": "Anti- (against) + pyret/o (fever).",
+    "explanation": "Note the 'y' in the suffix '-lysis'.",
     "tag": ""
   },
   {
     "id": 147,
-    "question": "Which of the following is the correct spelling for 'fast heart rate'?",
-    "options": ["Tachycardia", "Tackicardia", "Tachycardya", "Tachycardeia"],
-    "correctAnswer": "Tachycardia",
+    "question": "Which of the following is the correct spelling for the condition of excess water on the kidney due to a backup of urine?",
+    "options": ["Hydronephrosis", "Hidronephrosis", "Hydronephrossis", "Hydronephrosys"],
+    "correctAnswer": "Hydronephrosis",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Tachy- (fast) + card/i.",
+    "difficulty": "Hard",
+    "explanation": "Note the 'y' and the '-osis' ending.",
     "tag": ""
   },
   {
     "id": 148,
-    "question": "Which of the following is the correct spelling for 'a state of equilibrium'?",
-    "options": ["Homeostasis", "Homoeostasis", "Homeostatis", "Homeostasiss"],
-    "correctAnswer": "Homeostasis",
+    "question": "Which of the following is the correct spelling for a cell that develops into bone?",
+    "options": ["Osteoblast", "Osteoblastt", "Ostioblast", "Osteoblastes"],
+    "correctAnswer": "Osteoblast",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "Maintaining internal stability.",
+    "difficulty": "Hard",
+    "explanation": "Ends with 't', not 'te'.",
     "tag": ""
   },
   {
     "id": 149,
-    "question": "Which of the following is the correct spelling for 'muscle pain'?",
-    "options": ["Myalgia", "Mialgia", "Myalgya", "Myalgie"],
-    "correctAnswer": "Myalgia",
+    "question": "Which of the following is the correct spelling for the passage of fresh blood through the anus, usually in or with stools?",
+    "options": ["Hematochezia", "Hemochezia", "Hematochezea", "Hematochesia"],
+    "correctAnswer": "Hematochezia",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "My/o (muscle) + -algia (pain).",
+    "difficulty": "Hard",
+    "explanation": "From hemato- (blood) and chezein (to defecate). Note the 'z' in the terminal root.",
     "tag": ""
   },
   {
     "id": 150,
-    "question": "Which of the following is the correct spelling for 'an instrument for measuring blood pressure'?",
-    "options": ["Sphygmomanometer", "Sphygmomanomiter", "Sphygnomanometer", "Sphigmomanometer"],
-    "correctAnswer": "Sphygmomanometer",
+    "question": "Which of the following is the correct spelling for a benign tumor of the smooth muscle?",
+    "options": ["Leiomyoma", "Liomyoma", "Leiomioma", "Leiomyomma"],
+    "correctAnswer": "Leiomyoma",
     "category": "Medical Spelling",
-    "difficulty": "Easy",
-    "explanation": "A classic spelling-bee word in the medical field.",
+    "difficulty": "Hard",
+    "explanation": "Note the 'ei' and 'y' sequence in the roots.",
     "tag": ""
   },
   {
@@ -1552,7 +1552,7 @@
   {
     "id": 156,
     "question": "Which of the following is the correct spelling for 'the act of swallowing'?",
-    "options": ["Deglutition", "Deglutition", "Deglutition", "Deglutition"],
+    "options": ["Deglutition", "Deglutission", "Deglutision", "Deglutitione"],
     "correctAnswer": "Deglutition",
     "category": "Medical Spelling",
     "difficulty": "Medium",
@@ -1589,13 +1589,13 @@
     "explanation": "Hyper- (excessive) + -trophy (nourishment/growth).",
     "tag": ""
   },
-  {
+   {
     "id": 160,
     "question": "Which of the following is the correct spelling for 'the presence of gallstones'?",
-    "options": ["Cholelithiasis", "Cholelithiasis", "Cholelithasis", "Colelithiasis"],
+    "options": ["Cholelithiasis", "Cholelithasis", "Cholelythiasis", "Colelithiasis"],
     "correctAnswer": "Cholelithiasis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Chol/e (bile) + lith (stone) + -iasis (condition).",
     "tag": ""
   },
@@ -1621,12 +1621,12 @@
   },
   {
     "id": 163,
-    "question": "Which of the following is the correct spelling for 'paralysis of all four extremities'?",
-    "options": ["Quadriplegia", "Quadraplegia", "Quadriplegya", "Quadriplegia"],
-    "correctAnswer": "Quadriplegia",
+    "question": "Which of the following is the correct spelling for a procedure used to look inside the lungs' airways?",
+    "options": ["Bronchoscopy", "Broncoscopy", "Bronchoscoppy", "Bronchoscopey"],
+    "correctAnswer": "Bronchoscopy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "The connecting vowel is 'i', not 'a'.",
+    "explanation": "Note the 'ch' and '-scopy'.",
     "tag": ""
   },
   {
@@ -1659,10 +1659,10 @@
     "explanation": "Uses the 'au' vowel combination.",
     "tag": ""
   },
-  {
+   {
     "id": 167,
     "question": "Which of the following is the correct spelling for 'inflammation of the inner lining of the heart'?",
-    "options": ["Endocarditis", "Endocardytis", "Endocarditiss", "Endocarditis"],
+    "options": ["Endocarditis", "Endocardytis", "Endocarditiss", "Endocarditie"],
     "correctAnswer": "Endocarditis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
@@ -1785,38 +1785,38 @@
     "options": ["Atrophy", "Atrofey", "Atrophie", "Attrophy"],
     "correctAnswer": "Atrophy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "A- (without) + -trophy (growth).",
     "tag": ""
   },
   {
     "id": 180,
-    "question": "Which of the following is the correct spelling for 'the study of the skin'?",
-    "options": ["Dermatology", "Dermitology", "Durmatology", "Dermatollogy"],
-    "correctAnswer": "Dermatology",
+    "question": "Which of the following is the correct spelling for the condition commonly known as 'night blindness'?",
+    "options": ["Nyctalopia", "Nictalopia", "Nyctalopya", "Nyctallopia"],
+    "correctAnswer": "Nyctalopia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Dermat/o + -logy.",
+    "difficulty": "Hard",
+    "explanation": "Requires the Greek 'y' root in the first syllable.",
     "tag": ""
   },
-  {
+   {
     "id": 181,
     "question": "Which of the following is the correct spelling for 'an abnormal side-to-side curvature of the spine'?",
-    "options": ["Scoliosis", "Scoliosiss", "Scolyosis", "Scoliosis"],
+    "options": ["Scoliosis", "Scoliosiss", "Scolyosis", "Scoliosus"],
     "correctAnswer": "Scoliosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "From Greek 'skolios' (crooked).",
     "tag": ""
   },
   {
     "id": 182,
     "question": "Which of the following is the correct spelling for 'an agent that induces vomiting'?",
-    "options": ["Emetic", "Amitic", "Emetick", "Emettick"],
+    "options": ["Emetic", "Ametic", "Emitic", "Amitic"],
     "correctAnswer": "Emetic",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Ends in -ic.",
+    "explanation": "The prefix '-emet' means vomit or to vomit",
     "tag": ""
   },
   {
@@ -1842,10 +1842,10 @@
   {
     "id": 185,
     "question": "Which of the following is the correct spelling for 'pertaining to the chest'?",
-    "options": ["Thoracic", "Thorassic", "Thoracic", "Thorasis"],
+    "options": ["Thoracic", "Thorassic", "Thoracick", "Thorasis"],
     "correctAnswer": "Thoracic",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "From thorax; note the 'c' ending.",
     "tag": ""
   },
@@ -1902,7 +1902,7 @@
   {
     "id": 191,
     "question": "Which of the following is the correct spelling for 'a severe allergic reaction'?",
-    "options": ["Anaphylaxis", "Anaphilaxis", "Anaphylaxis", "Anaphelaxis"],
+    "options": ["Anaphylaxis", "Anaphilaxis", "Anaphylaxiss", "Anaphelaxis"],
     "correctAnswer": "Anaphylaxis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
@@ -1915,14 +1915,14 @@
     "options": ["Herniorrhaphy", "Hernioraphy", "Herniorhaphy", "Herniorrhaphey"],
     "correctAnswer": "Herniorrhaphy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Note the double 'r' and the 'h'.",
     "tag": ""
   },
-  {
+   {
     "id": 193,
     "question": "Which of the following is the correct spelling for 'softening of the spinal cord'?",
-    "options": ["Myelomalacia", "Myelomalacia", "Myelomalacia", "Mielomalacia"],
+    "options": ["Myelomalacia", "Myellomalacia", "Mielomalacia", "Myelomalashea"],
     "correctAnswer": "Myelomalacia",
     "category": "Medical Spelling",
     "difficulty": "Medium",
@@ -1941,12 +1941,12 @@
   },
   {
     "id": 195,
-    "question": "Which of the following is the correct spelling for 'excessive growth of hair in unusual places'?",
-    "options": ["Hirsutism", "Hersutism", "Hirsutizm", "Hirsutissm"],
-    "correctAnswer": "Hirsutism",
+    "question": "Which of the following is the correct spelling for 'the presence of stones in the common bile duct'?",
+    "options": ["Choledocholithiasis", "Choledocholithasis", "Choledocolithiasis", "Choledocholythiasis"],
+    "correctAnswer": "Choledocholithiasis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "From the Latin 'hirsutus' (shaggy).",
+    "difficulty": "Hard",
+    "explanation": "Choledoch/o (common bile duct) + lith (stone) + -iasis.",
     "tag": ""
   },
   {
@@ -1955,7 +1955,7 @@
     "options": ["Menorrhagia", "Menorhagia", "Menorragia", "Menorrhagya"],
     "correctAnswer": "Menorrhagia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Note the double 'r' and 'h'.",
     "tag": ""
   },
@@ -1965,7 +1965,7 @@
     "options": ["Buccal", "Bucal", "Buckal", "Buccul"],
     "correctAnswer": "Buccal",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Contains a double 'c'.",
     "tag": ""
   },
@@ -1975,7 +1975,7 @@
     "options": ["Bacteremia", "Bactaremia", "Bacteremya", "Bacterema"],
     "correctAnswer": "Bacteremia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Bacter/i + -emia.",
     "tag": ""
   },
@@ -1991,12 +1991,12 @@
   },
   {
     "id": 200,
-    "question": "Which of the following is the correct spelling for 'a portable device for measuring peak flow'?",
-    "options": ["Spirometer", "Spirommiter", "Spirommiter", "Spyrometer"],
-    "correctAnswer": "Spirometer",
+    "question": "Which of the following is the correct spelling for the inflammation of the iris and the ciliary body?",
+    "options": ["Iridocyclitis", "Iridocyctitis", "Iridocyclitiss", "Iridocyclitice"],
+    "correctAnswer": "Iridocyclitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Used frequently in asthma monitoring.",
+    "difficulty": "Hard",
+    "explanation": "A triple-root word (irido/cyclo/itis).",
     "tag": ""
   },
   {
@@ -2015,7 +2015,7 @@
     "options": ["Rhinorrhea", "Rhinorhea", "Rhinnorrhea", "Rhinorrhia"],
     "correctAnswer": "Rhinorrhea",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Note the double 'r' in the suffix -rrhea.",
     "tag": ""
   },
@@ -2025,18 +2025,18 @@
     "options": ["Oncology", "Oncollogy", "Onkology", "Oncolagy"],
     "correctAnswer": "Oncology",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Onc/o (tumor) + -logy (study).",
     "tag": ""
   },
   {
     "id": 204,
-    "question": "Which of the following is the correct spelling for 'inflammation of the gallbladder'?",
-    "options": ["Cholecystitis", "Colecystitis", "Cholecistitis", "Cholecystytis"],
-    "correctAnswer": "Cholecystitis",
+    "question": "Which of the following is the correct spelling for the accumulation of yellow fatty material in the skin?",
+    "options": ["Xanthoma", "Zanthoma", "Xanthomma", "Xanthomah"],
+    "correctAnswer": "Xanthoma",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Chol/e (bile) + cyst (bladder) + -itis.",
+    "explanation": "Starts with 'X', from the Greek for 'yellow'.",
     "tag": ""
   },
   {
@@ -2045,7 +2045,7 @@
     "options": ["Podiatrist", "Podeatrist", "Podiatryst", "Podiatriste"],
     "correctAnswer": "Podiatrist",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Pod/o (foot) + -iatrist (specialist).",
     "tag": ""
   },
@@ -2065,7 +2065,7 @@
     "options": ["Hematopoiesis", "Hemotopoiesis", "Hematopoesis", "Hematopoyesis"],
     "correctAnswer": "Hematopoiesis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Note the 'oi' combination in the suffix -poiesis.",
     "tag": ""
   },
@@ -2075,7 +2075,7 @@
     "options": ["Onychomycosis", "Onicomycosis", "Onychomicosis", "Onychomycosys"],
     "correctAnswer": "Onychomycosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Onych/o (nail) + myc (fungus) + -osis.",
     "tag": ""
   },
@@ -2090,7 +2090,7 @@
     "tag": ""
   },
   {
-    "id": 110,
+    "id": 210,
     "question": "Which of the following is the correct spelling for 'a condition of cross-eyes'?",
     "options": ["Strabismus", "Strabismis", "Strabismous", "Strabysmus"],
     "correctAnswer": "Strabismus",
@@ -2125,27 +2125,27 @@
     "options": ["Nephrolithiasis", "Nephrolithesis", "Nephrolithasis", "Nephrolythiasis"],
     "correctAnswer": "Nephrolithiasis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Nephr/o (kidney) + lith (stone) + -iasis.",
     "tag": ""
   },
   {
     "id": 214,
-    "question": "Which of the following is the correct spelling for 'the process of maintaining a constant internal environment'?",
-    "options": ["Homeostasis", "Homoeostasis", "Homeostatis", "Homeostasiss"],
-    "correctAnswer": "Homeostasis",
+    "question": "Which of the following is the correct spelling for the lung disease caused by inhaling dust?",
+    "options": ["Pneumoconiosis", "Numoconiosis", "Pneumoconiossis", "Pneumoconiosys"],
+    "correctAnswer": "Pneumoconiosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Homeo- (same) + -stasis (staying).",
+    "difficulty": "Hard",
+    "explanation": "Note the silent 'P' and the '-osis' suffix.",
     "tag": ""
   },
-  {
+    {
     "id": 215,
     "question": "Which of the following is the correct spelling for 'a surgical incision into the windpipe'?",
-    "options": ["Tracheotomy", "Tracheotomy", "Tracheotomy", "Tracheatomy"],
+    "options": ["Tracheotomy", "Tracheostomy", "Tracheatomy", "Trachiotomy"],
     "correctAnswer": "Tracheotomy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Trache/o + -otomy.",
     "tag": ""
   },
@@ -2155,18 +2155,18 @@
     "options": ["Febrile", "Febrille", "Febril", "Febreile"],
     "correctAnswer": "Febrile",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "From the Latin 'febris'.",
     "tag": ""
   },
   {
     "id": 217,
-    "question": "Which of the following is the correct spelling for 'paralysis of the lower half of the body'?",
-    "options": ["Paraplegia", "Parraplegia", "Paraplegya", "Paraplegea"],
-    "correctAnswer": "Paraplegia",
+    "question": "Which of the following is the correct spelling for 'dilation of the central canal of the spinal cord'?",
+    "options": ["Hydromyelia", "Hidromyelia", "Hydromyelya", "Hydromielia"],
+    "correctAnswer": "Hydromyelia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Para- (beside/beyond) + -plegia.",
+    "difficulty": "Hard",
+    "explanation": "Hydr/o (water/fluid) + myel/o (spinal cord).",
     "tag": ""
   },
   {
@@ -2175,18 +2175,18 @@
     "options": ["Bradypnea", "Bradipnea", "Bradypnia", "Bradypneea"],
     "correctAnswer": "Bradypnea",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Brady- (slow) + -pnea (breathing).",
     "tag": ""
   },
   {
     "id": 219,
-    "question": "Which of the following is the correct spelling for 'the medical term for cross-eyed'?",
-    "options": ["Strabismus", "Strabismis", "Strabismous", "Strabysmus"],
-    "correctAnswer": "Strabismus",
+    "question": "Which of the following is the correct spelling for 'croup' or inflammation of the larynx, trachea, and bronchi?",
+    "options": ["Laryngotracheobronchitis", "Laringotracheobronchitis", "Laryngotracheobronchytis", "Laryngotrachobronchitis"],
+    "correctAnswer": "Laryngotracheobronchitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Commonly confused with 'nystagmus'.",
+    "difficulty": "Hard",
+    "explanation": "A triple-root word describing obstructive airway inflammation.",
     "tag": ""
   },
   {
@@ -2195,7 +2195,7 @@
     "options": ["Tympanum", "Timpanum", "Tympanem", "Tympanam"],
     "correctAnswer": "Tympanum",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Note the 'y' following the 'T'.",
     "tag": ""
   },
@@ -2235,7 +2235,7 @@
     "options": ["Hematoma", "Hemotoma", "Hematomma", "Hamatoma"],
     "correctAnswer": "Hematoma",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Hemat/o (blood) + -oma (tumor/mass).",
     "tag": ""
   },
@@ -2252,7 +2252,7 @@
   {
     "id": 226,
     "question": "Which of the following is the correct spelling for 'a physician who treats the elderly'?",
-    "options": ["Geriatrician", "Geriatritian", "Geriatrician", "Gereatrician"],
+    "options": ["Geriatrician", "Geriatritian", "Geritrician", "Gereatrician"],
     "correctAnswer": "Geriatrician",
     "category": "Medical Spelling",
     "difficulty": "Medium",
@@ -2265,7 +2265,7 @@
     "options": ["Adenitis", "Addenitis", "Adenytis", "Adenitiss"],
     "correctAnswer": "Adenitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Aden/o (gland) + -itis.",
     "tag": ""
   },
@@ -2285,7 +2285,7 @@
     "options": ["Neurorrhaphy", "Neurorhaphy", "Neurorrhaphey", "Neurorragia"],
     "correctAnswer": "Neurorrhaphy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Neur/o + -rrhaphy (surgical suturing).",
     "tag": ""
   },
@@ -2295,7 +2295,7 @@
     "options": ["Dystonia", "Distonia", "Dystonnea", "Dystomya"],
     "correctAnswer": "Dystonia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Dys- + ton/o + -ia.",
     "tag": ""
   },
@@ -2329,10 +2329,10 @@
     "explanation": "Lymph/o + aden/o + -itis.",
     "tag": ""
   },
-  {
+   {
     "id": 234,
     "question": "Which of the following is the correct spelling for 'the process of viewing the bladder'?",
-    "options": ["Cystoscopy", "Cistoscopy", "Cystoscoppy", "Cystoscopy"],
+    "options": ["Cystoscopy", "Cistoscopy", "Cystoscoppy", "Cystoscop"],
     "correctAnswer": "Cystoscopy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
@@ -2345,7 +2345,7 @@
     "options": ["Amenorrhea", "Amenorea", "Ammenorrhea", "Amenorrhia"],
     "correctAnswer": "Amenorrhea",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "A- + men/o + -rrhea.",
     "tag": ""
   },
@@ -2355,7 +2355,7 @@
     "options": ["Hypnotic", "Hipnotic", "Hypnotick", "Hypnottic"],
     "correctAnswer": "Hypnotic",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Ends in -ic.",
     "tag": ""
   },
@@ -2365,7 +2365,7 @@
     "options": ["Axillary", "Axiliary", "Axillory", "Axilary"],
     "correctAnswer": "Axillary",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Note the double 'l' and -ary ending.",
     "tag": ""
   },
@@ -2375,18 +2375,18 @@
     "options": ["Myorrhexis", "Myorexis", "Myorrheksis", "Myorrhixis"],
     "correctAnswer": "Myorrhexis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "My/o + -rrhexis (rupture).",
     "tag": ""
   },
   {
     "id": 239,
-    "question": "Which of the following is the correct spelling for 'the presence of gallstones'?",
-    "options": ["Cholelithiasis", "Cholelithasis", "Cholelythiasis", "Colelithiasis"],
-    "correctAnswer": "Cholelithiasis",
+    "question": "Which of the following is the correct spelling for the chronic liver damage leading to scarring?",
+    "options": ["Cirrhosis", "Sirrhosis", "Cirhosis", "Cirrhosys"],
+    "correctAnswer": "Cirrhosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Chol/e + lith + -iasis.",
+    "difficulty": "Hard",
+    "explanation": "Requires the double 'r' and 'h'.",
     "tag": ""
   },
   {
@@ -2401,22 +2401,22 @@
   },
   {
     "id": 241,
-    "question": "Which of the following is the correct spelling for 'the medical term for the windpipe'?",
-    "options": ["Trachea", "Trachia", "Trakea", "Tracheea"],
-    "correctAnswer": "Trachea",
+    "question": "Which of the following is the correct spelling for 'the scarring and replacement of bone marrow by fibrous tissue'?",
+    "options": ["Myelofibrosis", "Myellofibrosis", "Mielofibrosis", "Myelofibrosiss"],
+    "correctAnswer": "Myelofibrosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Note the 'ea' ending.",
+    "difficulty": "Hard",
+    "explanation": "Myel/o (marrow) + fibrosis.",
     "tag": ""
   },
   {
     "id": 242,
-    "question": "Which of the following is the correct spelling for 'an agent that prevents vomiting'?",
-    "options": ["Antiemetic", "Antiametic", "Antiemitick", "Antyametic"],
-    "correctAnswer": "Antiemetic",
+    "question": "Which of the following is the correct spelling for the inflammation of a bursa?",
+    "options": ["Bursitis", "Burseitis", "Bursytis", "Bursitiss"],
+    "correctAnswer": "Bursitis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Anti- + emetic.",
+    "explanation": "Standard '-itis' suffix.",
     "tag": ""
   },
   {
@@ -2439,24 +2439,24 @@
     "explanation": "Laryng/o + -ectomy.",
     "tag": ""
   },
-  {
+    {
     "id": 245,
-    "question": "Which of the following is the correct spelling for 'the presence of blood in the urine'?",
-    "options": ["Hematuria", "Hemeturia", "Hematurya", "Hematuria"],
-    "correctAnswer": "Hematuria",
+    "question": "Which of the following is the correct spelling for 'a brain tumor originating from oligodendrocyte cells'?",
+    "options": ["Oligodendroglioma", "Olygodendroglioma", "Oligodendrogliomma", "Oligodandroglioma"],
+    "correctAnswer": "Oligodendroglioma",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Hemat/o + -uria.",
+    "difficulty": "Hard",
+    "explanation": "Note the 'o' connecting the roots.",
     "tag": ""
   },
   {
     "id": 246,
-    "question": "Which of the following is the correct spelling for 'the study of the eye'?",
-    "options": ["Ophthalmology", "Opthalmology", "Ophthalmollogy", "Ophalmology"],
-    "correctAnswer": "Ophthalmology",
+    "question": "Which of the following is the correct spelling for 'inflammation of the entire heart'?",
+    "options": ["Pancarditis", "Pancarditiss", "Pancardytis", "Pankarditis"],
+    "correctAnswer": "Pancarditis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Requires two 'h's (ph and th).",
+    "explanation": "Pan- (all) + card/i (heart) + -itis.",
     "tag": ""
   },
   {
@@ -2465,17 +2465,17 @@
     "options": ["Gingivitis", "Gingivytis", "Gingevitis", "Gingivittis"],
     "correctAnswer": "Gingivitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Gingiv/o (gums) + -itis.",
     "tag": ""
   },
-  {
+   {
     "id": 248,
     "question": "Which of the following is the correct spelling for 'the rupture of an artery'?",
-    "options": ["Arteriorrhexis", "Arteriorrhexis", "Arteriorhexis", "Arteriorrheksis"],
+    "options": ["Arteriorrhexis", "Arteriorrheksis", "Arteriorhexis", "Arterioryxis"],
     "correctAnswer": "Arteriorrhexis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Arteri/o + -rrhexis.",
     "tag": ""
   },
@@ -2495,7 +2495,7 @@
     "options": ["Myorrhaphy", "Myorhaphy", "Myorrhaphey", "Myorragia"],
     "correctAnswer": "Myorrhaphy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "My/o + -rrhaphy.",
     "tag": ""
   },
@@ -2505,17 +2505,17 @@
     "options": ["Gastrostomy", "Gastrostomie", "Gastrostemy", "Gastrostomi"],
     "correctAnswer": "Gastrostomy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Gastr/o (stomach) + -stomy (new opening).",
     "tag": ""
   },
   {
     "id": 252,
     "question": "Which of the following is the correct spelling for 'the medical term for the study of the rectum and anus'?",
-    "options": ["Proctology", "Proktology", "Proctollogy", "Proctalogy"],
+    "options": ["Proctology", "Practology", "Proctocology", "Proctalogy"],
     "correctAnswer": "Proctology",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Proct/o (rectum) + -logy.",
     "tag": ""
   },
@@ -2525,7 +2525,7 @@
     "options": ["Asymmetrical", "Asymetrical", "Asymmetricull", "Asimmetrical"],
     "correctAnswer": "Asymmetrical",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Note the double 'm' following the 'y'.",
     "tag": ""
   },
@@ -2535,7 +2535,7 @@
     "options": ["Appendectomy", "Apendectomy", "Appendectomie", "Appendectemy"],
     "correctAnswer": "Appendectomy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Append/o + -ectomy. Requires a double 'p'.",
     "tag": ""
   },
@@ -2545,28 +2545,28 @@
     "options": ["Histologist", "Histollogist", "Hystologist", "Histolagist"],
     "correctAnswer": "Histologist",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Hist/o (tissue) + -logist.",
     "tag": ""
   },
   {
     "id": 256,
-    "question": "Which of the following is the correct spelling for 'inflammation of the gallbladder'?",
-    "options": ["Cholecystitis", "Cholecistitis", "Colecystitis", "Cholecystytis"],
-    "correctAnswer": "Cholecystitis",
+    "question": "Which of the following is the correct spelling for a disease that can be transmitted from animals to humans?",
+    "options": ["Zoonosis", "Zoonosiss", "Zonosis", "Zoonosys"],
+    "correctAnswer": "Zoonosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Chol/e + cyst + -itis.",
+    "difficulty": "Easy",
+    "explanation": "Note the double 'o'.",
     "tag": ""
   },
   {
     "id": 257,
-    "question": "Which of the following is the correct spelling for 'the presence of gallstones'?",
-    "options": ["Cholelithiasis", "Cholelithasis", "Cholelythiasis", "Colelithiasis"],
-    "correctAnswer": "Cholelithiasis",
+    "question": "Which of the following is the correct spelling for any impairment of the voice?",
+    "options": ["Dysphonia", "Disphonia", "Dysphonyya", "Dysphonea"],
+    "correctAnswer": "Dysphonia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Often confused with cholecystitis; -iasis denotes a condition/presence.",
+    "difficulty": "Easy",
+    "explanation": "Combines 'dys-' and 'phon/o'.",
     "tag": ""
   },
   {
@@ -2575,7 +2575,7 @@
     "options": ["Ectopia", "Ectopea", "Ectopya", "Ectopeia"],
     "correctAnswer": "Ectopia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "From the Greek 'ektopos' (out of place).",
     "tag": ""
   },
@@ -2589,34 +2589,34 @@
     "explanation": "Contains two 'h's (ph and th).",
     "tag": ""
   },
-  {
+   {
     "id": 260,
-    "question": "Which of the following is the correct spelling for 'the presence of blood in the pleural cavity'?",
-    "options": ["Hemothorax", "Hemathorax", "Hemathoraks", "Heemothorax"],
-    "correctAnswer": "Hemothorax",
+    "question": "Which of the following is the correct spelling for any disease of the brain?",
+    "options": ["Encephalopathy", "Ensephalopathy", "Encephalopethy", "Encephalopathie"],
+    "correctAnswer": "Encephalopathy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Hem/o + thorax.",
+    "explanation": "Requires the 'y' and 'ph'.",
     "tag": ""
   },
-  {
+   {
     "id": 261,
-    "question": "Which of the following is the correct spelling for 'paralysis of all four limbs'?",
-    "options": ["Quadriplegia", "Quadraplegia", "Quadriplegya", "Quadriplegia"],
-    "correctAnswer": "Quadriplegia",
+    "question": "Which of the following is the correct spelling for an abnormal communication or 'fistula' involving the bile duct?",
+    "options": ["Choledochal", "Choledocal", "Choledochul", "Choledocul"],
+    "correctAnswer": "Choledochal",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Uses 'i' as the combining vowel.",
+    "difficulty": "Hard",
+    "explanation": "Requires the double 'ch'.",
     "tag": ""
   },
-  {
+   {
     "id": 262,
-    "question": "Which of the following is the correct spelling for 'surgical removal of the uterus'?",
-    "options": ["Hysterectomy", "Histerectomy", "Hysterectomie", "Hysterectemy"],
-    "correctAnswer": "Hysterectomy",
+    "question": "Which of the following is the correct spelling for 'hardening of the veins'?",
+    "options": ["Phlebosclerosis", "Phlebosclerosiss", "Flebosclerosis", "Phlebosclerosys"],
+    "correctAnswer": "Phlebosclerosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Hyster/o (uterus) + -ectomy.",
+    "difficulty": "Hard",
+    "explanation": "Phleb/o (vein) + sclerosis (hardening).",
     "tag": ""
   },
   {
@@ -2632,21 +2632,21 @@
   {
     "id": 264,
     "question": "Which of the following is the correct spelling for 'an agent that prevents or stops diarrhea'?",
-    "options": ["Antidiarrheal", "Antidiarrheal", "Antidiarrhoeal", "Antydyarrheal"],
+    "options": ["Antidiarrheal", "Antidiarrhoeal", "Antidiarrheul", "Antydyarrheal"],
     "correctAnswer": "Antidiarrheal",
     "category": "Medical Spelling",
     "difficulty": "Medium",
     "explanation": "Note the double 'r'.",
     "tag": ""
   },
-  {
+   {
     "id": 265,
-    "question": "Which of the following is the correct spelling for 'an agent that relieves pain'?",
-    "options": ["Analgesic", "Analgisic", "Analgessic", "Anallgesic"],
-    "correctAnswer": "Analgesic",
+    "question": "Which of the following is the correct spelling for a tumor-like mass of inspissated feces?",
+    "options": ["Fecaloma", "Feccaloma", "Fecalloma", "Fecalomma"],
+    "correctAnswer": "Fecaloma",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "An- + algesia.",
+    "explanation": "Note the single 'c' and 'l'.",
     "tag": ""
   },
   {
@@ -2655,7 +2655,7 @@
     "options": ["Anatomy", "Anatomie", "Anatemy", "Anatommy"],
     "correctAnswer": "Anatomy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Ana- (up) + -tomy (cutting).",
     "tag": ""
   },
@@ -2665,7 +2665,7 @@
     "options": ["Cardiac", "Cardeac", "Cardiack", "Kardiac"],
     "correctAnswer": "Cardiac",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "From the Greek 'kardia'.",
     "tag": ""
   },
@@ -2675,38 +2675,38 @@
     "options": ["Coagulation", "Coaggulation", "Coagullation", "Coagulatshun"],
     "correctAnswer": "Coagulation",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Note the single 'g' and single 'l'.",
     "tag": ""
   },
-  {
+   {
     "id": 269,
-    "question": "Which of the following is the correct spelling for 'the medical term for the tailbone'?",
-    "options": ["Coccyx", "Coccix", "Coccyks", "Cocyx"],
-    "correctAnswer": "Coccyx",
+    "question": "Which of the following is the correct spelling for 'the presence of both air and pus in the pleural cavity'?",
+    "options": ["Pyopneumothorax", "Piopneumothorax", "Pyopnumothorax", "Pyopneumothoreks"],
+    "correctAnswer": "Pyopneumothorax",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Note the double 'c' and ending in 'yx'.",
+    "difficulty": "Hard",
+    "explanation": "Pyo- (pus) + pneumo- (air) + thorax.",
     "tag": ""
   },
-  {
+   {
     "id": 270,
-    "question": "Which of the following is the correct spelling for 'inflammation of the colon'?",
-    "options": ["Colitis", "Collitis", "Colytis", "Colitiss"],
-    "correctAnswer": "Colitis",
+    "question": "Which of the following is the correct spelling for 'an infectious disease causing chronic inflammation of the nose'?",
+    "options": ["Rhinoscleroma", "Rinoscleroma", "Rhinosclerosma", "Rhinoscleromma"],
+    "correctAnswer": "Rhinoscleroma",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Col/o (colon) + -itis.",
+    "difficulty": "Hard",
+    "explanation": "Rhin/o + scleroma.",
     "tag": ""
   },
   {
     "id": 271,
-    "question": "Which of the following is the correct spelling for 'a physician who treats disorders of the skin'?",
-    "options": ["Dermatologist", "Dermitologist", "Durmatologist", "Dermatollogist"],
-    "correctAnswer": "Dermatologist",
+    "question": "Which of the following is the correct spelling for 'pertaining to the spleen and pancreas'?",
+    "options": ["Splenopancreatic", "Spleenopancreatic", "Splenopancriatic", "Splenopancreattic"],
+    "correctAnswer": "Splenopancreatic",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Dermat/o + -logist.",
+    "difficulty": "Hard",
+    "explanation": "Splen/o + pancreatic.",
     "tag": ""
   },
   {
@@ -2715,18 +2715,18 @@
     "options": ["Diuretic", "Diuretick", "Dyeretic", "Diurettic"],
     "correctAnswer": "Diuretic",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Ends in -ic.",
     "tag": ""
   },
   {
     "id": 273,
-    "question": "Which of the following is the correct spelling for 'the medical term for the thigh bone'?",
-    "options": ["Femur", "Feemur", "Femar", "Femure"],
-    "correctAnswer": "Femur",
+    "question": "Which of the following is the correct spelling for the medical term pertaining to the heart muscle?",
+    "options": ["Myocardial", "Myocardal", "Miocardial", "Myocardul"],
+    "correctAnswer": "Myocardial",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "The longest bone in the body.",
+    "explanation": "Root my/o (muscle) + cardi/o (heart) + -al.",
     "tag": ""
   },
   {
@@ -2741,82 +2741,82 @@
   },
   {
     "id": 275,
-    "question": "Which of the following is the correct spelling for 'the state of internal balance'?",
-    "options": ["Homeostasis", "Homoeostasis", "Homeostatis", "Homeostasiss"],
-    "correctAnswer": "Homeostasis",
+    "question": "Which of the following is the correct spelling for the disease of the retina?",
+    "options": ["Retinopathy", "Retinopethy", "Retinopathie", "Retinopathey"],
+    "correctAnswer": "Retinopathy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Homeo- + -stasis.",
+    "difficulty": "Easy",
+    "explanation": "Requires the 'o' connecting vowel.",
     "tag": ""
   },
   {
     "id": 276,
-    "question": "Which of the following is the correct spelling for 'high blood pressure'?",
-    "options": ["Hypertension", "Hipertension", "Hypertention", "Hypertenshun"],
-    "correctAnswer": "Hypertension",
+    "question": "Which of the following is the correct spelling for the surgical procedure to treat glaucoma by opening the canal of Schlemm?",
+    "options": ["Goniotomy", "Goniotomie", "Gonniotomy", "Goniotamy"],
+    "correctAnswer": "Goniotomy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Note the 'y' and the -sion ending.",
+    "explanation": "Combines 'goni/o' and '-tomy'.",
     "tag": ""
   },
   {
     "id": 277,
-    "question": "Which of the following is the correct spelling for 'a drug that induces sleep'?",
-    "options": ["Hypnotic", "Hipnotic", "Hypnotick", "Hypnottic"],
-    "correctAnswer": "Hypnotic",
+    "question": "Which of the following is the correct spelling for 'inflammation of the middle ear and mastoid'?",
+    "options": ["Tympanomastoiditis", "Timpanomastoiditis", "Tympanomastoyditis", "Tympanomastoiditiss"],
+    "correctAnswer": "Tympanomastoiditis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Hypn/o (sleep) + -tic.",
+    "difficulty": "Hard",
+    "explanation": "Tympan/o + mastoid + -itis.",
     "tag": ""
   },
   {
     "id": 278,
-    "question": "Which of the following is the correct spelling for 'the medical term for jaundice'?",
-    "options": ["Icterus", "Icterrus", "Icteras", "Icteris"],
-    "correctAnswer": "Icterus",
+    "question": "Which of the following is the correct spelling for 'herniation of the ureter into the urinary bladder'?",
+    "options": ["Ureterocele", "Uretrocele", "Ureterocelle", "Ureteroceel"],
+    "correctAnswer": "Ureterocele",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Synonym for jaundice.",
+    "difficulty": "Hard",
+    "explanation": "Ureter/o + -cele (hernia).",
     "tag": ""
   },
   {
     "id": 279,
-    "question": "Which of the following is the correct spelling for 'the presence of nitrogenous waste in the blood'?",
-    "options": ["Azotemia", "Azotimia", "Azotemya", "Azotema"],
-    "correctAnswer": "Azotemia",
+    "question": "Which of the following is the correct spelling for 'a rare type of leukemia presenting with a yellow skin tint'?",
+    "options": ["Xantholeukemia", "Zantholeukemia", "Xantholeukemya", "Xantholeucemia"],
+    "correctAnswer": "Xantholeukemia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Azot/o + -emia.",
+    "difficulty": "Hard",
+    "explanation": "Xanth/o (yellow) + leukemia.",
     "tag": ""
   },
   {
     "id": 280,
-    "question": "Which of the following is the correct spelling for 'the voice box'?",
-    "options": ["Larynx", "Larynyx", "Larenyx", "Larinx"],
-    "correctAnswer": "Larynx",
+    "question": "Which of the following is the correct spelling for the clinical splitting of the retinal layers?",
+    "options": ["Retinoschisis", "Retinoschesis", "Retinoschysis", "Retinoschissis"],
+    "correctAnswer": "Retinoschisis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Note the 'y' and the 'nx' ending.",
+    "difficulty": "Hard",
+    "explanation": "The 'sch' and 'isis' sequence follows standard medical Greek patterns.",
     "tag": ""
   },
   {
     "id": 281,
-    "question": "Which of the following is the correct spelling for 'inflammation of the lymph nodes'?",
-    "options": ["Lymphadenitis", "Limphadenitis", "Lymphadenytis", "Lymphaddenitis"],
-    "correctAnswer": "Lymphadenitis",
+    "question": "Which of the following is the correct spelling for 'pertaining to the zygomatic bone and the face'?",
+    "options": ["Zygomaticofacial", "Zigomaticofacial", "Zygomaticafacial", "Zygomaticofascial"],
+    "correctAnswer": "Zygomaticofacial",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Lymph/o + aden/o + -itis.",
+    "difficulty": "Hard",
+    "explanation": "Zygomatic/o + facial.",
     "tag": ""
   },
   {
     "id": 282,
-    "question": "Which of the following is the correct spelling for 'excessive menstrual bleeding'?",
-    "options": ["Menorrhagia", "Menorhagia", "Menorragia", "Menorrhagya"],
-    "correctAnswer": "Menorrhagia",
+    "question": "Which of the following is the correct spelling for a condition of reduced bone mass?",
+    "options": ["Osteopenia", "Ostiopenia", "Osteopenea", "Osteopenya"],
+    "correctAnswer": "Osteopenia",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Note the double 'r' and 'h'.",
+    "explanation": "Combines 'oste/o' and '-penia'.",
     "tag": ""
   },
   {
@@ -2825,37 +2825,37 @@
     "options": ["Nephrology", "Nephrollogy", "Nephrelogy", "Nephrolagy"],
     "correctAnswer": "Nephrology",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Nephr/o + -logy.",
     "tag": ""
   },
-  {
+    {
     "id": 284,
-    "question": "Which of the following is the correct spelling for 'the medical term for the study of tumors'?",
-    "options": ["Oncology", "Oncollogy", "Onkology", "Oncolagy"],
-    "correctAnswer": "Oncology",
+    "question": "Which of the following is the correct spelling for 'inflammation of the bursa of the Achilles tendon'?",
+    "options": ["Achillobursitis", "Achillobursytis", "Achillobursitiss", "Achilobursitis"],
+    "correctAnswer": "Achillobursitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Onc/o (tumor) + -logy.",
+    "difficulty": "Hard",
+    "explanation": "Achillo- + bursitis.",
     "tag": ""
   },
   {
     "id": 285,
-    "question": "Which of the following is the correct spelling for 'pertaining to the eye'?",
-    "options": ["Ophthalmic", "Opthalmic", "Ophalmic", "Ophthalmyc"],
-    "correctAnswer": "Ophthalmic",
+    "question": "Which of the following is the correct spelling for an incision into the chest wall?",
+    "options": ["Thoracotomy", "Thorassotomy", "Thoracotomei", "Thoracotamy"],
+    "correctAnswer": "Thoracotomy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Requires 'ph' and 'th'.",
+    "explanation": "Note the 'c' following the 'a'.",
     "tag": ""
   },
   {
     "id": 286,
     "question": "Which of the following is the correct spelling for 'the study of bones'?",
-    "options": ["Osteology", "Osteollogy", "Osteology", "Osteolagy"],
+    "options": ["Osteology", "Osteollogy", "Osteolagy", "Osteomyology"],
     "correctAnswer": "Osteology",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Oste/o + -logy.",
     "tag": ""
   },
@@ -2865,18 +2865,18 @@
     "options": ["Patella", "Patela", "Patellah", "Patalla"],
     "correctAnswer": "Patella",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Requires a double 'l'.",
     "tag": ""
   },
-  {
+ {
     "id": 288,
-    "question": "Which of the following is the correct spelling for 'the study of diseases'?",
-    "options": ["Pathology", "Pathollogy", "Pathelogy", "Patholagy"],
-    "correctAnswer": "Pathology",
+    "question": "Which of the following is the correct spelling for the medical term for a toothache?",
+    "options": ["Odontalgia", "Odontolgia", "Odontalgya", "Odontalgie"],
+    "correctAnswer": "Odontalgia",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Path/o + -logy.",
+    "explanation": "Combines 'odont/o' and '-algia'.",
     "tag": ""
   },
   {
@@ -2889,84 +2889,84 @@
     "explanation": "Silent 'P' at start.",
     "tag": ""
   },
-  {
+ {
     "id": 290,
-    "question": "Which of the following is the correct spelling for 'an agent that prevents blood clots'?",
-    "options": ["Anticoagulant", "Anticoagulent", "Antycoagulant", "Anticoagullant"],
-    "correctAnswer": "Anticoagulant",
+    "question": "Which of the following is the correct spelling for an abnormally low white blood cell count?",
+    "options": ["Leukopenia", "Lucopenia", "Leukopenea", "Leukopenya"],
+    "correctAnswer": "Leukopenia",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Ends in -ant.",
+    "explanation": "Combines 'leuk/o' and '-penia'.",
     "tag": ""
   },
   {
     "id": 291,
     "question": "Which of the following is the correct spelling for 'the study of the mind'?",
-    "options": ["Psychology", "Psychollogy", "Psychology", "Psycholagy"],
+    "options": ["Psychology", "Psychollogy", "Psycholagy", "Pseychology"],
     "correctAnswer": "Psychology",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Silent 'P' at start.",
     "tag": ""
   },
   {
     "id": 292,
-    "question": "Which of the following is the correct spelling for 'pertaining to the kidney'?",
-    "options": ["Renal", "Rennal", "Renel", "Reenal"],
-    "correctAnswer": "Renal",
+    "question": "Which of the following is the correct spelling for 'inflammation of the glans penis'?",
+    "options": ["Balanitis", "Ballanitis", "Balanytis", "Balanitiss"],
+    "correctAnswer": "Balanitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "From the Latin 'ren'.",
+    "difficulty": "Easy",
+    "explanation": "Balan/o + -itis.",
     "tag": ""
   },
   {
     "id": 293,
-    "question": "Which of the following is the correct spelling for 'the medical term for a nose job'?",
-    "options": ["Rhinoplasty", "Rhinoplastie", "Rynoplasty", "Rhinoplastey"],
-    "correctAnswer": "Rhinoplasty",
+    "question": "Which of the following is the correct spelling for the chronic lung condition involving damaged air sacs?",
+    "options": ["Emphysema", "Emphysima", "Emphysemma", "Emphyzema"],
+    "correctAnswer": "Emphysema",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Rhin/o + -plasty.",
+    "explanation": "The 'y' and 'e' sequence is the primary hurdle.",
     "tag": ""
   },
-  {
+   {
     "id": 294,
-    "question": "Which of the following is the correct spelling for 'an instrument used to listen to the chest'?",
-    "options": ["Stethoscope", "Stethiscope", "Stethoscop", "Stethiscop"],
-    "correctAnswer": "Stethoscope",
+    "question": "Which of the following is the correct spelling for 'an X-ray image of the bladder and urethra'?",
+    "options": ["Cystourethrogram", "Cistourethrogram", "Cystourethrogramme", "Cystourethrogrem"],
+    "correctAnswer": "Cystourethrogram",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Steth/o + -scope.",
+    "difficulty": "Hard",
+    "explanation": "Cyst/o + urethr/o + -gram.",
     "tag": ""
   },
-  {
+   {
     "id": 295,
     "question": "Which of the following is the correct spelling for 'the study of toxic substances'?",
-    "options": ["Toxicology", "Toxicollogy", "Toxicalogy", "Toxicology"],
+    "options": ["Toxicology", "Toxicollogy", "Toxicalogy", "Toxecology"],
     "correctAnswer": "Toxicology",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Toxic/o + -logy.",
     "tag": ""
   },
-  {
+   {
     "id": 296,
-    "question": "Which of the following is the correct spelling for 'the windpipe'?",
-    "options": ["Trachea", "Trachia", "Trakea", "Tracheea"],
-    "correctAnswer": "Trachea",
+    "question": "Which of the following is the correct spelling for 'a slow-growing malignant skin tumor'?",
+    "options": ["Dermatofibrosarcoma", "Dermatofybrosarcoma", "Dermitofibrosarcoma", "Dermatofibrosarkoma"],
+    "correctAnswer": "Dermatofibrosarcoma",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Requires 'ea' ending.",
+    "difficulty": "Hard",
+    "explanation": "Note the 'o' connecting roots.",
     "tag": ""
   },
   {
     "id": 297,
-    "question": "Which of the following is the correct spelling for 'the medical term for an eardrum repair'?",
-    "options": ["Tympanoplasty", "Timpanoplasty", "Tympanoplastie", "Tympanoplastey"],
-    "correctAnswer": "Tympanoplasty",
+    "question": "Which of the following is the correct spelling for 'inflammation of the epididymis'?",
+    "options": ["Epididymitis", "Epididimitis", "Epididymytis", "Epididdymitis"],
+    "correctAnswer": "Epididymitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Note the 'y' and the 'p'.",
+    "difficulty": "Hard",
+    "explanation": "Note the 'y' and 'i' sequence.",
     "tag": ""
   },
   {
@@ -2975,28 +2975,28 @@
     "options": ["Venous", "Vennous", "Venos", "Venosse"],
     "correctAnswer": "Venous",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Note the single 'n'.",
     "tag": ""
   },
   {
     "id": 299,
-    "question": "Which of the following is the correct spelling for 'the presence of sugar in the urine'?",
-    "options": ["Glycosuria", "Glicosuria", "Glycosurya", "Glycosurea"],
-    "correctAnswer": "Glycosuria",
+    "question": "Which of the following is the correct spelling for the second part of the small intestine?",
+    "options": ["Jejunum", "Gejunum", "Jejunem", "Jejenum"],
+    "correctAnswer": "Jejunum",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Note the 'y' and 'o'.",
+    "explanation": "From the Latin 'jejunus' (empty).",
     "tag": ""
   },
-  {
+   {
     "id": 300,
-    "question": "Which of the following is the correct spelling for 'the medical term for a dry mouth'?",
-    "options": ["Xerostomia", "Zerostomia", "Xerostomea", "Xerostomae"],
-    "correctAnswer": "Xerostomia",
+    "question": "Which of the following is the correct spelling for the inflammation of the stomach and intestines?",
+    "options": ["Gastroenteritis", "Gastrointritis", "Gastroenteritiss", "Gastroenteritice"],
+    "correctAnswer": "Gastroenteritis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Starts with 'X'.",
+    "explanation": "Note the connecting vowel 'e' and standard '-itis'.",
     "tag": ""
   },
 {
@@ -3005,7 +3005,7 @@
     "options": ["Cholecystorrhaphy", "Cholecystoraphy", "Colecystorrhaphy", "Cholecystorrhaphey"],
     "correctAnswer": "Cholecystorrhaphy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Chol/e + cyst + -rrhaphy (surgical suturing).",
     "tag": ""
   },
@@ -3025,18 +3025,18 @@
     "options": ["Pyelitis", "Pyellitis", "Pielytis", "Pyelytis"],
     "correctAnswer": "Pyelitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Pyel/o (pelvis) + -itis.",
     "tag": ""
   },
   {
     "id": 304,
-    "question": "Which of the following is the correct spelling for 'the study of the rectum and anus'?",
-    "options": ["Proctology", "Proktology", "Proctollogy", "Proctalogy"],
-    "correctAnswer": "Proctology",
+    "question": "Which of the following is the correct spelling for a diploid cell resulting from the fusion of two haploid gametes?",
+    "options": ["Zygote", "Zigote", "Zygott", "Zygotte"],
+    "correctAnswer": "Zygote",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Proct/o (rectum) + -logy.",
+    "difficulty": "Easy",
+    "explanation": "Note the 'y' and the terminal 'e'.",
     "tag": ""
   },
   {
@@ -3055,18 +3055,18 @@
     "options": ["Amputation", "Amputatshun", "Amputasion", "Amputtation"],
     "correctAnswer": "Amputation",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "Note the 't' before the -ion ending.",
     "tag": ""
   },
   {
     "id": 307,
-    "question": "Which of the following is the correct spelling for 'excessive sensitivity to sensory stimuli'?",
-    "options": ["Hyperesthesia", "Hyperasthesia", "Hiperesthesia", "Hyperesthezia"],
-    "correctAnswer": "Hyperesthesia",
+    "question": "Which of the following is the correct spelling for an infectious tropical disease caused by Treponema pallidum?",
+    "options": ["Yaws", "Yawss", "Yawes", "Yaze"],
+    "correctAnswer": "Yaws",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Hyper- + esthesia (sensation).",
+    "difficulty": "Easy",
+    "explanation": "A short but technical term in international health.",
     "tag": ""
   },
   {
@@ -3075,7 +3075,7 @@
     "options": ["Anesthetic", "Anesthetick", "Anestetic", "Anesthettic"],
     "correctAnswer": "Anesthetic",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "explanation": "An- (without) + esthet/o + -ic.",
     "tag": ""
   },
@@ -3101,12 +3101,12 @@
   },
   {
     "id": 311,
-    "question": "Which of the following is the correct spelling for 'the medical term for the displacement of an organ'?",
-    "options": ["Ectopia", "Ectopea", "Ectopya", "Ectopeia"],
-    "correctAnswer": "Ectopia",
+    "question": "Which of the following is the correct spelling for a benign tumor of glandular origin?",
+    "options": ["Adenoma", "Addenoma", "Adenomma", "Adenomah"],
+    "correctAnswer": "Adenoma",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Ectop/o (out of place) + -ia.",
+    "difficulty": "Easy",
+    "explanation": "Note the single 'd' and single 'm'.",
     "tag": ""
   },
   {
@@ -3119,20 +3119,20 @@
     "explanation": "Oste/o + myel/o + -itis.",
     "tag": ""
   },
-  {
+   {
     "id": 313,
-    "question": "Which of the following is the correct spelling for 'the surgical removal of the prostate gland'?",
-    "options": ["Prostatectomy", "Prostetectomy", "Prostatectomie", "Prostatictemy"],
-    "correctAnswer": "Prostatectomy",
+    "question": "Which of the following is the correct spelling for the medical term for delayed stomach emptying?",
+    "options": ["Gastroparesis", "Gastroparesiss", "Gastroparesys", "Gastroparesice"],
+    "correctAnswer": "Gastroparesis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Prostat/o + -ectomy.",
+    "explanation": "Note the '-sis' ending.",
     "tag": ""
   },
   {
     "id": 314,
     "question": "Which of the following is the correct spelling for 'the process of viewing the esophagus'?",
-    "options": ["Esophagoscopy", "Esophagoscoppy", "Esophagoscopy", "Esophagoscopy"],
+    "options": ["Esofagoscopy", "Esophagoscoppy", "Esophagoscope", "Esophagoscopy"],
     "correctAnswer": "Esophagoscopy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
@@ -3141,21 +3141,21 @@
   },
   {
     "id": 315,
-    "question": "Which of the following is the correct spelling for 'the medical term for the eardrum'?",
-    "options": ["Tympanum", "Timpanum", "Tympanem", "Tympanam"],
-    "correctAnswer": "Tympanum",
+    "question": "Which of the following is the correct spelling for the serious bacterial infection that causes painful muscle spasms?",
+    "options": ["Tetanus", "Tetanis", "Tetanous", "Tettanus"],
+    "correctAnswer": "Tetanus",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Requires 'y' and 'um' ending.",
+    "difficulty": "Easy",
+    "explanation": "Commonly known as 'lockjaw'.",
     "tag": ""
   },
-  {
+   {
     "id": 316,
     "question": "Which of the following is the correct spelling for 'the production of red blood cells'?",
-    "options": ["Erythropoiesis", "Erythropoesis", "Erythropoyesis", "Erythropoiesis"],
+    "options": ["Erythropoiesis", "Erythropoesis", "Erythropioesis", "Erythropoeisis"],
     "correctAnswer": "Erythropoiesis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "explanation": "Erythr/o (red) + -poiesis.",
     "tag": ""
   },
@@ -3169,334 +3169,334 @@
     "explanation": "Colp/o (vagina) + -scope.",
     "tag": ""
   },
-  {
+   {
     "id": 318,
-    "question": "Which of the following is the correct spelling for 'inflammation of the synovial membrane'?",
-    "options": ["Synovitis", "Sinovitis", "Synovytis", "Synovittis"],
-    "correctAnswer": "Synovitis",
+    "question": "Which of the following is the correct spelling for 'a tumor composed of muscle and fibrous tissue'?",
+    "options": ["Fibromyoma", "Fibromioma", "Fibromyomma", "Fibromyomah"],
+    "correctAnswer": "Fibromyoma",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Synov/o + -itis.",
+    "difficulty": "Hard",
+    "explanation": "Fibro- + my/o + -oma.",
     "tag": ""
   },
   {
     "id": 319,
-    "question": "Which of the following is the correct spelling for 'the medical term for the study of the endocrine system'?",
-    "options": ["Endocrinology", "Endocronology", "Endocrinollogy", "Endocrinalogy"],
-    "correctAnswer": "Endocrinology",
+    "question": "Which of the following is the correct spelling for the formation of stones in the ureter?",
+    "options": ["Ureterolithiasis", "Uretrolithiasis", "Ureterolythiasis", "Ureterolithasis"],
+    "correctAnswer": "Ureterolithiasis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Endo- + crin/o + -logy.",
+    "difficulty": "Hard",
+    "explanation": "A triple-root word (uretero/lith/iasis).",
     "tag": ""
   },
-  {
+ {
     "id": 320,
-    "question": "Which of the following is the correct spelling for 'an agent that prevents blood clotting'?",
-    "options": ["Anticoagulant", "Anticoagulent", "Antycoagulant", "Anticoagullant"],
-    "correctAnswer": "Anticoagulant",
+    "question": "Which of the following is the correct spelling for dark, tarry stools containing digested blood?",
+    "options": ["Melena", "Mellena", "Malena", "Melana"],
+    "correctAnswer": "Melena",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Ends in -ant.",
+    "explanation": "Note the single 'l' and 'n'.",
     "tag": ""
   },
-  {
+ {
     "id": 321,
-    "question": "Which of the following is the correct spelling for 'excessive body hair'?",
-    "options": ["Hirsutism", "Hersutism", "Hirsutizm", "Hirsutissm"],
-    "correctAnswer": "Hirsutism",
+    "question": "Which of the following is the correct spelling for the death of most or all of the cells in an organ or tissue?",
+    "options": ["Necrosis", "Nacrosis", "Necrosiss", "Necrosys"],
+    "correctAnswer": "Necrosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Commonly seen in hormonal imbalances.",
+    "difficulty": "Easy",
+    "explanation": "Standard '-osis' suffix.",
     "tag": ""
   },
-  {
+   {
     "id": 322,
-    "question": "Which of the following is the correct spelling for 'the presence of bacteria in the blood'?",
-    "options": ["Bacteremia", "Bactaremia", "Bacteremya", "Bacterema"],
-    "correctAnswer": "Bacteremia",
+    "question": "Which of the following is the correct spelling for the forecast of the likely course of a disease?",
+    "options": ["Prognosis", "Pragnosis", "Prognosiss", "Prognosys"],
+    "correctAnswer": "Prognosis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Bacter/i + -emia.",
+    "difficulty": "Easy",
+    "explanation": "Note the '-osis' ending.",
     "tag": ""
   },
-  {
-    "id": 323,
-    "question": "Which of the following is the correct spelling for 'pertaining to the chest cavity'?",
-    "options": ["Thoracic", "Thorassic", "Thoracic", "Thorasis"],
-    "correctAnswer": "Thoracic",
-    "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "From thorax.",
-    "tag": ""
-  },
+   {
+  "id": 323,
+  "question": "Which of the following is the correct spelling for 'paralysis of the eye muscles'?",
+  "options": ["Ophthalmoplegia", "Ophthalmaplegia", "Ophthalmoplegya", "Ophthalmoplegea"],
+  "correctAnswer": "Ophthalmoplegia",
+  "category": "Medical Spelling",
+  "difficulty": "Hard",
+  "explanation": "Derived from ophthalmos (eye) and plegia (paralysis). Note the 'ph' and 'th' consonant clusters and the 'ia' terminal suffix.",
+  "tag": ""
+},
   {
     "id": 324,
-    "question": "Which of the following is the correct spelling for 'the medical term for a dry mouth'?",
-    "options": ["Xerostomia", "Zerostomia", "Xerostomea", "Xerostomya"],
-    "correctAnswer": "Xerostomia",
+    "question": "Which of the following is the correct spelling for the coughing up of blood?",
+    "options": ["Hemoptysis", "Hemoptysiss", "Heemoptysis", "Hemoplysis"],
+    "correctAnswer": "Hemoptysis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Starts with 'X'.",
+    "explanation": "Note the silent 'p' and the 'y'.",
     "tag": ""
   },
-  {
+   {
     "id": 325,
-    "question": "Which of the following is the correct spelling for 'the state of internal balance'?",
-    "options": ["Homeostasis", "Homoeostasis", "Homeostatis", "Homeostasiss"],
-    "correctAnswer": "Homeostasis",
+    "question": "Which of the following is the correct spelling for the virus commonly known as chickenpox?",
+    "options": ["Varicella", "Varicela", "Variculla", "Varicellah"],
+    "correctAnswer": "Varicella",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Homeo- + -stasis.",
+    "difficulty": "Easy",
+    "explanation": "Requires a double 'l'.",
     "tag": ""
   },
   {
     "id": 326,
-    "question": "Which of the following is the correct spelling for 'the surgical suturing of a nerve'?",
-    "options": ["Neurorrhaphy", "Neurorhaphy", "Neurorrhaphey", "Neurorragia"],
-    "correctAnswer": "Neurorrhaphy",
+    "question": "Which of the following is the correct spelling for an inflammation of the blood vessels?",
+    "options": ["Vasculitis", "Vasculytis", "Vaskulitis", "Vasculitiss"],
+    "correctAnswer": "Vasculitis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Neur/o + -rrhaphy.",
+    "difficulty": "Easy",
+    "explanation": "Note the single 'l'.",
     "tag": ""
   },
-  {
+ {
     "id": 327,
-    "question": "Which of the following is the correct spelling for 'a slow respiratory rate'?",
-    "options": ["Bradypnea", "Bradipnea", "Bradypnia", "Bradypneea"],
-    "correctAnswer": "Bradypnea",
+    "question": "Which of the following is the correct spelling for a high-pitched, wheezing sound caused by disrupted airflow?",
+    "options": ["Stridor", "Stridder", "Stridore", "Stridar"],
+    "correctAnswer": "Stridor",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Brady- + -pnea.",
+    "difficulty": "Easy",
+    "explanation": "Note the '-or' ending.",
     "tag": ""
   },
-  {
+ {
     "id": 328,
-    "question": "Which of the following is the correct spelling for 'paralysis of the lower half of the body'?",
-    "options": ["Paraplegia", "Parraplegia", "Paraplegya", "Paraplegea"],
-    "correctAnswer": "Paraplegia",
+    "question": "Which of the following is the correct spelling for the backflow of stomach acid into the esophagus?",
+    "options": ["Reflux", "Refluxx", "Refflux", "Refluxe"],
+    "correctAnswer": "Reflux",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Para- + -plegia.",
+    "difficulty": "Easy",
+    "explanation": "Note the single 'x'.",
     "tag": ""
   },
   {
     "id": 329,
-    "question": "Which of the following is the correct spelling for 'a collection of blood in the pleural cavity'?",
-    "options": ["Hemothorax", "Hemathorax", "Hemathoraks", "Heemothorax"],
-    "correctAnswer": "Hemothorax",
+    "question": "Which of the following is the correct spelling for a rapid, irregular, and unsynchronized contraction of muscle fibers?",
+    "options": ["Fibrillation", "Fibrilattion", "Fibrillasion", "Fibrillatian"],
+    "correctAnswer": "Fibrillation",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Hem/o + thorax.",
+    "difficulty": "Easy",
+    "explanation": "Requires a double 'l'.",
     "tag": ""
   },
   {
     "id": 330,
-    "question": "Which of the following is the correct spelling for 'a physician who specializes in the feet'?",
-    "options": ["Podiatrist", "Podeatrist", "Podiatryst", "Podiatriste"],
-    "correctAnswer": "Podiatrist",
+    "question": "Which of the following is the correct spelling for a state of isolation to prevent the spread of disease?",
+    "options": ["Quarantine", "Quarrentine", "Quarantyne", "Quarrantine"],
+    "correctAnswer": "Quarantine",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Pod/o + -iatrist.",
+    "difficulty": "Easy",
+    "explanation": "From the Italian 'quaranta' (forty).",
     "tag": ""
   },
   {
     "id": 331,
-    "question": "Which of the following is the correct spelling for 'the presence of sugar in the urine'?",
-    "options": ["Glycosuria", "Glicosuria", "Glycosurya", "Glycosurea"],
-    "correctAnswer": "Glycosuria",
+    "question": "Which of the following is the correct spelling for an abnormal increase in the forward curvature of the thoracic spine?",
+    "options": ["Kyphosis", "Kiphosis", "Kyphosiss", "Kyphosys"],
+    "correctAnswer": "Kyphosis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Glycos/o + -uria.",
+    "explanation": "Note the 'y' and 'ph'.",
     "tag": ""
   },
   {
     "id": 332,
-    "question": "Which of the following is the correct spelling for 'inflammation of the gallbladder'?",
-    "options": ["Cholecystitis", "Cholecistitis", "Colecystitis", "Cholecystytis"],
-    "correctAnswer": "Cholecystitis",
+    "question": "Which of the following is the correct spelling for the accumulation of fluid in the peritoneal cavity?",
+    "options": ["Ascites", "Asites", "Ascitess", "Ascytis"],
+    "correctAnswer": "Ascites",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Chol/e + cyst + -itis.",
+    "explanation": "Note the 'sc' sequence.",
     "tag": ""
   },
   {
     "id": 333,
-    "question": "Which of the following is the correct spelling for 'the study of diseases'?",
-    "options": ["Pathology", "Pathollogy", "Pathelogy", "Patholagy"],
-    "correctAnswer": "Pathology",
+    "question": "Which of the following is the correct spelling for the inflammation of the pleura?",
+    "options": ["Pleurisy", "Plurisy", "Pleurisey", "Pleuresey"],
+    "correctAnswer": "Pleurisy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Path/o + -logy.",
+    "explanation": "Note the 'eu' diphthong.",
     "tag": ""
   },
   {
     "id": 334,
-    "question": "Which of the following is the correct spelling for 'yellowing of the skin due to bilirubin'?",
-    "options": ["Jaundice", "Jaundiss", "Jandice", "Jaundise"],
-    "correctAnswer": "Jaundice",
+    "question": "Which of the following is the correct spelling for the breakdown of damaged skeletal muscle tissue?",
+    "options": ["Rhabdomyolysis", "Rabdomyolysis", "Rhabdomiolysis", "Rhabdomyolosis"],
+    "correctAnswer": "Rhabdomyolysis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "From the French word for yellow.",
+    "difficulty": "Hard",
+    "explanation": "A complex word requiring 'rh' and the double 'y' in the roots.",
     "tag": ""
   },
-  {
+   {
     "id": 335,
-    "question": "Which of the following is the correct spelling for 'the voice box'?",
-    "options": ["Larynx", "Larynyx", "Larenyx", "Larinx"],
-    "correctAnswer": "Larynx",
+    "question": "Which of the following is the correct spelling for the complex surgical procedure used to treat obstructive sleep apnea?",
+    "options": ["Uvulopalatopharyngoplasty", "Uvulopalatopharingoplasty", "Uvulopalatopharyngoplastie", "Uvulopallatopharyngoplasty"],
+    "correctAnswer": "Uvulopalatopharyngoplasty",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Note the 'y' and 'nx'.",
+    "difficulty": "Hard",
+    "explanation": "A quadruple-root word (uvulo/palato/pharyngo/plasty).",
     "tag": ""
   },
   {
     "id": 336,
-    "question": "Which of the following is the correct spelling for 'the surgical removal of the uterus'?",
-    "options": ["Hysterectomy", "Histerectomy", "Hysterectomie", "Hysterectemy"],
-    "correctAnswer": "Hysterectomy",
+    "question": "Which of the following is the correct spelling for the protrusion of internal organs through an incision?",
+    "options": ["Evisceration", "Evisseration", "Eviscerasion", "Evisceratten"],
+    "correctAnswer": "Evisceration",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Hyster/o + -ectomy.",
+    "explanation": "Note the 'sc' sequence.",
     "tag": ""
   },
   {
     "id": 337,
-    "question": "Which of the following is the correct spelling for 'muscle weakness'?",
-    "options": ["Myasthenia", "Miasthinia", "Myastheanea", "Myastheneia"],
-    "correctAnswer": "Myasthenia",
+    "question": "Which of the following is the correct spelling for a congenital condition of an abnormally small head?",
+    "options": ["Microcephaly", "Mikrocephaly", "Microcephally", "Microcephala"],
+    "correctAnswer": "Microcephaly",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "My/o + -asthenia.",
+    "explanation": "Requires 'ph' and terminal 'y'.",
     "tag": ""
   },
   {
     "id": 338,
-    "question": "Which of the following is the correct spelling for 'high blood pressure'?",
-    "options": ["Hypertension", "Hipertension", "Hypertention", "Hypertenshun"],
-    "correctAnswer": "Hypertension",
+    "question": "Which of the following is the correct spelling for an abnormally high level of potassium in the blood?",
+    "options": ["Hyperkalemia", "Hiperkalemia", "Hyperkalemea", "Hyperkallemia"],
+    "correctAnswer": "Hyperkalemia",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Note the -sion ending.",
+    "explanation": "From 'kalium' (potassium).",
     "tag": ""
   },
-  {
+ {
     "id": 339,
-    "question": "Which of the following is the correct spelling for 'the study of the eye'?",
-    "options": ["Ophthalmology", "Opthalmology", "Ophthalmollogy", "Ophalmology"],
-    "correctAnswer": "Ophthalmology",
+    "question": "Which of the following is the correct spelling for 'surgical creation of an opening between the stomach and duodenum'?",
+    "options": ["Gastroduodenostomy", "Gastroduodenostomie", "Gastroduodenostamy", "Gastroduodenostomy"],
+    "correctAnswer": "Gastroduodenostomy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Requires two 'h's.",
+    "difficulty": "Hard",
+    "explanation": "Gastr/o + duoden/o + -stomy.",
     "tag": ""
   },
   {
     "id": 340,
-    "question": "Which of the following is the correct spelling for 'inflammation of the bronchi'?",
-    "options": ["Bronchitis", "Bronkitis", "Bronchytis", "Bronchittis"],
-    "correctAnswer": "Bronchitis",
+    "question": "Which of the following is the correct spelling for 'a malignant tumor originating from the lining of blood vessels'?",
+    "options": ["Hemangioendothelioma", "Hemangioendotheliomma", "Hemangeoendothelioma", "Haemangioendothelioma"],
+    "correctAnswer": "Hemangioendothelioma",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Bronch/o + -itis.",
+    "difficulty": "Hard",
+    "explanation": "Note the 'eo' sequence.",
     "tag": ""
   },
   {
     "id": 341,
-    "question": "Which of the following is the correct spelling for 'the medical term for the tailbone'?",
-    "options": ["Coccyx", "Coccix", "Coccyks", "Cocyx"],
-    "correctAnswer": "Coccyx",
+    "question": "Which of the following is the correct spelling for 'surgical fixation of the iris'?",
+    "options": ["Iridodesis", "Iridodessis", "Iridodesys", "Irydodesis"],
+    "correctAnswer": "Iridodesis",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Ends in -yx.",
+    "difficulty": "Hard",
+    "explanation": "Irid/o + -desis (fixation).",
     "tag": ""
   },
   {
     "id": 342,
-    "question": "Which of the following is the correct spelling for 'an agent that reduces fever'?",
-    "options": ["Antipyretic", "Antipyretick", "Antipiretic", "Antipyrettic"],
-    "correctAnswer": "Antipyretic",
+    "question": "Which of the following is the correct spelling for the medical term for 'wasting' due to severe illness?",
+    "options": ["Cachexia", "Cackexia", "Cachaxia", "Cachexea"],
+    "correctAnswer": "Cachexia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Anti- + pyret/o + -ic.",
+    "difficulty": "Hard",
+    "explanation": "The 'ch' and 'x' sequence is diagnostic for this Greek-derived term.",
     "tag": ""
   },
   {
     "id": 343,
-    "question": "Which of the following is the correct spelling for 'fast heart rate'?",
-    "options": ["Tachycardia", "Tackicardia", "Tachycardya", "Tachycardeia"],
-    "correctAnswer": "Tachycardia",
+    "question": "Which of the following is the correct spelling for the rare brain damage that occurs in newborns with severe jaundice?",
+    "options": ["Kernicterus", "Kernicteris", "Kernicteras", "Kernicterous"],
+    "correctAnswer": "Kernicterus",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Tachy- + cardi/o.",
+    "difficulty": "Hard",
+    "explanation": "Derived from the Greek 'ikteros' (jaundice).",
     "tag": ""
   },
   {
     "id": 344,
-    "question": "Which of the following is the correct spelling for 'inflammation of the kidney'?",
-    "options": ["Nephritis", "Nephretis", "Nephrytis", "Nephritiss"],
-    "correctAnswer": "Nephritis",
+    "question": "Which of the following is the correct spelling for the surgical procedure to create an opening into the pancreatic duct?",
+    "options": ["Pancreaticoduodenostomy", "Pancreaticoduodenostomie", "Pancreaticoduodenostamy", "Pancreatticoduodenostomy"],
+    "correctAnswer": "Pancreaticoduodenostomy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Nephr/o + -itis.",
+    "difficulty": "Hard",
+    "explanation": "Requires the connecting 'o' and the standard '-stomy' suffix.",
     "tag": ""
   },
   {
     "id": 345,
-    "question": "Which of the following is the correct spelling for 'surgical repair of the nose'?",
-    "options": ["Rhinoplasty", "Rhinoplastie", "Rynoplasty", "Rhinoplastey"],
-    "correctAnswer": "Rhinoplasty",
+    "question": "Which of the following is the correct spelling for the surgical fixation of the stomach?",
+    "options": ["Gastropexy", "Gastroprexy", "Gastropeksy", "Gastropaxy"],
+    "correctAnswer": "Gastropexy",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Rhin/o + -plasty.",
+    "explanation": "Uses the suffix '-pexy' for fixation.",
     "tag": ""
   },
   {
     "id": 346,
-    "question": "Which of the following is the correct spelling for 'the medical term for fainting'?",
-    "options": ["Syncope", "Sincope", "Syncopy", "Syncopa"],
-    "correctAnswer": "Syncope",
+    "question": "Which of the following is the correct spelling for the medical term for dry skin?",
+    "options": ["Xerosis", "Zerosis", "Xerossis", "Xerosys"],
+    "correctAnswer": "Xerosis",
     "category": "Medical Spelling",
     "difficulty": "Medium",
-    "explanation": "Note the 'y' and 'e'.",
+    "explanation": "Starts with 'X', from the Greek for 'dry'.",
     "tag": ""
   },
   {
     "id": 347,
-    "question": "Which of the following is the correct spelling for 'pertaining to the cheek'?",
-    "options": ["Buccal", "Bucal", "Buckal", "Buccul"],
-    "correctAnswer": "Buccal",
+    "question": "Which of the following is the correct spelling for 'abnormal cone-shaped curvature of the cornea'?",
+    "options": ["Keratoconus", "Keratoconas", "Kerratoconus", "Keratoconeus"],
+    "correctAnswer": "Keratoconus",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Contains double 'c'.",
+    "difficulty": "Hard",
+    "explanation": "Kerat/o + conus.",
     "tag": ""
   },
   {
     "id": 348,
-    "question": "Which of the following is the correct spelling for 'a drug used to treat bacterial infections'?",
-    "options": ["Antibiotic", "Antibeotic", "Antibiotick", "Antybiotic"],
-    "correctAnswer": "Antibiotic",
+    "question": "Which of the following is the correct spelling for 'dilation of the lymph vessels'?",
+    "options": ["Lymphangiectasia", "Lymphangiectassia", "Limphangiectasia", "Lymphangeectasia"],
+    "correctAnswer": "Lymphangiectasia",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Anti- + bio + -ic.",
+    "difficulty": "Hard",
+    "explanation": "Lymph + angiectasia.",
     "tag": ""
   },
   {
     "id": 349,
-    "question": "Which of the following is the correct spelling for 'loss of appetite'?",
-    "options": ["Anorexia", "Annorexia", "Anorexea", "Anorexsia"],
-    "correctAnswer": "Anorexia",
+    "question": "Which of the following is the correct spelling for the cluster of cells near the renal glomerulus that secrete renin?",
+    "options": ["Juxtaglomerular", "Juxtaglomerulor", "Juxtaglomerullor", "Juxtaglomeruler"],
+    "correctAnswer": "Juxtaglomerular",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Derived from Greek.",
+    "difficulty": "Hard",
+    "explanation": "Note the '-ar' ending.",
     "tag": ""
   },
   {
     "id": 350,
-    "question": "Which of the following is the correct spelling for 'an instrument used for measuring blood pressure'?",
-    "options": ["Sphygmomanometer", "Sphygmomanomiter", "Sphygnomanometer", "Sphigmomanometer"],
-    "correctAnswer": "Sphygmomanometer",
+    "question": "Which of the following is the correct spelling for the clinical term for nerve disease?",
+    "options": ["Neuropathy", "Nuropathy", "Neuropathie", "Neuropathey"],
+    "correctAnswer": "Neuropathy",
     "category": "Medical Spelling",
-    "difficulty": "Medium",
-    "explanation": "Contains 'ph', 'y', and 'gm'.",
+    "difficulty": "Easy",
+    "explanation": "Combines 'neur/o' and '-pathy'.",
     "tag": ""
   },
   {
@@ -3524,7 +3524,7 @@
     "question": "Which of the following is the correct spelling for the surgical procedure to remove the stapes bone in the middle ear?",
     "options": ["Stapedectomy", "Stapidectomy", "Stapedectomie", "Stappedecomy"],
     "correctAnswer": "Stapedectomy",
-    "difficulty": "Hard",
+    "difficulty": "Medium",
     "category": "Medical Spelling",
     "explanation": "From staped/o (stapes) and -ectomy. Often misspelled with an 'i' due to phonetic pronunciation.",
     "tag": ""
@@ -3552,9 +3552,9 @@
   {
     "id": 356,
     "question": "Which of the following is the correct spelling for the surgical fixation of the small intestine to the abdominal wall?",
-    "options": ["Enteropexy", "Entyropexy", "Enteropeksy", "Enteropexei"],
+    "options": ["Enteropexy", "Enteripexy", "Enteroplexy", "Enteriplex"],
     "correctAnswer": "Enteropexy",
-    "difficulty": "Hard",
+    "difficulty": "Medium",
     "category": "Medical Spelling",
     "explanation": "Enter/o (intestine) + -pexy (fixation).",
     "tag": ""
@@ -3581,12 +3581,12 @@
   },
   {
     "id": 359,
-    "question": "Which of the following is the correct spelling for the condition involving the 'softening of the spinal cord'?",
-    "options": ["Myelomalacia", "Myellomalacia", "Mielomalacia", "Myelomalashea"],
-    "correctAnswer": "Myelomalacia",
-    "difficulty": "Hard",
+    "question": "Which of the following is the correct spelling for 'inflammation of the spinal cord and nerve roots'?",
+    "options": ["Myeloradiculitis", "Mieloradiculitis", "Myeloradiculytis", "Myeloradiculitiss"],
+    "correctAnswer": "Myeloradiculitis",
     "category": "Medical Spelling",
-    "explanation": "Myel/o (marrow/cord) + -malacia (softening). Distractors target the root 'y' vs 'i'.",
+    "difficulty": "Hard",
+    "explanation": "Myel/o + radicul/o + -itis.",
     "tag": ""
   },
   {
@@ -3594,7 +3594,7 @@
     "question": "Which of the following is the correct spelling for the neuro-ophthalmological term for 'pupillary constriction'?",
     "options": ["Miosis", "Myosis", "Meiosis", "Miosiss"],
     "correctAnswer": "Miosis",
-    "difficulty": "Hard",
+    "difficulty": "Easy",
     "category": "Medical Spelling",
     "explanation": "Not to be confused with 'meiosis' (cell division) or 'myosis' (a less common alternate but often considered a misspelling in this context).",
     "tag": ""
@@ -3654,7 +3654,7 @@
     "question": "Which of the following is the correct spelling for the neuroanatomical term for the 'cross-shaped' bundle of nerve fibers in the brain?",
     "options": ["Decussation", "Decusation", "Decussassion", "Decusshation"],
     "correctAnswer": "Decussation",
-    "difficulty": "Hard",
+    "difficulty": "Medium",
     "category": "Medical Spelling",
     "explanation": "Refers to the crossing of nerve fibers (like the pyramids in the medulla). Note the double 's' and single 't'.",
     "tag": ""
@@ -3671,12 +3671,12 @@
   },
   {
     "id": 368,
-    "question": "Which of the following is the correct spelling for the clinical term describing a generalized 'wasting' of the body due to chronic illness?",
-    "options": ["Cachexia", "Cachaxia", "Cackexia", "Cachexea"],
-    "correctAnswer": "Cachexia",
-    "difficulty": "Hard",
+    "question": "Which of the following is the correct spelling for 'calcium deposits within the kidney tissue'?",
+    "options": ["Nephrocalcinosis", "Nephrocalcynosis", "Nephrocalcinosiss", "Nephrocalcinosys"],
+    "correctAnswer": "Nephrocalcinosis",
     "category": "Medical Spelling",
-    "explanation": "From the Greek 'kakos' (bad) and 'hexis' (condition). The 'ch' and 'x' combination is highly specific.",
+    "difficulty": "Hard",
+    "explanation": "Nephr/o + calcinosis.",
     "tag": ""
   },
   {
@@ -3936,21 +3936,6 @@
   },
   {
     "id": 390,
-    "question": "Which of the following is the correct spelling for the rare congenital absence of the gallbladder?",
-    "options": [
-      "Agenesia cholecystica",
-      "Agenesis cholecystica",
-      "Agenesia cholecistica",
-      "Agenesia cholecysticca"
-    ],
-    "correctAnswer": "Agenesia cholecystica",
-    "difficulty": "Hard",
-    "category": "Medical Spelling",
-    "explanation": "This is the formal Latin clinical term. It requires the 'ia' ending rather than the English 'is' (agenesis) to match the Latin grammar of 'cholecystica'.",
-    "tag": ""
-  },
-  {
-    "id": 390,
     "question": "Which of the following is the correct spelling for the surgical procedure involving the division of the nerve of the pterygoid canal?",
     "options": [
       "Vidian neurectomy",
@@ -4009,19 +3994,14 @@
     "explanation": "A complex synthesis of 'urano-' (palate) and 'staphyle' (uvula). The 'y' and 'o' connecting vowels are the primary points of failure.",
     "tag": ""
   },
-  {
+ {
     "id": 394,
     "question": "Which of the following is the correct spelling for the rare condition of 'stone formation' within the lacrimal apparatus?",
-    "options": [
-      "Dacryolithiasis",
-      "Dacriolithiasis",
-      "Dacryolithyasis",
-      "Dacryolithiasis"
-    ],
+    "options": ["Dacryolithiasis", "Dacriolithiasis", "Dacryolithyasis", "Dacriololithiasis"],
     "correctAnswer": "Dacryolithiasis",
     "difficulty": "Hard",
     "category": "Medical Spelling",
-    "explanation": "From 'dacryo-' (tear) and 'lithiasis' (stone condition). Note the Greek 'y' in the first root and the Latin 'i' in the suffix.",
+    "explanation": "From 'dacryo-' (tear) and 'lithiasis' (stone condition). Note the Greek 'y' and Latin 'i'.",
     "tag": ""
   },
   {
@@ -4059,9 +4039,9 @@
     "question": "Which of the following is the correct spelling for the congenital absence of the bile ducts?",
     "options": [
       "Biliary atresia",
-      "Biliary atrezia",
+      "Biliary atrecia",
       "Billiary atresia",
-      "Billiary atrezia"
+      "Billiary atrecia"
     ],
     "correctAnswer": "Biliary atresia",
     "difficulty": "Hard",
@@ -4075,7 +4055,7 @@
     "options": [
       "Tungiasis",
       "Tungasis",
-      "Tungiasis",
+      "Tungisis",
       "Tungiosis"
     ],
     "correctAnswer": "Tungiasis",
@@ -4221,17 +4201,12 @@
   },
   {
     "id": 408,
-    "question": "Which of the following is the correct spelling for the specialized surgical procedure to create an opening into the pancreatic duct?",
-    "options": [
-      "Pancreaticoduodenostomy",
-      "Pancreaticoduodenostomy",
-      "Pancreaticocholedochostomy",
-      "Pancreaticodochostomy"
-    ],
-    "correctAnswer": "Pancreaticoduodenostomy",
-    "difficulty": "Hard",
+    "question": "Which of the following is the correct spelling for 'inflammation of the ear and antrum'?",
+    "options": ["Otoantritis", "Otoantrytitis", "Otoantritice", "Otoantritiss"],
+    "correctAnswer": "Otoantritis",
     "category": "Medical Spelling",
-    "explanation": "Requires the 'o' connecting vowel between the pancreas and duodenum roots.",
+    "difficulty": "Hard",
+    "explanation": "Ot/o + antr/o + -itis.",
     "tag": ""
   },
   {
@@ -4536,12 +4511,12 @@
   },
   {
     "id": 435,
-    "question": "Which of the following is the correct spelling for the specialized histological descriptor of 'calcified microspheres' seen in papillary thyroid carcinoma?",
-    "options": ["Psammoma bodies", "Psamoma bodies", "Psammomma bodies", "Psamomma bodies"],
-    "correctAnswer": "Psammoma bodies",
-    "difficulty": "Hard",
+    "question": "Which of the following is the correct spelling for 'abnormal thickening of the nails'?",
+    "options": ["Pachyonychia", "Pachyonychya", "Pachionychia", "Pachionychya"],
+    "correctAnswer": "Pachyonychia",
     "category": "Medical Spelling",
-    "explanation": "From the Greek 'psammos' (sand). Requires the 'ps' cluster and the double 'mm'.",
+    "difficulty": "Hard",
+    "explanation": "Pachy- (thick) + onych/o (nail) + -ia.",
     "tag": ""
   },
   {
@@ -4782,12 +4757,7 @@
   {
     "id": 454,
     "question": "Which of the following is the correct spelling for the adjectival form of a highly malignant germ cell tumor of the placenta?",
-    "options": [
-      "Choriocarcinomatous",
-      "Choriocarcinomatose",
-      "Choriocarcinomatous",
-      "Choryocarcinomatous"
-    ],
+    "options": ["Choriocarcinomatous", "Choriocarcinomatose", "Choriocarcinomatus", "Choryocarcinomatous"],
     "correctAnswer": "Choriocarcinomatous",
     "difficulty": "Hard",
     "category": "Medical Spelling",
@@ -4813,7 +4783,7 @@
     "id": 456,
     "question": "Which of the following is the correct spelling for the separation of the epiphysis from the bone shaft, often due to injury?",
     "options": [
-      "Osteoepiphysiolysis",
+      "Osteoepyphysiolysis",
       "Osteoepiphysyolysis",
       "Osteoepiphisiolysis",
       "Osteoepiphysiolysis"
@@ -5006,17 +4976,12 @@
   },
   {
     "id": 469,
-    "question": "Which of the following is the correct spelling for a rare congenital condition characterized by the fusion of the fingers or toes?",
-    "options": [
-      "Syndactyly",
-      "Sindactyly",
-      "Syndactily",
-      "Syndactally"
-    ],
-    "correctAnswer": "Syndactyly",
-    "difficulty": "Hard",
+    "question": "Which of the following is the correct spelling for 'the surgical suturing of the tongue'?",
+    "options": ["Glossorrhaphy", "Glossorhaphy", "Glossorragia", "Glossorrhaphey"],
+    "correctAnswer": "Glossorrhaphy",
     "category": "Medical Spelling",
-    "explanation": "Requires the 'y' in both 'syn-' (together) and '-dactyly' (fingers).",
+    "difficulty": "Hard",
+    "explanation": "Gloss/o (tongue) + -rrhaphy (suturing).",
     "tag": ""
   },
   {
@@ -5066,17 +5031,12 @@
   },
   {
     "id": 473,
-    "question": "Which of the following is the correct spelling for the rare pathological state of 'excessive hair growth' associated with endocrine dysfunction?",
-    "options": [
-      "Hirsutism",
-      "Hirsutesm",
-      "Herisutism",
-      "Hiresutism"
-    ],
-    "correctAnswer": "Hirsutism",
-    "difficulty": "Hard",
+    "question": "Which of the following is the correct spelling for 'the medical term for pain in the eye'?",
+    "options": ["Ophthalmalgia", "Opthalmalgia", "Ophthalmalgya", "Ophalmalgia"],
+    "correctAnswer": "Ophthalmalgia",
     "category": "Medical Spelling",
-    "explanation": "From 'hirsutus' (shaggy). The 'i' and 'u' sequence is the primary hurdle, often over-complicated with an extra 'e'.",
+    "difficulty": "Medium",
+    "explanation": "Ophthalm/o (eye) + -algia (pain).",
     "tag": ""
   },
   {
@@ -5167,6 +5127,21 @@
     "difficulty": "Hard",
     "category": "Medical Spelling",
     "explanation": "Combines 'onycho-' (nail) and 'kryptos' (hidden). Both roots utilize the Greek 'y'.",
+    "tag": ""
+  },
+  {
+    "id": 501,
+    "question": "Which of the following is the correct spelling for the rare congenital absence of the gallbladder?",
+    "options": [
+      "Agenesia cholecystica",
+      "Agenesis cholecystica",
+      "Agenesia cholecistica",
+      "Agenesia cholecysticca"
+    ],
+    "correctAnswer": "Agenesia cholecystica",
+    "difficulty": "Hard",
+    "category": "Medical Spelling",
+    "explanation": "This is the formal Latin clinical term. It requires the 'ia' ending rather than the English 'is' (agenesis) to match the Latin grammar of 'cholecystica'.",
     "tag": ""
   },
   {
