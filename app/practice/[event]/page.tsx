@@ -156,6 +156,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [reportDetails, setReportDetails] = useState("");
   const [reportSubmitting, setReportSubmitting] = useState(false);
   const [hasPersistedSession, setHasPersistedSession] = useState(false);
+  const hasActiveSession = hasStarted && !isComplete;
 
   const questionShownAtRef = useRef<number>(performance.now());
   const thinkHiddenStartRef = useRef<number | null>(null);
@@ -190,6 +191,43 @@ function PracticeContent({ eventId }: { eventId: string }) {
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, [hasStarted, isAnswered]);
+
+  useEffect(() => {
+    if (!hasActiveSession) return;
+
+    const warningMessage = "Are you sure you want to leave practice? Your progress might be lost.";
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = warningMessage;
+      return warningMessage;
+    };
+
+    const handleDocumentClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      const anchor = target?.closest("a[href]") as HTMLAnchorElement | null;
+      if (!anchor) return;
+
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+      if (href.startsWith("#")) return;
+      if (anchor.target === "_blank") return;
+
+      const shouldLeave = window.confirm(warningMessage);
+      if (!shouldLeave) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    document.addEventListener("click", handleDocumentClick, true);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("click", handleDocumentClick, true);
+    };
+  }, [hasActiveSession]);
 
   useEffect(() => {
     if (!hasStarted || isAnswered) {
@@ -660,7 +698,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
   }
 
   if (isComplete) {
-    const isLimitedSession = settings.sessionQuestionLimit !== "unlimited";
     const summary = sessionSummary ?? {
       totalQuestions: totalAnswered,
       correct: correctCount,
@@ -688,16 +725,14 @@ function PracticeContent({ eventId }: { eventId: string }) {
               </div>
               <CardTitle className="text-5xl font-bold">Congratulations!</CardTitle>
               <p className="text-muted-foreground text-xl font-light">
-                {isLimitedSession ? `You've completed your ${eventName} session!` : `You've completed all questions for ${eventName}!`}
+                {`You've completed your ${eventName} session!`}
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl text-center border border-primary/20">
-                <h3 className="text-3xl font-bold mb-3">{isLimitedSession ? "Session Complete" : "Event Complete"}</h3>
+                <h3 className="text-3xl font-bold mb-3">Session Complete</h3>
                 <p className="text-muted-foreground text-lg">
-                  {isLimitedSession
-                    ? "Nice work. Review your results or jump into another session whenever you're ready."
-                    : "You've mastered all available questions. Keep reviewing to maintain your knowledge!"}
+                  Nice work. Review your results or jump into another session whenever you're ready.
                 </p>
               </div>
 
