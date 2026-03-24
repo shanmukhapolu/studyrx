@@ -26,6 +26,8 @@ import {
   ShieldAlert 
 } from "lucide-react";
 import Confetti from "react-confetti";
+import { rtdbPost } from "@/lib/rtdb";
+import { toast } from "sonner";
 
 // Utility to shuffle an array
 function shuffleArray<T>(array: T[]): T[] {
@@ -148,6 +150,11 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [practiceStage, setPracticeStage] = useState<PracticeStage>("practice");
   const [sessionWrongQuestionIds, setSessionWrongQuestionIds] = useState<number[]>([]);
   const [baseQueueLength, setBaseQueueLength] = useState(0);
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportReason, setReportReason] = useState("Incorrect answer");
+  const [reportOtherReason, setReportOtherReason] = useState("");
+  const [reportDetails, setReportDetails] = useState("");
+  const [reportSubmitting, setReportSubmitting] = useState(false);
 
   const questionShownAtRef = useRef<number>(performance.now());
   const thinkHiddenStartRef = useRef<number | null>(null);
@@ -861,6 +868,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
             <CardTitle className="text-2xl leading-relaxed text-balance font-semibold">
               {currentQuestion.question}
             </CardTitle>
+            <div className="mt-3">
+              <Button size="sm" variant="outline" onClick={() => setShowReportModal(true)}>Report Question</Button>
+            </div>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-3">
@@ -930,6 +940,75 @@ function PracticeContent({ eventId }: { eventId: string }) {
           </CardContent>
         </Card>
       </div>
+
+      {showReportModal && currentQuestion && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <Card className="w-full max-w-lg">
+            <CardHeader>
+              <CardTitle>Report Question</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <select
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                value={reportReason}
+                onChange={(event) => setReportReason(event.target.value)}
+              >
+                <option>Incorrect answer</option>
+                <option>Unclear question</option>
+                <option>Typo</option>
+                <option>Duplicate</option>
+                <option>Other</option>
+              </select>
+              {reportReason === "Other" && (
+                <input
+                  className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                  placeholder="Other reason"
+                  value={reportOtherReason}
+                  onChange={(event) => setReportOtherReason(event.target.value)}
+                />
+              )}
+              <textarea
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                rows={4}
+                placeholder="Optional details"
+                value={reportDetails}
+                onChange={(event) => setReportDetails(event.target.value)}
+              />
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" onClick={() => setShowReportModal(false)}>Cancel</Button>
+                <Button
+                  disabled={reportSubmitting || (reportReason === "Other" && !reportOtherReason.trim())}
+                  onClick={async () => {
+                    try {
+                      setReportSubmitting(true);
+                      await rtdbPost("question_reports", {
+                        eventId,
+                        questionId: currentQuestion.id,
+                        reason: reportReason === "Other" ? reportOtherReason.trim() : reportReason,
+                        details: reportDetails,
+                        status: "pending",
+                        adminNotes: "",
+                        createdAt: new Date().toISOString(),
+                      });
+                      toast.success("Report submitted.");
+                      setShowReportModal(false);
+                      setReportReason("Incorrect answer");
+                      setReportOtherReason("");
+                      setReportDetails("");
+                    } catch (error) {
+                      toast.error(error instanceof Error ? error.message : "Failed to submit report.");
+                    } finally {
+                      setReportSubmitting(false);
+                    }
+                  }}
+                >
+                  {reportSubmitting ? "Submitting..." : "Submit Report"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

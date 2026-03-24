@@ -11,6 +11,9 @@ import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage } from "@/lib/storage";
 import { HOSA_EVENTS } from "@/lib/events";
 import { Play, TrendingUp } from "lucide-react";
+import { rtdbPost } from "@/lib/rtdb";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 
 export default function EventsPage() {
   return (
@@ -27,6 +30,13 @@ export default function EventsPage() {
 
 function EventsContent() {
   const [eventStats, setEventStats] = useState<Record<string, { attempted: number; accuracy: number }>>({});
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [requestForm, setRequestForm] = useState({
+    eventName: "",
+    category: "Health Science",
+    description: "",
+  });
+  const [isSubmittingRequest, setIsSubmittingRequest] = useState(false);
 
   useEffect(() => {
     const loadEventStats = async () => {
@@ -74,6 +84,9 @@ function EventsContent() {
       </header>
 
       <main className="container mx-auto px-6 py-8 max-w-7xl">
+        <div className="mb-6 flex justify-end">
+          <Button variant="outline" onClick={() => setShowRequestModal(true)}>Request New Event</Button>
+        </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {HOSA_EVENTS.map((event) => {
             const stats = eventStats[event.id];
@@ -166,6 +179,66 @@ function EventsContent() {
           </CardContent>
         </Card>
       </main>
+
+      {showRequestModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <Card className="w-full max-w-lg">
+            <CardHeader>
+              <CardTitle>Request New Event</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Input
+                placeholder="Event name"
+                value={requestForm.eventName}
+                onChange={(event) => setRequestForm((prev) => ({ ...prev, eventName: event.target.value }))}
+              />
+              <select
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                value={requestForm.category}
+                onChange={(event) => setRequestForm((prev) => ({ ...prev, category: event.target.value }))}
+              >
+                <option>Health Science</option>
+                <option>Health Professions</option>
+                <option>ATC</option>
+                <option>Emergency Preparedness</option>
+              </select>
+              <textarea
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                rows={4}
+                placeholder="Description (optional)"
+                value={requestForm.description}
+                onChange={(event) => setRequestForm((prev) => ({ ...prev, description: event.target.value }))}
+              />
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" onClick={() => setShowRequestModal(false)}>Cancel</Button>
+                <Button
+                  disabled={isSubmittingRequest || !requestForm.eventName.trim()}
+                  onClick={async () => {
+                    try {
+                      setIsSubmittingRequest(true);
+                      await rtdbPost("event_requests", {
+                        ...requestForm,
+                        status: "pending",
+                        adminNotes: "",
+                        createdAt: new Date().toISOString(),
+                      });
+                      toast.success("Event request submitted.");
+                      setShowRequestModal(false);
+                      setRequestForm({ eventName: "", category: "Health Science", description: "" });
+                    } catch (error) {
+                      toast.error(error instanceof Error ? error.message : "Failed to submit request.");
+                    } finally {
+                      setIsSubmittingRequest(false);
+                    }
+                  }}
+                >
+                  {isSubmittingRequest ? "Submitting..." : "Submit Request"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }
