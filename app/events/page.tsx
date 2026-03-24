@@ -74,19 +74,19 @@ function EventsContent() {
     <div className="flex-1 overflow-auto">
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto px-6 py-6">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">HOSA Competitive Events</h1>
-            <p className="text-muted-foreground mt-1 font-light">
-              Choose an event to start practicing
-            </p>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground">HOSA Competitive Events</h1>
+              <p className="text-muted-foreground mt-1 font-light">
+                Choose an event to start practicing
+              </p>
+            </div>
+            <Button variant="outline" onClick={() => setShowRequestModal(true)}>Request New Event</Button>
           </div>
         </div>
       </header>
 
       <main className="container mx-auto px-6 py-8 max-w-7xl">
-        <div className="mb-6 flex justify-end">
-          <Button variant="outline" onClick={() => setShowRequestModal(true)}>Request New Event</Button>
-        </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {HOSA_EVENTS.map((event) => {
             const stats = eventStats[event.id];

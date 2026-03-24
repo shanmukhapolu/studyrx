@@ -41,40 +41,69 @@ export default function SubmitQuestionPage() {
       <AuthGuard>
         <AppSidebar />
         <SidebarInset>
-          <div className="mx-auto max-w-3xl p-6">
-            <Card>
+          <div className="mx-auto max-w-4xl p-6">
+            <Card className="border-primary/20 shadow-xl bg-card/70 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle>Submit a Question</CardTitle>
+                <CardTitle className="text-3xl">Submit a Question</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Share a high-quality practice question for review by admins. Approved questions can be exported into the static question bank.
+                </p>
               </CardHeader>
               <CardContent className="space-y-4">
-                <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={event} onChange={(e) => setEvent(e.target.value)}>
-                  {HOSA_EVENTS.map((hosaEvent) => (
-                    <option key={hosaEvent.id} value={hosaEvent.id}>{hosaEvent.name}</option>
-                  ))}
-                </select>
-                <Input placeholder="Topic / Tag" value={tag} onChange={(e) => setTag(e.target.value)} />
-                <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={difficulty} onChange={(e) => setDifficulty(e.target.value as Difficulty)}>
-                  <option value="easy">easy</option>
-                  <option value="medium">medium</option>
-                  <option value="hard">hard</option>
-                </select>
-                <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={3} placeholder="Question text" value={question} onChange={(e) => setQuestion(e.target.value)} />
-                {options.map((choice, index) => (
-                  <Input
-                    key={index}
-                    placeholder={`Choice ${index + 1}`}
-                    value={choice}
-                    onChange={(e) => {
-                      const next = [...options];
-                      next[index] = e.target.value;
-                      setOptions(next);
-                    }}
-                  />
-                ))}
-                <Input placeholder="Correct answer (must exactly match one choice)" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} />
-                <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={3} placeholder="Explanation" value={explanation} onChange={(e) => setExplanation(e.target.value)} />
+                <div className="grid gap-4 md:grid-cols-3">
+                  <div className="md:col-span-2">
+                    <label className="mb-2 block text-sm font-medium">Event</label>
+                    <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={event} onChange={(e) => setEvent(e.target.value)}>
+                      {HOSA_EVENTS.map((hosaEvent) => (
+                        <option key={hosaEvent.id} value={hosaEvent.id}>{hosaEvent.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium">Difficulty</label>
+                    <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={difficulty} onChange={(e) => setDifficulty(e.target.value as Difficulty)}>
+                      <option value="easy">easy</option>
+                      <option value="medium">medium</option>
+                      <option value="hard">hard</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-medium">Topic / Tag</label>
+                  <Input placeholder="e.g. Terminology, Anatomy, Abbreviations" value={tag} onChange={(e) => setTag(e.target.value)} />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-medium">Question</label>
+                  <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={4} placeholder="Question text" value={question} onChange={(e) => setQuestion(e.target.value)} />
+                </div>
+                <div className="rounded-xl border border-border bg-muted/30 p-4">
+                  <p className="mb-3 text-sm font-semibold">Answer choices (exactly 4)</p>
+                  <div className="grid gap-3 md:grid-cols-2">
+                    {options.map((choice, index) => (
+                      <Input
+                        key={index}
+                        placeholder={`Choice ${index + 1}`}
+                        value={choice}
+                        onChange={(e) => {
+                          const next = [...options];
+                          next[index] = e.target.value;
+                          setOptions(next);
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-medium">Correct answer</label>
+                  <Input placeholder="Must exactly match one of the 4 choices" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-medium">Explanation</label>
+                  <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={4} placeholder="Why is this answer correct?" value={explanation} onChange={(e) => setExplanation(e.target.value)} />
+                </div>
                 <Button
                   disabled={!isValid || submitting}
+                  className="h-11"
                   onClick={async () => {
                     try {
                       setSubmitting(true);
