@@ -1,19 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
+import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { HOSA_EVENTS } from "@/lib/events";
-import { rtdbPost } from "@/lib/rtdb";
+import { rtdbGet, rtdbPost } from "@/lib/rtdb";
 import { toast } from "sonner";
 
 type Difficulty = "easy" | "medium" | "hard";
 
 export default function SubmitQuestionPage() {
+  const { user, profile } = useAuth();
   const [event, setEvent] = useState(HOSA_EVENTS[0]?.id || "");
   const [tag, setTag] = useState("");
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
@@ -22,6 +24,8 @@ export default function SubmitQuestionPage() {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [explanation, setExplanation] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [mySubmissions, setMySubmissions] = useState<Array<{ id: string; event?: string; tag?: string; status?: string; adminNotes?: string }>>([]);
+  const [notifications, setNotifications] = useState<Array<{ id: string; message?: string; status?: string; createdAt?: string }>>([]);
 
   const isValid = useMemo(() => {
     const filledOptions = options.filter((option) => option.trim().length > 0);
@@ -35,6 +39,28 @@ export default function SubmitQuestionPage() {
       filledOptions.includes(correctAnswer)
     );
   }, [correctAnswer, event, explanation, options, question, tag]);
+
+  useEffect(() => {
+    const load = async () => {
+      if (!user?.uid) return;
+      const [submissionsData, notificationsData] = await Promise.all([
+        rtdbGet<Record<string, { event?: string; tag?: string; status?: string; adminNotes?: string; submittedBy?: { uid?: string } }>>("question_submissions", {}),
+        rtdbGet<Record<string, { message?: string; status?: string; createdAt?: string }>>(`users/${user.uid}/notifications`, {}),
+      ]);
+
+      const mine = Object.entries(submissionsData)
+        .filter(([, value]) => value.submittedBy?.uid === user.uid)
+        .map(([id, value]) => ({ id, ...value }))
+        .sort((a, b) => b.id.localeCompare(a.id));
+      setMySubmissions(mine);
+
+      const notes = Object.entries(notificationsData)
+        .map(([id, value]) => ({ id, ...value }))
+        .sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
+      setNotifications(notes);
+    };
+    void load();
+  }, [user?.uid, submitting]);
 
   return (
     <SidebarProvider>
@@ -117,6 +143,11 @@ export default function SubmitQuestionPage() {
                         explanation,
                         status: "pending",
                         adminNotes: "",
+                        submittedBy: {
+                          uid: user?.uid || "",
+                          name: [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user?.displayName || "",
+                          email: user?.email || "",
+                        },
                         createdAt: new Date().toISOString(),
                       });
                       toast.success("Question submitted for review.");
@@ -134,6 +165,40 @@ export default function SubmitQuestionPage() {
                 >
                   {submitting ? "Submitting..." : "Submit Question"}
                 </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle className="text-xl">Your Submission Status</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm">
+                {mySubmissions.length === 0 && <p className="text-muted-foreground">No submissions yet.</p>}
+                {mySubmissions.map((submission) => (
+                  <div
+                    key={submission.id}
+                    className={`rounded-md border p-3 ${submission.status === "approved" ? "bg-green-50/60" : submission.status === "rejected" ? "bg-red-50/60" : "bg-card"}`}
+                  >
+                    <p className="font-medium">{submission.event || "Unknown event"} · {submission.tag || "No topic"}</p>
+                    <p className="text-xs capitalize text-muted-foreground">Status: {submission.status || "pending"}</p>
+                    {submission.adminNotes && <p className="text-xs text-muted-foreground">Admin notes: {submission.adminNotes}</p>}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle className="text-xl">Notifications</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm">
+                {notifications.length === 0 && <p className="text-muted-foreground">No notifications yet.</p>}
+                {notifications.map((notification) => (
+                  <div key={notification.id} className="rounded-md border p-3">
+                    <p>{notification.message || "Update received."}</p>
+                    <p className="text-xs text-muted-foreground capitalize">{notification.status || "info"}</p>
+                  </div>
+                ))}
               </CardContent>
             </Card>
           </div>

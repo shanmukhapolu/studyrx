@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { Check, Trash2, X } from "lucide-react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { AdminGuard } from "@/components/auth/admin-guard";
@@ -9,8 +10,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
+import { HOSA_EVENTS } from "@/lib/events";
+import { rtdbGet, rtdbPatch, rtdbPost, rtdbSet } from "@/lib/rtdb";
 import { toast } from "sonner";
-import { rtdbGet, rtdbPatch, rtdbSet } from "@/lib/rtdb";
 
 type UserRecord = {
   name?: string;
@@ -20,11 +22,40 @@ type UserRecord = {
   lastLogin?: string;
 };
 
-type AdminItem = {
+type EventRequest = {
   id: string;
-  status?: string;
+  eventName?: string;
+  category?: string;
+};
+
+type SubmittedBy = {
+  uid?: string;
+  name?: string;
+  email?: string;
+};
+
+type QuestionSubmission = {
+  id: string;
+  event?: string;
+  tag?: string;
+  difficulty?: string;
+  question?: string;
+  options?: string[];
+  correctAnswer?: string;
+  explanation?: string;
+  status?: "pending" | "approved" | "rejected";
   adminNotes?: string;
-  [key: string]: unknown;
+  submittedBy?: SubmittedBy;
+  createdAt?: string;
+};
+
+type QuestionReport = {
+  id: string;
+  eventId?: string;
+  questionId?: number;
+  reason?: string;
+  details?: string;
+  resolved?: boolean;
 };
 
 function dateLabel(value?: string) {
@@ -50,29 +81,41 @@ export default function AdminPage() {
 
 function AdminContent() {
   const [users, setUsers] = useState<Record<string, UserRecord>>({});
-  const [eventRequests, setEventRequests] = useState<AdminItem[]>([]);
-  const [questionSubmissions, setQuestionSubmissions] = useState<AdminItem[]>([]);
-  const [questionReports, setQuestionReports] = useState<AdminItem[]>([]);
+  const [eventRequests, setEventRequests] = useState<EventRequest[]>([]);
+  const [questionSubmissions, setQuestionSubmissions] = useState<QuestionSubmission[]>([]);
+  const [questionReports, setQuestionReports] = useState<QuestionReport[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedEventFilter, setSelectedEventFilter] = useState("all");
+  const [selectedSubmission, setSelectedSubmission] = useState<QuestionSubmission | null>(null);
+  const [adminNotes, setAdminNotes] = useState("");
+
+  const loadAll = async () => {
+    const [usersData, eventReqData, questionSubData, questionReportsData] = await Promise.all([
+      rtdbGet<Record<string, UserRecord>>("users", {}),
+      rtdbGet<Record<string, Omit<EventRequest, "id">>>("event_requests", {}),
+      rtdbGet<Record<string, Omit<QuestionSubmission, "id">>>("question_submissions", {}),
+      rtdbGet<Record<string, Omit<QuestionReport, "id">>>("question_reports", {}),
+    ]);
+
+    setUsers(usersData);
+    setEventRequests(Object.entries(eventReqData).map(([id, value]) => ({ id, ...value })));
+    setQuestionSubmissions(Object.entries(questionSubData).map(([id, value]) => ({ id, ...value })));
+    setQuestionReports(Object.entries(questionReportsData).map(([id, value]) => ({ id, ...value })));
+  };
 
   useEffect(() => {
-    const load = async () => {
+    const bootstrap = async () => {
       try {
-        const [usersData, eventReqData, questionSubData, questionReportsData] = await Promise.all([
-          rtdbGet<Record<string, UserRecord>>("users", {}),
-          rtdbGet<Record<string, Omit<AdminItem, "id">>>("event_requests", {}),
-          rtdbGet<Record<string, Omit<AdminItem, "id">>>("question_submissions", {}),
-          rtdbGet<Record<string, Omit<AdminItem, "id">>>("question_reports", {}),
-        ]);
-        setUsers(usersData);
-        setEventRequests(Object.entries(eventReqData).map(([id, value]) => ({ id, ...value })));
-        setQuestionSubmissions(Object.entries(questionSubData).map(([id, value]) => ({ id, ...value })));
-        setQuestionReports(Object.entries(questionReportsData).map(([id, value]) => ({ id, ...value })));
+        await loadAll();
       } finally {
         setLoading(false);
       }
     };
-    void load();
+    void bootstrap();
+    const interval = window.setInterval(() => {
+      void loadAll();
+    }, 12_000);
+    return () => window.clearInterval(interval);
   }, []);
 
   const sortedUsers = useMemo(
@@ -85,47 +128,70 @@ function AdminContent() {
     [users]
   );
 
+  const filteredSubmissions = useMemo(() => {
+    if (selectedEventFilter === "all") return questionSubmissions;
+    return questionSubmissions.filter((item) => item.event === selectedEventFilter);
+  }, [questionSubmissions, selectedEventFilter]);
+
   const updateRole = async (uid: string, currentRole?: string) => {
     const nextRole = currentRole === "admin" ? "user" : "admin";
     try {
       await rtdbPatch(`users/${uid}`, { role: nextRole });
-      setUsers((prev) => ({ ...prev, [uid]: { ...prev[uid], role: nextRole } }));
+      await loadAll();
       toast.success(`Updated role to ${nextRole}.`);
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Failed to update role.");
     }
   };
 
-  const deleteUser = async (uid: string) => {
+  const setSubmissionStatus = async (submission: QuestionSubmission, status: "approved" | "rejected") => {
     try {
-      await rtdbSet(`users/${uid}`, null);
-      setUsers((prev) => {
-        const copy = { ...prev };
-        delete copy[uid];
-        return copy;
-      });
-      toast.success("User record deleted.");
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Failed to delete user.");
-    }
-  };
-
-  const updateItemStatus = async (path: string, id: string, status: string, adminNotes: string) => {
-    try {
-      await rtdbPatch(`${path}/${id}`, {
+      await rtdbPatch(`question_submissions/${submission.id}`, {
         status,
         adminNotes,
         reviewedAt: new Date().toISOString(),
       });
-      toast.success("Updated item.");
+
+      if (submission.submittedBy?.uid) {
+        await rtdbPost(`users/${submission.submittedBy.uid}/notifications`, {
+          type: "question_submission_update",
+          status,
+          message: status === "approved" ? "Your submitted question was approved." : "Your submitted question was rejected. You can update and resubmit it.",
+          submissionId: submission.id,
+          createdAt: new Date().toISOString(),
+        });
+      }
+
+      await loadAll();
+      setSelectedSubmission((current) => (current ? { ...current, status, adminNotes } : current));
+      toast.success(`Marked submission as ${status}.`);
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Failed to update item.");
+      toast.error(error instanceof Error ? error.message : "Failed to update submission.");
+    }
+  };
+
+  const deleteNode = async (path: string) => {
+    try {
+      await rtdbSet(path, null);
+      await loadAll();
+      toast.success("Deleted.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Delete failed.");
+    }
+  };
+
+  const toggleReportResolved = async (report: QuestionReport) => {
+    try {
+      await rtdbPatch(`question_reports/${report.id}`, { resolved: !report.resolved });
+      await loadAll();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to update report.");
     }
   };
 
   return (
     <div className="flex-1 overflow-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+      <h1 className="mb-6 text-3xl font-bold">Admin Dashboard</h1>
       {loading ? (
         <p className="text-muted-foreground">Loading admin data...</p>
       ) : (
@@ -137,136 +203,159 @@ function AdminContent() {
             <TabsTrigger value="reports">Question Reports</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="users" className="mt-4 space-y-4">
+          <TabsContent value="users" className="mt-4 space-y-3">
+            {sortedUsers.length === 0 && <p className="text-sm text-muted-foreground">No users found. Check DB rules/role permissions for admin reads.</p>}
             {sortedUsers.map(([uid, user]) => (
               <Card key={uid}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{user.name || "Unnamed User"}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm">
-                  <p><strong>UID:</strong> {uid}</p>
-                  <p><strong>Email:</strong> {user.email || "—"}</p>
-                  <p><strong>Role:</strong> {user.role || "user"}</p>
-                  <p><strong>Created:</strong> {dateLabel(user.createdAt)}</p>
-                  <p><strong>Last Login:</strong> {dateLabel(user.lastLogin)}</p>
-                  <div className="flex gap-2 pt-2">
+                <CardContent className="flex items-center justify-between gap-4 p-4 text-sm">
+                  <div className="min-w-0">
+                    <p className="font-semibold">{user.name || "Unnamed User"} · {user.role || "user"}</p>
+                    <p className="truncate text-muted-foreground">{user.email || uid}</p>
+                    <p className="text-xs text-muted-foreground">Created: {dateLabel(user.createdAt)} · Last login: {dateLabel(user.lastLogin)}</p>
+                  </div>
+                  <div className="flex gap-2">
                     <Button size="sm" onClick={() => void updateRole(uid, user.role)}>Toggle Role</Button>
-                    <Button size="sm" variant="outline" onClick={() => void deleteUser(uid)}>Delete</Button>
+                    <Button size="sm" variant="outline" onClick={() => void deleteNode(`users/${uid}`)}>Delete</Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </TabsContent>
 
-          <TabsContent value="events" className="mt-4 space-y-4">
-            {eventRequests.map((item) => (
-              <ModerationCard key={item.id} title={(item.eventName as string) || "Event request"}>
-                <p><strong>Category:</strong> {(item.category as string) || "—"}</p>
-                <p><strong>Description:</strong> {(item.description as string) || "—"}</p>
-                <p><strong>Status:</strong> {(item.status as string) || "pending"}</p>
-                <ModerationControls
-                  initialNotes={(item.adminNotes as string) || ""}
-                  onSave={(status, notes) => void updateItemStatus("event_requests", item.id, status, notes)}
-                />
-              </ModerationCard>
-            ))}
+          <TabsContent value="events" className="mt-4">
+            <div className="space-y-2">
+              {eventRequests.map((item) => (
+                <Card key={item.id}>
+                  <CardContent className="flex items-center justify-between p-3 text-sm">
+                    <div>
+                      <p className="font-medium">{item.eventName || "Unnamed event"}</p>
+                      <p className="text-xs text-muted-foreground">{item.category || "—"}</p>
+                    </div>
+                    <Button size="sm" variant="ghost" onClick={() => void deleteNode(`event_requests/${item.id}`)}>
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </TabsContent>
 
           <TabsContent value="submissions" className="mt-4 space-y-4">
-            {questionSubmissions.map((item) => (
-              <ModerationCard key={item.id} title={(item.event as string) || "Question submission"}>
-                <p><strong>Topic:</strong> {(item.tag as string) || "—"}</p>
-                <p><strong>Difficulty:</strong> {(item.difficulty as string) || "—"}</p>
-                <pre className="rounded-md bg-muted p-3 text-xs overflow-auto">{JSON.stringify({
-                  id: (item.questionId as number) || 0,
-                  question: item.question,
-                  options: item.options,
-                  correctAnswer: item.correctAnswer,
-                  category: item.event,
-                  difficulty: item.difficulty,
-                  explanation: item.explanation,
-                  tag: item.tag,
-                }, null, 2)}</pre>
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={async () => {
-                      await navigator.clipboard.writeText(JSON.stringify({
-                        question: item.question,
-                        options: item.options,
-                        correctAnswer: item.correctAnswer,
-                        category: item.event,
-                        difficulty: item.difficulty,
-                        explanation: item.explanation,
-                        tag: item.tag,
-                      }, null, 2));
-                      toast.success("JSON copied.");
-                    }}
-                  >
-                    Copy JSON
-                  </Button>
-                </div>
-                <ModerationControls
-                  initialNotes={(item.adminNotes as string) || ""}
-                  onSave={(status, notes) => void updateItemStatus("question_submissions", item.id, status, notes)}
-                />
-              </ModerationCard>
-            ))}
+            <div className="flex items-center gap-3">
+              <label className="text-sm font-medium">Filter by Event</label>
+              <select
+                className="rounded-md border border-border bg-background px-3 py-2 text-sm"
+                value={selectedEventFilter}
+                onChange={(event) => setSelectedEventFilter(event.target.value)}
+              >
+                <option value="all">All events</option>
+                {HOSA_EVENTS.map((event) => (
+                  <option key={event.id} value={event.id}>{event.name}</option>
+                ))}
+              </select>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {filteredSubmissions.map((item) => (
+                <button
+                  key={item.id}
+                  className={`rounded-lg border p-3 text-left transition hover:border-primary ${item.status === "approved" ? "bg-green-50/60" : item.status === "rejected" ? "bg-red-50/60" : "bg-card"}`}
+                  onClick={() => {
+                    setSelectedSubmission(item);
+                    setAdminNotes(item.adminNotes || "");
+                  }}
+                >
+                  <p className="text-sm font-semibold">{item.event || "Unknown event"}</p>
+                  <p className="truncate text-xs text-muted-foreground">{item.tag || "No topic"}</p>
+                  <p className="text-xs capitalize text-muted-foreground">{item.status || "pending"}</p>
+                </button>
+              ))}
+            </div>
           </TabsContent>
 
-          <TabsContent value="reports" className="mt-4 space-y-4">
-            {questionReports.map((item) => (
-              <ModerationCard key={item.id} title={`Question ${String(item.questionId || "Unknown")}`}>
-                <p><strong>Reason:</strong> {(item.reason as string) || "—"}</p>
-                <p><strong>Details:</strong> {(item.details as string) || "—"}</p>
-                <p><strong>Status:</strong> {(item.status as string) || "pending"}</p>
-                <ModerationControls
-                  initialNotes={(item.adminNotes as string) || ""}
-                  approveLabel="Mark Resolved"
-                  rejectLabel="Keep Open"
-                  onSave={(status, notes) => void updateItemStatus("question_reports", item.id, status, notes)}
-                />
-              </ModerationCard>
-            ))}
+          <TabsContent value="reports" className="mt-4">
+            <div className="space-y-2">
+              {questionReports.map((item) => (
+                <Card key={item.id}>
+                  <CardContent className="flex items-center justify-between p-3 text-sm">
+                    <div>
+                      <p className="font-medium">Q{String(item.questionId || "—")} · {item.reason || "Unknown reason"}</p>
+                      <p className="truncate text-xs text-muted-foreground">{item.details || "No details"}</p>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Button size="icon" variant="ghost" onClick={() => void toggleReportResolved(item)} className={item.resolved ? "text-green-600" : ""}>
+                        <Check className="h-4 w-4" />
+                      </Button>
+                      <Button size="icon" variant="ghost" onClick={() => void deleteNode(`question_reports/${item.id}`)}>
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </TabsContent>
         </Tabs>
       )}
-    </div>
-  );
-}
 
-function ModerationCard({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-3 text-sm">{children}</CardContent>
-    </Card>
-  );
-}
-
-function ModerationControls({
-  initialNotes,
-  approveLabel = "Approve",
-  rejectLabel = "Reject",
-  onSave,
-}: {
-  initialNotes: string;
-  approveLabel?: string;
-  rejectLabel?: string;
-  onSave: (status: string, notes: string) => void;
-}) {
-  const [notes, setNotes] = useState(initialNotes);
-
-  return (
-    <div className="space-y-2">
-      <Input value={notes} onChange={(event) => setNotes(event.target.value)} placeholder="Admin notes" />
-      <div className="flex gap-2">
-        <Button size="sm" onClick={() => onSave("approved", notes)}>{approveLabel}</Button>
-        <Button size="sm" variant="outline" onClick={() => onSave("rejected", notes)}>{rejectLabel}</Button>
-      </div>
+      {selectedSubmission && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <Card className="w-full max-w-2xl">
+            <CardHeader className="flex flex-row items-start justify-between">
+              <div>
+                <CardTitle>{selectedSubmission.event || "Question submission"}</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Topic: {selectedSubmission.tag || "—"} · Difficulty: {selectedSubmission.difficulty || "—"}
+                </p>
+              </div>
+              <Button variant="ghost" size="icon" onClick={() => setSelectedSubmission(null)}>
+                <X className="h-4 w-4" />
+              </Button>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <p><strong>Submitted by:</strong> {selectedSubmission.submittedBy?.name || "Unknown"} ({selectedSubmission.submittedBy?.email || "—"})</p>
+              <p><strong>Submitted at:</strong> {dateLabel(selectedSubmission.createdAt)}</p>
+              <p><strong>Question:</strong> {selectedSubmission.question || "—"}</p>
+              <p><strong>Options:</strong> {(selectedSubmission.options || []).join(" | ") || "—"}</p>
+              <p><strong>Correct answer:</strong> {selectedSubmission.correctAnswer || "—"}</p>
+              <p><strong>Explanation:</strong> {selectedSubmission.explanation || "—"}</p>
+              <pre className="max-h-56 overflow-auto rounded-md bg-muted p-3 text-xs">
+                {JSON.stringify({
+                  question: selectedSubmission.question,
+                  options: selectedSubmission.options,
+                  correctAnswer: selectedSubmission.correctAnswer,
+                  category: selectedSubmission.event,
+                  difficulty: selectedSubmission.difficulty,
+                  explanation: selectedSubmission.explanation,
+                  tag: selectedSubmission.tag,
+                }, null, 2)}
+              </pre>
+              <Input value={adminNotes} onChange={(event) => setAdminNotes(event.target.value)} placeholder="Admin notes" />
+              <div className="flex flex-wrap gap-2">
+                <Button onClick={() => void setSubmissionStatus(selectedSubmission, "approved")}>Approve</Button>
+                <Button variant="outline" onClick={() => void setSubmissionStatus(selectedSubmission, "rejected")}>Reject</Button>
+                <Button variant="ghost" onClick={() => void deleteNode(`question_submissions/${selectedSubmission.id}`)}>Delete</Button>
+                <Button
+                  variant="outline"
+                  onClick={async () => {
+                    await navigator.clipboard.writeText(JSON.stringify({
+                      question: selectedSubmission.question,
+                      options: selectedSubmission.options,
+                      correctAnswer: selectedSubmission.correctAnswer,
+                      category: selectedSubmission.event,
+                      difficulty: selectedSubmission.difficulty,
+                      explanation: selectedSubmission.explanation,
+                      tag: selectedSubmission.tag,
+                    }, null, 2));
+                    toast.success("JSON copied.");
+                  }}
+                >
+                  Copy JSON
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

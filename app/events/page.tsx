@@ -34,7 +34,6 @@ function EventsContent() {
   const [requestForm, setRequestForm] = useState({
     eventName: "",
     category: "Health Science",
-    description: "",
   });
   const [isSubmittingRequest, setIsSubmittingRequest] = useState(false);
 
@@ -202,13 +201,6 @@ function EventsContent() {
                 <option>ATC</option>
                 <option>Emergency Preparedness</option>
               </select>
-              <textarea
-                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
-                rows={4}
-                placeholder="Description (optional)"
-                value={requestForm.description}
-                onChange={(event) => setRequestForm((prev) => ({ ...prev, description: event.target.value }))}
-              />
               <div className="flex justify-end gap-2">
                 <Button variant="outline" onClick={() => setShowRequestModal(false)}>Cancel</Button>
                 <Button
@@ -218,13 +210,11 @@ function EventsContent() {
                       setIsSubmittingRequest(true);
                       await rtdbPost("event_requests", {
                         ...requestForm,
-                        status: "pending",
-                        adminNotes: "",
                         createdAt: new Date().toISOString(),
                       });
                       toast.success("Event request submitted.");
                       setShowRequestModal(false);
-                      setRequestForm({ eventName: "", category: "Health Science", description: "" });
+                      setRequestForm({ eventName: "", category: "Health Science" });
                     } catch (error) {
                       toast.error(error instanceof Error ? error.message : "Failed to submit request.");
                     } finally {
