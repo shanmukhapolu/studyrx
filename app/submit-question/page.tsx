@@ -24,7 +24,18 @@ export default function SubmitQuestionPage() {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [explanation, setExplanation] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [mySubmissions, setMySubmissions] = useState<Array<{ id: string; event?: string; tag?: string; status?: string; adminNotes?: string }>>([]);
+  const [mySubmissions, setMySubmissions] = useState<Array<{
+    id: string;
+    event?: string;
+    tag?: string;
+    difficulty?: string;
+    question?: string;
+    options?: string[];
+    correctAnswer?: string;
+    explanation?: string;
+    status?: string;
+    adminNotes?: string;
+  }>>([]);
   const [notifications, setNotifications] = useState<Array<{ id: string; message?: string; status?: string; createdAt?: string }>>([]);
 
   const isValid = useMemo(() => {
@@ -44,7 +55,7 @@ export default function SubmitQuestionPage() {
     const load = async () => {
       if (!user?.uid) return;
       const [submissionsData, notificationsData] = await Promise.all([
-        rtdbGet<Record<string, { event?: string; tag?: string; status?: string; adminNotes?: string }>>(`users/${user.uid}/question_submissions`, {}),
+        rtdbGet<Record<string, { event?: string; tag?: string; difficulty?: string; question?: string; options?: string[]; correctAnswer?: string; explanation?: string; status?: string; adminNotes?: string }>>(`users/${user.uid}/question_submissions`, {}),
         rtdbGet<Record<string, { message?: string; status?: string; createdAt?: string }>>(`users/${user.uid}/notifications`, {}),
       ]);
 
@@ -66,149 +77,173 @@ export default function SubmitQuestionPage() {
       <AuthGuard>
         <AppSidebar />
         <SidebarInset>
-          <div className="mx-auto max-w-4xl p-6">
-            <Card className="border-primary/20 shadow-xl bg-card/70 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-3xl">Submit a Question</CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  Share a high-quality practice question for review by admins. Approved questions can be exported into the static question bank.
-                </p>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-3">
-                  <div className="md:col-span-2">
-                    <label className="mb-2 block text-sm font-medium">Event</label>
-                    <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={event} onChange={(e) => setEvent(e.target.value)}>
-                      {HOSA_EVENTS.map((hosaEvent) => (
-                        <option key={hosaEvent.id} value={hosaEvent.id}>{hosaEvent.name}</option>
-                      ))}
-                    </select>
+          <div className="mx-auto max-w-7xl p-6">
+            <div className="grid gap-6 lg:grid-cols-3">
+              <Card className="border-primary/20 shadow-xl bg-card/70 backdrop-blur-sm lg:col-span-2">
+                <CardHeader>
+                  <CardTitle className="text-3xl">Submit a Question</CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    Share a high-quality practice question for review by admins. Approved questions can be exported into the static question bank.
+                  </p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid gap-4 md:grid-cols-3">
+                    <div className="md:col-span-2">
+                      <label className="mb-2 block text-sm font-medium">Event</label>
+                      <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={event} onChange={(e) => setEvent(e.target.value)}>
+                        {HOSA_EVENTS.map((hosaEvent) => (
+                          <option key={hosaEvent.id} value={hosaEvent.id}>{hosaEvent.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="mb-2 block text-sm font-medium">Difficulty</label>
+                      <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={difficulty} onChange={(e) => setDifficulty(e.target.value as Difficulty)}>
+                        <option value="easy">easy</option>
+                        <option value="medium">medium</option>
+                        <option value="hard">hard</option>
+                      </select>
+                    </div>
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-medium">Difficulty</label>
-                    <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={difficulty} onChange={(e) => setDifficulty(e.target.value as Difficulty)}>
-                      <option value="easy">easy</option>
-                      <option value="medium">medium</option>
-                      <option value="hard">hard</option>
-                    </select>
+                    <label className="mb-2 block text-sm font-medium">Topic / Tag</label>
+                    <Input placeholder="e.g. Terminology, Anatomy, Abbreviations" value={tag} onChange={(e) => setTag(e.target.value)} />
                   </div>
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium">Topic / Tag</label>
-                  <Input placeholder="e.g. Terminology, Anatomy, Abbreviations" value={tag} onChange={(e) => setTag(e.target.value)} />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium">Question</label>
-                  <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={4} placeholder="Question text" value={question} onChange={(e) => setQuestion(e.target.value)} />
-                </div>
-                <div className="rounded-xl border border-border bg-muted/30 p-4">
-                  <p className="mb-3 text-sm font-semibold">Answer choices (exactly 4)</p>
-                  <div className="grid gap-3 md:grid-cols-2">
-                    {options.map((choice, index) => (
-                      <Input
-                        key={index}
-                        placeholder={`Choice ${index + 1}`}
-                        value={choice}
-                        onChange={(e) => {
-                          const next = [...options];
-                          next[index] = e.target.value;
-                          setOptions(next);
-                        }}
-                      />
-                    ))}
+                  <div>
+                    <label className="mb-2 block text-sm font-medium">Question</label>
+                    <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={4} placeholder="Question text" value={question} onChange={(e) => setQuestion(e.target.value)} />
                   </div>
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium">Correct answer</label>
-                  <Input placeholder="Must exactly match one of the 4 choices" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium">Explanation</label>
-                  <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={4} placeholder="Why is this answer correct?" value={explanation} onChange={(e) => setExplanation(e.target.value)} />
-                </div>
-                <Button
-                  disabled={!isValid || submitting}
-                  className="h-11"
-                  onClick={async () => {
-                    try {
-                      setSubmitting(true);
-                      const created = await rtdbPost("question_submissions", {
-                        event,
-                        tag,
-                        difficulty,
-                        question,
-                        options,
-                        correctAnswer,
-                        explanation,
-                        status: "pending",
-                        adminNotes: "",
-                        submittedBy: {
-                          uid: user?.uid || "",
-                          name: [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user?.displayName || "",
-                          email: user?.email || "",
-                        },
-                        createdAt: new Date().toISOString(),
-                      });
-                      if (user?.uid) {
-                        await rtdbSet(`users/${user.uid}/question_submissions/${created.name}`, {
+                  <div className="rounded-xl border border-border bg-muted/30 p-4">
+                    <p className="mb-3 text-sm font-semibold">Answer choices (exactly 4)</p>
+                    <div className="grid gap-3 md:grid-cols-2">
+                      {options.map((choice, index) => (
+                        <Input
+                          key={index}
+                          placeholder={`Choice ${index + 1}`}
+                          value={choice}
+                          onChange={(e) => {
+                            const next = [...options];
+                            next[index] = e.target.value;
+                            setOptions(next);
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium">Correct answer</label>
+                    <Input placeholder="Must exactly match one of the 4 choices" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium">Explanation</label>
+                    <textarea className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" rows={4} placeholder="Why is this answer correct?" value={explanation} onChange={(e) => setExplanation(e.target.value)} />
+                  </div>
+                  <Button
+                    disabled={!isValid || submitting}
+                    className="h-11"
+                    onClick={async () => {
+                      try {
+                        setSubmitting(true);
+                        const created = await rtdbPost("question_submissions", {
                           event,
                           tag,
+                          difficulty,
+                          question,
+                          options,
+                          correctAnswer,
+                          explanation,
                           status: "pending",
                           adminNotes: "",
+                          submittedBy: {
+                            uid: user?.uid || "",
+                            name: [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user?.displayName || "",
+                            email: user?.email || "",
+                          },
                           createdAt: new Date().toISOString(),
                         });
+                        if (user?.uid) {
+                          await rtdbSet(`users/${user.uid}/question_submissions/${created.name}`, {
+                            event,
+                            tag,
+                            difficulty,
+                            question,
+                            options,
+                            correctAnswer,
+                            explanation,
+                            status: "pending",
+                            adminNotes: "",
+                            createdAt: new Date().toISOString(),
+                          });
+                        }
+                        toast.success("Question submitted for review.");
+                        setTag("");
+                        setQuestion("");
+                        setOptions(["", "", "", ""]);
+                        setCorrectAnswer("");
+                        setExplanation("");
+                      } catch (error) {
+                        toast.error(error instanceof Error ? error.message : "Failed to submit question.");
+                      } finally {
+                        setSubmitting(false);
                       }
-                      toast.success("Question submitted for review.");
-                      setTag("");
-                      setQuestion("");
-                      setOptions(["", "", "", ""]);
-                      setCorrectAnswer("");
-                      setExplanation("");
-                    } catch (error) {
-                      toast.error(error instanceof Error ? error.message : "Failed to submit question.");
-                    } finally {
-                      setSubmitting(false);
-                    }
-                  }}
-                >
-                  {submitting ? "Submitting..." : "Submit Question"}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="mt-6">
-              <CardHeader>
-                <CardTitle className="text-xl">Your Submission Status</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2 text-sm">
-                {mySubmissions.length === 0 && <p className="text-muted-foreground">No submissions yet.</p>}
-                {mySubmissions.map((submission) => (
-                  <div
-                    key={submission.id}
-                    className={`rounded-md border p-3 ${submission.status === "approved" ? "bg-green-50/60" : submission.status === "rejected" ? "bg-red-50/60" : "bg-card"}`}
+                    }}
                   >
-                    <p className="font-medium">{submission.event || "Unknown event"} · {submission.tag || "No topic"}</p>
-                    <p className="text-xs capitalize text-muted-foreground">Status: {submission.status || "pending"}</p>
-                    {submission.adminNotes && <p className="text-xs text-muted-foreground">Admin notes: {submission.adminNotes}</p>}
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+                    {submitting ? "Submitting..." : "Submit Question"}
+                  </Button>
+                </CardContent>
+              </Card>
 
-            <Card className="mt-6">
-              <CardHeader>
-                <CardTitle className="text-xl">Notifications</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2 text-sm">
-                {notifications.length === 0 && <p className="text-muted-foreground">No notifications yet.</p>}
-                {notifications.map((notification) => (
-                  <div key={notification.id} className="rounded-md border p-3">
-                    <p>{notification.message || "Update received."}</p>
-                    <p className="text-xs text-muted-foreground capitalize">{notification.status || "info"}</p>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+              <div className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-xl">Your Submissions</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 text-sm">
+                    {mySubmissions.length === 0 && <p className="text-muted-foreground">No submissions yet.</p>}
+                    {mySubmissions.map((submission) => (
+                      <button
+                        key={submission.id}
+                        className={`w-full rounded-md border p-3 text-left ${submission.status === "approved" ? "bg-green-50/60" : submission.status === "rejected" ? "bg-red-50/60" : "bg-card"}`}
+                        onClick={() => {
+                          if (submission.status !== "rejected") return;
+                          setEvent(submission.event || HOSA_EVENTS[0]?.id || "");
+                          setTag(submission.tag || "");
+                          setDifficulty((submission.difficulty as Difficulty) || "medium");
+                          setQuestion(submission.question || "");
+                          setOptions(
+                            Array.isArray(submission.options) && submission.options.length === 4
+                              ? submission.options
+                              : ["", "", "", ""]
+                          );
+                          setCorrectAnswer(submission.correctAnswer || "");
+                          setExplanation(submission.explanation || "");
+                          toast.info("Rejected submission loaded into the form for resubmission.");
+                        }}
+                      >
+                        <p className="font-medium">{submission.event || "Unknown event"} · {submission.tag || "No topic"}</p>
+                        <p className="text-xs capitalize text-muted-foreground">Status: {submission.status || "pending"}</p>
+                        {submission.adminNotes && <p className="text-xs text-muted-foreground">Admin notes: {submission.adminNotes}</p>}
+                      </button>
+                    ))}
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-xl">Notifications</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 text-sm">
+                    {notifications.length === 0 && <p className="text-muted-foreground">No notifications yet.</p>}
+                    {notifications.map((notification) => (
+                      <div key={notification.id} className="rounded-md border p-3">
+                        <p>{notification.message || "Update received."}</p>
+                        <p className="text-xs text-muted-foreground capitalize">{notification.status || "info"}</p>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
         </SidebarInset>
       </AuthGuard>
