@@ -384,6 +384,7 @@ function AdminContent() {
                 <Button variant="outline" onClick={() => void setSubmissionStatus(selectedSubmission, "rejected")}>Reject</Button>
                 <Button
                   variant="ghost"
+                  disabled={selectedSubmission.status !== "approved" && selectedSubmission.status !== "rejected"}
                   onClick={async () => {
                     await deleteNode(`question_submissions/${selectedSubmission.id}`);
                     setSelectedSubmission(null);
@@ -391,6 +392,11 @@ function AdminContent() {
                 >
                   Delete
                 </Button>
+                {selectedSubmission.status !== "approved" && selectedSubmission.status !== "rejected" && (
+                  <p className="w-full text-xs text-muted-foreground">
+                    Approve or reject this submission before deleting it.
+                  </p>
+                )}
                 <Button
                   variant="outline"
                   onClick={async () => {
