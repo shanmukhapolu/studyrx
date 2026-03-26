@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, Settings, ShieldCheck, UserRound } from "lucide-react";
+import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, MessageSquarePlus, Settings, ShieldCheck, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -37,6 +37,11 @@ const navItems = [
     title: "Submit Question",
     href: "/submit-question",
     icon: FileQuestion,
+  },
+  {
+    title: "Submit Feedback",
+    href: "/submit-feedback",
+    icon: MessageSquarePlus,
   },
 ];
 

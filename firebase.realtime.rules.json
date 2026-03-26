@@ -122,6 +122,12 @@
       "$reportId": {
         ".write": "auth != null"
       }
+    },
+    "feedback_submissions": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$feedbackId": {
+        ".write": "auth != null"
+      }
     }
   }
 }

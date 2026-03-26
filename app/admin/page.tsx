@@ -28,6 +28,19 @@ type EventRequest = {
   category?: string;
 };
 
+type FeedbackSubmission = {
+  id: string;
+  feedbackType?: string;
+  message?: string;
+  eventName?: string | null;
+  email?: string | null;
+  submittedBy?: {
+    name?: string;
+    email?: string;
+  };
+  createdAt?: string;
+};
+
 type SubmittedBy = {
   uid?: string;
   name?: string;
@@ -84,23 +97,26 @@ function AdminContent() {
   const [eventRequests, setEventRequests] = useState<EventRequest[]>([]);
   const [questionSubmissions, setQuestionSubmissions] = useState<QuestionSubmission[]>([]);
   const [questionReports, setQuestionReports] = useState<QuestionReport[]>([]);
+  const [feedbackSubmissions, setFeedbackSubmissions] = useState<FeedbackSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedEventFilter, setSelectedEventFilter] = useState("all");
   const [selectedSubmission, setSelectedSubmission] = useState<QuestionSubmission | null>(null);
   const [adminNotes, setAdminNotes] = useState("");
 
   const loadAll = async () => {
-    const [usersData, eventReqData, questionSubData, questionReportsData] = await Promise.all([
+    const [usersData, eventReqData, questionSubData, questionReportsData, feedbackData] = await Promise.all([
       rtdbGet<Record<string, UserRecord>>("users", {}),
       rtdbGet<Record<string, Omit<EventRequest, "id">>>("event_requests", {}),
       rtdbGet<Record<string, Omit<QuestionSubmission, "id">>>("question_submissions", {}),
       rtdbGet<Record<string, Omit<QuestionReport, "id">>>("question_reports", {}),
+      rtdbGet<Record<string, Omit<FeedbackSubmission, "id">>>("feedback_submissions", {}),
     ]);
 
     setUsers(usersData);
     setEventRequests(Object.entries(eventReqData).map(([id, value]) => ({ id, ...value })));
     setQuestionSubmissions(Object.entries(questionSubData).map(([id, value]) => ({ id, ...value })));
     setQuestionReports(Object.entries(questionReportsData).map(([id, value]) => ({ id, ...value })));
+    setFeedbackSubmissions(Object.entries(feedbackData).map(([id, value]) => ({ id, ...value })));
   };
 
   useEffect(() => {
@@ -132,6 +148,17 @@ function AdminContent() {
     if (selectedEventFilter === "all") return questionSubmissions;
     return questionSubmissions.filter((item) => item.event === selectedEventFilter);
   }, [questionSubmissions, selectedEventFilter]);
+
+  const eventRequestCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    eventRequests.forEach((request) => {
+      const key = request.eventName || "Unknown event";
+      counts[key] = (counts[key] || 0) + 1;
+    });
+    return Object.entries(counts)
+      .map(([eventName, count]) => ({ eventName, count }))
+      .sort((a, b) => b.count - a.count || a.eventName.localeCompare(b.eventName));
+  }, [eventRequests]);
 
   const updateRole = async (uid: string, currentRole?: string) => {
     const nextRole = currentRole === "admin" ? "user" : "admin";
@@ -203,11 +230,12 @@ function AdminContent() {
         <p className="text-muted-foreground">Loading admin data...</p>
       ) : (
         <Tabs defaultValue="users">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="users">User Management</TabsTrigger>
             <TabsTrigger value="events">Event Requests</TabsTrigger>
             <TabsTrigger value="submissions">Question Submissions</TabsTrigger>
             <TabsTrigger value="reports">Question Reports</TabsTrigger>
+            <TabsTrigger value="feedback">Feedback</TabsTrigger>
           </TabsList>
 
           <TabsContent value="users" className="mt-4 space-y-3">
@@ -231,16 +259,14 @@ function AdminContent() {
 
           <TabsContent value="events" className="mt-4">
             <div className="space-y-2">
-              {eventRequests.map((item) => (
-                <Card key={item.id}>
+              {eventRequestCounts.map((item) => (
+                <Card key={item.eventName}>
                   <CardContent className="flex items-center justify-between p-3 text-sm">
                     <div>
                       <p className="font-medium">{item.eventName || "Unnamed event"}</p>
-                      <p className="text-xs text-muted-foreground">{item.category || "—"}</p>
+                      <p className="text-xs text-muted-foreground">Requests: {item.count}</p>
                     </div>
-                    <Button size="sm" variant="ghost" onClick={() => void deleteNode(`event_requests/${item.id}`)}>
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
+                    <span className="text-lg font-semibold text-primary">{item.count}</span>
                   </CardContent>
                 </Card>
               ))}
@@ -296,6 +322,22 @@ function AdminContent() {
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="feedback" className="mt-4">
+            <div className="space-y-2">
+              {feedbackSubmissions.map((item) => (
+                <Card key={item.id}>
+                  <CardContent className="space-y-1 p-3 text-xs">
+                    <p className="font-semibold text-sm">{item.feedbackType || "Feedback"} {item.eventName ? `· ${item.eventName}` : ""}</p>
+                    <p>{item.message || "No message"}</p>
+                    <p className="text-muted-foreground">
+                      {item.submittedBy?.name || "Unknown user"} · {item.email || item.submittedBy?.email || "No email"} · {dateLabel(item.createdAt)}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
