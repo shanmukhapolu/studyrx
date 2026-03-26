@@ -258,15 +258,15 @@ function AdminContent() {
           </TabsContent>
 
           <TabsContent value="events" className="mt-4">
-            <div className="space-y-2">
+            <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
               {eventRequestCounts.map((item) => (
                 <Card key={item.eventName}>
-                  <CardContent className="flex items-center justify-between p-3 text-sm">
+                  <CardContent className="flex items-center justify-between p-2.5 text-xs">
                     <div>
-                      <p className="font-medium">{item.eventName || "Unnamed event"}</p>
-                      <p className="text-xs text-muted-foreground">Requests: {item.count}</p>
+                      <p className="font-medium leading-tight">{item.eventName || "Unnamed event"}</p>
+                      <p className="text-[11px] text-muted-foreground">Requests</p>
                     </div>
-                    <span className="text-lg font-semibold text-primary">{item.count}</span>
+                    <span className="text-base font-semibold text-primary">{item.count}</span>
                   </CardContent>
                 </Card>
               ))}
