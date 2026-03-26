@@ -201,29 +201,48 @@ export default function SubmitQuestionPage() {
                   <CardContent className="space-y-2 text-sm">
                     {mySubmissions.length === 0 && <p className="text-muted-foreground">No submissions yet.</p>}
                     {mySubmissions.map((submission) => (
-                      <button
+                      <div
                         key={submission.id}
                         className={`w-full rounded-md border p-3 text-left ${submission.status === "approved" ? "bg-green-50/60" : submission.status === "rejected" ? "bg-red-50/60" : "bg-card"}`}
-                        onClick={() => {
-                          if (submission.status !== "rejected") return;
-                          setEvent(submission.event || HOSA_EVENTS[0]?.id || "");
-                          setTag(submission.tag || "");
-                          setDifficulty((submission.difficulty as Difficulty) || "medium");
-                          setQuestion(submission.question || "");
-                          setOptions(
-                            Array.isArray(submission.options) && submission.options.length === 4
-                              ? submission.options
-                              : ["", "", "", ""]
-                          );
-                          setCorrectAnswer(submission.correctAnswer || "");
-                          setExplanation(submission.explanation || "");
-                          toast.info("Rejected submission loaded into the form for resubmission.");
-                        }}
                       >
-                        <p className="font-medium">{submission.event || "Unknown event"} · {submission.tag || "No topic"}</p>
-                        <p className="text-xs capitalize text-muted-foreground">Status: {submission.status || "pending"}</p>
-                        {submission.adminNotes && <p className="text-xs text-muted-foreground">Admin notes: {submission.adminNotes}</p>}
-                      </button>
+                        <button
+                          className="w-full text-left"
+                          onClick={() => {
+                            if (submission.status !== "rejected") return;
+                            setEvent(submission.event || HOSA_EVENTS[0]?.id || "");
+                            setTag(submission.tag || "");
+                            setDifficulty((submission.difficulty as Difficulty) || "medium");
+                            setQuestion(submission.question || "");
+                            setOptions(
+                              Array.isArray(submission.options) && submission.options.length === 4
+                                ? submission.options
+                                : ["", "", "", ""]
+                            );
+                            setCorrectAnswer(submission.correctAnswer || "");
+                            setExplanation(submission.explanation || "");
+                            toast.info("Rejected submission loaded into the form for resubmission.");
+                          }}
+                        >
+                          <p className="font-medium">{submission.event || "Unknown event"} · {submission.tag || "No topic"}</p>
+                          <p className="text-xs capitalize text-muted-foreground">Status: {submission.status || "pending"}</p>
+                          {submission.adminNotes && <p className="text-xs text-muted-foreground">Admin notes: {submission.adminNotes}</p>}
+                        </button>
+                        {(submission.status === "approved" || submission.status === "rejected") && (
+                          <div className="mt-2 flex justify-end">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={async () => {
+                                await rtdbSet(`users/${user?.uid}/question_submissions/${submission.id}`, null);
+                                setMySubmissions((prev) => prev.filter((item) => item.id !== submission.id));
+                                toast.success("Submission removed from your list.");
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </CardContent>
                 </Card>
@@ -237,7 +256,19 @@ export default function SubmitQuestionPage() {
                     {notifications.map((notification) => (
                       <div key={notification.id} className="rounded-md border p-3">
                         <p>{notification.message || "Update received."}</p>
-                        <p className="text-xs text-muted-foreground capitalize">{notification.status || "info"}</p>
+                        <div className="mt-2 flex items-center justify-between">
+                          <p className="text-xs text-muted-foreground capitalize">{notification.status || "info"}</p>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={async () => {
+                              await rtdbSet(`users/${user?.uid}/notifications/${notification.id}`, null);
+                              setNotifications((prev) => prev.filter((item) => item.id !== notification.id));
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        </div>
                       </div>
                     ))}
                   </CardContent>

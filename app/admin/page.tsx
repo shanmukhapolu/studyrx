@@ -386,9 +386,6 @@ function AdminContent() {
                   variant="ghost"
                   onClick={async () => {
                     await deleteNode(`question_submissions/${selectedSubmission.id}`);
-                    if (selectedSubmission.submittedBy?.uid) {
-                      await deleteNode(`users/${selectedSubmission.submittedBy.uid}/question_submissions/${selectedSubmission.id}`);
-                    }
                     setSelectedSubmission(null);
                   }}
                 >
