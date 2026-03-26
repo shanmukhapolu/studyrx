@@ -151,6 +151,13 @@ function AdminContent() {
         adminNotes,
         reviewedAt: new Date().toISOString(),
       });
+      if (submission.submittedBy?.uid) {
+        await rtdbPatch(`users/${submission.submittedBy.uid}/question_submissions/${submission.id}`, {
+          status,
+          adminNotes,
+          reviewedAt: new Date().toISOString(),
+        });
+      }
 
       if (submission.submittedBy?.uid) {
         await rtdbPost(`users/${submission.submittedBy.uid}/notifications`, {
@@ -333,7 +340,18 @@ function AdminContent() {
               <div className="flex flex-wrap gap-2">
                 <Button onClick={() => void setSubmissionStatus(selectedSubmission, "approved")}>Approve</Button>
                 <Button variant="outline" onClick={() => void setSubmissionStatus(selectedSubmission, "rejected")}>Reject</Button>
-                <Button variant="ghost" onClick={() => void deleteNode(`question_submissions/${selectedSubmission.id}`)}>Delete</Button>
+                <Button
+                  variant="ghost"
+                  onClick={async () => {
+                    await deleteNode(`question_submissions/${selectedSubmission.id}`);
+                    if (selectedSubmission.submittedBy?.uid) {
+                      await deleteNode(`users/${selectedSubmission.submittedBy.uid}/question_submissions/${selectedSubmission.id}`);
+                    }
+                    setSelectedSubmission(null);
+                  }}
+                >
+                  Delete
+                </Button>
                 <Button
                   variant="outline"
                   onClick={async () => {

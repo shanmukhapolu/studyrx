@@ -111,7 +111,7 @@
       }
     },
     "question_submissions": {
-      ".read": false,
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
       "$submissionId": {
         ".read": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || data.child('submittedBy').child('uid').val() === auth.uid)",
         ".write": "auth != null"

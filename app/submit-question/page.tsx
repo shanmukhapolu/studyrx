@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { HOSA_EVENTS } from "@/lib/events";
-import { rtdbGet, rtdbPost } from "@/lib/rtdb";
+import { rtdbGet, rtdbPost, rtdbSet } from "@/lib/rtdb";
 import { toast } from "sonner";
 
 type Difficulty = "easy" | "medium" | "hard";
@@ -44,12 +44,11 @@ export default function SubmitQuestionPage() {
     const load = async () => {
       if (!user?.uid) return;
       const [submissionsData, notificationsData] = await Promise.all([
-        rtdbGet<Record<string, { event?: string; tag?: string; status?: string; adminNotes?: string; submittedBy?: { uid?: string } }>>("question_submissions", {}),
+        rtdbGet<Record<string, { event?: string; tag?: string; status?: string; adminNotes?: string }>>(`users/${user.uid}/question_submissions`, {}),
         rtdbGet<Record<string, { message?: string; status?: string; createdAt?: string }>>(`users/${user.uid}/notifications`, {}),
       ]);
 
       const mine = Object.entries(submissionsData)
-        .filter(([, value]) => value.submittedBy?.uid === user.uid)
         .map(([id, value]) => ({ id, ...value }))
         .sort((a, b) => b.id.localeCompare(a.id));
       setMySubmissions(mine);
@@ -133,7 +132,7 @@ export default function SubmitQuestionPage() {
                   onClick={async () => {
                     try {
                       setSubmitting(true);
-                      await rtdbPost("question_submissions", {
+                      const created = await rtdbPost("question_submissions", {
                         event,
                         tag,
                         difficulty,
@@ -150,6 +149,15 @@ export default function SubmitQuestionPage() {
                         },
                         createdAt: new Date().toISOString(),
                       });
+                      if (user?.uid) {
+                        await rtdbSet(`users/${user.uid}/question_submissions/${created.name}`, {
+                          event,
+                          tag,
+                          status: "pending",
+                          adminNotes: "",
+                          createdAt: new Date().toISOString(),
+                        });
+                      }
                       toast.success("Question submitted for review.");
                       setTag("");
                       setQuestion("");
