@@ -1,0 +1,1002 @@
+[
+  {
+    "id": 1,
+    "question": "How many vertebrae are found in the lumbar region of the spinal column?",
+    "options": ["7", "12", "8", "5"],
+    "correctAnswer": "5",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The lumbar region contains 5 vertebrae (L1–L5). The cervical region has 7, the thoracic has 12, the sacral has 5 fused vertebrae, and the coccygeal has 3–5 fused.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 2,
+    "question": "Which structure physically separates the thoracic cavity from the abdominal cavity?",
+    "options": ["Peritoneum", "Mediastinum", "Pleura", "Diaphragm"],
+    "correctAnswer": "Diaphragm",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The diaphragm is a dome-shaped skeletal muscle that forms the floor of the thoracic cavity and the roof of the abdominal cavity. It is also the primary muscle of breathing.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 3,
+    "question": "Which ABO blood type is considered the universal donor for red blood cell transfusions (considering only ABO antigens)?",
+    "options": ["A", "B", "AB", "O"],
+    "correctAnswer": "O",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Type O red blood cells lack both A and B surface antigens, making them compatible with all ABO blood types. When Rh factor is also considered, O-negative is the true universal donor.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 4,
+    "question": "Which bone in the neck is unique because it does not articulate directly with any other bone?",
+    "options": ["Axis", "Atlas", "Mandible", "Hyoid bone"],
+    "correctAnswer": "Hyoid bone",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The U-shaped hyoid bone is suspended in the anterior neck by muscles and ligaments. It is the only bone in the body that does not form a direct joint with another bone.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 5,
+    "question": "In type I diabetes mellitus, which gland fails to produce adequate insulin?",
+    "options": ["Thyroid", "Thymus", "Adrenal gland", "Pancreas"],
+    "correctAnswer": "Pancreas",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "In type I diabetes, the beta cells of the islets of Langerhans in the pancreas are destroyed (typically by autoimmune attack), resulting in little to no insulin production and dysregulated blood glucose.",
+    "tag": "Diseases"
+  },
+  {
+    "id": 6,
+    "question": "Which organ of the urinary system is specifically designed to expand and store urine?",
+    "options": ["Urethra", "Kidney", "Ureter", "Urinary bladder"],
+    "correctAnswer": "Urinary bladder",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The urinary bladder is a hollow, muscular organ lined with transitional epithelium that allows it to distend significantly as it fills with urine before micturition (urination) occurs.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 7,
+    "question": "Which organelle is primarily responsible for producing ATP through cellular respiration?",
+    "options": ["Nucleolus", "Golgi apparatus", "Ribosome", "Mitochondrion"],
+    "correctAnswer": "Mitochondrion",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The mitochondrion carries out aerobic respiration, producing the majority of a cell's ATP via the electron transport chain and oxidative phosphorylation. It is often called the 'powerhouse of the cell.'",
+    "tag": "Physiology"
+  },
+  {
+    "id": 8,
+    "question": "Sebaceous glands are classified as holocrine glands because they release their secretion by:",
+    "options": ["Exocytosis through an intact cell membrane", "Budding off portions of cytoplasm at the apex", "Rupture and disintegration of the entire secretory cell", "Simple diffusion across the basement membrane"],
+    "correctAnswer": "Rupture and disintegration of the entire secretory cell",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Holocrine secretion involves the complete breakdown of the secretory cell, releasing its entire contents as the secretion. Sebaceous (oil) glands use this method. Merocrine glands (e.g., eccrine sweat glands) use exocytosis; apocrine glands bud off portions of cytoplasm.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 9,
+    "question": "The minimum rate of energy expenditure required to sustain vital functions while the body is at complete rest is called the:",
+    "options": ["Thermogenesis", "Metabolic reaction rate", "Essential energy output", "Basal metabolic rate"],
+    "correctAnswer": "Basal metabolic rate",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Basal metabolic rate (BMR) is the energy needed to maintain basic physiological processes — breathing, circulation, and cell production — in a resting, fasting state. Thermogenesis specifically refers to heat production.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 10,
+    "question": "Which cellular structure acts as a selectively permeable barrier enclosing the cell's contents?",
+    "options": ["Nucleus", "Ribosome", "Golgi apparatus", "Plasma membrane"],
+    "correctAnswer": "Plasma membrane",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The plasma (cell) membrane is a phospholipid bilayer with embedded proteins that regulates the passage of substances into and out of the cell, maintaining a distinct intracellular environment.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 11,
+    "question": "Which of the following structures is located in the middle ear?",
+    "options": ["Vestibular canal", "Cochlear labyrinth", "Alveoli", "Eustachian (auditory) tube"],
+    "correctAnswer": "Eustachian (auditory) tube",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The Eustachian tube connects the middle ear to the nasopharynx, equalizing air pressure on both sides of the tympanic membrane. The vestibular canal and labyrinth are inner ear structures; alveoli are in the lungs.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 12,
+    "question": "Which region of the brain is primarily responsible for coordinating voluntary skeletal muscle activity and maintaining balance?",
+    "options": ["Medulla oblongata", "Pons", "Hypothalamus", "Cerebellum"],
+    "correctAnswer": "Cerebellum",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The cerebellum processes sensory input and coordinates smooth, precise voluntary movements, posture, and equilibrium. The medulla oblongata controls autonomic functions; the hypothalamus governs endocrine and homeostatic regulation.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 13,
+    "question": "Which segment of the digestive tract is most critical for nutrient absorption and long-term survival?",
+    "options": ["Stomach", "Appendix", "Colon", "Small intestine"],
+    "correctAnswer": "Small intestine",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The small intestine (duodenum, jejunum, ileum) is the primary site for digestion and absorption of carbohydrates, proteins, fats, vitamins, and minerals. Loss of small intestine function is life-threatening.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 14,
+    "question": "The process by which a white blood cell engulfs and destroys a large pathogen or foreign particle is called:",
+    "options": ["Pinocytosis", "Exocytosis", "Endocytosis", "Phagocytosis"],
+    "correctAnswer": "Phagocytosis",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Phagocytosis ('cell eating') is the receptor-mediated engulfment of large solid particles such as bacteria or dead cells. Pinocytosis ('cell drinking') involves uptake of fluids and dissolved substances.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 15,
+    "question": "Erythropoietin (EPO), which stimulates red blood cell production in the bone marrow, is primarily secreted by which organ?",
+    "options": ["Adrenal glands", "Pituitary gland", "Thyroid gland", "Kidneys"],
+    "correctAnswer": "Kidneys",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Peritubular interstitial cells in the kidneys secrete erythropoietin in response to hypoxia (low blood oxygen). EPO then stimulates erythropoiesis in red bone marrow to increase red blood cell production.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 16,
+    "question": "Which of the following substances is NOT a neurotransmitter?",
+    "options": ["Dopamine", "Serotonin", "Histamine", "Renin"],
+    "correctAnswer": "Renin",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Renin is a proteolytic enzyme released by the juxtaglomerular cells of the kidney to help regulate blood pressure via the renin-angiotensin-aldosterone system — not a neurotransmitter. Dopamine, serotonin, and histamine all function as neurotransmitters.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 17,
+    "question": "Hemocytoblasts — the pluripotent stem cells that give rise to all blood cell types — are primarily found in which tissue?",
+    "options": ["Compact bone", "Skeletal muscle", "Thymus gland", "Red bone marrow"],
+    "correctAnswer": "Red bone marrow",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Red bone marrow contains hematopoietic stem cells (hemocytoblasts) that differentiate into erythrocytes, leukocytes, and platelets. In adults, active red marrow is primarily found in flat and irregular bones such as the sternum, pelvis, and vertebrae.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 18,
+    "question": "The coronal (frontal) plane of the body divides it into which two sections?",
+    "options": ["Superior and inferior", "Right and left", "Medial and lateral", "Anterior and posterior"],
+    "correctAnswer": "Anterior and posterior",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The coronal (frontal) plane is a vertical plane that divides the body into a front (anterior) portion and a back (posterior) portion. The sagittal plane divides right from left; the transverse plane divides superior from inferior.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 19,
+    "question": "Which anterior pituitary hormone directly stimulates milk production (lactogenesis) in the mammary glands?",
+    "options": ["Oxytocin", "Somatostatin", "Luteinizing hormone", "Prolactin"],
+    "correctAnswer": "Prolactin",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Prolactin, secreted by lactotroph cells in the anterior pituitary, initiates and maintains milk synthesis. Oxytocin (from the posterior pituitary) triggers the milk let-down reflex but does not stimulate milk production itself.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 20,
+    "question": "Which type of granulocyte releases both heparin (an anticoagulant) and histamine (a mediator of inflammation)?",
+    "options": ["Eosinophils", "Neutrophils", "Lymphocytes", "Basophils"],
+    "correctAnswer": "Basophils",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Basophils (and tissue mast cells) are the only circulating granulocytes that contain granules rich in heparin and histamine. They play a key role in allergic reactions and inflammatory responses.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 21,
+    "question": "The vertebral column is divided into how many distinct named regions?",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "5",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The five regions of the vertebral column, from superior to inferior, are: cervical (7 vertebrae), thoracic (12), lumbar (5), sacral (5 fused), and coccygeal (3–5 fused).",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 22,
+    "question": "Which cranial nerve (CN X) innervates thoracic and abdominal viscera and plays a major role in parasympathetic regulation of the heart and digestive tract?",
+    "options": ["Trigeminal nerve (CN V)", "Abducens nerve (CN VI)", "Vestibulocochlear nerve (CN VIII)", "Vagus nerve (CN X)"],
+    "correctAnswer": "Vagus nerve (CN X)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The vagus nerve (CN X) is the longest cranial nerve and provides parasympathetic innervation to most thoracic and abdominal organs. It slows heart rate, stimulates digestion, and regulates many visceral reflexes.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 23,
+    "question": "Which of the following organs is located within the pectoral (chest) region of the body?",
+    "options": ["Spleen", "Knee joint", "Liver", "Heart"],
+    "correctAnswer": "Heart",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The pectoral region refers to the anterior chest area. The heart sits within the mediastinum of the thoracic cavity. The spleen is in the left hypochondriac region of the abdomen; the liver is in the right hypochondriac region.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 24,
+    "question": "Which photoreceptor cells in the retina are responsible for peripheral vision and function best in dim light?",
+    "options": ["Iris cells", "Cones", "Bipolar cells", "Rods"],
+    "correctAnswer": "Rods",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Rods are highly sensitive photoreceptors found mainly in the peripheral retina; they detect light intensity rather than color and enable vision in low-light conditions. Cones are concentrated in the fovea and mediate color and high-acuity central vision.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 25,
+    "question": "Which epidermal cells are responsible for producing the pigment that gives skin, hair, and eyes their color?",
+    "options": ["Squamous cells", "Mast cells", "Fibroblasts", "Melanocytes"],
+    "correctAnswer": "Melanocytes",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Melanocytes are specialized cells in the stratum basale of the epidermis that produce melanin via melanosomes. The amount and type of melanin — eumelanin (brown-black) or pheomelanin (yellow-red) — determines pigmentation.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 26,
+    "question": "Which type of muscle tissue is both striated and involuntary?",
+    "options": ["Smooth muscle", "Skeletal muscle", "Cardiac muscle", "Multiunit muscle"],
+    "correctAnswer": "Cardiac muscle",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Cardiac muscle cells (cardiomyocytes) are striated due to organized sarcomeric proteins, yet contract involuntarily under control of the cardiac conduction system. Skeletal muscle is striated but voluntary; smooth muscle is involuntary but not striated.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 27,
+    "question": "A negative feedback loop in the endocrine system means that rising hormone levels will:",
+    "options": ["Stimulate further hormone release from the same gland", "Have no effect on the hypothalamus or pituitary", "Trigger release of a second, synergistic hormone", "Inhibit further secretion of that hormone"],
+    "correctAnswer": "Inhibit further secretion of that hormone",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "In a negative feedback loop, the product of a response (e.g., elevated hormone levels) feeds back to suppress the stimulus (e.g., reducing hypothalamic releasing hormones and pituitary tropic hormones), keeping the hormone within a set range. This is the most common homeostatic control mechanism in the endocrine system.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 28,
+    "question": "Which layer of the skin contains the blood vessels, hair follicles, sweat glands, and sensory receptors?",
+    "options": ["Stratum corneum", "Stratum basale", "Epidermis", "Dermis"],
+    "correctAnswer": "Dermis",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The dermis is the deeper layer of skin, composed mainly of dense irregular connective tissue. It houses blood vessels, lymphatics, hair follicles, sebaceous and sweat glands, and sensory nerve endings. The epidermis is avascular.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 29,
+    "question": "The bicuspid (mitral) valve prevents backflow of blood between which two chambers of the heart?",
+    "options": ["Right atrium and right ventricle", "Right ventricle and pulmonary artery", "Left ventricle and aorta", "Left atrium and left ventricle"],
+    "correctAnswer": "Left atrium and left ventricle",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The bicuspid (mitral) valve, with its two leaflets, is located between the left atrium and left ventricle. It opens during ventricular filling (diastole) and closes during ventricular contraction (systole) to prevent regurgitation of blood back into the atrium.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 30,
+    "question": "Surfactant produced by type II alveolar cells serves which primary function in the lungs?",
+    "options": ["Trapping inhaled pathogens before they enter alveoli", "Facilitating gas exchange across the alveolar membrane", "Reducing alveolar surface tension to prevent collapse", "Stimulating the respiratory center in the medulla"],
+    "correctAnswer": "Reducing alveolar surface tension to prevent collapse",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Pulmonary surfactant (mainly dipalmitoylphosphatidylcholine) coats the inner surface of alveoli, lowering surface tension and preventing alveolar collapse (atelectasis) at the end of expiration. Premature infants deficient in surfactant develop infant respiratory distress syndrome (IRDS).",
+    "tag": "Physiology"
+  },
+  {
+    "id": 31,
+    "question": "In which part of the nephron does the majority of obligatory water reabsorption occur via osmosis?",
+    "options": ["Collecting duct", "Loop of Henle (descending limb)", "Distal convoluted tubule", "Proximal convoluted tubule"],
+    "correctAnswer": "Proximal convoluted tubule",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Approximately 65% of filtered water and sodium is reabsorbed in the proximal convoluted tubule (PCT) through obligatory, non-regulated processes. The collecting duct is where facultative (ADH-regulated) reabsorption of the remaining water occurs.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 32,
+    "question": "Which connective tissue structure connects muscle to bone?",
+    "options": ["Ligament", "Aponeurosis", "Fascia", "Tendon"],
+    "correctAnswer": "Tendon",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Tendons are dense regular connective tissue bands that attach skeletal muscle to bone, transmitting the force of muscle contraction to produce movement. Ligaments connect bone to bone at joints.",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 33,
+    "question": "Atherosclerosis is a cardiovascular disease characterized by the buildup of which substance within arterial walls?",
+    "options": ["Fibrin clots", "Uric acid crystals", "Calcium carbonate deposits", "Fatty plaques (atheromas)"],
+    "correctAnswer": "Fatty plaques (atheromas)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Atherosclerosis involves the progressive accumulation of lipid-laden plaques (atheromas) within the tunica intima and media of arterial walls, narrowing the lumen and reducing blood flow. It is a major risk factor for myocardial infarction and stroke.",
+    "tag": "Diseases"
+  },
+  {
+    "id": 34,
+    "question": "Which condition is defined as a reduction in the number of circulating red blood cells or in hemoglobin concentration, leading to decreased oxygen-carrying capacity?",
+    "options": ["Leukocytosis", "Polycythemia", "Thrombocytopenia", "Anemia"],
+    "correctAnswer": "Anemia",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Anemia is characterized by insufficient red blood cells or hemoglobin, reducing the blood's ability to carry oxygen to tissues. Common causes include iron deficiency, vitamin B12 deficiency, chronic disease, or blood loss.",
+    "tag": "Diseases"
+  },
+  {
+    "id": 35,
+    "question": "Osteoporosis most directly results from an imbalance between which two types of bone cells?",
+    "options": ["Chondrocytes and osteocytes", "Osteoblasts and osteoclasts", "Periosteal cells and endosteal cells", "Osteocytes and lacunar cells"],
+    "correctAnswer": "Osteoblasts and osteoclasts",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "In osteoporosis, osteoclast (bone resorption) activity outpaces osteoblast (bone formation) activity, leading to net bone loss, decreased bone density, and increased fracture risk. Estrogen normally inhibits osteoclasts, which is why postmenopausal women are at heightened risk.",
+    "tag": "Diseases"
+  },
+  {
+    "id": 36,
+    "question": "The sinoatrial (SA) node, which initiates the electrical impulse for each heartbeat, is located in which chamber of the heart?",
+    "options": ["Left ventricle", "Left atrium", "Right ventricle", "Right atrium"],
+    "correctAnswer": "Right atrium",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The SA node — the heart's natural pacemaker — is embedded in the posterior wall of the right atrium near the opening of the superior vena cava. It spontaneously depolarizes at 60–100 times per minute, setting the normal sinus rhythm.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 37,
+    "question": "During the process of synaptic transmission, neurotransmitters are released from which structure into the synaptic cleft?",
+    "options": ["Dendrites of the presynaptic neuron", "Cell body of the postsynaptic neuron", "Myelin sheath of the axon", "Axon terminals (synaptic knobs) of the presynaptic neuron"],
+    "correctAnswer": "Axon terminals (synaptic knobs) of the presynaptic neuron",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "When an action potential reaches the axon terminal, voltage-gated calcium channels open, triggering exocytosis of synaptic vesicles. Neurotransmitters are released into the synaptic cleft and bind to receptors on the postsynaptic membrane.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 38,
+    "question": "Which immune cells are responsible for producing antibodies (immunoglobulins)?",
+    "options": ["Cytotoxic T cells", "Natural killer (NK) cells", "Macrophages", "Plasma cells (effector B cells)"],
+    "correctAnswer": "Plasma cells (effector B cells)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "When activated B lymphocytes differentiate into plasma cells, they secrete large quantities of antigen-specific antibodies (immunoglobulins). Cytotoxic T cells destroy infected or cancerous cells; macrophages phagocytose pathogens; NK cells kill virus-infected cells non-specifically.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 39,
+    "question": "Which disease is caused by degeneration of dopamine-producing neurons in the substantia nigra, leading to tremors, rigidity, and bradykinesia?",
+    "options": ["Alzheimer's disease", "Multiple sclerosis", "Myasthenia gravis", "Parkinson's disease"],
+    "correctAnswer": "Parkinson's disease",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Parkinson's disease results from progressive loss of dopaminergic neurons in the substantia nigra of the midbrain, reducing dopamine signaling to the basal ganglia. This produces the hallmark triad of resting tremor, muscular rigidity, and bradykinesia (slowness of movement).",
+    "tag": "Diseases"
+  },
+  {
+    "id": 40,
+    "question": "The exchange of oxygen and carbon dioxide between the blood and the body's tissues is called:",
+    "options": ["Pulmonary ventilation", "Internal respiration", "External respiration", "Cellular respiration"],
+    "correctAnswer": "Internal respiration",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Internal (tissue) respiration is the gas exchange between systemic capillary blood and the surrounding body cells: O₂ diffuses from blood into cells, and CO₂ diffuses from cells into blood. External respiration is the gas exchange between alveoli and pulmonary capillaries. Pulmonary ventilation is the mechanical movement of air into and out of the lungs.",
+    "tag": "Physiology"
+  },
+  {
+    "id": 41,
+    "question": "During skeletal muscle contraction, which ion is released from the sarcoplasmic reticulum to initiate the cross-bridge cycle?",
+    "options": ["Sodium (Na+)", "Potassium (K+)", "Calcium (Ca2+)", "Magnesium (Mg2+)"],
+    "correctAnswer": "Calcium (Ca2+)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "When an action potential travels along the sarcolemma and into the T-tubules, it triggers the sarcoplasmic reticulum to release Ca2+. The calcium binds to troponin, shifting tropomyosin away from the myosin-binding sites on actin, allowing cross-bridge formation and contraction to begin. (Source: OpenStax A&P 2e, Ch. 10.3)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 42,
+    "question": "In the sliding filament model of muscle contraction, which band of the sarcomere does NOT change in length during shortening?",
+    "options": ["I band", "H zone", "A band", "Zone of overlap"],
+    "correctAnswer": "A band",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "The A band represents the full length of the thick (myosin) filaments and remains constant during contraction. The I band (thin filaments only) and H zone (thick filaments only, no overlap) both shorten as the Z discs are pulled inward. (Source: OpenStax A&P 2e, Ch. 10.3)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 43,
+    "question": "Which neurotransmitter is released at the neuromuscular junction to trigger skeletal muscle fiber depolarization?",
+    "options": ["Dopamine", "Norepinephrine", "Acetylcholine", "Serotonin"],
+    "correctAnswer": "Acetylcholine",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Acetylcholine (ACh) is released from motor neuron axon terminals at the neuromuscular junction. It binds to nicotinic receptors on the sarcolemma, opening Na+ channels, depolarizing the muscle fiber, and triggering an action potential that leads to contraction. (Source: OpenStax A&P 2e, Ch. 10.3)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 44,
+    "question": "Which primary lymphoid organ is responsible for the maturation and selection of T lymphocytes?",
+    "options": ["Spleen", "Lymph nodes", "Red bone marrow", "Thymus"],
+    "correctAnswer": "Thymus",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "T cells migrate from the bone marrow to the thymus, where they mature and undergo selection to ensure they only attack foreign antigens and not self-tissues. The thymus is largest and most active during childhood and gradually atrophies with age. (Source: OpenStax A&P 2e, Ch. 21.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 45,
+    "question": "Which secondary lymphoid organ filters pathogens from the blood via white pulp and removes aged or damaged red blood cells via red pulp?",
+    "options": ["Thymus", "Appendix", "Peyer's patches", "Spleen"],
+    "correctAnswer": "Spleen",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The spleen is the largest secondary lymphoid organ. Its white pulp contains lymphocytes that mount immune responses to blood-borne pathogens, while its red pulp contains macrophages that phagocytose old, damaged, or abnormal red blood cells. (Source: OpenStax A&P 2e, Ch. 21 Key Terms)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 46,
+    "question": "Atrial natriuretic peptide (ANP) is secreted by cells in the wall of the heart in response to which condition?",
+    "options": ["Low blood oxygen levels", "Elevated blood glucose", "Decreased heart rate", "Increased blood volume or pressure"],
+    "correctAnswer": "Increased blood volume or pressure",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "When atrial walls are stretched by increased blood volume or pressure, specialized atrial cells secrete ANP. ANP signals the kidneys to reduce sodium reabsorption, thereby decreasing water retention, blood volume, and blood pressure. It also inhibits renin secretion. (Source: OpenStax A&P 2e, Ch. 17.10)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 47,
+    "question": "Thymosins, a group of hormones that promote T lymphocyte development and differentiation, are produced by which organ?",
+    "options": ["Adrenal cortex", "Pineal gland", "Thymus", "Hypothalamus"],
+    "correctAnswer": "Thymus",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "The thymus has a secondary endocrine function: it produces thymosins, which contribute to the differentiation of T lymphocytes. This function is most active during childhood; the organ atrophies (involutes) progressively after puberty. (Source: OpenStax A&P 2e, Ch. 17.10)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 48,
+    "question": "Which myeloid cell lineage gives rise to platelets (thrombocytes) through a large precursor cell?",
+    "options": ["Lymphoblast", "Monoblast", "Megakaryocyte", "Myeloblast"],
+    "correctAnswer": "Megakaryocyte",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Megakaryocytes are giant, multinucleated cells in the red bone marrow. They shed fragments of their cytoplasm — called platelets — into the bloodstream, where platelets are essential for blood clotting (hemostasis). (Source: OpenStax A&P 2e, Ch. 18.2)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 49,
+    "question": "Dietary lipids absorbed in the small intestine enter the lymphatic system through specialized lymphatic capillaries called:",
+    "options": ["Lacteals", "Peyer's patches", "Cisterna chyli", "Chorionic villi"],
+    "correctAnswer": "Lacteals",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Lacteals are lymphatic capillaries located in the villi of the small intestine. Because fat molecules (as chylomicrons) are too large to enter blood capillaries directly, they enter lacteals instead, traveling through the lymphatic system before reaching the bloodstream via the thoracic duct. (Source: OpenStax A&P 2e, Ch. 23.1)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 50,
+    "question": "The mucosa-associated lymphoid tissue (MALT) found in clusters in the distal ileum of the small intestine is specifically called:",
+    "options": ["Tonsils", "Peyer's patches", "Lacteals", "Mesenteric nodes"],
+    "correctAnswer": "Peyer's patches",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Peyer's patches are large clusters of lymphoid follicles embedded in the lamina propria and submucosa of the distal ileum. They monitor intestinal bacteria and mount immune responses against foodborne pathogens, forming part of the gut-associated lymphoid tissue (GALT). (Source: OpenStax A&P 2e, Ch. 23.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 51,
+    "question": "Which type of muscle contraction involves the muscle generating force without changing length — such as holding a heavy object perfectly still?",
+    "options": ["Isotonic concentric", "Isotonic eccentric", "Twitch contraction", "Isometric contraction"],
+    "correctAnswer": "Isometric contraction",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "In an isometric contraction, tension is generated but the muscle length does not change because the load equals or exceeds the force produced. Examples include holding a plank position or gripping a stationary object. Isotonic contractions involve length changes (concentric = shortening, eccentric = lengthening). (Source: OpenStax A&P 2e, Ch. 10.4)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 52,
+    "question": "A motor unit consists of which two components?",
+    "options": ["A sensory neuron and a group of smooth muscle fibers", "A motor neuron and all the skeletal muscle fibers it innervates", "The neuromuscular junction and the sarcolemma", "A spinal cord segment and all associated tendons"],
+    "correctAnswer": "A motor neuron and all the skeletal muscle fibers it innervates",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "A motor unit is defined as a single motor neuron plus every skeletal muscle fiber that motor neuron innervates. When the motor neuron fires, all fibers in the motor unit contract simultaneously. Increasing force involves recruiting more motor units (motor unit recruitment). (Source: OpenStax A&P 2e, Ch. 10.4)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 53,
+    "question": "Vitamin D deficiency in children causes rickets, a disease characterized by softening and weakening of bones. In the body, the active form of vitamin D (calcitriol) is produced in which organ?",
+    "options": ["Liver", "Skin", "Pancreas", "Kidneys"],
+    "correctAnswer": "Kidneys",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Vitamin D synthesis begins in the skin (cholecalciferol from UV exposure), is partially converted in the liver, and finally activated to calcitriol in the kidneys. Calcitriol promotes intestinal calcium absorption and is critical for bone mineralization. Deficiency leads to rickets in children and osteomalacia in adults. (Source: OpenStax A&P 2e, Ch. 17.10)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 54,
+    "question": "Which class of antibody is the first produced during an initial (primary) immune response and forms pentamers in blood plasma?",
+    "options": ["IgA", "IgG", "IgE", "IgM"],
+    "correctAnswer": "IgM",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "IgM is the first antibody secreted during a primary immune response. In plasma, five IgM monomers link together to form a pentamer, making it highly effective at agglutinating antigens. IgG becomes the dominant antibody in secondary (memory) responses and is also passed from mother to fetus via the placenta. (Source: OpenStax A&P 2e, Ch. 21 Key Terms)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 55,
+    "question": "A patient develops inflammation, joint damage, and morning stiffness due to the immune system attacking the synovial membranes of joints. This is consistent with which autoimmune disease?",
+    "options": ["Osteoarthritis", "Gout", "Rheumatoid arthritis", "Fibromyalgia"],
+    "correctAnswer": "Rheumatoid arthritis",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Rheumatoid arthritis (RA) is an autoimmune disease in which the immune system attacks synovial membranes, causing inflammation, pannus formation, cartilage erosion, and joint deformity. It differs from osteoarthritis (mechanical wear-and-tear) and gout (uric acid crystal deposits). (Source: OpenStax A&P 2e, Ch. 21.6)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 56,
+    "question": "The condition in which the pleural space fills with fluid, compressing the lung and impairing breathing, is called:",
+    "options": ["Pneumothorax", "Pulmonary edema", "Atelectasis", "Pleural effusion"],
+    "correctAnswer": "Pleural effusion",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "A pleural effusion is the abnormal accumulation of fluid in the pleural cavity (between the visceral and parietal pleurae), which reduces lung expansion and causes dyspnea. Pneumothorax is air in the pleural space; atelectasis is alveolar collapse; pulmonary edema is fluid within the lung tissue itself. (Source: Tortora & Derrickson, Principles of A&P, 16e, Ch. 23)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 57,
+    "question": "Which portion of the large intestine connects the cecum to the ascending colon and stores a reservoir of intestinal bacteria?",
+    "options": ["Sigmoid colon", "Rectum", "Haustra", "Appendix"],
+    "correctAnswer": "Appendix",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The vermiform appendix is a finger-like projection attached to the cecum at the junction of the small and large intestines. While once thought vestigial, evidence suggests it acts as a reservoir for beneficial gut bacteria. Inflammation of the appendix causes appendicitis. (Source: OpenStax A&P 2e, Ch. 23)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 58,
+    "question": "The tough outer covering of the brain and spinal cord, which is the outermost of the three meninges, is called the:",
+    "options": ["Pia mater", "Arachnoid mater", "Periosteum", "Dura mater"],
+    "correctAnswer": "Dura mater",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The meninges are three protective membranes surrounding the brain and spinal cord, from outermost to innermost: dura mater (tough, fibrous), arachnoid mater (web-like), and pia mater (thin, directly covering neural tissue). The subarachnoid space between the arachnoid and pia mater contains cerebrospinal fluid (CSF). (Source: OpenStax A&P 2e, Ch. 13)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 59,
+    "question": "The hepatic portal system carries nutrient-rich blood from the intestinal capillaries to which organ for processing before it enters systemic circulation?",
+    "options": ["Kidneys", "Heart", "Spleen", "Liver"],
+    "correctAnswer": "Liver",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "After nutrients are absorbed in the small intestine, the hepatic portal vein carries this blood directly to the liver. Hepatocytes process nutrients (storing glucose as glycogen, detoxifying substances, synthesizing plasma proteins) before the blood passes through the hepatic veins into the inferior vena cava. (Source: OpenStax A&P 2e, Ch. 23.1)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 60,
+    "question": "Multiple sclerosis (MS) is a demyelinating disease in which the immune system destroys the myelin sheaths of neurons. The primary consequence of demyelination is:",
+    "options": ["Increased speed of action potential transmission", "Slowed or blocked nerve impulse conduction", "Uncontrolled neurotransmitter release at synapses", "Excessive production of cerebrospinal fluid"],
+    "correctAnswer": "Slowed or blocked nerve impulse conduction",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Myelin sheaths are produced by oligodendrocytes in the CNS and act as insulation around axons, enabling rapid saltatory conduction of action potentials between Nodes of Ranvier. Destruction of myelin in MS slows or completely blocks nerve impulse transmission, causing the varied neurological symptoms (weakness, vision loss, coordination problems) seen in patients. (Source: OpenStax A&P 2e, Ch. 12; Tortora & Derrickson 16e)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 61,
+    "question": "How many bones make up the adult human skeleton?",
+    "options": ["180", "206", "270", "215"],
+    "correctAnswer": "206",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The adult human skeleton contains 206 bones. Babies are born with 270–300 bones, many of which fuse during childhood and adolescence to reach the adult count of 206. (Source: OpenStax A&P 2e, Ch. 7.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 62,
+    "question": "Which division of the skeleton includes the skull, vertebral column, and thoracic cage?",
+    "options": ["Appendicular skeleton", "Visceral skeleton", "Peripheral skeleton", "Axial skeleton"],
+    "correctAnswer": "Axial skeleton",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The axial skeleton forms the central axis of the body and consists of 80 bones, including the skull (22 bones), vertebral column (24 vertebrae plus sacrum and coccyx), and thoracic cage. It protects the brain, spinal cord, heart, and lungs. The appendicular skeleton comprises the limbs and girdles. (Source: OpenStax A&P 2e, Ch. 7.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 63,
+    "question": "The femur, tibia, and humerus are all examples of which bone classification?",
+    "options": ["Flat bones", "Irregular bones", "Short bones", "Long bones"],
+    "correctAnswer": "Long bones",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Long bones are cylindrical — longer than they are wide. They are found in the upper and lower limbs (humerus, radius, ulna, femur, tibia, fibula) as well as in the fingers and toes. They function primarily to support weight and facilitate movement. (Source: OpenStax A&P 2e, Ch. 6.2)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 64,
+    "question": "Which hormone, released by the posterior pituitary, promotes water reabsorption in the kidney's collecting ducts by inserting aquaporin channels into tubular cells?",
+    "options": ["Aldosterone", "Oxytocin", "Cortisol", "Antidiuretic hormone (ADH)"],
+    "correctAnswer": "Antidiuretic hormone (ADH)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "ADH (also called vasopressin) is released from the posterior pituitary when blood osmolarity rises. It binds to receptors on collecting duct cells, triggering insertion of aquaporin water channels so more water is reabsorbed back into the bloodstream, producing more concentrated urine. (Source: OpenStax A&P 2e, Ch. 25.6 & 25.8)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 65,
+    "question": "Which endocrine gland secretes melatonin in response to darkness, helping regulate the sleep-wake cycle?",
+    "options": ["Hypothalamus", "Adrenal medulla", "Pituitary gland", "Pineal gland"],
+    "correctAnswer": "Pineal gland",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The pineal gland, located in the diencephalon of the brain, contains pinealocytes that secrete melatonin in response to low light levels. High melatonin levels induce drowsiness and help synchronize the body's circadian rhythms. Jet lag occurs because melatonin synthesis takes several days to readjust to a new light-dark schedule. (Source: OpenStax A&P 2e, Ch. 17 Chapter Review)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 66,
+    "question": "What type of joint is the knee, which allows movement primarily in one plane and is classified as a synovial hinge joint?",
+    "options": ["Amphiarthrosis", "Synarthrosis", "Diarthrosis", "Cartilaginous joint"],
+    "correctAnswer": "Diarthrosis",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "A diarthrosis is a freely moveable joint — all synovial joints, including the knee, are diarthroses. The knee is specifically a synovial hinge joint (uniaxial diarthrosis) that primarily allows flexion and extension. Synarthroses are immovable (like skull sutures); amphiarthroses are slightly moveable (like intervertebral discs). (Source: OpenStax A&P 2e, Ch. 9.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 67,
+    "question": "Aldosterone, which regulates sodium reabsorption and potassium excretion in the kidney's collecting ducts, is secreted by which gland?",
+    "options": ["Posterior pituitary", "Thyroid gland", "Adrenal cortex", "Pancreas"],
+    "correctAnswer": "Adrenal cortex",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Aldosterone is a mineralocorticoid steroid hormone produced by the adrenal cortex, specifically the zona glomerulosa. It is released in response to angiotensin II or elevated plasma potassium. It promotes Na+ reabsorption and K+ excretion in the collecting duct, thereby increasing blood volume and pressure. (Source: OpenStax A&P 2e, Ch. 25.8)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 68,
+    "question": "Fibrocartilage, which is tougher and less flexible than hyaline cartilage due to extra collagen fibers, forms which structure between adjacent vertebrae?",
+    "options": ["Articular cartilage", "Epiphyseal plate", "Intervertebral disc", "Meniscus of the knee"],
+    "correctAnswer": "Intervertebral disc",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Intervertebral discs are cartilaginous joints composed of fibrocartilage. Each disc has a tough outer annulus fibrosus (fibrocartilage) and a gel-like inner nucleus pulposus. They absorb compressive forces and allow limited vertebral movement. A herniated disc occurs when the nucleus pulposus pushes through the annulus fibrosus, potentially compressing nearby spinal nerves. (Source: OpenStax A&P 2e, Ch. 9.1 & Ch. 4 Chapter Review)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 69,
+    "question": "The periosteum is a fibrous membrane covering the outer surface of bones. Which of the following is NOT one of its functions?",
+    "options": ["Attachment site for tendons and ligaments", "Nourishment of compact bone via blood vessels", "Production of aquaporin channels for bone hydration", "Serving as a site for bone growth and repair"],
+    "correctAnswer": "Production of aquaporin channels for bone hydration",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The periosteum contains blood vessels, nerves, and lymphatics that nourish compact bone, and serves as an attachment point for tendons and ligaments. Inner periosteal cells (osteoprogenitor cells) contribute to bone growth and repair. Aquaporin channels are water-transport proteins found in kidney tubule cells and other tissues — not in the periosteum. (Source: OpenStax A&P 2e, Ch. 6.3)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 70,
+    "question": "Glucagon is secreted by the alpha cells of the pancreatic islets in response to low blood glucose. What is its primary effect on the liver?",
+    "options": ["Stimulates glycogen synthesis (glycogenesis)", "Promotes glucose uptake by liver cells", "Inhibits all hepatic glucose output", "Stimulates glycogen breakdown (glycogenolysis) to raise blood glucose"],
+    "correctAnswer": "Stimulates glycogen breakdown (glycogenolysis) to raise blood glucose",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Glucagon, produced by alpha cells of the islets of Langerhans, acts on the liver to stimulate glycogenolysis (breakdown of stored glycogen to glucose) and gluconeogenesis (synthesis of new glucose from non-carbohydrate precursors), raising blood glucose levels back to normal. Insulin (from beta cells) has the opposing effect of promoting glucose uptake and glycogen storage. (Source: OpenStax A&P 2e, Ch. 17 Chapter Review)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 71,
+    "question": "In the renin-angiotensin-aldosterone system (RAAS), which organ converts inactive angiotensin I into biologically active angiotensin II via angiotensin-converting enzyme (ACE)?",
+    "options": ["Liver", "Kidneys", "Adrenal glands", "Lungs"],
+    "correctAnswer": "Lungs",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Renin (from the kidneys) cleaves angiotensinogen (made by the liver) into angiotensin I, which is inactive. ACE, produced by the endothelial cells of the pulmonary capillaries in the lungs, then converts angiotensin I into angiotensin II — a potent vasoconstrictor that also stimulates aldosterone release from the adrenal cortex. (Source: OpenStax A&P 2e, Ch. 25.4 & 25.10)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 72,
+    "question": "Synovial fluid, which lubricates freely moveable joints and reduces friction between articular cartilages, is secreted by which structure?",
+    "options": ["Articular cartilage itself", "Periosteum lining the joint", "Synovial membrane", "Fibrous joint capsule"],
+    "correctAnswer": "Synovial membrane",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "The synovial membrane lines the inner surface of the joint capsule in diarthrotic (synovial) joints. Its cells secrete synovial fluid, which is viscous and rich in hyaluronic acid. The fluid lubricates articular surfaces, absorbs shock, and delivers nutrients to the avascular articular cartilage. (Source: OpenStax A&P 2e, Ch. 9.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 73,
+    "question": "The condition known as gout is caused by the deposition of which substance in the joints, most commonly the big toe?",
+    "options": ["Calcium oxalate crystals", "Fibrin deposits", "Uric acid (monosodium urate) crystals", "Cholesterol plaques"],
+    "correctAnswer": "Uric acid (monosodium urate) crystals",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Gout is a form of inflammatory arthritis caused by hyperuricemia — elevated uric acid in the blood, resulting from excessive purine metabolism or reduced renal excretion. Uric acid crystallizes as monosodium urate and deposits in joint spaces (particularly the metatarsophalangeal joint of the big toe), causing intense pain, swelling, and redness. (Source: Tortora & Derrickson, Principles of A&P, 16e, Ch. 9)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 74,
+    "question": "During endochondral ossification — the process by which most long bones develop — bone replaces which type of tissue?",
+    "options": ["Dense fibrous connective tissue", "Elastic cartilage", "Adipose tissue", "Hyaline cartilage"],
+    "correctAnswer": "Hyaline cartilage",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "In endochondral ossification, a hyaline cartilage model is gradually replaced by bone tissue. Chondrocytes enlarge and die, the cartilage matrix calcifies, and osteoblasts invade to deposit bone matrix. Growth in length occurs at the epiphyseal (growth) plates, which are also composed of hyaline cartilage, and close when bones stop growing between ages 16–18. (Source: OpenStax A&P 2e, Ch. 6.2 & 6.4)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 75,
+    "question": "Which glomerular filtration barrier component — finger-like extensions of specialized cells that interdigitate to form filtration slits — prevents most proteins from entering the filtrate?",
+    "options": ["Macula densa cells", "Mesangial cells", "Fenestrated capillary endothelium", "Podocyte pedicels"],
+    "correctAnswer": "Podocyte pedicels",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Podocytes are specialized cells forming the visceral layer of Bowman's capsule. They extend foot-like projections called pedicels that interdigitate around glomerular capillaries, forming narrow filtration slits. Combined with the negatively charged basement membrane and fenestrated endothelium, this three-layer barrier prevents large proteins and blood cells from entering the filtrate while allowing water and small solutes through. (Source: OpenStax A&P 2e, Ch. 25.4)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 76,
+    "question": "The presence of glucose in the urine (glucosuria) most commonly indicates which condition?",
+    "options": ["Kidney stones blocking the ureter", "Addison's disease causing aldosterone deficiency", "Poorly controlled diabetes mellitus exceeding the renal threshold for glucose", "Excess ADH causing water retention"],
+    "correctAnswer": "Poorly controlled diabetes mellitus exceeding the renal threshold for glucose",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Normally, all glucose filtered at the glomerulus is reabsorbed in the proximal convoluted tubule. When blood glucose exceeds approximately 180 mg/dL (the renal threshold), transporters become saturated and glucose spills into the urine (glucosuria). This is a hallmark sign of uncontrolled diabetes mellitus and can lead to osmotic diuresis and severe dehydration. (Source: OpenStax A&P 2e, Ch. 25 Key Terms & Ch. 25.10)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 77,
+    "question": "Testosterone production in males is stimulated by which anterior pituitary hormone acting on Leydig cells of the testes?",
+    "options": ["Follicle-stimulating hormone (FSH)", "Growth hormone (GH)", "Prolactin", "Luteinizing hormone (LH)"],
+    "correctAnswer": "Luteinizing hormone (LH)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "LH (from the anterior pituitary) acts on interstitial Leydig cells of the testes, stimulating them to synthesize and secrete testosterone. FSH, by contrast, acts on Sertoli (sustentacular) cells to support sperm maturation. Both LH and FSH are released in response to gonadotropin-releasing hormone (GnRH) from the hypothalamus. (Source: OpenStax A&P 2e, Ch. 17 Chapter Review & Ch. 27.3)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 78,
+    "question": "A sesamoid bone is unique in that it forms within which structure, rather than directly connected to other bones via joints?",
+    "options": ["Periosteum of long bones", "Articular cartilage of synovial joints", "A tendon, where compressive forces are high", "The fibrous layer of joint capsules"],
+    "correctAnswer": "A tendon, where compressive forces are high",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Sesamoid bones develop within tendons subjected to high compressive or friction forces, protecting the tendon from wear. The patella (kneecap) is the largest and most consistent sesamoid bone in the body, embedded in the quadriceps tendon. Other sesamoid bones vary by individual and are commonly found in tendons of the hand and foot. (Source: OpenStax A&P 2e, Ch. 6.2)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 79,
+    "question": "Cushing's syndrome is characterized by excess cortisol. Which of the following is a hallmark clinical sign of chronically elevated cortisol levels?",
+    "options": ["Hypoglycemia and weight loss", "Muscle hypertrophy and increased bone density", "Central obesity, moon face, and muscle wasting", "Hypotension and bronze skin discoloration"],
+    "correctAnswer": "Central obesity, moon face, and muscle wasting",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Excess cortisol (as in Cushing's syndrome) causes redistribution of fat to central deposits (truncal obesity, buffalo hump, moon face), protein catabolism leading to muscle wasting and thin skin, hypertension, hyperglycemia, and impaired immune function. Hypotension and skin bronzing are signs of Addison's disease (adrenal insufficiency), not Cushing's. (Source: Tortora & Derrickson, Principles of A&P, 16e, Ch. 17)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 80,
+    "question": "Which type of epithelial tissue, found lining the urinary bladder and ureters, is uniquely able to stretch and return to its original shape as the organ fills and empties?",
+    "options": ["Simple columnar epithelium", "Pseudostratified ciliated columnar epithelium", "Simple squamous epithelium", "Transitional epithelium (urothelium)"],
+    "correctAnswer": "Transitional epithelium (urothelium)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Transitional epithelium (urothelium) is a stratified epithelium exclusive to the urinary tract (renal calyces, ureters, urinary bladder, and proximal urethra). Its cells change shape — appearing rounded and dome-like when relaxed, and flattened when stretched — allowing the bladder to accommodate large volumes of urine without tearing. (Source: OpenStax A&P 2e, Ch. 4.2; Tortora & Derrickson 16e, Ch. 4)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 81,
+    "question": "Which blood vessels carry blood AWAY from the heart?",
+    "options": ["Capillaries", "Venules", "Veins", "Arteries"],
+    "correctAnswer": "Arteries",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Arteries always carry blood away from the heart, regardless of whether that blood is oxygenated or deoxygenated. Veins carry blood toward the heart. Capillaries are microscopic exchange vessels between arterioles and venules. (Source: OpenStax A&P 2e, Ch. 20)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 82,
+    "question": "The trachea divides into the left and right primary bronchi at a landmark called the:",
+    "options": ["Glottis", "Epiglottis", "Carina", "Hilum"],
+    "correctAnswer": "Carina",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The carina is the cartilaginous ridge at the inferior end of the trachea where it forks into the left and right primary bronchi. It is an important anatomical landmark in bronchoscopy and is lined with a sensitive cough reflex. (Source: OpenStax A&P 2e, Ch. 22.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 83,
+    "question": "Which chamber of the heart pumps deoxygenated blood into the pulmonary trunk toward the lungs?",
+    "options": ["Left atrium", "Left ventricle", "Right atrium", "Right ventricle"],
+    "correctAnswer": "Right ventricle",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The right ventricle receives deoxygenated blood from the right atrium and pumps it through the pulmonary valve into the pulmonary trunk, which branches into the left and right pulmonary arteries carrying blood to the lungs for oxygenation. (Source: OpenStax A&P 2e, Ch. 19.1)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 84,
+    "question": "Normal resting heart rate in a healthy adult is typically between:",
+    "options": ["40–55 beats per minute", "60–100 beats per minute", "100–120 beats per minute", "50–75 beats per minute"],
+    "correctAnswer": "60–100 beats per minute",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The SA node spontaneously depolarizes at an intrinsic rate of 60–100 times per minute, producing normal sinus rhythm. A resting heart rate below 60 bpm is called bradycardia; above 100 bpm is tachycardia. (Source: StatPearls – Physiology, Cardiac Output; OpenStax A&P 2e, Ch. 19.2)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 85,
+    "question": "The largest artery in the human body, which receives blood directly from the left ventricle, is the:",
+    "options": ["Pulmonary trunk", "Inferior vena cava", "Coronary artery", "Aorta"],
+    "correctAnswer": "Aorta",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "The aorta is the main systemic artery, arising from the left ventricle via the aortic valve. It arches superiorly (aortic arch), then descends through the thorax and abdomen, distributing oxygenated blood to all body regions. (Source: OpenStax A&P 2e, Ch. 20.5)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 86,
+    "question": "The primary stimulus that triggers an increase in the rate and depth of breathing under normal conditions is a rise in blood levels of:",
+    "options": ["Nitrogen gas", "Oxygen", "Bicarbonate ions", "Carbon dioxide"],
+    "correctAnswer": "Carbon dioxide",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Rising CO₂ diffuses across the blood-brain barrier and raises H⁺ concentration in the cerebrospinal fluid, stimulating central chemoreceptors and the respiratory centers in the medulla oblongata to increase ventilation rate and depth. Oxygen levels must drop very significantly (below ~60 mmHg) before peripheral chemoreceptors respond. (Source: OpenStax A&P 2e, Ch. 22.3)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 87,
+    "question": "Which protein inside red blood cells binds and transports the majority of oxygen from the lungs to body tissues?",
+    "options": ["Albumin", "Myoglobin", "Ferritin", "Hemoglobin"],
+    "correctAnswer": "Hemoglobin",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Easy",
+    "explanation": "Each hemoglobin molecule contains four heme groups, each holding one iron atom that can bind one molecule of O₂, giving each hemoglobin molecule a total capacity of four O₂ molecules. About 98.5% of oxygen is carried bound to hemoglobin; only ~1.5% dissolves directly in plasma. (Source: OpenStax A&P 2e, Ch. 22.5)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 88,
+    "question": "Cardiac output is calculated by multiplying which two variables together?",
+    "options": ["Blood pressure × vascular resistance", "Stroke volume × end-diastolic volume", "Heart rate × stroke volume", "Ejection fraction × preload"],
+    "correctAnswer": "Heart rate × stroke volume",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Cardiac output (CO) = heart rate (HR) × stroke volume (SV). A resting adult typically has a CO of about 5 L/min (70 mL SV × ~70 bpm). Both HR and SV are independently regulated by the autonomic nervous system, preload, afterload, and contractility. (Source: OpenStax A&P 2e, Ch. 19.4; StatPearls – Physiology, Cardiac Output)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 89,
+    "question": "The Frank-Starling law of the heart states that, within physiological limits, stroke volume increases when:",
+    "options": ["Heart rate decreases below 60 bpm", "Afterload (arterial resistance) is reduced", "Ventricular end-diastolic volume (preload) increases", "Parasympathetic stimulation of the SA node increases"],
+    "correctAnswer": "Ventricular end-diastolic volume (preload) increases",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Greater ventricular filling during diastole stretches cardiac sarcomeres toward their optimal length, increasing the overlap between actin and myosin and the sensitivity of troponin for Ca²⁺. This produces a more forceful contraction and larger stroke volume. The Frank-Starling mechanism ensures cardiac output matches venous return. (Source: OpenStax A&P 2e, Ch. 19.4; StatPearls – Physiology, Frank-Starling Law)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 90,
+    "question": "The Bohr effect describes how a decrease in blood pH (increased acidity) affects hemoglobin's ability to carry oxygen. Which of the following correctly describes this relationship?",
+    "options": ["Lower pH increases hemoglobin's affinity for O₂, loading more oxygen at the tissues", "Lower pH has no effect on oxygen binding as long as temperature is constant", "Lower pH decreases hemoglobin's affinity for O₂, promoting oxygen release to tissues", "Higher pH promotes oxygen dissociation from hemoglobin at the lungs"],
+    "correctAnswer": "Lower pH decreases hemoglobin's affinity for O₂, promoting oxygen release to tissues",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "The Bohr effect: when blood pH drops (e.g., from elevated CO₂ and lactic acid during exercise), hemoglobin's affinity for O₂ decreases, causing it to release more oxygen to metabolically active tissues that need it most. Conversely, higher pH in the pulmonary capillaries (as CO₂ is exhaled) increases O₂ affinity, aiding loading at the lungs. (Source: OpenStax A&P 2e, Ch. 22.5)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 91,
+    "question": "Approximately what percentage of carbon dioxide in the blood is transported as bicarbonate ions (HCO₃⁻) dissolved in plasma?",
+    "options": ["7%", "20%", "50%", "70%"],
+    "correctAnswer": "70%",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "About 70% of CO₂ is converted inside red blood cells into carbonic acid (H₂CO₃) by carbonic anhydrase, then rapidly dissociates into H⁺ and HCO₃⁻. The bicarbonate diffuses into plasma (chloride shift). About 20% binds hemoglobin as carbaminohemoglobin; ~7–10% dissolves directly in plasma. (Source: OpenStax A&P 2e, Ch. 22.5 & Ch. 22 Chapter Review)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 92,
+    "question": "Which condition results from airway inflammation, edema, and bronchospasm that reversibly narrows the bronchioles, making exhalation particularly difficult?",
+    "options": ["Pneumonia", "Pulmonary fibrosis", "Emphysema", "Asthma"],
+    "correctAnswer": "Asthma",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Asthma is a chronic inflammatory disease of the airways characterized by episodic bronchospasm, mucosal edema, and increased mucus secretion. It causes obstructive airflow limitation — especially during exhalation — leading to wheezing, chest tightness, and dyspnea. It is the most common cause of hospitalization in children. (Source: OpenStax A&P 2e, Ch. 22.1)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 93,
+    "question": "In emphysema, a chronic obstructive pulmonary disease, the destruction of alveolar walls primarily reduces which lung function?",
+    "options": ["The ability to inhale deeply using intercostal muscles", "Mucus clearance via ciliary action in bronchioles", "The surface area available for gas exchange", "The brain's ability to regulate respiratory rate"],
+    "correctAnswer": "The surface area available for gas exchange",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Emphysema involves permanent destruction of alveolar walls, merging small alveoli into larger, less elastic air sacs. This dramatically reduces the total surface area available for O₂ and CO₂ diffusion and impairs elastic recoil needed for passive expiration. The result is air trapping (hyperinflation), chronic hypoxemia, and barrel chest. (Source: OpenStax A&P 2e, Ch. 22 Chapter Review)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 94,
+    "question": "During inspiration (inhalation), the diaphragm contracts and moves inferiorly. This action increases thoracic volume, which according to Boyle's law causes intrapulmonary pressure to:",
+    "options": ["Increase above atmospheric pressure, pushing air out", "Equal atmospheric pressure, halting airflow", "Remain unchanged due to surfactant compensation", "Decrease below atmospheric pressure, drawing air in"],
+    "correctAnswer": "Decrease below atmospheric pressure, drawing air in",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Boyle's law states that pressure and volume are inversely related in a closed container at constant temperature (P₁V₁ = P₂V₂). When the diaphragm contracts and enlarges the thoracic cavity, lung volume increases and intrapulmonary pressure drops below atmospheric pressure (~1–3 mmHg below), creating a pressure gradient that drives air into the lungs. Exhalation reverses this. (Source: OpenStax A&P 2e, Ch. 22.3)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 95,
+    "question": "Myocardial infarction (heart attack) most commonly occurs when a coronary artery is suddenly blocked by a blood clot forming on top of a ruptured atherosclerotic plaque, causing:",
+    "options": ["Ventricular hypertrophy and increased cardiac output", "Ischemia and necrosis of the myocardium supplied by that artery", "Acute dilation of all systemic arterioles and a drop in blood pressure", "Inflammation of the pericardium without damage to heart muscle"],
+    "correctAnswer": "Ischemia and necrosis of the myocardium supplied by that artery",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "When coronary blood flow is abruptly blocked, the myocardial tissue distal to the occlusion is deprived of oxygen (ischemia). If blood flow is not restored quickly (within ~20–40 minutes), irreversible cell death (necrosis/infarction) occurs. The degree of damage depends on which artery is blocked, how long the blockage lasts, and the presence of collateral circulation. (Source: StatPearls – Physiology, Cardiovascular; Tortora & Derrickson, 16e, Ch. 20)",
+    "tag": "Diseases"
+  },
+  {
+    "id": 96,
+    "question": "The conducting zone of the respiratory system ends and the respiratory zone begins at which structure?",
+    "options": ["Terminal bronchioles", "Secondary bronchi", "Respiratory bronchioles", "Alveolar ducts"],
+    "correctAnswer": "Respiratory bronchioles",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "The conducting zone (nasal cavity → trachea → bronchi → terminal bronchioles) only moves air — no gas exchange occurs. The respiratory zone begins at the respiratory bronchioles, which have occasional alveoli budding from their walls, enabling gas exchange. From there, alveolar ducts and alveolar sacs (clusters of alveoli) continue the respiratory zone. (Source: OpenStax A&P 2e, Ch. 22 Chapter Review)",
+    "tag": "Anatomy"
+  },
+  {
+    "id": 97,
+    "question": "Stroke volume is calculated as end-diastolic volume (EDV) minus end-systolic volume (ESV). If a person has an EDV of 130 mL and an ESV of 60 mL, what is their stroke volume?",
+    "options": ["190 mL", "60 mL", "70 mL", "130 mL"],
+    "correctAnswer": "70 mL",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "SV = EDV − ESV = 130 mL − 60 mL = 70 mL. This is a typical resting stroke volume for a healthy adult. The ejection fraction (EF = SV/EDV) in this case would be 70/130 ≈ 54%, which is within the normal range of 55–70%. (Source: OpenStax A&P 2e, Ch. 19.4)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 98,
+    "question": "Arterioles are considered the primary site of vascular resistance. When arterioles constrict (vasoconstriction), which of the following occurs?",
+    "options": ["Blood flow to downstream capillaries increases", "Peripheral resistance decreases and blood pressure drops", "Blood pressure upstream increases and capillary flow decreases", "Blood pools in the veins and preload rises sharply"],
+    "correctAnswer": "Blood pressure upstream increases and capillary flow decreases",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Medium",
+    "explanation": "Arterioles control peripheral resistance. Vasoconstriction narrows the lumen, increasing resistance and raising blood pressure in the upstream arteries, while reducing blood flow to the downstream capillary beds they supply. This is how the sympathetic nervous system raises systemic blood pressure and redirects blood flow (e.g., away from digestive organs toward muscles during exercise). (Source: StatPearls – Physiology, Cardiovascular; OpenStax A&P 2e, Ch. 20.4)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 99,
+    "question": "Type I alveolar cells (pneumocytes) cover roughly 90% of the alveolar surface area. Their primary function is:",
+    "options": ["Secreting surfactant to reduce surface tension", "Phagocytosing inhaled dust and pathogens", "Forming the ultra-thin gas exchange surface", "Producing mucus to trap inhaled particles"],
+    "correctAnswer": "Forming the ultra-thin gas exchange surface",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Type I alveolar cells are extremely flat, simple squamous epithelial cells that, together with the adjacent capillary endothelium and fused basement membranes, form the respiratory membrane (~0.5 μm thick). This thinness allows rapid O₂ and CO₂ diffusion by simple diffusion. Type II pneumocytes (a minority) secrete surfactant; alveolar macrophages phagocytose debris. (Source: OpenStax A&P 2e, Ch. 22.1; OpenStax Fundamentals of Nursing, Ch. 19.1)",
+    "tag": "Physiology"
+  },
+  {
+    "id": 100,
+    "question": "Heart failure occurs when the heart cannot pump enough blood to meet the body's metabolic demands. When the LEFT ventricle fails, fluid backs up into the pulmonary circulation, causing:",
+    "options": ["Peripheral edema and jugular vein distension", "Systemic hypotension and renal failure only", "Pulmonary edema and difficulty breathing (dyspnea)", "Bradycardia and low cardiac output without lung involvement"],
+    "correctAnswer": "Pulmonary edema and difficulty breathing (dyspnea)",
+    "category": "Anatomy & Physiology",
+    "difficulty": "Hard",
+    "explanation": "Left-sided heart failure causes blood to dam up behind the failing left ventricle in the pulmonary veins. Rising pulmonary capillary hydrostatic pressure forces fluid into the alveolar spaces (pulmonary edema), causing dyspnea, orthopnea, and crackles. Right-sided failure backs blood up into the systemic venous circulation, causing peripheral edema, jugular vein distension, and hepatomegaly. (Source: StatPearls – Physiology, Frank-Starling Law; Tortora & Derrickson, Principles of A&P, 16e, Ch. 20)",
+    "tag": "Diseases"
+  }
+]
