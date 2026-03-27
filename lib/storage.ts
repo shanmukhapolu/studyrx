@@ -1,5 +1,5 @@
 import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
-import { refreshIdToken } from "@/lib/firebase-auth-rest";
+import { getStoredAuth } from "@/lib/rtdb";
 
 export interface Question {
   id: number;
@@ -84,94 +84,6 @@ function createDeterministicSessionId() {
   const now = Date.now();
   const seed = Math.random().toString(36).slice(2, 8);
   return `session_${now}_${seed}`;
-}
-
-type StoredAuthSession = {
-  idToken: string;
-  refreshToken: string;
-  expiresIn: number;
-  expiresAt?: number;
-  user: {
-    uid: string;
-    email?: string;
-    displayName?: string;
-  };
-};
-
-function decodeJwtPayload(token: string): Record<string, unknown> | null {
-  try {
-    const payload = token.split(".")[1];
-    if (!payload) return null;
-    const normalized = payload.replace(/-/g, "+").replace(/_/g, "/");
-    const padded = normalized + "=".repeat((4 - (normalized.length % 4)) % 4);
-    const json = atob(padded);
-    return JSON.parse(json) as Record<string, unknown>;
-  } catch {
-    return null;
-  }
-}
-
-function readStoredAuth(): StoredAuthSession | null {
-  if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem("studyrx_auth_session");
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw) as StoredAuthSession;
-  } catch {
-    return null;
-  }
-}
-
-function resolveUidFromToken(idToken: string): string {
-  const payload = decodeJwtPayload(idToken);
-  const uid = (payload?.user_id || payload?.sub) as string | undefined;
-  return typeof uid === "string" ? uid : "";
-}
-
-async function getStoredAuth(options?: { forceRefresh?: boolean }): Promise<StoredAuthSession | null> {
-  const session = readStoredAuth();
-  if (!session) return null;
-
-  let current = session;
-
-  if ((!current.user?.uid || current.user.uid.length === 0) && current.idToken) {
-    const decodedUid = resolveUidFromToken(current.idToken);
-    if (decodedUid) {
-      current = {
-        ...current,
-        user: {
-          ...current.user,
-          uid: decodedUid,
-        },
-      };
-      localStorage.setItem("studyrx_auth_session", JSON.stringify(current));
-    }
-  }
-
-  const expiresAt = current.expiresAt ?? 0;
-  const missingUid = !current.user?.uid || current.user.uid.length === 0;
-  const shouldRefresh = Boolean(current.refreshToken) && (missingUid || options?.forceRefresh || (expiresAt > 0 && expiresAt <= Date.now() + 30_000));
-  if (shouldRefresh) {
-    try {
-      const refreshed = await refreshIdToken(current.refreshToken);
-      current = {
-        ...current,
-        idToken: refreshed.idToken,
-        refreshToken: refreshed.refreshToken,
-        expiresIn: refreshed.expiresIn,
-        expiresAt: Date.now() + refreshed.expiresIn * 1000,
-        user: {
-          ...current.user,
-          uid: refreshed.uid || current.user.uid || resolveUidFromToken(refreshed.idToken),
-        },
-      };
-      localStorage.setItem("studyrx_auth_session", JSON.stringify(current));
-    } catch {
-      return current;
-    }
-  }
-
-  return current;
 }
 
 async function getUserPath(path: string, options?: { forceRefresh?: boolean }) {

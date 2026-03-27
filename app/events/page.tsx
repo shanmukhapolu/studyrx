@@ -11,6 +11,10 @@ import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage } from "@/lib/storage";
 import { HOSA_EVENTS } from "@/lib/events";
 import { Play, TrendingUp } from "lucide-react";
+import { rtdbGet, rtdbPost, rtdbSet } from "@/lib/rtdb";
+import { toast } from "sonner";
+import { useAuth } from "@/components/auth/auth-provider";
+import { EVENT_CATEGORY_OPTIONS } from "@/lib/event-request-options";
 
 export default function EventsPage() {
   return (
@@ -27,6 +31,13 @@ export default function EventsPage() {
 
 function EventsContent() {
   const [eventStats, setEventStats] = useState<Record<string, { attempted: number; accuracy: number }>>({});
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [requestForm, setRequestForm] = useState({
+    category: "Health Science",
+    eventName: EVENT_CATEGORY_OPTIONS["Health Science"][0],
+  });
+  const [isSubmittingRequest, setIsSubmittingRequest] = useState(false);
+  const { user, profile } = useAuth();
 
   useEffect(() => {
     const loadEventStats = async () => {
@@ -64,11 +75,14 @@ function EventsContent() {
     <div className="flex-1 overflow-auto">
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto px-6 py-6">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">HOSA Competitive Events</h1>
-            <p className="text-muted-foreground mt-1 font-light">
-              Choose an event to start practicing
-            </p>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground">HOSA Competitive Events</h1>
+              <p className="text-muted-foreground mt-1 font-light">
+                Choose an event to start practicing
+              </p>
+            </div>
+            <Button variant="outline" onClick={() => setShowRequestModal(true)}>Request New Event</Button>
           </div>
         </div>
       </header>
@@ -166,6 +180,82 @@ function EventsContent() {
           </CardContent>
         </Card>
       </main>
+
+      {showRequestModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <Card className="w-full max-w-lg">
+            <CardHeader>
+              <CardTitle>Request New Event</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <select
+                value={requestForm.category}
+                onChange={(event) =>
+                  setRequestForm({
+                    category: event.target.value,
+                    eventName: EVENT_CATEGORY_OPTIONS[event.target.value][0],
+                  })
+                }
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+              >
+                <option>Health Science</option>
+                <option>Health Professions</option>
+                <option>ATC</option>
+                <option>Emergency Preparedness</option>
+                <option>Teamwork</option>
+                <option>Recognition</option>
+              </select>
+              <select
+                value={requestForm.eventName}
+                onChange={(event) => setRequestForm((prev) => ({ ...prev, eventName: event.target.value }))}
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+              >
+                {EVENT_CATEGORY_OPTIONS[requestForm.category].map((eventOption) => (
+                  <option key={eventOption} value={eventOption}>{eventOption}</option>
+                ))}
+              </select>
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" onClick={() => setShowRequestModal(false)}>Cancel</Button>
+                <Button
+                  disabled={isSubmittingRequest || !requestForm.eventName}
+                  onClick={async () => {
+                    try {
+                      setIsSubmittingRequest(true);
+                      if (!user?.uid) throw new Error("Please sign in to request events.");
+                      const requestKey = requestForm.eventName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+                      const existing = await rtdbGet<boolean | null>(`users/${user.uid}/event_requests/${requestKey}`, null);
+                      if (existing) {
+                        toast.error("You already requested this event.");
+                        return;
+                      }
+                      await rtdbPost("event_requests", {
+                        ...requestForm,
+                        requestKey,
+                        submittedBy: {
+                          uid: user.uid,
+                          name: [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user.displayName || "",
+                          email: user.email || "",
+                        },
+                        createdAt: new Date().toISOString(),
+                      });
+                      await rtdbSet(`users/${user.uid}/event_requests/${requestKey}`, true);
+                      toast.success("Event request submitted.");
+                      setShowRequestModal(false);
+                      setRequestForm({ category: "Health Science", eventName: EVENT_CATEGORY_OPTIONS["Health Science"][0] });
+                    } catch (error) {
+                      toast.error(error instanceof Error ? error.message : "Failed to submit request.");
+                    } finally {
+                      setIsSubmittingRequest(false);
+                    }
+                  }}
+                >
+                  {isSubmittingRequest ? "Submitting..." : "Submit Request"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

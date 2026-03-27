@@ -3,12 +3,16 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import {
+  getUserRecord,
   getUserProfile,
+  isAdmin,
   refreshIdToken,
   saveUserProfile,
   sendPasswordResetEmail,
   signInWithEmail,
   signUpWithEmail,
+  type UserRole,
+  upsertUserRecord,
   updateDisplayName,
   type AuthSession,
   type AuthUser,
@@ -19,6 +23,8 @@ import { signInWithGooglePopup } from "@/lib/firebase-web";
 interface AuthContextValue {
   user: AuthUser | null;
   profile: UserProfile | null;
+  role: UserRole;
+  isAdmin: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (input: { firstName: string; lastName: string; email: string; password: string }) => Promise<void>;
@@ -128,6 +134,7 @@ async function getFreshSession() {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [role, setRole] = useState<UserRole>("user");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -159,11 +166,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
+        const userRecord = await getUserRecord(session.idToken, session.user.uid);
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         if (!mounted) return;
 
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
+        setRole(userRecord?.role === "admin" ? "admin" : "user");
       } catch {
         localStorage.removeItem(STORAGE_KEY);
       } finally {
@@ -181,15 +190,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     () => ({
       user,
       profile,
+      role,
+      isAdmin: isAdmin({ role }),
       loading,
       signIn: async (email, password) => {
         let session = ensureSessionUid(await signInWithEmail(email, password));
         saveSession(session);
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
+        const existingRecord = await getUserRecord(session.idToken, session.user.uid);
+        const now = new Date().toISOString();
+        await upsertUserRecord(session.idToken, session.user.uid, {
+          name: existingRecord?.name || session.user.displayName || "",
+          email: existingRecord?.email || session.user.email || email,
+          role: existingRecord?.role || "user",
+          createdAt: existingRecord?.createdAt || now,
+          lastLogin: now,
+        });
+
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
+        setRole(existingRecord?.role === "admin" ? "admin" : "user");
       },
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = ensureSessionUid(await signUpWithEmail(email, password));
@@ -208,8 +230,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
 
         saveSession(session);
+        const now = new Date().toISOString();
+        await upsertUserRecord(session.idToken, session.user.uid, {
+          name: `${firstName} ${lastName}`.trim(),
+          email,
+          role: "user",
+          createdAt: now,
+          lastLogin: now,
+        });
         setUser(session.user);
         setProfile({ firstName, lastName });
+        setRole("user");
       },
       signInWithGoogle: async () => {
         let session = ensureSessionUid(await signInWithGooglePopup());
@@ -226,9 +257,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         saveSession(session);
         session = ensureSessionUid(session as AuthSession) as typeof session;
 
+        const existingRecord = await getUserRecord(session.idToken, session.user.uid);
+        const now = new Date().toISOString();
+        await upsertUserRecord(session.idToken, session.user.uid, {
+          name: existingRecord?.name || `${parsedProfile.firstName} ${parsedProfile.lastName}`.trim() || session.user.displayName || "",
+          email: existingRecord?.email || session.user.email || "",
+          role: existingRecord?.role || "user",
+          createdAt: existingRecord?.createdAt || now,
+          lastLogin: now,
+        });
+
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || parsedProfile);
+        setRole(existingRecord?.role === "admin" ? "admin" : "user");
       },
       updateName: async ({ firstName, lastName }) => {
         const currentSession = await getFreshSession();
@@ -255,6 +297,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           displayName,
         });
         setProfile({ firstName, lastName });
+        await upsertUserRecord(currentSession.idToken, currentSession.user.uid, {
+          name: displayName,
+        });
       },
       sendPasswordReset: async () => {
         const existing = readSession();
@@ -268,9 +313,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem(STORAGE_KEY);
         setUser(null);
         setProfile(null);
+        setRole("user");
       },
     }),
-    [loading, user]
+    [loading, role, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

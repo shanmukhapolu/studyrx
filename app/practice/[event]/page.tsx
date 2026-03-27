@@ -26,6 +26,8 @@ import {
   ShieldAlert 
 } from "lucide-react";
 import Confetti from "react-confetti";
+import { rtdbPost } from "@/lib/rtdb";
+import { toast } from "sonner";
 
 // Utility to shuffle an array
 function shuffleArray<T>(array: T[]): T[] {
@@ -148,6 +150,13 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [practiceStage, setPracticeStage] = useState<PracticeStage>("practice");
   const [sessionWrongQuestionIds, setSessionWrongQuestionIds] = useState<number[]>([]);
   const [baseQueueLength, setBaseQueueLength] = useState(0);
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportReason, setReportReason] = useState("Incorrect answer");
+  const [reportOtherReason, setReportOtherReason] = useState("");
+  const [reportDetails, setReportDetails] = useState("");
+  const [reportSubmitting, setReportSubmitting] = useState(false);
+  const [hasPersistedSession, setHasPersistedSession] = useState(false);
+  const hasActiveSession = hasStarted && !isComplete;
 
   const questionShownAtRef = useRef<number>(performance.now());
   const thinkHiddenStartRef = useRef<number | null>(null);
@@ -182,6 +191,43 @@ function PracticeContent({ eventId }: { eventId: string }) {
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, [hasStarted, isAnswered]);
+
+  useEffect(() => {
+    if (!hasActiveSession) return;
+
+    const warningMessage = "Are you sure you want to leave practice? Your progress might be lost.";
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = warningMessage;
+      return warningMessage;
+    };
+
+    const handleDocumentClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      const anchor = target?.closest("a[href]") as HTMLAnchorElement | null;
+      if (!anchor) return;
+
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+      if (href.startsWith("#")) return;
+      if (anchor.target === "_blank") return;
+
+      const shouldLeave = window.confirm(warningMessage);
+      if (!shouldLeave) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    document.addEventListener("click", handleDocumentClick, true);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("click", handleDocumentClick, true);
+    };
+  }, [hasActiveSession]);
 
   useEffect(() => {
     if (!hasStarted || isAnswered) {
@@ -268,6 +314,8 @@ function PracticeContent({ eventId }: { eventId: string }) {
     setSessionData(newSession);
     setPracticeStage("practice");
     setSessionWrongQuestionIds([]);
+    setSessionSummary(null);
+    setHasPersistedSession(false);
     setCurrentQueueIndex(0);
     questionShownAtRef.current = performance.now();
     thinkHiddenStartRef.current = null;
@@ -427,9 +475,13 @@ function PracticeContent({ eventId }: { eventId: string }) {
     thinkPausedMsRef.current = 0;
   };
 
-  const handleEndSession = async () => {
+  const handleEndSession = () => {
+    setIsComplete(true);
+    setShowConfetti(true);
+  };
+
+  const persistSession = async () => {
     if (!sessionData) {
-      router.push("/events");
       return;
     }
 
@@ -491,6 +543,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
     try {
       await storage.saveSession(finishedSession);
+      await storage.setCurrentSession(null);
       setSessionData(finishedSession);
       setSessionSummary({
         totalQuestions,
@@ -499,6 +552,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
         highestStreak,
         sessionTime: totalThinkTime + totalExplanationTime,
       });
+      setHasPersistedSession(true);
     } catch (error) {
       console.error("Failed to save session", error);
       setSessionSaveError("Couldn't save your session. Please try ending again.");
@@ -506,6 +560,11 @@ function PracticeContent({ eventId }: { eventId: string }) {
       setIsEndingSession(false);
     }
   };
+
+  useEffect(() => {
+    if (!isComplete || hasPersistedSession || !sessionData) return;
+    void persistSession();
+  }, [isComplete, hasPersistedSession, sessionData]);
 
   const handleStartRedemptionRound = () => {
     if (sessionWrongQuestionIds.length === 0) {
@@ -639,7 +698,13 @@ function PracticeContent({ eventId }: { eventId: string }) {
   }
 
   if (isComplete) {
-    const isLimitedSession = settings.sessionQuestionLimit !== "unlimited";
+    const summary = sessionSummary ?? {
+      totalQuestions: totalAnswered,
+      correct: correctCount,
+      incorrect: incorrectCount,
+      highestStreak: 0,
+      sessionTime: 0,
+    };
     return (
       <div className="flex-1 overflow-auto p-8 relative">
         {showConfetti && (
@@ -660,36 +725,40 @@ function PracticeContent({ eventId }: { eventId: string }) {
               </div>
               <CardTitle className="text-5xl font-bold">Congratulations!</CardTitle>
               <p className="text-muted-foreground text-xl font-light">
-                {isLimitedSession ? `You've completed your ${eventName} session!` : `You've completed all questions for ${eventName}!`}
+                {`You've completed your ${eventName} session!`}
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl text-center border border-primary/20">
-                <h3 className="text-3xl font-bold mb-3">{isLimitedSession ? "Session Complete" : "Event Complete"}</h3>
+                <h3 className="text-3xl font-bold mb-3">Session Complete</h3>
                 <p className="text-muted-foreground text-lg">
-                  {isLimitedSession
-                    ? "Nice work. Review your results or jump into another session whenever you're ready."
-                    : "You've mastered all available questions. Keep reviewing to maintain your knowledge!"}
+                  Nice work. Review your results or jump into another session whenever you're ready.
                 </p>
               </div>
 
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center p-6 bg-muted/50 rounded-xl border border-border">
-                  <div className="text-3xl font-bold text-primary font-mono">{totalAnswered}</div>
+                  <div className="text-3xl font-bold text-primary font-mono">{summary.totalQuestions}</div>
                   <div className="text-sm text-muted-foreground mt-2">Answered</div>
                 </div>
                 <div className="text-center p-6 bg-muted/50 rounded-xl border border-border">
-                  <div className="text-3xl font-bold text-accent font-mono">{correctCount}</div>
+                  <div className="text-3xl font-bold text-accent font-mono">{summary.correct}</div>
                   <div className="text-sm text-muted-foreground mt-2">Correct</div>
                 </div>
                 <div className="text-center p-6 bg-muted/50 rounded-xl border border-border">
-                  <div className="text-3xl font-bold text-destructive font-mono">{incorrectCount}</div>
+                  <div className="text-3xl font-bold text-destructive font-mono">{summary.incorrect}</div>
                   <div className="text-sm text-muted-foreground mt-2">Incorrect</div>
                 </div>
               </div>
 
+              <div className="rounded-xl border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
+                Session time: <strong className="text-foreground">{formatDuration(summary.sessionTime)}</strong>
+              </div>
+
+              {isEndingSession && <p className="text-sm text-muted-foreground">Saving your session...</p>}
+
               <div className="flex gap-4">
-                <Button onClick={handleEndSession} size="lg" className="flex-1 h-14 text-base">
+                <Button onClick={() => router.push("/events")} size="lg" className="flex-1 h-14 text-base">
                   Back to Events
                 </Button>
                 <Button onClick={handleRestart} variant="outline" size="lg" className="flex-1 h-14 text-base bg-transparent">
@@ -713,45 +782,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
   return (
     <div className="flex-1 overflow-auto">
-      {sessionSummary && (
-        <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <Card className="max-w-2xl w-full glass-card tech-border">
-            <CardHeader>
-              <CardTitle className="text-3xl">Session Stats</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-lg border p-4">
-                  <div className="text-xs text-muted-foreground">Total questions answered</div>
-                  <div className="text-2xl font-bold">{sessionSummary.totalQuestions}</div>
-                </div>
-                <div className="rounded-lg border p-4">
-                  <div className="text-xs text-muted-foreground">Correct questions</div>
-                  <div className="text-2xl font-bold text-accent">{sessionSummary.correct}</div>
-                </div>
-                <div className="rounded-lg border p-4">
-                  <div className="text-xs text-muted-foreground">Incorrect questions</div>
-                  <div className="text-2xl font-bold text-destructive">{sessionSummary.incorrect}</div>
-                </div>
-                <div className="rounded-lg border p-4">
-                  <div className="text-xs text-muted-foreground">Highest streak</div>
-                  <div className="text-2xl font-bold">{sessionSummary.highestStreak}</div>
-                </div>
-                <div className="rounded-lg border p-4 md:col-span-2">
-                  <div className="text-xs text-muted-foreground">Session time</div>
-                  <div className="text-2xl font-bold">{formatDuration(sessionSummary.sessionTime)}</div>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <Button className="flex-1" onClick={() => router.push("/events")}>Back to Events</Button>
-                <Button variant="outline" className="flex-1 bg-transparent" onClick={handleRestart}>Practice Again</Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
       <div className="border-b border-border/60 bg-card/70 backdrop-blur-xl sticky top-0 z-10">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-4">
@@ -789,21 +819,18 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 <span className="text-sm text-muted-foreground hidden sm:inline">incorrect</span>
               </div>
             </div>
-            <Button
-              onClick={
-                settings.sessionQuestionLimit === "unlimited" && settings.redemptionRoundEnabled && practiceStage === "practice"
-                  ? handleStartRedemptionRound
-                  : handleEndSession
-              }
-              variant="outline"
-              size="sm"
-              className="bg-transparent font-semibold"
-              disabled={isEndingSession}
-            >
-              {settings.sessionQuestionLimit === "unlimited" && settings.redemptionRoundEnabled && practiceStage === "practice"
-                ? (sessionWrongQuestionIds.length > 0 ? "Redemption Round" : "Finish Session")
-                : (isEndingSession ? "Saving..." : "End Session")}
-            </Button>
+            {settings.sessionQuestionLimit === "unlimited" && (
+              <Button
+                onClick={settings.redemptionRoundEnabled && practiceStage === "practice" ? handleStartRedemptionRound : handleEndSession}
+                variant="outline"
+                size="sm"
+                className="bg-transparent font-semibold"
+              >
+                {settings.redemptionRoundEnabled && practiceStage === "practice"
+                  ? (sessionWrongQuestionIds.length > 0 ? "Redemption Round" : "Finish Session")
+                  : "End Session"}
+              </Button>
+            )}
           </div>
         </div>
       </div>
@@ -816,6 +843,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
         )}
         <Card className="glass-card tech-border shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.accent/20),transparent_40%)] pointer-events-none" />
+          <div className="absolute right-5 top-5 z-10">
+            <Button size="sm" variant="outline" onClick={() => setShowReportModal(true)}>Report Question</Button>
+          </div>
           <CardHeader>
             <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
               <div
@@ -930,6 +960,75 @@ function PracticeContent({ eventId }: { eventId: string }) {
           </CardContent>
         </Card>
       </div>
+
+      {showReportModal && currentQuestion && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <Card className="w-full max-w-lg">
+            <CardHeader>
+              <CardTitle>Report Question</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <select
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                value={reportReason}
+                onChange={(event) => setReportReason(event.target.value)}
+              >
+                <option>Incorrect answer</option>
+                <option>Unclear question</option>
+                <option>Typo</option>
+                <option>Duplicate</option>
+                <option>Other</option>
+              </select>
+              {reportReason === "Other" && (
+                <input
+                  className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                  placeholder="Other reason"
+                  value={reportOtherReason}
+                  onChange={(event) => setReportOtherReason(event.target.value)}
+                />
+              )}
+              <textarea
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                rows={4}
+                placeholder="Optional details"
+                value={reportDetails}
+                onChange={(event) => setReportDetails(event.target.value)}
+              />
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" onClick={() => setShowReportModal(false)}>Cancel</Button>
+                <Button
+                  disabled={reportSubmitting || (reportReason === "Other" && !reportOtherReason.trim())}
+                  onClick={async () => {
+                    try {
+                      setReportSubmitting(true);
+                      await rtdbPost("question_reports", {
+                        eventId,
+                        questionId: currentQuestion.id,
+                        reason: reportReason === "Other" ? reportOtherReason.trim() : reportReason,
+                        details: reportDetails,
+                        status: "pending",
+                        adminNotes: "",
+                        createdAt: new Date().toISOString(),
+                      });
+                      toast.success("Report submitted.");
+                      setShowReportModal(false);
+                      setReportReason("Incorrect answer");
+                      setReportOtherReason("");
+                      setReportDetails("");
+                    } catch (error) {
+                      toast.error(error instanceof Error ? error.message : "Failed to submit report.");
+                    } finally {
+                      setReportSubmitting(false);
+                    }
+                  }}
+                >
+                  {reportSubmitting ? "Submitting..." : "Submit Report"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

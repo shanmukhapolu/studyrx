@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+
+[functions]
+  # Ensure Netlify's encrypted env payload is available inside function bundles.
+  included_files = ["**/___netlify-env.json.enc"]
+
+[build.environment]
+  # Use webpack build pipeline for better compatibility with current Netlify Next runtime.
+  NEXT_DISABLE_TURBOPACK = "1"

@@ -18,6 +18,16 @@ export interface UserProfile {
   lastName: string;
 }
 
+export type UserRole = "user" | "admin";
+
+export interface UserRecord {
+  name: string;
+  email: string;
+  role: UserRole;
+  createdAt: string;
+  lastLogin: string;
+}
+
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE = "https://securetoken.googleapis.com/v1";
 const RTDB_BASE = FIREBASE_DATABASE_URL;
@@ -211,17 +221,60 @@ export async function saveUserProfile(idToken: string | undefined, uid: string, 
   }
 }
 
+export async function getUserRecord(idToken: string, uid: string): Promise<UserRecord | null> {
+  const userRes = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(idToken)}`);
+  if (!userRes.ok) {
+    return null;
+  }
+
+  const userData = await userRes.json();
+  if (!userData) {
+    return null;
+  }
+
+  if (typeof userData === "string") {
+    return {
+      name: userData,
+      email: "",
+      role: "user",
+      createdAt: "",
+      lastLogin: "",
+    };
+  }
+
+  return {
+    name: typeof userData.name === "string" ? userData.name : "",
+    email: typeof userData.email === "string" ? userData.email : "",
+    role: userData.role === "admin" ? "admin" : "user",
+    createdAt: typeof userData.createdAt === "string" ? userData.createdAt : "",
+    lastLogin: typeof userData.lastLogin === "string" ? userData.lastLogin : "",
+  };
+}
+
+export async function upsertUserRecord(idToken: string | undefined, uid: string, payload: Partial<UserRecord>) {
+  const writableIdToken = await resolveWritableIdToken(idToken);
+  const userRes = await fetch(`${RTDB_BASE}/users/${uid}.json?auth=${encodeURIComponent(writableIdToken)}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${writableIdToken}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!userRes.ok) {
+    const text = await userRes.text().catch(() => "");
+    throw new Error(`Failed to update user record: ${userRes.status} ${text}`);
+  }
+}
+
 export async function getUserProfile(idToken: string, uid: string): Promise<UserProfile | null> {
-  const nameRes = await fetch(`${RTDB_BASE}/users/${uid}/name.json?auth=${encodeURIComponent(idToken)}`);
-  if (!nameRes.ok) {
+  const userData = await getUserRecord(idToken, uid);
+  if (!userData?.name) {
     return null;
   }
 
-  const nameData = await nameRes.json();
-  if (!nameData) {
-    return null;
-  }
-
+  const nameData = userData.name;
   if (typeof nameData === "string") {
     const [firstName = "", ...rest] = nameData.trim().split(/\s+/);
     return {
@@ -232,7 +285,11 @@ export async function getUserProfile(idToken: string, uid: string): Promise<User
 
   // Legacy compatibility in case older data used object shape.
   return {
-    firstName: nameData.firstName || "",
-    lastName: nameData.lastName || "",
+    firstName: "",
+    lastName: "",
   };
+}
+
+export function isAdmin(user: { role?: string | null } | null | undefined): boolean {
+  return user?.role === "admin";
 }

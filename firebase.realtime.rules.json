@@ -3,11 +3,24 @@
     ".read": false,
     ".write": false,
     "users": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
       "$uid": {
-        ".read": "auth != null && auth.uid === $uid",
-        ".write": "auth != null && auth.uid === $uid",
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
         "name": {
-          ".validate": "newData.isString() && newData.val().length > 0"
+          ".validate": "newData.isString()"
+        },
+        "email": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "role": {
+          ".validate": "newData.val() === 'user' || newData.val() === 'admin'"
+        },
+        "createdAt": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "lastLogin": {
+          ".validate": "newData.isString() || !newData.exists()"
         },
         "settings": {
           "accuracyGoal": {
@@ -89,6 +102,31 @@
         "currentSession": {
           ".validate": "newData.val() == null || newData.hasChildren(['sessionId', 'sessionType', 'event', 'startTimestamp', 'attempts'])"
         }
+      }
+    },
+    "event_requests": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$requestId": {
+        ".write": "auth != null"
+      }
+    },
+    "question_submissions": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$submissionId": {
+        ".read": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || data.child('submittedBy').child('uid').val() === auth.uid)",
+        ".write": "auth != null"
+      }
+    },
+    "question_reports": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$reportId": {
+        ".write": "auth != null"
+      }
+    },
+    "feedback_submissions": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$feedbackId": {
+        ".write": "auth != null"
       }
     }
   }

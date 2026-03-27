@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BarChart3, ChevronUp, Home, Layers, LogOut, Settings, UserRound } from "lucide-react";
+import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, MessageSquarePlus, Settings, ShieldCheck, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -33,12 +33,22 @@ const navItems = [
     href: "/analytics",
     icon: BarChart3,
   },
+  {
+    title: "Submit Question",
+    href: "/submit-question",
+    icon: FileQuestion,
+  },
+  {
+    title: "Submit Feedback",
+    href: "/submit-feedback",
+    icon: MessageSquarePlus,
+  },
 ];
 
 export function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { profile, user, signOut } = useAuth();
+  const { profile, user, signOut, isAdmin } = useAuth();
   const fallbackName = user?.displayName?.trim() || "Student";
   const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
   const firstLabel = profile?.firstName || resolvedName;
@@ -94,6 +104,14 @@ export function AppSidebar() {
           </summary>
 
           <div className="space-y-2 border-t border-sidebar-border/60 px-3 py-3">
+            {isAdmin && (
+              <Button asChild size="sm" variant="outline" className="w-full justify-start bg-transparent">
+                <Link href="/admin">
+                  <ShieldCheck className="mr-2 h-4 w-4" />
+                  Admin Dashboard
+                </Link>
+              </Button>
+            )}
             <Button asChild size="sm" variant="outline" className="w-full justify-start bg-transparent">
               <Link href="/settings">
                 <Settings className="mr-2 h-4 w-4" />
