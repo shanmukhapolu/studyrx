@@ -1,0 +1,51 @@
+[
+  {
+    "id": "med-term-official-guidelines",
+    "eventId": "medical-terminology",
+    "title": "Medical Terminology Study Guide (PDF)",
+    "description": "Reference guide with roots, prefixes, suffixes, and common abbreviations.",
+    "link": "https://example.com/medical-terminology-guide.pdf"
+  },
+  {
+    "id": "med-term-practice-quiz",
+    "eventId": "medical-terminology",
+    "title": "Terminology Practice Quiz",
+    "description": "Interactive quiz to reinforce key terminology concepts.",
+    "link": "https://example.com/medical-terminology-practice"
+  },
+  {
+    "id": "nutrition-nutrition-basics",
+    "eventId": "nutrition",
+    "title": "Nutrition Fundamentals Notes",
+    "description": "Quick-reference notes for macro/micronutrients and dietary guidelines.",
+    "link": "https://example.com/nutrition-notes"
+  },
+  {
+    "id": "nutrition-dietary-guidelines-video",
+    "eventId": "nutrition",
+    "title": "Dietary Guidelines Video",
+    "description": "Video walkthrough of current core nutrition principles.",
+    "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  {
+    "id": "pharmacology-drug-classes",
+    "eventId": "pharmacology",
+    "title": "Drug Classes Cheat Sheet",
+    "description": "Condensed PDF of major drug classes and mechanisms of action.",
+    "link": "https://example.com/pharmacology-drug-classes.pdf"
+  },
+  {
+    "id": "dental-terminology-oral-anatomy",
+    "eventId": "dental-terminology",
+    "title": "Oral Anatomy Resource",
+    "description": "Visual guide to oral structures and common dental procedures.",
+    "link": "https://example.com/dental-terminology-resource"
+  },
+  {
+    "id": "behavioral-health-core-concepts",
+    "eventId": "behavioral-health",
+    "title": "Behavioral Health Core Concepts",
+    "description": "Overview of common disorders, treatment approaches, and terminology.",
+    "link": "https://example.com/behavioral-health-core-concepts"
+  }
+]
