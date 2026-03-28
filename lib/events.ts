@@ -1,4 +1,4 @@
-import { MessageSquareText, Pill, Smile, Heart, Apple, SpellCheck2, SquareActivity, Stethoscope } from "lucide-react";
+import { MessageSquareText, Pill, Smile, Heart, Apple, SpellCheck2, SquareActivity, Stethoscope, Library } from "lucide-react";
 
 export interface HosaEvent {
 id: string;
@@ -36,6 +36,13 @@ name: "Anatomy & Physiology",
 description: "Assess knowledge of the structure and function of human body systems, including organization, homeostasis, and the interactions necessary for maintaining life.",
 icon: Stethoscope,
 questionBankFile: "/questions/anatomy-and-physiology.json"
+},
+{
+id: "health-informatics",
+name: "Health Informatics",
+description: "Assess knowledge of health information systems, data management, electronic health records, and the use of technology to improve patient care, safety, and healthcare outcomes",
+icon: Library,
+questionBankFile: "/questions/health-informatics.json"
 },
 {
 id: "nutrition",

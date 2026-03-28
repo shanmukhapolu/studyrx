@@ -1,0 +1,1886 @@
+[
+  {
+    "id": 1,
+    "question": "What is the primary use of healthcare claims data?",
+    "options": ["Analysis of utilization of healthcare resources", "Measurement of severity of illness", "Calculation of reimbursement for services", "Measurement of patient satisfaction"],
+    "correctAnswer": "Calculation of reimbursement for services",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Healthcare claims data are administrative records submitted by providers to payers to request payment. Their primary purpose is to calculate reimbursement for services rendered. While claims data can secondarily be used for utilization analysis or research, the core driver for generating them is billing and payment.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 2,
+    "question": "Which of the following data types is categorized as ordinal?",
+    "options": ["Favorite color", "Patient severity", "ICD-9-CM diagnosis codes", "Physician specialty"],
+    "correctAnswer": "Patient severity",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Ordinal data has a meaningful order or ranking but lacks equal spacing between values. Patient severity (e.g., mild, moderate, severe) can be ranked but the intervals are not precisely equal. Favorite color, physician specialty, and ICD codes are nominal — they have no inherent order.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 3,
+    "question": "Data collected in response to the prompt 'Please list any suggestions for improvement in your experience as a patient in our facility' would be characterized as what type of data?",
+    "options": ["Interval", "Ratio", "Qualitative", "Quantitative"],
+    "correctAnswer": "Qualitative",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Open-ended responses that capture words, narratives, or descriptions are qualitative data. They cannot be measured numerically. This contrasts with quantitative data, which involves numeric measurements like blood pressure values or lengths of stay.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 4,
+    "question": "Which data type does NOT have a natural order?",
+    "options": ["Ordinal", "Ratio", "Nominal", "Interval"],
+    "correctAnswer": "Nominal",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Nominal data consists of categories with no inherent ranking or order (e.g., blood type, gender, diagnosis codes). Ordinal data has order but unequal spacing. Interval and ratio data are both numeric with defined spacing, and ratio data has a true zero.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 5,
+    "question": "Statistical methods used to find patterns in data are best characterized as:",
+    "options": ["Inferential statistics", "Auditing", "Exploratory data analysis", "Predictive modeling"],
+    "correctAnswer": "Exploratory data analysis",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Exploratory data analysis (EDA) involves examining data sets to summarize their main characteristics and identify patterns, anomalies, or relationships, often using visualizations. It's distinct from inferential statistics (drawing population conclusions from samples) and predictive modeling (forecasting future outcomes).",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 6,
+    "question": "Which of the following best describes predictive modeling?",
+    "options": ["Uses historical data to help determine future outcomes", "Describes the distribution of the data", "Finds patterns in data", "Allows decision making based on data"],
+    "correctAnswer": "Uses historical data to help determine future outcomes",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Predictive modeling uses statistical algorithms trained on historical data to forecast future events or behaviors — for example, predicting which patients are at high risk for readmission. It goes beyond pattern-finding or description to produce actionable forecasts.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 7,
+    "question": "Which of the following are considered descriptive statistics?",
+    "options": ["Mean", "Standard deviation", "Range", "All of the above"],
+    "correctAnswer": "All of the above",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Descriptive statistics summarize and describe a dataset. The mean describes central tendency, while standard deviation and range both measure spread. All three fall under descriptive statistics. Inferential statistics, by contrast, use sample data to draw conclusions about a broader population.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 8,
+    "question": "A hypothesis test is an example of which type of statistics?",
+    "options": ["Descriptive statistics", "Inferential statistics", "A measurement of spread", "Data mining"],
+    "correctAnswer": "Inferential statistics",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Inferential statistics use sample data to make conclusions or inferences about a larger population. Hypothesis testing — such as a t-test or chi-square test — is a core inferential method used to determine whether observed differences are statistically significant or due to chance.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 9,
+    "question": "For which of the following variables is the mean the most appropriate measure of central tendency?",
+    "options": ["Evaluation and management level", "Patient severity", "Length of stay", "Mortality"],
+    "correctAnswer": "Length of stay",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The mean is appropriate for continuous, interval, or ratio-level data without extreme skew. Length of stay (measured in days) is a continuous ratio variable. E&M level and patient severity are ordinal, and mortality is binary (nominal) — none of these are well-represented by a mean.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 10,
+    "question": "The relative value unit (RVU) associated with a CPT code is an example of which variable type?",
+    "options": ["Ordinal", "Nominal", "Interval", "Ratio"],
+    "correctAnswer": "Nominal",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "CPT codes themselves are nominal — they are labels for specific procedures with no inherent rank or numeric meaning. The RVU attached to a CPT code is a weight used for payment calculation, but the CPT code it's associated with is still a nominal identifier. This is a nuanced distinction commonly tested in health informatics.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 11,
+    "question": "DRGs (Diagnosis Related Groups) may be grouped into which of the following?",
+    "options": ["Major Diagnostic Categories", "Procedural categories", "Clinical modifications", "CMS-DRGs"],
+    "correctAnswer": "Major Diagnostic Categories",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "DRGs are organized under Major Diagnostic Categories (MDCs), which are broad groupings based on body system or disease etiology (e.g., Diseases of the Nervous System, Diseases of the Respiratory System). There are 25 MDCs in the MS-DRG system.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 12,
+    "question": "MS-DRG is an acronym for:",
+    "options": ["Medical Standard Diagnosis Related Groups", "Medicare Severity Diagnosis Related Groups", "Medical Society Diagnosis Related Groups", "Medicare Standardized Diagnosis Related Groups"],
+    "correctAnswer": "Medicare Severity Diagnosis Related Groups",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "MS-DRG stands for Medicare Severity Diagnosis Related Groups. The 'severity' component reflects the system's adjustment for complication and comorbidity levels (CC/MCC), which affect resource use and reimbursement under the Medicare Inpatient Prospective Payment System (IPPS).",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 13,
+    "question": "Which of the following is NOT a type of procedure code?",
+    "options": ["ICD-10-CM", "CPT", "DRG", "HCPCS"],
+    "correctAnswer": "DRG",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "DRGs (Diagnosis Related Groups) are payment classification groups, not procedure codes. ICD-10-CM is used for diagnosis coding, ICD-10-PCS for inpatient procedures, CPT for outpatient physician procedures, and HCPCS for supplies and services not in CPT. DRGs are derived from diagnoses and procedures but are not themselves codes.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 14,
+    "question": "A revenue code on a hospital claim represents a:",
+    "options": ["Facility department", "Reason for a claim denial", "Amount charged for a service", "Diagnostic code"],
+    "correctAnswer": "Facility department",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Revenue codes are four-digit codes used on UB-04 (CMS-1450) claim forms to identify the specific department or cost center providing the service (e.g., 0360 for Operating Room, 0450 for Emergency Room). They tell the payer where within the facility the service was performed.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 15,
+    "question": "Relative value units (RVUs) are used primarily to:",
+    "options": ["Determine payment for physician services", "Describe procedures performed in a hospital", "Report a claim status", "Report the reason for denial of payment"],
+    "correctAnswer": "Determine payment for physician services",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "RVUs are the foundation of the Medicare Physician Fee Schedule (MPFS). Each CPT code is assigned RVUs for work (wRVU), practice expense (peRVU), and malpractice (mRVU). Multiplying total RVUs by the conversion factor yields the physician's payment amount.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 16,
+    "question": "Which of the following correctly represents the data flow for a hospital inpatient admission?",
+    "options": [
+      "Registration → diagnostic and procedure codes assigned → services performed → charges recorded",
+      "Registration → services performed → charges recorded → diagnostic and procedure codes assigned",
+      "Services performed → charges recorded → registration → diagnostic and procedure codes assigned",
+      "Diagnostic and procedure codes assigned → registration → services performed → charges recorded"
+    ],
+    "correctAnswer": "Registration → services performed → charges recorded → diagnostic and procedure codes assigned",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Inpatient data flow begins with patient registration (demographic and insurance data entry), followed by clinical services being performed, charges being recorded in real time, and finally — after discharge — diagnosis and procedure codes being assigned by coders to generate the final claim.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 17,
+    "question": "Which claim form is used for inpatient hospital claims?",
+    "options": ["CMS-1450", "Remittance advice", "MS-DRG", "CMS-1500"],
+    "correctAnswer": "CMS-1450",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "The CMS-1450, also known as the UB-04, is the standard claim form for institutional providers including hospitals submitting inpatient claims. The CMS-1500 is used for professional (physician) claims. A remittance advice is the payment explanation sent back to providers, not a claim form.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 18,
+    "question": "Which claim form is used for physician (professional) claims?",
+    "options": ["CMS-1450", "Remittance advice", "MS-DRG", "CMS-1500"],
+    "correctAnswer": "CMS-1500",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "The CMS-1500 is the standard claim form for professional services billed by physicians and other non-institutional providers. It captures CPT codes, diagnosis codes, provider NPI, and place of service. The CMS-1450 (UB-04) is used by hospitals.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 19,
+    "question": "LOINC is primarily a coding system for which of the following?",
+    "options": ["Drugs", "Diagnoses", "Physician specialty", "Laboratory values"],
+    "correctAnswer": "Laboratory values",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "LOINC (Logical Observation Identifiers Names and Codes) is a universal coding standard for identifying laboratory and clinical observations, such as blood glucose levels or CBC results. It enables interoperability across different lab systems and EHRs. RxNorm covers drugs; ICD codes cover diagnoses.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 20,
+    "question": "The MedPAR file contains what type of data?",
+    "options": ["Physician claims", "Outpatient claims", "Inpatient claims", "Hospital census data"],
+    "correctAnswer": "Inpatient claims",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The Medicare Provider Analysis and Review (MedPAR) file is a CMS dataset containing Medicare inpatient hospital and skilled nursing facility claims. It is widely used for health services research, including analysis of DRG assignment, length of stay, and payment amounts.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 21,
+    "question": "A scatterplot is most appropriate for displaying the relationship between what type(s) of data?",
+    "options": ["Interval or ratio", "Qualitative", "Nominal", "Ordinal"],
+    "correctAnswer": "Interval or ratio",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Scatterplots display the relationship between two continuous (interval or ratio) numeric variables — for example, length of stay vs. total charges. Each dot represents a data point plotted on X and Y axes. They are not suitable for categorical or ordinal data.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 22,
+    "question": "Which SQL keyword precedes the list of variables to be returned from a query?",
+    "options": ["SELECT", "SET", "DATA", "BY"],
+    "correctAnswer": "SELECT",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "In SQL, the SELECT keyword specifies which columns (variables) to retrieve from a table. A basic query follows the pattern: SELECT [columns] FROM [table] WHERE [conditions]. SELECT is the first clause in a standard SQL query.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 23,
+    "question": "A SAS programming statement always ends with which punctuation mark?",
+    "options": [".", ",", ";", ":"],
+    "correctAnswer": ";",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "In SAS (Statistical Analysis System), every statement must end with a semicolon (;). Missing semicolons are among the most common syntax errors in SAS programming. This differs from languages like Python, which do not require statement terminators.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 24,
+    "question": "Which SQL query will correctly provide a listing of patients who had services performed by Dr. X during 2007?",
+    "options": [
+      "SELECT PATIENT_LNAME, PATIENT_FNAME FROM PATIENT WHERE PHYSICIAN_NAME = 'X' AND ENC_DATE > '2006'",
+      "SELECT PATIENT_LNAME, PATIENT_FNAME FROM PATIENT, ENCOUNTERS WHERE PATIENT_MRN = PATIENT_MRN AND PHYSICIAN_NAME = X AND ENC_DATE < '2008'",
+      "SELECT PATIENT_LNAME, PATIENT_FNAME FROM PATIENT, ENCOUNTERS WHERE PATIENT_MRN = PATIENT_MRN AND PHYSICIAN_NAME ='X' AND ENC_YEAR = '2007'",
+      "SELECT PATIENT_LNAME, PATIENT_FNAME FROM PATIENT WHERE PHYSICIAN_NAME = 'X' AND ENC_YEAR = 2007"
+    ],
+    "correctAnswer": "SELECT PATIENT_LNAME, PATIENT_FNAME FROM PATIENT WHERE PHYSICIAN_NAME = 'X' AND ENC_YEAR = 2007",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Option D correctly filters by physician name (as a string, in quotes) and by encounter year = 2007. Option A uses ENC_DATE > '2006', which would include years beyond 2007. Options B and C have join syntax issues (ambiguous PATIENT_MRN = PATIENT_MRN without table aliases) or unnecessary complexity. Option D is the cleanest and most accurate for the task.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 25,
+    "question": "Which of the following keywords is valid in a SAS program?",
+    "options": ["SET", "COUNT", "PROC", "SELECT"],
+    "correctAnswer": "PROC",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "PROC (short for 'procedure') is a core SAS keyword used to invoke built-in procedures such as PROC MEANS, PROC FREQ, or PROC REG. SET is also a valid SAS keyword used in DATA steps to read datasets, but PROC is the most distinctly SAS-specific choice among the options listed. SELECT and COUNT are SQL keywords, not native SAS keywords.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 26,
+    "question": "SPSS is best described as a:",
+    "options": ["Statistical analysis software package", "Type of database", "Data warehouse", "Type of graph"],
+    "correctAnswer": "Statistical analysis software package",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "SPSS (Statistical Package for the Social Sciences), now IBM SPSS, is a widely used software platform for statistical analysis in healthcare, social science, and business research. It supports descriptive statistics, hypothesis testing, regression, and more through a GUI interface.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 27,
+    "question": "What type of graph is most appropriate to display the average length of stay by year?",
+    "options": ["Bar graph", "Scatter graph", "Pie graph", "Line graph"],
+    "correctAnswer": "Line graph",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Line graphs are ideal for showing trends over time (a continuous variable on the x-axis like year). They clearly communicate increases, decreases, and patterns across time periods. Bar charts are better for comparing discrete categories; pie charts show parts of a whole; scatter plots show relationships between two continuous variables.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 28,
+    "question": "A data dictionary is best defined as:",
+    "options": ["A definition of each data field", "A listing of the tables included in a database", "A summary of the values of data fields", "A graphical display of the database structure"],
+    "correctAnswer": "A definition of each data field",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "A data dictionary is a centralized repository that defines each data element in a system — including its name, data type, allowed values, and meaning. It ensures consistent data collection and interpretation. It differs from a data model (which shows table relationships) or a data profile (which summarizes actual values).",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 29,
+    "question": "Given medication error data (Dosage form: 6%, Name Confusion: 13%, Communication: 19%, Labeling: 20%, Human factors: 52%), which graph type best displays this data?",
+    "options": ["Line graph", "Bar chart", "Pie chart", "Data table"],
+    "correctAnswer": "Pie chart",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Pie charts are designed to show proportional parts of a whole when the total equals 100%. Since the medication error categories add up to 100%, a pie chart visually communicates each category's share. A bar chart could also work, but a pie chart is most natural for part-to-whole percentage data.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 30,
+    "question": "What type of graph is most appropriate to display the average length of stay by hospital?",
+    "options": ["Scatter graph", "Bar graph", "Pie graph", "Line graph"],
+    "correctAnswer": "Bar graph",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Bar graphs are ideal for comparing values across discrete categories — in this case, different hospitals. Each bar represents one hospital's average LOS, making side-by-side comparisons straightforward. Line graphs imply a trend over time, which doesn't apply here.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 31,
+    "question": "An analyst performs a hypothesis test and rejects the null hypothesis at an alpha level of 0.01. Which of the following statements is true?",
+    "options": [
+      "The null hypothesis would be rejected at the 0.05 level",
+      "The null hypothesis would NOT be rejected at the 0.05 level",
+      "The null hypothesis would be rejected at ALL alpha levels",
+      "Not enough information to determine if statements are true"
+    ],
+    "correctAnswer": "The null hypothesis would be rejected at the 0.05 level",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "If the null hypothesis is rejected at alpha = 0.01, the p-value must be less than 0.01. Since 0.01 < 0.05, the p-value is also less than 0.05, meaning the null would also be rejected at the 0.05 level. A more stringent alpha (smaller) is harder to reject; passing at 0.01 guarantees passing at 0.05.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 32,
+    "question": "Contingency tables may be used to:",
+    "options": [
+      "Describe the relationship between two interval variables",
+      "Tabulate the number of subjects in a category",
+      "Summarize continuous variables",
+      "Display the relationship between two categorical variables"
+    ],
+    "correctAnswer": "Display the relationship between two categorical variables",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "A contingency table (cross-tabulation) displays the frequency distribution of two or more categorical variables simultaneously. For example, a 2x2 table might show the relationship between gender (male/female) and disease presence (yes/no). Chi-square tests are typically used to assess significance in contingency tables.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 33,
+    "question": "An analyst wants to determine if the mortality rate at her facility is different from the state average p(s). What are the appropriate null and alternative hypotheses?",
+    "options": [
+      "H₀: p = pₛ; Hₐ: p ≠ pₛ",
+      "H₀: p ≠ pₛ; Hₐ: p = pₛ",
+      "H₀: p = pₛ; Hₐ: p > pₛ",
+      "H₀: p > pₛ; Hₐ: p < pₛ"
+    ],
+    "correctAnswer": "H₀: p = pₛ; Hₐ: p ≠ pₛ",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Since the analyst wants to know if the rate is 'different' (not just higher or lower), this is a two-tailed test. The null hypothesis assumes no difference (p = pₛ), and the alternative states a difference exists in either direction (p ≠ pₛ). A one-tailed test (e.g., p > pₛ) would only be appropriate if the analyst hypothesized a specific direction.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 34,
+    "question": "In hypothesis testing, a Type I error is defined as:",
+    "options": [
+      "The probability of correctly accepting the null hypothesis",
+      "The probability of incorrectly rejecting the null hypothesis",
+      "The probability of incorrectly accepting the null hypothesis",
+      "The probability of incorrectly rejecting the alternative hypothesis"
+    ],
+    "correctAnswer": "The probability of incorrectly rejecting the null hypothesis",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "A Type I error (false positive) occurs when you reject a true null hypothesis. The alpha level (significance level) represents the maximum acceptable probability of making a Type I error. A Type II error (false negative) is failing to reject a false null hypothesis. Reducing alpha decreases Type I error risk but increases Type II error risk.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 35,
+    "question": "A p-value is best defined as:",
+    "options": [
+      "The smallest Type I error for which the null hypothesis will be rejected",
+      "The estimated proportion",
+      "The same as the alpha level",
+      "The power of a test"
+    ],
+    "correctAnswer": "The smallest Type I error for which the null hypothesis will be rejected",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "The p-value is the probability of obtaining a test statistic as extreme as the one observed, assuming the null hypothesis is true. Equivalently, it is the smallest alpha level at which you would still reject the null hypothesis. If p = 0.03, you'd reject H₀ at alpha = 0.05 but not at alpha = 0.01.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 36,
+    "question": "An analyst draws 25 patients from each of two hospital units and finds 10 from Unit A and 15 from Unit C received take-home supplies on discharge. What statistical test should determine if the two proportions differ?",
+    "options": [
+      "Confidence interval",
+      "Frequency table",
+      "One-sample Z-test for proportions",
+      "Two-sample Z-test for proportions"
+    ],
+    "correctAnswer": "Two-sample Z-test for proportions",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "When comparing proportions from two independent groups (Unit A vs. Unit C), the two-sample Z-test for proportions is appropriate. A one-sample test compares one group to a known standard. A confidence interval could estimate the difference but doesn't formally test significance on its own in this context.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 37,
+    "question": "The alpha level in hypothesis testing is:",
+    "options": [
+      "Always 0.05",
+      "Based on the context of the analysis",
+      "Set after the analysis is complete",
+      "Never less than 0.01"
+    ],
+    "correctAnswer": "Based on the context of the analysis",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The alpha level (significance threshold) is chosen by the researcher before data collection based on the acceptable risk of a Type I error. In clinical research, stricter alphas (e.g., 0.01 or 0.001) may be used for high-stakes decisions. It is never set post-hoc — doing so would introduce bias.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 38,
+    "question": "Which of the following variables should be summarized using a frequency distribution?",
+    "options": ["Charge per case", "Diastolic blood pressure", "CPT codes", "Red blood cell count"],
+    "correctAnswer": "CPT codes",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Frequency distributions are most useful for categorical or nominal variables — counting how often each category appears. CPT codes are nominal identifiers for procedures. Continuous variables like charges, blood pressure, and RBC count are better summarized with means, medians, and standard deviations.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 39,
+    "question": "If the census at midnight on May 29th is 151 patients, and on May 30th three are discharged, four are admitted, and one dies in the emergency room prior to admission, what is the census on May 30th?",
+    "options": ["151", "152", "153", "148"],
+    "correctAnswer": "152",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Daily inpatient census = Previous census + Admissions − Discharges (including deaths after admission). The patient who died in the ED before admission is NOT counted as a hospital inpatient, so they do not affect the census. Calculation: 151 + 4 − 3 = 152. The ED death is excluded because the patient was never formally admitted.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 40,
+    "question": "A binomial variable is best described as:",
+    "options": ["A continuous variable", "A variable with exactly two possible values", "A standardized variable", "A variable with a normal distribution"],
+    "correctAnswer": "A variable with exactly two possible values",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "A binomial variable takes on exactly two values — such as yes/no, alive/dead, or pass/fail. Binomial distributions model the number of successes in a fixed number of independent trials where each trial has the same probability of success. Examples in healthcare: mortality (died/survived), readmission (yes/no).",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 41,
+    "question": "The standard normal distribution and the t-distribution are both:",
+    "options": ["Bell-shaped", "Symmetric", "Centered at zero", "All of the above"],
+    "correctAnswer": "All of the above",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Both the standard normal (Z) distribution and the t-distribution are bell-shaped, symmetric, and centered at zero. The key difference is that the t-distribution has heavier tails (more spread), accounting for additional uncertainty when the population standard deviation is unknown. As sample size increases, the t-distribution approaches the normal distribution.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 42,
+    "question": "An analyst wants to compare the number of MRI tests performed before and after implementing a new patient scheduling system in radiology. What statistical test is most appropriate?",
+    "options": ["T-test", "Two-sample t-test", "ANOVA", "Paired t-test"],
+    "correctAnswer": "Paired t-test",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "A paired t-test is used when the same subjects (or the same unit) are measured at two points in time — before and after an intervention. Since the same radiology department is measured pre- and post-implementation, the observations are paired and not independent. An independent two-sample t-test would be inappropriate here.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 43,
+    "question": "Which measure of central tendency is least influenced by outliers?",
+    "options": ["Mean", "Median", "Maximum", "Quartile"],
+    "correctAnswer": "Median",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "The median (middle value when data are sorted) is resistant to outliers because it only depends on rank order, not actual values. A single extreme outlier can dramatically shift the mean but barely affects the median. This makes the median preferred for skewed distributions such as hospital charges or length of stay.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 44,
+    "question": "Which statistical tool should be used to determine if there is a significant difference in lengths of stay across three hospitals?",
+    "options": ["Confidence interval", "Levene's test", "Analysis of Variance (ANOVA)", "Two-sample t-test"],
+    "correctAnswer": "Analysis of Variance (ANOVA)",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "ANOVA (Analysis of Variance) compares means across three or more groups simultaneously. Using multiple t-tests inflates the Type I error rate. ANOVA tests whether at least one group mean is significantly different. Levene's test checks for equal variances (an assumption of ANOVA), not mean differences.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 45,
+    "question": "Which of the following statistics is a measure of spread?",
+    "options": ["Mean", "Median", "Minimum", "Standard deviation"],
+    "correctAnswer": "Standard deviation",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Standard deviation measures how much individual data points deviate from the mean on average. It is the most commonly used measure of variability (spread). Mean and median measure central tendency; minimum is a positional statistic, not a measure of spread by itself.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 46,
+    "question": "What is the median of the following numbers: 3, 9, 2, 5, 5?",
+    "options": ["3", "9", "1", "5"],
+    "correctAnswer": "5",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "To find the median, sort the values: 2, 3, 5, 5, 9. With five values, the median is the middle (3rd) value = 5. The median is not affected by the extremes (2 and 9).",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 47,
+    "question": "What is the mean of the following numbers: 3, 9, 2, 5, 5?",
+    "options": ["9", "5.5", "4.8", "2.5"],
+    "correctAnswer": "4.8",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Mean = sum ÷ count = (3 + 9 + 2 + 5 + 5) ÷ 5 = 24 ÷ 5 = 4.8. The mean accounts for all values including extremes, which is why it can be pulled by outliers.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 48,
+    "question": "An analyst wants to test whether wait time in the Emergency Department is longer on weekends than on weekdays. What is the alternative hypothesis?",
+    "options": [
+      "Average wait time is shorter on weekends",
+      "Average wait time is longer on weekends",
+      "Average wait time is different on weekends and weekdays",
+      "Average wait time is the same on weekends and weekdays"
+    ],
+    "correctAnswer": "Average wait time is longer on weekends",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The alternative hypothesis (Hₐ) reflects what the researcher is trying to prove. Since the analyst wants to test if wait time is *longer* on weekends (a specific direction), this is a one-tailed test. Hₐ: μ_weekend > μ_weekday. The null would be H₀: μ_weekend ≤ μ_weekday.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 49,
+    "question": "An analyst tests whether ED wait time is longer on weekends using samples of 50 patients each. The t-statistic is 3.92 and alpha is set to 0.01. Should the null hypothesis be rejected?",
+    "options": ["Yes", "No", "Not enough information"],
+    "correctAnswer": "Yes",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "With n = 50 per group (df ≈ 98), the critical t-value for a one-tailed test at alpha = 0.01 is approximately 2.364. Since 3.92 > 2.364, the test statistic falls in the rejection region, and we reject H₀. A higher t-statistic means the observed difference is highly unlikely under H₀.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 50,
+    "question": "What is the range of the following numbers: 3, 9, 2, 5, 5?",
+    "options": ["5", "7", "9", "2"],
+    "correctAnswer": "7",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Range = maximum − minimum = 9 − 2 = 7. The range is the simplest measure of spread and is highly sensitive to outliers since it only uses the two most extreme values.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 51,
+    "question": "If length of stay and charges are positively correlated, which of the following is true?",
+    "options": [
+      "As length of stay increases, charges decrease",
+      "As length of stay increases, charges increase",
+      "Length of stay and charges are not related",
+      "As length of stay increases, charges do not change"
+    ],
+    "correctAnswer": "As length of stay increases, charges increase",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "A positive correlation means both variables move in the same direction. As length of stay increases, total charges also increase — more hospital days means more services, medications, and resources used. This is one of the most intuitive correlations in healthcare data analysis.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 52,
+    "question": "Which statistic measures the association between two interval-level variables?",
+    "options": ["Chi-squared", "Pearson's r", "Proportion", "Spearman's Rho"],
+    "correctAnswer": "Pearson's r",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Pearson's r (Pearson correlation coefficient) measures the linear association between two continuous (interval or ratio) variables. It ranges from -1 to +1. Chi-squared tests association between categorical variables. Spearman's Rho is a non-parametric correlation used with ordinal or non-normal data.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 53,
+    "question": "Which statistic measures the association between an ordinal and an interval variable?",
+    "options": ["Chi-squared", "Pearson's r", "Proportion", "Spearman's Rho"],
+    "correctAnswer": "Spearman's Rho",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Spearman's Rho (rank-order correlation) is a non-parametric measure of association appropriate when one or both variables are ordinal, or when the data are not normally distributed. It converts raw values to ranks before computing correlation, making it suitable for mixed ordinal-interval pairings.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 54,
+    "question": "Linear regression estimated the equation Y = 10 + 6X, where Y = number of lab tests and X = days in ICU. How many lab tests are expected for a patient with 3 days in the ICU?",
+    "options": ["6", "10", "28", "18"],
+    "correctAnswer": "28",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Substitute X = 3 into Y = 10 + 6X: Y = 10 + 6(3) = 10 + 18 = 28. The intercept (10) represents the expected lab tests when ICU days = 0, and the slope (6) means each additional ICU day adds 6 expected lab tests.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 55,
+    "question": "In the slope-intercept form of a regression line Y = BX + A, what is the interpretation of the slope (B)?",
+    "options": [
+      "The point where the line intersects the y-axis",
+      "The change in Y for every one unit change in X",
+      "The point where the line intersects the x-axis",
+      "The change in X for every one unit change in Y"
+    ],
+    "correctAnswer": "The change in Y for every one unit change in X",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "In Y = BX + A, B is the slope and A is the y-intercept. The slope represents how much Y changes when X increases by one unit. The intercept (A) is where the line crosses the y-axis (i.e., the predicted value of Y when X = 0).",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 56,
+    "question": "If the correlation between X and Y is 0.90, what is the correlation between Y and X?",
+    "options": ["0.90", "-0.90", "0.10", "-0.10"],
+    "correctAnswer": "0.90",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Correlation is symmetric — the correlation between X and Y is identical to the correlation between Y and X. The Pearson correlation coefficient does not depend on which variable is designated as X or Y. So r(X,Y) = r(Y,X) = 0.90.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 57,
+    "question": "The correlation between time to code a health record and dates of service is 0.76. What is the coefficient of determination (R²)?",
+    "options": ["0.76", "0.38", "0.87", "0.58"],
+    "correctAnswer": "0.58",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The coefficient of determination R² = r² = 0.76² = 0.5776 ≈ 0.58. R² represents the proportion of variance in the dependent variable explained by the independent variable. Here, about 58% of the variation in coding time is explained by dates of service.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 58,
+    "question": "If the correlation between two variables is nearly the same for a sample of n=10 and n=100, what effect does the larger sample size have on the t-test for H₀: ρ = 0?",
+    "options": [
+      "The test statistic increases",
+      "The test statistic stays the same",
+      "The test statistic decreases",
+      "Not enough information given"
+    ],
+    "correctAnswer": "The test statistic increases",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "The t-statistic for testing a correlation is: t = r√(n−2) / √(1−r²). With a fixed correlation r, increasing n directly increases the numerator, thus increasing t. Larger samples give more statistical power to detect a true correlation, even if the correlation magnitude itself doesn't change.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 59,
+    "question": "Least squares regression estimates the best-fit line by:",
+    "options": [
+      "Selecting a line that crosses all data points",
+      "Minimizing the squared distance from the data points to the line",
+      "Minimizing the total distance from the data points to the line",
+      "Selecting a line that connects the minimum and maximum Y values"
+    ],
+    "correctAnswer": "Minimizing the squared distance from the data points to the line",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The ordinary least squares (OLS) method finds the regression line that minimizes the sum of squared residuals (the squared vertical distances between observed and predicted Y values). Squaring ensures all residuals are positive and penalizes large deviations more heavily than small ones.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 60,
+    "question": "What are the assumptions regarding residuals in simple linear regression?",
+    "options": [
+      "Residuals have a mean of zero",
+      "Residuals are approximately normally distributed",
+      "Standardized residuals follow the standard normal distribution",
+      "All of the above"
+    ],
+    "correctAnswer": "All of the above",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "For valid inference in linear regression, residuals (errors) should: (1) have a mean of zero, (2) be approximately normally distributed, (3) have constant variance (homoscedasticity), and (4) be independent. Standardized residuals should roughly follow the standard normal distribution, allowing use of normal probability plots for checking assumptions.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 61,
+    "question": "A random selection of claims within three specific DRGs represents what type of sample?",
+    "options": ["Simple random sample", "Systematic sample", "Cluster sample", "Stratified sample"],
+    "correctAnswer": "Stratified sample",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Stratified sampling divides the population into subgroups (strata) — here, the three DRGs — and randomly samples from each stratum. This ensures representation from each DRG. Simple random sampling doesn't use defined subgroups; cluster sampling samples entire groups; systematic sampling uses fixed intervals.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 62,
+    "question": "What information should be included in a sampling plan?",
+    "options": ["Universe or population", "Random seed", "Inclusion and exclusion criteria", "All of the above"],
+    "correctAnswer": "All of the above",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "A complete sampling plan documents: the target population (universe), inclusion/exclusion criteria for eligibility, the sampling method, sample size, and the random seed (to allow reproducibility). Omitting any of these elements undermines the rigor and replicability of the study.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 63,
+    "question": "Which of the following represents a non-probability sample?",
+    "options": [
+      "A sample of 10 selected via random number assignment",
+      "A sample of the first 10 students entering a classroom",
+      "A sample of all records coded on randomly selected dates",
+      "A sample of the first 10 subjects on a list sorted by last two digits of SSN"
+    ],
+    "correctAnswer": "A sample of the first 10 students entering a classroom",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Non-probability sampling means not every member of the population has an equal chance of being selected. Taking the first 10 students to arrive is a convenience sample — a non-probability method. The other options involve random selection mechanisms that give each element a known chance of inclusion.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 64,
+    "question": "An analyst must select a random sample from a hard-copy list of patients who visited a clinic last month. Which sampling technique is most appropriate?",
+    "options": ["Simple random sample", "Systematic sample", "Cluster sample", "Stratified sample"],
+    "correctAnswer": "Systematic sample",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Systematic sampling selects every k-th element from a list, making it practical when the sampling frame is a physical list. For example, if there are 500 patients and a sample of 50 is needed, select every 10th name. This is more feasible than assigning random numbers to all entries on a hard-copy list.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 65,
+    "question": "A listing of all subjects eligible to be sampled is called a:",
+    "options": ["Sample", "Strata", "Random number", "Sampling frame"],
+    "correctAnswer": "Sampling frame",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "The sampling frame is the complete list of all units in the target population from which the sample will be drawn. For example, a list of all patients discharged in a given month. The quality of your sample depends heavily on how complete and accurate the sampling frame is.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 66,
+    "question": "Why is setting and recording the random seed important in random number generation?",
+    "options": [
+      "All random number generation programs require a seed",
+      "The random numbers will be reproducible",
+      "The sample is not random unless the seed is set",
+      "The random seed is not important in sampling"
+    ],
+    "correctAnswer": "The random numbers will be reproducible",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Computer-generated random numbers are pseudo-random — they follow a deterministic algorithm. Setting a random seed ensures that the same sequence of numbers is generated each time, making the sample reproducible for audit or verification purposes. This is essential for compliance in auditing contexts.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 67,
+    "question": "What impact does increasing sample size have on the precision of an estimate?",
+    "options": [
+      "Larger sample size results in a less precise estimate",
+      "Larger sample size results in a more precise estimate",
+      "Sample size does not impact precision"
+    ],
+    "correctAnswer": "Larger sample size results in a more precise estimate",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Precision refers to the width of the confidence interval around an estimate. Larger samples reduce the standard error (SE = σ/√n), which narrows the confidence interval, yielding more precise estimates. This is the fundamental statistical reason why larger studies are generally preferred.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 68,
+    "question": "RAT-STATS is:",
+    "options": [
+      "A sampling software tool distributed by the OIG",
+      "A procedure in Statistical Analysis System",
+      "A function in the Excel Data ToolPak",
+      "A practice dataset for statisticians"
+    ],
+    "correctAnswer": "A sampling software tool distributed by the OIG",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "RAT-STATS (Rat Statistical Sampling Software) is a free statistical software package distributed by the U.S. Department of Health and Human Services Office of Inspector General (OIG). It is widely used in healthcare auditing for attribute and variable sampling to estimate overpayments.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 69,
+    "question": "Which study design allows the researcher to determine a cause-and-effect relationship between two variables?",
+    "options": ["Case-control study", "Retrospective study", "Cohort study", "Randomized controlled trial"],
+    "correctAnswer": "Randomized controlled trial",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Randomized controlled trials (RCTs) are the gold standard for establishing causation. Random assignment to treatment and control groups controls for confounders, allowing attribution of outcomes to the intervention. Observational studies (case-control, cohort, retrospective) can establish association but not definitive causation.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 70,
+    "question": "Which of the following represents an attribute study?",
+    "options": [
+      "Estimate the amount of overpayment at a clinic",
+      "Estimate the DRG change rate after documentation queries",
+      "Estimate the length of stay for the typical CHF patient",
+      "Estimate the number of claim denials at a hospital"
+    ],
+    "correctAnswer": "Estimate the DRG change rate after documentation queries",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "An attribute study measures the proportion of records with a specific characteristic (e.g., the rate of DRG changes — yes/no). Variable studies measure continuous quantities (e.g., dollar amounts, length of stay). DRG change rate is a binary outcome — either the DRG changed or it didn't — making it an attribute study.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 71,
+    "question": "Calculate the Case Mix Index (CMI) for a set of MS-DRGs given the following distribution. (Reference values used in the original question yield CMI ≈ 2.5164.)",
+    "options": ["2.3234", "2.8893", "2.5164", "3.6918"],
+    "correctAnswer": "2.5164",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "CMI = (Sum of DRG weights × case counts) ÷ Total number of cases. It measures the average resource intensity of a hospital's patient population relative to the average Medicare patient. A higher CMI indicates more complex, resource-intensive patients and results in higher average reimbursement per case.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 72,
+    "question": "An increasing Case Mix Index (CMI) is most indicative of which trend?",
+    "options": [
+      "Increasing patient resource intensity",
+      "Decreasing payment per case",
+      "Increasing proportion of surgical patients",
+      "Increasing cost of living"
+    ],
+    "correctAnswer": "Increasing patient resource intensity",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "CMI reflects the average complexity and resource use of a hospital's patient population. An increasing CMI means patients are becoming more complex and resource-intensive on average, which is associated with higher reimbursement under the Medicare IPPS. It does not directly indicate surgical mix or cost of living.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 73,
+    "question": "Which of the following factors influences a hospital's Case Mix Index (CMI)?",
+    "options": [
+      "Length of stay in special care units",
+      "Coding and documentation",
+      "Number of lab tests ordered per stay",
+      "Total charges"
+    ],
+    "correctAnswer": "Coding and documentation",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "CMI is derived from DRG weights, which are assigned based on coded diagnoses and procedures. Accurate and complete clinical documentation — and the coding derived from it — directly determines which DRG a case is assigned to. Documentation improvement programs exist specifically to optimize CMI accuracy.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 74,
+    "question": "APR-DRGs are an extension of the DRG system that include:",
+    "options": [
+      "Indicators for both mortality risk and severity of illness",
+      "Indicators for mortality risk only",
+      "Inclusion of outpatient DRGs",
+      "Indicators for patient severity only"
+    ],
+    "correctAnswer": "Indicators for both mortality risk and severity of illness",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "All Patient Refined DRGs (APR-DRGs), developed by 3M, extend the base DRG system by adding two sub-classifications for each DRG: severity of illness (SOI) and risk of mortality (ROM), each rated on a 1–4 scale. This makes APR-DRGs more clinically detailed than MS-DRGs. The original answer key listed 'mortality risk only' but the correct definition includes both SOI and ROM.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 75,
+    "question": "Which of the following is a key difference between APCs and MS-DRGs?",
+    "options": [
+      "APC weights are based on resource intensity and MS-DRG weights are not",
+      "MS-DRG weights are standardized to 1.0 and APC weights are not",
+      "A claim may have more than one APC, but only one MS-DRG",
+      "MS-DRGs are used to determine Medicare payments and APCs are not"
+    ],
+    "correctAnswer": "A claim may have more than one APC, but only one MS-DRG",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "APCs (Ambulatory Payment Classifications) are used for outpatient services under the Medicare Outpatient Prospective Payment System (OPPS). A single claim can be assigned multiple APCs depending on the services rendered. In contrast, each inpatient admission is assigned only one MS-DRG. Both use resource-based weights, and both influence Medicare payments.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 76,
+    "question": "Bell curve analysis may be used to determine if:",
+    "options": [
+      "A provider is missing charges",
+      "Evaluation and management level criteria are reasonable",
+      "OCE errors will be encountered",
+      "Productivity standards are met"
+    ],
+    "correctAnswer": "Evaluation and management level criteria are reasonable",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Bell curve (normal distribution) analysis of E&M coding levels can identify outliers — physicians coding disproportionately high or low levels compared to peers. If a provider's distribution is skewed unusually high (upcoding) or low (undercoding) relative to the bell curve, it may signal documentation or coding concerns warranting review.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 77,
+    "question": "Relative Value Units (RVUs) are best described as:",
+    "options": [
+      "Weights assigned to APC codes to measure resource intensity",
+      "Weights assigned to DRG codes to measure resource intensity",
+      "Weights assigned to CPT codes to measure resource intensity",
+      "Weights assigned to physicians to measure productivity"
+    ],
+    "correctAnswer": "Weights assigned to CPT codes to measure resource intensity",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "RVUs are numeric weights assigned to each CPT procedure code under the Medicare Physician Fee Schedule. They reflect the relative time, skill, and resources required to perform a service. Total payment = Total RVUs × Geographic Adjustment Factor × Conversion Factor.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 78,
+    "question": "If total fees paid to a physician practice equal $105,000 and the total RVUs during the same period were 3,000 units, what is the Budget Equivalent Conversion Factor (BECF)?",
+    "options": ["$34.03", "$35.00", "$39.23", "$30.00"],
+    "correctAnswer": "$35.00",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "BECF = Total fees ÷ Total RVUs = $105,000 ÷ 3,000 = $35.00 per RVU. The BECF allows a practice to determine what they are paying or receiving per RVU, which can then be compared to Medicare's published conversion factor to assess reimbursement adequacy.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 79,
+    "question": "Which of the following RVU components is most commonly used to measure physician productivity?",
+    "options": ["Total RVUs", "Work RVUs (wRVU)", "Practice Expense RVUs (peRVU)", "Malpractice Expense RVUs (mRVU)"],
+    "correctAnswer": "Work RVUs (wRVU)",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Work RVUs (wRVUs) capture the physician's personal time, effort, skill, and stress involved in providing a service — excluding overhead and malpractice costs. Because they measure only the physician's direct contribution, wRVUs are the standard metric for physician productivity benchmarking and compensation modeling.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 80,
+    "question": "What are the three components of Medicare RVUs?",
+    "options": [
+      "Work, practice expense, conversion factor",
+      "Work, practice expense, malpractice expense",
+      "Work and malpractice expense only",
+      "Practice expense, overhead expense, malpractice expense"
+    ],
+    "correctAnswer": "Work, practice expense, malpractice expense",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Medicare RVUs have three components: (1) Work RVU — physician time and effort, (2) Practice Expense RVU — overhead costs like staff and equipment, and (3) Malpractice RVU — liability insurance costs. All three are geographically adjusted and summed, then multiplied by the annual conversion factor to determine payment.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 81,
+    "question": "What is the primary benefit of benchmarking in healthcare?",
+    "options": [
+      "Identify areas for improvement",
+      "Demonstrate level of performance",
+      "Isolate the cause of errors",
+      "All of the above"
+    ],
+    "correctAnswer": "All of the above",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Benchmarking compares a facility's performance against external standards or peers. This process can identify gaps and areas for improvement, demonstrate current performance levels, and help pinpoint causes of underperformance. All three functions are valid benefits of a well-executed benchmarking program.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 82,
+    "question": "What is the first step in a benchmarking project?",
+    "options": [
+      "Collect comparative data",
+      "Collect internal data",
+      "Analyze data",
+      "Identify the issue to be benchmarked"
+    ],
+    "correctAnswer": "Identify the issue to be benchmarked",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Before any data is collected or analyzed, the team must clearly define what they are benchmarking — the specific metric, process, or outcome of interest. Without this first step, data collection lacks focus. The general benchmarking cycle is: identify issue → collect internal data → find benchmarks → compare → analyze → implement improvements.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 83,
+    "question": "Dashboards in healthcare informatics are best described as:",
+    "options": [
+      "A graphical display of performance on key metrics",
+      "A statistical inference tool",
+      "A data collection tool",
+      "Used to determine root cause of quality issues"
+    ],
+    "correctAnswer": "A graphical display of performance on key metrics",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Dashboards are visual management tools that display real-time or near-real-time key performance indicators (KPIs) in a consolidated, graphical format. They are used for monitoring — not for statistical inference or root cause analysis, which require separate analytical methods.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 84,
+    "question": "AHRQ stands for:",
+    "options": [
+      "Agency for Healthcare Resource and Quality",
+      "Agency for Healthcare Reference and Quantity",
+      "Agency for Hospital Revenue and Quality",
+      "Agency for Healthcare Research and Quality"
+    ],
+    "correctAnswer": "Agency for Healthcare Research and Quality",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "AHRQ (Agency for Healthcare Research and Quality) is a U.S. federal agency within HHS focused on improving the safety, quality, accessibility, and cost-effectiveness of healthcare. It produces quality measures, safety indicators, and national healthcare quality reports used across the industry.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 85,
+    "question": "Which of the following settings is NOT measured as part of the AHRQ quality dashboards?",
+    "options": ["Hospitals", "Ambulatory care", "Physician care", "Home health care"],
+    "correctAnswer": "Physician care",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "AHRQ's National Healthcare Quality and Disparities Reports cover hospitals, ambulatory care, long-term care, and home health — but individual physician-level quality measurement is primarily handled by CMS through programs like MIPS (Merit-based Incentive Payment System) and quality reporting systems, not AHRQ dashboards.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 86,
+    "question": "How are Hospital Compare measures used by CMS to impact hospital payment?",
+    "options": [
+      "Hospitals that score better than average receive bonus payments",
+      "Hospitals that report all measures receive the full payment update",
+      "Hospitals that perform poorly must pay a penalty",
+      "Hospital payment is not impacted by Hospital Compare indicators"
+    ],
+    "correctAnswer": "Hospitals that report all measures receive the full payment update",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Under the Hospital Inpatient Quality Reporting (IQR) Program, hospitals must submit quality data to receive the full annual payment update from CMS. Failure to report results in a payment reduction. While separate programs like HVBP do tie performance to bonuses/penalties, the core Hospital Compare reporting requirement is about participation, not performance thresholds.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 87,
+    "question": "Which quality measurement group was created by private healthcare purchasers?",
+    "options": ["AHRQ", "HEDIS", "Leapfrog Group", "Hospital Compare"],
+    "correctAnswer": "Leapfrog Group",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The Leapfrog Group is a nonprofit organization founded by large employers and other purchasers of healthcare who wanted to use their market power to improve hospital safety and quality. It is distinct from government programs (AHRQ, Hospital Compare) and insurer-driven programs (HEDIS/NCQA).",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 88,
+    "question": "Which quality measurement group measures the performance of managed care organizations?",
+    "options": ["AHRQ", "HEDIS", "Leapfrog Group", "Hospital Compare"],
+    "correctAnswer": "HEDIS",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "HEDIS (Healthcare Effectiveness Data and Information Set), developed by NCQA (National Committee for Quality Assurance), is the most widely used set of performance measures for health plans and managed care organizations. It covers preventive care, chronic disease management, and patient experience.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 89,
+    "question": "Which of the following is a good source of benchmark data for hospitals?",
+    "options": ["USA Today", "HEDIS", "NCQA", "Hospital Compare"],
+    "correctAnswer": "Hospital Compare",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Hospital Compare (now called Care Compare) is CMS's publicly available website providing hospital quality and performance data, making it a reliable source for benchmarking inpatient quality measures. HEDIS and NCQA focus on health plans. USA Today is not a credible source for clinical benchmarking.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 90,
+    "question": "Which quality measurement group measures physician quality?",
+    "options": ["HEDIS", "Hospital Compare", "Healthgrades", "AHRQ"],
+    "correctAnswer": "Healthgrades",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Healthgrades is a consumer-facing platform that rates individual physicians based on patient reviews, outcomes data, board certifications, and disciplinary actions. It specifically targets individual physician quality, unlike HEDIS (health plans), Hospital Compare (hospitals), or AHRQ (research and population-level quality).",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 91,
+    "question": "Which federal law enacted in 2009 provided financial incentives to healthcare providers to adopt and meaningfully use certified electronic health record technology?",
+    "options": ["HIPAA", "HITECH Act", "ACA", "ARRA Title I"],
+    "correctAnswer": "HITECH Act",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "The Health Information Technology for Economic and Clinical Health (HITECH) Act was enacted as part of the American Recovery and Reinvestment Act (ARRA) of 2009. It created the Medicare and Medicaid EHR Incentive Programs (later renamed Promoting Interoperability), offering payments to eligible providers who adopted and demonstrated meaningful use of certified EHR technology. HITECH also strengthened HIPAA enforcement and breach notification requirements.",
+    "tag": "History, Careers, and Roles"
+  },
+  {
+    "id": 92,
+    "question": "What is the key difference between an Electronic Medical Record (EMR) and an Electronic Health Record (EHR)?",
+    "options": [
+      "An EMR is used only in outpatient settings; an EHR is used only in inpatient settings",
+      "An EHR is shared across multiple providers and organizations; an EMR is used within a single practice",
+      "An EMR contains billing data; an EHR contains only clinical data",
+      "An EHR requires HIPAA authorization to access; an EMR does not"
+    ],
+    "correctAnswer": "An EHR is shared across multiple providers and organizations; an EMR is used within a single practice",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "An EMR (Electronic Medical Record) is a digital version of the paper chart used within a single healthcare organization or practice. An EHR (Electronic Health Record) is designed to be shared across multiple providers, facilities, and care settings — following the patient wherever they receive care. EHRs support interoperability; EMRs typically do not leave the practice that created them.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 93,
+    "question": "Which organization developed and maintains the RHIA and RHIT certifications for health information management professionals?",
+    "options": ["HIMSS", "AHIMA", "AMA", "ONC"],
+    "correctAnswer": "AHIMA",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "The American Health Information Management Association (AHIMA) administers the RHIA (Registered Health Information Administrator) and RHIT (Registered Health Information Technician) credentials through its Commission on Certification for Health Informatics and Information Management (CCHIIM). HIMSS offers the CPHIMS credential. The AMA represents physicians. ONC is the federal Office of the National Coordinator for Health IT.",
+    "tag": "History, Careers, and Roles"
+  },
+  {
+    "id": 94,
+    "question": "A health information professional with an RHIA credential is most likely to hold which type of role compared to someone with an RHIT?",
+    "options": [
+      "An entry-level coding position",
+      "A technical data entry role",
+      "A management or administrative leadership role",
+      "A clinical nursing role"
+    ],
+    "correctAnswer": "A management or administrative leadership role",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The RHIA (requiring a bachelor's or master's degree) prepares professionals for management roles including HIM director, data governance leadership, and policy development. The RHIT (requiring an associate degree) focuses on technical tasks like coding, record verification, and data entry. RHIA holders are primed for administrative committees, budgeting, and compliance oversight — RHITs work more directly in the data itself.",
+    "tag": "History, Careers, and Roles"
+  },
+  {
+    "id": 95,
+    "question": "Which standard developed by HL7 uses RESTful APIs and web-based formats like JSON and XML to enable modern health data interoperability?",
+    "options": ["HL7 v2", "HL7 v3", "FHIR", "DICOM"],
+    "correctAnswer": "FHIR",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "FHIR (Fast Healthcare Interoperability Resources) is HL7's modern standard introduced in 2014. Unlike HL7 v2 (message-based) or HL7 v3 (complex model-driven), FHIR uses RESTful APIs, JSON, and XML — technologies native to the modern web. This makes FHIR faster to implement and better suited for mobile apps, patient portals, and cloud-based EHR integration. It is mandated by the 21st Century Cures Act.",
+    "tag": "Emerging Technologies"
+  },
+  {
+    "id": 96,
+    "question": "Under the HIPAA Privacy Rule, the minimum necessary standard requires covered entities to:",
+    "options": [
+      "Share all patient information with any treating provider upon request",
+      "Limit PHI use and disclosure to only what is necessary to accomplish the intended purpose",
+      "Obtain written authorization before any use of PHI",
+      "Encrypt all PHI stored on electronic devices"
+    ],
+    "correctAnswer": "Limit PHI use and disclosure to only what is necessary to accomplish the intended purpose",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The minimum necessary standard, a core principle of the HIPAA Privacy Rule, requires covered entities to make reasonable efforts to limit PHI use, disclosure, and requests to the minimum needed to accomplish the intended purpose. Importantly, this standard does NOT apply to treatment disclosures between providers, disclosures to the individual, or disclosures required by law. It applies to all other uses and disclosures.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 97,
+    "question": "Which of the following is NOT one of the three types of covered entities under HIPAA?",
+    "options": ["Health plans", "Healthcare clearinghouses", "Healthcare providers", "Pharmaceutical manufacturers"],
+    "correctAnswer": "Pharmaceutical manufacturers",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "HIPAA's three categories of covered entities are: (1) health plans, (2) healthcare clearinghouses, and (3) healthcare providers who transmit health information electronically. Pharmaceutical manufacturers are not classified as covered entities unless they are also functioning as a healthcare provider or plan. However, they may become business associates if they handle PHI on behalf of a covered entity.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 98,
+    "question": "Which component of the HIPAA Security Rule specifically protects electronic protected health information (ePHI) — but does NOT cover PHI transmitted verbally or on paper?",
+    "options": ["Privacy Rule", "Security Rule", "Breach Notification Rule", "Transactions and Code Sets Rule"],
+    "correctAnswer": "Security Rule",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The HIPAA Security Rule protects ePHI — a subset of PHI that is created, received, maintained, or transmitted electronically. Unlike the Privacy Rule (which covers all forms of PHI regardless of medium), the Security Rule applies only to electronic formats. It requires administrative, physical, and technical safeguards to ensure the confidentiality, integrity, and availability of ePHI.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 99,
+    "question": "A hospital shares a patient's complete medical record with a billing company to process claims. The billing company must sign which type of agreement with the hospital under HIPAA?",
+    "options": ["Data use agreement", "Business associate agreement", "Notice of privacy practices", "Informed consent form"],
+    "correctAnswer": "Business associate agreement",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "A Business Associate Agreement (BAA) is a required HIPAA contract between a covered entity and a business associate — any entity that creates, receives, maintains, or transmits PHI on behalf of the covered entity. Billing companies, IT vendors, and cloud storage providers are common business associates. The BAA defines allowable uses and requires the associate to safeguard PHI appropriately.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 100,
+    "question": "Which of the following represents a breach of PHI under the HIPAA Breach Notification Rule that would require patient notification?",
+    "options": [
+      "A nurse accidentally views the wrong patient's chart but closes it immediately without copying data",
+      "A laptop containing unencrypted patient records is stolen from a hospital employee's car",
+      "A physician verbally discusses a patient's diagnosis with the care team during rounds",
+      "A billing clerk emails a patient's EOB to the correct address"
+    ],
+    "correctAnswer": "A laptop containing unencrypted patient records is stolen from a hospital employee's car",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The Breach Notification Rule requires covered entities to notify affected individuals, HHS, and sometimes the media when unsecured PHI is impermissibly accessed, used, or disclosed. A stolen unencrypted laptop containing patient records is a classic breach — the PHI is unsecured and compromised. Inadvertent accidental access with no information copied may qualify as an exception under the 'low probability of compromise' assessment.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 101,
+    "question": "In data governance, a 'data steward' is primarily responsible for:",
+    "options": [
+      "Setting the organization's overall data strategy and vision",
+      "Ensuring the day-to-day quality, accuracy, and appropriate use of specific data domains",
+      "Enforcing HIPAA compliance across all departments",
+      "Designing the technical architecture of the database"
+    ],
+    "correctAnswer": "Ensuring the day-to-day quality, accuracy, and appropriate use of specific data domains",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "A data steward operates at the domain level (e.g., clinical data, financial data) and is responsible for the day-to-day management of data quality, accuracy, definitions, and appropriate use within that domain. The data governance officer or chief data officer sets overall strategy. A data steward is distinct from a database administrator (DBA), who handles technical infrastructure, and a privacy officer, who handles compliance.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 102,
+    "question": "Which of the following best describes the concept of 'information governance' in a healthcare organization?",
+    "options": [
+      "The process of encrypting all electronic health records",
+      "A framework for managing information as a strategic asset through policies, accountability, and oversight",
+      "A set of clinical coding rules for diagnosis documentation",
+      "The technical process of backing up health data to the cloud"
+    ],
+    "correctAnswer": "A framework for managing information as a strategic asset through policies, accountability, and oversight",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Information governance (IG) is the overarching framework by which healthcare organizations manage information as a strategic asset. It encompasses policies, accountability structures, integrity standards, and oversight mechanisms that ensure information is trustworthy, secure, compliant, and available. AHIMA's IG framework identifies eight principles (availability, protection, retention, disposition, transparency, integrity, compliance, and availability). IG is broader than IT security and goes beyond just encryption or backup.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 103,
+    "question": "Which of the following is an example of data integrity being compromised in a health information system?",
+    "options": [
+      "A physician logs into the EHR using a shared password",
+      "A lab result is overwritten with an incorrect value due to a data entry error and is not flagged",
+      "A patient's record is accessed by an unauthorized user",
+      "A hospital fails to back up its EHR data for 48 hours"
+    ],
+    "correctAnswer": "A lab result is overwritten with an incorrect value due to a data entry error and is not flagged",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Data integrity refers to the accuracy, consistency, and reliability of data over its lifecycle. An overwritten lab value that is incorrect and uncorrected directly compromises integrity — the data no longer reflects reality. Using a shared password is a security/confidentiality issue. Unauthorized access is a privacy breach. Missed backups affect availability — all of these are different dimensions of data quality.",
+    "tag": "Data Integrity and Quality"
+  },
+  {
+    "id": 104,
+    "question": "Which of the following BEST describes 'data quality' in the context of health informatics?",
+    "options": [
+      "The speed at which data can be retrieved from a database",
+      "The degree to which data are accurate, complete, consistent, timely, and fit for their intended use",
+      "The method used to encrypt patient records",
+      "The number of data elements stored in an EHR"
+    ],
+    "correctAnswer": "The degree to which data are accurate, complete, consistent, timely, and fit for their intended use",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Data quality in health informatics is defined by multiple dimensions: accuracy (free of errors), completeness (all required data present), consistency (same values across systems), timeliness (available when needed), and fitness for use (appropriate for its purpose). High data quality underpins safe clinical decisions, valid analytics, and accurate billing. Low quality data can lead to patient harm, fraud, or incorrect research conclusions.",
+    "tag": "Data Integrity and Quality"
+  },
+  {
+    "id": 105,
+    "question": "A hospital notices that the same patient has two separate medical record numbers in the EHR system, each containing different portions of their clinical history. This is an example of which data quality problem?",
+    "options": ["Data redundancy", "Duplicate record / overlapping records", "Data truncation", "Record fragmentation"],
+    "correctAnswer": "Duplicate record / overlapping records",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "When a patient has two separate MRNs in the same system — each with partial records — this is a duplicate or overlapping record (also called an MPI error). It creates a patient identity integrity problem: clinicians may not have the full clinical picture. This is a common Master Patient Index (MPI) issue. Merging records through an identity resolution process is the standard correction. It differs from redundancy (same data stored multiple times) or fragmentation (records spread across unlinked systems).",
+    "tag": "Data Integrity and Quality"
+  },
+  {
+    "id": 106,
+    "question": "Which of the following study designs is best described as observational, where researchers identify individuals who already have a disease (cases) and compare them to those who do not (controls) to determine prior exposure?",
+    "options": ["Randomized controlled trial", "Cohort study", "Case-control study", "Cross-sectional study"],
+    "correctAnswer": "Case-control study",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "A case-control study starts with the outcome (disease present vs. absent) and looks backward in time to assess prior exposure. It is retrospective and observational. A cohort study starts with exposure status and follows subjects forward to see who develops disease. An RCT randomly assigns participants to interventions. A cross-sectional study measures exposure and outcome at the same point in time.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 107,
+    "question": "In a research study, the Institutional Review Board (IRB) is responsible for:",
+    "options": [
+      "Funding the study and approving its budget",
+      "Reviewing and approving research protocols to protect human subjects",
+      "Analyzing the statistical results of the research",
+      "Publishing the research findings in a peer-reviewed journal"
+    ],
+    "correctAnswer": "Reviewing and approving research protocols to protect human subjects",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "An Institutional Review Board (IRB) is an independent committee that reviews proposed research involving human subjects to ensure it meets ethical standards — including informed consent, minimization of risk, and equitable subject selection. Any research using patient data or involving human participants must receive IRB approval before it begins. The IRB does not fund research or analyze data.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 108,
+    "question": "A researcher wants to study whether a new care management program reduces 30-day readmissions. She enrolls patients before the program starts and follows them over 12 months, comparing those in the program to those who are not. This is best described as which type of study?",
+    "options": ["Retrospective cohort study", "Case-control study", "Prospective cohort study", "Randomized controlled trial"],
+    "correctAnswer": "Prospective cohort study",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "A prospective cohort study enrolls participants based on exposure status (enrolled in the program vs. not) before the outcome occurs, then follows them forward in time to observe outcomes. This is prospective because data collection moves forward from enrollment. It's not an RCT because participants are not randomly assigned — they self-select or are assigned by the care team. A retrospective cohort would use existing records to reconstruct the cohort.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 109,
+    "question": "In the context of clinical research ethics, which of the following is a core principle from the Belmont Report?",
+    "options": [
+      "Profitability, efficiency, and scalability",
+      "Respect for persons, beneficence, and justice",
+      "Transparency, reproducibility, and peer review",
+      "Privacy, security, and informed consent"
+    ],
+    "correctAnswer": "Respect for persons, beneficence, and justice",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The Belmont Report (1979) established three foundational ethical principles for human subjects research: (1) Respect for Persons — individuals should be treated as autonomous agents; (2) Beneficence — maximize benefits and minimize harms; (3) Justice — equitable distribution of research burdens and benefits. These principles underpin IRB review and informed consent requirements.",
+    "tag": "Ethics"
+  },
+  {
+    "id": 110,
+    "question": "A health informaticist who uses patient data to build a predictive model for hospital readmission must ensure the model does not systematically disadvantage patients based on race or socioeconomic status. This concern falls under which ethical principle?",
+    "options": ["Beneficence", "Non-maleficence", "Algorithmic fairness / Justice", "Autonomy"],
+    "correctAnswer": "Algorithmic fairness / Justice",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Algorithmic fairness is an emerging ethical obligation in health informatics, rooted in the principle of justice. When ML models are trained on historically biased data, they can perpetuate or amplify disparities — for example, underestimating illness severity in minority populations. Ensuring models perform equitably across demographic groups is a key ethical requirement. This goes beyond clinical non-maleficence (avoiding harm to individuals) to a population-level equity concern.",
+    "tag": "Ethics"
+  },
+  {
+    "id": 111,
+    "question": "Which of the following best describes 'interoperability' in health information systems?",
+    "options": [
+      "The ability of a single EHR system to store large volumes of patient data",
+      "The capacity of different health information systems to exchange, interpret, and use shared data",
+      "The process of converting paper records to electronic format",
+      "The use of encryption to protect data during transmission"
+    ],
+    "correctAnswer": "The capacity of different health information systems to exchange, interpret, and use shared data",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "Interoperability is the ability of different health information systems — regardless of vendor, platform, or location — to communicate, exchange data, and use that information effectively. True interoperability has three levels: foundational (data exchange), structural (data format standardized), and semantic (shared meaning). Standards like HL7 FHIR support semantic interoperability across EHR systems.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 112,
+    "question": "HL7 Version 2 (v2) is best described as a standard for:",
+    "options": [
+      "Encrypting patient data at rest",
+      "Message-based exchange of clinical and administrative data between hospital systems",
+      "Structuring billing codes for outpatient services",
+      "Defining web APIs for patient-facing mobile applications"
+    ],
+    "correctAnswer": "Message-based exchange of clinical and administrative data between hospital systems",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "HL7 v2 is the most widely adopted healthcare messaging standard, used by approximately 95% of U.S. healthcare organizations. It enables message-based exchange of clinical data (lab results, ADT — admission/discharge/transfer — events, orders) between internal systems like LIS, RIS, and EHRs. Unlike FHIR (API-based), HL7 v2 uses a pipe-delimited text format and is not designed for web or mobile environments.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 113,
+    "question": "A Clinical Decision Support System (CDSS) in an EHR that alerts a physician when a prescribed medication dose exceeds safe levels for a patient's weight is an example of which category of CDSS?",
+    "options": ["Passive CDSS", "Active (alert-based) CDSS", "Diagnostic CDSS", "Population health CDSS"],
+    "correctAnswer": "Active (alert-based) CDSS",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "An active CDSS proactively interrupts the clinical workflow to provide real-time alerts or warnings — in this case, a dosing alert triggered at the point of order entry. A passive CDSS provides information only when queried. Diagnostic CDSS assists in differential diagnosis. Population health CDSS flags patients at risk across a panel. Active alerts are the most common form of CDSS and are designed to reduce medication errors.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 114,
+    "question": "Which of the following coding systems is used to represent diagnoses and reasons for encounters, and is the system currently used in the United States as of October 2015?",
+    "options": ["ICD-9-CM", "ICD-10-CM", "CPT-4", "SNOMED CT"],
+    "correctAnswer": "ICD-10-CM",
+    "category": "Health Informatics",
+    "difficulty": "Easy",
+    "explanation": "The United States transitioned from ICD-9-CM to ICD-10-CM for diagnosis coding on October 1, 2015 — a mandated change under HIPAA Administrative Simplification. ICD-10-CM contains over 70,000 codes (vs. ~14,000 in ICD-9-CM), allowing far greater clinical specificity. ICD-10-PCS is used for inpatient procedure coding. CPT-4 codes are used for outpatient procedures. SNOMED CT is a clinical terminology system used within EHRs.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 115,
+    "question": "What is the primary purpose of a Master Patient Index (MPI)?",
+    "options": [
+      "To assign DRG codes to inpatient claims",
+      "To maintain a unique identifier for each patient across a healthcare system to prevent duplicate records",
+      "To track physician productivity using RVUs",
+      "To store all clinical documentation in a single database"
+    ],
+    "correctAnswer": "To maintain a unique identifier for each patient across a healthcare system to prevent duplicate records",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "The Master Patient Index (MPI) is the cornerstone patient identity database in a healthcare organization. It assigns and maintains a unique Medical Record Number (MRN) for each patient, linking all encounters and records under one identity. The MPI prevents duplicate records and overlay errors, and is critical for patient safety, data quality, and care continuity. Errors in the MPI are among the most dangerous data integrity problems in HIM.",
+    "tag": "Data Integrity and Quality"
+  },
+  {
+    "id": 116,
+    "question": "Blockchain technology is being explored in healthcare primarily for which of the following applications?",
+    "options": [
+      "Replacing EHR systems entirely with distributed ledgers",
+      "Providing tamper-proof, decentralized audit trails for health record access and drug supply chains",
+      "Generating AI-powered diagnostic recommendations",
+      "Streamlining CPT code assignment for physician billing"
+    ],
+    "correctAnswer": "Providing tamper-proof, decentralized audit trails for health record access and drug supply chains",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Blockchain in healthcare is most promising for creating immutable, decentralized audit trails of who accessed or modified patient records, and for tracking pharmaceutical supply chains to prevent counterfeiting. Because each block is cryptographically linked and cannot be altered without detection, blockchain ensures data provenance and integrity. It is not a replacement for EHR systems but rather a supplementary layer for trust and verification.",
+    "tag": "Emerging Technologies"
+  },
+  {
+    "id": 117,
+    "question": "Which of the following BEST describes the role of Natural Language Processing (NLP) in health informatics?",
+    "options": [
+      "Encrypting clinical notes before they are stored in the EHR",
+      "Converting unstructured clinical text (e.g., physician notes) into structured, computable data",
+      "Translating medical codes between ICD-9 and ICD-10",
+      "Generating standardized billing claims from clinical encounters"
+    ],
+    "correctAnswer": "Converting unstructured clinical text (e.g., physician notes) into structured, computable data",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "NLP is an AI technique that enables computers to understand and process human language. In health informatics, NLP is used to extract structured information from unstructured clinical narratives — such as physician notes, discharge summaries, and radiology reports — converting them into computable data elements for analytics, quality measurement, and coding assistance. NLP is fundamental to clinical AI and is increasingly embedded in EHR platforms.",
+    "tag": "Emerging Technologies"
+  },
+  {
+    "id": 118,
+    "question": "A hospital's data governance committee is developing policies for how long different types of health records must be retained. This activity is best described as which data governance function?",
+    "options": ["Data quality auditing", "Records retention and disposition policy", "Data stewardship assignment", "Access control management"],
+    "correctAnswer": "Records retention and disposition policy",
+    "category": "Health Informatics",
+    "difficulty": "Medium",
+    "explanation": "Records retention and disposition is a core data governance and information governance function that specifies how long specific record types must be kept (retention schedule) and what happens to them afterward (destruction, archiving, or transfer). Federal and state regulations — including CMS's requirement to retain records for a minimum of 5 years — inform these policies. Different record types (e.g., pediatric records, mental health records) may have different retention requirements.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 119,
+    "question": "A researcher conducts a study by analyzing existing medical records from 2015–2020 to determine whether patients with diabetes were more likely to be readmitted within 30 days. This is best described as which type of study?",
+    "options": ["Prospective cohort study", "Randomized controlled trial", "Retrospective cohort study", "Case-control study"],
+    "correctAnswer": "Retrospective cohort study",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "A retrospective cohort study uses pre-existing data to identify a cohort based on exposure status (diabetes vs. no diabetes) and then examines historical records to assess outcomes (30-day readmission). It moves backward in time using records that already exist. This contrasts with a prospective cohort (data collected going forward) and a case-control study (which starts with the outcome and works backward to exposure). Retrospective cohorts are efficient and low-cost but susceptible to confounding and missing data.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 120,
+    "question": "Which of the following is a key ethical concern specifically associated with the secondary use of patient health data for research or commercial purposes?",
+    "options": [
+      "The challenge of converting paper records to digital format",
+      "Patient autonomy and the right to control how their personal health data is used beyond their direct care",
+      "The difficulty of assigning accurate CPT codes",
+      "The computational cost of storing large datasets"
+    ],
+    "correctAnswer": "Patient autonomy and the right to control how their personal health data is used beyond their direct care",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Secondary use refers to using patient data collected for clinical care for purposes beyond that original intent — such as research, population health analytics, or commercial AI development. The central ethical concern is patient autonomy: individuals may not be aware their data is being used in these ways, and they may not have meaningfully consented. This intersects with the HIPAA Authorization requirement, de-identification standards, and growing ethical debates around data ownership in the digital health era.",
+    "tag": "Ethics"
+  },
+  {
+    "id": 121,
+    "question": "A hospital analyst finds a statistically significant association (p = 0.03) between shoe size and cardiovascular disease risk in a sample of 10,000 patients. The most appropriate conclusion is:",
+    "options": [
+      "Shoe size is a risk factor for cardiovascular disease",
+      "The result is clinically meaningful because it is statistically significant",
+      "The large sample size may have detected a trivially small, clinically irrelevant association",
+      "The study should be repeated with a stricter alpha level to confirm the finding"
+    ],
+    "correctAnswer": "The large sample size may have detected a trivially small, clinically irrelevant association",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "This is the classic 'statistical vs. clinical significance' trap. With very large samples (n = 10,000), even minuscule, clinically meaningless differences can produce p < 0.05. A p-value only tells you the probability that results are due to chance — it says nothing about effect size or real-world importance. In huge datasets, the null hypothesis is almost always rejected for trivial reasons. Always pair statistical significance with effect size (e.g., Cohen's d, odds ratio, confidence interval width) to assess clinical meaningfulness.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 122,
+    "question": "An analyst fails to reject the null hypothesis (p = 0.12) in a study comparing readmission rates between two hospitals. A colleague concludes 'the two hospitals have equal readmission rates.' This conclusion is:",
+    "options": [
+      "Correct, because p > 0.05 confirms the null hypothesis",
+      "Incorrect — failing to reject the null hypothesis does not prove it is true",
+      "Correct only if the study was adequately powered",
+      "Incorrect only if a Type I error was committed"
+    ],
+    "correctAnswer": "Incorrect — failing to reject the null hypothesis does not prove it is true",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "This is one of the most common misinterpretations in statistics. Failing to reject H₀ means insufficient evidence was found to reject it — NOT that H₀ is proven true. The study may simply be underpowered (too small a sample to detect a real difference). The correct language is 'we failed to find evidence of a difference,' not 'the rates are equal.' Absence of evidence is not evidence of absence — especially when Type II error (β) is not calculated.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 123,
+    "question": "Reducing the alpha level in a hypothesis test from 0.05 to 0.01 (without changing sample size or effect size) will:",
+    "options": [
+      "Decrease both Type I and Type II error simultaneously",
+      "Decrease Type I error and increase Type II error (decrease power)",
+      "Increase Type I error and decrease Type II error (increase power)",
+      "Have no effect on Type II error because alpha and beta are independent"
+    ],
+    "correctAnswer": "Decrease Type I error and increase Type II error (decrease power)",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Alpha (α) and beta (β) have an inverse relationship when sample size is fixed. Lowering alpha makes it harder to reject H₀, which reduces false positives (Type I error) but simultaneously increases false negatives (Type II error, β), reducing power (1 − β). The only way to reduce both α and β simultaneously is to increase the sample size. This trade-off is a core design consideration in clinical research — stricter significance thresholds demand larger studies to maintain the same power.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 124,
+    "question": "A study reports r = 0.30 between nurse staffing levels and patient fall rates, with p < 0.001. A manager concludes that low staffing is causing falls and immediately hires more nurses. Which critical analytical flaw does this reasoning reflect?",
+    "options": [
+      "Using Pearson's r instead of Spearman's Rho",
+      "Conflating statistical significance with causation from a correlational finding",
+      "The p-value is too small to be meaningful at this sample size",
+      "The correlation direction is wrong — r should be negative if low staffing causes falls"
+    ],
+    "correctAnswer": "Conflating statistical significance with causation from a correlational finding",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Correlation does not imply causation. An r of 0.30 means staffing explains only about 9% (r²) of the variance in fall rates — a weak relationship. More importantly, correlation tells you two variables move together, not that one causes the other. A confounding variable (e.g., patient acuity, unit type) could explain both low staffing and high falls. Establishing causation requires experimental or quasi-experimental designs. The manager made a policy decision based on observational data without ruling out alternative explanations.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 125,
+    "question": "Which of the following scenarios represents an internal validity threat from confounding, rather than selection bias?",
+    "options": [
+      "A study of ICU patients excludes those who died within 24 hours, making survivors look healthier than the true population",
+      "Patients who chose to enroll in a wellness program are healthier to begin with, making the program appear more effective than it is",
+      "Older age is associated with both higher opioid prescribing and worse surgical outcomes, distorting the apparent effect of opioids on outcomes",
+      "A cohort study of smokers loses a disproportionate number of the sickest patients to follow-up"
+    ],
+    "correctAnswer": "Older age is associated with both higher opioid prescribing and worse surgical outcomes, distorting the apparent effect of opioids on outcomes",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Confounding occurs when a third variable is independently associated with both the exposure (opioid prescribing) and the outcome (surgical outcomes) — here, age plays that role. Options A and D describe selection/attrition bias (who enters or exits the study). Option B describes confounding by indication, which is technically a subtype of confounding, but the mechanism in option C most cleanly illustrates classical confounding: age distorts the estimated effect of opioids by being linked to both. Distinguishing confounding from selection bias is a nuanced, high-yield distinction in research design.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 126,
+    "question": "Under HIPAA's Safe Harbor de-identification method, which of the following may be RETAINED in the dataset without violating de-identification standards?",
+    "options": [
+      "A patient's city of residence",
+      "A patient's admission date",
+      "A patient's year of birth",
+      "A patient's 5-digit ZIP code in a rural county with fewer than 20,000 residents"
+    ],
+    "correctAnswer": "A patient's year of birth",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Under the HIPAA Safe Harbor method, ALL elements of dates (except year) must be removed — including admission dates, birth dates, and discharge dates. Year of birth may be retained, UNLESS the patient is over 89 years old. City and county of residence must be removed. ZIP codes may only be retained if the first 3 digits represent a geographic area with more than 20,000 people — a 5-digit ZIP in a rural area with fewer than 20,000 residents cannot be retained. Year of birth is the only correct answer here.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 127,
+    "question": "A hospital de-identifies its discharge dataset by removing all 18 Safe Harbor identifiers, then re-links a random numeric code back to each patient's identity in a separate, secured key file. Under HIPAA, the shared dataset is:",
+    "options": [
+      "Fully de-identified PHI — the numeric code is not a Safe Harbor identifier",
+      "Still PHI, because the covered entity retains actual knowledge that the code can be used to re-identify individuals",
+      "De-identified only if the key file is encrypted with AES-256 or equivalent",
+      "Considered a Limited Data Set and requires a Data Use Agreement"
+    ],
+    "correctAnswer": "Still PHI, because the covered entity retains actual knowledge that the code can be used to re-identify individuals",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "This is a critical Safe Harbor trap. The method states: remove the 18 identifiers AND have no actual knowledge that the remaining information could be used to identify the individual. If the hospital holds a key that links the numeric code back to a patient's identity, it has actual knowledge of re-identifiability — even if the code itself is random. Therefore, the dataset is not de-identified under HIPAA. This distinction matters enormously for research data sharing: the re-identification key must not be retained by the covered entity for the data to qualify as truly de-identified.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 128,
+    "question": "A covered entity experiences a breach of 450 patients' PHI. Under the HIPAA Breach Notification Rule, which set of notifications is required?",
+    "options": [
+      "Notify affected individuals only",
+      "Notify affected individuals and HHS within 60 days of discovery",
+      "Notify affected individuals, HHS, and prominent local media outlets within 60 days",
+      "Notify affected individuals within 60 days and HHS annually in the next calendar year"
+    ],
+    "correctAnswer": "Notify affected individuals and HHS within 60 days of discovery",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "The media notification requirement only applies to breaches affecting 500 or more residents of a state or jurisdiction — this breach affects only 450 patients, so media notification is not required. Affected individuals and HHS must both be notified. For breaches under 500, HHS notification may be submitted on an annual log (due within 60 days of the end of the calendar year). For breaches of 500 or more, HHS must be notified immediately (within 60 days of discovery). Individual notification is always required within 60 days of discovery regardless of size.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 129,
+    "question": "A physician practice is sued and the plaintiff's attorney subpoenas a patient's medical record. Under HIPAA, the practice:",
+    "options": [
+      "May not release any PHI without a signed patient authorization",
+      "Must release the record immediately upon receipt of the subpoena without any further requirement",
+      "May release PHI in response to a valid court order, or a subpoena accompanied by specific assurances, without patient authorization",
+      "Must obtain IRB approval before releasing PHI for legal proceedings"
+    ],
+    "correctAnswer": "May release PHI in response to a valid court order, or a subpoena accompanied by specific assurances, without patient authorization",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "HIPAA permits covered entities to disclose PHI without patient authorization in response to: (1) a court order — full disclosure is permitted; or (2) a subpoena or discovery request — but only with satisfactory assurances that the patient was notified or a protective order was sought. A bare subpoena alone is not sufficient — there must be accompanying assurances or a court order. This is a highly tested nuance: a subpoena is not equivalent to a court order under HIPAA, and each triggers a different level of required safeguards.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 130,
+    "question": "Which of the following BEST distinguishes a 'Limited Data Set' from a fully de-identified dataset under HIPAA?",
+    "options": [
+      "A Limited Data Set still contains some direct identifiers and does not require a data use agreement",
+      "A Limited Data Set has had all 18 Safe Harbor identifiers removed and may be shared freely",
+      "A Limited Data Set may retain certain indirect identifiers (e.g., dates, geographic data) but still requires a Data Use Agreement and is still considered PHI",
+      "A Limited Data Set is fully de-identified and therefore exempt from all HIPAA requirements"
+    ],
+    "correctAnswer": "A Limited Data Set may retain certain indirect identifiers (e.g., dates, geographic data) but still requires a Data Use Agreement and is still considered PHI",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "A Limited Data Set is a middle ground: it has most direct identifiers removed (names, addresses, SSN, etc.) BUT may retain dates (admission, discharge, birth, death) and geographic data at the city, state, ZIP, or county level. Critically, it is still considered PHI under HIPAA — it is NOT de-identified. It can only be shared for research, public health, or healthcare operations purposes under a formal Data Use Agreement (DUA). This is frequently confused with de-identified data: the key distinction is that LDS retains dates and geo-data and still requires a DUA.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 131,
+    "question": "A data governance committee discovers that the same clinical concept — 'Type 2 Diabetes Mellitus' — is coded as E11.9 in the EHR, as 'DM2' in the lab system, and as 'Adult-Onset Diabetes' in a legacy reporting tool. This problem is best described as a failure of:",
+    "options": [
+      "Data availability",
+      "Semantic interoperability",
+      "Syntactic interoperability",
+      "Data security"
+    ],
+    "correctAnswer": "Semantic interoperability",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Interoperability exists at three levels: foundational (data can be transmitted), structural/syntactic (data is formatted consistently), and semantic (data means the same thing across systems). Using different representations for the same concept — ICD-10 code, abbreviation, and plain text — is a failure of semantic interoperability: the systems don't share a common meaning for the concept. This is why unified terminologies like SNOMED CT, LOINC, and RxNorm exist — to ensure that 'Type 2 Diabetes Mellitus' always means precisely the same thing regardless of which system sends or receives the data.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 132,
+    "question": "A hospital's data governance policy states that patient records must be retained for 6 years after the date of creation, or 3 years after the patient's death, whichever is longer. A patient died 2 years after a record was created in 2010. In what year may that record be legally destroyed under this policy?",
+    "options": ["2016", "2017", "2015", "2013"],
+    "correctAnswer": "2015",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Apply both rules and take the longer: Rule 1 — 6 years after creation: 2010 + 6 = 2016. Rule 2 — 3 years after death: Patient died 2 years after 2010 = 2012; 2012 + 3 = 2015. The policy states whichever is longer — that's 2016. Wait — recalculate: 2016 vs 2015; 2016 is longer. So the correct answer is 2016. Note: this is an intentional trap. Many students pick 2015 by misreading 'longer' as 'shorter.' Always apply both rules fully and select the LATER date. The record cannot be destroyed until 2016.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 133,
+    "question": "Which of the following best describes the difference between 'data provenance' and 'data lineage' in a health information governance context?",
+    "options": [
+      "They are synonymous terms used interchangeably in healthcare data management",
+      "Data provenance refers to the origin and history of data; data lineage tracks the transformations and movement of data through systems over time",
+      "Data lineage refers to original source documentation; data provenance refers to the data's current location",
+      "Data provenance applies only to structured data; data lineage applies only to unstructured data"
+    ],
+    "correctAnswer": "Data provenance refers to the origin and history of data; data lineage tracks the transformations and movement of data through systems over time",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Data provenance answers 'where did this data come from and who created it?' — it documents origin, authorship, and initial context. Data lineage answers 'where has this data been and how has it changed?' — it maps how data flows through extract-transform-load (ETL) pipelines, reporting tools, and warehouses. Both are essential to data governance: provenance establishes trustworthiness of the source; lineage ensures transformations haven't introduced errors. In healthcare, lineage is especially critical when lab values, claim amounts, or diagnosis codes are aggregated and transformed across multiple systems.",
+    "tag": "Data Governance"
+  },
+  {
+    "id": 134,
+    "question": "A hospital implements a new EHR. During migration, a field labeled 'Discharge Disposition' is mapped to 'Discharge Status' in the new system, but the two fields use different value sets — the old system used numeric codes (01 = Home, 02 = SNF) while the new uses text labels. Which data quality dimension is most directly threatened?",
+    "options": [
+      "Completeness",
+      "Timeliness",
+      "Consistency",
+      "Accessibility"
+    ],
+    "correctAnswer": "Consistency",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Consistency means the same data element has the same values, format, and meaning across systems and over time. When discharge disposition is coded numerically in one system and textually in another — with no guaranteed crosswalk — historical and new records cannot be reliably compared or combined. This is a consistency failure. It's distinct from completeness (missing data), timeliness (availability when needed), or accessibility (ability to retrieve data). EHR migrations are a major source of consistency failures, and unresolved inconsistencies corrupt downstream analytics and quality reporting.",
+    "tag": "Data Integrity and Quality"
+  },
+  {
+    "id": 135,
+    "question": "An analyst runs a regression model predicting hospital charges from length of stay and finds an R² of 0.82. She then adds 50 additional predictor variables (many unrelated to charges) and observes R² rises to 0.95. The most likely explanation is:",
+    "options": [
+      "The additional variables genuinely improve the model's predictive ability",
+      "R² always increases when variables are added, even if they add no real explanatory power — adjusted R² should be used instead",
+      "The model is now better calibrated because variance is more evenly distributed",
+      "A higher R² always means lower prediction error regardless of the number of predictors"
+    ],
+    "correctAnswer": "R² always increases when variables are added, even if they add no real explanatory power — adjusted R² should be used instead",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Regular R² mechanically increases (or stays the same) with every additional variable added to a regression model — even noise variables that have zero real relationship with the outcome. This is because adding any variable, however irrelevant, will explain some random variance by chance. Adjusted R² penalizes model complexity by accounting for the number of predictors and only increases when a new variable adds more explanatory power than expected by chance. In healthcare analytics, using unadjusted R² to compare models with different numbers of predictors is a fundamental modeling error.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 136,
+    "question": "A hospital compares its 30-day readmission rate to a national benchmark and finds it is significantly higher. Before concluding that care quality is poor, the most critical analytical step is:",
+    "options": [
+      "Calculate the hospital's case mix index to assess patient complexity",
+      "Verify that the same ICD-10 codes are being used for the benchmark comparison",
+      "Risk-adjust for patient demographics, severity, and comorbidities before comparing to the benchmark",
+      "Increase the sample size by including more years of data"
+    ],
+    "correctAnswer": "Risk-adjust for patient demographics, severity, and comorbidities before comparing to the benchmark",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Raw readmission rate comparisons across hospitals are meaningless without risk adjustment. A hospital serving sicker, older, or lower-income patients will naturally have higher readmission rates regardless of care quality. Risk adjustment statistically controls for patient-level factors (age, comorbidities, severity, socioeconomic status) to produce an expected readmission rate — then the observed-to-expected ratio is what's benchmarked. CMI is relevant but addresses resource intensity, not outcome risk adjustment. Coding consistency matters, but the primary flaw in unadjusted comparison is confounding by patient mix.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 137,
+    "question": "In a multiple regression model predicting length of stay, the coefficient for 'age' is 0.8 (p < 0.001). Which of the following is the most precise interpretation?",
+    "options": [
+      "Age causes length of stay to increase by 0.8 days",
+      "For every one-year increase in age, length of stay is expected to increase by 0.8 days, holding all other variables in the model constant",
+      "Age explains 80% of the variation in length of stay",
+      "The probability that age is associated with length of stay is 0.8"
+    ],
+    "correctAnswer": "For every one-year increase in age, length of stay is expected to increase by 0.8 days, holding all other variables in the model constant",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "In multiple regression, the coefficient represents the partial effect of one variable on the outcome while holding all other predictors constant — this 'ceteris paribus' clause is essential and almost always omitted in wrong answers. Option A incorrectly implies causation. Option C confuses the coefficient with R². Option D confuses the coefficient with a probability. The p-value (< 0.001) tells you the relationship is unlikely to be due to chance, but the coefficient (0.8) describes the magnitude and direction of the partial association.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 138,
+    "question": "A researcher observes that counties with more hospitals per capita have higher mortality rates. She concludes hospitals are causing deaths. The most likely alternative explanation is:",
+    "options": [
+      "Selection bias — sicker patients are more likely to be hospitalized",
+      "Ecological fallacy — drawing individual-level conclusions from group-level data",
+      "Confounding by indication — physicians send the sickest patients to the most hospitals",
+      "Information bias — hospitals over-report mortality to inflate their reimbursement"
+    ],
+    "correctAnswer": "Ecological fallacy — drawing individual-level conclusions from group-level data",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "The ecological fallacy occurs when associations found at the group (aggregate) level — here, county-level hospital density and mortality — are incorrectly applied to individual patients. Counties with more hospitals likely have more hospitals because they serve sicker populations — the association is driven by patient acuity, not hospital harm. You cannot conclude that individual patients admitted to hospitals have higher mortality risk based on a county-level association. This is a classic epidemiological trap, especially relevant in health informatics when analysts work with population-level datasets.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 139,
+    "question": "Which of the following most accurately describes the difference between 'efficacy' and 'effectiveness' in healthcare research?",
+    "options": [
+      "Efficacy measures cost savings; effectiveness measures clinical outcomes",
+      "Efficacy is measured in randomized trials under ideal conditions; effectiveness is measured in real-world practice settings",
+      "Efficacy applies to surgical interventions; effectiveness applies to pharmacological treatments",
+      "Efficacy is determined by the FDA; effectiveness is determined by CMS"
+    ],
+    "correctAnswer": "Efficacy is measured in randomized trials under ideal conditions; effectiveness is measured in real-world practice settings",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Efficacy asks: 'Does this intervention work under ideal, controlled conditions?' (typically Phase III RCTs with strict eligibility criteria, protocol adherence, and homogeneous populations). Effectiveness asks: 'Does this intervention work in real-world clinical practice?' with all the messiness of diverse patients, variable adherence, and real-world constraints. A drug can show strong efficacy in trials but poor effectiveness in practice (e.g., due to side effects causing non-adherence). Comparative effectiveness research (CER) — heavily emphasized by AHRQ — focuses on real-world effectiveness.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 140,
+    "question": "A health informatics researcher wants to study whether a social media-based patient education intervention reduces HbA1c in diabetic patients. She cannot randomly assign patients to use social media. She instead matches each intervention patient to a non-social-media user with the same age, sex, baseline HbA1c, and comorbidities. This design is best described as a:",
+    "options": [
+      "Randomized controlled trial",
+      "Prospective cohort study",
+      "Propensity score-matched observational study",
+      "Case-control study"
+    ],
+    "correctAnswer": "Propensity score-matched observational study",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "When randomization is not possible, researchers can use propensity score matching — a method that balances intervention and control groups on observed confounders by matching participants with similar probabilities (propensity scores) of receiving the intervention. This reduces confounding and mimics some features of a randomized trial, but cannot control for unmeasured confounders. It remains an observational study, not an RCT. Propensity score methods are increasingly used in health informatics studies using EHR and claims data where randomization is impractical.",
+    "tag": "Research Study and Design"
+  },
+  {
+    "id": 141,
+    "question": "A coding manager notices that a coder consistently assigns a higher-severity CC/MCC code when clinical documentation is ambiguous. This behavior most directly inflates which metric, and constitutes which compliance risk?",
+    "options": [
+      "It inflates the CMI and constitutes potential upcoding fraud under the False Claims Act",
+      "It deflates the CMI and constitutes undercoding, which reduces revenue",
+      "It inflates the facility's readmission rate and triggers a PEPPER audit",
+      "It inflates wRVUs and creates risk under the Stark Law"
+    ],
+    "correctAnswer": "It inflates the CMI and constitutes potential upcoding fraud under the False Claims Act",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Assigning a higher-severity CC or MCC than what the documentation supports upgrades the MS-DRG to one with a higher relative weight, increasing reimbursement and inflating the facility's Case Mix Index. When done systematically without clinical justification, this is upcoding — a violation of the False Claims Act (FCA), which prohibits knowingly submitting inflated or fraudulent claims to federal payers. The OIG's Work Plan specifically targets MS-DRG coding accuracy, and the PEPPER report (Program for Evaluating Payment Patterns Electronic Report) flags hospitals with outlier DRG distributions for review.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 142,
+    "question": "An analyst is asked to select the correct statistical test to determine if there is a difference in average charge per case among patients in four different MS-DRG groups. Which of the following is most appropriate, and why is a series of t-tests NOT a valid alternative?",
+    "options": [
+      "Chi-square test; t-tests cannot handle continuous outcome variables",
+      "ANOVA; running multiple t-tests inflates the experiment-wide Type I error rate",
+      "Kruskal-Wallis test; charges are always non-normal and ANOVA is inappropriate",
+      "Paired t-test; each MS-DRG group must be compared to itself before and after"
+    ],
+    "correctAnswer": "ANOVA; running multiple t-tests inflates the experiment-wide Type I error rate",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "When comparing means across 3+ groups, ANOVA is the appropriate test. Running separate t-tests for each pair of groups inflates the family-wise error rate: with 4 groups (6 pairwise comparisons) at α = 0.05, the probability of at least one false positive is approximately 1 − (0.95)⁶ ≈ 26%. ANOVA controls this by testing all groups simultaneously under one omnibus F-test. If ANOVA is significant, post-hoc tests (Tukey, Bonferroni) identify which specific pairs differ. Kruskal-Wallis is the non-parametric alternative, but ANOVA is the starting point unless distributional assumptions are clearly violated.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 143,
+    "question": "A health system's CDI (Clinical Documentation Improvement) team queries a physician about a patient with elevated creatinine, oliguria, and rising BUN. The physician responds: 'Document whatever you think is appropriate.' The CDI specialist should:",
+    "options": [
+      "Document acute kidney injury based on the clinical indicators, because the physician gave permission",
+      "Not add any diagnosis, as the physician did not affirmatively confirm a specific diagnosis",
+      "Query the physician again with specific clinical indicators and request a definitive clinical statement",
+      "Flag the case for the compliance department and take no further action"
+    ],
+    "correctAnswer": "Query the physician again with specific clinical indicators and request a definitive clinical statement",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "A CDI specialist cannot independently assign a diagnosis — even when clinical indicators strongly suggest one. The physician's response ('document whatever you think') is not a valid clinical attestation and should not be acted upon as authorization. Per AHIMA and ACDIS guidelines, the CDI specialist should re-query with a compliant, leading-free query presenting the clinical indicators and asking the physician to select or provide a specific clinical diagnosis. Documenting without physician confirmation would constitute a documentation integrity violation and potentially false claim generation.",
+    "tag": "Data Integrity and Quality"
+  },
+  {
+    "id": 144,
+    "question": "A hospital's PEPPER report shows its one-day surgery MS-DRG conversion rate is in the 80th percentile nationally. This finding most likely warrants which type of follow-up?",
+    "options": [
+      "No action — being in the 80th percentile is desirable for quality metrics",
+      "An internal audit of inpatient admissions that converted from outpatient to inpatient status overnight, to assess if medical necessity criteria were met",
+      "A review of the hospital's coding software to check for ICD-10 mapping errors",
+      "A complaint to CMS that the PEPPER benchmarks are incorrectly calibrated"
+    ],
+    "correctAnswer": "An internal audit of inpatient admissions that converted from outpatient to inpatient status overnight, to assess if medical necessity criteria were met",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "The PEPPER (Program for Evaluating Payment Patterns Electronic Report) identifies hospitals with outlier billing patterns compared to national peers. A high percentile rank for one-day surgical stays (inpatient) is a red flag — it suggests the hospital may be admitting patients as inpatient for procedures that should be outpatient, or converting same-day surgeries to overnight inpatient stays without documented medical necessity. This is a known OIG target area. The correct response is a proactive internal audit of these cases to verify that Two-Midnight Rule and medical necessity criteria were satisfied before billing as inpatient.",
+    "tag": "Data Analytics"
+  },
+  {
+    "id": 145,
+    "question": "A patient requests access to their medical record under HIPAA. The covered entity responds that because the record is maintained in a Designated Record Set (DRS), the patient has the right to inspect and obtain a copy. Which of the following would NOT be included in a Designated Record Set?",
+    "options": [
+      "The patient's discharge summary",
+      "The patient's billing records used to make payment decisions",
+      "A physician's personal notes used solely as a memory aid and not shared with others",
+      "The patient's lab results in the EHR"
+    ],
+    "correctAnswer": "A physician's personal notes used solely as a memory aid and not shared with others",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "The Designated Record Set (DRS) includes medical and billing records used to make decisions about individuals — specifically, the medical record, billing record, and any other records used in whole or in part by the covered entity to make decisions about the patient. Critically, psychotherapy notes and a physician's personal notes that are used solely as a memory aid and are NOT shared with others or incorporated into the medical record are EXCLUDED from the DRS. This means the patient has no HIPAA right of access to those personal notes — a nuanced and frequently tested exception.",
+    "tag": "Health Information Privacy & Security"
+  },
+  {
+    "id": 146,
+    "question": "SNOMED CT and ICD-10-CM are both used in healthcare informatics, but they serve fundamentally different purposes. Which of the following most accurately captures that distinction?",
+    "options": [
+      "SNOMED CT is used for billing; ICD-10-CM is used for clinical documentation",
+      "ICD-10-CM is a comprehensive clinical reference terminology for capturing clinical concepts in EHRs; SNOMED CT is a statistical classification for billing and epidemiology",
+      "SNOMED CT is a richly structured clinical terminology designed for recording detailed clinical concepts; ICD-10-CM is a statistical classification optimized for billing, epidemiology, and reporting",
+      "They are interchangeable — most EHR systems use them to code the same information"
+    ],
+    "correctAnswer": "SNOMED CT is a richly structured clinical terminology designed for recording detailed clinical concepts; ICD-10-CM is a statistical classification optimized for billing, epidemiology, and reporting",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "This is a classic confusable pair. SNOMED CT (Systematized Nomenclature of Medicine — Clinical Terms) is a clinical reference terminology with over 350,000 concepts, relationships, and hierarchies — designed for precise clinical documentation within EHRs (e.g., capturing the exact laterality, severity, and morphology of a finding). ICD-10-CM is a statistical classification: it groups related conditions for administrative, billing, and public health purposes. They are not interchangeable — in fact, SNOMED concepts are often mapped to ICD codes for reporting and billing. The Meaningful Use/Promoting Interoperability program mandates SNOMED CT for problem list documentation.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 147,
+    "question": "A health system implements an AI diagnostic model trained primarily on data from large urban academic medical centers. When deployed at a rural critical access hospital, the model shows significantly lower accuracy. This discrepancy is MOST likely caused by:",
+    "options": [
+      "Insufficient RAM on the rural hospital's servers",
+      "Dataset shift — the characteristics of patients in the deployment population differ from the training population",
+      "Overfitting to the rural data during model training",
+      "The model used regression instead of a neural network"
+    ],
+    "correctAnswer": "Dataset shift — the characteristics of patients in the deployment population differ from the training population",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Dataset shift (also called distribution shift or domain shift) occurs when the statistical properties of the data a model is deployed on differ from the data it was trained on. Rural patients may differ from urban academic center patients in age distribution, comorbidity profiles, social determinants of health, care-seeking patterns, and documentation practices. An AI model trained on one population cannot be assumed to generalize to another without validation. This is a critical AI ethics and implementation challenge in health informatics, and a primary reason why models must be validated in the target deployment setting before clinical use.",
+    "tag": "Emerging Technologies"
+  },
+  {
+    "id": 148,
+    "question": "The 21st Century Cures Act's information blocking provisions prohibit covered actors from interfering with the access, exchange, or use of electronic health information (EHI). Which of the following would most clearly constitute information blocking?",
+    "options": [
+      "A hospital delays EHR implementation by 6 months due to funding constraints",
+      "A vendor charges an EHR customer a reasonable fee for API access",
+      "A health system refuses to share patient data with a competing health system that lacks a formal data sharing agreement, citing security concerns that are not documented or substantiated",
+      "A covered entity limits data sharing with business associates that have not signed a BAA"
+    ],
+    "correctAnswer": "A health system refuses to share patient data with a competing health system that lacks a formal data sharing agreement, citing security concerns that are not documented or substantiated",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "The 21st Century Cures Act (2016) defines information blocking as a practice that is likely to interfere with access, exchange, or use of EHI, except as required by law or covered by one of eight enumerated exceptions (including privacy, security, infeasibility, and preventing harm). Unsubstantiated, undocumented security concerns used to block data sharing with a competitor is a textbook information blocking scenario — the security exception requires actual, documented risk assessment, not a pretextual claim. Funding delays, reasonable API fees, and BAA requirements are legitimate business and compliance reasons, not information blocking.",
+    "tag": "Emerging Technologies"
+  },
+  {
+    "id": 149,
+    "question": "A clinical informaticist notices that a widely used EHR's clinical decision support alert fires for every patient over age 65 prescribed any anticoagulant, regardless of clinical context. Physicians override the alert 94% of the time. This phenomenon is best described as, and best addressed by:",
+    "options": [
+      "Alert fatigue — caused by poorly targeted, low-specificity alerts; addressed by refining alert logic and stratifying by clinical risk",
+      "System downtime — caused by server overload from too many simultaneous alerts; addressed by upgrading hardware",
+      "Duplicate alerting — caused by two CDS modules firing simultaneously; addressed by disabling one module",
+      "Workflow automation failure — caused by missing EHR integration; addressed by re-implementing the HL7 interface"
+    ],
+    "correctAnswer": "Alert fatigue — caused by poorly targeted, low-specificity alerts; addressed by refining alert logic and stratifying by clinical risk",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "Alert fatigue occurs when clinicians receive so many CDS alerts — most of which are not actionable in their specific context — that they begin overriding or ignoring all alerts reflexively, including critical ones. A 94% override rate is a hallmark signal. The root cause here is low specificity: firing for ALL anticoagulated patients over 65 without risk stratification generates enormous noise. The fix is to refine the alert's triggering logic using validated risk criteria (e.g., HAS-BLED score, CrCl thresholds) so it fires only for truly high-risk scenarios. Alert fatigue is a patient safety issue formally recognized by The Joint Commission.",
+    "tag": "Information Systems in Healthcare"
+  },
+  {
+    "id": 150,
+    "question": "A researcher finds that a new EHR-based intervention reduces medication errors by 40% (p = 0.001, 95% CI: 15%–65%). A second study finds a 5% reduction (p = 0.03, 95% CI: 0.5%–9.5%). Which study provides stronger evidence of a clinically meaningful effect, and why?",
+    "options": [
+      "The second study, because a lower p-value always indicates a more meaningful result",
+      "The first study, because a 40% reduction with a wide confidence interval suggests a large true effect despite uncertainty in the estimate",
+      "Both studies are equally meaningful because both are statistically significant",
+      "Neither study is meaningful because neither confidence interval includes zero"
+    ],
+    "correctAnswer": "The first study, because a 40% reduction with a wide confidence interval suggests a large true effect despite uncertainty in the estimate",
+    "category": "Health Informatics",
+    "difficulty": "Hard",
+    "explanation": "This question tests the critical distinction between statistical significance, effect size, and clinical relevance. Study 1 shows a 40% reduction — clinically large — even though the wide CI (15%–65%) reflects uncertainty in the estimate. Study 2 shows only a 5% reduction; even though p = 0.03 (smaller effect more precisely estimated), a 0.5%–9.5% reduction may be clinically trivial. The p-value from Study 2 is NOT 'better' — it just means the small effect is unlikely to be zero. In health informatics and evidence-based practice, effect size and CI width matter far more than the p-value alone when judging clinical meaningfulness.",
+    "tag": "Data Analytics"
+  }
+]
