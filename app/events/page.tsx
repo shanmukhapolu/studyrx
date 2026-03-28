@@ -10,7 +10,7 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage } from "@/lib/storage";
 import { HOSA_EVENTS } from "@/lib/events";
-import { Play, TrendingUp } from "lucide-react";
+import { BookOpen, Play, TrendingUp } from "lucide-react";
 import { rtdbGet, rtdbPost, rtdbSet } from "@/lib/rtdb";
 import { toast } from "sonner";
 import { useAuth } from "@/components/auth/auth-provider";
@@ -94,10 +94,10 @@ function EventsContent() {
             const Icon = event.icon;
             
             return (
-              <Card key={event.id} className="border-border hover:border-primary/50 transition-all duration-200 hover:shadow-lg">
+              <Card key={event.id} className="border-border/70 bg-card/80 hover:border-primary/50 transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5">
                 <CardHeader>
                   <div className="flex items-start justify-between mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     {stats && (
@@ -122,12 +122,20 @@ function EventsContent() {
                         <span>{stats.attempted} questions practiced</span>
                       </div>
                     )}
-                    <Button asChild className="w-full font-semibold" size="lg">
-                      <Link href={`/practice/${event.id}`}>
-                        <Play className="mr-2 h-4 w-4" />
-                        Practice Now
-                      </Link>
-                    </Button>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button asChild className="font-semibold" size="lg">
+                        <Link href={`/practice/${event.id}`}>
+                          <Play className="mr-2 h-4 w-4" />
+                          Practice
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" className="font-semibold bg-transparent" size="lg">
+                        <Link href={`/resources/${event.id}`}>
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Resources
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
