@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { HOSA_EVENTS } from "@/lib/events";
 import { rtdbGet, rtdbPatch, rtdbPost, rtdbSet } from "@/lib/rtdb";
+import { calculateSitewideStats } from "@/lib/sitewide-stats";
 import { toast } from "sonner";
 
 type UserRecord = {
@@ -160,6 +161,15 @@ function AdminContent() {
       .sort((a, b) => b.count - a.count || a.eventName.localeCompare(b.eventName));
   }, [eventRequests]);
 
+  const sitewideStats = useMemo(() => calculateSitewideStats(users), [users]);
+
+  useEffect(() => {
+    if (loading) return;
+    void rtdbSet("admin_stats/sitewide", sitewideStats).catch(() => {
+      // Silent failure: stats UI still renders from live calculations.
+    });
+  }, [loading, sitewideStats]);
+
   const updateRole = async (uid: string, currentRole?: string) => {
     const nextRole = currentRole === "admin" ? "user" : "admin";
     try {
@@ -230,8 +240,9 @@ function AdminContent() {
         <p className="text-muted-foreground">Loading admin data...</p>
       ) : (
         <Tabs defaultValue="users">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="users">User Management</TabsTrigger>
+            <TabsTrigger value="stats">Sitewide Stats</TabsTrigger>
             <TabsTrigger value="events">Event Requests</TabsTrigger>
             <TabsTrigger value="submissions">Question Submissions</TabsTrigger>
             <TabsTrigger value="reports">Question Reports</TabsTrigger>
@@ -255,6 +266,79 @@ function AdminContent() {
                 </CardContent>
               </Card>
             ))}
+          </TabsContent>
+
+          <TabsContent value="stats" className="mt-4 space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Adoption</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-2 text-sm md:grid-cols-2">
+                <p>Total users: <strong>{sitewideStats.adoption.totalUsers}</strong></p>
+                <p>New users (last 7 days): <strong>{sitewideStats.adoption.newUsersLast7Days}</strong></p>
+                <p>Active users (last 7 days): <strong>{sitewideStats.adoption.activeUsersLast7Days}</strong></p>
+                <p>Growth rate (week over week): <strong>{sitewideStats.adoption.growthRateWeekOverWeek}%</strong></p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Engagement</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-2 text-sm md:grid-cols-2">
+                <p>Total sessions completed: <strong>{sitewideStats.engagement.totalSessionsCompleted}</strong></p>
+                <p>Avg sessions per user: <strong>{sitewideStats.engagement.avgSessionsPerUser}</strong></p>
+                <p>Avg questions per session: <strong>{sitewideStats.engagement.avgQuestionsPerSession}</strong></p>
+                <p>Avg time per session: <strong>{sitewideStats.engagement.avgTimePerSessionSeconds}s</strong></p>
+                <p>% users who return after first session: <strong>{sitewideStats.engagement.retentionAfterFirstSessionPct}%</strong></p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Learning Effectiveness</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-2 text-sm md:grid-cols-2">
+                <p>Overall average accuracy: <strong>{sitewideStats.learningEffectiveness.overallAverageAccuracyPct}%</strong></p>
+                <p>Redemption round avg accuracy: <strong>{sitewideStats.learningEffectiveness.redemptionRoundAvgAccuracyPct}%</strong></p>
+                <p>Avg improvement (last - first in same event): <strong>{sitewideStats.learningEffectiveness.avgImprovementFirstToLastSameEventPct}%</strong></p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Content Analytics</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm">
+                <p>Most used event: <strong>{sitewideStats.contentAnalytics.mostUsedEvent}</strong></p>
+                <p>Least used event: <strong>{sitewideStats.contentAnalytics.leastUsedEvent}</strong></p>
+                <p>Total questions attempted: <strong>{sitewideStats.contentAnalytics.totalQuestionsAttempted}</strong></p>
+                <div>
+                  <p className="mb-1 font-medium">Average accuracy per event</p>
+                  <div className="grid gap-1 md:grid-cols-2">
+                    {Object.entries(sitewideStats.contentAnalytics.averageAccuracyPerEvent).map(([eventName, accuracy]) => (
+                      <p key={eventName}>{eventName}: <strong>{accuracy}%</strong></p>
+                    ))}
+                    {Object.keys(sitewideStats.contentAnalytics.averageAccuracyPerEvent).length === 0 && (
+                      <p className="text-muted-foreground">No event session data yet.</p>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Retention</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-2 text-sm md:grid-cols-2">
+                <p>Avg days between sessions per user: <strong>{sitewideStats.retention.avgDaysBetweenSessionsPerUser}</strong></p>
+                <p>% users with ≥2 sessions: <strong>{sitewideStats.retention.usersWithAtLeast2SessionsPct}%</strong></p>
+                <p>% users with ≥5 sessions: <strong>{sitewideStats.retention.usersWithAtLeast5SessionsPct}%</strong></p>
+              </CardContent>
+            </Card>
+
+            <p className="text-xs text-muted-foreground">Last refreshed: {dateLabel(sitewideStats.generatedAt)}</p>
           </TabsContent>
 
           <TabsContent value="events" className="mt-4">
