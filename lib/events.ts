@@ -8,7 +8,7 @@ icon: any;
 questionBankFile: string;
 }
 
-export const HOSA_EVENTS: HosaEvent[] = [
+ export const HOSA_EVENTS: HosaEvent[] = [
 {
 id: "medical-terminology",
 name: "Medical Terminology",
@@ -43,7 +43,7 @@ name: "Health Informatics",
 description: "Assess knowledge of health information systems, data management, electronic health records, and the use of technology to improve patient care, safety, and healthcare outcomes",
 icon: Library,
 questionBankFile: "/questions/health-informatics.json"
-},
+}/*,
 {
 id: "nutrition",
 name: "Nutrition",
@@ -71,7 +71,7 @@ name: "Behavioral Health",
 description: "Assess knowledge of mental health disorders, psychological concepts, and therapeutic approaches used in behavioral health care",
 icon: Heart,
 questionBankFile: "/questions/behavioral-health.json"
-}
+}*/
 ];
 
 export function getEventById(eventId: string): HosaEvent | undefined {
