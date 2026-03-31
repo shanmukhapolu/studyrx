@@ -1,17 +1,20 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, Trash2, X } from "lucide-react";
+import { Check, BarChart3, Trash2, X } from "lucide-react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
+import { useAuth } from "@/components/auth/auth-provider";
 import { AdminGuard } from "@/components/auth/admin-guard";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { HOSA_EVENTS } from "@/lib/events";
+import { getEventName, HOSA_EVENTS } from "@/lib/events";
 import { rtdbGet, rtdbPatch, rtdbPost, rtdbSet } from "@/lib/rtdb";
+import { DEFAULT_USER_SETTINGS, type QuestionAttempt, type SessionData, type UserSettings } from "@/lib/storage";
+import { formatDuration } from "@/lib/session-analytics";
 import { calculateSitewideStats } from "@/lib/sitewide-stats";
 import { toast } from "sonner";
 
@@ -21,6 +24,12 @@ type UserRecord = {
   role?: "user" | "admin";
   createdAt?: string;
   lastLogin?: string;
+  settings?: UserSettings;
+  events?: Record<string, UserEventRecord>;
+};
+
+type UserEventRecord = {
+  sessions?: Record<string, Partial<SessionData> & { attempts?: string | QuestionAttempt[] }>;
 };
 
 type EventRequest = {
@@ -94,6 +103,7 @@ export default function AdminPage() {
 }
 
 function AdminContent() {
+  const { user: currentUser } = useAuth();
   const [users, setUsers] = useState<Record<string, UserRecord>>({});
   const [eventRequests, setEventRequests] = useState<EventRequest[]>([]);
   const [questionSubmissions, setQuestionSubmissions] = useState<QuestionSubmission[]>([]);
@@ -102,7 +112,9 @@ function AdminContent() {
   const [loading, setLoading] = useState(true);
   const [selectedEventFilter, setSelectedEventFilter] = useState("all");
   const [selectedSubmission, setSelectedSubmission] = useState<QuestionSubmission | null>(null);
+  const [selectedAnalyticsUser, setSelectedAnalyticsUser] = useState<{ uid: string; user: UserRecord } | null>(null);
   const [adminNotes, setAdminNotes] = useState("");
+  const [draftNames, setDraftNames] = useState<Record<string, string>>({});
 
   const loadAll = async () => {
     const [usersData, eventReqData, questionSubData, questionReportsData, feedbackData] = await Promise.all([
@@ -171,6 +183,10 @@ function AdminContent() {
   }, [loading, sitewideStats]);
 
   const updateRole = async (uid: string, currentRole?: string) => {
+    if (currentUser?.uid === uid) {
+      toast.error("You can't change your own admin role.");
+      return;
+    }
     const nextRole = currentRole === "admin" ? "user" : "admin";
     try {
       await rtdbPatch(`users/${uid}`, { role: nextRole });
@@ -178,6 +194,22 @@ function AdminContent() {
       toast.success(`Updated role to ${nextRole}.`);
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Failed to update role.");
+    }
+  };
+
+  const updateUserName = async (uid: string, name: string) => {
+    const trimmed = name.trim();
+    if (!trimmed) {
+      toast.error("Name cannot be empty.");
+      return;
+    }
+
+    try {
+      await rtdbPatch(`users/${uid}`, { name: trimmed });
+      setUsers((prev) => ({ ...prev, [uid]: { ...prev[uid], name: trimmed } }));
+      toast.success("Updated user name.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to update name.");
     }
   };
 
@@ -258,9 +290,30 @@ function AdminContent() {
                     <p className="font-semibold">{user.name || "Unnamed User"} · {user.role || "user"}</p>
                     <p className="truncate text-muted-foreground">{user.email || uid}</p>
                     <p className="text-xs text-muted-foreground">Created: {dateLabel(user.createdAt)} · Last login: {dateLabel(user.lastLogin)}</p>
+                    <div className="mt-3 flex max-w-md gap-2">
+                      <Input
+                        value={draftNames[uid] ?? user.name ?? ""}
+                        onChange={(event) => setDraftNames((prev) => ({ ...prev, [uid]: event.target.value }))}
+                        placeholder="Update user name"
+                        className="h-8"
+                      />
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => void updateUserName(uid, draftNames[uid] ?? user.name ?? "")}
+                      >
+                        Save Name
+                      </Button>
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button size="sm" onClick={() => void updateRole(uid, user.role)}>Toggle Role</Button>
+                  <div className="flex flex-wrap justify-end gap-2">
+                    <Button size="sm" variant="outline" onClick={() => setSelectedAnalyticsUser({ uid, user })}>
+                      <BarChart3 className="mr-1 h-4 w-4" />
+                      Analytics
+                    </Button>
+                    <Button size="sm" onClick={() => void updateRole(uid, user.role)} disabled={currentUser?.uid === uid}>
+                      Toggle Role
+                    </Button>
                     <Button size="sm" variant="outline" onClick={() => void deleteNode(`users/${uid}`)}>Delete</Button>
                   </div>
                 </CardContent>
@@ -503,6 +556,172 @@ function AdminContent() {
           </Card>
         </div>
       )}
+
+      {selectedAnalyticsUser && (
+        <UserAnalyticsModal
+          uid={selectedAnalyticsUser.uid}
+          user={selectedAnalyticsUser.user}
+          onClose={() => setSelectedAnalyticsUser(null)}
+        />
+      )}
     </div>
   );
+}
+
+function UserAnalyticsModal({ uid, user, onClose }: { uid: string; user: UserRecord; onClose: () => void }) {
+  const sessions = useMemo(() => normalizeUserSessions(user), [user]);
+  const settings = user.settings ?? DEFAULT_USER_SETTINGS;
+  const attempts = sessions.flatMap((session) => session.attempts);
+  const primaryAttempts = attempts.filter((attempt) => !attempt.isRedemption);
+  const redemptionAttempts = attempts.filter((attempt) => attempt.isRedemption);
+  const correctPrimary = primaryAttempts.filter((attempt) => attempt.isCorrect).length;
+  const totalThink = primaryAttempts.reduce((sum, attempt) => sum + attempt.thinkTime, 0);
+  const totalExplanation = primaryAttempts.reduce((sum, attempt) => sum + attempt.explanationTime, 0);
+  const totalQuestions = primaryAttempts.length;
+  const avgThink = totalQuestions ? totalThink / totalQuestions : 0;
+  const avgExplanation = totalQuestions ? totalExplanation / totalQuestions : 0;
+  const redemptionCorrect = redemptionAttempts.filter((attempt) => attempt.isCorrect).length;
+
+  const eventStats = useMemo(() => {
+    const perEvent: Record<string, { attempts: number; correct: number; thinkTime: number }> = {};
+    primaryAttempts.forEach((attempt) => {
+      const eventId = attempt.eventId || "unknown";
+      if (!perEvent[eventId]) {
+        perEvent[eventId] = { attempts: 0, correct: 0, thinkTime: 0 };
+      }
+      perEvent[eventId].attempts += 1;
+      perEvent[eventId].thinkTime += attempt.thinkTime;
+      if (attempt.isCorrect) perEvent[eventId].correct += 1;
+    });
+    return Object.entries(perEvent)
+      .map(([eventId, stats]) => ({
+        eventId,
+        attempts: stats.attempts,
+        accuracy: stats.attempts ? (stats.correct / stats.attempts) * 100 : 0,
+        avgThink: stats.attempts ? stats.thinkTime / stats.attempts : 0,
+      }))
+      .sort((a, b) => b.attempts - a.attempts);
+  }, [primaryAttempts]);
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/60 p-4">
+      <Card className="mx-auto flex h-full w-full max-w-5xl flex-col overflow-hidden">
+        <CardHeader className="flex flex-row items-start justify-between border-b">
+          <div>
+            <CardTitle>{user.name || "Unnamed User"} · Analytics</CardTitle>
+            <p className="text-sm text-muted-foreground">{user.email || uid}</p>
+          </div>
+          <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close analytics">
+            <X className="h-4 w-4" />
+          </Button>
+        </CardHeader>
+        <CardContent className="space-y-4 overflow-auto p-4">
+          {attempts.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No analytics data yet for this user.</p>
+          ) : (
+            <>
+              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                <MetricItem label="Sessions Completed" value={`${sessions.length}`} />
+                <MetricItem label="Questions Answered" value={`${totalQuestions}`} />
+                <MetricItem label="Accuracy" value={`${(totalQuestions ? (correctPrimary / totalQuestions) * 100 : 0).toFixed(1)}%`} />
+                <MetricItem label="Total Practice Time" value={formatDuration(totalThink + totalExplanation)} />
+                <MetricItem label="Avg Think Time" value={`${avgThink.toFixed(1)}s`} />
+                {settings.showExplanationTime && <MetricItem label="Avg Explanation Time" value={`${avgExplanation.toFixed(1)}s`} />}
+                <MetricItem label="Redemption Attempts" value={`${redemptionAttempts.length}`} />
+                <MetricItem
+                  label="Redemption Accuracy"
+                  value={`${(redemptionAttempts.length ? (redemptionCorrect / redemptionAttempts.length) * 100 : 0).toFixed(1)}%`}
+                />
+              </div>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Event Breakdown</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm">
+                  {eventStats.map((event) => (
+                    <div key={event.eventId} className="flex items-center justify-between rounded-md border p-2">
+                      <span className="font-medium">{getEventName(event.eventId)}</span>
+                      <span className="text-muted-foreground">
+                        {event.attempts} Q • {event.accuracy.toFixed(1)}% • {event.avgThink.toFixed(1)}s avg think
+                      </span>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Recent Sessions</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm">
+                  {sessions
+                    .slice()
+                    .sort((a, b) => new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime())
+                    .slice(0, 8)
+                    .map((session) => (
+                      <div key={session.sessionId} className="rounded-md border p-2">
+                        <p className="font-medium">{getEventName(session.event)} · {new Date(session.startTimestamp).toLocaleString()}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {session.totalQuestions} Q • {session.accuracy.toFixed(1)}% • {formatDuration(session.totalThinkTime + session.totalExplanationTime)}
+                        </p>
+                      </div>
+                    ))}
+                </CardContent>
+              </Card>
+            </>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function MetricItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border bg-muted/40 p-3">
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="text-lg font-semibold">{value}</p>
+    </div>
+  );
+}
+
+function normalizeUserSessions(user: UserRecord): SessionData[] {
+  const events = user.events ?? {};
+  return Object.entries(events).flatMap(([eventId, event]) => {
+    const sessions = event.sessions ?? {};
+    return Object.values(sessions).map((session) => {
+      const rawAttempts = session.attempts;
+      let attempts: QuestionAttempt[] = [];
+      if (typeof rawAttempts === "string") {
+        try {
+          const parsed = JSON.parse(rawAttempts);
+          if (Array.isArray(parsed)) attempts = parsed as QuestionAttempt[];
+        } catch {
+          attempts = [];
+        }
+      } else if (Array.isArray(rawAttempts)) {
+        attempts = rawAttempts;
+      }
+
+      const totalQuestions = session.totalQuestions ?? attempts.length;
+      const correctCount = session.correctCount ?? attempts.filter((attempt) => attempt.isCorrect).length;
+      const totalThinkTime = session.totalThinkTime ?? attempts.reduce((sum, attempt) => sum + (attempt.thinkTime || 0), 0);
+      const totalExplanationTime = session.totalExplanationTime ?? attempts.reduce((sum, attempt) => sum + (attempt.explanationTime || 0), 0);
+
+      return {
+        sessionId: session.sessionId ?? `${eventId}-${Math.random().toString(36).slice(2, 8)}`,
+        sessionType: session.sessionType ?? "practice",
+        event: session.event ?? eventId,
+        startTimestamp: session.startTimestamp ?? session.startTime ?? new Date().toISOString(),
+        endTimestamp: session.endTimestamp ?? session.endTime,
+        totalThinkTime,
+        totalExplanationTime,
+        totalQuestions,
+        correctCount,
+        accuracy: session.accuracy ?? (totalQuestions ? (correctCount / totalQuestions) * 100 : 0),
+        attempts,
+      };
+    });
+  });
 }
