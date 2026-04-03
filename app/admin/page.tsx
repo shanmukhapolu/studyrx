@@ -343,6 +343,8 @@ function AdminContent() {
                 <p>Avg sessions per user: <strong>{sitewideStats.engagement.avgSessionsPerUser}</strong></p>
                 <p>Avg questions per session: <strong>{sitewideStats.engagement.avgQuestionsPerSession}</strong></p>
                 <p>Avg time per session: <strong>{sitewideStats.engagement.avgTimePerSessionSeconds}s</strong></p>
+                <p>Total think time: <strong>{sitewideStats.engagement.totalThinkTimeSeconds}s</strong></p>
+                <p>Total explanation time: <strong>{sitewideStats.engagement.totalExplanationTimeSeconds}s</strong></p>
                 <p>% users who return after first session: <strong>{sitewideStats.engagement.retentionAfterFirstSessionPct}%</strong></p>
               </CardContent>
             </Card>

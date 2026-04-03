@@ -3,13 +3,26 @@ import { getEventName } from "@/lib/events";
 type UserRecord = {
   createdAt?: string;
   lastLogin?: string;
-  events?: Record<string, { sessions?: Record<string, { attempts?: string | SiteAttempt[]; accuracy?: number; startTimestamp?: string; endTimestamp?: string; startTime?: string; endTime?: string }> }>;
+  events?: Record<string, { sessions?: Record<string, RawSiteSession> }>;
+};
+
+type RawSiteSession = {
+  attempts?: string | SiteAttempt[];
+  accuracy?: number;
+  totalThinkTime?: number;
+  totalExplanationTime?: number;
+  startTimestamp?: string;
+  endTimestamp?: string;
+  startTime?: string;
+  endTime?: string;
 };
 
 type SiteAttempt = {
   isCorrect?: boolean;
   isRedemption?: boolean;
   eventId?: string;
+  thinkTime?: number;
+  explanationTime?: number;
 };
 
 type SiteSession = {
@@ -18,6 +31,8 @@ type SiteSession = {
   eventId: string;
   accuracy: number;
   attempts: SiteAttempt[];
+  totalThinkTime?: number;
+  totalExplanationTime?: number;
   startTimestamp?: string;
   endTimestamp?: string;
 };
@@ -34,6 +49,8 @@ export type SitewideStats = {
     avgSessionsPerUser: number;
     avgQuestionsPerSession: number;
     avgTimePerSessionSeconds: number;
+    totalThinkTimeSeconds: number;
+    totalExplanationTimeSeconds: number;
     retentionAfterFirstSessionPct: number;
   };
   learningEffectiveness: {
@@ -89,11 +106,19 @@ function collectSessions(users: Record<string, UserRecord>) {
       const eventSessions = eventRecord.sessions ?? {};
       Object.entries(eventSessions).forEach(([sessionId, rawSession]) => {
         const attempts = parseAttempts(rawSession.attempts);
+        const derivedThinkTime = attempts.reduce((sum, attempt) => sum + (attempt.thinkTime ?? 0), 0);
+        const derivedExplanationTime = attempts.reduce((sum, attempt) => sum + (attempt.explanationTime ?? 0), 0);
         sessions.push({
           uid,
           sessionId,
           eventId,
           attempts,
+          totalThinkTime: typeof rawSession.totalThinkTime === "number"
+            ? rawSession.totalThinkTime
+            : derivedThinkTime,
+          totalExplanationTime: typeof rawSession.totalExplanationTime === "number"
+            ? rawSession.totalExplanationTime
+            : derivedExplanationTime,
           accuracy: typeof rawSession.accuracy === "number" ? rawSession.accuracy : (attempts.length ? (attempts.filter((attempt) => attempt.isCorrect).length / attempts.length) * 100 : 0),
           startTimestamp: rawSession.startTimestamp ?? rawSession.startTime,
           endTimestamp: rawSession.endTimestamp ?? rawSession.endTime,
@@ -103,6 +128,16 @@ function collectSessions(users: Record<string, UserRecord>) {
   });
 
   return sessions;
+}
+
+function getSessionActiveTimeSeconds(session: SiteSession) {
+  const thinkTime = session.totalThinkTime ?? session.attempts.reduce((total, attempt) => total + (attempt.thinkTime ?? 0), 0);
+  const explanationTime = session.totalExplanationTime ?? session.attempts.reduce((total, attempt) => total + (attempt.explanationTime ?? 0), 0);
+  return {
+    thinkTime,
+    explanationTime,
+    total: thinkTime + explanationTime,
+  };
 }
 
 export function calculateSitewideStats(users: Record<string, UserRecord>, now = new Date()): SitewideStats {
@@ -155,18 +190,17 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
   const totalQuestionsAttempted = sessions.reduce((sum, session) => sum + session.attempts.length, 0);
   const avgQuestionsPerSession = safeAverage(totalQuestionsAttempted, totalSessionsCompleted);
 
-  const totalSessionTimeMs = sessions.reduce((sum, session) => {
-    const startMs = toMillis(session.startTimestamp);
-    const endMs = toMillis(session.endTimestamp);
-    if (startMs === null || endMs === null || endMs < startMs) return sum;
-    return sum + (endMs - startMs);
-  }, 0);
-  const sessionsWithDuration = sessions.filter((session) => {
-    const startMs = toMillis(session.startTimestamp);
-    const endMs = toMillis(session.endTimestamp);
-    return startMs !== null && endMs !== null && endMs >= startMs;
-  }).length;
-  const avgTimePerSessionSeconds = safeAverage(totalSessionTimeMs / 1000, sessionsWithDuration);
+  const timeTotals = sessions.reduce((totals, session) => {
+    const activeTime = getSessionActiveTimeSeconds(session);
+    totals.think += activeTime.thinkTime;
+    totals.explanation += activeTime.explanationTime;
+    totals.total += activeTime.total;
+    return totals;
+  }, { think: 0, explanation: 0, total: 0 });
+  const totalThinkTimeSeconds = timeTotals.think;
+  const totalExplanationTimeSeconds = timeTotals.explanation;
+  const totalActiveTimeSeconds = timeTotals.total;
+  const avgTimePerSessionSeconds = safeAverage(totalActiveTimeSeconds, totalSessionsCompleted);
 
   const usersWithSessions = Array.from(sessionsByUser.values()).filter((items) => items.length > 0);
   const usersWhoReturnedAfterFirst = usersWithSessions.filter((items) => items.length > 1).length;
@@ -247,6 +281,8 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
       avgSessionsPerUser: round2(avgSessionsPerUser),
       avgQuestionsPerSession: round2(avgQuestionsPerSession),
       avgTimePerSessionSeconds: round2(avgTimePerSessionSeconds),
+      totalThinkTimeSeconds: round2(totalThinkTimeSeconds),
+      totalExplanationTimeSeconds: round2(totalExplanationTimeSeconds),
       retentionAfterFirstSessionPct: round2(retentionAfterFirstSessionPct),
     },
     learningEffectiveness: {
