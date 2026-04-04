@@ -20,9 +20,12 @@ export const QUESTION_SESSION_OPTIONS = ["10", "25", "50", "100", "Infinite"] as
 export const HOSA_CHARTER_ORGANIZATIONS = [
   "Alabama",
   "Alaska",
+  "American Samoa",
   "Arizona",
   "Arkansas",
   "California",
+  "Canada",
+  "China",
   "Colorado",
   "Connecticut",
   "Delaware",
@@ -35,11 +38,13 @@ export const HOSA_CHARTER_ORGANIZATIONS = [
   "Indiana",
   "Iowa",
   "Kansas",
+  "Korea",
   "Kentucky",
   "Louisiana",
   "Maine",
   "Maryland",
   "Massachusetts",
+  "Mexico",
   "Michigan",
   "Minnesota",
   "Mississippi",
@@ -57,6 +62,7 @@ export const HOSA_CHARTER_ORGANIZATIONS = [
   "Oklahoma",
   "Oregon",
   "Pennsylvania",
+  "Puerto Rico",
   "Rhode Island",
   "South Carolina",
   "South Dakota",
@@ -68,7 +74,6 @@ export const HOSA_CHARTER_ORGANIZATIONS = [
   "Washington",
   "West Virginia",
   "Wisconsin",
-  "Wyoming",
 ] as const;
 
 export interface OnboardingData {
