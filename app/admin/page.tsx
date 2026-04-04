@@ -24,6 +24,15 @@ type UserRecord = {
   role?: "user" | "admin";
   createdAt?: string;
   lastLogin?: string;
+  grade?: string;
+  referralSource?: string;
+  hosaEvents?: string[];
+  hosaEventsOther?: string;
+  experienceLevel?: string;
+  goal?: string;
+  charterOrganization?: string;
+  questionsPerSession?: string;
+  onboardingCompleted?: boolean;
   settings?: UserSettings;
   events?: Record<string, UserEventRecord>;
 };
@@ -290,6 +299,32 @@ function AdminContent() {
                     <p className="font-semibold">{user.name || "Unnamed User"} · {user.role || "user"}</p>
                     <p className="truncate text-muted-foreground">{user.email || uid}</p>
                     <p className="text-xs text-muted-foreground">Created: {dateLabel(user.createdAt)} · Last login: {dateLabel(user.lastLogin)}</p>
+                    <div className="mt-2 space-y-1 text-xs text-muted-foreground">
+                      <p>
+                        Onboarding:{" "}
+                        <span className={user.onboardingCompleted ? "text-green-600" : "text-amber-600"}>
+                          {user.onboardingCompleted ? "Completed" : "Incomplete"}
+                        </span>
+                      </p>
+                      {user.onboardingCompleted && (
+                        <details className="group mt-2 rounded-md border bg-muted/30 px-3 py-2">
+                          <summary className="cursor-pointer select-none text-xs font-medium text-foreground">
+                            View onboarding responses
+                          </summary>
+                          <div className="mt-2 space-y-1">
+                            <p>Grade: {user.grade || "—"}</p>
+                            <p>Referral Source: {user.referralSource || "—"}</p>
+                            <p>HOSA Events: {(user.hosaEvents && user.hosaEvents.length > 0) ? user.hosaEvents.join(", ") : "—"}</p>
+                            {user.hosaEvents?.includes("Other") && (
+                              <p>Other Event: {user.hosaEventsOther || "—"}</p>
+                            )}
+                            <p>Experience Level: {user.experienceLevel || "—"}</p>
+                            <p>Goal: {user.goal || "—"}</p>
+                            <p>Charter Organization: {user.charterOrganization || "—"}</p>
+                          </div>
+                        </details>
+                      )}
+                    </div>
                     <div className="mt-3 flex max-w-md gap-2">
                       <Input
                         value={draftNames[uid] ?? user.name ?? ""}

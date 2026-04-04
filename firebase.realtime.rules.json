@@ -22,6 +22,36 @@
         "lastLogin": {
           ".validate": "newData.isString() || !newData.exists()"
         },
+        "grade": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "referralSource": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "hosaEvents": {
+          ".validate": "newData.hasChildren() || !newData.exists()",
+          "$index": {
+            ".validate": "$index.matches(/^[0-9]+$/) && newData.isString()"
+          }
+        },
+        "hosaEventsOther": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "experienceLevel": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "goal": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "charterOrganization": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "questionsPerSession": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "onboardingCompleted": {
+          ".validate": "newData.isBoolean() || !newData.exists()"
+        },
         "settings": {
           "accuracyGoal": {
             ".validate": "newData.isNumber() && newData.val() >= 50 && newData.val() <= 100"

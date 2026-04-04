@@ -22,7 +22,7 @@ export default function SignUpPage() {
 }
 
 function SignUpContent() {
-  const { signUp, signInWithGoogle, user } = useAuth();
+  const { signUp, signInWithGoogle, user, onboardingCompleted } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
 
@@ -38,9 +38,9 @@ function SignUpContent() {
 
   useEffect(() => {
     if (user) {
-      router.replace(next);
+      router.replace(onboardingCompleted ? next : "/onboarding");
     }
-  }, [next, router, user]);
+  }, [next, onboardingCompleted, router, user]);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -59,7 +59,6 @@ function SignUpContent() {
     setLoading(true);
     try {
       await signUp({ firstName, lastName, email, password });
-      router.replace(next);
     } catch (err) {
       setError((err as Error).message || "Sign up failed");
     } finally {
@@ -92,7 +91,6 @@ function SignUpContent() {
             setLoading(true);
             try {
               await signInWithGoogle();
-              router.replace(next);
             } catch (err) {
               setError((err as Error).message || "Google sign up failed");
             } finally {
