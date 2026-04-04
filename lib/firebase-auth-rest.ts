@@ -26,6 +26,15 @@ export interface UserRecord {
   role: UserRole;
   createdAt: string;
   lastLogin: string;
+  grade?: string;
+  referralSource?: string;
+  hosaEvents?: string[];
+  hosaEventsOther?: string;
+  experienceLevel?: string;
+  goal?: string;
+  charterOrganization?: string;
+  questionsPerSession?: string;
+  onboardingCompleted?: boolean;
 }
 
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
@@ -248,6 +257,15 @@ export async function getUserRecord(idToken: string, uid: string): Promise<UserR
     role: userData.role === "admin" ? "admin" : "user",
     createdAt: typeof userData.createdAt === "string" ? userData.createdAt : "",
     lastLogin: typeof userData.lastLogin === "string" ? userData.lastLogin : "",
+    grade: typeof userData.grade === "string" ? userData.grade : undefined,
+    referralSource: typeof userData.referralSource === "string" ? userData.referralSource : undefined,
+    hosaEvents: Array.isArray(userData.hosaEvents) ? userData.hosaEvents.filter((event: unknown): event is string => typeof event === "string") : undefined,
+    hosaEventsOther: typeof userData.hosaEventsOther === "string" ? userData.hosaEventsOther : undefined,
+    experienceLevel: typeof userData.experienceLevel === "string" ? userData.experienceLevel : undefined,
+    goal: typeof userData.goal === "string" ? userData.goal : undefined,
+    charterOrganization: typeof userData.charterOrganization === "string" ? userData.charterOrganization : undefined,
+    questionsPerSession: typeof userData.questionsPerSession === "string" ? userData.questionsPerSession : undefined,
+    onboardingCompleted: userData.onboardingCompleted === true,
   };
 }
 

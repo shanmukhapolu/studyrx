@@ -19,18 +19,21 @@ import {
   type UserProfile,
 } from "@/lib/firebase-auth-rest";
 import { signInWithGooglePopup } from "@/lib/firebase-web";
+import type { OnboardingData } from "@/lib/onboarding";
 
 interface AuthContextValue {
   user: AuthUser | null;
   profile: UserProfile | null;
   role: UserRole;
   isAdmin: boolean;
+  onboardingCompleted: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (input: { firstName: string; lastName: string; email: string; password: string }) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   updateName: (input: { firstName: string; lastName: string }) => Promise<void>;
   sendPasswordReset: () => Promise<void>;
+  completeOnboarding: (payload: Omit<OnboardingData, "onboardingCompleted">) => Promise<void>;
   signOut: () => void;
 }
 
@@ -135,6 +138,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [role, setRole] = useState<UserRole>("user");
+  const [onboardingCompleted, setOnboardingCompleted] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -173,6 +177,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
         setRole(userRecord?.role === "admin" ? "admin" : "user");
+        setOnboardingCompleted(userRecord?.onboardingCompleted === true);
       } catch {
         localStorage.removeItem(STORAGE_KEY);
       } finally {
@@ -192,6 +197,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       profile,
       role,
       isAdmin: isAdmin({ role }),
+      onboardingCompleted,
       loading,
       signIn: async (email, password) => {
         let session = ensureSessionUid(await signInWithEmail(email, password));
@@ -206,12 +212,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           role: existingRecord?.role || "user",
           createdAt: existingRecord?.createdAt || now,
           lastLogin: now,
+          onboardingCompleted: existingRecord?.onboardingCompleted ?? false,
         });
 
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
         setRole(existingRecord?.role === "admin" ? "admin" : "user");
+        setOnboardingCompleted(existingRecord?.onboardingCompleted === true);
       },
       signUp: async ({ firstName, lastName, email, password }) => {
         let session = ensureSessionUid(await signUpWithEmail(email, password));
@@ -237,10 +245,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           role: "user",
           createdAt: now,
           lastLogin: now,
+          onboardingCompleted: false,
         });
         setUser(session.user);
         setProfile({ firstName, lastName });
         setRole("user");
+        setOnboardingCompleted(false);
       },
       signInWithGoogle: async () => {
         let session = ensureSessionUid(await signInWithGooglePopup());
@@ -265,12 +275,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           role: existingRecord?.role || "user",
           createdAt: existingRecord?.createdAt || now,
           lastLogin: now,
+          onboardingCompleted: existingRecord?.onboardingCompleted ?? false,
         });
 
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || parsedProfile);
         setRole(existingRecord?.role === "admin" ? "admin" : "user");
+        setOnboardingCompleted(existingRecord?.onboardingCompleted === true);
       },
       updateName: async ({ firstName, lastName }) => {
         const currentSession = await getFreshSession();
@@ -309,14 +321,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
         await sendPasswordResetEmail(email);
       },
+      completeOnboarding: async (payload) => {
+        const currentSession = await getFreshSession();
+        await upsertUserRecord(currentSession.idToken, currentSession.user.uid, {
+          ...payload,
+          onboardingCompleted: true,
+        });
+        setOnboardingCompleted(true);
+      },
       signOut: () => {
         localStorage.removeItem(STORAGE_KEY);
         setUser(null);
         setProfile(null);
         setRole("user");
+        setOnboardingCompleted(false);
       },
     }),
-    [loading, role, user]
+    [loading, onboardingCompleted, role, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
