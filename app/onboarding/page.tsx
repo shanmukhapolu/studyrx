@@ -41,20 +41,6 @@ export default function OnboardingPage() {
   const [search, setSearch] = useState("");
   const [form, setForm] = useState<FormState>(INITIAL_STATE);
   const [saving, setSaving] = useState(false);
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.replace("/auth/signin?next=%2Fonboarding");
-    }
-    if (!loading && user && onboardingCompleted) {
-      router.replace("/dashboard");
-    }
-  }, [loading, onboardingCompleted, router, user]);
-
-  if (loading || !user || onboardingCompleted) {
-    return <div className="min-h-screen flex items-center justify-center text-muted-foreground">Loading onboarding...</div>;
-  }
-
   const progress = (step / TOTAL_STEPS) * 100;
 
   const filteredStates = useMemo(() => {
@@ -71,6 +57,19 @@ export default function OnboardingPage() {
     (step === 5 && !!form.goal) ||
     (step === 6 && !!form.charterOrganization) ||
     (step === 7 && !!form.questionsPerSession);
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/auth/signin?next=%2Fonboarding");
+    }
+    if (!loading && user && onboardingCompleted) {
+      router.replace("/dashboard");
+    }
+  }, [loading, onboardingCompleted, router, user]);
+
+  if (loading || !user || onboardingCompleted) {
+    return <div className="min-h-screen flex items-center justify-center text-muted-foreground">Loading onboarding...</div>;
+  }
 
   const toggleEvent = (event: string) => {
     setForm((prev) => ({
