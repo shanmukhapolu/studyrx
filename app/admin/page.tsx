@@ -307,18 +307,22 @@ function AdminContent() {
                         </span>
                       </p>
                       {user.onboardingCompleted && (
-                        <>
-                          <p>Grade: {user.grade || "—"}</p>
-                          <p>Referral Source: {user.referralSource || "—"}</p>
-                          <p>HOSA Events: {(user.hosaEvents && user.hosaEvents.length > 0) ? user.hosaEvents.join(", ") : "—"}</p>
-                          {user.hosaEvents?.includes("Other") && (
-                            <p>Other Event: {user.hosaEventsOther || "—"}</p>
-                          )}
-                          <p>Experience Level: {user.experienceLevel || "—"}</p>
-                          <p>Goal: {user.goal || "—"}</p>
-                          <p>Charter Organization: {user.charterOrganization || "—"}</p>
-                          <p>Questions/Session: {user.questionsPerSession || "—"}</p>
-                        </>
+                        <details className="group mt-2 rounded-md border bg-muted/30 px-3 py-2">
+                          <summary className="cursor-pointer select-none text-xs font-medium text-foreground">
+                            View onboarding responses
+                          </summary>
+                          <div className="mt-2 space-y-1">
+                            <p>Grade: {user.grade || "—"}</p>
+                            <p>Referral Source: {user.referralSource || "—"}</p>
+                            <p>HOSA Events: {(user.hosaEvents && user.hosaEvents.length > 0) ? user.hosaEvents.join(", ") : "—"}</p>
+                            {user.hosaEvents?.includes("Other") && (
+                              <p>Other Event: {user.hosaEventsOther || "—"}</p>
+                            )}
+                            <p>Experience Level: {user.experienceLevel || "—"}</p>
+                            <p>Goal: {user.goal || "—"}</p>
+                            <p>Charter Organization: {user.charterOrganization || "—"}</p>
+                          </div>
+                        </details>
                       )}
                     </div>
                     <div className="mt-3 flex max-w-md gap-2">

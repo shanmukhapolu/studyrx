@@ -35,6 +35,9 @@ export interface UserRecord {
   charterOrganization?: string;
   questionsPerSession?: string;
   onboardingCompleted?: boolean;
+  settings?: {
+    sessionQuestionLimit?: 10 | 25 | 50 | 100 | "unlimited";
+  };
 }
 
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
@@ -266,6 +269,19 @@ export async function getUserRecord(idToken: string, uid: string): Promise<UserR
     charterOrganization: typeof userData.charterOrganization === "string" ? userData.charterOrganization : undefined,
     questionsPerSession: typeof userData.questionsPerSession === "string" ? userData.questionsPerSession : undefined,
     onboardingCompleted: userData.onboardingCompleted === true,
+    settings:
+      userData.settings && typeof userData.settings === "object"
+        ? {
+            sessionQuestionLimit:
+              userData.settings.sessionQuestionLimit === "unlimited" ||
+              userData.settings.sessionQuestionLimit === 10 ||
+              userData.settings.sessionQuestionLimit === 25 ||
+              userData.settings.sessionQuestionLimit === 50 ||
+              userData.settings.sessionQuestionLimit === 100
+                ? userData.settings.sessionQuestionLimit
+                : undefined,
+          }
+        : undefined,
   };
 }
 
