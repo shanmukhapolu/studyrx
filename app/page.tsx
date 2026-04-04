@@ -690,7 +690,7 @@ export default function HomePage() {
               <span className="text-lg font-bold text-foreground">StudyRx</span>
             </div>
             <div className="text-sm text-muted-foreground">
-              © 2024 StudyRx. Built for HOSA competitors.
+              © 2026 StudyRx. Built for HOSA competitors.
             </div>
           </div>
         </div>
