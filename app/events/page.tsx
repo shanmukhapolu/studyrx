@@ -88,6 +88,51 @@ function EventsContent() {
       </header>
 
       <main className="container mx-auto px-6 py-8 max-w-7xl">
+        <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+          <CardHeader>
+            <CardTitle className="text-lg">Practice Tips</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-3 text-sm">
+              <div className="flex items-start gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
+                  <span className="text-sm font-bold text-primary">1</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">Start with Basics</h4>
+                  <p className="text-muted-foreground">
+                    Begin with Medical Terminology to build a strong foundation
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 flex-shrink-0">
+                  <span className="text-sm font-bold text-accent">2</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">Practice Regularly</h4>
+                  <p className="text-muted-foreground">
+                    Consistent daily practice yields the best results
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-chart-3/10 flex-shrink-0">
+                  <span className="text-sm font-bold text-chart-3">3</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">Track Progress</h4>
+                  <p className="text-muted-foreground">
+                    Use analytics to identify areas needing improvement
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {HOSA_EVENTS.map((event) => {
             const stats = eventStats[event.id];
@@ -142,51 +187,6 @@ function EventsContent() {
             );
           })}
         </div>
-
-        <Card className="mt-8 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
-          <CardHeader>
-            <CardTitle className="text-lg">Practice Tips</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4 md:grid-cols-3 text-sm">
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                  <span className="text-sm font-bold text-primary">1</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Start with Basics</h4>
-                  <p className="text-muted-foreground">
-                    Begin with Medical Terminology to build a strong foundation
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 flex-shrink-0">
-                  <span className="text-sm font-bold text-accent">2</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Practice Regularly</h4>
-                  <p className="text-muted-foreground">
-                    Consistent daily practice yields the best results
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-chart-3/10 flex-shrink-0">
-                  <span className="text-sm font-bold text-chart-3">3</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Track Progress</h4>
-                  <p className="text-muted-foreground">
-                    Use analytics to identify areas needing improvement
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </main>
 
       {showRequestModal && (

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Clock, Target, TrendingUp, Play, ExternalLink, BookOpen, Video, FolderOpen, Sparkles, Zap } from "lucide-react";
+import { Brain, Clock, Target, TrendingUp, ExternalLink, Sparkles, Zap } from "lucide-react";
 import { DEFAULT_USER_SETTINGS, storage, type UserSettings, type UserStats } from "@/lib/storage";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
@@ -167,15 +167,14 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="glass-card tech-border bg-gradient-to-br from-accent/10 to-transparent">
+              <Card className="glass-card tech-border bg-gradient-to-br from-accent/10 to-transparent h-fit">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Zap className="h-5 w-5 text-accent" />
                     Quick Launch
                   </CardTitle>
-                  <CardDescription>Jump into practice with one click.</CardDescription>
                 </CardHeader>
-                <CardContent className="flex gap-3 flex-wrap">
+                <CardContent className="flex gap-3 flex-wrap pt-0">
                   <Button asChild variant="secondary">
                     <Link href="/events">Start Practice</Link>
                   </Button>
@@ -186,205 +185,23 @@ export default function DashboardPage() {
               </Card>
             </div>
 
-              {/* Start Practice CTA */}
               <Card className="border-border bg-gradient-to-br from-primary/5 to-accent/5">
                 <CardHeader>
-                  <CardTitle className="text-foreground">Ready to Practice?</CardTitle>
+                  <CardTitle className="text-foreground">Need a game plan?</CardTitle>
                   <CardDescription className="text-muted-foreground">
-                    {stats && stats.totalAttempts > 0
-                      ? "Continue your HOSA preparation and improve your performance"
-                      : "Choose an event to start practicing and tracking your progress"}
+                    Not sure where to start? Browse all events, then review the official guidelines before practicing.
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <Button asChild size="lg" className="font-semibold">
-                    <Link href="/events">
-                      <Play className="mr-2 h-4 w-4" />
-                      Browse Events
-                    </Link>
+                <CardContent className="flex flex-wrap gap-3">
+                  <Button asChild size="sm" variant="outline">
+                    <Link href="/events">Browse Events</Link>
                   </Button>
-                </CardContent>
-              </Card>
-
-              {/* Resources Section */}
-              <div className="grid gap-4 md:grid-cols-2">
-                {/* Study Resources */}
-                <Card className="border-border">
-                  <CardHeader>
-                    <div className="flex items-center gap-2">
-                      <BookOpen className="h-5 w-5 text-primary" />
-                      <CardTitle className="text-foreground">Study Resources</CardTitle>
-                    </div>
-                    <CardDescription className="text-muted-foreground">
-                      Essential materials for HOSA preparation
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <a
-                      href="https://hosa.org/competitive-events/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <BookOpen className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium text-foreground">HOSA Events Guide</p>
-                          <p className="text-xs text-muted-foreground">Official competitive events</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <Button asChild size="sm">
+                    <a href="https://hosa.org/competitive-events/" target="_blank" rel="noopener noreferrer">
+                      HOSA Guidelines
+                      <ExternalLink className="ml-2 h-4 w-4" />
                     </a>
-
-                    <a
-                      href="https://www.khanacademy.org/science/health-and-medicine"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <BookOpen className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium text-foreground">Khan Academy</p>
-                          <p className="text-xs text-muted-foreground">Health & medicine course</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </a>
-
-                    <a
-                      href="https://quizlet.com/subject/hosa/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <BookOpen className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium text-foreground">Quizlet HOSA Sets</p>
-                          <p className="text-xs text-muted-foreground">Flashcard study sets</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </a>
-                  </CardContent>
-                </Card>
-
-                {/* Video Resources */}
-                <Card className="border-border">
-                  <CardHeader>
-                    <div className="flex items-center gap-2">
-                      <Video className="h-5 w-5 text-accent" />
-                      <CardTitle className="text-foreground">Video Resources</CardTitle>
-                    </div>
-                    <CardDescription className="text-muted-foreground">
-                      Educational videos for visual learning
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <a
-                      href="https://www.youtube.com/@RegisteredNurseRN"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Video className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium text-foreground">RegisteredNurseRN</p>
-                          <p className="text-xs text-muted-foreground">Medical education videos</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
-                    </a>
-
-                    <a
-                      href="https://www.youtube.com/@crashcourse"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Video className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium text-foreground">CrashCourse</p>
-                          <p className="text-xs text-muted-foreground">Anatomy & physiology</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
-                    </a>
-
-                    <a
-                      href="https://www.youtube.com/@ArmandoHasudungan"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Video className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium text-foreground">Armando Hasudungan</p>
-                          <p className="text-xs text-muted-foreground">Medical illustrations</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
-                    </a>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Quick Tips */}
-              <Card className="border-border">
-                <CardHeader>
-                  <CardTitle className="text-foreground">HOSA Practice Tips</CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    Maximize your competitive event preparation
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-4 md:grid-cols-3">
-                    <div className="flex items-start gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                        <span className="text-sm font-bold text-primary">1</span>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-foreground mb-1">
-                          Multiple Events
-                        </h4>
-                        <p className="text-xs text-muted-foreground">
-                          Practice different HOSA events to find your strengths and interests
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 flex-shrink-0">
-                        <span className="text-sm font-bold text-accent">2</span>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-foreground mb-1">
-                          Track Progress
-                        </h4>
-                        <p className="text-xs text-muted-foreground">
-                          Use analytics to monitor per-event performance and identify areas for improvement
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-chart-3/10 flex-shrink-0">
-                        <span className="text-sm font-bold text-chart-3">3</span>
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-foreground mb-1">
-                          Master Terminology
-                        </h4>
-                        <p className="text-xs text-muted-foreground">
-                          Start with medical terminology as it builds foundation for other events
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  </Button>
                 </CardContent>
               </Card>
             </main>
