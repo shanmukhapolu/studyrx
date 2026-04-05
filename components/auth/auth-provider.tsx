@@ -6,6 +6,7 @@ import {
   getUserRecord,
   getUserProfile,
   isAdmin,
+  isContributor,
   refreshIdToken,
   saveUserProfile,
   sendPasswordResetEmail,
@@ -26,6 +27,7 @@ interface AuthContextValue {
   profile: UserProfile | null;
   role: UserRole;
   isAdmin: boolean;
+  isContributor: boolean;
   onboardingCompleted: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
@@ -176,7 +178,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
-        setRole(userRecord?.role === "admin" ? "admin" : "user");
+        setRole(userRecord?.role || "user");
         setOnboardingCompleted(userRecord?.onboardingCompleted === true);
       } catch {
         localStorage.removeItem(STORAGE_KEY);
@@ -197,6 +199,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       profile,
       role,
       isAdmin: isAdmin({ role }),
+      isContributor: isContributor({ role }),
       onboardingCompleted,
       loading,
       signIn: async (email, password) => {
@@ -218,7 +221,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || profileFromDisplayName(session.user.displayName));
-        setRole(existingRecord?.role === "admin" ? "admin" : "user");
+        setRole(existingRecord?.role || "user");
         setOnboardingCompleted(existingRecord?.onboardingCompleted === true);
       },
       signUp: async ({ firstName, lastName, email, password }) => {
@@ -281,7 +284,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const fetchedProfile = await getUserProfile(session.idToken, session.user.uid);
         setUser(session.user);
         setProfile(fetchedProfile || parsedProfile);
-        setRole(existingRecord?.role === "admin" ? "admin" : "user");
+        setRole(existingRecord?.role || "user");
         setOnboardingCompleted(existingRecord?.onboardingCompleted === true);
       },
       updateName: async ({ firstName, lastName }) => {

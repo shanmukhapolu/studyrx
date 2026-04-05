@@ -14,7 +14,7 @@
           ".validate": "newData.isString() || !newData.exists()"
         },
         "role": {
-          ".validate": "newData.val() === 'user' || newData.val() === 'admin'"
+          ".validate": "newData.val() === 'user' || newData.val() === 'contributor' || newData.val() === 'admin'"
         },
         "createdAt": {
           ".validate": "newData.isString() || !newData.exists()"
@@ -67,6 +67,12 @@
           },
           "$otherSetting": {
             ".validate": false
+          }
+        },
+        "question_submissions": {
+          "$submissionId": {
+            ".read": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || (auth.uid === $uid && root.child('users').child(auth.uid).child('role').val() === 'contributor'))",
+            ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || (auth.uid === $uid && root.child('users').child(auth.uid).child('role').val() === 'contributor'))"
           }
         },
         "events": {
@@ -144,7 +150,7 @@
       ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
       "$submissionId": {
         ".read": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || data.child('submittedBy').child('uid').val() === auth.uid)",
-        ".write": "auth != null"
+        ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || root.child('users').child(auth.uid).child('role').val() === 'contributor')"
       }
     },
     "question_reports": {

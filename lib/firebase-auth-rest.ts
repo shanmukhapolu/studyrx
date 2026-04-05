@@ -18,7 +18,7 @@ export interface UserProfile {
   lastName: string;
 }
 
-export type UserRole = "user" | "admin";
+export type UserRole = "user" | "contributor" | "admin";
 
 export interface UserRecord {
   name: string;
@@ -38,6 +38,12 @@ export interface UserRecord {
   settings?: {
     sessionQuestionLimit?: 10 | 25 | 50 | 100 | "unlimited";
   };
+}
+
+function normalizeUserRole(role: unknown): UserRole {
+  if (role === "admin") return "admin";
+  if (role === "contributor") return "contributor";
+  return "user";
 }
 
 const AUTH_BASE = "https://identitytoolkit.googleapis.com/v1";
@@ -257,7 +263,7 @@ export async function getUserRecord(idToken: string, uid: string): Promise<UserR
   return {
     name: typeof userData.name === "string" ? userData.name : "",
     email: typeof userData.email === "string" ? userData.email : "",
-    role: userData.role === "admin" ? "admin" : "user",
+    role: normalizeUserRole(userData.role),
     createdAt: typeof userData.createdAt === "string" ? userData.createdAt : "",
     lastLogin: typeof userData.lastLogin === "string" ? userData.lastLogin : "",
     grade: typeof userData.grade === "string" ? userData.grade : undefined,
@@ -326,4 +332,8 @@ export async function getUserProfile(idToken: string, uid: string): Promise<User
 
 export function isAdmin(user: { role?: string | null } | null | undefined): boolean {
   return user?.role === "admin";
+}
+
+export function isContributor(user: { role?: string | null } | null | undefined): boolean {
+  return user?.role === "contributor";
 }

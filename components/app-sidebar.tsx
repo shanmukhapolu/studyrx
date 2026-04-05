@@ -11,6 +11,7 @@ import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
+  SidebarSeparator,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
@@ -34,11 +35,6 @@ const navItems = [
     icon: BarChart3,
   },
   {
-    title: "Submit Question",
-    href: "/submit-question",
-    icon: FileQuestion,
-  },
-  {
     title: "Submit Feedback",
     href: "/submit-feedback",
     icon: MessageSquarePlus,
@@ -48,7 +44,8 @@ const navItems = [
 export function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { profile, user, signOut, isAdmin } = useAuth();
+  const { profile, user, signOut, isAdmin, isContributor } = useAuth();
+  const hasContributorAccess = isContributor || isAdmin;
   const fallbackName = user?.displayName?.trim() || "Student";
   const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
   const firstLabel = profile?.firstName || resolvedName;
@@ -87,6 +84,27 @@ export function AppSidebar() {
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
+        {hasContributorAccess && (
+          <div className="mt-6">
+            <SidebarSeparator className="mb-3" />
+            <p className="px-2 text-xs font-semibold tracking-wide text-sidebar-foreground/70">CONTRIBUTOR</p>
+            <SidebarMenu className="mt-2 space-y-2">
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/submit-question"}
+                  tooltip="Submit Question"
+                  className="py-6"
+                >
+                  <Link href="/submit-question">
+                    <FileQuestion className="h-5 w-5" />
+                    <span className="text-base">Submit Question</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </div>
+        )}
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border p-4">
         <details className="group rounded-xl border border-sidebar-border/70 bg-sidebar-accent/30">
