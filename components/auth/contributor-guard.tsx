@@ -6,16 +6,17 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/auth-provider";
 
 export function ContributorGuard({ children }: { children: React.ReactNode }) {
-  const { user, loading, isContributor } = useAuth();
+  const { user, loading, isContributor, isAdmin } = useAuth();
+  const hasContributorAccess = isContributor || isAdmin;
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && (!user || !isContributor)) {
+    if (!loading && (!user || !hasContributorAccess)) {
       router.replace("/dashboard");
     }
-  }, [isContributor, loading, router, user]);
+  }, [hasContributorAccess, loading, router, user]);
 
-  if (loading || !user || !isContributor) {
+  if (loading || !user || !hasContributorAccess) {
     return <div className="p-8 text-muted-foreground">Checking contributor access...</div>;
   }
 

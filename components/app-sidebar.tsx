@@ -45,6 +45,7 @@ export function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const { profile, user, signOut, isAdmin, isContributor } = useAuth();
+  const hasContributorAccess = isContributor || isAdmin;
   const fallbackName = user?.displayName?.trim() || "Student";
   const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
   const firstLabel = profile?.firstName || resolvedName;
@@ -83,7 +84,7 @@ export function AppSidebar() {
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
-        {isContributor && (
+        {hasContributorAccess && (
           <div className="mt-6">
             <SidebarSeparator className="mb-3" />
             <p className="px-2 text-xs font-semibold tracking-wide text-sidebar-foreground/70">CONTRIBUTOR</p>
