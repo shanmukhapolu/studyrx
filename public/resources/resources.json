@@ -2,50 +2,43 @@
   {
     "id": "med-term-official-guidelines",
     "eventId": "medical-terminology",
-    "title": "Medical Terminology Study Guide (PDF)",
-    "description": "Reference guide with roots, prefixes, suffixes, and common abbreviations.",
-    "link": "https://example.com/medical-terminology-guide.pdf"
+    "title": "HOSA Medical Terminology Guidelines",
+    "description": "Official HOSA Guidelines for Medical Terminology",
+    "link": "https://hosa.org/wp-content/uploads/2025/08/25-26-MT-Aug30.pdf"
   },
   {
-    "id": "med-term-practice-quiz",
-    "eventId": "medical-terminology",
-    "title": "Terminology Practice Quiz",
-    "description": "Interactive quiz to reinforce key terminology concepts.",
-    "link": "https://example.com/medical-terminology-practice"
+    "id": "resp-thera-official-guidelines",
+    "eventId": "respiratory-therapy",
+    "title": "HOSA Respiratory Therapy Guidelines",
+    "description": "Official HOSA Guidelines for Respiratory Therapy",
+    "link": "https://hosa.org/wp-content/uploads/2025/12/25-26-RT-Dec2.pdf"
   },
   {
-    "id": "nutrition-nutrition-basics",
-    "eventId": "nutrition",
-    "title": "Nutrition Fundamentals Notes",
-    "description": "Quick-reference notes for macro/micronutrients and dietary guidelines.",
-    "link": "https://example.com/nutrition-notes"
+    "id": "anat-phys-official-guidelines",
+    "eventId": "anatomy-and-physiology",
+    "title": "HOSA ATC Event Guidelines",
+    "description": "Official HOSA Guidelines for ATC Events",
+    "link": "https://hosa.org/wp-content/uploads/2026/03/25-26-ATC-Cengage-FINAL-March5-1.pdf"
   },
   {
-    "id": "nutrition-dietary-guidelines-video",
-    "eventId": "nutrition",
-    "title": "Dietary Guidelines Video",
-    "description": "Video walkthrough of current core nutrition principles.",
-    "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    "id": "med-spelling-official-guidelines",
+    "eventId": "medical-spelling",
+    "title": "HOSA Medical Spelling Guidelines",
+    "description": "Official HOSA Guidelines for Medical Spelling",
+    "link": "https://hosa.org/wp-content/uploads/2025/08/25-26-MS-Aug30.pdf"
+  },
+   {
+    "id": "health-info-official-guidelines",
+    "eventId": "health-informatics",
+    "title": "HOSA Health Informatics Guidelines",
+    "description": "Official HOSA Guidelines for Health Informatics",
+    "link": "https://hosa.org/wp-content/uploads/2025/08/25-26-HI-FINAL-Aug18.docx.pdf"
   },
   {
-    "id": "pharmacology-drug-classes",
-    "eventId": "pharmacology",
-    "title": "Drug Classes Cheat Sheet",
-    "description": "Condensed PDF of major drug classes and mechanisms of action.",
-    "link": "https://example.com/pharmacology-drug-classes.pdf"
-  },
-  {
-    "id": "dental-terminology-oral-anatomy",
-    "eventId": "dental-terminology",
-    "title": "Oral Anatomy Resource",
-    "description": "Visual guide to oral structures and common dental procedures.",
-    "link": "https://example.com/dental-terminology-resource"
-  },
-  {
-    "id": "behavioral-health-core-concepts",
-    "eventId": "behavioral-health",
-    "title": "Behavioral Health Core Concepts",
-    "description": "Overview of common disorders, treatment approaches, and terminology.",
-    "link": "https://example.com/behavioral-health-core-concepts"
+    "id": "resp-thera-aarc-resource",
+    "eventId": "respiratory-therapy",
+    "title": "AARC Student Resources Page",
+    "description": "AARC website with videos for Round 2 Skills preparation.",
+    "link": "https://www.aarc.org/events-and-programs/aarc-hosa-you-connecting-our-future/hosa-student-resources/"
   }
 ]
