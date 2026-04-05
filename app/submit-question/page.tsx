@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
+import { ContributorGuard } from "@/components/auth/contributor-guard";
 import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -75,11 +76,12 @@ export default function SubmitQuestionPage() {
   return (
     <SidebarProvider>
       <AuthGuard>
-        <AppSidebar />
-        <SidebarInset>
-          <div className="mx-auto max-w-7xl p-6">
-            <div className="grid gap-6 lg:grid-cols-3">
-              <Card className="border-primary/20 shadow-xl bg-card/70 backdrop-blur-sm lg:col-span-2">
+        <ContributorGuard>
+          <AppSidebar />
+          <SidebarInset>
+            <div className="mx-auto max-w-7xl p-6">
+              <div className="grid gap-6 lg:grid-cols-3">
+                <Card className="border-primary/20 shadow-xl bg-card/70 backdrop-blur-sm lg:col-span-2">
                 <CardHeader>
                   <CardTitle className="text-3xl">Submit a Question</CardTitle>
                   <p className="text-sm text-muted-foreground">
@@ -191,9 +193,9 @@ export default function SubmitQuestionPage() {
                     {submitting ? "Submitting..." : "Submit Question"}
                   </Button>
                 </CardContent>
-              </Card>
+                </Card>
 
-              <div className="space-y-6">
+                <div className="space-y-6">
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-xl">Your Submissions</CardTitle>
@@ -273,10 +275,11 @@ export default function SubmitQuestionPage() {
                     ))}
                   </CardContent>
                 </Card>
+                </div>
               </div>
             </div>
-          </div>
-        </SidebarInset>
+          </SidebarInset>
+        </ContributorGuard>
       </AuthGuard>
     </SidebarProvider>
   );

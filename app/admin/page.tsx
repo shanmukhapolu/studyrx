@@ -21,7 +21,7 @@ import { toast } from "sonner";
 type UserRecord = {
   name?: string;
   email?: string;
-  role?: "user" | "admin";
+  role?: "user" | "contributor" | "admin";
   createdAt?: string;
   lastLogin?: string;
   grade?: string;
@@ -191,12 +191,11 @@ function AdminContent() {
     });
   }, [loading, sitewideStats]);
 
-  const updateRole = async (uid: string, currentRole?: string) => {
+  const updateRole = async (uid: string, nextRole: "user" | "contributor" | "admin") => {
     if (currentUser?.uid === uid) {
-      toast.error("You can't change your own admin role.");
+      toast.error("You can't change your own role.");
       return;
     }
-    const nextRole = currentRole === "admin" ? "user" : "admin";
     try {
       await rtdbPatch(`users/${uid}`, { role: nextRole });
       await loadAll();
@@ -346,8 +345,14 @@ function AdminContent() {
                       <BarChart3 className="mr-1 h-4 w-4" />
                       Analytics
                     </Button>
-                    <Button size="sm" onClick={() => void updateRole(uid, user.role)} disabled={currentUser?.uid === uid}>
-                      Toggle Role
+                    <Button size="sm" variant="outline" onClick={() => void updateRole(uid, "user")} disabled={currentUser?.uid === uid || (user.role || "user") === "user"}>
+                      Make User
+                    </Button>
+                    <Button size="sm" variant="outline" onClick={() => void updateRole(uid, "contributor")} disabled={currentUser?.uid === uid || user.role === "contributor"}>
+                      Make Contributor
+                    </Button>
+                    <Button size="sm" onClick={() => void updateRole(uid, "admin")} disabled={currentUser?.uid === uid || user.role === "admin"}>
+                      Make Admin
                     </Button>
                     <Button size="sm" variant="outline" onClick={() => void deleteNode(`users/${uid}`)}>Delete</Button>
                   </div>
