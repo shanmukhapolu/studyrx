@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
   EXPERIENCE_LEVEL_OPTIONS,
@@ -13,6 +13,7 @@ import {
   GRADE_OPTIONS,
   HOSA_CHARTER_ORGANIZATIONS,
   HOSA_EVENT_OPTIONS,
+  MISSED_QUESTION_HANDLING_OPTIONS,
   QUESTION_SESSION_OPTIONS,
   REFERRAL_OPTIONS,
   type OnboardingData,
@@ -20,7 +21,7 @@ import {
 
 type FormState = Omit<OnboardingData, "onboardingCompleted">;
 
-const TOTAL_STEPS = 7;
+const TOTAL_STEPS = 8;
 
 const INITIAL_STATE: FormState = {
   grade: "",
@@ -31,6 +32,7 @@ const INITIAL_STATE: FormState = {
   goal: "",
   charterOrganization: "",
   questionsPerSession: "",
+  missedQuestionHandling: "",
 };
 
 export default function OnboardingPage() {
@@ -56,7 +58,8 @@ export default function OnboardingPage() {
     (step === 4 && !!form.experienceLevel) ||
     (step === 5 && !!form.goal) ||
     (step === 6 && !!form.charterOrganization) ||
-    (step === 7 && !!form.questionsPerSession);
+    (step === 7 && !!form.questionsPerSession) ||
+    (step === 8 && !!form.missedQuestionHandling);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -111,6 +114,7 @@ export default function OnboardingPage() {
         <Card className="min-h-[70vh]">
           <CardHeader>
             <CardTitle>{titleByStep(step)}</CardTitle>
+            {descriptionByStep(step) && <CardDescription>{descriptionByStep(step)}</CardDescription>}
           </CardHeader>
           <CardContent className="flex min-h-[50vh] flex-col justify-between">
             <div className="animate-in fade-in-0 slide-in-from-right-2 duration-300 space-y-3">
@@ -176,6 +180,20 @@ export default function OnboardingPage() {
                   onSelect={(value) => setForm((prev) => ({ ...prev, questionsPerSession: value }))}
                 />
               )}
+
+              {step === 8 && (
+                <SingleSelect
+                  options={MISSED_QUESTION_HANDLING_OPTIONS}
+                  value={form.missedQuestionHandling}
+                  onSelect={(value) => setForm((prev) => ({ ...prev, missedQuestionHandling: value }))}
+                  optionDescriptions={{
+                    "Focused Redemption Round":
+                      "At the end of each session, you'll do a dedicated retry round for the questions you missed.",
+                    "Spaced Reinforcement":
+                      "Missed questions are mixed into future sessions at random intervals for long-term retention.",
+                  }}
+                />
+              )}
             </div>
 
             <div className="mt-6 flex items-center justify-between">
@@ -209,12 +227,31 @@ function titleByStep(step: number) {
       return "Which HOSA charter organization are you in?";
     case 7:
       return "How many questions per session do you prefer?";
+    case 8:
+      return "How should we handle questions you miss?";
     default:
       return "Welcome";
   }
 }
 
-function SingleSelect({ options, value, onSelect }: { options: readonly string[]; value: string; onSelect: (value: string) => void }) {
+function descriptionByStep(step: number) {
+  if (step === 7 || step === 8) {
+    return "You can change this anytime in settings.";
+  }
+  return "";
+}
+
+function SingleSelect({
+  options,
+  value,
+  onSelect,
+  optionDescriptions,
+}: {
+  options: readonly string[];
+  value: string;
+  onSelect: (value: string) => void;
+  optionDescriptions?: Record<string, string>;
+}) {
   return (
     <div className="space-y-3">
       {options.map((option) => (
@@ -226,7 +263,8 @@ function SingleSelect({ options, value, onSelect }: { options: readonly string[]
             value === option ? "border-primary bg-primary/10 font-medium" : "hover:bg-muted"
           }`}
         >
-          {option}
+          <span className="block">{option}</span>
+          {optionDescriptions?.[option] && <span className="mt-1 block text-xs text-muted-foreground">{optionDescriptions[option]}</span>}
         </button>
       ))}
     </div>
