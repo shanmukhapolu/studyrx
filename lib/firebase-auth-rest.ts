@@ -34,9 +34,11 @@ export interface UserRecord {
   goal?: string;
   charterOrganization?: string;
   questionsPerSession?: string;
+  missedQuestionHandling?: string;
   onboardingCompleted?: boolean;
   settings?: {
     sessionQuestionLimit?: 10 | 25 | 50 | 100 | "unlimited";
+    redemptionRoundEnabled?: boolean;
   };
 }
 
