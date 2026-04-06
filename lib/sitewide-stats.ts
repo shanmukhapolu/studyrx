@@ -63,6 +63,12 @@ export type SitewideStats = {
     leastUsedEvent: string;
     totalQuestionsAttempted: number;
     averageAccuracyPerEvent: Record<string, number>;
+    perEventStats: Record<string, {
+      accuracyPct: number;
+      questionsAttempted: number;
+      usersCount: number;
+      practiceTimeSeconds: number;
+    }>;
   };
   retention: {
     avgDaysBetweenSessionsPerUser: number;
@@ -151,6 +157,9 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
   const sessionsByUser = new Map<string, SiteSession[]>();
   const eventSessionCount: Record<string, number> = {};
   const eventAccumulators: Record<string, { totalAccuracy: number; count: number }> = {};
+  const eventPracticeTimeTotals: Record<string, number> = {};
+  const eventQuestionsAttempted: Record<string, number> = {};
+  const eventUsers = new Map<string, Set<string>>();
 
   sessions.forEach((session) => {
     const userSessions = sessionsByUser.get(session.uid) ?? [];
@@ -164,6 +173,14 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
     }
     eventAccumulators[session.eventId].totalAccuracy += session.accuracy;
     eventAccumulators[session.eventId].count += 1;
+
+    const activeTime = getSessionActiveTimeSeconds(session);
+    eventPracticeTimeTotals[session.eventId] = (eventPracticeTimeTotals[session.eventId] ?? 0) + activeTime.thinkTime;
+    eventQuestionsAttempted[session.eventId] = (eventQuestionsAttempted[session.eventId] ?? 0) + session.attempts.length;
+
+    const usersForEvent = eventUsers.get(session.eventId) ?? new Set<string>();
+    usersForEvent.add(session.uid);
+    eventUsers.set(session.eventId, usersForEvent);
   });
 
   const newUsersLast7Days = Object.values(users).filter((user) => {
@@ -244,8 +261,23 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
     : "—";
 
   const averageAccuracyPerEvent: Record<string, number> = {};
+  const perEventStats: Record<string, {
+    accuracyPct: number;
+    questionsAttempted: number;
+    usersCount: number;
+    practiceTimeSeconds: number;
+  }> = {};
+
   Object.entries(eventAccumulators).forEach(([eventId, bucket]) => {
-    averageAccuracyPerEvent[getEventName(eventId)] = safeAverage(bucket.totalAccuracy, bucket.count);
+    const eventName = getEventName(eventId);
+    const accuracy = safeAverage(bucket.totalAccuracy, bucket.count);
+    averageAccuracyPerEvent[eventName] = accuracy;
+    perEventStats[eventName] = {
+      accuracyPct: accuracy,
+      questionsAttempted: eventQuestionsAttempted[eventId] ?? 0,
+      usersCount: eventUsers.get(eventId)?.size ?? 0,
+      practiceTimeSeconds: eventPracticeTimeTotals[eventId] ?? 0,
+    };
   });
 
   let gapTotalDays = 0;
@@ -267,7 +299,6 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
     }
   });
 
-  const usersWithSessionsCount = usersWithSessions.length;
 
   return {
     adoption: {
@@ -297,11 +328,21 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
       averageAccuracyPerEvent: Object.fromEntries(
         Object.entries(averageAccuracyPerEvent).sort((a, b) => b[1] - a[1]).map(([eventName, value]) => [eventName, round2(value)]),
       ),
+      perEventStats: Object.fromEntries(
+        Object.entries(perEventStats)
+          .sort((a, b) => a[0].localeCompare(b[0]))
+          .map(([eventName, stats]) => [eventName, {
+            accuracyPct: round2(stats.accuracyPct),
+            questionsAttempted: stats.questionsAttempted,
+            usersCount: stats.usersCount,
+            practiceTimeSeconds: round2(stats.practiceTimeSeconds),
+          }]),
+      ),
     },
     retention: {
       avgDaysBetweenSessionsPerUser: round2(safeAverage(gapTotalDays, gapCount)),
-      usersWithAtLeast2SessionsPct: round2(safeAverage(usersWithAtLeast2Sessions * 100, usersWithSessionsCount)),
-      usersWithAtLeast5SessionsPct: round2(safeAverage(usersWithAtLeast5Sessions * 100, usersWithSessionsCount)),
+      usersWithAtLeast2SessionsPct: round2(safeAverage(usersWithAtLeast2Sessions * 100, totalUsers)),
+      usersWithAtLeast5SessionsPct: round2(safeAverage(usersWithAtLeast5Sessions * 100, totalUsers)),
     },
     generatedAt: now.toISOString(),
   };

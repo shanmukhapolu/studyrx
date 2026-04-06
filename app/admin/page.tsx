@@ -96,6 +96,22 @@ function dateLabel(value?: string) {
   return Number.isNaN(parsed.getTime()) ? value : parsed.toLocaleString();
 }
 
+function formatStatsDuration(totalSeconds: number) {
+  const safeSeconds = Math.max(0, Math.round(totalSeconds));
+  const days = Math.floor(safeSeconds / 86_400);
+  const hours = Math.floor((safeSeconds % 86_400) / 3_600);
+  const minutes = Math.floor((safeSeconds % 3_600) / 60);
+  const seconds = safeSeconds % 60;
+  const parts: string[] = [];
+
+  if (days > 0) parts.push(`${days}d`);
+  if (hours > 0) parts.push(`${hours}h`);
+  if (minutes > 0) parts.push(`${minutes}m`);
+  if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
+
+  return parts.join(" ");
+}
+
 export default function AdminPage() {
   return (
     <SidebarProvider>
@@ -183,6 +199,18 @@ function AdminContent() {
   }, [eventRequests]);
 
   const sitewideStats = useMemo(() => calculateSitewideStats(users), [users]);
+  const contentEventRows = useMemo(() => {
+    const knownEventNames = HOSA_EVENTS.map((event) => event.name);
+    const knownSet = new Set(knownEventNames);
+    const extraEventNames = Object.keys(sitewideStats.contentAnalytics.perEventStats)
+      .filter((eventName) => !knownSet.has(eventName))
+      .sort((a, b) => a.localeCompare(b));
+
+    return [...knownEventNames, ...extraEventNames].map((eventName) => ({
+      eventName,
+      stats: sitewideStats.contentAnalytics.perEventStats[eventName],
+    }));
+  }, [sitewideStats.contentAnalytics.perEventStats]);
 
   useEffect(() => {
     if (loading) return;
@@ -382,9 +410,9 @@ function AdminContent() {
                 <p>Total sessions completed: <strong>{sitewideStats.engagement.totalSessionsCompleted}</strong></p>
                 <p>Avg sessions per user: <strong>{sitewideStats.engagement.avgSessionsPerUser}</strong></p>
                 <p>Avg questions per session: <strong>{sitewideStats.engagement.avgQuestionsPerSession}</strong></p>
-                <p>Avg time per session: <strong>{sitewideStats.engagement.avgTimePerSessionSeconds}s</strong></p>
-                <p>Total think time: <strong>{sitewideStats.engagement.totalThinkTimeSeconds}s</strong></p>
-                <p>Total explanation time: <strong>{sitewideStats.engagement.totalExplanationTimeSeconds}s</strong></p>
+                <p>Avg time per session: <strong>{formatStatsDuration(sitewideStats.engagement.avgTimePerSessionSeconds)}</strong></p>
+                <p>Total time spent practicing: <strong>{formatStatsDuration(sitewideStats.engagement.totalThinkTimeSeconds)}</strong></p>
+                <p>Total time spent reviewing explanations: <strong>{formatStatsDuration(sitewideStats.engagement.totalExplanationTimeSeconds)}</strong></p>
                 <p>% users who return after first session: <strong>{sitewideStats.engagement.retentionAfterFirstSessionPct}%</strong></p>
               </CardContent>
             </Card>
@@ -404,19 +432,43 @@ function AdminContent() {
               <CardHeader>
                 <CardTitle>Content Analytics</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm">
+              <CardContent className="space-y-3 text-sm">
                 <p>Most used event: <strong>{sitewideStats.contentAnalytics.mostUsedEvent}</strong></p>
                 <p>Least used event: <strong>{sitewideStats.contentAnalytics.leastUsedEvent}</strong></p>
                 <p>Total questions attempted: <strong>{sitewideStats.contentAnalytics.totalQuestionsAttempted}</strong></p>
+                <div className="overflow-x-auto rounded-md border">
+                  <table className="w-full min-w-[760px] text-sm">
+                    <thead className="bg-muted/40 text-left">
+                      <tr className="[&>th]:px-3 [&>th]:py-2 [&>th]:font-medium">
+                        <th>Event</th>
+                        <th>Accuracy</th>
+                        <th>Questions attempted</th>
+                        <th># Users</th>
+                        <th>Time spent practicing</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {contentEventRows.map(({ eventName, stats }) => (
+                        <tr key={eventName} className="border-t align-top [&>td]:px-3 [&>td]:py-2">
+                          <td className="font-medium">{eventName}</td>
+                          <td>{stats ? `${stats.accuracyPct}%` : "—"}</td>
+                          <td>{stats ? stats.questionsAttempted : "—"}</td>
+                          <td>{stats ? stats.usersCount : "—"}</td>
+                          <td>{stats ? formatStatsDuration(stats.practiceTimeSeconds) : "—"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  {contentEventRows.length === 0 && (
+                    <p className="p-3 text-muted-foreground">No event session data yet.</p>
+                  )}
+                </div>
                 <div>
                   <p className="mb-1 font-medium">Average accuracy per event</p>
                   <div className="grid gap-1 md:grid-cols-2">
                     {Object.entries(sitewideStats.contentAnalytics.averageAccuracyPerEvent).map(([eventName, accuracy]) => (
                       <p key={eventName}>{eventName}: <strong>{accuracy}%</strong></p>
                     ))}
-                    {Object.keys(sitewideStats.contentAnalytics.averageAccuracyPerEvent).length === 0 && (
-                      <p className="text-muted-foreground">No event session data yet.</p>
-                    )}
                   </div>
                 </div>
               </CardContent>
