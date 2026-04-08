@@ -1911,12 +1911,12 @@
   },
   {
     "id": 182,
-    "question": "Which combining form refers specifically to the 'choroid' layer of the eye?",
+    "question": "Which combining form refers specifically to the vasular layer of the eye?",
     "options": ["Choroid/o", "Chori/o", "Corne/o", "Cycl/o"],
-    "correctAnswer": "Chori/o",
+    "correctAnswer": "Choroid/o",
     "category": "Medical Terminology",
     "difficulty": "Hard",
-    "explanation": "'Chori/o' is the combining form for the choroid (the vascular layer of the eye). 'Cycl/o' refers to the ciliary body.",
+    "explanation": "'Choroid/o' is the combining form for the choroid (the vascular layer of the eye). 'Cycl/o' refers to the ciliary body.",
     "tag": "Roots, Prefixes, Suffixes"
   },
   {
