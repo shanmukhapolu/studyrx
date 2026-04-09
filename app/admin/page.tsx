@@ -88,6 +88,8 @@ type QuestionReport = {
   reason?: string;
   details?: string;
   resolved?: boolean;
+  createdAt?: string;
+  submittedBy?: SubmittedBy;
 };
 
 function dateLabel(value?: string) {
@@ -397,7 +399,8 @@ function AdminContent() {
               <CardContent className="grid gap-2 text-sm md:grid-cols-2">
                 <p>Total users: <strong>{sitewideStats.adoption.totalUsers}</strong></p>
                 <p>New users (last 7 days): <strong>{sitewideStats.adoption.newUsersLast7Days}</strong></p>
-                <p>Active users (last 7 days): <strong>{sitewideStats.adoption.activeUsersLast7Days}</strong></p>
+                <p>Active users (last 7 days, at least 1 session): <strong>{sitewideStats.adoption.activeUsersLast7Days}</strong></p>
+                <p>Users with login in last 7 days: <strong>{sitewideStats.adoption.loginUsersLast7Days}</strong></p>
                 <p>Growth rate (week over week): <strong>{sitewideStats.adoption.growthRateWeekOverWeek}%</strong></p>
               </CardContent>
             </Card>
@@ -542,8 +545,13 @@ function AdminContent() {
                 <Card key={item.id}>
                   <CardContent className="flex items-center justify-between p-3 text-sm">
                     <div>
-                      <p className="font-medium">Q{String(item.questionId || "—")} · {item.reason || "Unknown reason"}</p>
+                      <p className="font-medium">
+                        {getEventName(item.eventId || "—")} · Q{String(item.questionId || "—")} · {item.reason || "Unknown reason"}
+                      </p>
                       <p className="truncate text-xs text-muted-foreground">{item.details || "No details"}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {item.submittedBy?.name || item.submittedBy?.email || "Unknown user"} · {dateLabel(item.createdAt)}
+                      </p>
                     </div>
                     <div className="flex items-center gap-1">
                       <Button size="icon" variant="ghost" onClick={() => void toggleReportResolved(item)} className={item.resolved ? "text-green-600" : ""}>

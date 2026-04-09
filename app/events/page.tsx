@@ -137,15 +137,23 @@ function EventsContent() {
           {HOSA_EVENTS.map((event) => {
             const stats = eventStats[event.id];
             const Icon = event.icon;
+            const isPublished = event.published;
             
             return (
-              <Card key={event.id} className="border-border/70 bg-card/80 hover:border-primary/50 transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5">
+              <Card
+                key={event.id}
+                className={`border-border/70 bg-card/80 transition-all duration-200 ${
+                  isPublished
+                    ? "hover:border-primary/50 hover:shadow-xl hover:-translate-y-0.5"
+                    : "opacity-65 grayscale"
+                }`}
+              >
                 <CardHeader>
                   <div className="flex items-start justify-between mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center">
-                      <Icon className="h-6 w-6 text-primary" />
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isPublished ? "bg-gradient-to-br from-primary/20 to-accent/10" : "bg-muted"}`}>
+                      <Icon className={`h-6 w-6 ${isPublished ? "text-primary" : "text-muted-foreground"}`} />
                     </div>
-                    {stats && (
+                    {stats && isPublished && (
                       <div className="text-right">
                         <div className="text-xs text-muted-foreground">Accuracy</div>
                         <div className="text-lg font-bold font-mono text-accent">
@@ -168,18 +176,41 @@ function EventsContent() {
                       </div>
                     )}
                     <div className="grid grid-cols-2 gap-2">
-                      <Button asChild className="font-semibold" size="lg">
-                        <Link href={`/practice/${event.id}`}>
-                          <Play className="mr-2 h-4 w-4" />
-                          Practice
-                        </Link>
-                      </Button>
-                      <Button asChild variant="outline" className="font-semibold bg-transparent" size="lg">
-                        <Link href={`/resources/${event.id}`}>
-                          <BookOpen className="mr-2 h-4 w-4" />
-                          Resources
-                        </Link>
-                      </Button>
+                      {isPublished ? (
+                        <>
+                          <Button asChild className="font-semibold" size="lg">
+                            <Link href={`/practice/${event.id}`}>
+                              <Play className="mr-2 h-4 w-4" />
+                              Practice
+                            </Link>
+                          </Button>
+                          <Button asChild variant="outline" className="font-semibold bg-transparent" size="lg">
+                            <Link href={`/resources/${event.id}`}>
+                              <BookOpen className="mr-2 h-4 w-4" />
+                              Resources
+                            </Link>
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Button
+                            disabled
+                            variant="secondary"
+                            size="lg"
+                            className="cursor-not-allowed bg-muted text-muted-foreground hover:bg-muted"
+                          >
+                            Coming Soon
+                          </Button>
+                          <Button
+                            disabled
+                            variant="outline"
+                            size="lg"
+                            className="cursor-not-allowed border-muted-foreground/30 bg-muted text-muted-foreground hover:bg-muted"
+                          >
+                            Coming Soon
+                          </Button>
+                        </>
+                      )}
                     </div>
                   </div>
                 </CardContent>

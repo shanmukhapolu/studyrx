@@ -284,9 +284,9 @@ export const storage = {
     }
   },
 
-  setCurrentSession: async (session: SessionData) => {
+  setCurrentSession: async (session: SessionData | null) => {
     try {
-      await dbSet("currentSession", normalizeSession(session));
+      await dbSet("currentSession", session ? normalizeSession(session) : null);
     } catch {
       // Optional runtime key might be blocked by stricter DB rules.
     }
