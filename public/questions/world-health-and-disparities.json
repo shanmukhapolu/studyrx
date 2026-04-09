@@ -1,0 +1,2500 @@
+[
+    {
+        "id": 1,
+        "question": "According to the World Health Organization (WHO), how is health primarily defined?",
+        "options": ["The absence of disease or infirmity", "A state of complete physical, mental and social well-being", "The ability to perform activities of daily living", "The achievement of full human potential"],
+        "correctAnswer": "A state of complete physical, mental and social well-being",
+        "category": "World Health & Disparities",
+        "difficulty": "Easy",
+        "explanation": "The WHO constitution defines health broadly as 'a state of complete physical, mental and social well-being and not merely the absence of disease or infirmity,' reflecting health as a multidimensional concept.",
+        "tag": "What is Health"
+    },
+    {
+        "id": 2,
+        "question": "The SF-36 health survey instrument combines its eight scales to create which two primary summary measures?",
+        "options": ["Biological and Psychological Health", "Physical and Mental Health", "Social and Environmental Health", "Functional and Medical Health"],
+        "correctAnswer": "Physical and Mental Health",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "The SF-36 survey uses 36 items to measure eight dimensions of health, which are statistically combined to produce two overall summary measures: physical health and mental health.",
+        "tag": "What is Health"
+    },
+    {
+    "id": 3,
+    "question": "When health is defined as a multidimensional concept, which three dimensions are generally given equal weight?",
+    "options": ["Biological, Economic, and Political", "Medical, Social, and Psychological", "Genetics, Environment, and Nutrition", "Clinical, Occupational, and Educational"],
+    "correctAnswer": "Medical, Social, and Psychological",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Sociological and medical models suggest that health is not one-dimensional; instead, it consists of a medical dimension (clinical signs), a social dimension (role functioning), and a psychological dimension (subjective well-being).",
+    "tag": "What is Health"
+},
+    {
+        "id": 4,
+        "question": "In the context of global health burden assessment, what does the acronym 'DALY' represent?",
+        "options": ["Daily Activity Level Year", "Disability-Adjusted Life Year", "Disease-Associated Life Yield", "Developmental Age Life Year"],
+        "correctAnswer": "Disability-Adjusted Life Year",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "The Disability-Adjusted Life Year (DALY) is a metric used by the WHO to estimate the total burden of disease by combining years of life lost to premature death and years lived with disability.",
+        "tag": "What is Health"
+    },
+    {
+        "id": 5,
+        "question": "Which component is NOT one of the four subscales used to measure overall physical health in the SF-36 survey?",
+        "options": ["Physical Functioning", "Vitality", "Bodily Pain", "General Health Perceptions"],
+        "correctAnswer": "Vitality",
+        "category": "World Health & Disparities",
+        "difficulty": "Hard",
+        "explanation": "In the SF-36, the physical health dimension includes Physical Functioning, Role Limitations Due to Physical Problems, Bodily Pain, and General Health Perceptions. Vitality is a subscale of the mental health dimension.",
+        "tag": "What is Health"
+    },
+    {
+        "id": 6,
+        "question": "According to 2016-2017 OECD data, which country had the lowest infant mortality rate among the options provided?",
+        "options": ["United States", "Canada", "Japan", "Switzerland"],
+        "correctAnswer": "Japan",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "OECD data from 2016-2017 show that Japan had an infant mortality rate of 2.0 per 1,000 live births, significantly lower than the US (5.9) or Canada (4.7).",
+        "tag": "Health Disparities & Diversity"
+    },
+    {
+        "id": 7,
+        "question": "The World Health Organization defines social determinants of health (SDH) as the conditions in which people are:",
+        "options": ["Born, grow, work, live, and age", "Educated and employed", "Insured and medically treated", "Biologically and genetically predisposed"],
+        "correctAnswer": "Born, grow, work, live, and age",
+        "category": "World Health & Disparities",
+        "difficulty": "Easy",
+        "explanation": "The WHO defines social determinants of health as 'the conditions in which people are born, grow, work, live, and age,' which are shaped by the distribution of money, power, and resources.",
+        "tag": "Health Disparities & Diversity"
+    },
+    {
+        "id": 8,
+        "question": "What term describes the cumulative physiologic wear and tear resulting from chronic stress, which can lead to long-term injury and illness?",
+        "options": ["Homeostatic imbalance", "Allostatic load", "Cortisol depletion", "Psychoneuroimmunology"],
+        "correctAnswer": "Allostatic load",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "Allostatic load is the physiologic response to chronic stress, particularly associated with social disadvantage, which over time can cause damage to biological systems and lead to illness.",
+        "tag": "Health Disparities & Diversity"
+    },
+    {
+        "id": 9,
+        "question": "The 'Latina Paradox' is an epidemiological observation that:",
+        "options": ["Hispanic women have higher obesity rates despite lower caloric intake", "Hispanic infants have lower mortality rates than would be predicted by their mothers' socioeconomic status", "Hispanic patients have higher trust in the health system despite worse access", "Hispanic mortality rates are higher in urban than rural areas"],
+        "correctAnswer": "Hispanic infants have lower mortality rates than would be predicted by their mothers' socioeconomic status",
+        "category": "World Health & Disparities",
+        "difficulty": "Hard",
+        "explanation": "The Latina Paradox describes the counterintuitive finding that infant mortality rates among many Hispanic groups remain low despite common socioeconomic disadvantages.",
+        "tag": "Health Disparities & Diversity"
+    },
+    {
+        "id": 10,
+        "question": "Which of the following conditions is NOT typically grouped into the 'deaths of despair' that contributed to declining U.S. life expectancy?",
+        "options": ["Opioid overdose", "Suicide", "Alcohol-related liver disease", "Type 2 Diabetes"],
+        "correctAnswer": "Type 2 Diabetes",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "The recent decline in U.S. life expectancy is largely attributed to 'deaths of despair,' which include suicide, drug overdoses (particularly opioids), and alcohol-related liver disease.",
+        "tag": "Health Disparities & Diversity"
+    },
+    {
+        "id": 11,
+        "question": "Research indicates that approximately what percentage of the variation in U.S. mortality and life expectancy at the county level is due to socioeconomic and race/ethnicity factors?",
+        "options": ["30 percent", "45 percent", "60 percent", "75 percent"],
+        "correctAnswer": "60 percent",
+        "category": "World Health & Disparities",
+        "difficulty": "Hard",
+        "explanation": "According to Koh and Parekh (2018), roughly 60% of the variation in mortality and life expectancy among U.S. counties can be explained by socioeconomic and race/ethnicity factors.",
+        "tag": "Health Disparities & Diversity"
+    },
+   {
+    "id": 12,
+    "question": "Scientific research on human DNA indicates that approximately what percentage of genetic variation occurs WITHIN population groups (races), rather than between them?",
+    "options": ["10% to 15%", "45% to 50%", "70% to 75%", "93% to 95%"],
+    "correctAnswer": "93% to 95%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Studies of the genetic structure of human populations have shown that 93% to 95% of genetic variation is found within a single 'race,' supporting the conclusion that race is a social construct rather than a biological reality.",
+    "tag": "Health Disparities & Diversity"
+},
+    {
+        "id": 13,
+        "question": "Among children globally, which type of illness inflicts the largest health burden (measured in DALYs)?",
+        "options": ["Ischemic heart disease", "Tuberculosis", "Diarrheal illness", "Worm infection"],
+        "correctAnswer": "Diarrheal illness",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "Global Burden of Disease data indicates that diarrheal illness causes the largest health burden globally among children, particularly those under five years old.",
+        "tag": "Health Disparities & Diversity"
+    },
+    {
+        "id": 14,
+        "question": "The Area Deprivation Index (ADI), which lists disadvantage metrics by zip code, is composed of how many variables from the American Community Survey?",
+        "options": ["5 variables", "10 variables", "17 variables", "25 variables"],
+        "correctAnswer": "17 variables",
+        "category": "World Health & Disparities",
+        "difficulty": "Hard",
+        "explanation": "The ADI, maintained by the University of Wisconsin, is a composite measure derived from 17 specific social and economic variables included in the U.S. Census Bureau's survey data.",
+        "tag": "Health Disparities & Diversity"
+    },
+    {
+    "id": 15,
+    "question": "Statistical analysis of U.S. mortality data shows that a significant life expectancy gap of 9.5 years exists between the highest-income and lowest-income counties for which group?",
+    "options": ["Women", "Men", "Children under five", "Elderly adults over 80"],
+    "correctAnswer": "Men",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Research rank-ordering U.S. counties by income found a life expectancy gap of 7.1 years for women and a more pronounced gap of 9.5 years for men when comparing the wealthiest and poorest groups.",
+    "tag": "Health Disparities & Diversity"
+},
+    {
+    "id": 16,
+    "question": "In studies of cardiovascular treatment disparities, which group was found to be the least likely to be referred for cardiac catheterization despite presenting with identical clinical symptoms?",
+    "options": ["Black males", "White females", "Black females", "Hispanic males"],
+    "correctAnswer": "Black females",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Research using simulated patient scenarios found that Black women faced a unique 'interaction effect' of race and gender, resulting in them being recommended for diagnostic cardiac procedures significantly less often than other groups.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+    {
+        "id": 17,
+        "question": "What percentage of cardiologists in a Kaiser Family Foundation survey believed that a patient's race or ethnicity was a principal source of treatment disparities?",
+        "options": ["5 percent", "12 percent", "34 percent", "69 percent"],
+        "correctAnswer": "34 percent",
+        "category": "World Health & Disparities",
+        "difficulty": "Hard",
+        "explanation": "While most cardiologists recognized insurance and education as factors, only 34% believed the patient's race or ethnicity itself contributed to treatment disparities in the health system.",
+        "tag": "Disparities in Treatment & Medical Decisions"
+    },
+    {
+        "id": 18,
+        "question": "Racial and ethnic disparities in emergency department pain management are most pronounced in which of the following medical conditions?",
+        "options": ["Migraine headache", "Back pain", "Long-bone fracture", "Facial laceration"],
+        "correctAnswer": "Long-bone fracture",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "Research by Tamayo-Sarver found that Black and Hispanic patients were significantly less likely than white patients to receive opioid analgesics for long-bone fractures, an injury where the need for pain management is objectively clear.",
+        "tag": "Disparities in Treatment & Medical Decisions"
+    },
+    {
+        "id": 19,
+        "question": "African Americans are nearly how many times more likely to develop end-stage renal disease (ESRD) than whites in the United States?",
+        "options": ["Two times", "Four times", "Six times", "Eight times"],
+        "correctAnswer": "Four times",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "Due to higher rates of contributing conditions like diabetes and hypertension, African Americans were nearly four times more likely to develop ESRD in 2015 than white Americans.",
+        "tag": "Disparities in Treatment & Medical Decisions"
+    },
+    {
+        "id": 20,
+        "question": "Which pharmaceutical was the first to be approved by the FDA with a label specifically indicating it for use in Black patients?",
+        "options": ["Quinapril", "Carvedilol", "BiDil", "Prozac"],
+        "correctAnswer": "BiDil",
+        "category": "World Health & Disparities",
+        "difficulty": "Hard",
+        "explanation": "BiDil, a combination of isosorbide dinitrate and hydralazine, became the first race-based pharmaceutical when it was approved specifically for treating heart failure in African Americans.",
+        "tag": "Disparities in Treatment & Medical Decisions"
+    },
+    {
+        "id": 21,
+        "question": "A primary goal of the Healthy People 2020 initiative was to achieve which of the following regarding population health?",
+        "options": ["Eliminate all biological differences in health", "Achieve health equity and eliminate disparities", "Mandate universal health insurance coverage", "Double the size of the health workforce"],
+        "correctAnswer": "Achieve health equity and eliminate disparities",
+        "category": "World Health & Disparities",
+        "difficulty": "Easy",
+        "explanation": "Healthy People 2020 explicitly included 'achieve health equity, eliminate disparities, and improve the health of all groups' as one of its top overarching goals.",
+        "tag": "Reducing Health Disparities"
+    },
+    {
+        "id": 22,
+        "question": "Which community-based setting was utilized in successful intervention programs to reduce hypertension in Black men through pharmacist-led care?",
+        "options": ["Local churches", "Barbershops", "Community centers", "Workplaces"],
+        "correctAnswer": "Barbershops",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "Innovative programs in Pennsylvania and Los Angeles demonstrated that providing medical interventions in barbershops significantly improved treatment uptake and blood pressure control for Black men.",
+        "tag": "Reducing Health Disparities"
+    },
+    {
+        "id": 23,
+        "question": "The Association of American Medical Colleges (AAMC) encourages a 'Holistic Review' in admissions to improve workforce diversity, which is defined as:",
+        "options": ["Focusing strictly on science GPA and MCAT scores", "Evaluating applicants on academic ability alongside attributes like service and cultural sensitivity", "Prioritizing legacy applicants from diverse backgrounds", "Selecting students based primarily on geographic location"],
+        "correctAnswer": "Evaluating applicants on academic ability alongside attributes like service and cultural sensitivity",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "Holistic Review is a flexible, individualized assessment process that considers a applicant's life experiences and personal attributes as being as important as their academic scores.",
+        "tag": "Reducing Health Disparities"
+    },
+    {
+        "id": 24,
+        "question": "According to the WHO's Triple Billion targets, how many more people are aimed to be covered by universal health coverage (UHC) without financial hardship?",
+        "options": ["500 million", "One billion", "Five billion", "Six billion"],
+        "correctAnswer": "One billion",
+        "category": "World Health & Disparities",
+        "difficulty": "Medium",
+        "explanation": "The original Triple Billion targets under WHO's GPW13 aimed for one billion more people living healthier lives, one billion more covered by UHC, and one billion better protected from health emergencies.",
+        "tag": "Reducing Health Disparities"
+    },
+    {
+        "id": 25,
+        "question": "WHO estimates suggest that expanding primary care interventions in low- and middle-income countries could add approximately how many years to life expectancy?",
+        "options": ["2.4 years", "2.7 years", "3.4 years", "3.7 years"],
+        "correctAnswer": "3.4 years",
+        "category": "World Health & Disparities",
+        "difficulty": "Hard",
+        "explanation": "The WHO found that increasing primary care interventions in LMICs could result in an average gain of 3.4 years in life expectancy by providing basic health services to underserved populations.",
+        "tag": "Reducing Health Disparities"
+    },
+  {
+    "id": 26,
+    "question": "In the medical assessment of elderly patients or those with physical disabilities, which set of five specific tasks is used to evaluate the quality of a person's daily life?",
+    "options": ["Quality of Life Scales (QLS)", "Activities of Daily Living (ADLs)", "Functional Health Indicators (FHI)", "Executive Function Metrics (EFM)"],
+    "correctAnswer": "Activities of Daily Living (ADLs)",
+    "category": "World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Activities of Daily Living (ADLs) are five essential tasks—feeding, bathing, dressing, using the toilet, and transferring without assistance—that directly impact the quality of daily life. These measures are particularly critical when evaluating the health of elderly individuals or those with physical disabilities.",
+    "tag": "What is Health"
+  },
+  {
+    "id": 27,
+    "question": "According to the World Health Organization's 2025 statistics, what occurred to global healthy life expectancy (HALE) at birth between 2019 and 2021?",
+    "options": ["It increased steadily due to medical advances", "It remained stable despite global crises", "It saw rapid declines due to the COVID-19 pandemic", "It saw growth only in high-income countries"],
+    "correctAnswer": "It saw rapid declines due to the COVID-19 pandemic",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "While HALE at birth saw steady increases globally between 2000 and 2019, this trend was reversed with rapid declines between 2019 and 2021. These declines are primarily attributed to the impact of the COVID-19 pandemic on global mortality and morbidity.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 28,
+    "question": "Based on data from Our World in Data, which 20th-century event in China caused child mortality rates to spike to nearly one in three children dying before age five?",
+    "options": ["The Cultural Revolution", "The Great Leap Forward", "The Opium Wars", "The Boxer Rebellion"],
+    "correctAnswer": "The Great Leap Forward",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The Great Leap Forward in the late 1950s was a national industrialization plan that resulted in widespread famine and economic turmoil. During this period, child mortality rates spiked so dramatically that up to one-third of children died before reaching age five.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 29,
+    "question": "According to the Commonwealth Fund, what is the maternal mortality rate for Black women in the United States per 100,000 live births?",
+    "options": ["14.2 deaths", "22.5 deaths", "36.8 deaths", "49.5 deaths"],
+    "correctAnswer": "49.5 deaths",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Maternal mortality is exceptionally high among U.S. Black women, reaching 49.5 deaths per 100,000 live births. This rate reflects persistent disparities related to racism, stress, and bias in clinical decision-making.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 30,
+    "question": "Comparative health studies between the adjacent states of Utah and Nevada found that Utah had better health outcomes primarily due to:",
+    "options": ["Higher average household income", "Greater access to specialized surgery", "Lifestyle factors such as lower smoking and alcohol use", "A higher number of medical school graduates"],
+    "correctAnswer": "Lifestyle factors such as lower smoking and alcohol use",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The 'Tale of Two States' analysis concluded that health status differences between Utah and Nevada were driven by behavioral factors like tobacco and alcohol consumption, rather than differences in medical technology or income.",
+    "tag": "Health Disparities & Diversity"
+},
+  {
+    "id": 31,
+    "question": "Under the WHO's Fourteenth General Programme of Work (GPW14) for 2025–2028, what is the target number of people to be protected from health emergencies?",
+    "options": ["1 billion people", "3 billion people", "5 billion people", "7 billion people"],
+    "correctAnswer": "7 billion people",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The GPW14 set recalibrated targets to reflect absolute population coverage by 2028, including keeping 6 billion people healthier, expanding affordable health services to 5 billion people, and protecting 7 billion people from health emergencies.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 32,
+    "question": "Which health metric is typically used in developed countries for cost-effectiveness analysis to evaluate how much a specific treatment prolongs life while accounting for quality?",
+    "options": ["DALY (Disability-Adjusted Life Year)", "HALE (Healthy Life Expectancy)", "QALY (Quality-Adjusted Life Year)", "SF-36 (Short Form Health Survey)"],
+    "correctAnswer": "QALY (Quality-Adjusted Life Year)",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The QALY (Quality-Adjusted Life Year) evaluates treatment effectiveness by estimating additional years of life alongside health-related quality of life. A year of life with no impairment counts as 1.0 QALY, while a year with 50% health-related quality of life counts as 0.50 QALY.",
+    "tag": "What is Health"
+  },
+ {
+    "id": 33,
+    "question": "The sociocultural model of health defines 'wellness' primarily as an individual's capacity to:",
+    "options": ["Maintain a BMI under 25", "Perform the social roles and tasks for which they were socialized", "Identify clinical signs of infection early", "Achieve high scores on standardized intelligence tests"],
+    "correctAnswer": "Perform the social roles and tasks for which they were socialized",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Unlike the medical model, the sociocultural model focuses on role functioning. Health is viewed as the ability to fulfill social expectations, such as working or going to school, regardless of minor symptoms.",
+    "tag": "What is Health"
+},
+  {
+    "id": 34,
+    "question": "Research into childhood asthma disparities indicates that Black children are more likely to be exposed to which specific indoor allergen associated with higher rates of hospitalization?",
+    "options": ["Cat dander", "Pollen", "Cockroach allergens", "Dust mites"],
+    "correctAnswer": "Cockroach allergens",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Studies of inner-city children with asthma found that those allergic to cockroaches and exposed to high cockroach allergen levels had significantly higher hospitalization rates. Evidence suggests these allergens are more prevalent in the bedrooms of Black children, contributing to asthma disparities.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 35,
+    "question": "As of 2018, which U.S. state was the only one that had NOT implemented a prescription drug monitoring program (PDMP) to track opioid prescriptions?",
+    "options": ["Florida", "West Virginia", "Missouri", "Alabama"],
+    "correctAnswer": "Missouri",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "By 2018, all U.S. states except Missouri had implemented prescription drug monitoring programs (PDMPs). These databases require prescribers to register and check patient records to help prevent chronic opioid misuse.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 36,
+    "question": "Research into physician bias suggests that under conditions of time pressure and uncertainty, clinicians may default to using:",
+    "options": ["Detailed genetic sequencing", "Strict peer-reviewed clinical algorithms", "Racial and ethnic stereotypes", "Advanced imaging technology"],
+    "correctAnswer": "Racial and ethnic stereotypes",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Physicians making rapid decisions with incomplete data may unknowingly rely on 'application error'—inappropriately applying generalized racial stereotypes to an individual patient, which contributes to disparities.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+  {
+    "id": 37,
+    "question": "Historically, how was the Office of Civil Rights (OCR) able to effectively desegregate U.S. hospitals in the 1960s?",
+    "options": ["By filing individual lawsuits against every doctor", "By threatening to deny federal funds from Medicare and Medicaid", "By mandating the use of the SF-36 survey", "By creating new genetic testing requirements"],
+    "correctAnswer": "By threatening to deny federal funds from Medicare and Medicaid",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The OCR leveraged the threat of denying federal Medicare and Medicaid funds to force health facility desegregation. This approach proved extremely effective and allowed health care desegregation to proceed more smoothly than school desegregation.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 38,
+    "question": "The Wilson and Cleary model suggests that the ultimate outcome health professionals should focus on and measure is:",
+    "options": ["Biological health", "Functional status", "Quality of life", "Economic productivity"],
+    "correctAnswer": "Quality of life",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "In the Wilson and Cleary model, biological, functional, and emotional aspects of health are intermediate factors. The model argues that all causal links ultimately determine the final outcome professionals should focus on: the patient's overall quality of life.",
+    "tag": "What is Health"
+  },
+  {
+    "id": 39,
+    "question": "Studies on medical student bias have found that when clinical information is identical, students are more likely to attribute which symptom to Black female patients?",
+    "options": ["Need for a wheelchair", "Chronic angina (chest pain)", "Poor eyesight", "Lactose intolerance"],
+    "correctAnswer": "Chronic angina (chest pain)",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "In studies using professional actors, medical students with little clinical training were significantly more likely to attribute symptoms like angina to Black women than to white men, even when the scripts were identical.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+  {
+    "id": 40,
+    "question": "Regarding the WHO's original Triple Billion targets for 2018–2025 (GPW13), what was the estimated progress for the 'Healthier Populations' target by end of 2024?",
+    "options": ["It was significantly missed", "It was exactly met", "It was already exceeded", "No data is available to assess it"],
+    "correctAnswer": "It was already exceeded",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "WHO estimates that by the end of 2024, approximately 1.4 billion more people were living healthier lives, exceeding the original target of one billion. However, the targets for universal health coverage and health emergency protection are likely to be missed.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 41,
+    "question": "According to research highlighted by the NIMHD, a home-based phone intervention was effective in improving the uptake of recommended medical treatment for which condition in the Navajo Nation?",
+    "options": ["Diabetes", "Heart Failure", "Tuberculosis", "Hypertension"],
+    "correctAnswer": "Heart Failure",
+    "category": "World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "NIMHD research demonstrated that a home-based phone intervention specifically improved the uptake of guideline-directed medical therapy among heart failure patients living in the Navajo (Diné) Nation.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+  },
+  {
+    "id": 42,
+    "question": "According to the World Health Organization's 2025 statistics, by how many years did global healthy life expectancy (HALE) at birth increase between 2000 and 2019?",
+    "options": ["3.2 years", "4.5 years", "5.4 years", "6.1 years"],
+    "correctAnswer": "5.4 years",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "WHO data shows that global HALE at birth rose from 58.1 years in 2000 to 63.5 years in 2019, representing a 5.4-year gain. This progress was later reversed by the COVID-19 pandemic.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 43,
+    "question": "Data from Our World in Data challenges the common argument that global life expectancy has only increased because of which single factor?",
+    "options": ["Improved adult nutrition", "The decline in child mortality", "The eradication of smallpox", "Increased access to heart surgery"],
+    "correctAnswer": "The decline in child mortality",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "While falling child mortality is a major driver, data indicates that life expectancy has actually increased at all ages, showing that global health improvements are not limited solely to the pediatric population.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 44,
+    "question": "In a study of emergency department treatment for long-bone fractures, Hispanic patients were found to be how much more likely than white patients to receive no pain medication at all?",
+    "options": ["Twice as likely", "Three times as likely", "Four times as likely", "Five times as likely"],
+    "correctAnswer": "Twice as likely",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Todd et al. found that for an identical injury—a long-bone fracture—Hispanic patients were twice as likely as white patients to receive no pain medication, highlighting significant ethnic disparities in emergency analgesic practice.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+  },
+  {
+    "id": 45,
+    "question": "Which NIMHD resource is defined as a cloud-based platform for population science designed to fill critical health research and artificial intelligence gaps?",
+    "options": ["HDPulse", "PhenX SDOH Toolkit", "SCHARE", "The Neighborhood Atlas"],
+    "correctAnswer": "SCHARE",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "SCHARE is a cloud-based platform developed by NIMHD to provide researchers with access to datasets and population science tools, specifically aiming to address gaps in health research and AI development.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 46,
+    "question": "Which two WHO regions disproportionately bear the highest burden of Neglected Tropical Diseases (NTDs), accounting for 87% of the global population needing interventions?",
+    "options": ["African and Americas Regions", "South-East Asia and Western Pacific Regions", "African and South-East Asia Regions", "Eastern Mediterranean and European Regions"],
+    "correctAnswer": "African and South-East Asia Regions",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "In 2023, the African and South-East Asia Regions accounted for 87% of people worldwide requiring NTD interventions, despite housing only 41% of the global population.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 47,
+    "question": "The sociocultural model of health, associated with the work of Talcott Parsons, defines health as an individual's capacity to do which of the following?",
+    "options": ["Remain free of clinical symptoms", "Perform the roles for which they have been socialized", "Maintain a positive psychological outlook", "Avoid the utilization of medical services"],
+    "correctAnswer": "Perform the roles for which they have been socialized",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Talcott Parsons defined health as the state of optimum capacity of an individual for the effective performance of the roles and tasks for which they have been socialized, focusing on social role functioning rather than clinical symptoms.",
+    "tag": "What is Health"
+  },
+  {
+    "id": 48,
+    "question": "In the study by Epstein et al., what was the rate of referral for pretransplant evaluation for Black patients deemed 'appropriate' for a kidney transplant compared to white patients?",
+    "options": ["60.5% vs 80.2%", "75.1% vs 90.5%", "90.1% vs 98.0%", "95.5% vs 99.1%"],
+    "correctAnswer": "90.1% vs 98.0%",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Even for patients independently judged as medically appropriate for a kidney transplant, Black patients were referred for evaluation at a lower rate (90.1%) than white patients (98.0%), contributing to racial disparities in organ transplantation.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+  },
+  {
+    "id": 49,
+    "question": "Which term describes discrimination that occurs systematically across society and is embedded in prevailing cultures, legal mechanisms, and economic structures?",
+    "options": ["Implicit Bias", "Stereotyping", "Structural Discrimination", "Unconscious Aversion"],
+    "correctAnswer": "Structural Discrimination",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The WHO defines structural discrimination as discrimination embedded in the fabric of society—its laws, economy, and culture. Dismantling these inequities requires comprehensive institutional and legal change.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 50,
+    "question": "According to the WHO, newborn deaths (neonatal mortality) saw their share of total global under-five deaths increase to what percentage in 2023?",
+    "options": ["35%", "41%", "48%", "55%"],
+    "correctAnswer": "48%",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "As overall under-five mortality declined, neonatal mortality declined more slowly. Consequently, newborn deaths grew from 41% of total under-five deaths in 2000 to 48% in 2023.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 51,
+    "question": "The SF-36 health status survey uses 36 individual questions to create how many separate scales of health?",
+    "options": ["Two scales", "Four scales", "Eight scales", "Twelve scales"],
+    "correctAnswer": "Eight scales",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The SF-36 creates eight distinct scales (such as Physical Functioning, Bodily Pain, and General Mental Health) which are then combined to form two overall summary measures: physical and mental health.",
+    "tag": "What is Health"
+},
+  {
+    "id": 52,
+    "question": "Research into multiple myeloma in California found that higher incidence and mortality rates among African Americans persisted even after controlling for which factors?",
+    "options": ["Diet and exercise", "Age and gender", "Socioeconomic status and insurance", "Genetic mutations and ancestry"],
+    "correctAnswer": "Socioeconomic status and insurance",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "A study of California's cancer registry found that higher multiple myeloma rates in Black patients remained statistically significant even after controlling for differences in income, education, and health insurance availability.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 53,
+    "question": "In studies evaluating physician perceptions, Black patients were consistently rated less favorably than white patients in which of the following areas?",
+    "options": ["Adherence to medication", "Intelligence and pleasantness", "Financial stability", "History of childhood illness"],
+    "correctAnswer": "Intelligence and pleasantness",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Research found that physicians perceived Black patients more negatively than white patients, rating them as less intelligent and less pleasant even when patient demographics and social circumstances were statistically controlled.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+  {
+    "id": 54,
+    "question": "Under the WHO's Triple Billion framework, which billion target is specifically aligned with the 'Promote' strategic priority?",
+    "options": ["Universal Health Coverage", "Healthier Populations", "Health Emergencies Protection", "Sustainable Development Goals"],
+    "correctAnswer": "Healthier Populations",
+    "category": "World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The Triple Billion targets align with three WHO strategic priorities: 'Promote' health corresponds to the Healthier Populations target, 'Provide' health to Universal Health Coverage, and 'Protect' health to Health Emergencies Protection.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 55,
+    "question": "The 'Status Syndrome' describes a health phenomenon where an individual's risk of illness follows a 'social gradient' based on:",
+    "options": ["Their proximity to a major hospital", "Their position on the social hierarchy", "Their specific genetic ancestry", "The amount of exercise they perform weekly"],
+    "correctAnswer": "Their position on the social hierarchy",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The Status Syndrome posits that as you move down the social hierarchy, health worsens and life expectancy decreases. This gradient is driven by differences in autonomy and social participation.",
+    "tag": "Health Disparities & Diversity"
+},
+  {
+    "id": 56,
+    "question": "According to 1993 Medicare data, what was the hospital discharge rate per 1,000 for white male beneficiaries admitted for treatment of ischemic heart disease?",
+    "options": ["25.5", "31.2", "37.7", "39.7"],
+    "correctAnswer": "39.7",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Gornick et al. (1996) found that the discharge rate for white men was 39.7 per 1,000 Medicare beneficiaries, compared to 37.7 for Black men, despite both groups having the same insurance coverage under Medicare.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+  },
+  {
+    "id": 57,
+    "question": "In modern health systems using ICD-10 coding, which category of codes is specifically used to identify social determinants of health (SDOH) for a patient?",
+    "options": ["A codes", "S codes", "Z codes", "X codes"],
+    "correctAnswer": "Z codes",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "ICD-10 Z codes (Z55–Z65) allow providers to record social determinants of health such as housing instability, education levels, and family problems directly into a patient's electronic health record.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 58,
+    "question": "In the global health metric of DALYs, how many years are 'lost' if a person lives 10 years with a 50% functional disability and then dies 5 years prematurely?",
+    "options": ["5 DALYs", "10 DALYs", "15 DALYs", "20 DALYs"],
+    "correctAnswer": "10 DALYs",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "One DALY equals one lost year of healthy life. Living 10 years with 50% disability counts as 5 DALYs (10 × 0.5), and dying 5 years prematurely counts as 5 DALYs, for a total of 10 DALYs.",
+    "tag": "What is Health"
+  },
+  {
+    "id": 59,
+    "question": "Which pathogen is classified as a 'critical priority' in the 2024 WHO Bacterial Priority Pathogen List, while MRSA is classified only as 'high priority'?",
+    "options": ["Hepatitis B", "Mycobacterium tuberculosis", "E. coli resistant to third-generation cephalosporins", "Clostridioides difficile"],
+    "correctAnswer": "E. coli resistant to third-generation cephalosporins",
+    "category": "World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The 2024 WHO Bacterial Priority Pathogen List classifies carbapenem-resistant and third-generation cephalosporin-resistant E. coli as critical priority pathogens, while MRSA is placed in the high-priority category.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 60,
+    "question": "Among the countries compared in Barr's health indices, which nation has the highest per capita income at over $90,000?",
+    "options": ["United States", "Canada", "Singapore", "Norway"],
+    "correctAnswer": "Singapore",
+    "category": "World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Singapore has the highest per capita income ($90,570) among the countries compared by Barr, which generally correlates with its very low infant and maternal mortality rates.",
+    "tag": "Health Disparities & Diversity"
+  },
+  {
+    "id": 61,
+    "question": "The glaucoma medication Travatan carries a specific cosmetic risk relevant to clinical decision-making. What is this risk?",
+    "options": ["Increased risk of cataract in Black patients", "Permanent darkening of the skin around the eyes", "Reduced efficacy in patients with European ancestry", "Severe allergic reactions in Asian patients"],
+    "correctAnswer": "Permanent darkening of the skin around the eyes",
+    "category": "World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Travatan can cause permanent darkening of the skin around the eyes and of the iris. While it may be more effective in Black patients, physicians must disclose these cosmetic risks, which are more visible in lighter-skinned patients.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+  },
+  {
+    "id": 62,
+    "question": "Researchers supported by the NIMHD investigated community-based peer coaching to help patients manage which health condition in the rural Southeastern U.S.?",
+    "options": ["HIV/AIDS", "Blood Pressure", "Diabetes", "Opioid addiction"],
+    "correctAnswer": "Blood Pressure",
+    "category": "World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "NIMHD spotlighted research into community-based peer coaching interventions specifically designed to help patients in rural Southeastern U.S. communities manage and control their blood pressure.",
+    "tag": "Reducing Health Disparities"
+  },
+  {
+    "id": 63,
+    "question": "In the medical model of health, what is the primary distinction between a 'sign' and a 'symptom'?",
+    "options": ["Signs are reported by the patient; symptoms are observed by the doctor", "Signs are objective evidence of disease; symptoms are subjective experiences", "Signs are emotional indicators; symptoms are physiological indicators", "Signs are chronic conditions; symptoms are acute conditions"],
+    "correctAnswer": "Signs are objective evidence of disease; symptoms are subjective experiences",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The medical model defines health as the absence of disease. In this context, symptoms are the subjective feelings reported by a patient (like a headache), while signs are objective observations made by a clinician (like a fever or an abnormal CAT scan).",
+    "tag": "What is Health"
+},
+{
+    "id": 64,
+    "question": "According to World Health Statistics 2025, which pathogen is classified as a 'critical priority' due to its resistance to third-generation cephalosporins?",
+    "options": ["MRSA", "E. coli", "Hepatitis B", "Mycobacterium tuberculosis"],
+    "correctAnswer": "E. coli",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The 2024 WHO Bacterial Priority Pathogens List identifies carbapenem-resistant and third-generation cephalosporin-resistant E. coli as critical priorities for research and intervention.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 65,
+    "question": "What is the primary factor contributing to the fact that African Americans are nearly four times more likely to develop end-stage renal disease (ESRD) than white Americans?",
+    "options": ["Genetic mutations unique to the African continent", "Higher rates of hypertension and diabetes", "A natural biological resistance to dialysis", "Lower rates of kidney stone formation"],
+    "correctAnswer": "Higher rates of hypertension and diabetes",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "End-stage renal disease (ESRD) is frequently a complication of long-term chronic conditions. African Americans experience disproportionately higher rates of diabetes and high blood pressure, which are the leading drivers of kidney failure in this population.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 66,
+    "question": "The WHO's Fourteenth General Programme of Work (GPW14) set a 2028 target to keep how many people healthier through multisectoral action?",
+    "options": ["1 billion people", "3 billion people", "5 billion people", "6 billion people"],
+    "correctAnswer": "6 billion people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The recalibrated Triple Billion targets for the 2025–2028 period aim to keep 6 billion people healthier, expand universal health coverage to 5 billion, and protect 7 billion from emergencies.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 67,
+    "question": "Based on 2017 OECD data, the United States spends what percentage of its GDP on health care, the highest among developed nations?",
+    "options": ["10.4%", "12.3%", "15.5%", "17.1%"],
+    "correctAnswer": "17.1%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "In 2017, the U.S. spent 17.1% of its GDP on health care, which was significantly higher than other developed countries like Sweden (10.9%) or Canada (10.4%), yet resulted in lower life expectancy.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 68,
+    "question": "Which specific social determinant of health is identified in ICD-10 coding using 'Z codes'?",
+    "options": ["Genetic predisposition", "Chronic pain levels", "Housing and economic circumstances", "Response to antibiotics"],
+    "correctAnswer": "Housing and economic circumstances",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "ICD-10 Z codes (Z55–Z65) are clinical tools used to record social determinants of health, such as education, literacy, housing instability, and family problems, within a patient's medical record.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 69,
+    "question": "What is the primary objective of the 'Holistic Review' process in health profession admissions?",
+    "options": ["To admit only the students with the highest MCAT scores", "To evaluate applicants based on academic ability alongside empathy and cultural sensitivity", "To prioritize applicants from urban over rural areas", "To ensure all students have identical financial backgrounds"],
+    "correctAnswer": "To evaluate applicants based on academic ability alongside empathy and cultural sensitivity",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Holistic Review is a mission-aligned admissions process that looks beyond grades to consider an applicant's life experiences and personal attributes, aiming to increase workforce diversity and reduce disparities.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 70,
+    "question": "According to the WHO definition of health equity, what is the 'absence' of in population groups?",
+    "options": ["Chronic disease and disability", "Clinical symptoms and signs", "Unfair and avoidable differences in health", "Social and economic hierarchies"],
+    "correctAnswer": "Unfair and avoidable differences in health",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The WHO defines health equity as the 'absence of unfair and avoidable or remediable differences in health among population groups defined socially, economically, demographically or geographically'.",
+    "tag": "What is Health"
+},
+{
+    "id": 71,
+    "question": "Which region bears the highest global burden of Neglected Tropical Diseases (NTDs), requiring interventions for nearly 788 million people?",
+    "options": ["African Region", "Region of the Americas", "South-East Asia Region", "European Region"],
+    "correctAnswer": "African Region",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "According to 2023 statistics, the African Region had the highest number of people requiring NTD interventions at 787.7 million, followed by the South-East Asia Region at 518.6 million.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 72,
+    "question": "Research on 'weathering' suggests that the health of Black Americans deteriorates more rapidly than whites due to:",
+    "options": ["Genetic mutations common to the African continent", "The cumulative impact of repeated social and economic adversity", "Lower adherence to cardiovascular medication schedules", "Higher consumption of high-calorie fast food"],
+    "correctAnswer": "The cumulative impact of repeated social and economic adversity",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The 'weathering' hypothesis describes how the health of Black Americans deteriorates more quickly because of the chronic stress associated with social and economic disadvantage, leading to high allostatic loads.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 73,
+    "question": "What is the primary objective of the NIMHD's HDPulse resource?",
+    "options": ["Tracking the spread of infectious diseases globally", "Providing an AI-driven platform for genetic sequencing", "Offering online resources for improving minority health and reducing disparities", "Mapping the locations of every primary care clinic in the U.S."],
+    "correctAnswer": "Offering online resources for improving minority health and reducing disparities",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "NIMHD developed HDPulse as a high-quality, publicly available online resource specifically aimed at identifying and reducing minority health disparities.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 74,
+    "question": "In the context of clinical decision-making, why might a physician appropriately consider race when preventing skin cancer in a white researcher traveling to Kenya?",
+    "options": ["White researchers have a genetic resistance to tropical parasites", "Lower levels of melanin in white skin increase the risk of UV-induced injury", "Equatorial diets cause faster medication metabolism in white patients", "Sunblock is clinically proven to be less effective on darker skin tones"],
+    "correctAnswer": "Lower levels of melanin in white skin increase the risk of UV-induced injury",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "In this specific scenario, a physician uses race as a surrogate for skin color and melanin levels. Lower melanin in white skin provides less protection against intense equatorial UV rays, making specialized prevention appropriate.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 75,
+    "question": "According to the WHO's World report on social determinants of health equity, how many people lived in countries where debt interest payments exceeded education or health spending in 2024?",
+    "options": ["500 million", "1.2 billion", "2.5 billion", "3.3 billion"],
+    "correctAnswer": "3.3 billion",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "In 2024, an estimated 3.3 billion people lived in countries that spent more on external debt interest payments than on essential investments in education or health.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 76,
+    "question": "Which psychological health model focuses on an individual's own sense of well-being and their personal assessment of their health status?",
+    "options": ["Sociocultural model", "Medical model", "Psychological model", "Multidimensional model"],
+    "correctAnswer": "Psychological model",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The psychological model defines health based on an individual's subjective sense of well-being, often measured through self-reported health status surveys like the MEPS.",
+    "tag": "What is Health"
+},
+{
+    "id": 77,
+    "question": "As part of the 'Helping to End Addiction Long-term' (HEAL) initiative, the NIH is focusing on which two major areas?",
+    "options": ["Mandating PDMPs and increasing prison sentences for dealers", "Improving addiction treatments and enhancing non-opioid pain management", "Providing free health insurance and banning all opioid prescriptions", "Genetically testing for addiction and increasing tobacco taxes"],
+    "correctAnswer": "Improving addiction treatments and enhancing non-opioid pain management",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The NIH's HEAL initiative aims to address the opioid crisis by developing better treatments for misuse/addiction and finding effective ways to manage pain without the chronic use of opioids.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 78,
+    "question": "Which country had the highest maternal mortality rate among those compared in the text, at 814 deaths per 100,000 live births?",
+    "options": ["Haiti", "Nigeria", "Democratic Republic of the Congo", "India"],
+    "correctAnswer": "Nigeria",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Based on comparative health indexes, Nigeria has a maternal mortality rate of 814 per 100,000 live births, significantly higher than Haiti (359) or the Democratic Republic of the Congo (693).",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 79,
+    "question": "What percentage of cardiologists in a KFF survey believed that racial disparities in care occurred within their own patient population?",
+    "options": ["5 percent", "12 percent", "34 percent", "60 percent"],
+    "correctAnswer": "5 percent",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "While 34% of physicians recognized disparities in the overall health system, only 12% felt they occurred in their own clinic, and only 5% believed they occurred among their own specific patients.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 80,
+    "question": "High social status is associated with better health outcomes because it typically provides individuals with greater levels of:",
+    "options": ["Personal autonomy and participation in society", "Access to high-calorie nutrition", "Immunity to all bacterial infections", "Knowledge of clinical pharmacy"],
+    "correctAnswer": "Personal autonomy and participation in society",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Sociological research indicates that the 'Status Syndrome' operates through social and psychological mechanisms; higher status gives people more control over their lives, which lowers chronic stress.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 81,
+    "question": "Under Section 1557 of the Affordable Care Act, discrimination is prohibited in any health program receiving federal financial assistance based on the grounds of:",
+    "options": ["Political affiliation", "Prior medical history", "Race, color, national origin, sex, age, or disability", "Total household annual income"],
+    "correctAnswer": "Race, color, national origin, sex, age, or disability",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Section 1557 of the ACA reinforces civil rights protections by prohibiting discrimination in health programs receiving federal funds based on race, color, national origin, sex, age, or disability.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 82,
+    "question": "Computer-aided genetic analysis of human DNA has shown that sorting people into exactly five racial groups is:",
+    "options": ["The only scientifically accurate method", "An arbitrary decision based on social convention", "Mandated by the laws of physics", "Necessary for all medical treatments"],
+    "correctAnswer": "An arbitrary decision based on social convention",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "When computers sort DNA into different numbers of groups (e.g., 2, 3, or 6), they find recognizable clusters that don't always match the 5 historical races, proving that these categories are socially constructed.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 83,
+    "question": "Which global health target was estimated by the WHO to be already 'exceeded' by the end of 2024?",
+    "options": ["Universal Health Coverage (UHC)", "Healthier Populations", "Health Emergencies Protection", "Eradication of Malaria"],
+    "correctAnswer": "Healthier Populations",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "WHO estimates that 1.4 billion more people were living healthier lives by late 2024, exceeding the original target of one billion. However, the targets for UHC and emergency protection were likely to be missed.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 84,
+    "question": "Which indicator is used by the U.S. Census Bureau to determine ethnicity, independent of a person's race?",
+    "options": ["Whether a person is of Hispanic origin", "The country of their highest educational degree", "Their total household annual income", "Their religious affiliation"],
+    "correctAnswer": "Whether a person is of Hispanic origin",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The U.S. Census Bureau treats race and ethnicity as separate concepts. Ethnicity is used exclusively to determine if a person is of 'Hispanic Origin' or 'Not of Hispanic Origin.'",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 85,
+    "question": "Which strategy is recommended by the WHO to address the 'commercial determinants' of health equity?",
+    "options": ["Banning all private pharmaceutical companies", "Regulating commercial activities that negatively affect health", "Mandating that everyone work in the informal economy", "Privatizing all urban transportation infrastructure"],
+    "correctAnswer": "Regulating commercial activities that negatively affect health",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The WHO recommends analyzing and regulating commercial practices (like the marketing of unhealthy products) that damage health equity, while also using public procurement to incentivize positive commercial behavior.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 86,
+    "question": "The SF-36 health survey instrument measures overall mental health using four specific subscales. Which of the following is included in this mental health dimension?",
+    "options": ["Physical Functioning", "Social Functioning", "Bodily Pain", "General Health Perceptions"],
+    "correctAnswer": "Social Functioning",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "In the SF-36 instrument, Social Functioning, Vitality, Role Limitations Due to Emotional Problems, and General Mental Health are the four subscales used to create the overall mental health summary measure.",
+    "tag": "What is Health"
+},
+{
+    "id": 87,
+    "question": "According to the WHO's 2025 statistics, what happened to global healthy life expectancy (HALE) at birth between the years 2019 and 2021?",
+    "options": ["It increased by 5.4 years", "It remained stagnant due to economic shifts", "It saw rapid declines due to the COVID-19 pandemic", "It reached a historic peak of 73 years"],
+    "correctAnswer": "It saw rapid declines due to the COVID-19 pandemic",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "WHO data indicates that while global HALE increased steadily from 2000 to 2019, the COVID-19 pandemic caused rapid declines in healthy longevity between 2019 and 2021.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 88,
+    "question": "According to the Commonwealth Fund, what is the maternal mortality rate for Black women in the United States per 100,000 live births?",
+    "options": ["14.2 deaths", "22.5 deaths", "36.8 deaths", "49.5 deaths"],
+    "correctAnswer": "49.5 deaths",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Maternal mortality is exceptionally high among U.S. Black women, reaching 49.5 deaths per 100,000 live births, which is nearly triple the rate of white women.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 89,
+    "question": "In the study of neighborhood disadvantage, what specific change was observed in the blood lead levels of children in Flint, Michigan, after the city's water source was changed?",
+    "options": ["Levels decreased from 5.2% to 1.1%", "Incidence of elevated levels increased from 2.4% to 4.9%", "Lead levels remained stable but asthma rates doubled", "Lead was only found in the blood of 0.5% of children"],
+    "correctAnswer": "Incidence of elevated levels increased from 2.4% to 4.9%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Dr. Mona Hanna-Attisha reported that the incidence of elevated blood lead levels in children nearly doubled from 2.4% to 4.9% following the change in Flint's water source, with even higher increases in high-lead neighborhoods.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 90,
+    "question": "The 'John Henryism' phenotype describes a high-effort coping mechanism that can lead to high allostatic loads and increased risk for:",
+    "options": ["Type 1 Diabetes", "Hypertension", "Alzheimer's Disease", "Skin Cancer"],
+    "correctAnswer": "Hypertension",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "John Henryism involves intense psychological and physical effort to overcome social adversity. While it reflects resilience, it often results in higher blood pressure and cardiovascular risk among disadvantaged groups.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 91,
+    "question": "According to research on breast cancer genetics, women of Ashkenazi Jewish ancestry carry a BRCA1 or BRCA2 mutation at what rate compared to the general population?",
+    "options": ["1 in 10 vs 1 in 100", "1 in 40 vs 1 in 400", "1 in 100 vs 1 in 1,000", "1 in 500 vs 1 in 5,000"],
+    "correctAnswer": "1 in 40 vs 1 in 400",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Ashkenazi Jewish women have a tenfold higher risk of carrying a BRCA mutation (2.5% or 1 in 40) compared to the general U.S. population (0.25% or 1 in 400).",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 92,
+    "question": "In the study by Phelps et al. (2000) using electronic sensors, what unconscious physiological response was measured in subjects shown images of different racial faces?",
+    "options": ["Changes in heart rate variability", "The strength of an eye-blink startle response", "Blood glucose fluctuations", "The speed of verbal recall"],
+    "correctAnswer": "The strength of an eye-blink startle response",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The study measured the unconscious eye-blink startle response, finding that subjects blinked more strongly when shown Black faces than white faces, reflecting unintended and unconscious reactions.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 93,
+    "question": "When the United Network for Organ Sharing (UNOS) changed its deceased donor kidney allocation policy in 2014, how was 'waiting time' redefined to reduce racial disparities?",
+    "options": ["It started from the date of the first doctor visit", "It started from the date the patient joined a private health plan", "It started from the date a patient first began kidney dialysis", "It was based on the patient's distance from the transplant center"],
+    "correctAnswer": "It started from the date a patient first began kidney dialysis",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "To combat the fact that Black patients were referred to the transplant list later than white patients, UNOS began backdating waiting time to the start of dialysis, which significantly increased transplant rates for Black and Hispanic patients.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 94,
+    "question": "The O'Neill-Lancet Commission was established with which primary focus in the sphere of global health?",
+    "options": ["Eradicating smallpox in urban centers", "Tackling racism and structural discrimination", "Standardizing the use of the SF-36 survey", "Increasing the production of rare earth elements"],
+    "correctAnswer": "Tackling racism and structural discrimination",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The O'Neill-Lancet Commission on Racism, Structural Discrimination and Global Health aims to diagnose the problem of racism globally and identify actionable anti-racist strategies for health policy.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 95,
+    "question": "Which set of ICD-10 codes is specifically utilized by clinicians to identify and track social determinants of health (SDOH) in patient records?",
+    "options": ["A codes (A00–A99)", "S codes (S00–S99)", "Z codes (Z55–Z65)", "X codes (X00–X99)"],
+    "correctAnswer": "Z codes (Z55–Z65)",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "ICD-10 Z codes, particularly Z55 through Z65, are used to record social determinants such as housing instability, education issues, and family problems within electronic health records.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 96,
+    "question": "According to the WHO, the current Fourteenth General Programme of Work (GPW14) set a 2028 target to keep how many people healthier?",
+    "options": ["1 billion people", "3 billion people", "5 billion people", "6 billion people"],
+    "correctAnswer": "6 billion people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The recalibrated targets for 2025–2028 (GPW14) aim to keep 6 billion people healthier, expand access to 5 billion, and protect 7 billion from emergencies.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 97,
+    "question": "The 'Present-Fatalistic' time perspective, as identified by Zimbardo and Boyd, is characterized by which belief?",
+    "options": ["Sacrificing today's enjoyment for future rewards", "Planning for and achieving long-term goals", "Believing the future is predestined and uninfluenced by individual actions", "Orienting strictly toward present hedonistic pleasure"],
+    "correctAnswer": "Believing the future is predestined and uninfluenced by individual actions",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The Present-Fatalistic perspective reveals a belief that the future is out of one's control and must be borne with resignation, a view often associated with lower socioeconomic status.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 98,
+    "question": "In the Schulman et al. study, which two patient characteristics did physicians appropriately use to correctly identify a lower clinical risk of heart disease?",
+    "options": ["Race and Income", "Gender and Age", "Education and Geography", "Diet and Smoking status"],
+    "correctAnswer": "Gender and Age",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Physicians in the study correctly identified that women and younger patients were at lower clinical risk for heart disease, showing they processed these specific clinical variables appropriately despite the presence of racial bias in final referrals.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 99,
+    "question": "The Demographic and Health Surveys (DHS) program, which provides critical population data, conducted its first survey in which country in 1985?",
+    "options": ["China", "India", "El Salvador", "Nigeria"],
+    "correctAnswer": "El Salvador",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The DHS program was initiated by USAID in the early 1980s to provide reliable data on health indicators; its first survey took place in El Salvador in 1985.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 100,
+    "question": "The Wilson and Cleary model of health suggests that 'biological health' and 'functional status' are best categorized as:",
+    "options": ["The final outcomes of care", "Intermediate links in a causal chain", "Subjective psychological measures", "Unreliable indicators of well-being"],
+    "correctAnswer": "Intermediate links in a causal chain",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The model argues that biological, functional, and emotional health are intermediate steps that ultimately determine the patient's final quality of life.",
+    "tag": "What is Health"
+},
+{
+    "id": 101,
+    "question": "According to Our World in Data, China's 'Great Leap Forward' resulted in child mortality rates where approximately how many children died before age five?",
+    "options": ["1 in 10 children", "1 in 5 children", "1 in 3 children", "1 in 2 children"],
+    "correctAnswer": "1 in 3 children",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "During the late 1950s famine associated with the Great Leap Forward, child mortality in China spiked so dramatically that nearly one in three children died before their fifth birthday.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 102,
+    "question": "In the van Ryn and Burke study, what percentage of physicians rated their Black patients as 'very pleasant,' compared to their white patients?",
+    "options": ["13% vs 26%", "37% vs 53%", "50% vs 50%", "67% vs 79%"],
+    "correctAnswer": "37% vs 53%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Physicians in the study perceived Black patients less favorably, with only 37% rating them as 'very pleasant' compared to 53% for white patients, even after controlling for actual patient behavior.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 103,
+    "question": "Which tool was developed by the Association of American Medical Colleges (AAMC) to help medical schools assess their training in cultural competence?",
+    "options": ["MEPS", "SF-36", "TACCT", "HALE"],
+    "correctAnswer": "TACCT",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The Tool for Assessing Cultural Competence Training (TACCT) was developed by the AAMC to assist medical schools in meeting accreditation standards for cultural competence.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 104,
+    "question": "Research into antimicrobial resistance in 2022 showed that the global median resistance for MRSA rose to what percentage?",
+    "options": ["13.4%", "22.5%", "32.2%", "48.0%"],
+    "correctAnswer": "32.2%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "WHO World Health Statistics report that MRSA resistance proportions rose from 13.4% in 2016 to a median of 32.2% in 2022.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 105,
+    "question": "In the context of health care access, Section 1557 of the Affordable Care Act (ACA) is notable because it:",
+    "options": ["Eliminated all co-pays for preventive care", "Prohibits discrimination in any health program receiving federal funds", "Mandates that all citizens carry private insurance", "Provides free life insurance to rural populations"],
+    "correctAnswer": "Prohibits discrimination in any health program receiving federal funds",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Section 1557 of the ACA prohibits discrimination on the basis of race, color, national origin, sex, age, or disability in health programs and activities that receive federal financial assistance.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 106,
+    "question": "In the United States, research on cardiovascular care has shown that racial disparities in hospital discharge rates for heart disease persist even among patients who have which of the following?",
+    "options": ["Private employer-based insurance", "Identical Medicare coverage", "High-deductible health plans", "Catastrophic illness riders"],
+    "correctAnswer": "Identical Medicare coverage",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Data analysis of Medicare beneficiaries has revealed that even when insurance coverage is identical, Black men are referred for and discharged from heart disease treatment at lower rates than white men, indicating that insurance access alone does not eliminate treatment disparities.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 107,
+    "question": "The WHO defines 'health equity' specifically as the absence of:",
+    "options": ["All social and economic hierarchies", "Unfair, avoidable or remediable differences in health among groups", "Genetic mutations within a population", "Subjective feelings of sadness or discouragement"],
+    "correctAnswer": "Unfair, avoidable or remediable differences in health among groups",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Health equity is the absence of differences in health that are deemed unfair or avoidable among groups defined socially, economically, or geographically.",
+    "tag": "What is Health"
+},
+{
+    "id": 108,
+    "question": "Based on 2016-2017 OECD data, which country spends the highest percentage of its GDP on health care, at 17.1%?",
+    "options": ["Japan", "Canada", "Sweden", "United States"],
+    "correctAnswer": "United States",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The United States spends 17.1% of its GDP on health care, which is significantly higher than other developed nations like Canada (10.4%) or Japan (10.7%).",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 109,
+    "question": "Which clinical phenomenon occurs when a physician incorrectly applies generalized group statistics (such as racial averages) to a single, individual patient?",
+    "options": ["Clinical Correlation", "Diagnostic Partitioning", "Application Error", "Therapeutic Indexing"],
+    "correctAnswer": "Application Error",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Application error happens when a clinician takes a 'true' population average (e.g., 'Group A has a higher risk of X') and inappropriately assumes it applies to an individual patient without considering that patient's unique clinical presentation.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 110,
+    "question": "The 'Latina Paradox' describes a counterintuitive finding involving which of the following?",
+    "options": ["High income but high mortality rates", "Low socioeconomic status but low infant mortality rates", "High educational attainment but low health literacy", "Universal health insurance but poor access to clinics"],
+    "correctAnswer": "Low socioeconomic status but low infant mortality rates",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The Latina Paradox is the epidemiological observation that Hispanic infants often have lower mortality rates than would be predicted by their mothers' common socioeconomic disadvantages.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 111,
+    "question": "The Area Deprivation Index (ADI), which is used to characterize the social environment of a neighborhood at the zip code level, is composed of how many variables from the American Community Survey?",
+    "options": ["5 variables", "12 variables", "17 variables", "25 variables"],
+    "correctAnswer": "17 variables",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The ADI was originally developed by the Health Resources and Services Administration and is maintained by the University of Wisconsin. It utilizes 17 specific social and economic variables from the U.S. Census Bureau to Characterize neighborhood-level disadvantage.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 112,
+    "question": "Under the WHO's Fourteenth General Programme of Work (GPW14) for 2025–2028, what is the absolute population target for protecting people from health emergencies?",
+    "options": ["1 billion people", "3 billion people", "5 billion people", "7 billion people"],
+    "correctAnswer": "7 billion people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Moving from the relative targets of GPW13, the GPW14 has recalibrated its targets to absolute population coverage by 2028, aiming to keep 6 billion people healthier, expand UHC to 5 billion, and protect 7 billion from emergencies.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 113,
+    "question": "Which specific settings were utilized in successful interventions described by Barr to improve hypertension control among African American men by providing care outside of traditional clinics?",
+    "options": ["Local libraries", "Barbershops", "Fitness centers", "Public transportation hubs"],
+    "correctAnswer": "Barbershops",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Innovative programs, such as those in Los Angeles and Pennsylvania, demonstrated that placing medical interventions in barbershops significantly improved treatment uptake and blood pressure control for Black men.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 114,
+    "question": "According to the WHO World Report on Social Determinants of Health Equity, how many people lived in countries where external debt interest payments exceeded spending on education or health in 2024?",
+    "options": ["800 million", "1.5 billion", "2.2 billion", "3.3 billion"],
+    "correctAnswer": "3.3 billion",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "In 2024, approximately 3.3 billion people lived in countries that prioritized external debt interest over essential investments in health or education, creating a major barrier to health equity.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 115,
+    "question": "In the medical model, what is the term used to describe objective evidence of a disease that can be observed by a health professional, such as a fever or an abnormal scan?",
+    "options": ["A symptom", "A syndrome", "A sign", "A sickness"],
+    "correctAnswer": "A sign",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Within the medical model, health is the absence of disease. Diseases are identified through 'symptoms,' which are subjective feelings of the patient, and 'signs,' which are objective clinical findings.",
+    "tag": "What is Health"
+},
+{
+    "id": 116,
+    "question": "The NIH initiative 'Helping to End Addiction Long-term' (HEAL) focuses on which two primary areas to combat the opioid crisis?",
+    "options": ["Increasing prison sentences and closing illegal pharmacies", "Improving addiction treatments and enhancing non-opioid pain management", "Banning all opioid prescriptions and providing free insurance", "Genetically testing for addiction and raising tobacco taxes"],
+    "correctAnswer": "Improving addiction treatments and enhancing non-opioid pain management",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "As reported by Francis Collins, the HEAL initiative focuses on improving treatments for opioid misuse and finding effective strategies for managing pain without the use of chronic opioids.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 117,
+    "question": "In the context of the global burden of disease, which region has the highest number of people requiring interventions against Neglected Tropical Diseases (NTDs)?",
+    "options": ["Region of the Americas", "Western Pacific Region", "African Region", "European Region"],
+    "correctAnswer": "African Region",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "As of 2023, the African Region had the highest number of people requiring NTD interventions at 787.7 million, followed by the South-East Asia Region at 518.6 million.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 118,
+    "question": "In a study using the Implicit Association Test (IAT), white subjects in the United States consistently took a longer time to identify a word as having positive connotations when it was paired with which of the following?",
+    "options": ["An image of a white face", "An image of a Black face", "An image of a child's face", "An image of an elderly face"],
+    "correctAnswer": "An image of a Black face",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Data from over 1 million subjects showed that white participants took longer to associate positive words with Black faces than with white faces, reflecting unconscious bias that can affect medical decision-making.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 119,
+    "question": "The Zimbardo Time Perspective Inventory identifies a 'Present-Fatalistic' perspective, which is often associated with lower socioeconomic status and characterized by a belief that:",
+    "options": ["The future is a result of hard work today", "The future is predestined and uninfluenced by individual actions", "Present pleasure should be avoided to save for retirement", "Life is a series of controllable risks and rewards"],
+    "correctAnswer": "The future is predestined and uninfluenced by individual actions",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The 'Present-Fatalistic' perspective reveals a belief that the future is out of one's control and must be borne with resignation, a view that can hinder preventive health behaviors.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 120,
+    "question": "In the context of health disparities, how does 'implicit bias' typically affect the physician-patient interaction?",
+    "options": ["It causes physicians to intentionally deny life-saving care", "It results in unintended negative perceptions and communication barriers", "It leads to the over-prescription of experimental medications", "It creates a preference for patients with complex genetic histories"],
+    "correctAnswer": "It results in unintended negative perceptions and communication barriers",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Implicit bias refers to unconscious associations that can lead providers to perceive certain patients less favorably (e.g., as less pleasant or less cooperative). This often results in poorer communication and less effective partnership in the medical relationship.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 121,
+    "question": "The 'threshold model' of health suggests that health is a dichotomous variable where an individual is either healthy or unhealthy. Which model of health is this typically associated with?",
+    "options": ["The sociocultural model", "The psychological model", "The medical model", "The multidimensional model"],
+    "correctAnswer": "The medical model",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The medical model traditionally views health as the absence of disease. Therefore, if clinical signs and symptoms are absent, the patient is 'healthy'; if present, they are 'unhealthy'.",
+    "tag": "What is Health"
+},
+{
+    "id": 122,
+    "question": "As of 2018, which state had the unique distinction of being the only one in the United States without a prescription drug monitoring program (PDMP)?",
+    "options": ["West Virginia", "Mississippi", "Missouri", "Alabama"],
+    "correctAnswer": "Missouri",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "By 2018, all U.S. states except Missouri had implemented PDMPs to track opioid prescriptions and help prevent misuse.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 123,
+    "question": "Which global health metric is used to evaluate the effectiveness of medical treatments by estimating additional years of life and the quality of life experienced during those years?",
+    "options": ["HALE (Healthy Life Expectancy)", "DALY (Disability-Adjusted Life Year)", "QALY (Quality-Adjusted Life Year)", "ADI (Area Deprivation Index)"],
+    "correctAnswer": "QALY (Quality-Adjusted Life Year)",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The QALY measures additional years of life weighted by the health-related quality of life (HRQL) experienced. For example, a year with 50% HRQL counts as 0.50 QALY.",
+    "tag": "What is Health"
+},
+{
+    "id": 124,
+    "question": "In patients with congestive heart failure (CHF), African Americans often show a lesser clinical response to which specific type of drug therapy?",
+    "options": ["Calcium channel blockers", "ACE inhibitors", "Antibiotics", "Aspirin"],
+    "correctAnswer": "ACE inhibitors",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Large-scale clinical trials have demonstrated that Black patients with congestive heart failure show a lesser response to angiotensin-converting-enzyme (ACE) inhibitor therapy compared to white patients.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 125,
+    "question": "Research regarding gender and race in cardiovascular care has identified an 'interaction effect' where which group is often referred for diagnostic procedures at the lowest rate?",
+    "options": ["White males", "Black males", "Black females", "Hispanic males"],
+    "correctAnswer": "Black females",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Studies using standardized patient scenarios have found that Black women often face the greatest disparity in cardiac referrals, suggesting that the combination of race and gender bias creates a unique barrier to care compared to other groups.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 126,
+    "question": "According to World Health Statistics 2025, what was the median resistance proportion for MRSA infections in 2022?",
+    "options": ["11.4%", "13.4%", "32.2%", "48.0%"],
+    "correctAnswer": "32.2%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "WHO data shows that MRSA resistance proportions rose from 13.4% in 2016 to a median of 32.2% in 2022. Lower proportions were found in countries with better testing coverage.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 127,
+    "question": "Section 1557 of the Affordable Care Act (ACA) is a landmark provision because it prohibits discrimination in any health program receiving federal funds based on race, color, national origin, sex, age, or:",
+    "options": ["Income level", "Political affiliation", "Disability", "Prior medical history"],
+    "correctAnswer": "Disability",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Section 1557 of the ACA reinforces civil rights protections by prohibiting discrimination on the grounds of race, color, national origin, sex, age, or disability in federally funded health programs.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 128,
+    "question": "The sociocultural model of health defines health as the state of optimum capacity for the effective performance of the roles and tasks for which an individual has been socialized. This model is most closely associated with which sociologist?",
+    "options": ["Michael Marmot", "Talcott Parsons", "Victor Fuchs", "Sherman James"],
+    "correctAnswer": "Talcott Parsons",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Talcott Parsons (1979) defined health through the lens of role functioning, emphasizing an individual's ability to fulfill social expectations rather than just clinical signs.",
+    "tag": "What is Health"
+},
+{
+    "id": 129,
+    "question": "In the context of the Latina Paradox, what counterintuitive finding is observed regarding Hispanic infant health in the United States?",
+    "options": ["They have higher income but worse health than whites", "They have low infant mortality despite low socioeconomic status", "They have better access to care but lower satisfaction", "They have higher rates of genetic disease but live longer"],
+    "correctAnswer": "They have low infant mortality despite low socioeconomic status",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The Latina Paradox is the observation that infant mortality rates among many Hispanic groups remain low despite common socioeconomic disadvantages like low income and education.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 130,
+    "question": "According to Gornick et al. (1996), white male Medicare beneficiaries were discharged for treatment of ischemic heart disease at a rate of 39.7 per 1,000. What was the rate for Black male beneficiaries with the same insurance?",
+    "options": ["25.5", "37.7", "39.7", "42.1"],
+    "correctAnswer": "37.7",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The study found that even with identical Medicare coverage, Black men were discharged at a lower rate (37.7) than white men (39.7) for heart disease treatment, indicating racial disparities in access.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 131,
+    "question": "The Healthy People 2020 program is explicitly described by the federal government as providing which type of objectives for improving the health of Americans?",
+    "options": ["Legally-mandated federal regulations", "Market-driven economic incentives", "Science-based, 10-year national objectives", "Globally-standardized medical protocols"],
+    "correctAnswer": "Science-based, 10-year national objectives",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Healthy People 2020 was launched in 2010 to provide 'science-based, 10-year national objectives' for improving population health across a range of indicators and conditions.",
+    "tag": "What is Health"
+},
+{
+    "id": 132,
+    "question": "Based on data from the U.S. National Cancer Institute (2018), how much greater is the incidence of multiple myeloma in Black women compared to white women?",
+    "options": ["1.5 times greater", "2.4 times greater", "3.1 times greater", "4.8 times greater"],
+    "correctAnswer": "2.4 times greater",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Research indicates that the incidence of multiple myeloma in African American women is 2.4 times greater than in white women, highlighting a significant racial disparity in cancer incidence.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 133,
+    "question": "According to World Health Statistics 2025, the world is currently off track to meet the 2030 target for reducing the global prevalence of anaemia in women by what percentage?",
+    "options": ["25% reduction", "33% reduction", "50% reduction", "75% reduction"],
+    "correctAnswer": "50% reduction",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The Sustainable Development Goals (SDG 2.2.3) set a target of a 50% reduction in anaemia prevalence among women aged 15–49 by 2030 (from a 2012 baseline), but recent data indicates global rates are actually increasing.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 134,
+    "question": "If economic-related inequality in childhood immunization were eliminated across the 88 countries surveyed by the WHO, what would the weighted national average prevalence of 'zero-dose' children drop to?",
+    "options": ["13.1% to 6.3%", "18.5% to 10.2%", "22.0% to 11.4%", "26.5% to 15.0%"],
+    "correctAnswer": "13.1% to 6.3%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "WHO analysis suggests that if the poorest children achieved the same outcomes as the richest 20% (richest quintile), the weighted national average prevalence of zero-dose children would be more than halved, from 13.1% to 6.3%.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 135,
+    "question": "The WHO's 'World report on social determinants of health equity' Action Area 3 focuses on steering 'mega-trends' towards health equity. Which two trends are specifically identified?",
+    "options": ["Urbanization and Industrialization", "Climate change and Digitalization", "Aging and Migration", "Globalization and Privatization"],
+    "correctAnswer": "Climate change and Digitalization",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Action Area 3 of the report aims to articulate and accelerate the health equity benefits of climate action and ensure that digital transformations promote rather than hinder health equity.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 136,
+    "question": "A 2025 NIMHD workshop titled 'An Introduction to Python for Data Science' specifically focuses on utilizing which cloud-based platform for research?",
+    "options": ["HDPulse", "SCHARE", "PhenX Toolkit", "The Neighborhood Atlas"],
+    "correctAnswer": "SCHARE",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The SCHARE Think-A-Thon workshops are designed to introduce researchers to Python programming and its application in Data Science specifically on the SCHARE platform to fill critical research gaps.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 137,
+    "question": "In the Schulman et al. study on cardiac catheterization, the researchers found a specific 'interaction effect' where physicians were significantly less likely to refer which group for the procedure?",
+    "options": ["Black males", "White females", "Black females", "Hispanic males"],
+    "correctAnswer": "Black females",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The study found no evidence that physicians responded differently to Black males than to white patients, but they consistently recommended Black females for catheterization significantly less often, indicating a unique interaction of race and gender bias.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 138,
+    "question": "In the study by Cohen and colleagues (1997) regarding social ties and the common cold, for how long were subjects required to live in a quarantined laboratory setting?",
+    "options": ["24 hours", "Three days", "Six days", "Ten days"],
+    "correctAnswer": "Six days",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "To ensure they were not already coming down with a cold, 276 healthy subjects agreed to live for six days in a quarantined laboratory setting where they were exposed to common cold viruses for observation.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 139,
+    "question": "Which state used a Medicaid '1115 waiver' to address social determinants of health by creating community advisory councils to work with medical providers?",
+    "options": ["California", "Massachusetts", "Oregon", "Missouri"],
+    "correctAnswer": "Oregon",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Oregon implemented an 1115 waiver program that created community advisory councils to collaborate with Medicaid providers on community health needs assessments and addressing social factors.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 140,
+    "question": "According to 2023 WHO data, which region has achieved the highest coverage rate for Human Papillomavirus (HPV) vaccination among girls aged 9–14?",
+    "options": ["African Region", "Region of the Americas", "European Region", "South-East Asia Region"],
+    "correctAnswer": "Region of the Americas",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The WHO Region of the Americas has the highest HPV vaccination coverage among girls aged 9–14, reaching 55% within 18 years of the vaccine's introduction.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 141,
+    "question": "Which WHO region currently has the highest uptake of the third dose of pneumococcal conjugate vaccine (PCV3)?",
+    "options": ["Region of the Americas", "Western Pacific Region", "European Region", "Eastern Mediterranean Region"],
+    "correctAnswer": "European Region",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "As of 2023 statistics, the European Region has the highest uptake of PCV3 globally, with coverage reaching 86%.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 142,
+    "question": "In the van Ryn and Burke study, what was the 'physically active lifestyle' rating given by physicians to Black patients compared to white patients?",
+    "options": ["14% vs 26%", "20% vs 37%", "31% vs 41%", "42% vs 57%"],
+    "correctAnswer": "14% vs 26%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Physicians in the study were significantly less likely to rate Black patients as having a strong desire for a physically active lifestyle (14%) compared to white patients (26%), a perception that could impact recommendations for cardiac rehabilitation.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 143,
+    "question": "The World Health Organization (WHO) defines 'zero-dose children' as those who have:",
+    "options": ["Not received any routine vaccines", "Not completed the full childhood series", "Only received the BCG vaccine at birth", "Not received the DTP3 dose by age five"],
+    "correctAnswer": "Not received any routine vaccines",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The term 'zero-dose children' refers to those who have not received any doses of routine vaccines, a key indicator used to measure the accessibility of basic health services.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 144,
+    "question": "As of November 2025, how many global members were part of the newly inaugurated WHO Disability Health Equity Network?",
+    "options": ["50 global members", "104 global members", "154 global members", "211 global members"],
+    "correctAnswer": "154 global members",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The WHO Disability Health Equity Network was inaugurated on November 28, 2025, with 154 global members dedicated to advancing health equity for persons with disabilities.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 145,
+    "question": "The 'Accountable Health Communities' screening tool released by CMS in 2018 focuses on which five core 'health-related social needs'?",
+    "options": ["Diet, exercise, smoking, alcohol, and stress", "Housing, food, transportation, utilities, and interpersonal safety", "Literacy, employment, income, insurance, and childcare", "Genetics, race, age, sex, and geographic location"],
+    "correctAnswer": "Housing, food, transportation, utilities, and interpersonal safety",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "CMS identified five essential domains for social needs screening: housing instability, food insecurity, transportation problems, utility help needs, and interpersonal safety.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 146,
+    "question": "WHO World Health Statistics data from 20 countries indicate a median contact coverage for 'drug use disorder treatment' of only:",
+    "options": ["3.2%", "5.5%", "8.2%", "10.0%"],
+    "correctAnswer": "10.0%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "According to SDG indicator 3.5.1 data, the median contact coverage for treatment for drug use disorders was just 10.0%, while the coverage for alcohol use disorders was even lower at 3.2%.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 147,
+    "question": "In the Schulman study using videotaped actors, how were the professional actors dressed during their simulated patient interviews?",
+    "options": ["In professional business attire", "In casual athletic wear", "In skimpy examining gowns", "In their own personal clothing"],
+    "correctAnswer": "In skimpy examining gowns",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The actors in the study were shown in a physician’s examining room dressed in 'skimpy examining gowns' to standardize the visual presentation across all subjects while they complained of chest pain.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 148,
+    "question": "Physician-subjects for the Schulman cardiac bias study were primarily recruited from the annual meetings of which two professional organizations?",
+    "options": ["AMA and CDC", "AAFP and ACP", "AAMC and WHO", "AHA and ACC"],
+    "correctAnswer": "AAFP and ACP",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The researchers recruited 720 physicians attending the annual meetings of the American Academy of Family Practice (AAFP) and the American College of Physicians (ACP) to ensure the subjects were primary care practitioners.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 149,
+    "question": "Under the WHO's Fourteenth General Programme of Work (GPW14), what is the recalibrated population target for providing Universal Health Coverage (UHC)?",
+    "options": ["1 billion people", "3 billion people", "5 billion people", "7 billion people"],
+    "correctAnswer": "5 billion people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The GPW14 absolute targets for 2028 include keeping 6 billion people healthier, providing UHC to 5 billion people, and protecting 7 billion from emergencies.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 150,
+    "question": "Which target population count is identified in the WHO's recalibrated 'Triple Billion' goals for 2028 under the strategic priority to 'Promote' health?",
+    "options": ["3 billion people", "5 billion people", "6 billion people", "7 billion people"],
+    "correctAnswer": "6 billion people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The 2028 target for keeping people healthier (the 'Promote' strategic priority) is set at 6 billion people.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 151,
+    "question": "The phenotype of 'John Henryism' is often associated with Black Americans who utilize intense coping mechanisms in response to social adversity, which can lead to higher rates of:",
+    "options": ["Type 1 Diabetes", "Hypertension", "Alzheimer's disease", "Multiple myeloma"],
+    "correctAnswer": "Hypertension",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "John Henryism describes a high-effort coping mechanism that, while aimed at overcoming social and economic adversity, paradoxically leads to high allostatic loads and increased risk for hypertension and cardiovascular disease.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 152,
+    "question": "Research by Gaffin and Phipatanakul identified that which clinical marker in six-month-old children is highly predictive of developing asthma during childhood?",
+    "options": ["Low serum glucose", "Elevated IgE levels", "High neutrophil counts", "Low vitamin D levels"],
+    "correctAnswer": "Elevated IgE levels",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Gaffin and Phipatanakul cite elevated levels of Immunoglobulin E (IgE) among six-month-old children as a strong predictor for the development of asthma later in childhood.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 153,
+    "question": "Which of the following is an example of an ICD-10 'Z code' used to record a social determinant of health in a patient's record?",
+    "options": ["Problems related to education and literacy", "Presence of bacterial infection", "Abnormal findings on an MRI", "History of cardiac surgery"],
+    "correctAnswer": "Problems related to education and literacy",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Z codes (specifically Z55–Z65) are used to document social needs such as education/literacy issues, housing problems, and family-related stressors within electronic health records.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 154,
+    "question": "The study by Sjogren and Thulin (2004) utilizing the SF-36 instrument specifically examined the health status of which patient population?",
+    "options": ["Toddlers in urban daycare centers", "Adults in rural hair salons", "Heart surgery patients 80 years or older", "Medical students in their first year"],
+    "correctAnswer": "Heart surgery patients 80 years or older",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The study examined how heart surgery affected the health status and quality of life of individuals who were 80 years old or older, using the SF-36 to compare them to age-matched controls.",
+    "tag": "What is Health"
+},
+{
+    "id": 155,
+    "question": "Which researcher is a leading expert on the 'biological embedding' of early childhood experiences and the impact of the social environment on gene translation?",
+    "options": ["Donald Barr", "Jack Shonkoff", "Sherman James", "Michael Marmot"],
+    "correctAnswer": "Jack Shonkoff",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Dr. Jack Shonkoff of Harvard University is a leading researcher in how the early physical and social environment 'biologically embeds' stress response patterns that can last into adulthood.",
+    "tag": "What is Health"
+},
+{
+    "id": 156,
+    "question": "Dr. Jack Shonkoff uses which term to describe the process where a child's environment impacts the translation of genetic information into physiological functioning?",
+    "options": ["Genetic drift", "Biological embedding", "Neural mapping", "Ecological pruning"],
+    "correctAnswer": "Biological embedding",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Dr. Jack Shonkoff refers to 'biological embedding' as the process through which the physical and social environment an infant is raised in impacts how genetic information is translated into physiological and neural functioning, often through epigenetic pathways.",
+    "tag": "What is Health"
+},
+{
+    "id": 157,
+    "question": "According to the World Health Statistics 2025 report, what is the projected global shortage of health workers by the year 2030?",
+    "options": ["8.4 million", "11.1 million", "14.7 million", "15.4 million"],
+    "correctAnswer": "11.1 million",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "While the global shortage of health workers was estimated at 15.4 million in 2020, it is projected to decrease to 11.1 million by 2030, showing slow progress in closing the gap.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 158,
+    "question": "The WHO Executive Summary on social determinants indicates that people in the country with the highest life expectancy live how many years longer than those in the country with the lowest?",
+    "options": ["15 years", "24 years", "33 years", "42 years"],
+    "correctAnswer": "33 years",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Global data shows profound health inequities between nations; individuals in the country with the highest life expectancy live, on average, 33 years longer than those born in the country with the lowest life expectancy.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 159,
+    "question": "Under the recalibrated Triple Billion targets for 2028 (GPW14), how many people does the WHO aim to provide with affordable health services?",
+    "options": ["3 billion people", "5 billion people", "6 billion people", "7 billion people"],
+    "correctAnswer": "5 billion people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The Fourteenth General Programme of Work (GPW14) targets for 2028 include keeping 6 billion people healthier, expanding access to affordable health services for 5 billion people, and protecting 7 billion people from health emergencies.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 160,
+    "question": "Based on Our World in Data, what is the estimated annual government spending per person on mental health care in low-income countries?",
+    "options": ["$0.04", "$1.15", "$12.50", "$66.00"],
+    "correctAnswer": "$0.04",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "There is a massive gap in mental health funding; high-income countries spend about $66 per person per year, while in low-income countries, that figure is just $0.04 per person.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 161,
+    "question": "In the Schulman et al. study on physician bias, what was the mean rate of referral for cardiac catheterization for patients identified as being 70 years old?",
+    "options": ["79.4%", "84.7%", "85.6%", "90.6%"],
+    "correctAnswer": "85.6%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The study found that physicians referred 55-year-old patients at a rate of 89.7%, while 70-year-old patients were referred at a slightly lower rate of 85.6%, a statistically significant difference.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 162,
+    "question": "Global trends show that the prevalence of tobacco use among female users fell by what percentage between 2010 and 2022, exceeding global targets?",
+    "options": ["17%", "24%", "34%", "45%"],
+    "correctAnswer": "34%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "While tobacco use remains higher among men, the prevalence among female users fell by 34% between 2010 and 2022, a rate of reduction that exceeded the 2025 global target.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 163,
+    "question": "The Zimbardo Time Perspective Inventory identifies the 'Present-Fatalistic' perspective as a belief that:",
+    "options": ["The future is a result of planning and consequences", "Present enjoyment should be prioritized over future sacrifices", "The future is predestined and uninfluenced by individual actions", "Success is entirely dependent on hard work and self-efficacy"],
+    "correctAnswer": "The future is predestined and uninfluenced by individual actions",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The 'Present-Fatalistic' perspective reveals a belief that the future is out of one's control and is often associated with lower socioeconomic status and resignation to 'fate.'",
+    "tag": "What is Health"
+},
+{
+    "id": 164,
+    "question": "The WHO Action Area 3 focuses on steering 'mega-trends' towards health equity. Which two trends are specifically identified as existential forces in this report?",
+    "options": ["Urbanization and Migration", "Climate change and Digitalization", "Aging and Industrialization", "Globalization and Privatization"],
+    "correctAnswer": "Climate change and Digitalization",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The WHO report identifies climate change and the digital transformation (digitalization) as two critical 'mega-trends' that must be managed systematically to promote rather than hinder health equity.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 165,
+    "question": "According to World Health Statistics 2025, what was the global prevalence of stunting among children under five years of age in 2024?",
+    "options": ["18.5%", "23.2%", "30.7%", "33.1%"],
+    "correctAnswer": "23.2%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Stunting prevalence had been declining and reached 22.4% in 2020, but recent data shows a slight increase to 23.2% in 2024, leaving the world off track for its 2030 target.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 166,
+    "question": "According to data cited by Barr, how many people in the United States suffered from end-stage renal disease (ESRD) in 2015?",
+    "options": ["Over 300,000", "Over 500,000", "Over 700,000", "Over 1,000,000"],
+    "correctAnswer": "Over 700,000",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "In 2015, more than 700,000 people in the U.S. suffered from ESRD. African Americans are disproportionately affected, being nearly four times more likely than whites to develop the condition.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 167,
+    "question": "What percentage of low-income and middle-income countries (LICs and MICs) currently have annual fine particulate matter (PM2.5) air quality standards?",
+    "options": ["17%", "32%", "44%", "76%"],
+    "correctAnswer": "32%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "There is a significant regulatory gap in air quality; only 32% of LICs and MICs (17 countries) have protective PM2.5 standards, compared to 76% of high-income countries (44 countries).",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 168,
+    "question": "Approximately how many Demographic and Health Surveys (DHS) have been conducted since the year 2000 to provide critical population health data?",
+    "options": ["100 surveys", "200 surveys", "300 surveys", "500 surveys"],
+    "correctAnswer": "300 surveys",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Since 2000, around 300 DHS have been conducted worldwide. These surveys are essential for informing health policy and identifying emerging health issues in developing countries.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 169,
+    "question": "Activities of Daily Living (ADLs) are used to evaluate the health of elderly individuals. Which of the following is one of the five specific ADL tasks?",
+    "options": ["Managing finances", "Cooking a meal", "Transferring without assistance", "Using a telephone"],
+    "correctAnswer": "Transferring without assistance",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The five common ADL tasks are feeding, bathing, dressing, using the toilet without assistance, and being able to transfer one's self (e.g., from a bed to a chair) without assistance.",
+    "tag": "What is Health"
+},
+{
+    "id": 170,
+    "question": "In 88 surveyed countries, what was the weighted national average prevalence of 'zero-dose' children who had not received routine vaccines?",
+    "options": ["3.2%", "6.3%", "10.0%", "13.1%"],
+    "correctAnswer": "13.1%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "WHO household survey data from 88 countries shows a 13.1% national average prevalence of zero-dose children. If economic inequality were eliminated, this could drop to 6.3%.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 171,
+    "question": "The study by Joynt and colleagues found that Black Medicare patients were more likely to be readmitted than white patients. What was identified as the principal factor explaining this quality disparity?",
+    "options": ["The patient's individual race", "Being treated in a hospital serving mostly minority patients", "A lack of trust in primary care providers", "Higher rates of genetic comorbidities in Black patients"],
+    "correctAnswer": "Being treated in a hospital serving mostly minority patients",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The researchers concluded that the site of care was more important than the patient's race; hospitals serving a larger proportion of minority patients tended to have lower quality and higher readmission rates overall.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 172,
+    "question": "According to 2023 statistics, how many people in the WHO African Region required interventions against Neglected Tropical Diseases (NTDs)?",
+    "options": ["30.7 million", "518.6 million", "787.7 million", "1.495 billion"],
+    "correctAnswer": "787.7 million",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "In 2023, the African Region had the highest number of people requiring NTD interventions (787.7 million), followed by the South-East Asia Region (518.6 million).",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 173,
+    "question": "Data from Our World in Data indicates that during China's 'Great Leap Forward,' child mortality spiked so dramatically that how many children died before reaching age five?",
+    "options": ["1 in 10", "1 in 5", "1 in 3", "1 in 2"],
+    "correctAnswer": "1 in 3",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "During the famine and economic turmoil of the 'Great Leap Forward' in the late 1950s, child mortality in China spiked to the point where up to one-third of children died before age five.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 174,
+    "question": "The public sector can act as a force for good by using its leverage as a procurer of goods and services, which is worth more than how much globally?",
+    "options": ["US$ 800 billion", "US$ 2.5 trillion", "US$ 5 trillion", "US$ 8 trillion"],
+    "correctAnswer": "US$ 8 trillion",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The public sector's leverage as a procurer is significant, valued at more than US$ 8 trillion globally. This power can be used to incentivize commercial activities that positively affect health equity and fair labor standards.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 175,
+    "question": "Which researcher proposed an approach to health as a three-dimensional concept, giving equal weight to the medical, social, and psychological dimensions?",
+    "options": ["Michael Marmot", "Jack Shonkoff", "Wolinsky", "John Ware"],
+    "correctAnswer": "Wolinsky",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Sociologist Fredric Wolinsky suggested that health should be viewed as a three-dimensional concept. His initial approach was dichotomous, where an individual was either well or ill along each of the three axes.",
+    "tag": "What is Health"
+},
+{
+    "id": 176,
+    "question": "In the study by Phelps et al. (2000), which unconscious physiological response predicted amygdala activation when subjects were shown images of Black faces?",
+    "options": ["Heart rate variability", "Skin conductance levels", "Eye-blink startle response", "Pupil dilation speed"],
+    "correctAnswer": "Eye-blink startle response",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The study measured the unconscious eye-blink startle response and found it was stronger when subjects were shown Black faces, reflecting unintended reactions that correlated with amygdala activation.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 177,
+    "question": "The world is currently on track to reach the global target of a 20% reduction in what health-related risk factor by 2030?",
+    "options": ["Adult obesity prevalence", "Total per-capita alcohol consumption", "Tobacco use among males", "Sodium intake per person"],
+    "correctAnswer": "Total per-capita alcohol consumption",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "While progress on many SDG targets is stalled, the world is currently on track to achieve the 20% reduction target for total per-capita alcohol consumption by 2030.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 178,
+    "question": "The WHO Disability Health Equity Network was inaugurated in November 2025 with how many global members?",
+    "options": ["54 members", "104 members", "154 members", "211 members"],
+    "correctAnswer": "154 members",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Inaugurated on November 28, 2025, the WHO Disability Health Equity Network consists of 154 global members working to catalyze progress for people with disabilities.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 179,
+    "question": "Why is it clinically appropriate for a physician to consider a patient's race when recommending prevention for skin cancer?",
+    "options": ["Some races have genetic immunity to UV rays", "Race can serve as a surrogate for melanin levels and UV protection", "Certain races do not require Vitamin D from the sun", "Sunblock is only effective for specific racial groups"],
+    "correctAnswer": "Race can serve as a surrogate for melanin levels and UV protection",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "In this context, race is used as a clinical indicator of skin color. Patients with lower melanin (often white) have less natural protection against UV radiation and an increased risk of skin cancer.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 180,
+    "question": "When a patient qualifies for a recommended medical treatment but does not receive it, the disparity is usually caused by either the physician failing to recommend it, or:",
+    "options": ["The patient choosing not to undergo the care", "The treatment being unavailable in the country", "The clinical guidelines being outdated", "The patient lacking a genetic match for the drug"],
+    "correctAnswer": "The patient choosing not to undergo the care",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "To fully eliminate disparities, providers must address both physician recommendations (reducing bias) and patient preferences (improving trust and understanding of the treatment's benefits).",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 181,
+    "question": "Which class of common blood pressure medications has been found to be less effective as a single-drug therapy in African American patients compared to white patients?",
+    "options": ["Beta-blockers", "Statins", "Antihistamines", "Anticoagulants"],
+    "correctAnswer": "Beta-blockers",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Consensus statements and medical research have noted that Beta-blockers and ACE inhibitors may produce a lesser blood-pressure-lowering effect in African Americans than in whites.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 182,
+    "question": "According to World Health Statistics 2025, which global health indicator is currently 'on track' to reach its 2030 Sustainable Development Goal (SDG) target?",
+    "options": ["Reduction of maternal mortality", "Reduction in total per-capita alcohol consumption", "Eradication of new HIV infections", "Universal access to safely managed sanitation"],
+    "correctAnswer": "Reduction in total per-capita alcohol consumption",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "While progress on many SDG targets is stalled or insufficient, the WHO reports that the world is currently on track to achieve the target of a 20% reduction in global per-capita alcohol consumption by 2030.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 183,
+    "question": "The WHO's Fourteenth General Programme of Work (GPW14) has recalibrated the Triple Billion targets for 2028 to focus on absolute population coverage. What is the target for Universal Health Coverage (UHC)?",
+    "options": ["1 billion people", "3 billion people", "5 billion people", "7 billion people"],
+    "correctAnswer": "5 billion people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The GPW14 targets for 2028 are: 6 billion people keeping healthier, 5 billion people with Universal Health Coverage, and 7 billion people better protected from health emergencies.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 184,
+    "question": "What is the World Health Organization's official definition of a 'risk factor' for health?",
+    "options": ["A genetic predisposition that cannot be changed", "Any attribute or exposure that increases the likelihood of disease", "The lack of medical insurance in a developed country", "A clinical sign of an infectious disease"],
+    "correctAnswer": "Any attribute or exposure that increases the likelihood of disease",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The WHO defines a risk factor broadly as any attribute, characteristic, or exposure of an individual that increases the likelihood of developing a disease or injury.",
+    "tag": "What is Health"
+},
+{
+    "id": 185,
+    "question": "In 2023, the density of core health workers (doctors, nurses, etc.) in high-income countries was approximately how many times higher than in low-income countries?",
+    "options": ["Two times higher", "Five times higher", "Ten times higher", "Twenty times higher"],
+    "correctAnswer": "Ten times higher",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Core health worker density is roughly 1 per 64 people in high-income countries, compared to 1 per 621 people in low-income countries—a nearly tenfold difference that hinders global health equity.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 186,
+    "question": "According to the WHO, the share of total global under-five deaths that occur during the neonatal period (the first 28 days of life) has recently increased to what percentage?",
+    "options": ["25%", "33%", "48%", "60%"],
+    "correctAnswer": "48%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Because neonatal mortality has declined more slowly than mortality among older children, newborn deaths now account for nearly half (48%) of all global under-five deaths.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 187,
+    "question": "The Universal Health Coverage Service Coverage Index (UHC SCI) is measured using tracer indicators across how many domains of health services?",
+    "options": ["Two domains", "Three domains", "Four domains", "Six domains"],
+    "correctAnswer": "Four domains",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The UHC SCI uses 14 tracer indicators in four domains: reproductive/maternal/child health, infectious diseases, noncommunicable diseases, and service capacity and access.",
+    "tag": "What is Health"
+},
+{
+    "id": 188,
+    "question": "The Immunization Agenda 2030 (IA2030) sets a specific global target to reduce the number of 'zero-dose children' by what percentage?",
+    "options": ["25% reduction", "50% reduction", "75% reduction", "90% reduction"],
+    "correctAnswer": "50% reduction",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "IA2030 is a global strategy that aims to halve the number of zero-dose children (those who have received no routine vaccines) by the year 2030.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 189,
+    "question": "A major barrier to environmental health equity is that only 32% of low- and middle-income countries currently have air quality standards for:",
+    "options": ["Carbon monoxide", "Ozone depletion", "Fine particulate matter (PM2.5)", "Methane emissions"],
+    "correctAnswer": "Fine particulate matter (PM2.5)",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "While 76% of high-income countries have annual PM2.5 air quality standards, only 32% of low- and middle-income countries have implemented these protective standards.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 190,
+    "question": "As of 2019, global treatment coverage for hypertension remains critically low, standing at approximately what percentage of the target population?",
+    "options": ["25%", "42%", "65%", "80%"],
+    "correctAnswer": "42%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Hypertension is a leading risk factor for cardiovascular death, yet global age-standardized treatment coverage remains below half, at roughly 42%.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 191,
+    "question": "According to World Health Statistics 2025, how many people globally developed tuberculosis (TB) in 2023?",
+    "options": ["5.5 million", "8.2 million", "10.8 million", "15.4 million"],
+    "correctAnswer": "10.8 million",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The number of people developing TB rose slightly to 10.8 million in 2023, up from 10.7 million in 2022, highlighting the ongoing challenge of infectious disease control.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 192,
+    "question": "What is the global target for the number of countries to eliminate at least one Neglected Tropical Disease (NTD) by 2030?",
+    "options": ["50 countries", "75 countries", "100 countries", "150 countries"],
+    "correctAnswer": "100 countries",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "As of late 2024, 54 countries have eliminated at least one NTD; the WHO target is for 100 countries to achieve this by 2030.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 193,
+    "question": "The SF-36 health survey instrument combines its scales to create two overall summary measures. Which of the following is one of those summary measures?",
+    "options": ["Socioeconomic Health", "Psychological Well-being", "Physical Health", "Functional Capacity"],
+    "correctAnswer": "Physical Health",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The SF-36 survey statistically combines eight health scales to produce two primary summary measures: the Physical Component Summary (Physical Health) and the Mental Component Summary (Mental Health).",
+    "tag": "What is Health"
+},
+{
+    "id": 194,
+    "question": "Research across 162 countries found that nations with high levels of gender inequality also experience lower rates of:",
+    "options": ["High school graduation", "DTP3 immunization coverage", "Adult obesity", "External debt interest"],
+    "correctAnswer": "DTP3 immunization coverage",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "A clear link exists between social and health equity; countries with high gender inequality have immunization coverage that is 13 percentage points lower than countries with lower inequality.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 195,
+    "question": "The global public sector leverages a massive amount of procurement power that can be used to incentivize health equity. What is the estimated global value of this procurement?",
+    "options": [" $800 billion", " $2.5 trillion", " $5.0 trillion", " $8.0 trillion"], "correctAnswer": "$8.0 trillion",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The public sector's procurement of goods and services is worth more than US $8 trillion globally. WHO recommends using this leverage to promote fair labor and health standards in the commercial sector.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 196,
+    "question": "There is a significant gap in mental health funding globally; high-income countries spend $66 per person annually, while low-income countries spend how much?",
+    "options": [" $0.04", "$ 1.15", " $5.50", "$ 12.00"], "correctAnswer": "$0.04",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Mental health remains severely underfunded in developing regions; government spending on mental health care in low-income countries is only four cents per person per year.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 197,
+    "question": "Which health metric specifically differentiates between years of life lost to premature death and years of life lost to living in a state of poor health?",
+    "options": ["Life Expectancy", "Healthy Life Expectancy (HALE)", "Mortality Ratio", "Prevalence Rate"],
+    "correctAnswer": "Healthy Life Expectancy (HALE)",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "While life expectancy measures total years lived, Healthy Life Expectancy (HALE) subtracts the years spent in poor health, providing a measure of how many years a person can expect to live in a 'healthy' state.",
+    "tag": "What is Health"
+},
+{
+    "id": 198,
+    "question": "In 2014, the United Network for Organ Sharing (UNOS) changed its deceased donor kidney allocation policy to reduce racial disparities by backdating waiting times to when?",
+    "options": ["The patient's date of birth", "The date of their first doctor's visit", "The date the patient first began dialysis", "The date they joined a health insurance plan"],
+    "correctAnswer": "The date the patient first began dialysis",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "To combat the fact that Black patients were referred to transplant lists later than white patients, UNOS began backdating wait time to the start of dialysis, which improved transplant rates for minority groups.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 199,
+    "question": "Which set of clinical codes allows health providers to systematically record social determinants, such as housing instability or food insecurity, in a patient's record?",
+    "options": ["A codes", "S codes", "Z codes", "X codes"],
+    "correctAnswer": "Z codes",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "ICD-10 'Z codes' (Z55–Z65) are standardized clinical tools used by medical professionals to document 'health-related social needs' within the electronic health record.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 200,
+    "question": "According to the Commonwealth Fund, how does the U.S. maternal mortality rate compare to other high-income nations?",
+    "options": ["It is the lowest in the world", "It is identical to the rate in Canada", "It is notably higher (22 deaths per 100,000 live births)", "It is only higher for women over age 45"],
+    "correctAnswer": "It is notably higher (22 deaths per 100,000 live births)",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The U.S. maternal mortality rate (22 per 100,000) far exceeds the rates in other high-income countries, where the average is often in the single digits.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 201,
+    "question": "The United Nations has declared which period as the 'Decade of Healthy Ageing' to foster global collaboration in improving the lives of older people and their communities?",
+    "options": ["2015–2025", "2021–2030", "2025–2035", "2030–2040"],
+    "correctAnswer": "2021–2030",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "WHO Member States endorsed the UN Decade of Healthy Ageing (2021–2030) in 2020 as a global effort to improve the health and well-being of the aging population [1].",
+    "tag": "Health Disparities & Diversity"
+  },
+{
+    "id": 202,
+    "question": "The assessment of a person's 'Activities of Daily Living' (ADLs) includes five essential tasks. Which of the following is one of those tasks?",
+    "options": ["Managing a household budget", "Using a telephone", "Bathing", "Driving a vehicle"],
+    "correctAnswer": "Bathing",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The five essential ADLs used to measure functional health are: feeding, bathing, dressing, using the toilet, and transferring without assistance.",
+    "tag": "What is Health"
+},
+{
+    "id": 203,
+    "question": "The 'weathering' hypothesis suggests that the health of certain population groups deteriorates more rapidly because of which factor?",
+    "options": ["A faster biological aging process caused by genetics", "The cumulative impact of repeated social and economic adversity", "A lack of access to high-tech surgical procedures", "The impact of migrating to different climates"],
+    "correctAnswer": "The cumulative impact of repeated social and economic adversity",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "'Weathering' refers to the premature aging of the body's systems (high allostatic load) caused by the chronic stress of living in a state of social and economic disadvantage.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 204,
+    "question": "The NIH initiative 'Helping to End Addiction Long-term' (HEAL) is primarily focused on addressing which national health crisis?",
+    "options": ["The obesity epidemic", "The opioid crisis and chronic pain management", "The rise of pediatric asthma", "The lack of rural primary care clinics"],
+    "correctAnswer": "The opioid crisis and chronic pain management",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The HEAL initiative is the NIH's multi-pronged scientific strategy to find solutions for opioid addiction and to develop effective, non-opioid treatments for pain.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 205,
+    "question": "The 'Latina Paradox' refers to the epidemiological finding that Hispanic infants often have lower mortality rates than white infants despite their mothers having:",
+    "options": ["Higher rates of smoking and alcohol use", "Lower socioeconomic status and education levels", "Genetic resistance to common childhood infections", "Higher rates of employer-sponsored private insurance"],
+    "correctAnswer": "Lower socioeconomic status and education levels",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The paradox describes how many Hispanic groups maintain very low infant mortality rates despite facing significant socioeconomic disadvantages that usually predict poorer health outcomes.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 206,
+    "question": "A home-based phone intervention program has been shown to improve the uptake of recommended medical treatment for which condition among Navajo patients?",
+    "options": ["Diabetes", "Heart Failure", "Tuberculosis", "Hypertension"],
+    "correctAnswer": "Heart Failure",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Research supported by the NIMHD demonstrated that a home-based phone intervention significantly improved the use of guideline-directed medical therapy for heart failure patients in the Navajo Nation.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 207,
+    "question": "Which set of five tasks is used by health professionals to evaluate the quality of daily life for elderly or disabled patients?",
+    "options": ["Social Participation Indexes", "Quality of Life Scales", "Activities of Daily Living", "Functional Health Indicators"],
+    "correctAnswer": "Activities of Daily Living",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Activities of Daily Living (ADLs) include feeding, bathing, dressing, using the toilet, and transferring without assistance. They are the standard metric for evaluating a patient's functional independence.",
+    "tag": "What is Health"
+},
+{
+    "id": 208,
+    "question": "According to the World Health Organization, what occurred to global healthy life expectancy (HALE) at birth between 2019 and 2021?",
+    "options": ["It increased by 5.4 years", "It remained stagnant", "It saw rapid declines", "It reached a record high of 78.6 years"],
+    "correctAnswer": "It saw rapid declines",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "While global HALE increased steadily from 2000 to 2019, the COVID-19 pandemic caused rapid declines in healthy longevity between 2019 and 2021.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 209,
+    "question": "The recent decline in U.S. life expectancy is largely attributed to 'deaths of despair.' Which of the following is included in this category?",
+    "options": ["Type 2 Diabetes", "Ischemic Heart Disease", "Alcohol-related liver disease", "Lung Cancer"],
+    "correctAnswer": "Alcohol-related liver disease",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "'Deaths of despair' refers to mortality from drug overdoses, suicide, and alcohol-related liver disease, which have collectively driven U.S. life expectancy downward.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 210,
+    "question": "In the United States, how much more likely are African Americans to develop end-stage renal disease (ESRD) than white Americans?",
+    "options": ["Twice as likely", "Four times as likely", "Six times as likely", "Eight times as likely"],
+    "correctAnswer": "Four times as likely",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Due to higher rates of contributing factors like hypertension and diabetes, African Americans were nearly four times more likely to develop ESRD (kidney failure) in 2015 than white Americans.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 211,
+    "question": "In 2015, the United States had a higher infant mortality rate than how many of the 35 countries in the OECD?",
+    "options": ["15 countries", "22 countries", "31 countries", "34 countries"],
+    "correctAnswer": "31 countries",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "U.S. infant mortality is high compared to other developed nations; in 2015, it was higher than 31 of the 35 countries in the Organization for Economic Co-operation and Development.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 212,
+    "question": "What is the primary objective of the NIMHD resource known as HDPulse?",
+    "options": ["Tracking infectious diseases", "Offering resources to reduce minority health disparities", "Mapping the locations of primary care clinics", "Developing AI models for data science"],
+    "correctAnswer": "Offering resources to reduce minority health disparities",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "HDPulse is a high-quality, publicly available online resource developed by the NIMHD specifically to identify and reduce minority health disparities in the U.S..",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 213,
+    "question": "According to World Health Statistics 2025, which pathogen is a 'critical priority' for research due to its resistance to third-generation cephalosporins?",
+    "options": ["MRSA", "E. coli", "Hepatitis B", "Mycobacterium tuberculosis"],
+    "correctAnswer": "E. coli",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The 2024 WHO Bacterial Priority Pathogens List classifies carbapenem-resistant and third-generation cephalosporin-resistant E. coli as critical priorities.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 214,
+    "question": "In a study of emergency analgesic practice, Black patients were found to be how much more likely than white patients to receive no pain medication for a long-bone fracture?",
+    "options": ["Twice as likely", "Three times as likely", "Four times as likely", "Five times as likely"],
+    "correctAnswer": "Twice as likely",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Studies in major inner-city emergency rooms found that Black patients were nearly twice as likely as white patients to receive no pain medication for identical long-bone fractures.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 215,
+    "question": "Which setting has been successfully utilized in community-based programs to reduce blood pressure in Black men?",
+    "options": ["Libraries", "Barbershops", "Fitness centers", "Post offices"],
+    "correctAnswer": "Barbershops",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "Programs in Los Angeles and Pennsylvania demonstrated that providing medical interventions in barbershops significantly improved hypertension control for Black men.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 216,
+    "question": "Based on 2017 OECD data, the United States spends what percentage of its GDP on health care?",
+    "options": ["10.4%", "12.3%", "15.5%", "17.1%"],
+    "correctAnswer": "17.1%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The U.S. spent 17.1% of its GDP on health care in 2017, the highest among developed nations, despite having lower life expectancy and higher infant mortality than many.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 217,
+    "question": "The World Health Organization uses the term 'zero-dose children' to refer to those who have:",
+    "options": ["Not received any routine vaccines", "Not finished the DTP series", "Only received birth vaccines", "Failed to receive a flu shot"],
+    "correctAnswer": "Not received any routine vaccines",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "'Zero-dose children' are defined as those who have not received any doses of routine vaccines, serving as a key indicator of lack of access to basic health services.",
+    "tag": "What is Health"
+},
+{
+    "id": 218,
+    "question": "In the Schulman et al. study using actors, Black women were referred for cardiac catheterization at what rate compared to other groups?",
+    "options": ["40% as likely", "60% as likely", "80% as likely", "95% as likely"],
+    "correctAnswer": "60% as likely",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The study found that Black women were referred for the procedure at only 60% of the rate of other groups (an odds ratio of 0.6), despite presenting with identical clinical data.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 219,
+    "question": "According to the National Cancer Institute, the incidence of multiple myeloma in African American women is how much greater than in white women?",
+    "options": ["1.2 times greater", "2.4 times greater", "3.6 times greater", "4.8 times greater"],
+    "correctAnswer": "2.4 times greater",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "National data shows a significant racial disparity in cancer incidence; African American women are 2.4 times more likely to develop multiple myeloma than white women.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 220,
+    "question": "Which specific ICD-10 category of codes is used by health providers to document social determinants of health (SDOH)?",
+    "options": ["A codes", "S codes", "Z codes", "X codes"],
+    "correctAnswer": "Z codes",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "ICD-10 Z codes (specifically Z55–Z65) are used in patient records to identify social needs such as housing instability, literacy issues, and family problems.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 221,
+    "question": "What percentage of the variation in county-level life expectancy in the U.S. is attributed to socioeconomic and race/ethnicity factors?",
+    "options": ["20 percent", "40 percent", "60 percent", "80 percent"],
+    "correctAnswer": "60 percent",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Analysis of U.S. health data indicates that approximately 60% of the difference in mortality and life expectancy among counties is explained by socioeconomic and racial factors.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 222,
+    "question": "Among the top causes of death for American Indians and Alaska Natives living within tribal communities are accidents, suicide, and which other condition?",
+    "options": ["Type 1 Diabetes", "Alzheimer's disease", "Alcohol-related liver disease", "Multiple myeloma"],
+    "correctAnswer": "Alcohol-related liver disease",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "For American Indians/Alaska Natives in tribal communities, leading causes of death include motor vehicle accidents, suicide, diabetes, and alcohol-related liver disease.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 223,
+    "question": "The SF-36 health survey instrument measures physical health through four subscales. Which of the following is one of those subscales?",
+    "options": ["Vitality", "Social Functioning", "General Mental Health", "Bodily Pain"],
+    "correctAnswer": "Bodily Pain",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The SF-36 physical health dimension is composed of: Physical Functioning, Role Limitations Due to Physical Problems, Bodily Pain, and General Health Perceptions.",
+    "tag": "What is Health"
+},
+{
+    "id": 224,
+    "question": "As of 2018, all U.S. states except one had implemented a prescription drug monitoring program (PDMP). Which state had not?",
+    "options": ["Florida", "West Virginia", "Missouri", "Alabama"],
+    "correctAnswer": "Missouri",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Missouri was the final state in the U.S. to implement a statewide prescription drug monitoring program to track opioid prescriptions.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 225,
+    "question": "According to World Health Statistics 2025, what was the global prevalence of stunting among children under five years of age in 2024?",
+    "options": ["18.5%", "23.2%", "30.7%", "33.1%"],
+    "correctAnswer": "23.2%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Global stunting prevalence had declined to 22.4% in 2020 but increased slightly to 23.2% in 2024, leaving the world off track for Sustainable Development Goal targets.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 226,
+    "question": "Universal health coverage (UHC) is achieved when all individuals and communities have access to quality health services without experiencing which of the following?",
+    "options": ["Any form of chronic disease", "Financial hardship", "Biological aging", "The need for primary care"],
+    "correctAnswer": "Financial hardship",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "According to the World Health Organization, UHC aims to ensure access to quality health services for everyone without suffering financial hardship, which occurs when out-of-pocket health spending is a source of financial distress.",
+    "tag": "What is Health"
+},
+{
+    "id": 227,
+    "question": "The Universal Health Coverage Service Coverage Index (UHC SCI) is composed of 14 tracer indicators organized into how many domains?",
+    "options": ["Two domains", "Three domains", "Four domains", "Six domains"],
+    "correctAnswer": "Four domains",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The UHC SCI (SDG indicator 3.8.1) is organized into four distinct domains: reproductive, maternal, newborn and child health (RMNCH); infectious diseases; noncommunicable diseases (NCDs); and service capacity and access.",
+    "tag": "What is Health"
+},
+{
+    "id": 228,
+    "question": "What is the general public health definition of a 'risk factor' for health?",
+    "options": ["An incurable genetic mutation", "A clinical sign of advanced infection", "Any characteristic that increases the likelihood of disease or injury", "The lack of medical insurance coverage"],
+    "correctAnswer": "Any characteristic that increases the likelihood of disease or injury",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "WHO defines a risk factor as any attribute, characteristic, or exposure of an individual that increases their likelihood of developing a disease or injury.",
+    "tag": "What is Health"
+},
+{
+    "id": 229,
+    "question": "What is the central promise and guiding principle of the 2030 Agenda for Sustainable Development?",
+    "options": ["Eradication of all bacteria", "Total economic globalization", "To leave no one behind", "Universal private insurance"],
+    "correctAnswer": "To leave no one behind",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Easy",
+    "explanation": "The 'promise to leave no one behind' is the central guiding principle of the 2030 Agenda for Sustainable Development, ensuring that progress in health and equity includes the most marginalized populations.",
+    "tag": "What is Health"
+},
+{
+    "id": 230,
+    "question": "The WHO's 'Life Course Approach' aims to reorient health systems to move beyond disease-centric models to focus on producing:",
+    "options": ["High-tech surgical outcomes", "Individual genetic profiles", "Health and well-being", "Higher hospital readmission rates"],
+    "correctAnswer": "Health and well-being",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The WHO Framework for implementing a life course approach in practice summarizes evidence to reorient health systems so they focus on producing health and well-being across all stages of an individual's life.",
+    "tag": "What is Health"
+},
+{
+    "id": 231,
+    "question": "According to the World Health Statistics 2025, approximately how many women died globally due to maternal conditions in 2023?",
+    "options": ["120,000", "260,000", "440,000", "550,000"],
+    "correctAnswer": "260,000",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "In 2023, an estimated 260,000 women died due to maternal conditions, reflecting a global maternal mortality ratio (MMR) of 197 deaths per 100,000 live births.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 232,
+    "question": "In 2023, the under-five mortality rate in low-income countries (LICs) was how many times higher than the rate in high-income countries (HICs)?",
+    "options": ["Two times higher", "Five times higher", "Nine times higher", "Thirteen times higher"],
+    "correctAnswer": "Thirteen times higher",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Stark inequalities persist in child survival; in 2023, the under-five mortality rate in LICs (62 per 1,000 live births) was 13 times higher than the rate in HICs (5 per 1,000 live births).",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 233,
+    "question": "Which WHO region alone accounted for 55% of all global deaths of children under age five in 2023?",
+    "options": ["South-East Asia Region", "Region of the Americas", "African Region", "Eastern Mediterranean Region"],
+    "correctAnswer": "African Region",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The WHO African Region bears a disproportionate burden of child mortality, accounting for 55% (2.6 million) of all global deaths of children under the age of five in 2023.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 234,
+    "question": "The global number of people requiring interventions against Neglected Tropical Diseases (NTDs) in 2023 represented what percentage decrease from 2010?",
+    "options": ["10%", "22%", "32%", "50%"],
+    "correctAnswer": "32%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "In 2023, 1.495 billion people required interventions against NTDs, which is a 32% decrease from 2010 but still falls short of the global 2030 target of a 90% reduction.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 235,
+    "question": "In 2019, what percentage of the global population experienced 'catastrophic' out-of-pocket health spending, defined as more than 10% of their household budget?",
+    "options": ["3.8%", "8.5%", "10.4%", "13.5%"],
+    "correctAnswer": "13.5%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "WHO data shows that the global proportion of the population spending more than 10% of their household budget on health out-of-pocket (OOP) increased to 13.5% in 2019.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 236,
+    "question": "Approximately how many people were pushed or further pushed into extreme poverty by out-of-pocket health spending in 2019?",
+    "options": ["122 million", "344 million", "500 million", "752 million"],
+    "correctAnswer": "344 million",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Financial hardship from health costs is severe; in 2019, about 344 million people were pushed or pushed deeper into extreme poverty due to out-of-pocket health expenditures.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 237,
+    "question": "Due to setbacks from the COVID-19 pandemic, the global number of 'zero-dose children' (those receiving no routine vaccines) rose to what total in 2023?",
+    "options": ["10.8 million", "12.8 million", "14.5 million", "15.8 million"],
+    "correctAnswer": "14.5 million",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "Setbacks to vaccination programs during the pandemic caused the number of zero-dose children to increase from 12.8 million in 2019 to 14.5 million in 2023.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 238,
+    "question": "A study of 162 countries found that those with high gender inequality (favouring men) had DTP3 immunization coverage that was how much lower than countries with lower inequality?",
+    "options": ["5 percentage points", "9 percentage points", "13 percentage points", "21 percentage points"],
+    "correctAnswer": "13 percentage points",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Countries with high gender inequality had a median DTP3 coverage of 81%, compared to 94% in low-inequality countries, representing a 13 percentage point gap.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 239,
+    "question": "The proportion of the population in low- and middle-income countries exposed to dangerous ambient air pollution (above interim target 1) is how many times higher than in high-income countries?",
+    "options": ["Two times higher", "Five times higher", "Ten times higher", "Twenty times higher"],
+    "correctAnswer": "Ten times higher",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Air pollution exposure is highly unequal; 42.0% of the population in LICs and MICs are exposed to levels exceeding WHO interim target 1, compared to only 3.7% in HICs—a more than tenfold difference.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 240,
+    "question": "The Commission on Social Determinants of Health established a specific target to reduce global maternal mortality to less than how many deaths per 100,000 live births by 2040?",
+    "options": ["16 deaths", "35 deaths", "70 deaths", "197 deaths"],
+    "correctAnswer": "16 deaths",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "While global maternal mortality was 197 per 100,000 in 2023, the Commission's target is a reduction to less than 16 deaths per 100,000 live births by the year 2040.",
+    "tag": "Health Disparities & Diversity"
+},
+{
+    "id": 241,
+    "question": "Data from about 20 countries indicate that median contact coverage for 'drug use disorder treatment' remains critically low at:",
+    "options": ["3.2%", "5.5%", "10.0%", "15.0%"],
+    "correctAnswer": "10.0%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "According to data for SDG indicator 3.5.1, the median contact coverage for treatment for drug use disorders was only 10.0%.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 242,
+    "question": "Globally, the treatment coverage for hypertension remains below which percentage of the target population?",
+    "options": ["25%", "35%", "50%", "75%"],
+    "correctAnswer": "50%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "As of 2019, age-standardized treatment coverage for hypertension remains below 50% globally, standing at approximately 42%.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 243,
+    "question": "As of 2023, what is the core health worker density (doctors, nurses, etc.) in high-income countries compared to low-income countries?",
+    "options": ["1 per 64 people vs 1 per 621 people", "1 per 100 people vs 1 per 500 people", "1 per 250 people vs 1 per 1,000 people", "1 per 500 people vs 1 per 2,000 people"],
+    "correctAnswer": "1 per 64 people vs 1 per 621 people",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The core health worker density is nearly ten times higher in HICs (1 for every 64 people) than in LICs (1 for every 621 people), creating significant disparities in treatment access.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 244,
+    "question": "How many people globally developed tuberculosis (TB) in 2023, according to World Health Statistics 2025?",
+    "options": ["8.5 million", "10.1 million", "10.8 million", "12.2 million"],
+    "correctAnswer": "10.8 million",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "In 2023, an estimated 10.8 million people developed TB, representing a slight rise from the 10.7 million cases reported in 2022.",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 245,
+    "question": "Of the 5.4-year gain in global healthy life expectancy (HALE) between 2000 and 2019, what percentage was attributed specifically to declining mortality?",
+    "options": ["4.0%", "34.0%", "52.0%", "96.0%"],
+    "correctAnswer": "96.0%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "The 5.4-year HALE gain between 2000 and 2019 was primarily driven by mortality reduction, which contributed 5.2 years (96.0%), while morbidity reduction contributed only 0.2 years (4%).",
+    "tag": "Disparities in Treatment & Medical Decisions"
+},
+{
+    "id": 246,
+    "question": "Under the current trajectory, how many more people are expected to be living healthier lives globally by 2030 compared with the 2018 baseline?",
+    "options": ["0.8 billion", "1.5 billion", "2.0 billion", "5.6 billion"],
+    "correctAnswer": "2.0 billion",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "Projections show that under current trends, 2.0 billion more people will live healthier by 2030. However, if all SDG targets are met, that number could rise to 5.6 billion.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 247,
+    "question": "As of December 2024, how many countries, areas, and territories worldwide have been acknowledged by the WHO for eliminating at least one Neglected Tropical Disease (NTD)?",
+    "options": ["24", "41", "54", "100"],
+    "correctAnswer": "54",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "By late 2024, 54 countries had successfully eliminated at least one NTD, which is about halfway toward the global target of 100 countries by 2030.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 248,
+    "question": "The public sector can improve health equity by using its considerable leverage as a procurer of goods and services, which is worth more than how much globally?",
+    "options": ["$ 800 billion", "$ 2.5 trillion", "$ 5 trillion", "$ 8 trillion"],
+    "correctAnswer": "$ 8 trillion",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "The global public sector leverages more than US$ 8 trillion in procurement power, which can be used to incentivize commercial practices that benefit health and labor standards.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 249,
+    "question": "The Immunization Agenda 2030 (IA2030) includes a specific objective to reduce the number of 'zero-dose children' between 2019 and 2030 by what percentage?",
+    "options": ["20% reduction", "33% reduction", "50% reduction", "90% reduction"],
+    "correctAnswer": "50% reduction",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Medium",
+    "explanation": "A key objective of IA2030 is to regularly reach unvaccinated children, with a global target of a 50% reduction in 'zero-dose' children by 2030.",
+    "tag": "Reducing Health Disparities"
+},
+{
+    "id": 250,
+    "question": "WHO analysis suggests that if economic-related inequality in immunization were eliminated across 88 surveyed countries, the weighted national average prevalence of zero-dose children would drop to:",
+    "options": ["3.2%", "6.3%", "10.0%", "13.1%"],
+    "correctAnswer": "6.3%",
+    "category": "HOSA World Health & Disparities",
+    "difficulty": "Hard",
+    "explanation": "If the poorest children achieved the same immunization outcomes as the richest 20% in each country, the national average prevalence of zero-dose children would be more than halved, from 13.1% down to 6.3%.",
+    "tag": "Reducing Health Disparities"
+}
+]
