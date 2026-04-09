@@ -1,0 +1,887 @@
+[
+  {
+    "id": 1,
+    "question": "Evaluate: (5\u00b2)(36 \u00f7 4) \u00d7 \u2153",
+    "options": [
+      "66.67",
+      "70",
+      "75",
+      "80"
+    ],
+    "correctAnswer": "75",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Following order of operations: 5\u00b2 = 25, 36 \u00f7 4 = 9, then 25 \u00d7 9 \u00d7 \u2153 = 225 \u00f7 3 = 75.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 2,
+    "question": "How many milligrams are in 0.0049 kg?",
+    "options": [
+      "4.9 mg",
+      "490 mg",
+      "4900 mg",
+      "49000 mg"
+    ],
+    "correctAnswer": "4900 mg",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "0.0049 kg \u00d7 1000 = 4.9 g. Then 4.9 g \u00d7 1000 = 4900 mg.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 3,
+    "question": "A patient with mitral valve prolapse must take 2 g of Amoxicillin prior to dental treatment. Amoxicillin is supplied as 500 mg tablets. How many tablets are needed?",
+    "options": [
+      "2 tablets",
+      "3 tablets",
+      "4 tablets",
+      "5 tablets"
+    ],
+    "correctAnswer": "4 tablets",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Convert 2 g to mg: 2 g = 2000 mg. Then 2000 mg \u00f7 500 mg/tablet = 4 tablets.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 4,
+    "question": "How many grams of NaCl are in 23 deciliters of a 12% NaCl (w/v) solution?",
+    "options": [
+      "2.76 g",
+      "27.6 g",
+      "276 g",
+      "0.276 g"
+    ],
+    "correctAnswer": "276 g",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Convert 23 dL to mL: 23 \u00d7 100 = 2300 mL. A 12% w/v solution contains 12 g per 100 mL. 2300 \u00d7 0.12 = 276 g.",
+    "tag": "Dilutions, Solutions, and Concentrations"
+  },
+  {
+    "id": 5,
+    "question": "A specimen weighs 13 ounces. What is its weight in grams?",
+    "options": [
+      "300 g",
+      "341 g",
+      "369 g",
+      "410 g"
+    ],
+    "correctAnswer": "369 g",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 oz \u2248 28.35 g. 13 \u00d7 28.35 = 368.55 g \u2248 369 g.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 6,
+    "question": "Convert 37.5\u00b0C to Fahrenheit.",
+    "options": [
+      "96.8\u00b0F",
+      "98.6\u00b0F",
+      "99.5\u00b0F",
+      "100.4\u00b0F"
+    ],
+    "correctAnswer": "99.5\u00b0F",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "F = (C \u00d7 9/5) + 32 = (37.5 \u00d7 1.8) + 32 = 67.5 + 32 = 99.5\u00b0F.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 7,
+    "question": "Convert 104\u00b0F to Celsius.",
+    "options": [
+      "38\u00b0C",
+      "40\u00b0C",
+      "42\u00b0C",
+      "45\u00b0C"
+    ],
+    "correctAnswer": "40\u00b0C",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "C = (F \u2212 32) \u00d7 5/9 = (104 \u2212 32) \u00d7 5/9 = 72 \u00d7 5/9 = 40\u00b0C.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 8,
+    "question": "How many grams are in 3.5 kg?",
+    "options": [
+      "35 g",
+      "350 g",
+      "3500 g",
+      "35000 g"
+    ],
+    "correctAnswer": "3500 g",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 kg = 1000 g. 3.5 \u00d7 1000 = 3500 g.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 9,
+    "question": "Convert 15 mL to teaspoons.",
+    "options": [
+      "1 tsp",
+      "2 tsp",
+      "2.5 tsp",
+      "3 tsp"
+    ],
+    "correctAnswer": "3 tsp",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 tsp = 5 mL. 15 \u00f7 5 = 3 tsp.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 10,
+    "question": "What is 2/5 \u00f7 3/10?",
+    "options": [
+      "3/25",
+      "1/3",
+      "3/4",
+      "4/3"
+    ],
+    "correctAnswer": "4/3",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Dividing fractions: multiply by the reciprocal. (2/5) \u00d7 (10/3) = 20/15 = 4/3.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 11,
+    "question": "Convert 4.5 L to centiliters.",
+    "options": [
+      "45 cL",
+      "450 cL",
+      "4500 cL",
+      "0.45 cL"
+    ],
+    "correctAnswer": "450 cL",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 L = 100 cL. 4.5 \u00d7 100 = 450 cL.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 12,
+    "question": "Evaluate: 10 + 4 \u00d7 (9 \u2212 3\u00b2)",
+    "options": [
+      "4",
+      "10",
+      "19",
+      "22"
+    ],
+    "correctAnswer": "10",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Following order of operations: 3\u00b2 = 9, then 9 \u2212 9 = 0, then 4 \u00d7 0 = 0, then 10 + 0 = 10.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 13,
+    "question": "Convert 15 grams to micrograms.",
+    "options": [
+      "150,000 \u00b5g",
+      "1,500,000 \u00b5g",
+      "15,000,000 \u00b5g",
+      "15,000 \u00b5g"
+    ],
+    "correctAnswer": "15,000,000 \u00b5g",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 g = 1,000,000 \u00b5g. 15 \u00d7 1,000,000 = 15,000,000 \u00b5g.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 14,
+    "question": "Round 4.567 to the nearest hundredth.",
+    "options": [
+      "4.00",
+      "4.56",
+      "4.57",
+      "4.60"
+    ],
+    "correctAnswer": "4.57",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "The hundredths digit is 6. The next digit is 7 (\u22655), so round up: 4.57.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 15,
+    "question": "Convert 2 mL to drops (gtt). Use the standard conversion of 15 gtt/mL.",
+    "options": [
+      "10 gtt",
+      "25 gtt",
+      "30 gtt",
+      "45 gtt"
+    ],
+    "correctAnswer": "30 gtt",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 mL = 15 gtt. 2 \u00d7 15 = 30 gtt.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 16,
+    "question": "What is the standard abbreviation for 'twice a day'?",
+    "options": [
+      "BID",
+      "TID",
+      "QID",
+      "q2h"
+    ],
+    "correctAnswer": "BID",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "BID (bis in die) means twice a day. TID = three times daily, QID = four times daily, q2h = every 2 hours.",
+    "tag": "Interpreting Medical Information"
+  },
+  {
+    "id": 17,
+    "question": "Convert 3 drams (dr) to grains (gr).",
+    "options": [
+      "26 gr",
+      "60 gr",
+      "90 gr",
+      "180 gr"
+    ],
+    "correctAnswer": "180 gr",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 dram = 60 grains. 3 \u00d7 60 = 180 grains.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 18,
+    "question": "A tumor weighs 12 ounces. Approximately how many grams is this?",
+    "options": [
+      "300 g",
+      "341 g",
+      "360 g",
+      "380 g"
+    ],
+    "correctAnswer": "341 g",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 oz \u2248 28.35 g. 12 \u00d7 28.35 = 340.2 g \u2248 341 g.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 19,
+    "question": "A physician orders Augmentin 600 mg PO q8h. Augmentin is supplied as 200 mg/5 mL oral suspension. How many total mL will the patient receive daily?",
+    "options": [
+      "24 mL",
+      "36 mL",
+      "45 mL",
+      "54 mL"
+    ],
+    "correctAnswer": "45 mL",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Per dose: (600 \u00f7 200) \u00d7 5 = 15 mL. q8h = 3 doses/day. 15 \u00d7 3 = 45 mL/day.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 20,
+    "question": "For the equation y = 4x + C, the line passes through (3, 4). What is the value of y when x = 10?",
+    "options": [
+      "31",
+      "32",
+      "33",
+      "34"
+    ],
+    "correctAnswer": "32",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Solve for C using point (3,4): 4 = 4(3) + C \u2192 C = \u22128. Then y = 4(10) \u2212 8 = 32.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 21,
+    "question": "What is the slope of a line passing through (1, 2) and (6, 7)?",
+    "options": [
+      "-2.0",
+      "-1.0",
+      "1.0",
+      "1.5"
+    ],
+    "correctAnswer": "1.0",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Slope = (y\u2082 \u2212 y\u2081) \u00f7 (x\u2082 \u2212 x\u2081) = (7 \u2212 2) \u00f7 (6 \u2212 1) = 5 \u00f7 5 = 1.0.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 22,
+    "question": "Solve for x: 8\u02e3 = 512",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctAnswer": "3",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "8\u00b9 = 8, 8\u00b2 = 64, 8\u00b3 = 512. Therefore x = 3.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 23,
+    "question": "How many milliliters are in 2 tablespoons?",
+    "options": [
+      "7.5 mL",
+      "15 mL",
+      "30 mL",
+      "45 mL"
+    ],
+    "correctAnswer": "30 mL",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "1 tablespoon = 15 mL. 2 \u00d7 15 = 30 mL.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 24,
+    "question": "How many 2\u00d72\u00d73 blocks fit inside a 6\u00d78\u00d74 container?",
+    "options": [
+      "12",
+      "16",
+      "20",
+      "24"
+    ],
+    "correctAnswer": "16",
+    "category": "Medical Math",
+    "difficulty": "Easy",
+    "explanation": "Volume of container: 6 \u00d7 8 \u00d7 4 = 192. Volume of block: 2 \u00d7 2 \u00d7 3 = 12. 192 \u00f7 12 = 16 blocks.",
+    "tag": "Mathematical Essentials"
+  },
+  {
+    "id": 25,
+    "question": "A physician orders heparin 2,000 units subcutaneous q12h. The vial contains 10,000 U/mL. How many total mL per day will the patient receive?",
+    "options": [
+      "0.2 mL",
+      "0.4 mL",
+      "0.5 mL",
+      "5.0 mL"
+    ],
+    "correctAnswer": "0.4 mL",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Total daily dose: 2,000 U \u00d7 2 doses = 4,000 U/day. Volume: 4,000 \u00f7 10,000 = 0.4 mL/day.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 26,
+    "question": "A 6% KCl solution is to be diluted to make 250 mL of a 2% KCl solution. How many mL of the 6% solution are needed?",
+    "options": [
+      "42 mL",
+      "83 mL",
+      "125 mL",
+      "167 mL"
+    ],
+    "correctAnswer": "83 mL",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Using the dilution formula C\u2081V\u2081 = C\u2082V\u2082: 6% \u00d7 V\u2081 = 2% \u00d7 250. V\u2081 = 500 \u00f7 6 = 83.3 mL \u2248 83 mL.",
+    "tag": "Dilutions, Solutions, and Concentrations"
+  },
+  {
+    "id": 27,
+    "question": "What is the BSA in m\u00b2 of a child who weighs 55 lb and is 34 inches tall? Use the formula BSA = \u221a[(height(in) \u00d7 weight(lb)) \u00f7 3131]. Round to the nearest hundredth.",
+    "options": [
+      "0.69 m\u00b2",
+      "0.73 m\u00b2",
+      "0.77 m\u00b2",
+      "0.84 m\u00b2"
+    ],
+    "correctAnswer": "0.77 m\u00b2",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "BSA = \u221a[(34 \u00d7 55) \u00f7 3131] = \u221a[1870 \u00f7 3131] = \u221a0.5973 \u2248 0.77 m\u00b2.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 28,
+    "question": "A patient is to receive Accolate 20 mg BID for chronic asthma. How many grams will be administered during the three days following hospitalization?",
+    "options": [
+      "0.06 g",
+      "0.10 g",
+      "0.12 g",
+      "0.24 g"
+    ],
+    "correctAnswer": "0.12 g",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Daily dose: 20 mg \u00d7 2 = 40 mg/day. Over 3 days: 40 \u00d7 3 = 120 mg = 0.12 g.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 29,
+    "question": "A physician orders Augmentin 400 mg q8h. Supply is 200 mg/5 mL. How many mL per day?",
+    "options": [
+      "20 mL",
+      "30 mL",
+      "40 mL",
+      "60 mL"
+    ],
+    "correctAnswer": "30 mL",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Per dose: (400 \u00f7 200) \u00d7 5 = 10 mL. q8h = 3 doses/day. 10 \u00d7 3 = 30 mL/day.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 30,
+    "question": "The physician orders 1,200,000 U of penicillin. The supply is 6,000,000 U per 10 mL. How many mL should be administered?",
+    "options": [
+      "1 mL",
+      "2 mL",
+      "3 mL",
+      "4 mL"
+    ],
+    "correctAnswer": "2 mL",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Set up a proportion: 6,000,000 U / 10 mL = 1,200,000 U / x. x = (1,200,000 \u00d7 10) \u00f7 6,000,000 = 2 mL.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 31,
+    "question": "A patient takes 10 mL of medication q6h. How many teaspoons will they take over 48 hours?",
+    "options": [
+      "12 tsp",
+      "14 tsp",
+      "16 tsp",
+      "18 tsp"
+    ],
+    "correctAnswer": "16 tsp",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "q6h = 4 doses/day. Over 48 hours = 8 doses. Total: 10 mL \u00d7 8 = 80 mL. 80 \u00f7 5 = 16 tsp.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 32,
+    "question": "Convert 22 feet to meters.",
+    "options": [
+      "5.7 m",
+      "6.7 m",
+      "7.2 m",
+      "8.1 m"
+    ],
+    "correctAnswer": "6.7 m",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "1 ft \u2248 0.3048 m. 22 \u00d7 0.3048 = 6.706 m \u2248 6.7 m.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 33,
+    "question": "A patient grew from 5'5\" to 6'1\". How many centimeters did they grow?",
+    "options": [
+      "15 cm",
+      "18 cm",
+      "20 cm",
+      "22 cm"
+    ],
+    "correctAnswer": "20 cm",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "5'5\" = 65 in. 6'1\" = 73 in. Difference = 8 in. 8 \u00d7 2.54 = 20.32 cm \u2248 20 cm.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 34,
+    "question": "Two temperatures are 95\u00b0F and 68\u00b0F. What is the difference in degrees Celsius?",
+    "options": [
+      "12\u00b0C",
+      "15\u00b0C",
+      "18\u00b0C",
+      "20\u00b0C"
+    ],
+    "correctAnswer": "15\u00b0C",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Difference in \u00b0F = 95 \u2212 68 = 27\u00b0F. To convert a temperature difference: 27 \u00d7 5/9 = 15\u00b0C.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 35,
+    "question": "Keflex 500 mg is ordered. The supply is 125 mg/5 mL. How many mL per dose?",
+    "options": [
+      "10 mL",
+      "15 mL",
+      "20 mL",
+      "25 mL"
+    ],
+    "correctAnswer": "20 mL",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "500 \u00f7 125 = 4 units. 4 \u00d7 5 mL = 20 mL per dose.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 36,
+    "question": "A patient takes 1000 mg of a medication after each of 3 daily meals. The medication comes in 0.5 g envelopes. How many envelopes are needed for a 30-day supply?",
+    "options": [
+      "90",
+      "120",
+      "150",
+      "180"
+    ],
+    "correctAnswer": "180",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Daily dose: 1000 mg \u00d7 3 = 3000 mg = 3 g. Envelopes per day: 3 g \u00f7 0.5 g = 6. Over 30 days: 6 \u00d7 30 = 180 envelopes.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 37,
+    "question": "A 16 oz beaker already contains 200 mL of liquid. How many more ounces are needed to fill it? (1 oz \u2248 29.55 mL)",
+    "options": [
+      "7.3 oz",
+      "8.3 oz",
+      "9.3 oz",
+      "10.3 oz"
+    ],
+    "correctAnswer": "9.3 oz",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "200 mL \u00f7 29.55 \u2248 6.77 oz already filled. Remaining: 16 \u2212 6.77 \u2248 9.3 oz.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 38,
+    "question": "An IV contains 100 mg of drug in 500 mL, infusing at 40 mL/hr. How many mg per hour is the patient receiving?",
+    "options": [
+      "6 mg/hr",
+      "8 mg/hr",
+      "10 mg/hr",
+      "12 mg/hr"
+    ],
+    "correctAnswer": "8 mg/hr",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Concentration: 100 mg \u00f7 500 mL = 0.2 mg/mL. Rate: 0.2 \u00d7 40 mL/hr = 8 mg/hr.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 39,
+    "question": "How many 300 mg Ziagen tablets are needed to provide a total of 0.9 g of Ziagen?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctAnswer": "3",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "0.9 g = 900 mg. 900 \u00f7 300 = 3 tablets.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 40,
+    "question": "How many drops (gtt) are in 3 mL? Use the standard conversion of 15 gtt/mL.",
+    "options": [
+      "5 gtt",
+      "30 gtt",
+      "45 gtt",
+      "60 gtt"
+    ],
+    "correctAnswer": "45 gtt",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "1 mL = 15 gtt. 3 \u00d7 15 = 45 gtt.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 41,
+    "question": "A physician orders Didronel (etidronate disodium) 20 mg/kg/day PO. The patient weighs 81 kg and tablets are 400 mg each. How many tablets per day?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctAnswer": "4",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Daily dose: 20 mg/kg \u00d7 81 kg = 1620 mg. Tablets: 1620 \u00f7 400 = 4.05 \u2248 4 tablets.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 42,
+    "question": "Find the BSA of an adult who is 178 cm tall and weighs 80 kg. Use the formula BSA = \u221a[(height(cm) \u00d7 weight(kg)) \u00f7 3600].",
+    "options": [
+      "1.84 m\u00b2",
+      "1.99 m\u00b2",
+      "2.16 m\u00b2",
+      "3.71 m\u00b2"
+    ],
+    "correctAnswer": "1.99 m\u00b2",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "BSA = \u221a[(178 \u00d7 80) \u00f7 3600] = \u221a[14240 \u00f7 3600] = \u221a3.956 \u2248 1.99 m\u00b2.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 43,
+    "question": "A patient weighs 154 pounds. What is their weight in kilograms?",
+    "options": [
+      "60 kg",
+      "70 kg",
+      "75 kg",
+      "100 kg"
+    ],
+    "correctAnswer": "70 kg",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "154 \u00f7 2.2 = 70 kg.",
+    "tag": "Measurement and Conversion"
+  },
+  {
+    "id": 44,
+    "question": "What is the strength of a solution composed of 1 part solute and 4 parts solvent?",
+    "options": [
+      "4%",
+      "20%",
+      "25%",
+      "50%"
+    ],
+    "correctAnswer": "20%",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Total parts = 1 + 4 = 5. Strength = solute \u00f7 total = 1/5 = 20%.",
+    "tag": "Dilutions, Solutions, and Concentrations"
+  },
+  {
+    "id": 45,
+    "question": "75 mL of an iodine solution contains 25 mL of pure iodine. What is the strength of this solution?",
+    "options": [
+      "1/50",
+      "1/33",
+      "1/4",
+      "1/3"
+    ],
+    "correctAnswer": "1/3",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "Strength = solute \u00f7 total solution = 25 \u00f7 75 = 1/3.",
+    "tag": "Dilutions, Solutions, and Concentrations"
+  },
+  {
+    "id": 46,
+    "question": "How many ounces of 1/5 strength Sustacal can be made from a 12-ounce can of full-strength Sustacal?",
+    "options": [
+      "3",
+      "12",
+      "36",
+      "60"
+    ],
+    "correctAnswer": "60",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "1/5 strength means the concentrate is diluted by a factor of 5. 12 oz \u00d7 5 = 60 oz total solution.",
+    "tag": "Dilutions, Solutions, and Concentrations"
+  },
+  {
+    "id": 47,
+    "question": "The prescriber orders Tigan 200 mg IM stat. Available: 20 mL multidose vial at 100 mg/mL. How many mL will you prepare?",
+    "options": [
+      "1 mL",
+      "2 mL",
+      "3 mL",
+      "4 mL"
+    ],
+    "correctAnswer": "2 mL",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "200 mg \u00f7 100 mg/mL = 2 mL.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 48,
+    "question": "An IV of 1000 mL is to infuse over 8 hours with a drop factor of 15 gtt/mL. What is the required flow rate in gtt/min?",
+    "options": [
+      "21 gtt/min",
+      "31 gtt/min",
+      "42 gtt/min",
+      "50 gtt/min"
+    ],
+    "correctAnswer": "31 gtt/min",
+    "category": "Medical Math",
+    "difficulty": "Medium",
+    "explanation": "8 hours = 480 min. Flow rate: 1000 \u00f7 480 \u2248 2.08 mL/min. Drops: 2.08 \u00d7 15 \u2248 31 gtt/min.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 49,
+    "question": "A patient with a gram-negative infection receives amikacin: 10 mg/kg on Day 1, then 7.5 mg/kg q12h for 9 days. The patient weighs 185 lbs. What is the total dose in grams over 10 days? (Round to the nearest tenth.)",
+    "options": [
+      "12.2 g",
+      "12.6 g",
+      "13.3 g",
+      "14.5 g"
+    ],
+    "correctAnswer": "12.2 g",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Convert weight: 185 \u00f7 2.2 = 84.1 kg. Day 1: 10 \u00d7 84.1 = 841 mg. Days 2\u201310: 7.5 \u00d7 2 \u00d7 84.1 = 1261.5 mg/day \u00d7 9 = 11,353.5 mg. Total: 841 + 11,353.5 = 12,194.5 mg \u00f7 1000 = 12.2 g.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 50,
+    "question": "A 2-year-old with a left ear infection is prescribed 2% acetic acid otic solution, 3 drops QID for 10 days. How many mL of pure acetic acid will the child receive over 10 days? (Use 15 gtt/mL. Round to the nearest hundredth.)",
+    "options": [
+      "0.08 mL",
+      "0.12 mL",
+      "0.16 mL",
+      "0.20 mL"
+    ],
+    "correctAnswer": "0.16 mL",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Drops/day: 3 \u00d7 4 = 12. Over 10 days: 120 drops. Convert: 120 \u00f7 15 = 8 mL total solution. Pure acetic acid: 8 \u00d7 0.02 = 0.16 mL.",
+    "tag": "Dilutions, Solutions, and Concentrations"
+  },
+  {
+    "id": 51,
+    "question": "A patient with SVT is to receive Esmolol 500 mcg/kg STAT followed by 50 mcg/kg/min for 4 minutes. The patient weighs 265 lbs. What is the total dose in mg?",
+    "options": [
+      "52.6 mg",
+      "66.2 mg",
+      "75.4 mg",
+      "84.4 mg"
+    ],
+    "correctAnswer": "84.4 mg",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Weight: 265 \u00f7 2.2 = 120.5 kg. STAT dose: 500 \u00d7 120.5 = 60,250 mcg. Infusion: 50 \u00d7 120.5 \u00d7 4 = 24,100 mcg. Total: 84,350 mcg = 84.4 mg.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 52,
+    "question": "A child is 30 inches tall and weighs 27 lbs. What is the child's BSA in m\u00b2? Use BSA = \u221a[(height(in) \u00d7 weight(lb)) \u00f7 3131]. Round to the nearest tenth.",
+    "options": [
+      "0.4 m\u00b2",
+      "0.5 m\u00b2",
+      "0.6 m\u00b2",
+      "0.7 m\u00b2"
+    ],
+    "correctAnswer": "0.5 m\u00b2",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "BSA = \u221a[(30 \u00d7 27) \u00f7 3131] = \u221a[810 \u00f7 3131] = \u221a0.2587 \u2248 0.51 m\u00b2 \u2248 0.5 m\u00b2.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 53,
+    "question": "A child (BSA = 1.2 m\u00b2) requires albuterol. Adult BSA = 1.7 m\u00b2, adult dose = 4.3 mg. Albuterol syrup is 2 mg/5 mL. How many teaspoons should be administered? (Round to the nearest tenth.)",
+    "options": [
+      "1.5 tsp",
+      "2.5 tsp",
+      "3.5 tsp",
+      "4.5 tsp"
+    ],
+    "correctAnswer": "1.5 tsp",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Child dose: (1.2 \u00f7 1.7) \u00d7 4.3 \u2248 3.03 mg. Volume: (3.03 \u00f7 2) \u00d7 5 = 7.58 mL. Teaspoons: 7.58 \u00f7 5 \u2248 1.5 tsp.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 54,
+    "question": "A patient with Crohn's disease receives Remicade 7 mg/kg IV over 2 hours. The patient weighs 123 lbs. How many mg of Remicade are delivered each hour?",
+    "options": [
+      "170 mg",
+      "180 mg",
+      "195 mg",
+      "215 mg"
+    ],
+    "correctAnswer": "195 mg",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Weight: 123 \u00f7 2.2 = 55.9 kg. Total dose: 7 \u00d7 55.9 = 391.3 mg. Per hour: 391.3 \u00f7 2 = 195.7 mg \u2248 195 mg/hr.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 55,
+    "question": "Using the same Remicade infusion (250 mL over 2 hours, drop factor 10 gtt/mL), what is the required flow rate in drops per minute?",
+    "options": [
+      "18 gtt/min",
+      "21 gtt/min",
+      "25 gtt/min",
+      "31 gtt/min"
+    ],
+    "correctAnswer": "21 gtt/min",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "2 hours = 120 min. Flow: 250 \u00f7 120 \u2248 2.08 mL/min. Drops: 2.08 \u00d7 10 \u2248 21 gtt/min.",
+    "tag": "Drug Dosages and Intravenous Solutions"
+  },
+  {
+    "id": 56,
+    "question": "SAT scores: [720, 800, 610, 620, 590, 710, 680, 540, 760, 600]. What is the percentile rank for a score of 680?",
+    "options": [
+      "50th percentile",
+      "60th percentile",
+      "70th percentile",
+      "80th percentile"
+    ],
+    "correctAnswer": "50th percentile",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Values below 680: 610, 620, 590, 540, 600 = 5 values. Percentile = (5 \u00f7 10) \u00d7 100 = 50th percentile.",
+    "tag": "Interpreting Medical Information"
+  },
+  {
+    "id": 57,
+    "question": "A drug manufacturer is fined $100 million. The drug costs $34,000/vial and is sold in cases of 12 vials. How many cases must be sold to cover the fine?",
+    "options": [
+      "196",
+      "220",
+      "246",
+      "275"
+    ],
+    "correctAnswer": "246",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Revenue per case: $34,000 \u00d7 12 = $408,000. Cases needed: $100,000,000 \u00f7 $408,000 \u2248 245.1 \u2248 246 cases.",
+    "tag": "Interpreting Medical Information"
+  },
+  {
+    "id": 58,
+    "question": "What is the standard deviation of the following urine specific gravity results: [1.020, 1.028, 1.010, 1.043]? Round to the nearest hundredth.",
+    "options": [
+      "0.01",
+      "0.02",
+      "0.03",
+      "0.06"
+    ],
+    "correctAnswer": "0.01",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Mean = (1.020 + 1.028 + 1.010 + 1.043) \u00f7 4 = 1.025. Variance = [(0.005\u00b2 + 0.003\u00b2 + 0.015\u00b2 + 0.018\u00b2)] \u00f7 4 \u2248 0.000128. SD = \u221a0.000128 \u2248 0.011 \u2248 0.01.",
+    "tag": "Interpreting Medical Information"
+  },
+  {
+    "id": 59,
+    "question": "If log_a(b) = log_b(a), where a and b are distinct nonzero rational numbers, what is the value of ab?",
+    "options": [
+      "-1",
+      "-0.5",
+      "0.5",
+      "1"
+    ],
+    "correctAnswer": "1",
+    "category": "Medical Math",
+    "difficulty": "Hard",
+    "explanation": "Setting log_a(b) = log_b(a) leads to (ln b)\u00b2 = (ln a)\u00b2. Since a \u2260 b, ln b = \u2212ln a, meaning b = 1/a. Therefore ab = a \u00d7 (1/a) = 1.",
+    "tag": "Mathematical Essentials"
+  }
+]
