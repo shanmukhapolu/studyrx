@@ -1,4 +1,4 @@
-import { MessageSquareText, Pill, Smile, Heart, Apple, SpellCheck2, SquareActivity, Stethoscope, Library } from "lucide-react";
+import { MessageSquareText, Pill, Smile, Heart, Apple, SpellCheck2, SquareActivity, Stethoscope, Library, Earth, Calculator } from "lucide-react";
 
 export interface HosaEvent {
   id: string;
@@ -35,6 +35,14 @@ export const HOSA_EVENTS: HosaEvent[] = [
     published: true,
   },
   {
+    id: "world-health-and-disparities",
+    name: "World Health & Disparities",
+    description: "Assess knowledge of respiratory system anatomy, diseases, diagnostic methods, and therapeutic interventions in patient care.",
+    icon: Earth,
+    questionBankFile: "/questions/world-health-and-disparities.json",
+    published: false,
+  },
+  {
     id: "anatomy-and-physiology",
     name: "Anatomy & Physiology",
     description: "Assess knowledge of the structure and function of human body systems, including organization, homeostasis, and the interactions necessary for maintaining life.",
@@ -49,6 +57,14 @@ export const HOSA_EVENTS: HosaEvent[] = [
     icon: Library,
     questionBankFile: "/questions/health-informatics.json",
     published: true,
+  },
+  {
+    id: "medical-math",
+    name: "Medical Math",
+    description: "Assess knowledge of health information systems, data management, electronic health records, and the use of technology to improve patient care, safety, and healthcare outcomes",
+    icon: Calculator,
+    questionBankFile: "/questions/medical-math.json",
+    published: false,
   }/*,
   {
     id: "nutrition",
