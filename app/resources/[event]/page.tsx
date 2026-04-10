@@ -39,8 +39,14 @@ function ResourcesContent({ eventId }: { eventId: string }) {
   const [loadError, setLoadError] = useState(false);
   const event = getEventById(eventId);
   const eventName = getEventName(eventId);
+  const eventIsPublished = Boolean(event?.published);
 
   useEffect(() => {
+    if (!event || !eventIsPublished) {
+      setLoading(false);
+      return;
+    }
+
     const loadResources = async () => {
       try {
         const response = await fetch("/resources/resources.json");
@@ -55,7 +61,7 @@ function ResourcesContent({ eventId }: { eventId: string }) {
       }
     };
     void loadResources();
-  }, []);
+  }, [event, eventIsPublished]);
 
   const eventResources = useMemo(
     () => resources.filter((resource) => resource.eventId === eventId),
@@ -70,6 +76,29 @@ function ResourcesContent({ eventId }: { eventId: string }) {
             <CardTitle>Event Not Found</CardTitle>
           </CardHeader>
           <CardContent>
+            <Button asChild>
+              <Link href="/events">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Events
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (!eventIsPublished) {
+    return (
+      <div className="flex-1 flex items-center justify-center p-8">
+        <Card className="max-w-md">
+          <CardHeader>
+            <CardTitle>Coming Soon</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-muted-foreground">
+              {eventName} resources are not published yet. Check back soon.
+            </p>
             <Button asChild>
               <Link href="/events">
                 <ArrowLeft className="mr-2 h-4 w-4" />

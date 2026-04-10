@@ -28,6 +28,7 @@ import {
 import Confetti from "react-confetti";
 import { rtdbPost } from "@/lib/rtdb";
 import { toast } from "sonner";
+import { useAuth } from "@/components/auth/auth-provider";
 
 // Utility to shuffle an array
 function shuffleArray<T>(array: T[]): T[] {
@@ -122,6 +123,7 @@ export default function PracticePage({ params }: { params: Promise<{ event: stri
 
 function PracticeContent({ eventId }: { eventId: string }) {
   const router = useRouter();
+  const { user } = useAuth();
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [questionQueue, setQuestionQueue] = useState<QueueItem[]>([]);
   const [currentQueueIndex, setCurrentQueueIndex] = useState(0);
@@ -250,13 +252,15 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
   const event = getEventById(eventId);
   const eventName = getEventName(eventId);
+  const eventIsPublished = Boolean(event?.published);
 
   useEffect(() => {
+    if (!eventIsPublished) return;
     loadQuestions();
-  }, [eventId]);
+  }, [eventId, eventIsPublished]);
 
   const loadQuestions = async () => {
-    if (!event) {
+    if (!event || !eventIsPublished) {
       setLoadError(true);
       return;
     }
@@ -587,7 +591,53 @@ function PracticeContent({ eventId }: { eventId: string }) {
     window.location.reload();
   };
 
-  if (loadError || !event) {
+  if (!event) {
+    return (
+      <div className="flex-1 flex items-center justify-center p-8">
+        <Card className="max-w-md">
+          <CardHeader>
+            <CardTitle>Event Not Found</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-muted-foreground">
+              The event you're looking for doesn't exist or couldn't be loaded.
+            </p>
+            <Button asChild>
+              <Link href="/events">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Events
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (!eventIsPublished) {
+    return (
+      <div className="flex-1 flex items-center justify-center p-8">
+        <Card className="max-w-md">
+          <CardHeader>
+            <CardTitle>Coming Soon</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-muted-foreground">
+              {eventName} is not published yet. Check back soon.
+            </p>
+            <Button asChild>
+              <Link href="/events">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Events
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (loadError) {
     return (
       <div className="flex-1 flex items-center justify-center p-8">
         <Card className="max-w-md">
@@ -1006,6 +1056,11 @@ function PracticeContent({ eventId }: { eventId: string }) {
                         questionId: currentQuestion.id,
                         reason: reportReason === "Other" ? reportOtherReason.trim() : reportReason,
                         details: reportDetails,
+                        submittedBy: {
+                          uid: user?.uid || "",
+                          name: user?.displayName || "",
+                          email: user?.email || "",
+                        },
                         status: "pending",
                         adminNotes: "",
                         createdAt: new Date().toISOString(),

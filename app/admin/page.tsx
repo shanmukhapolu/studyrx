@@ -88,6 +88,13 @@ type QuestionReport = {
   reason?: string;
   details?: string;
   resolved?: boolean;
+  createdAt?: string;
+  submittedBy?: SubmittedBy;
+};
+
+type UserMessageTarget = {
+  uid: string;
+  user: UserRecord;
 };
 
 function dateLabel(value?: string) {
@@ -138,6 +145,9 @@ function AdminContent() {
   const [selectedEventFilter, setSelectedEventFilter] = useState("all");
   const [selectedSubmission, setSelectedSubmission] = useState<QuestionSubmission | null>(null);
   const [selectedAnalyticsUser, setSelectedAnalyticsUser] = useState<{ uid: string; user: UserRecord } | null>(null);
+  const [selectedMessageUser, setSelectedMessageUser] = useState<UserMessageTarget | null>(null);
+  const [adminMessageText, setAdminMessageText] = useState("");
+  const [isSendingAdminMessage, setIsSendingAdminMessage] = useState(false);
   const [adminNotes, setAdminNotes] = useState("");
   const [draftNames, setDraftNames] = useState<Record<string, string>>({});
 
@@ -301,6 +311,32 @@ function AdminContent() {
     }
   };
 
+  const sendAdminMessage = async () => {
+    if (!selectedMessageUser?.uid) return;
+    const trimmedMessage = adminMessageText.trim();
+    if (!trimmedMessage) {
+      toast.error("Message cannot be empty.");
+      return;
+    }
+
+    try {
+      setIsSendingAdminMessage(true);
+      await rtdbPost(`users/${selectedMessageUser.uid}/notifications`, {
+        type: "admin_message",
+        message: trimmedMessage,
+        status: "info",
+        createdAt: new Date().toISOString(),
+      });
+      toast.success("Admin message queued for next login.");
+      setSelectedMessageUser(null);
+      setAdminMessageText("");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to send admin message.");
+    } finally {
+      setIsSendingAdminMessage(false);
+    }
+  };
+
   return (
     <div className="flex-1 overflow-auto p-6">
       <h1 className="mb-6 text-3xl font-bold">Admin Dashboard</h1>
@@ -373,6 +409,16 @@ function AdminContent() {
                       <BarChart3 className="mr-1 h-4 w-4" />
                       Analytics
                     </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        setSelectedMessageUser({ uid, user });
+                        setAdminMessageText("");
+                      }}
+                    >
+                      Message
+                    </Button>
                     <Button size="sm" variant="outline" onClick={() => void updateRole(uid, "user")} disabled={currentUser?.uid === uid || (user.role || "user") === "user"}>
                       Make User
                     </Button>
@@ -397,7 +443,8 @@ function AdminContent() {
               <CardContent className="grid gap-2 text-sm md:grid-cols-2">
                 <p>Total users: <strong>{sitewideStats.adoption.totalUsers}</strong></p>
                 <p>New users (last 7 days): <strong>{sitewideStats.adoption.newUsersLast7Days}</strong></p>
-                <p>Active users (last 7 days): <strong>{sitewideStats.adoption.activeUsersLast7Days}</strong></p>
+                <p>Active users (last 7 days, at least 1 session): <strong>{sitewideStats.adoption.activeUsersLast7Days}</strong></p>
+                <p>Users with login in last 7 days: <strong>{sitewideStats.adoption.loginUsersLast7Days}</strong></p>
                 <p>Growth rate (week over week): <strong>{sitewideStats.adoption.growthRateWeekOverWeek}%</strong></p>
               </CardContent>
             </Card>
@@ -542,8 +589,13 @@ function AdminContent() {
                 <Card key={item.id}>
                   <CardContent className="flex items-center justify-between p-3 text-sm">
                     <div>
-                      <p className="font-medium">Q{String(item.questionId || "—")} · {item.reason || "Unknown reason"}</p>
+                      <p className="font-medium">
+                        {getEventName(item.eventId || "—")} · Q{String(item.questionId || "—")} · {item.reason || "Unknown reason"}
+                      </p>
                       <p className="truncate text-xs text-muted-foreground">{item.details || "No details"}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {item.submittedBy?.name || item.submittedBy?.email || "Unknown user"} · {dateLabel(item.createdAt)}
+                      </p>
                     </div>
                     <div className="flex items-center gap-1">
                       <Button size="icon" variant="ghost" onClick={() => void toggleReportResolved(item)} className={item.resolved ? "text-green-600" : ""}>
@@ -657,6 +709,53 @@ function AdminContent() {
           user={selectedAnalyticsUser.user}
           onClose={() => setSelectedAnalyticsUser(null)}
         />
+      )}
+
+      {selectedMessageUser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <Card className="w-full max-w-lg">
+            <CardHeader className="flex flex-row items-start justify-between">
+              <div>
+                <CardTitle>Message User</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  {selectedMessageUser.user.name || "Unnamed User"} · {selectedMessageUser.user.email || selectedMessageUser.uid}
+                </p>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  setSelectedMessageUser(null);
+                  setAdminMessageText("");
+                }}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <textarea
+                className="min-h-32 w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                placeholder="Type the message shown to this user on next login..."
+                value={adminMessageText}
+                onChange={(event) => setAdminMessageText(event.target.value)}
+              />
+              <div className="flex justify-end gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSelectedMessageUser(null);
+                    setAdminMessageText("");
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button disabled={isSendingAdminMessage} onClick={() => void sendAdminMessage()}>
+                  {isSendingAdminMessage ? "Sending..." : "Send Message"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       )}
     </div>
   );

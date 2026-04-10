@@ -42,6 +42,7 @@ export type SitewideStats = {
     totalUsers: number;
     newUsersLast7Days: number;
     activeUsersLast7Days: number;
+    loginUsersLast7Days: number;
     growthRateWeekOverWeek: number;
   };
   engagement: {
@@ -193,7 +194,17 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
     return createdMs !== null && createdMs >= fourteenDaysAgoMs && createdMs < sevenDaysAgoMs;
   }).length;
 
-  const activeUsersLast7Days = Object.values(users).filter((user) => {
+  const activeUserIdsLast7Days = new Set(
+    sessions
+      .filter((session) => {
+        const sessionMs = toMillis(session.startTimestamp) ?? toMillis(session.endTimestamp);
+        return sessionMs !== null && sessionMs >= sevenDaysAgoMs;
+      })
+      .map((session) => session.uid)
+  );
+  const activeUsersWithSessionLast7Days = activeUserIdsLast7Days.size;
+
+  const loginUsersLast7Days = Object.values(users).filter((user) => {
     const loginMs = toMillis(user.lastLogin);
     return loginMs !== null && loginMs >= sevenDaysAgoMs;
   }).length;
@@ -304,7 +315,8 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
     adoption: {
       totalUsers,
       newUsersLast7Days,
-      activeUsersLast7Days,
+      activeUsersLast7Days: activeUsersWithSessionLast7Days,
+      loginUsersLast7Days,
       growthRateWeekOverWeek: round2(growthRateWeekOverWeek),
     },
     engagement: {
