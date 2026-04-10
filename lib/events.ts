@@ -37,7 +37,7 @@ export const HOSA_EVENTS: HosaEvent[] = [
   {
     id: "world-health-and-disparities",
     name: "World Health & Disparities",
-    description: "Assess knowledge of respiratory system anatomy, diseases, diagnostic methods, and therapeutic interventions in patient care.",
+    description: "Assess knowledge of global health issues, epidemiology, social determinants of health, and healthcare disparities.",
     icon: Earth,
     questionBankFile: "/questions/world-health-and-disparities.json",
     published: false,
@@ -61,7 +61,7 @@ export const HOSA_EVENTS: HosaEvent[] = [
   {
     id: "medical-math",
     name: "Medical Math",
-    description: "Assess knowledge of health information systems, data management, electronic health records, and the use of technology to improve patient care, safety, and healthcare outcomes",
+    description: "Assess knowledge of dosage calculations, unit conversions, IV flow rates, and other mathematical applications in healthcare.",
     icon: Calculator,
     questionBankFile: "/questions/medical-math.json",
     published: false,
