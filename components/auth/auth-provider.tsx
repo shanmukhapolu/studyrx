@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { X } from "lucide-react";
 
 import {
   getUserRecord,
@@ -21,6 +22,7 @@ import {
 } from "@/lib/firebase-auth-rest";
 import { signInWithGooglePopup } from "@/lib/firebase-web";
 import type { OnboardingData } from "@/lib/onboarding";
+import { rtdbGet, rtdbPatch } from "@/lib/rtdb";
 
 interface AuthContextValue {
   user: AuthUser | null;
@@ -142,6 +144,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [role, setRole] = useState<UserRole>("user");
   const [onboardingCompleted, setOnboardingCompleted] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [adminMessageNotification, setAdminMessageNotification] = useState<{ id: string; message: string } | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -353,7 +356,69 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     [loading, onboardingCompleted, role, user]
   );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  useEffect(() => {
+    if (!user?.uid) {
+      setAdminMessageNotification(null);
+      return;
+    }
+
+    let cancelled = false;
+    const loadAdminMessageForNextLogin = async () => {
+      try {
+        const notifications = await rtdbGet<Record<string, {
+          type?: string;
+          message?: string;
+          createdAt?: string;
+          seenAt?: string;
+        }>>(`users/${user.uid}/notifications`, {});
+
+        const pending = Object.entries(notifications)
+          .map(([id, value]) => ({ id, ...value }))
+          .filter((notification) => notification.type === "admin_message" && !notification.seenAt)
+          .sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
+
+        const latest = pending[0];
+        if (!latest || cancelled) return;
+
+        await rtdbPatch(`users/${user.uid}/notifications/${latest.id}`, {
+          seenAt: new Date().toISOString(),
+        });
+        if (cancelled) return;
+
+        setAdminMessageNotification({
+          id: latest.id,
+          message: latest.message || "",
+        });
+      } catch {
+        // Ignore notification fetch failures; auth state still works.
+      }
+    };
+
+    void loadAdminMessageForNextLogin();
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.uid]);
+
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+      {adminMessageNotification && (
+        <div className="fixed bottom-4 right-4 z-[100] w-[min(24rem,calc(100vw-2rem))] rounded-lg border border-border bg-card p-4 shadow-xl">
+          <button
+            type="button"
+            className="absolute right-2 top-2 rounded-md p-1 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+            aria-label="Dismiss admin message"
+            onClick={() => setAdminMessageNotification(null)}
+          >
+            <X className="h-4 w-4" />
+          </button>
+          <p className="pr-6 text-sm font-bold">The admin has sent you a message</p>
+          <p className="mt-2 text-sm text-muted-foreground">{adminMessageNotification.message || "You have a new message."}</p>
+        </div>
+      )}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth() {
