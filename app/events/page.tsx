@@ -9,7 +9,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { storage } from "@/lib/storage";
-import { HOSA_EVENTS } from "@/lib/events";
+import { HOSA_EVENTS_DISPLAY_ORDER as HOSA_EVENTS } from "@/lib/events";
 import { BookOpen, Play, TrendingUp } from "lucide-react";
 import { rtdbGet, rtdbPost, rtdbSet } from "@/lib/rtdb";
 import { toast } from "sonner";
