@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { HOSA_EVENTS } from "@/lib/events";
+import { HOSA_EVENTS_DISPLAY_ORDER as HOSA_EVENTS } from "@/lib/events";
 import { rtdbGet, rtdbPost, rtdbSet } from "@/lib/rtdb";
 import { toast } from "sonner";
 

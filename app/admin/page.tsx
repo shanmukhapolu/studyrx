@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { getEventName, HOSA_EVENTS } from "@/lib/events";
+import { getEventName, HOSA_EVENTS_DISPLAY_ORDER as HOSA_EVENTS } from "@/lib/events";
 import { rtdbGet, rtdbPatch, rtdbPost, rtdbSet } from "@/lib/rtdb";
 import { DEFAULT_USER_SETTINGS, type QuestionAttempt, type SessionData, type UserSettings } from "@/lib/storage";
 import { formatDuration } from "@/lib/session-analytics";
@@ -53,6 +53,8 @@ type FeedbackSubmission = {
   message?: string;
   eventName?: string | null;
   email?: string | null;
+  displayName?: string | null;
+  testimonialConsent?: boolean;
   submittedBy?: {
     name?: string;
     email?: string;
@@ -615,12 +617,24 @@ function AdminContent() {
             <div className="space-y-2">
               {feedbackSubmissions.map((item) => (
                 <Card key={item.id}>
-                  <CardContent className="space-y-1 p-3 text-xs">
-                    <p className="font-semibold text-sm">{item.feedbackType || "Feedback"} {item.eventName ? `· ${item.eventName}` : ""}</p>
-                    <p>{item.message || "No message"}</p>
-                    <p className="text-muted-foreground">
-                      {item.submittedBy?.name || "Unknown user"} · {item.email || item.submittedBy?.email || "No email"} · {dateLabel(item.createdAt)}
-                    </p>
+                  <CardContent className="p-3 text-xs">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="space-y-1">
+                        <p className="font-semibold text-sm">{item.feedbackType || "Feedback"} {item.eventName ? `· ${item.eventName}` : ""}</p>
+                        <p>{item.message || "No message"}</p>
+                        {item.feedbackType === "Testimonial" && (
+                          <p className="text-muted-foreground">
+                            Name: {item.displayName || "Anonymous"} · Consent: {item.testimonialConsent ? "Granted" : "Not granted"}
+                          </p>
+                        )}
+                        <p className="text-muted-foreground">
+                          {item.submittedBy?.name || "Unknown user"} · {item.email || item.submittedBy?.email || "No email"} · {dateLabel(item.createdAt)}
+                        </p>
+                      </div>
+                      <Button size="icon" variant="ghost" onClick={() => void deleteNode(`feedback_submissions/${item.id}`)}>
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}

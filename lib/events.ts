@@ -96,6 +96,11 @@ export const HOSA_EVENTS: HosaEvent[] = [
   }*/
 ];
 
+export const HOSA_EVENTS_DISPLAY_ORDER: HosaEvent[] = [...HOSA_EVENTS].sort((a, b) => {
+  if (a.published === b.published) return 0;
+  return a.published ? -1 : 1;
+});
+
 export function getEventById(eventId: string): HosaEvent | undefined {
   return HOSA_EVENTS.find((event) => event.id === eventId);
 }

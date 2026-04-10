@@ -18,7 +18,10 @@ export default function SubmitFeedbackPage() {
   const [message, setMessage] = useState("");
   const [eventName, setEventName] = useState("");
   const [email, setEmail] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [testimonialConsent, setTestimonialConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const isTestimonial = feedbackType === "Testimonial";
 
   return (
     <SidebarProvider>
@@ -37,6 +40,8 @@ export default function SubmitFeedbackPage() {
                     <option>Bug</option>
                     <option>Suggestion</option>
                     <option>Content Issue</option>
+                    <option>Question</option>
+                    <option>Testimonial</option>
                     <option>Other</option>
                   </select>
                 </div>
@@ -52,31 +57,55 @@ export default function SubmitFeedbackPage() {
                   />
                 </div>
 
-                <div>
-                  <label className="mb-2 block text-sm font-medium">Event (optional)</label>
-                  <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={eventName} onChange={(event) => setEventName(event.target.value)}>
-                    <option value="">No specific event</option>
-                    {ALL_REQUESTABLE_EVENTS.map((eventOption) => (
-                      <option key={eventOption} value={eventOption}>{eventOption}</option>
-                    ))}
-                  </select>
-                </div>
+                {isTestimonial ? (
+                  <>
+                    <div>
+                      <label className="mb-2 block text-sm font-medium">Name (optional)</label>
+                      <Input value={displayName} onChange={(event) => setDisplayName(event.target.value)} placeholder="How should we credit you?" />
+                    </div>
+                    <label className="flex cursor-pointer items-start gap-3 rounded-md border border-border p-3 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={testimonialConsent}
+                        onChange={(event) => setTestimonialConsent(event.target.checked)}
+                        className="mt-1 h-4 w-4"
+                      />
+                      <span>
+                        I give full permission for StudyRx to use this testimonial, feature it on the website, and make it public.
+                      </span>
+                    </label>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <label className="mb-2 block text-sm font-medium">Event (optional)</label>
+                      <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={eventName} onChange={(event) => setEventName(event.target.value)}>
+                        <option value="">No specific event</option>
+                        {ALL_REQUESTABLE_EVENTS.map((eventOption) => (
+                          <option key={eventOption} value={eventOption}>{eventOption}</option>
+                        ))}
+                      </select>
+                    </div>
 
-                <div>
-                  <label className="mb-2 block text-sm font-medium">Email (optional)</label>
-                  <Input value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" />
-                </div>
+                    <div>
+                      <label className="mb-2 block text-sm font-medium">Email (optional)</label>
+                      <Input value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" />
+                    </div>
+                  </>
+                )}
 
                 <Button
-                  disabled={submitting || !message.trim()}
+                  disabled={submitting || !message.trim() || (isTestimonial && !testimonialConsent)}
                   onClick={async () => {
                     try {
                       setSubmitting(true);
                       await rtdbPost("feedback_submissions", {
                         feedbackType,
                         message,
-                        eventName: eventName || null,
-                        email: email || null,
+                        eventName: isTestimonial ? null : eventName || null,
+                        email: isTestimonial ? null : email || null,
+                        displayName: isTestimonial ? displayName.trim() || null : null,
+                        testimonialConsent: isTestimonial ? testimonialConsent : false,
                         submittedBy: {
                           uid: user?.uid || "",
                           name: [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user?.displayName || "",
@@ -88,6 +117,8 @@ export default function SubmitFeedbackPage() {
                       setMessage("");
                       setEventName("");
                       setEmail("");
+                      setDisplayName("");
+                      setTestimonialConsent(false);
                       setFeedbackType("Bug");
                     } catch (error) {
                       toast.error(error instanceof Error ? error.message : "Failed to submit feedback.");

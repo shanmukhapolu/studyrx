@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, TrendingUp, Clock, BarChart3, Zap, ChevronRight, ChevronLeft, ArrowRight, BarChart, Brain, RefreshCw, Users, Trophy, Sparkles, X, Check } from "lucide-react";
-import { HOSA_EVENTS } from "@/lib/events";
+import { HOSA_EVENTS_DISPLAY_ORDER as HOSA_EVENTS } from "@/lib/events";
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -264,12 +264,19 @@ export default function HomePage() {
                       Built by Students Who Understand HOSA
                     </h2>
                   </div>
-                  <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                    Designed specifically for competitive event prep — not generic exam practice.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+                <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                  Designed specifically for competitive event prep — not generic exam practice.
+                </p>
+                <Link
+                  href="/contributors"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+                >
+                  View the amazing contributors who contributed questions to this platform.
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
           </div>
         </div>
       </section>
@@ -689,8 +696,11 @@ export default function HomePage() {
               />
               <span className="text-lg font-bold text-foreground">StudyRx</span>
             </div>
-            <div className="text-sm text-muted-foreground">
-              © 2026 StudyRx. Built for HOSA competitors.
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <span>© 2026 StudyRx. Built for HOSA competitors.</span>
+              <Link href="/contributors" className="font-semibold text-primary hover:underline">
+                Contributors
+              </Link>
             </div>
           </div>
         </div>
