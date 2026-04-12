@@ -19,6 +19,7 @@ import { formatDuration } from "@/lib/session-analytics";
 import { calculateSitewideStats } from "@/lib/sitewide-stats";
 import { buildMissingDailySnapshots, type SitewideStatsHistoryByDate } from "@/lib/sitewide-stats-history";
 import { toast } from "sonner";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip as RechartsTooltip } from "recharts";
 
 type UserRecord = {
   name?: string;
@@ -101,6 +102,14 @@ type UserMessageTarget = {
   user: UserRecord;
 };
 
+type DemographicPieDatum = {
+  label: string;
+  value: number;
+  percent: number;
+};
+
+const PIE_COLORS = ["#3b82f6", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#14b8a6", "#f97316", "#a855f7"];
+
 function dateLabel(value?: string) {
   if (!value) return "—";
   const parsed = new Date(value);
@@ -121,6 +130,71 @@ function formatStatsDuration(totalSeconds: number) {
   if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
 
   return parts.join(" ");
+}
+
+function normalizeValue(value?: string) {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : "Not provided";
+}
+
+function buildPieData(values: string[]) {
+  if (values.length === 0) return [] as DemographicPieDatum[];
+  const counts = values.reduce<Record<string, number>>((acc, currentValue) => {
+    const key = normalizeValue(currentValue);
+    acc[key] = (acc[key] ?? 0) + 1;
+    return acc;
+  }, {});
+  const total = values.length;
+
+  return Object.entries(counts)
+    .map(([label, value]) => ({
+      label,
+      value,
+      percent: Number(((value / total) * 100).toFixed(1)),
+    }))
+    .sort((a, b) => b.value - a.value || a.label.localeCompare(b.label));
+}
+
+function DemographicPieChart({ title, data }: { title: string; data: DemographicPieDatum[] }) {
+  return (
+    <div className="rounded-md border p-3">
+      <p className="mb-2 text-sm font-medium">{title}</p>
+      {data.length === 0 ? (
+        <p className="text-xs text-muted-foreground">No onboarding responses yet.</p>
+      ) : (
+        <>
+          <div className="h-56 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie data={data} dataKey="value" nameKey="label" outerRadius={80}>
+                  {data.map((entry, index) => (
+                    <Cell key={entry.label} fill={PIE_COLORS[index % PIE_COLORS.length]} />
+                  ))}
+                </Pie>
+                <RechartsTooltip
+                  formatter={(value: number, _name, item) => {
+                    const payload = item.payload as DemographicPieDatum;
+                    return [`${value} users (${payload.percent}%)`, payload.label];
+                  }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="mt-2 space-y-1 text-xs">
+            {data.map((item, index) => (
+              <div key={item.label} className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: PIE_COLORS[index % PIE_COLORS.length] }} />
+                  <span className="truncate">{item.label}</span>
+                </div>
+                <span className="shrink-0 text-muted-foreground">{item.value} ({item.percent}%)</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default function AdminPage() {
@@ -214,6 +288,21 @@ function AdminContent() {
   }, [eventRequests]);
 
   const sitewideStats = useMemo(() => calculateSitewideStats(users), [users]);
+  const demographicStats = useMemo(() => {
+    const allUsers = Object.values(users);
+    const onboardedUsers = allUsers.filter((user) => user.onboardingCompleted);
+    const usersWithCharterOrg = onboardedUsers.filter((user) => normalizeValue(user.charterOrganization) !== "Not provided").length;
+
+    return {
+      onboardedUsers,
+      onboardingCompletedPct: allUsers.length > 0 ? Number(((onboardedUsers.length / allUsers.length) * 100).toFixed(1)) : 0,
+      usersWithCharterOrg,
+      gradeData: buildPieData(onboardedUsers.map((user) => user.grade || "")),
+      referralData: buildPieData(onboardedUsers.map((user) => user.referralSource || "")),
+      experienceData: buildPieData(onboardedUsers.map((user) => user.experienceLevel || "")),
+      goalData: buildPieData(onboardedUsers.map((user) => user.goal || "")),
+    };
+  }, [users]);
   const contentEventRows = useMemo(() => {
     const knownEventNames = HOSA_EVENTS.map((event) => event.name);
     const knownSet = new Set(knownEventNames);
@@ -558,6 +647,34 @@ function AdminContent() {
                 <p>Avg days between sessions per user: <strong>{sitewideStats.retention.avgDaysBetweenSessionsPerUser}</strong></p>
                 <p>% users with ≥2 sessions: <strong>{sitewideStats.retention.usersWithAtLeast2SessionsPct}%</strong></p>
                 <p>% users with ≥5 sessions: <strong>{sitewideStats.retention.usersWithAtLeast5SessionsPct}%</strong></p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Demographics (Onboarding)</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid gap-3 text-sm md:grid-cols-3">
+                  <div className="rounded-md border p-3">
+                    <p className="text-muted-foreground">Users who completed onboarding</p>
+                    <p className="mt-1 text-2xl font-semibold">
+                      {demographicStats.onboardedUsers.length} / {Object.keys(users).length}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{demographicStats.onboardingCompletedPct}% completion</p>
+                  </div>
+                  <div className="rounded-md border p-3">
+                    <p className="text-muted-foreground">Users with charter organization</p>
+                    <p className="mt-1 text-2xl font-semibold">{demographicStats.usersWithCharterOrg}</p>
+                    <p className="text-sm text-muted-foreground">Onboarded users who entered a charter organization</p>
+                  </div>
+                </div>
+                <div className="grid gap-4 xl:grid-cols-2">
+                  <DemographicPieChart title="Grade" data={demographicStats.gradeData} />
+                  <DemographicPieChart title="Referral Source" data={demographicStats.referralData} />
+                  <DemographicPieChart title="Experience Level" data={demographicStats.experienceData} />
+                  <DemographicPieChart title="Goal" data={demographicStats.goalData} />
+                </div>
               </CardContent>
             </Card>
 
