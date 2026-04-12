@@ -6,6 +6,8 @@ type UserRecord = {
   events?: Record<string, { sessions?: Record<string, RawSiteSession> }>;
 };
 
+export type SitewideStatsUserRecord = UserRecord;
+
 type RawSiteSession = {
   attempts?: string | SiteAttempt[];
   accuracy?: number;
@@ -358,4 +360,43 @@ export function calculateSitewideStats(users: Record<string, UserRecord>, now = 
     },
     generatedAt: now.toISOString(),
   };
+}
+
+function sessionTimestampMillis(session: RawSiteSession) {
+  return toMillis(session.startTimestamp ?? session.startTime ?? session.endTimestamp ?? session.endTime);
+}
+
+function filterUsersAsOf(users: Record<string, UserRecord>, asOf: Date) {
+  const cutoffMs = asOf.getTime();
+  const filtered: Record<string, UserRecord> = {};
+
+  Object.entries(users).forEach(([uid, user]) => {
+    const createdMs = toMillis(user.createdAt);
+    if (createdMs !== null && createdMs > cutoffMs) return;
+
+    const nextUser: UserRecord = { ...user };
+    const nextEvents: Record<string, { sessions?: Record<string, RawSiteSession> }> = {};
+
+    Object.entries(user.events ?? {}).forEach(([eventId, eventRecord]) => {
+      const nextSessions: Record<string, RawSiteSession> = {};
+      Object.entries(eventRecord.sessions ?? {}).forEach(([sessionId, session]) => {
+        const timestampMs = sessionTimestampMillis(session);
+        if (timestampMs !== null && timestampMs > cutoffMs) return;
+        nextSessions[sessionId] = session;
+      });
+
+      if (Object.keys(nextSessions).length > 0) {
+        nextEvents[eventId] = { sessions: nextSessions };
+      }
+    });
+
+    nextUser.events = nextEvents;
+    filtered[uid] = nextUser;
+  });
+
+  return filtered;
+}
+
+export function calculateSitewideStatsAsOf(users: Record<string, UserRecord>, asOf: Date): SitewideStats {
+  return calculateSitewideStats(filterUsersAsOf(users, asOf), asOf);
 }
