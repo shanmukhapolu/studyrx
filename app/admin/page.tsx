@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Check, BarChart3, Trash2, X } from "lucide-react";
+import Link from "next/link";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { useAuth } from "@/components/auth/auth-provider";
@@ -16,6 +17,7 @@ import { rtdbGet, rtdbPatch, rtdbPost, rtdbSet } from "@/lib/rtdb";
 import { DEFAULT_USER_SETTINGS, type QuestionAttempt, type SessionData, type UserSettings } from "@/lib/storage";
 import { formatDuration } from "@/lib/session-analytics";
 import { calculateSitewideStats } from "@/lib/sitewide-stats";
+import { buildMissingDailySnapshots, type SitewideStatsHistoryByDate } from "@/lib/sitewide-stats-history";
 import { toast } from "sonner";
 
 type UserRecord = {
@@ -152,6 +154,7 @@ function AdminContent() {
   const [isSendingAdminMessage, setIsSendingAdminMessage] = useState(false);
   const [adminNotes, setAdminNotes] = useState("");
   const [draftNames, setDraftNames] = useState<Record<string, string>>({});
+  const [syncingSnapshotHistory, setSyncingSnapshotHistory] = useState(false);
 
   const loadAll = async () => {
     const [usersData, eventReqData, questionSubData, questionReportsData, feedbackData] = await Promise.all([
@@ -230,6 +233,25 @@ function AdminContent() {
       // Silent failure: stats UI still renders from live calculations.
     });
   }, [loading, sitewideStats]);
+
+  useEffect(() => {
+    if (loading || syncingSnapshotHistory) return;
+
+    const syncHistory = async () => {
+      try {
+        setSyncingSnapshotHistory(true);
+        const existingHistory = await rtdbGet<SitewideStatsHistoryByDate>("admin_stats/sitewide_history/daily", {});
+        const missingSnapshots = buildMissingDailySnapshots(users, existingHistory);
+        const entries = Object.entries(missingSnapshots);
+        if (entries.length === 0) return;
+        await Promise.all(entries.map(([dateKey, snapshot]) => rtdbSet(`admin_stats/sitewide_history/daily/${dateKey}`, snapshot)));
+      } finally {
+        setSyncingSnapshotHistory(false);
+      }
+    };
+
+    void syncHistory();
+  }, [loading, syncingSnapshotHistory, users]);
 
   const updateRole = async (uid: string, nextRole: "user" | "contributor" | "admin") => {
     if (currentUser?.uid === uid) {
@@ -438,6 +460,11 @@ function AdminContent() {
           </TabsContent>
 
           <TabsContent value="stats" className="mt-4 space-y-4">
+            <div className="flex justify-end">
+              <Button asChild variant="outline" size="sm">
+                <Link href="/admin/stats-history">Open Stats History Spreadsheet</Link>
+              </Button>
+            </div>
             <Card>
               <CardHeader>
                 <CardTitle>Adoption</CardTitle>
