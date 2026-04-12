@@ -8,6 +8,7 @@ import { AdminGuard } from "@/components/auth/admin-guard";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { rtdbGet } from "@/lib/rtdb";
 import { toOrderedSnapshots, type SitewideStatsSnapshot, type SitewideStatsHistoryByDate } from "@/lib/sitewide-stats-history";
 
@@ -65,6 +66,26 @@ function StatsHistoryContent() {
       }))
     ),
     [snapshots]
+  );
+  const availableEvents = useMemo(
+    () => Array.from(new Set(eventRows.map((row) => row.eventName))).sort((a, b) => a.localeCompare(b)),
+    [eventRows]
+  );
+  const [selectedEvent, setSelectedEvent] = useState<string>("");
+
+  useEffect(() => {
+    if (availableEvents.length === 0) {
+      setSelectedEvent("");
+      return;
+    }
+    if (!selectedEvent || !availableEvents.includes(selectedEvent)) {
+      setSelectedEvent(availableEvents[0]);
+    }
+  }, [availableEvents, selectedEvent]);
+
+  const selectedEventRows = useMemo(
+    () => eventRows.filter((row) => row.eventName === selectedEvent),
+    [eventRows, selectedEvent]
   );
 
   return (
@@ -144,34 +165,43 @@ function StatsHistoryContent() {
           {eventRows.length === 0 ? (
             <p className="text-sm text-muted-foreground">No event rows available yet.</p>
           ) : (
-            <div className="overflow-x-auto rounded-md border">
-              <table className="w-full min-w-[900px] text-xs">
-                <thead className="bg-muted/40 text-left">
-                  <tr className="[&>th]:px-2 [&>th]:py-2 [&>th]:font-medium whitespace-nowrap">
-                    <th>Date Key</th>
-                    <th>Snapshot Timestamp</th>
-                    <th>Event</th>
-                    <th>Accuracy %</th>
-                    <th>Questions Attempted</th>
-                    <th>Users</th>
-                    <th>Practice Time (s)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {eventRows.map((row) => (
-                    <tr key={`${row.dateKey}-${row.eventName}`} className="border-t [&>td]:px-2 [&>td]:py-2 whitespace-nowrap">
-                      <td className="font-medium">{row.dateKey}</td>
-                      <td>{dateLabel(row.timestamp)}</td>
-                      <td>{row.eventName}</td>
-                      <td>{row.stats.accuracyPct}</td>
-                      <td>{row.stats.questionsAttempted}</td>
-                      <td>{row.stats.usersCount}</td>
-                      <td>{row.stats.practiceTimeSeconds}</td>
-                    </tr>
+            <Tabs value={selectedEvent} onValueChange={setSelectedEvent}>
+              <div className="mb-3 overflow-x-auto pb-1">
+                <TabsList className="inline-flex h-auto min-w-max">
+                  {availableEvents.map((eventName) => (
+                    <TabsTrigger key={eventName} value={eventName} className="text-xs">
+                      {eventName}
+                    </TabsTrigger>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </TabsList>
+              </div>
+              <div className="overflow-x-auto rounded-md border">
+                <table className="w-full min-w-[860px] text-xs">
+                  <thead className="bg-muted/40 text-left">
+                    <tr className="[&>th]:px-2 [&>th]:py-2 [&>th]:font-medium whitespace-nowrap">
+                      <th>Date Key</th>
+                      <th>Snapshot Timestamp</th>
+                      <th>Accuracy %</th>
+                      <th>Questions Attempted</th>
+                      <th>Users</th>
+                      <th>Practice Time (s)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedEventRows.map((row) => (
+                      <tr key={`${row.dateKey}-${row.eventName}`} className="border-t [&>td]:px-2 [&>td]:py-2 whitespace-nowrap">
+                        <td className="font-medium">{row.dateKey}</td>
+                        <td>{dateLabel(row.timestamp)}</td>
+                        <td>{row.stats.accuracyPct}</td>
+                        <td>{row.stats.questionsAttempted}</td>
+                        <td>{row.stats.usersCount}</td>
+                        <td>{row.stats.practiceTimeSeconds}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </Tabs>
           )}
         </CardContent>
       </Card>
