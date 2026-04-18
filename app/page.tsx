@@ -483,13 +483,18 @@ export default function HomePage() {
                   matter most.
                   <svg viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path
-                      className="squiggle-path"
-                      d="M2 8 C40 3, 80 11, 120 6 C160 1, 200 10, 240 5 C265 2, 285 8, 298 6"
-                      stroke="currentColor"
-                      strokeWidth="3.5"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
+  class="squiggle-path"
+  d="M2 7.5 
+     C20 0, 40 15, 60 7.5 
+     C80 0, 100 15, 120 7.5 
+     C140 0, 160 15, 180 7.5 
+     C200 0, 220 15, 240 7.5 
+     C260 0, 280 15, 300 7.5"
+  stroke="currentColor"
+  stroke-width="5.5"
+  stroke-linecap="round"
+  fill="none"
+/>
                   </svg>
                 </span>
               </h1>
