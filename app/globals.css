@@ -189,7 +189,7 @@
     bottom: 6px;
     height: 12px;
     background: var(--primary);
-    opacity: 0.28;
+    opacity: 0.18;
     border-radius: 0;
     z-index: -1;
     transform: scaleX(0);
