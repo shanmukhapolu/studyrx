@@ -67,18 +67,18 @@ export function AppSidebar() {
         </Link>
       </SidebarHeader>
       <SidebarContent className="p-4">
-        <SidebarMenu className="space-y-2">
+        <SidebarMenu className="space-y-3">
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
                   isActive={pathname === item.href}
                   tooltip={item.title}
-                  className="py-3"
+                  className="px-3 py-4"
                 >
                   <Link href={item.href}>
-                    <item.icon className="h-4 w-4" />
-                    <span className="text-sm">{item.title}</span>
+                    <item.icon className="h-5 w-5" />
+                    <span className="text-base">{item.title}</span>
                   </Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
@@ -88,17 +88,17 @@ export function AppSidebar() {
           <div className="mt-6">
             <SidebarSeparator className="mb-3" />
             <p className="px-2 text-xs font-semibold tracking-wide text-sidebar-foreground/70">CONTRIBUTOR</p>
-            <SidebarMenu className="mt-2 space-y-2">
+            <SidebarMenu className="mt-2 space-y-3">
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
                   isActive={pathname === "/submit-question"}
                   tooltip="Submit Question"
-                  className="py-3"
+                  className="px-3 py-4"
                 >
                   <Link href="/submit-question">
-                    <FileQuestion className="h-4 w-4" />
-                    <span className="text-sm">Submit Question</span>
+                    <FileQuestion className="h-5 w-5" />
+                    <span className="text-base">Submit Question</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

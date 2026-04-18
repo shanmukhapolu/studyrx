@@ -111,9 +111,6 @@
     line-height: 1.65;
   }
 
-  .lucide {
-    color: color-mix(in oklab, var(--primary) 88%, var(--foreground));
-  }
 }
 
 @layer components {
