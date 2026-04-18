@@ -57,14 +57,16 @@ function StatsHistoryContent() {
 
   const snapshots = useMemo(() => toOrderedSnapshots(history), [history]);
   const eventRows = useMemo(
-    () => snapshots.flatMap((snapshot) =>
-      Object.entries(snapshot.stats.contentAnalytics.perEventStats).map(([eventName, stats]) => ({
+    () => snapshots.flatMap((snapshot) => {
+      const perEventStats = snapshot.stats?.contentAnalytics?.perEventStats;
+      if (!perEventStats || typeof perEventStats !== "object") return [];
+      return Object.entries(perEventStats).map(([eventName, stats]) => ({
         dateKey: snapshot.dateKey,
         timestamp: snapshot.timestamp,
         eventName,
         stats,
-      }))
-    ),
+      }));
+    }),
     [snapshots]
   );
   const availableEvents = useMemo(

@@ -90,7 +90,7 @@ function useUnderlineReveal() {
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.2 },
     );
     document.querySelectorAll(".underline-trigger").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -110,7 +110,6 @@ const features = [
     title: "Precision Practice",
     text: "Question sets are event-specific so every session targets what matters for your competitive event.",
     icon: Target,
-    accent: "from-primary/10 to-primary/5",
     iconBg: "bg-primary/10",
     iconColor: "text-primary",
     hoverBorder: "hover:border-primary/40",
@@ -120,7 +119,6 @@ const features = [
     title: "Actionable Analytics",
     text: "Readable dashboards show timing, trend lines, and exact weak domains so you know where to focus.",
     icon: LineChart,
-    accent: "from-emerald-500/10 to-emerald-500/5",
     iconBg: "bg-emerald-500/10",
     iconColor: "text-emerald-600 dark:text-emerald-400",
     hoverBorder: "hover:border-emerald-400/40",
@@ -130,11 +128,10 @@ const features = [
     title: "Focused Retention",
     text: "Missed concepts automatically return until your confidence catches up — no manual review needed.",
     icon: Brain,
-    accent: "from-violet-500/10 to-violet-500/5",
-    iconBg: "bg-violet-500/10",
-    iconColor: "text-violet-600 dark:text-violet-400",
-    hoverBorder: "hover:border-violet-400/40",
-    hoverBg: "hover:bg-violet-500/[0.03]",
+    iconBg: "bg-primary/10",
+    iconColor: "text-primary",
+    hoverBorder: "hover:border-primary/40",
+    hoverBg: "hover:bg-primary/[0.03]",
   },
 ];
 
@@ -170,25 +167,25 @@ const mistakeFeatures = [
     title: "Automatic mistake capture",
     desc: "Every wrong answer is captured and tagged by topic so nothing slips through the cracks.",
     icon: XCircle,
-    iconBg: "bg-red-500/10",
-    iconColor: "text-red-500",
-    border: "hover:border-red-400/40",
-  },
-  {
-    title: "Spaced review loops",
-    desc: "Missed questions resurface in future sessions at optimal intervals, boosting long-term retention.",
-    icon: RefreshCw,
     iconBg: "bg-primary/10",
     iconColor: "text-primary",
     border: "hover:border-primary/40",
   },
   {
+    title: "Spaced review loops",
+    desc: "Missed questions resurface in future sessions at optimal intervals, boosting long-term retention.",
+    icon: RefreshCw,
+    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    border: "hover:border-emerald-400/40",
+  },
+  {
     title: "Weak topic heat maps",
     desc: "See exactly which subtopics you consistently miss so you can target them with surgical precision.",
     icon: Target,
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-600 dark:text-amber-400",
-    border: "hover:border-amber-400/40",
+    iconBg: "bg-primary/10",
+    iconColor: "text-primary",
+    border: "hover:border-primary/40",
   },
   {
     title: "Redemption rounds",
@@ -218,7 +215,7 @@ const testimonials = [
   },
 ];
 
-/* ─── components ──────────────────────────────────────── */
+/* ─── components ────────────────────────────��─────────── */
 
 const readinessTopics = [
   { name: "Skeletal System",    accuracy: 91, total: 48 },
@@ -241,18 +238,8 @@ function HeroReadinessCard() {
       <p className="mb-4 text-xs text-muted-foreground">Anatomy &amp; Physiology · by system</p>
       <div className="space-y-3">
         {readinessTopics.map((item) => {
-          const color =
-            item.accuracy >= 88
-              ? "bg-emerald-500"
-              : item.accuracy >= 78
-              ? "bg-primary"
-              : "bg-amber-500";
-          const textColor =
-            item.accuracy >= 88
-              ? "text-emerald-600 dark:text-emerald-400"
-              : item.accuracy >= 78
-              ? "text-primary"
-              : "text-amber-600 dark:text-amber-400";
+          const color = item.accuracy >= 80 ? "bg-primary" : "bg-emerald-500";
+          const textColor = item.accuracy >= 80 ? "text-primary" : "text-emerald-600 dark:text-emerald-400";
           return (
             <div key={item.name}>
               <div className="mb-1 flex items-center justify-between">
@@ -582,24 +569,22 @@ export default function HomePage() {
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {impactStats.map((item, idx) => {
-              const palette = [
-                { border: "border-primary/25", numColor: "text-primary", bg: "bg-primary/5" },
-                { border: "border-emerald-400/25", numColor: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500/5" },
-                { border: "border-violet-400/25", numColor: "text-violet-600 dark:text-violet-400", bg: "bg-violet-500/5" },
-                { border: "border-amber-400/25", numColor: "text-amber-600 dark:text-amber-400", bg: "bg-amber-500/5" },
-              ][idx];
+              const isEven = idx % 2 === 0;
+              const border = isEven ? "border-primary/25" : "border-emerald-400/25";
+              const bg = isEven ? "bg-primary/5" : "bg-emerald-500/5";
+              const numColor = isEven ? "text-primary" : "text-emerald-600 dark:text-emerald-400";
               return (
-              <div
-                key={item.label}
-                className={`reveal-up rounded-xl border ${palette.border} ${palette.bg} px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm`}
-                style={{ transitionDelay: `${idx * 80}ms` }}
-              >
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">{item.label}</p>
-                <p className={`mt-2 text-3xl font-semibold tabular-nums ${palette.numColor}`}>
-                  {animatedImpact[idx].toLocaleString()}
-                  {item.suffix ?? ""}
-                </p>
-              </div>
+                <div
+                  key={item.label}
+                  className={`reveal-up rounded-xl border ${border} ${bg} px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm`}
+                  style={{ transitionDelay: `${idx * 80}ms` }}
+                >
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{item.label}</p>
+                  <p className={`mt-2 text-3xl font-semibold tabular-nums ${numColor}`}>
+                    {animatedImpact[idx].toLocaleString()}
+                    {item.suffix ?? ""}
+                  </p>
+                </div>
               );
             })}
           </div>
@@ -642,8 +627,8 @@ export default function HomePage() {
         <div className="page-shell section-shell">
           <div className="grid items-stretch gap-8 lg:grid-cols-2">
             {/* left: steps */}
-            <div className="reveal-left flex flex-col justify-between gap-6">
-              <div className="underline-trigger">
+            <div className="reveal-left underline-trigger flex flex-col justify-between gap-6">
+              <div>
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">How it works</p>
                 <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
                   Four steps from{" "}
@@ -657,38 +642,28 @@ export default function HomePage() {
               <div className="flex flex-1 flex-col justify-between gap-3">
                 {howItWorksSteps.map((step, i) => {
                   const Icon = step.icon;
-                  const colors = [
-                    "border-primary/30 bg-primary/5 hover:border-primary/50",
-                    "border-emerald-400/30 bg-emerald-50/50 dark:bg-emerald-950/20 hover:border-emerald-400/60",
-                    "border-violet-400/30 bg-violet-50/50 dark:bg-violet-950/20 hover:border-violet-400/60",
-                    "border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 hover:border-amber-400/60",
-                  ];
-                  const numberColors = [
-                    "bg-primary/10 text-primary",
-                    "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                    "bg-violet-500/10 text-violet-600 dark:text-violet-400",
-                    "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-                  ];
-                  const iconColors = [
-                    "text-primary/60",
-                    "text-emerald-500/60",
-                    "text-violet-500/60",
-                    "text-amber-500/60",
-                  ];
+                  const isEven = i % 2 === 0;
+                  const colors = isEven
+                    ? "border-primary/30 bg-primary/5 hover:border-primary/50"
+                    : "border-emerald-400/30 bg-emerald-50/50 dark:bg-emerald-950/20 hover:border-emerald-400/60";
+                  const numberColors = isEven
+                    ? "bg-primary/10 text-primary"
+                    : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400";
+                  const iconColors = isEven ? "text-primary/60" : "text-emerald-500/60";
                   return (
                     <div
                       key={step.step}
-                      className={`flex gap-4 rounded-xl border px-4 py-4 transition-all duration-200 ${colors[i]}`}
+                      className={`flex gap-4 rounded-xl border px-4 py-4 transition-all duration-200 ${colors}`}
                       style={{ transitionDelay: `${i * 70}ms` }}
                     >
-                      <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-xs font-bold ${numberColors[i]}`}>
+                      <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-xs font-bold ${numberColors}`}>
                         {step.step}
                       </div>
                       <div className="flex-1">
                         <p className="text-sm font-semibold text-foreground">{step.title}</p>
                         <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
                       </div>
-                      <Icon className={`ml-auto h-4 w-4 flex-shrink-0 self-start mt-0.5 ${iconColors[i]}`} />
+                      <Icon className={`ml-auto h-4 w-4 flex-shrink-0 self-start mt-0.5 ${iconColors}`} />
                     </div>
                   );
                 })}
@@ -744,7 +719,7 @@ export default function HomePage() {
             {[
               { value: "2.6x", label: "Faster weak-topic recovery vs. random review", color: "text-primary", bg: "bg-primary/5" },
               { value: "94%", label: "Of users report meaningful score gains in 30 days", color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500/5" },
-              { value: "100%", label: "Of missed questions resurface before your next session", color: "text-violet-600 dark:text-violet-400", bg: "bg-violet-500/5" },
+              { value: "100%", label: "Of missed questions resurface before your next session", color: "text-primary", bg: "bg-primary/5" },
             ].map((stat) => (
               <div key={stat.label} className={`${stat.bg} px-6 py-5`}>
                 <p className={`text-2xl font-semibold ${stat.color}`}>{stat.value}</p>
