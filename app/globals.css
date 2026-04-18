@@ -198,7 +198,7 @@
   }
 
   .dark .underline-highlight::after {
-    opacity: 0.28;
+    opacity: 1.0;
   }
 
   .underline-highlight.in-view::after {
