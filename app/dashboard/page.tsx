@@ -65,8 +65,8 @@ export default function DashboardPage() {
             </header>
 
             {/* Main Content */}
-            <main className="flex-1 p-5 space-y-5">
-              <div className="rounded-xl glass-card tech-border p-5 bg-gradient-to-r from-primary/10 via-accent/5 to-transparent">
+            <main className="flex-1 p-6 space-y-6">
+              <div className="rounded-2xl glass-card tech-border p-6 bg-gradient-to-r from-primary/10 via-accent/5 to-transparent">
                 <h2 className="text-lg font-semibold flex items-center gap-2"><Sparkles className="h-5 w-5 text-primary" /> Study Command Center</h2>
                 <p className="text-sm text-muted-foreground mt-1">Track progress, launch practice quickly, and keep your prep streak alive.</p>
               </div>

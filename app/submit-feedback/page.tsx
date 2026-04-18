@@ -36,7 +36,7 @@ export default function SubmitFeedbackPage() {
               <CardContent className="space-y-4">
                 <div>
                   <label className="mb-2 block text-sm font-medium">Feedback Type</label>
-                  <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={feedbackType} onChange={(event) => setFeedbackType(event.target.value)}>
+                  <select className="w-full rounded-xl border border-border/60 bg-background/70 px-4 py-2.5 text-sm" value={feedbackType} onChange={(event) => setFeedbackType(event.target.value)}>
                     <option>Bug</option>
                     <option>Suggestion</option>
                     <option>Content Issue</option>
@@ -49,7 +49,7 @@ export default function SubmitFeedbackPage() {
                 <div>
                   <label className="mb-2 block text-sm font-medium">Message</label>
                   <textarea
-                    className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                    className="w-full rounded-xl border border-border/60 bg-background/70 px-4 py-2.5 text-sm"
                     rows={6}
                     value={message}
                     onChange={(event) => setMessage(event.target.value)}
@@ -63,7 +63,7 @@ export default function SubmitFeedbackPage() {
                       <label className="mb-2 block text-sm font-medium">Name (optional)</label>
                       <Input value={displayName} onChange={(event) => setDisplayName(event.target.value)} placeholder="How should we credit you?" />
                     </div>
-                    <label className="flex cursor-pointer items-start gap-3 rounded-md border border-border p-3 text-sm">
+                    <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-border/60 bg-background/60 p-4 text-sm">
                       <input
                         type="checkbox"
                         checked={testimonialConsent}
@@ -79,7 +79,7 @@ export default function SubmitFeedbackPage() {
                   <>
                     <div>
                       <label className="mb-2 block text-sm font-medium">Event (optional)</label>
-                      <select className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" value={eventName} onChange={(event) => setEventName(event.target.value)}>
+                      <select className="w-full rounded-xl border border-border/60 bg-background/70 px-4 py-2.5 text-sm" value={eventName} onChange={(event) => setEventName(event.target.value)}>
                         <option value="">No specific event</option>
                         {ALL_REQUESTABLE_EVENTS.map((eventOption) => (
                           <option key={eventOption} value={eventOption}>{eventOption}</option>

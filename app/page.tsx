@@ -49,19 +49,20 @@ export default function HomePage() {
       <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border/50">
+      <section className="relative overflow-hidden border-b border-border/40">
         <div className="absolute top-6 right-6 z-20 flex gap-3">
-          <Button asChild variant="outline" className="border-primary/30 bg-background/80 backdrop-blur-sm">
+          <Button asChild variant="outline" className="bg-background/65 backdrop-blur-xl">
             <Link href="/auth/signin">Log In</Link>
           </Button>
-          <Button asChild className="shadow-none">
+          <Button asChild>
             <Link href="/auth/signup">Sign Up</Link>
           </Button>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-transparent" />
-        <div className="container relative py-16 md:py-20 lg:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,color-mix(in_oklab,var(--primary)_28%,transparent)_0%,transparent_36%),radial-gradient(circle_at_78%_20%,color-mix(in_oklab,var(--accent)_30%,transparent)_0%,transparent_34%),linear-gradient(135deg,color-mix(in_oklab,var(--background)_84%,white)_0%,color-mix(in_oklab,var(--background)_95%,black)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="container relative py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm px-5 py-2.5 text-sm font-medium shadow-none animate-fade-in-up">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/50 backdrop-blur-xl px-6 py-2 text-sm font-medium animate-fade-in-up">
               <Image 
                 src="/logo.png" 
                 alt="StudyRx Logo" 
@@ -69,22 +70,22 @@ export default function HomePage() {
                 height={30}
                 className="h-[30px] w-[30px]"
               />
-              <span className="text-foreground font-semibold text-xl">StudyRx</span>
+              <span className="text-foreground font-semibold text-lg">StudyRx</span>
             </div>
             
-            <h1 className="mb-8 text-4xl font-bold tracking-tight text-foreground md:text-6xl text-balance animate-fade-in-up animation-delay-100 leading-tight">
+            <h1 className="mb-8 text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl text-balance animate-fade-in-up animation-delay-100">
               Master HOSA with
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[shimmer_3s_ease-in-out_infinite]">
                 Confidence
               </span>
             </h1>
             
-            <p className="mx-auto mb-9 max-w-2xl text-base md:text-base text-muted-foreground animate-fade-in-up animation-delay-200 leading-relaxed">
+            <p className="mx-auto mb-8 max-w-2xl text-base md:text-lg text-muted-foreground animate-fade-in-up animation-delay-200">
               Precision-focused practice for HOSA competitive events. Train smarter, compete stronger.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-300">
-              <Button asChild size="lg" className="h-11 px-6 text-sm md:text-base shadow-none transition-all duration-200">
+              <Button asChild size="lg" className="min-w-44">
                 <Link href="/auth/signup">
                   Start Practicing
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -94,7 +95,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-11 px-6 text-sm md:text-base text-foreground hover:text-foreground hover:bg-primary/5"
+                className="min-w-44"
               >
                 <Link href="/events">
                   Browse Events
@@ -115,33 +116,33 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-7 items-start fade-in-section">
+            <div className="grid md:grid-cols-2 gap-8 items-start fade-in-section">
               {/* Problem Side */}
               <div className="relative">
                 <div className="absolute -inset-4 bg-destructive/5 rounded-3xl blur-2xl" />
                 <Card className="relative border border-destructive/20 bg-card/90 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                      <div className="h-5 w-5 rounded-full bg-destructive/10 flex items-center justify-center">
-                        <X className="h-5 w-5 text-destructive" />
+                      <div className="h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center">
+                        <X className="h-6 w-6 text-destructive" />
                       </div>
                       Most students:
                     </h3>
                     <ul className="space-y-4 text-base">
                       <li className="flex items-start gap-3 text-muted-foreground">
-                        <div className="mt-1 h-5 w-5 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                        <div className="mt-1 h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
                           <div className="h-2 w-2 rounded-full bg-destructive" />
                         </div>
                         <span>Study random Quizlets</span>
                       </li>
                       <li className="flex items-start gap-3 text-muted-foreground">
-                        <div className="mt-1 h-5 w-5 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                        <div className="mt-1 h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
                           <div className="h-2 w-2 rounded-full bg-destructive" />
                         </div>
                         <span>Don't know which topics they're weak in</span>
                       </li>
                       <li className="flex items-start gap-3 text-muted-foreground">
-                        <div className="mt-1 h-5 w-5 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                        <div className="mt-1 h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
                           <div className="h-2 w-2 rounded-full bg-destructive" />
                         </div>
                         <span>Walk into competition hoping they studied the right stuff</span>
@@ -157,8 +158,8 @@ export default function HomePage() {
                 <Card className="relative border border-primary/30 bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                      <div className="h-5 w-5 rounded-full bg-primary flex items-center justify-center">
-                        <Check className="h-5 w-5 text-primary-foreground" />
+                      <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+                        <Check className="h-6 w-6 text-primary-foreground" />
                       </div>
                       StudyRx fixes that.
                     </h3>
@@ -196,7 +197,7 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Why StudyRx Works
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
                 StudyRx isn't built like a typical study site.
               </p>
             </div>
@@ -205,7 +206,7 @@ export default function HomePage() {
               <Card className="border-primary/20 bg-card/80 backdrop-blur-sm transition-colors duration-200">
                 <CardContent className="p-6 text-center">
                   <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-6">
-                    <Target className="h-5 w-5 text-primary" />
+                    <Target className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">Event Organization</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -217,7 +218,7 @@ export default function HomePage() {
               <Card className="border-accent/20 bg-card/80 backdrop-blur-sm transition-colors duration-200">
                 <CardContent className="p-6 text-center">
                   <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mx-auto mb-6">
-                    <BarChart className="h-5 w-5 text-accent" />
+                    <BarChart className="h-6 w-6 text-accent" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">Real Data</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -229,7 +230,7 @@ export default function HomePage() {
               <Card className="border-chart-3/20 bg-card/80 backdrop-blur-sm transition-colors duration-200">
                 <CardContent className="p-6 text-center">
                   <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-chart-3/20 to-chart-3/5 flex items-center justify-center mx-auto mb-6">
-                    <RefreshCw className="h-5 w-5 text-chart-3" />
+                    <RefreshCw className="h-6 w-6 text-chart-3" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">Smart Review</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -258,13 +259,13 @@ export default function HomePage() {
                 <CardContent className="p-8 text-center">
                   <div className="inline-flex items-center justify-center gap-3 mb-6">
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Trophy className="h-5 w-5 text-primary" />
+                      <Trophy className="h-6 w-6 text-primary" />
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                       Built by Students Who Understand HOSA
                     </h2>
                   </div>
-                <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                   Designed specifically for competitive event prep — not generic exam practice.
                 </p>
                 <Link
@@ -299,7 +300,7 @@ export default function HomePage() {
               <Card className="border border-primary/20 bg-card/80 backdrop-blur-sm hover:border-primary/35 transition-colors duration-200 group">
                 <CardContent className="p-6 text-center">
                   <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-6 transition-transform">
-                    <Brain className="h-5 w-5 text-primary" />
+                    <Brain className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">HOSA Members</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -311,7 +312,7 @@ export default function HomePage() {
               <Card className="border border-accent/20 bg-card/80 backdrop-blur-sm hover:border-accent/35 transition-colors duration-200 group">
                 <CardContent className="p-6 text-center">
                   <div className="h-10 w-10 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mx-auto mb-6 transition-transform">
-                    <Target className="h-5 w-5 text-accent" />
+                    <Target className="h-6 w-6 text-accent" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">Structured Learners</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -323,7 +324,7 @@ export default function HomePage() {
               <Card className="border border-chart-3/20 bg-card/80 backdrop-blur-sm hover:border-chart-3/35 transition-colors duration-200 group">
                 <CardContent className="p-6 text-center">
                   <div className="h-10 w-10 rounded-full bg-gradient-to-br from-chart-3/20 to-chart-3/5 flex items-center justify-center mx-auto mb-6 transition-transform">
-                    <Zap className="h-5 w-5 text-chart-3" />
+                    <Zap className="h-6 w-6 text-chart-3" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">Confident Competitors</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -350,7 +351,7 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Train for Real HOSA Competitive Events
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
                 Focused practice built around actual HOSA event content — no fluff, no guesswork.
               </p>
             </div>
@@ -382,7 +383,7 @@ export default function HomePage() {
                                 <Button asChild className="shadow-none">
                                   <Link href={`/practice/${event.id}`}>
                                     Practice Now
-                                    <ChevronRight className="ml-2 h-5 w-5" />
+                                    <ChevronRight className="ml-2 h-6 w-6" />
                                   </Link>
                                 </Button>
                               </div>
@@ -398,17 +399,17 @@ export default function HomePage() {
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-16 h-11 w-11 rounded-full bg-primary text-primary-foreground shadow-none transition-colors hover:bg-primary/90 flex items-center justify-center disabled:opacity-50"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-16 h-12 w-12 rounded-full bg-primary text-primary-foreground shadow-[0_18px_32px_-24px_color-mix(in_oklab,var(--primary)_95%,transparent)] transition-colors hover:bg-primary/90 flex items-center justify-center disabled:opacity-50"
                 disabled={currentSlide === 0}
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-6 w-6" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-16 h-11 w-11 rounded-full bg-primary text-primary-foreground shadow-none transition-colors hover:bg-primary/90 flex items-center justify-center disabled:opacity-50"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-16 h-12 w-12 rounded-full bg-primary text-primary-foreground shadow-[0_18px_32px_-24px_color-mix(in_oklab,var(--primary)_95%,transparent)] transition-colors hover:bg-primary/90 flex items-center justify-center disabled:opacity-50"
                 disabled={currentSlide === totalSlides - 1}
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-6 w-6" />
               </button>
 
               {/* Slide Indicators */}
@@ -436,7 +437,7 @@ export default function HomePage() {
               >
                 <Link href="/events">
                   View All Events
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </Button>
             </div>
@@ -458,7 +459,7 @@ export default function HomePage() {
               <Card className="border-primary/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
                 <CardContent className="p-7">
                   <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 transition-transform">
-                    <Target className="h-5 w-5 text-primary" />
+                    <Target className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Event-Specific Practice</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -470,7 +471,7 @@ export default function HomePage() {
               <Card className="border-accent/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
                 <CardContent className="p-7">
                   <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 transition-transform">
-                    <BarChart3 className="h-5 w-5 text-accent" />
+                    <BarChart3 className="h-6 w-6 text-accent" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Advanced Performance Analytics</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -482,7 +483,7 @@ export default function HomePage() {
               <Card className="border-chart-3/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
                 <CardContent className="p-7">
                   <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-chart-3/20 to-chart-3/5 flex items-center justify-center mb-6 transition-transform">
-                    <RefreshCw className="h-5 w-5 text-chart-3" />
+                    <RefreshCw className="h-6 w-6 text-chart-3" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Redemption System</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -494,7 +495,7 @@ export default function HomePage() {
               <Card className="border-chart-4/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
                 <CardContent className="p-7">
                   <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-chart-4/20 to-chart-4/5 flex items-center justify-center mb-6 transition-transform">
-                    <TrendingUp className="h-5 w-5 text-chart-4" />
+                    <TrendingUp className="h-6 w-6 text-chart-4" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Progress Tracking</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -511,7 +512,7 @@ export default function HomePage() {
       <section className="border-b border-border/50">
         <div className="container py-12 md:py-16">
           <div className="mx-auto max-w-6xl">
-            <div className="grid md:grid-cols-2 gap-10 items-center fade-in-section">
+            <div className="grid md:grid-cols-2 gap-8 items-center fade-in-section">
               <div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6">
                   <BarChart className="h-4 w-4" />
@@ -526,7 +527,7 @@ export default function HomePage() {
                 <ul className="space-y-4">
                   <li className="flex items-start gap-4">
                     <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Target className="h-5 w-5 text-primary" />
+                      <Target className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <div className="font-bold text-foreground text-base mb-1">Accuracy by event</div>
@@ -535,7 +536,7 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-start gap-4">
                     <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <Clock className="h-5 w-5 text-accent" />
+                      <Clock className="h-6 w-6 text-accent" />
                     </div>
                     <div>
                       <div className="font-bold text-foreground text-base mb-1">Time per question</div>
@@ -544,7 +545,7 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-start gap-4">
                     <div className="h-10 w-10 rounded-xl bg-chart-3/10 flex items-center justify-center flex-shrink-0">
-                      <TrendingUp className="h-5 w-5 text-chart-3" />
+                      <TrendingUp className="h-6 w-6 text-chart-3" />
                     </div>
                     <div>
                       <div className="font-bold text-foreground text-base mb-1">Performance trends over time</div>
@@ -600,13 +601,13 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                 How Practice Sessions Work
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-base md:text-lg text-muted-foreground">
                 No guessing what to study next — the system guides you.
               </p>
             </div>
 
             <div className="relative fade-in-section">
-              <div className="space-y-8 md:space-y-10">
+              <div className="space-y-8">
                 {[
                   {
                     num: 1,
@@ -669,10 +670,10 @@ export default function HomePage() {
                   <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
                     Stop guessing. Start training with purpose.
                   </p>
-                  <Button asChild size="lg" className="h-11 px-8 text-base shadow-none transition-colors duration-200">
+                  <Button asChild size="lg" className="h-12 px-8 text-base transition-colors duration-200">
                     <Link href="/dashboard">
                       Begin Your Journey
-                      <ArrowRight className="ml-3 h-5 w-5" />
+                      <ArrowRight className="ml-3 h-6 w-6" />
                     </Link>
                   </Button>
                 </CardContent>
@@ -692,7 +693,7 @@ export default function HomePage() {
                 alt="StudyRx Logo" 
                 width={32} 
                 height={32}
-                className="h-5 w-5"
+                className="h-6 w-6"
               />
               <span className="text-base font-bold text-foreground">StudyRx</span>
             </div>
