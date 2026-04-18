@@ -175,27 +175,34 @@
     @apply sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md;
   }
 
-  /* Underline highlight animation */
+  /* Underline highlight animation — thick bar overlapping text bottom */
   .underline-highlight {
     position: relative;
-    display: inline-block;
-    white-space: nowrap;
+    display: inline;
+    white-space: normal;
+    padding-bottom: 2px;
   }
 
   .underline-highlight::after {
     content: '';
     position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    border-radius: 2px;
-    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    left: -2px;
+    right: -2px;
+    bottom: -1px;
+    height: 8px;
+    background: oklch(0.48 0.18 262 / 0.22);
+    border-radius: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dark .underline-highlight::after {
+    background: oklch(0.68 0.15 268 / 0.28);
   }
 
   .underline-highlight.in-view::after {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   /* SVG squiggle underline for hero */
@@ -227,6 +234,39 @@
   .question-mock {
     @apply rounded-xl border border-border bg-card p-5;
     box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--primary);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .question-mock:hover {
+    box-shadow: 0 0 0 3px oklch(0.48 0.18 262 / 0.1), var(--shadow-sm);
+  }
+
+  /* Hero CTA glow pulse */
+  @keyframes cta-glow {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.48 0.18 262 / 0); }
+    50%       { box-shadow: 0 0 0 6px oklch(0.48 0.18 262 / 0.18); }
+  }
+
+  .btn-glow {
+    animation: cta-glow 2.4s ease-in-out infinite;
+  }
+
+  /* Shimmer badge */
+  @keyframes shimmer-slide {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .badge-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      oklch(0.48 0.18 262 / 0.15) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-slide 2.2s linear infinite;
   }
 }
 

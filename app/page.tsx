@@ -110,16 +110,31 @@ const features = [
     title: "Precision Practice",
     text: "Question sets are event-specific so every session targets what matters for your competitive event.",
     icon: Target,
+    accent: "from-primary/10 to-primary/5",
+    iconBg: "bg-primary/10",
+    iconColor: "text-primary",
+    hoverBorder: "hover:border-primary/40",
+    hoverBg: "hover:bg-primary/[0.03]",
   },
   {
     title: "Actionable Analytics",
     text: "Readable dashboards show timing, trend lines, and exact weak domains so you know where to focus.",
     icon: LineChart,
+    accent: "from-emerald-500/10 to-emerald-500/5",
+    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    hoverBorder: "hover:border-emerald-400/40",
+    hoverBg: "hover:bg-emerald-500/[0.03]",
   },
   {
     title: "Focused Retention",
     text: "Missed concepts automatically return until your confidence catches up — no manual review needed.",
     icon: Brain,
+    accent: "from-violet-500/10 to-violet-500/5",
+    iconBg: "bg-violet-500/10",
+    iconColor: "text-violet-600 dark:text-violet-400",
+    hoverBorder: "hover:border-violet-400/40",
+    hoverBg: "hover:bg-violet-500/[0.03]",
   },
 ];
 
@@ -155,21 +170,33 @@ const mistakeFeatures = [
     title: "Automatic mistake capture",
     desc: "Every wrong answer is captured and tagged by topic so nothing slips through the cracks.",
     icon: XCircle,
+    iconBg: "bg-red-500/10",
+    iconColor: "text-red-500",
+    border: "hover:border-red-400/40",
   },
   {
     title: "Spaced review loops",
     desc: "Missed questions resurface in future sessions at optimal intervals, boosting long-term retention.",
     icon: RefreshCw,
+    iconBg: "bg-primary/10",
+    iconColor: "text-primary",
+    border: "hover:border-primary/40",
   },
   {
     title: "Weak topic heat maps",
     desc: "See exactly which subtopics you consistently miss so you can target them with surgical precision.",
     icon: Target,
+    iconBg: "bg-amber-500/10",
+    iconColor: "text-amber-600 dark:text-amber-400",
+    border: "hover:border-amber-400/40",
   },
   {
     title: "Redemption rounds",
     desc: "At the end of each session, get a second shot at every question you got wrong — confidence-building by design.",
     icon: Trophy,
+    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    border: "hover:border-emerald-400/40",
   },
 ];
 
@@ -193,48 +220,81 @@ const testimonials = [
 
 /* ─── components ──────────────────────────────────────── */
 
+const readinessTopics = [
+  { name: "Skeletal System",    accuracy: 91, total: 48 },
+  { name: "Muscular System",    accuracy: 84, total: 36 },
+  { name: "Cardiovascular",     accuracy: 77, total: 52 },
+  { name: "Nervous System",     accuracy: 88, total: 44 },
+  { name: "Respiratory System", accuracy: 73, total: 30 },
+  { name: "Endocrine System",   accuracy: 82, total: 27 },
+];
+
 function HeroReadinessCard() {
   return (
     <div className="reveal-right soft-panel p-6">
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-1 flex items-center justify-between">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           Readiness Snapshot
         </p>
         <Trophy className="h-4 w-4 text-primary" />
       </div>
-      <div className="space-y-3.5">
-        {[
-          { name: "Medical Terminology", score: 92 },
-          { name: "Pharmacology", score: 84 },
-          { name: "Nutrition", score: 79 },
-          { name: "Anatomy & Physiology", score: 88 },
-        ].map((item) => (
-          <div key={item.name} className="space-y-1">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-foreground">{item.name}</span>
-              <span className="font-semibold tabular-nums text-primary">{item.score}%</span>
+      <p className="mb-4 text-xs text-muted-foreground">Anatomy &amp; Physiology · by system</p>
+      <div className="space-y-3">
+        {readinessTopics.map((item) => {
+          const color =
+            item.accuracy >= 88
+              ? "bg-emerald-500"
+              : item.accuracy >= 78
+              ? "bg-primary"
+              : "bg-amber-500";
+          const textColor =
+            item.accuracy >= 88
+              ? "text-emerald-600 dark:text-emerald-400"
+              : item.accuracy >= 78
+              ? "text-primary"
+              : "text-amber-600 dark:text-amber-400";
+          return (
+            <div key={item.name}>
+              <div className="mb-1 flex items-center justify-between">
+                <span className="text-xs font-medium text-foreground">{item.name}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs tabular-nums text-muted-foreground">{item.total}q</span>
+                  <span className={`text-xs font-semibold tabular-nums ${textColor}`}>
+                    {item.accuracy}%
+                  </span>
+                </div>
+              </div>
+              <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+                <div
+                  className={`h-full rounded-full transition-all duration-700 ${color}`}
+                  style={{ width: `${item.accuracy}%` }}
+                />
+              </div>
             </div>
-            <div className="h-1.5 overflow-hidden rounded-full bg-muted">
-              <div
-                className="h-full rounded-full bg-primary/70"
-                style={{ width: `${item.score}%` }}
-              />
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-      <div className="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3">
-        <p className="text-xs uppercase tracking-wide text-muted-foreground">Today</p>
+      <div className="mt-4 rounded-lg border border-border bg-muted/40 px-4 py-3">
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-muted-foreground">Total questions answered</p>
+          <p className="text-sm font-semibold tabular-nums text-primary">
+            {readinessTopics.reduce((s, t) => s + t.total, 0)}
+          </p>
+        </div>
         <div className="mt-1.5 flex items-center justify-between">
-          <p className="text-sm text-foreground">Questions answered</p>
-          <p className="text-base font-semibold text-primary">214</p>
+          <p className="text-xs text-muted-foreground">Overall accuracy</p>
+          <p className="text-sm font-semibold tabular-nums text-primary">
+            {Math.round(
+              readinessTopics.reduce((s, t) => s + t.accuracy, 0) / readinessTopics.length
+            )}%
+          </p>
         </div>
       </div>
     </div>
   );
 }
 
-function QuestionMockCard() {
+function QuestionMockCard({ fillHeight }: { fillHeight?: boolean }) {
   const [selected, setSelected] = useState<string | null>(null);
   const options = [
     { letter: "A", text: "Osteitis" },
@@ -246,8 +306,8 @@ function QuestionMockCard() {
   const revealed = selected !== null;
 
   return (
-    <div className="reveal-right">
-      <div className="question-mock relative">
+    <div className={fillHeight ? "h-full" : ""}>
+      <div className={`question-mock relative ${fillHeight ? "h-full flex flex-col" : ""}`}>
         {/* timer badge */}
         <div className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-mono font-semibold text-muted-foreground">
           <Clock className="h-3 w-3 animate-timer-pulse text-primary" />
@@ -434,11 +494,6 @@ export default function HomePage() {
             <Image src="/logo.png" alt="StudyRx" width={26} height={26} className="h-6.5 w-6.5" />
             <span className="font-heading text-base font-semibold text-foreground">StudyRx</span>
           </Link>
-          <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-            <a href="#how-it-works" className="hover:text-foreground transition-colors">How it works</a>
-            <a href="#mistake-tracking" className="hover:text-foreground transition-colors">Mistake Tracking</a>
-            <a href="#events" className="hover:text-foreground transition-colors">Events</a>
-          </nav>
           <div className="flex items-center gap-2.5">
             <Button asChild variant="ghost" size="sm" className="text-sm">
               <Link href="/auth/signin">Log in</Link>
@@ -456,7 +511,8 @@ export default function HomePage() {
         <div className="page-shell section-shell relative">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-7 reveal-up underline-trigger">
-              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary">
+              <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary">
+                <span className="badge-shimmer pointer-events-none absolute inset-0" />
                 <Sparkles className="h-3 w-3" />
                 Built for high-performance HOSA prep
               </div>
@@ -469,7 +525,7 @@ export default function HomePage() {
                       className="squiggle-path"
                       d="M2 8 C40 3, 80 11, 120 6 C160 1, 200 10, 240 5 C265 2, 285 8, 298 6"
                       stroke="currentColor"
-                      strokeWidth="2.5"
+                      strokeWidth="3.5"
                       strokeLinecap="round"
                       fill="none"
                     />
@@ -481,7 +537,7 @@ export default function HomePage() {
                 analytics in one clean system — so you compete sharper.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Button asChild size="lg">
+                <Button asChild size="lg" className="btn-glow">
                   <Link href="/dashboard">
                     Open Dashboard <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -525,19 +581,27 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {impactStats.map((item, idx) => (
+            {impactStats.map((item, idx) => {
+              const palette = [
+                { border: "border-primary/25", numColor: "text-primary", bg: "bg-primary/5" },
+                { border: "border-emerald-400/25", numColor: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500/5" },
+                { border: "border-violet-400/25", numColor: "text-violet-600 dark:text-violet-400", bg: "bg-violet-500/5" },
+                { border: "border-amber-400/25", numColor: "text-amber-600 dark:text-amber-400", bg: "bg-amber-500/5" },
+              ][idx];
+              return (
               <div
                 key={item.label}
-                className="reveal-up rounded-xl border border-border bg-card px-5 py-4"
+                className={`reveal-up rounded-xl border ${palette.border} ${palette.bg} px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm`}
                 style={{ transitionDelay: `${idx * 80}ms` }}
               >
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">{item.label}</p>
-                <p className="mt-2 text-3xl font-semibold tabular-nums text-primary">
+                <p className={`mt-2 text-3xl font-semibold tabular-nums ${palette.numColor}`}>
                   {animatedImpact[idx].toLocaleString()}
                   {item.suffix ?? ""}
                 </p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -558,11 +622,11 @@ export default function HomePage() {
               return (
                 <div
                   key={item.title}
-                  className="reveal-up rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/30"
+                  className={`reveal-up group rounded-xl border border-border bg-card p-5 transition-all duration-300 ${item.hoverBorder} ${item.hoverBg} hover:-translate-y-1 hover:shadow-md`}
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <Icon className="h-4.5 w-4.5 text-primary" />
+                  <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg ${item.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                    <Icon className={`h-5 w-5 ${item.iconColor}`} />
                   </div>
                   <h3 className="mb-2 text-base font-semibold text-foreground">{item.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -576,9 +640,9 @@ export default function HomePage() {
       {/* ── How it works ─────────────────────────────────── */}
       <section id="how-it-works" className="border-b border-border">
         <div className="page-shell section-shell">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-stretch gap-8 lg:grid-cols-2">
             {/* left: steps */}
-            <div className="space-y-10 reveal-left">
+            <div className="reveal-left flex flex-col justify-between gap-6">
               <div className="underline-trigger">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">How it works</p>
                 <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
@@ -590,31 +654,51 @@ export default function HomePage() {
                   time figuring out what to study next.
                 </p>
               </div>
-              <div className="space-y-4">
+              <div className="flex flex-1 flex-col justify-between gap-3">
                 {howItWorksSteps.map((step, i) => {
                   const Icon = step.icon;
+                  const colors = [
+                    "border-primary/30 bg-primary/5 hover:border-primary/50",
+                    "border-emerald-400/30 bg-emerald-50/50 dark:bg-emerald-950/20 hover:border-emerald-400/60",
+                    "border-violet-400/30 bg-violet-50/50 dark:bg-violet-950/20 hover:border-violet-400/60",
+                    "border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 hover:border-amber-400/60",
+                  ];
+                  const numberColors = [
+                    "bg-primary/10 text-primary",
+                    "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+                    "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+                    "bg-amber-500/10 text-amber-600 dark:text-amber-400",
+                  ];
+                  const iconColors = [
+                    "text-primary/60",
+                    "text-emerald-500/60",
+                    "text-violet-500/60",
+                    "text-amber-500/60",
+                  ];
                   return (
                     <div
                       key={step.step}
-                      className="flex gap-4 rounded-xl border border-border bg-card px-4 py-4"
+                      className={`flex gap-4 rounded-xl border px-4 py-4 transition-all duration-200 ${colors[i]}`}
                       style={{ transitionDelay: `${i * 70}ms` }}
                     >
-                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary">
+                      <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-xs font-bold ${numberColors[i]}`}>
                         {step.step}
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <p className="text-sm font-semibold text-foreground">{step.title}</p>
                         <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
                       </div>
-                      <Icon className="ml-auto h-4 w-4 flex-shrink-0 self-start text-primary/60 mt-0.5" />
+                      <Icon className={`ml-auto h-4 w-4 flex-shrink-0 self-start mt-0.5 ${iconColors[i]}`} />
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* right: interactive question mock */}
-            <QuestionMockCard />
+            {/* right: interactive question mock — full height */}
+            <div className="reveal-right flex flex-col">
+              <QuestionMockCard fillHeight />
+            </div>
           </div>
         </div>
       </section>
@@ -640,11 +724,11 @@ export default function HomePage() {
               return (
                 <div
                   key={item.title}
-                  className="reveal-up flex gap-4 rounded-xl border border-border bg-card px-5 py-5"
+                  className={`reveal-up group flex gap-4 rounded-xl border border-border bg-card px-5 py-5 transition-all duration-300 ${item.border} hover:-translate-y-0.5 hover:shadow-sm`}
                   style={{ transitionDelay: `${i * 70}ms` }}
                 >
-                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <Icon className="h-4 w-4 text-primary" />
+                  <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${item.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                    <Icon className={`h-4 w-4 ${item.iconColor}`} />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-foreground">{item.title}</p>
@@ -658,12 +742,12 @@ export default function HomePage() {
           {/* mini stat strip */}
           <div className="reveal-up grid gap-px overflow-hidden rounded-xl border border-border md:grid-cols-3">
             {[
-              { value: "2.6x", label: "Faster weak-topic recovery vs. random review" },
-              { value: "94%", label: "Of users report meaningful score gains in 30 days" },
-              { value: "100%", label: "Of missed questions resurface before your next session" },
+              { value: "2.6x", label: "Faster weak-topic recovery vs. random review", color: "text-primary", bg: "bg-primary/5" },
+              { value: "94%", label: "Of users report meaningful score gains in 30 days", color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500/5" },
+              { value: "100%", label: "Of missed questions resurface before your next session", color: "text-violet-600 dark:text-violet-400", bg: "bg-violet-500/5" },
             ].map((stat) => (
-              <div key={stat.label} className="bg-card px-6 py-5">
-                <p className="text-2xl font-semibold text-primary">{stat.value}</p>
+              <div key={stat.label} className={`${stat.bg} px-6 py-5`}>
+                <p className={`text-2xl font-semibold ${stat.color}`}>{stat.value}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{stat.label}</p>
               </div>
             ))}
@@ -764,12 +848,20 @@ export default function HomePage() {
             {testimonials.map((t, i) => (
               <div
                 key={t.name}
-                className="reveal-up flex flex-col justify-between rounded-xl border border-border bg-card p-6"
+                className="reveal-up flex flex-col justify-between rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <p className="text-sm leading-relaxed text-foreground before:content-['\u201c'] after:content-['\u201d']">
-                  {t.quote}
-                </p>
+                <div>
+                  <svg
+                    viewBox="0 0 32 24"
+                    fill="currentColor"
+                    className="mb-3 h-7 w-7 text-primary/30"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 24V14.4C0 9.6 1.6 5.6 4.8 2.4 8 .8 11.6 0 15.6 0v4.8c-2.4 0-4.4.8-6 2.4-1.6 1.6-2.4 3.6-2.4 6v1.2H12V24H0zm16 0V14.4c0-4.8 1.6-8.8 4.8-12C24 .8 27.6 0 31.6 0v4.8c-2.4 0-4.4.8-6 2.4-1.6 1.6-2.4 3.6-2.4 6v1.2H28V24H16z" />
+                  </svg>
+                  <p className="text-sm leading-relaxed text-foreground">{t.quote}</p>
+                </div>
                 <div className="mt-6 border-t border-border pt-4">
                   <p className="text-sm font-semibold text-foreground">{t.name}</p>
                   <p className="text-xs text-muted-foreground">{t.role}</p>
