@@ -28,7 +28,7 @@
   --chart-3: oklch(0.65 0.16 180);
   --chart-4: oklch(0.58 0.18 260);
   --chart-5: oklch(0.52 0.14 220);
-  --radius: 0.75rem;
+  --radius: 0.65rem;
   --sidebar: oklch(0.99 0.002 264);
   --sidebar-foreground: oklch(0.15 0.01 264);
   --sidebar-primary: oklch(0.55 0.22 264);
@@ -115,6 +115,27 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+
+
+.container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 74rem;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -164,7 +185,7 @@
   }
 
   .glass-card {
-    @apply border border-white/20 dark:border-white/10 bg-white/65 dark:bg-white/5 backdrop-blur-md shadow-lg;
+    @apply border border-white/20 dark:border-white/10 bg-white/65 dark:bg-white/5 backdrop-blur-md shadow-none;
   }
 
   .tech-border {

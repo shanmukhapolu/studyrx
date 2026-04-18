@@ -452,7 +452,7 @@ function AdminContent() {
 
   return (
     <div className="flex-1 overflow-auto p-6">
-      <h1 className="mb-6 text-3xl font-bold">Admin Dashboard</h1>
+      <h1 className="mb-6 text-2xl font-semibold">Admin Dashboard</h1>
       {loading ? (
         <p className="text-muted-foreground">Loading admin data...</p>
       ) : (

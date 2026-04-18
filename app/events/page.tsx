@@ -77,7 +77,7 @@ function EventsContent() {
         <div className="container mx-auto px-6 py-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">HOSA Competitive Events</h1>
+              <h1 className="text-2xl font-semibold text-foreground">HOSA Competitive Events</h1>
               <p className="text-muted-foreground mt-1 font-light">
                 Choose an event to start practicing
               </p>
@@ -87,7 +87,7 @@ function EventsContent() {
         </div>
       </header>
 
-      <main className="container mx-auto px-6 py-8 max-w-7xl">
+      <main className="container mx-auto px-6 py-8 max-w-6xl">
         <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
           <CardHeader>
             <CardTitle className="text-lg">Practice Tips</CardTitle>
@@ -133,7 +133,7 @@ function EventsContent() {
           </CardContent>
         </Card>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {HOSA_EVENTS.map((event) => {
             const stats = eventStats[event.id];
             const Icon = event.icon;
@@ -144,7 +144,7 @@ function EventsContent() {
                 key={event.id}
                 className={`border-border/70 bg-card/80 transition-all duration-200 ${
                   isPublished
-                    ? "hover:border-primary/50 hover:shadow-xl hover:-translate-y-0.5"
+                    ? "hover:border-primary/50 hover:border-primary/45"
                     : "opacity-65 grayscale"
                 }`}
               >
@@ -178,13 +178,13 @@ function EventsContent() {
                     <div className="grid grid-cols-2 gap-2">
                       {isPublished ? (
                         <>
-                          <Button asChild className="font-semibold" size="lg">
+                          <Button asChild className="font-semibold" size="default">
                             <Link href={`/practice/${event.id}`}>
                               <Play className="mr-2 h-4 w-4" />
                               Practice
                             </Link>
                           </Button>
-                          <Button asChild variant="outline" className="font-semibold bg-transparent" size="lg">
+                          <Button asChild variant="outline" className="font-semibold bg-transparent" size="default">
                             <Link href={`/resources/${event.id}`}>
                               <BookOpen className="mr-2 h-4 w-4" />
                               Resources
@@ -196,7 +196,7 @@ function EventsContent() {
                           <Button
                             disabled
                             variant="secondary"
-                            size="lg"
+                            size="default"
                             className="cursor-not-allowed bg-muted text-muted-foreground hover:bg-muted"
                           >
                             Coming Soon
@@ -204,7 +204,7 @@ function EventsContent() {
                           <Button
                             disabled
                             variant="outline"
-                            size="lg"
+                            size="default"
                             className="cursor-not-allowed border-muted-foreground/30 bg-muted text-muted-foreground hover:bg-muted"
                           >
                             Coming Soon

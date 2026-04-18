@@ -28,7 +28,7 @@ export default function SubmitFeedbackPage() {
       <AuthGuard>
         <AppSidebar />
         <SidebarInset>
-          <div className="mx-auto w-full max-w-7xl p-6">
+          <div className="mx-auto w-full max-w-6xl p-6">
             <Card className="w-full">
               <CardHeader>
                 <CardTitle className="text-3xl">Submit Feedback</CardTitle>

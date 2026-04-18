@@ -65,14 +65,14 @@ export default function DashboardPage() {
             </header>
 
             {/* Main Content */}
-            <main className="flex-1 p-6 space-y-6">
-              <div className="rounded-2xl glass-card tech-border p-5 bg-gradient-to-r from-primary/10 via-accent/5 to-transparent">
+            <main className="flex-1 p-5 space-y-5">
+              <div className="rounded-xl glass-card tech-border p-5 bg-gradient-to-r from-primary/10 via-accent/5 to-transparent">
                 <h2 className="text-lg font-semibold flex items-center gap-2"><Sparkles className="h-5 w-5 text-primary" /> Study Command Center</h2>
                 <p className="text-sm text-muted-foreground mt-1">Track progress, launch practice quickly, and keep your prep streak alive.</p>
               </div>
             {/* Quick Stats Overview */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
+                <Card className="glass-card transition-colors">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Questions Attempted
@@ -80,7 +80,7 @@ export default function DashboardPage() {
                     <Target className="h-4 w-4 text-primary" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-foreground">
+                    <div className="text-2xl font-semibold text-foreground">
                       {stats?.totalAttempts || 0}
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">
@@ -89,7 +89,7 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
+                <Card className="glass-card transition-colors">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Overall Accuracy
@@ -97,7 +97,7 @@ export default function DashboardPage() {
                     <TrendingUp className="h-4 w-4 text-accent" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-foreground">
+                    <div className="text-2xl font-semibold text-foreground">
                       {accuracy}%
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">
@@ -106,7 +106,7 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
+                <Card className="glass-card transition-colors">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Avg. Time per Question
@@ -114,7 +114,7 @@ export default function DashboardPage() {
                     <Clock className="h-4 w-4 text-chart-3" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-foreground">
+                    <div className="text-2xl font-semibold text-foreground">
                       {avgTime}s
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">
@@ -123,7 +123,7 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card hover:-translate-y-0.5 transition-transform">
+                <Card className="glass-card transition-colors">
                   <CardHeader className="flex flex-row items-center justify-between pb-2">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
                       Total Sessions
@@ -131,7 +131,7 @@ export default function DashboardPage() {
                     <Brain className="h-4 w-4 text-chart-4" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-foreground">
+                    <div className="text-2xl font-semibold text-foreground">
                       {totalSessions}
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">
