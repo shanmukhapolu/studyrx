@@ -1,11 +1,12 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Space_Grotesk, JetBrains_Mono, DM_Sans } from 'next/font/google'
 import { AuthProvider } from '@/components/auth/auth-provider'
 import { Toaster } from "sonner";
 import './globals.css'
 
-const _spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-sans' });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-heading' });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: '--font-body' });
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: '--font-mono' });
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${dmSans.variable} font-sans antialiased`}>
         <AuthProvider>
           {children}
           <Toaster richColors position="top-right" />
