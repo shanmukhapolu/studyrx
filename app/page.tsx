@@ -50,6 +50,14 @@ type ImpactStat = {
   suffix?: string;
 };
 
+function countQuestionsInPayload(payload: unknown): number {
+  if (Array.isArray(payload)) return payload.length;
+  if (payload && typeof payload === "object") {
+    return Object.values(payload as Record<string, unknown>).reduce((sum, value) => sum + countQuestionsInPayload(value), 0);
+  }
+  return 0;
+}
+
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [impactStats, setImpactStats] = useState<ImpactStat[]>([
@@ -79,41 +87,24 @@ export default function HomePage() {
 
   useEffect(() => {
     const loadImpact = async () => {
-      let questionCount = 0;
-
-      try {
-        const localQuestions = await fetch("/questions.json").then((res) => res.json());
-        if (Array.isArray(localQuestions)) {
-          questionCount = localQuestions.length;
-        }
-      } catch {
-        questionCount = 0;
-      }
-
-      let totalUsers = 0;
-      let totalAttempted = 0;
-      let totalSessions = 0;
-
-      try {
-        const stats = await fetch(`${FIREBASE_DATABASE_URL}/admin_stats/sitewide.json`).then((res) => (res.ok ? res.json() : null));
-        if (stats) {
-          totalUsers = Number(stats?.adoption?.totalUsers ?? 0);
-          totalAttempted = Number(stats?.contentAnalytics?.totalQuestionsAttempted ?? 0);
-          totalSessions = Number(stats?.engagement?.totalSessionsCompleted ?? 0);
-        }
-      } catch {
-        // fallback below
-      }
+      const [stats, questionBank] = await Promise.all([
+        fetch(`${FIREBASE_DATABASE_URL}/admin_stats/sitewide.json`).then((res) => (res.ok ? res.json() : null)).catch(() => null),
+        fetch(`${FIREBASE_DATABASE_URL}/questions.json`).then((res) => (res.ok ? res.json() : null)).catch(() => null),
+      ]);
 
       setImpactStats([
-        { label: "Total Question Bank", value: questionCount },
-        { label: "Registered Users", value: totalUsers || 1200 },
-        { label: "Questions Attempted", value: totalAttempted || Math.max(2400, questionCount * 14) },
-        { label: "Sessions Completed", value: totalSessions || 860 },
+        { label: "Total Question Bank", value: countQuestionsInPayload(questionBank) },
+        { label: "Registered Users", value: Number(stats?.adoption?.totalUsers ?? 0) },
+        { label: "Questions Attempted", value: Number(stats?.contentAnalytics?.totalQuestionsAttempted ?? 0) },
+        { label: "Sessions Completed", value: Number(stats?.engagement?.totalSessionsCompleted ?? 0) },
       ]);
     };
 
     void loadImpact();
+    const interval = window.setInterval(() => {
+      void loadImpact();
+    }, 60_000);
+    return () => window.clearInterval(interval);
   }, []);
 
   useEffect(() => {
