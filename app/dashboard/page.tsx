@@ -66,7 +66,7 @@ export default function DashboardPage() {
 
             {/* Main Content */}
             <main className="flex-1 p-6 space-y-6">
-              <div className="rounded-2xl glass-card tech-border p-5 bg-gradient-to-r from-primary/10 via-accent/5 to-transparent">
+              <div className="rounded-2xl glass-card tech-border p-5 bg-card/70">
                 <h2 className="text-lg font-semibold flex items-center gap-2"><Sparkles className="h-5 w-5 text-primary" /> Study Command Center</h2>
                 <p className="text-sm text-muted-foreground mt-1">Track progress, launch practice quickly, and keep your prep streak alive.</p>
               </div>
@@ -142,7 +142,7 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
-              <Card className="glass-card tech-border bg-gradient-to-br from-primary/10 to-transparent">
+              <Card className="glass-card tech-border bg-card/70">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Sparkles className="h-5 w-5 text-primary" />
@@ -157,7 +157,7 @@ export default function DashboardPage() {
                   </div>
                   <div className="h-3 rounded-full bg-muted overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
+                      className="h-full rounded-full bg-primary/70 transition-all"
                       style={{ width: `${Math.min((Number(accuracy) / settings.accuracyGoal) * 100, 100)}%` }}
                     />
                   </div>
@@ -167,7 +167,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="glass-card tech-border bg-gradient-to-br from-accent/10 to-transparent h-fit">
+              <Card className="glass-card tech-border bg-card/70 h-fit">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Zap className="h-5 w-5 text-accent" />
@@ -185,7 +185,7 @@ export default function DashboardPage() {
               </Card>
             </div>
 
-              <Card className="border-border bg-gradient-to-br from-primary/5 to-accent/5">
+              <Card className="border-border bg-card/75">
                 <CardHeader>
                   <CardTitle className="text-foreground">Need a game plan?</CardTitle>
                   <CardDescription className="text-muted-foreground">

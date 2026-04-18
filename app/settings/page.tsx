@@ -111,7 +111,7 @@ function SettingsContent() {
 
   return (
     <div className="flex-1 overflow-auto p-6 space-y-6">
-      <header className="rounded-2xl border border-primary/25 bg-gradient-to-r from-primary/10 via-accent/10 to-transparent p-6">
+      <header className="rounded-2xl border border-primary/25 bg-card/70 p-6">
         <h1 className="flex items-center gap-2 text-3xl font-bold"><Settings2 className="h-7 w-7 text-primary" /> Settings</h1>
         <p className="mt-2 text-muted-foreground">Manage your account details and tailor how StudyRx tracks your practice.</p>
       </header>
@@ -217,7 +217,7 @@ function SettingsContent() {
       </div>
 
       {showResetModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-4 backdrop-blur-md">
           <Card className="w-full max-w-lg border-destructive/40">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-destructive"><AlertTriangle className="h-5 w-5" /> Confirm reset</CardTitle>
@@ -252,7 +252,7 @@ function ToggleRow({
   onChange: (checked: boolean) => void;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-2xl border border-primary/15 bg-gradient-to-r from-card via-card to-primary/5 p-4 shadow-sm">
+    <div className="flex items-center justify-between gap-4 rounded-2xl border border-primary/15 bg-card/80 p-4 shadow-none">
       <div className="space-y-1">
         <div className="flex items-center gap-2">
           <div className="text-sm font-medium">{label}</div>
@@ -270,7 +270,7 @@ function ToggleRow({
           onChange={(event) => onChange(event.target.checked)}
         />
         <span className="h-7 w-12 rounded-full bg-muted transition-colors peer-checked:bg-primary/80" />
-        <span className="absolute left-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-5" />
+        <span className="absolute left-1 h-5 w-5 rounded-full bg-white shadow-none transition-transform peer-checked:translate-x-5" />
       </label>
     </div>
   );

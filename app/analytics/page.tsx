@@ -55,7 +55,7 @@ function AnalyticsContent() {
 
   return (
     <div className="flex-1 overflow-auto p-6 space-y-6">
-      <header className="rounded-2xl border border-primary/25 bg-gradient-to-r from-primary/10 via-accent/10 to-transparent p-6">
+      <header className="rounded-2xl border border-primary/25 bg-card/70 p-6">
         <h1 className="text-3xl font-bold flex items-center gap-2"><Activity className="h-7 w-7 text-primary" /> Analytics Command</h1>
         <p className="text-muted-foreground mt-2">Organized, colorful insights for speed, accuracy, redemption, and mastery.</p>
       </header>
@@ -210,7 +210,7 @@ function EventStats({ sessions, eventId, settings, onOpenSession }: { sessions: 
 
   return (
     <div className="space-y-5">
-      <header className="rounded-xl border border-primary/25 bg-gradient-to-r from-primary/10 via-transparent to-accent/10 p-4">
+      <header className="rounded-xl border border-primary/25 bg-card/70 p-4">
         <h2 className="text-xl font-semibold">{getEventName(eventId)} Analytics</h2>
       </header>
 
@@ -275,7 +275,7 @@ function SessionDetailModal({ session, settings, onClose }: { session: SessionDa
   const avgExplanationTime = session.totalQuestions > 0 ? session.totalExplanationTime / session.totalQuestions : 0;
 
   return (
-    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm overflow-auto p-6">
+    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-md overflow-auto p-6">
       <div className="mx-auto max-w-5xl space-y-6">
         <Card className="border-primary/25">
           <CardHeader>
@@ -476,7 +476,7 @@ function MasteryProjectionCard({ projection }: { projection: MasteryProjection }
   const alreadyMastered = projection.questionsNeeded === 0;
 
   return (
-    <div className="rounded-xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card to-accent/5 p-4">
+    <div className="rounded-xl border border-primary/30 bg-card/75 p-4">
       <div className="flex items-center gap-2 text-sm font-semibold text-primary">
         <TrendingUp className="h-4 w-4" />
         Time to Mastery

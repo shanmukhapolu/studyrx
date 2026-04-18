@@ -678,9 +678,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
             </Link>
           </Button>
           
-          <Card className="border-primary/20 shadow-xl bg-card/50 backdrop-blur-sm">
+          <Card className="border-primary/20 shadow-none bg-card/50 backdrop-blur-md">
             <CardHeader className="text-center space-y-4 pb-8">
-              <div className="mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              <div className="mx-auto w-20 h-20 rounded-2xl bg-primary/12 flex items-center justify-center">
                 <Icon className="h-10 w-10 text-primary" />
               </div>
               <CardTitle className="text-4xl font-bold">{eventName}</CardTitle>
@@ -735,7 +735,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
               <Button
                 onClick={startPractice}
                 size="lg"
-                className="w-full text-lg h-14 font-semibold shadow-lg"
+                className="w-full text-lg h-14 font-semibold shadow-none"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Start Practice Session
@@ -768,9 +768,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
           />
         )}
         <div className="container mx-auto max-w-2xl">
-          <Card className="border-primary/20 shadow-2xl bg-card/50 backdrop-blur-sm">
+          <Card className="border-primary/20 shadow-none bg-card/50 backdrop-blur-md">
             <CardHeader className="text-center space-y-4 pb-8">
-              <div className="mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/20 via-accent/20 to-chart-3/20 flex items-center justify-center animate-pulse">
+              <div className="mx-auto w-24 h-24 rounded-2xl bg-primary/12 flex items-center justify-center animate-pulse">
                 <Trophy className="h-12 w-12 text-primary" />
               </div>
               <CardTitle className="text-5xl font-bold">Congratulations!</CardTitle>
@@ -779,7 +779,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="p-8 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl text-center border border-primary/20">
+              <div className="p-8 bg-card/75 rounded-xl text-center border border-primary/20">
                 <h3 className="text-3xl font-bold mb-3">Session Complete</h3>
                 <p className="text-muted-foreground text-lg">
                   Nice work. Review your results or jump into another session whenever you're ready.
@@ -891,7 +891,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
             {sessionSaveError}
           </div>
         )}
-        <Card className="glass-card tech-border shadow-2xl relative overflow-hidden">
+        <Card className="glass-card tech-border shadow-none relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.accent/20),transparent_40%)] pointer-events-none" />
           <div className="absolute right-5 top-5 z-10">
             <Button size="sm" variant="outline" onClick={() => setShowReportModal(true)}>Report Question</Button>
@@ -899,7 +899,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
           <CardHeader>
             <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all"
+                className="h-full rounded-full bg-primary/70 transition-all"
                 style={{ width: `${((currentQueueIndex + 1) / Math.max(questionQueue.length, 1)) * 100}%` }}
               />
             </div>

@@ -13,7 +13,7 @@ export function GoogleAuthButton({
     <Button
       type="button"
       variant="outline"
-      className="h-11 w-full rounded-full border-border/70 bg-background shadow-sm transition-colors hover:bg-muted/60"
+      className="h-11 w-full rounded-full border-border/70 bg-background shadow-none transition-colors hover:bg-muted/60"
       disabled={disabled}
       onClick={onClick}
     >
