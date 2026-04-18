@@ -68,7 +68,7 @@ export default function HomePage() {
         <div className="hero-grid absolute inset-0" />
         <div className="floating-wave pointer-events-none absolute inset-x-0 top-[-140px] mx-auto h-[300px] w-[72vw] rounded-full" />
         <div className="page-shell section-shell relative pt-8 md:pt-10">
-          <div className="absolute -top-2 right-0 flex items-center gap-3 md:-top-4 md:right-2">
+          <div className="absolute top-2 right-0 flex items-center gap-3 md:top-3 md:right-2">
             <Button asChild variant="ghost" size="sm">
               <Link href="/auth/signin">Log in</Link>
             </Button>
