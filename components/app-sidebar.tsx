@@ -78,7 +78,7 @@ export function AppSidebar() {
                 >
                   <Link href={item.href}>
                     <item.icon className="h-5 w-5" />
-                    <span className="text-base">{item.title}</span>
+                    <span className="text-sm">{item.title}</span>
                   </Link>
                 </SidebarMenuButton>
             </SidebarMenuItem>
@@ -98,7 +98,7 @@ export function AppSidebar() {
                 >
                   <Link href="/submit-question">
                     <FileQuestion className="h-5 w-5" />
-                    <span className="text-base">Submit Question</span>
+                    <span className="text-sm">Submit Question</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

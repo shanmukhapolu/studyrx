@@ -73,65 +73,41 @@ function EventsContent() {
 
   return (
     <div className="flex-1 overflow-auto">
-      <header className="border-b border-border bg-card/50 backdrop-blur-md sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-start justify-between gap-4">
+      <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur-md">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">HOSA Competitive Events</h1>
-              <p className="text-muted-foreground mt-1 font-light">
+              <h1 className="text-2xl font-semibold text-foreground">HOSA Competitive Events</h1>
+              <p className="mt-0.5 text-sm text-muted-foreground">
                 Choose an event to start practicing
               </p>
             </div>
-            <Button variant="outline" onClick={() => setShowRequestModal(true)}>Request New Event</Button>
+            <Button variant="outline" size="sm" onClick={() => setShowRequestModal(true)}>Request New Event</Button>
           </div>
         </div>
       </header>
 
       <main className="container mx-auto px-6 py-8 max-w-7xl">
-        <Card className="mb-8 border-primary/20 bg-card/75">
-          <CardHeader>
-            <CardTitle className="text-lg">Practice Tips</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4 md:grid-cols-3 text-sm">
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                  <span className="text-sm font-bold text-primary">1</span>
+        <div className="mb-8 rounded-xl border border-border bg-card p-5">
+          <p className="mb-4 text-sm font-semibold text-foreground">Practice Tips</p>
+          <div className="grid gap-4 md:grid-cols-3 text-sm">
+            {[
+              { n: "1", title: "Start with Basics", desc: "Begin with Medical Terminology to build a strong foundation" },
+              { n: "2", title: "Practice Regularly", desc: "Consistent daily practice yields the best results" },
+              { n: "3", title: "Track Progress", desc: "Use analytics to identify areas needing improvement" },
+            ].map((tip) => (
+              <div key={tip.n} className="flex items-start gap-3">
+                <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary">
+                  {tip.n}
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Start with Basics</h4>
-                  <p className="text-muted-foreground">
-                    Begin with Medical Terminology to build a strong foundation
-                  </p>
+                  <h4 className="font-semibold text-foreground">{tip.title}</h4>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{tip.desc}</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 flex-shrink-0">
-                  <span className="text-sm font-bold text-accent">2</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Practice Regularly</h4>
-                  <p className="text-muted-foreground">
-                    Consistent daily practice yields the best results
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-chart-3/10 flex-shrink-0">
-                  <span className="text-sm font-bold text-chart-3">3</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Track Progress</h4>
-                  <p className="text-muted-foreground">
-                    Use analytics to identify areas needing improvement
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            ))}
+          </div>
+        </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {HOSA_EVENTS.map((event) => {
@@ -142,71 +118,61 @@ function EventsContent() {
             return (
               <Card
                 key={event.id}
-                className={`border-border/70 bg-card/80 transition-all duration-200 ${
+                className={`rounded-xl border bg-card transition-all duration-200 ${
                   isPublished
-                    ? "hover:border-primary/50 hover:-translate-y-0.5"
-                    : "opacity-65 grayscale"
+                    ? "border-border hover:border-primary/40"
+                    : "opacity-55 grayscale"
                 }`}
               >
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-3">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isPublished ? "bg-primary/12" : "bg-muted"}`}>
-                      <Icon className={`h-6 w-6 ${isPublished ? "text-primary" : "text-muted-foreground"}`} />
+                <CardHeader className="pb-3">
+                  <div className="mb-3 flex items-start justify-between">
+                    <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${isPublished ? "bg-primary/10" : "bg-muted"}`}>
+                      <Icon className={`h-5 w-5 ${isPublished ? "text-primary" : "text-muted-foreground"}`} />
                     </div>
                     {stats && isPublished && (
                       <div className="text-right">
                         <div className="text-xs text-muted-foreground">Accuracy</div>
-                        <div className="text-lg font-bold font-mono text-accent">
+                        <div className="text-base font-bold tabular-nums text-primary">
                           {stats.accuracy.toFixed(0)}%
                         </div>
                       </div>
                     )}
                   </div>
-                  <CardTitle className="text-xl">{event.name}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
+                  <CardTitle className="text-base font-semibold">{event.name}</CardTitle>
+                  <CardDescription className="text-xs leading-relaxed">
                     {event.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
+                <CardContent className="pt-0">
+                  <div className="space-y-2.5">
                     {stats && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <TrendingUp className="h-4 w-4" />
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <TrendingUp className="h-3.5 w-3.5" />
                         <span>{stats.attempted} questions practiced</span>
                       </div>
                     )}
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="flex gap-2">
                       {isPublished ? (
                         <>
-                          <Button asChild className="font-semibold" size="lg">
+                          <Button asChild size="sm" className="flex-1">
                             <Link href={`/practice/${event.id}`}>
-                              <Play className="mr-2 h-4 w-4" />
+                              <Play className="mr-1.5 h-3.5 w-3.5" />
                               Practice
                             </Link>
                           </Button>
-                          <Button asChild variant="outline" className="font-semibold bg-transparent" size="lg">
+                          <Button asChild variant="outline" size="sm" className="flex-1">
                             <Link href={`/resources/${event.id}`}>
-                              <BookOpen className="mr-2 h-4 w-4" />
+                              <BookOpen className="mr-1.5 h-3.5 w-3.5" />
                               Resources
                             </Link>
                           </Button>
                         </>
                       ) : (
                         <>
-                          <Button
-                            disabled
-                            variant="secondary"
-                            size="lg"
-                            className="cursor-not-allowed bg-muted text-muted-foreground hover:bg-muted"
-                          >
+                          <Button disabled variant="secondary" size="sm" className="flex-1 cursor-not-allowed">
                             Coming Soon
                           </Button>
-                          <Button
-                            disabled
-                            variant="outline"
-                            size="lg"
-                            className="cursor-not-allowed border-muted-foreground/30 bg-muted text-muted-foreground hover:bg-muted"
-                          >
+                          <Button disabled variant="outline" size="sm" className="flex-1 cursor-not-allowed">
                             Coming Soon
                           </Button>
                         </>
