@@ -184,12 +184,12 @@
   .underline-highlight::after {
     content: '';
     position: absolute;
-    left: -5px;
-    right: 8px;
+    left: -1px;
+    right: -1px;
     bottom: 6px;
-    height: 16px;
+    height: 12px;
     background: var(--primary);
-    opacity: 1.0;
+    opacity: 0.28;
     border-radius: 0;
     z-index: -1;
     transform: scaleX(0);
