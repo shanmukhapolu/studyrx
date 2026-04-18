@@ -64,10 +64,10 @@ function useReveal() {
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.08 },
     );
     document
-      .querySelectorAll(".reveal-up, .reveal-left, .reveal-right, .reveal-scale")
+      .querySelectorAll(".reveal-up, .reveal-left, .reveal-right, .reveal-scale, .section-reveal")
       .forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
@@ -110,28 +110,16 @@ const features = [
     title: "Precision Practice",
     text: "Question sets are event-specific so every session targets what matters for your competitive event.",
     icon: Target,
-    iconBg: "bg-primary/10",
-    iconColor: "text-primary",
-    hoverBorder: "hover:border-primary/40",
-    hoverBg: "hover:bg-primary/[0.03]",
   },
   {
     title: "Actionable Analytics",
     text: "Readable dashboards show timing, trend lines, and exact weak domains so you know where to focus.",
     icon: LineChart,
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    hoverBorder: "hover:border-emerald-400/40",
-    hoverBg: "hover:bg-emerald-500/[0.03]",
   },
   {
     title: "Focused Retention",
     text: "Missed concepts automatically return until your confidence catches up — no manual review needed.",
     icon: Brain,
-    iconBg: "bg-primary/10",
-    iconColor: "text-primary",
-    hoverBorder: "hover:border-primary/40",
-    hoverBg: "hover:bg-primary/[0.03]",
   },
 ];
 
@@ -167,33 +155,21 @@ const mistakeFeatures = [
     title: "Automatic mistake capture",
     desc: "Every wrong answer is captured and tagged by topic so nothing slips through the cracks.",
     icon: XCircle,
-    iconBg: "bg-primary/10",
-    iconColor: "text-primary",
-    border: "hover:border-primary/40",
   },
   {
     title: "Spaced review loops",
     desc: "Missed questions resurface in future sessions at optimal intervals, boosting long-term retention.",
     icon: RefreshCw,
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    border: "hover:border-emerald-400/40",
   },
   {
     title: "Weak topic heat maps",
     desc: "See exactly which subtopics you consistently miss so you can target them with surgical precision.",
     icon: Target,
-    iconBg: "bg-primary/10",
-    iconColor: "text-primary",
-    border: "hover:border-primary/40",
   },
   {
     title: "Redemption rounds",
     desc: "At the end of each session, get a second shot at every question you got wrong — confidence-building by design.",
     icon: Trophy,
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    border: "hover:border-emerald-400/40",
   },
 ];
 
@@ -238,22 +214,20 @@ function HeroReadinessCard() {
       <p className="mb-4 text-xs text-muted-foreground">Anatomy &amp; Physiology · by system</p>
       <div className="space-y-3">
         {readinessTopics.map((item) => {
-          const color = item.accuracy >= 80 ? "bg-primary" : "bg-emerald-500";
-          const textColor = item.accuracy >= 80 ? "text-primary" : "text-emerald-600 dark:text-emerald-400";
           return (
             <div key={item.name}>
               <div className="mb-1 flex items-center justify-between">
                 <span className="text-xs font-medium text-foreground">{item.name}</span>
                 <div className="flex items-center gap-2">
                   <span className="text-xs tabular-nums text-muted-foreground">{item.total}q</span>
-                  <span className={`text-xs font-semibold tabular-nums ${textColor}`}>
+                  <span className="text-xs font-semibold tabular-nums text-primary">
                     {item.accuracy}%
                   </span>
                 </div>
               </div>
               <div className="h-1.5 overflow-hidden rounded-full bg-muted">
                 <div
-                  className={`h-full rounded-full transition-all duration-700 ${color}`}
+                  className="h-full rounded-full bg-primary transition-all duration-700"
                   style={{ width: `${item.accuracy}%` }}
                 />
               </div>
@@ -541,12 +515,12 @@ export default function HomePage() {
 
       {/* ── Metrics bar ──────────────────────────────────── */}
       <section className="border-b border-border">
-        <div className="page-shell section-shell !py-10">
-          <div className="reveal-up grid gap-4 md:grid-cols-3">
+        <div className="page-shell section-shell !py-10 section-reveal">
+          <div className="grid gap-4 md:grid-cols-3">
             {metrics.map((m, i) => (
               <div
                 key={m.label}
-                className="rounded-xl border border-border bg-card px-5 py-4"
+                className="rounded-xl border border-border bg-card px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-sm"
                 style={{ transitionDelay: `${i * 70}ms` }}
               >
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">{m.label}</p>
@@ -568,25 +542,19 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {impactStats.map((item, idx) => {
-              const isEven = idx % 2 === 0;
-              const border = isEven ? "border-primary/25" : "border-emerald-400/25";
-              const bg = isEven ? "bg-primary/5" : "bg-emerald-500/5";
-              const numColor = isEven ? "text-primary" : "text-emerald-600 dark:text-emerald-400";
-              return (
-                <div
-                  key={item.label}
-                  className={`reveal-up rounded-xl border ${border} ${bg} px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm`}
-                  style={{ transitionDelay: `${idx * 80}ms` }}
-                >
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{item.label}</p>
-                  <p className={`mt-2 text-3xl font-semibold tabular-nums ${numColor}`}>
-                    {animatedImpact[idx].toLocaleString()}
-                    {item.suffix ?? ""}
-                  </p>
-                </div>
-              );
-            })}
+            {impactStats.map((item, idx) => (
+              <div
+                key={item.label}
+                className="reveal-up rounded-xl border border-primary/20 bg-primary/5 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm"
+                style={{ transitionDelay: `${idx * 80}ms` }}
+              >
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">{item.label}</p>
+                <p className="mt-2 text-3xl font-semibold tabular-nums text-primary">
+                  {animatedImpact[idx].toLocaleString()}
+                  {item.suffix ?? ""}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -607,11 +575,11 @@ export default function HomePage() {
               return (
                 <div
                   key={item.title}
-                  className={`reveal-up group rounded-xl border border-border bg-card p-5 transition-all duration-300 ${item.hoverBorder} ${item.hoverBg} hover:-translate-y-1 hover:shadow-md`}
+                  className="reveal-up group rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/40 hover:bg-primary/[0.02] hover:-translate-y-1 hover:shadow-md"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg ${item.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                    <Icon className={`h-5 w-5 ${item.iconColor}`} />
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 transition-transform duration-300 group-hover:scale-110">
+                    <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="mb-2 text-base font-semibold text-foreground">{item.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -642,28 +610,20 @@ export default function HomePage() {
               <div className="flex flex-1 flex-col justify-between gap-3">
                 {howItWorksSteps.map((step, i) => {
                   const Icon = step.icon;
-                  const isEven = i % 2 === 0;
-                  const colors = isEven
-                    ? "border-primary/30 bg-primary/5 hover:border-primary/50"
-                    : "border-emerald-400/30 bg-emerald-50/50 dark:bg-emerald-950/20 hover:border-emerald-400/60";
-                  const numberColors = isEven
-                    ? "bg-primary/10 text-primary"
-                    : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400";
-                  const iconColors = isEven ? "text-primary/60" : "text-emerald-500/60";
                   return (
                     <div
                       key={step.step}
-                      className={`flex gap-4 rounded-xl border px-4 py-4 transition-all duration-200 ${colors}`}
+                      className="flex gap-4 rounded-xl border border-primary/25 bg-primary/5 px-4 py-4 transition-all duration-200 hover:border-primary/50"
                       style={{ transitionDelay: `${i * 70}ms` }}
                     >
-                      <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-xs font-bold ${numberColors}`}>
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary">
                         {step.step}
                       </div>
                       <div className="flex-1">
                         <p className="text-sm font-semibold text-foreground">{step.title}</p>
                         <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
                       </div>
-                      <Icon className={`ml-auto h-4 w-4 flex-shrink-0 self-start mt-0.5 ${iconColors}`} />
+                      <Icon className="ml-auto mt-0.5 h-4 w-4 flex-shrink-0 self-start text-primary/60" />
                     </div>
                   );
                 })}
@@ -699,11 +659,11 @@ export default function HomePage() {
               return (
                 <div
                   key={item.title}
-                  className={`reveal-up group flex gap-4 rounded-xl border border-border bg-card px-5 py-5 transition-all duration-300 ${item.border} hover:-translate-y-0.5 hover:shadow-sm`}
+                  className="reveal-up group flex gap-4 rounded-xl border border-border bg-card px-5 py-5 transition-all duration-300 hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-sm"
                   style={{ transitionDelay: `${i * 70}ms` }}
                 >
-                  <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${item.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                    <Icon className={`h-4 w-4 ${item.iconColor}`} />
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-transform duration-300 group-hover:scale-110">
+                    <Icon className="h-4 w-4 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-foreground">{item.title}</p>
@@ -715,14 +675,14 @@ export default function HomePage() {
           </div>
 
           {/* mini stat strip */}
-          <div className="reveal-up grid gap-px overflow-hidden rounded-xl border border-border md:grid-cols-3">
+          <div className="reveal-up grid gap-px overflow-hidden rounded-xl border border-primary/20 md:grid-cols-3">
             {[
-              { value: "2.6x", label: "Faster weak-topic recovery vs. random review", color: "text-primary", bg: "bg-primary/5" },
-              { value: "94%", label: "Of users report meaningful score gains in 30 days", color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500/5" },
-              { value: "100%", label: "Of missed questions resurface before your next session", color: "text-primary", bg: "bg-primary/5" },
+              { value: "2.6x", label: "Faster weak-topic recovery vs. random review" },
+              { value: "94%", label: "Of users report meaningful score gains in 30 days" },
+              { value: "100%", label: "Of missed questions resurface before your next session" },
             ].map((stat) => (
-              <div key={stat.label} className={`${stat.bg} px-6 py-5`}>
-                <p className={`text-2xl font-semibold ${stat.color}`}>{stat.value}</p>
+              <div key={stat.label} className="bg-primary/5 px-6 py-5">
+                <p className="text-2xl font-semibold text-primary">{stat.value}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{stat.label}</p>
               </div>
             ))}
@@ -732,8 +692,8 @@ export default function HomePage() {
 
       {/* ── Events carousel ───────────────────────────────── */}
       <section id="events" className="border-b border-border">
-        <div className="page-shell section-shell">
-          <div className="reveal-up mb-8 flex items-end justify-between gap-6 underline-trigger">
+        <div className="page-shell section-shell section-reveal">
+          <div className="mb-8 flex items-end justify-between gap-6 underline-trigger">
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">Events</p>
               <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
@@ -762,7 +722,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="reveal-up overflow-hidden rounded-xl border border-border bg-card">
+          <div className="overflow-hidden rounded-xl border border-border bg-card">
             <div
               className="flex transition-transform duration-500"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -811,8 +771,8 @@ export default function HomePage() {
 
       {/* ── Testimonials ─────────────────────────────────── */}
       <section className="border-b border-border">
-        <div className="page-shell section-shell">
-          <div className="reveal-up mb-10 underline-trigger">
+        <div className="page-shell section-shell section-reveal">
+          <div className="mb-10 underline-trigger">
             <p className="text-xs uppercase tracking-widest text-muted-foreground">Testimonials</p>
             <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
               From students who{" "}

@@ -175,31 +175,30 @@
     @apply sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md;
   }
 
-  /* Underline highlight — solid primary blue bar, no radius, overlaps text from below */
+  /* Underline highlight — solid primary blue bar, sharp corners, overlaps text */
   .underline-highlight {
     position: relative;
     display: inline;
-    white-space: normal;
   }
 
   .underline-highlight::after {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 4px;
-    height: 10px;
+    left: -1px;
+    right: -1px;
+    bottom: 6px;
+    height: 12px;
     background: var(--primary);
-    opacity: 0.22;
+    opacity: 0.18;
     border-radius: 0;
     z-index: -1;
     transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: left center;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark .underline-highlight::after {
-    opacity: 0.3;
+    opacity: 0.28;
   }
 
   .underline-highlight.in-view::after {
@@ -275,8 +274,8 @@
   /* Reveal animations */
   .reveal-up {
     opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(28px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-up.animate-in {
@@ -286,8 +285,8 @@
 
   .reveal-left {
     opacity: 0;
-    transform: translateX(-24px);
-    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateX(-32px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-left.animate-in {
@@ -297,8 +296,8 @@
 
   .reveal-right {
     opacity: 0;
-    transform: translateX(24px);
-    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateX(32px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-right.animate-in {
@@ -308,13 +307,25 @@
 
   .reveal-scale {
     opacity: 0;
-    transform: scale(0.96);
-    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: scale(0.94);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-scale.animate-in {
     opacity: 1;
     transform: scale(1);
+  }
+
+  /* Section-level fade — wraps entire section content */
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .section-reveal.animate-in {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   @keyframes fade-in {
