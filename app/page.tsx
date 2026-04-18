@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, TrendingUp, Clock, BarChart3, Zap, ChevronRight, ChevronLeft, ArrowRight, BarChart, Brain, RefreshCw, Users, Trophy, Sparkles, X, Check } from "lucide-react";
+import { Target, TrendingUp, Clock, BarChart3, Zap, ChevronRight, ChevronLeft, ArrowRight, BarChart, Brain, RefreshCw, Users, Trophy, Sparkles, X, Check, PawPrint, Rabbit, Fish } from "lucide-react";
 import { HOSA_EVENTS_DISPLAY_ORDER as HOSA_EVENTS } from "@/lib/events";
 
 export default function HomePage() {
@@ -58,7 +58,8 @@ export default function HomePage() {
             <Link href="/auth/signup">Sign Up</Link>
           </Button>
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,color-mix(in_oklab,var(--primary)_28%,transparent)_0%,transparent_36%),radial-gradient(circle_at_78%_20%,color-mix(in_oklab,var(--accent)_30%,transparent)_0%,transparent_34%),linear-gradient(135deg,color-mix(in_oklab,var(--background)_84%,white)_0%,color-mix(in_oklab,var(--background)_95%,black)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,color-mix(in_oklab,var(--primary)_32%,transparent)_0%,transparent_34%),radial-gradient(circle_at_78%_20%,color-mix(in_oklab,var(--accent)_26%,transparent)_0%,transparent_34%),linear-gradient(130deg,color-mix(in_oklab,var(--background)_84%,white)_0%,color-mix(in_oklab,var(--background)_94%,black)_100%)]" />
+        <div className="absolute inset-0 animate-wave-grid bg-[linear-gradient(to_right,color-mix(in_oklab,var(--primary)_8%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--accent)_10%,transparent)_1px,transparent_1px)] bg-[size:44px_44px] opacity-50" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <div className="container relative py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
@@ -102,6 +103,25 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 fade-in-section">
+              {[
+                { label: "Adaptive accuracy", value: "94%", icon: BarChart3 },
+                { label: "Avg response time", value: "31s", icon: Clock },
+                { label: "Weekly momentum", value: "+18%", icon: TrendingUp },
+              ].map((metric) => {
+                const Icon = metric.icon;
+                return (
+                  <div key={metric.label} className="glass-card rounded-2xl border-border/40 px-4 py-4 text-left">
+                    <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/15">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="text-2xl font-bold text-foreground">{metric.value}</div>
+                    <p className="text-sm text-muted-foreground">{metric.label}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -119,31 +139,31 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 gap-8 items-start fade-in-section">
               {/* Problem Side */}
               <div className="relative">
-                <div className="absolute -inset-4 bg-destructive/5 rounded-3xl blur-2xl" />
-                <Card className="relative border border-destructive/20 bg-card/90 backdrop-blur-sm">
+                <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
+                <Card className="relative border border-primary/20 bg-card/90 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
-                      <div className="h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center">
-                        <X className="h-6 w-6 text-destructive" />
+                      <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
+                        <X className="h-6 w-6 text-primary" />
                       </div>
                       Most students:
                     </h3>
                     <ul className="space-y-4 text-base">
                       <li className="flex items-start gap-3 text-muted-foreground">
-                        <div className="mt-1 h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
-                          <div className="h-2 w-2 rounded-full bg-destructive" />
+                        <div className="mt-1 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <div className="h-2 w-2 rounded-full bg-primary" />
                         </div>
                         <span>Study random Quizlets</span>
                       </li>
                       <li className="flex items-start gap-3 text-muted-foreground">
-                        <div className="mt-1 h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
-                          <div className="h-2 w-2 rounded-full bg-destructive" />
+                        <div className="mt-1 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <div className="h-2 w-2 rounded-full bg-primary" />
                         </div>
                         <span>Don't know which topics they're weak in</span>
                       </li>
                       <li className="flex items-start gap-3 text-muted-foreground">
-                        <div className="mt-1 h-6 w-6 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0">
-                          <div className="h-2 w-2 rounded-full bg-destructive" />
+                        <div className="mt-1 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <div className="h-2 w-2 rounded-full bg-primary" />
                         </div>
                         <span>Walk into competition hoping they studied the right stuff</span>
                       </li>
@@ -155,7 +175,7 @@ export default function HomePage() {
               {/* Solution Side */}
               <div className="relative">
                 <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
-                <Card className="relative border border-primary/30 bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-sm">
+                <Card className="relative border border-primary/30 bg-gradient-to-br from-primary/10 to-accent/12 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
                       <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center">
@@ -170,10 +190,10 @@ export default function HomePage() {
                       <div className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
                         Organized Practice
                       </div>
-                      <div className="px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-sm font-medium text-accent">
+                      <div className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
                         Performance Tracking
                       </div>
-                      <div className="px-4 py-2 rounded-full bg-chart-3/10 border border-chart-3/20 text-sm font-medium text-chart-3">
+                      <div className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
                         Focused Learning
                       </div>
                     </div>
@@ -215,10 +235,10 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-accent/20 bg-card/80 backdrop-blur-sm transition-colors duration-200">
+              <Card className="border-primary/20 bg-card/80 backdrop-blur-sm transition-colors duration-200">
                 <CardContent className="p-6 text-center">
-                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mx-auto mb-6">
-                    <BarChart className="h-6 w-6 text-accent" />
+                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-6">
+                    <BarChart className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">Real Data</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -227,10 +247,10 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-chart-3/20 bg-card/80 backdrop-blur-sm transition-colors duration-200">
+              <Card className="border-primary/20 bg-card/80 backdrop-blur-sm transition-colors duration-200">
                 <CardContent className="p-6 text-center">
-                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-chart-3/20 to-chart-3/5 flex items-center justify-center mx-auto mb-6">
-                    <RefreshCw className="h-6 w-6 text-chart-3" />
+                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-6">
+                    <RefreshCw className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">Smart Review</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -254,7 +274,7 @@ export default function HomePage() {
         <div className="container py-12 md:py-16">
           <div className="mx-auto max-w-4xl fade-in-section">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/12 rounded-3xl blur-2xl" />
               <Card className="relative border border-primary/20 bg-card/90 backdrop-blur-sm">
                 <CardContent className="p-8 text-center">
                   <div className="inline-flex items-center justify-center gap-3 mb-6">
@@ -287,7 +307,7 @@ export default function HomePage() {
         <div className="container py-12 md:py-16">
           <div className="mx-auto max-w-6xl">
             <div className="text-center mb-16 fade-in-section">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-semibold mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-4">
                 <Users className="h-4 w-4" />
                 Audience
               </div>
@@ -309,10 +329,10 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border border-accent/20 bg-card/80 backdrop-blur-sm hover:border-accent/35 transition-colors duration-200 group">
+              <Card className="border border-primary/20 bg-card/80 backdrop-blur-sm hover:border-primary/35 transition-colors duration-200 group">
                 <CardContent className="p-6 text-center">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mx-auto mb-6 transition-transform">
-                    <Target className="h-6 w-6 text-accent" />
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-6 transition-transform">
+                    <Target className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">Structured Learners</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -321,10 +341,10 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border border-chart-3/20 bg-card/80 backdrop-blur-sm hover:border-chart-3/35 transition-colors duration-200 group">
+              <Card className="border border-primary/20 bg-card/80 backdrop-blur-sm hover:border-primary/35 transition-colors duration-200 group">
                 <CardContent className="p-6 text-center">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-chart-3/20 to-chart-3/5 flex items-center justify-center mx-auto mb-6 transition-transform">
-                    <Zap className="h-6 w-6 text-chart-3" />
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-6 transition-transform">
+                    <Zap className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">Confident Competitors</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -358,6 +378,11 @@ export default function HomePage() {
 
             {/* Event Slider */}
             <div className="relative fade-in-section max-w-4xl mx-auto">
+              <div className="mb-6 flex items-center justify-center gap-3 text-sm text-muted-foreground">
+                <div className="float-mascot flex items-center gap-2 rounded-full border border-border/50 bg-background/70 px-3 py-2"><Rabbit className="h-4 w-4 text-primary" /> quick thinking</div>
+                <div className="float-mascot [animation-delay:1.4s] flex items-center gap-2 rounded-full border border-border/50 bg-background/70 px-3 py-2"><Fish className="h-4 w-4 text-primary" /> smooth pacing</div>
+                <div className="float-mascot [animation-delay:2.4s] hidden md:flex items-center gap-2 rounded-full border border-border/50 bg-background/70 px-3 py-2"><PawPrint className="h-4 w-4 text-primary" /> consistent reps</div>
+              </div>
               <div className="overflow-hidden rounded-2xl">
                 <div 
                   className="flex transition-transform duration-500 ease-out"
@@ -370,7 +395,7 @@ export default function HomePage() {
                         <Card className="border border-primary/20 bg-gradient-to-br from-card/90 to-muted/50 backdrop-blur-sm shadow-none">
                           <CardContent className="p-8">
                             <div className="flex flex-col md:flex-row items-center gap-6">
-                              <div className="flex-shrink-0 h-24 w-24 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center">
+                              <div className="flex-shrink-0 h-24 w-24 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/12 flex items-center justify-center">
                                 <IconComponent className="h-10 w-10 text-primary" />
                               </div>
                               <div className="flex-1 text-center md:text-left">
@@ -468,10 +493,10 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-accent/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
+              <Card className="border-primary/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
                 <CardContent className="p-7">
-                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 transition-transform">
-                    <BarChart3 className="h-6 w-6 text-accent" />
+                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 transition-transform">
+                    <BarChart3 className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Advanced Performance Analytics</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -480,10 +505,10 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-chart-3/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
+              <Card className="border-primary/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
                 <CardContent className="p-7">
-                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-chart-3/20 to-chart-3/5 flex items-center justify-center mb-6 transition-transform">
-                    <RefreshCw className="h-6 w-6 text-chart-3" />
+                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 transition-transform">
+                    <RefreshCw className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Redemption System</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -492,10 +517,10 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-chart-4/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
+              <Card className="border-primary/20 bg-card/80 backdrop-blur-sm hover:shadow-none transition-all group">
                 <CardContent className="p-7">
-                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-chart-4/20 to-chart-4/5 flex items-center justify-center mb-6 transition-transform">
-                    <TrendingUp className="h-6 w-6 text-chart-4" />
+                  <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 transition-transform">
+                    <TrendingUp className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">Progress Tracking</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -535,8 +560,8 @@ export default function HomePage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <Clock className="h-6 w-6 text-accent" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Clock className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <div className="font-bold text-foreground text-base mb-1">Time per question</div>
@@ -544,8 +569,8 @@ export default function HomePage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-xl bg-chart-3/10 flex items-center justify-center flex-shrink-0">
-                      <TrendingUp className="h-6 w-6 text-chart-3" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <div className="font-bold text-foreground text-base mb-1">Performance trends over time</div>
@@ -566,10 +591,10 @@ export default function HomePage() {
                     <div className="space-y-4">
                       {[
                         { name: "Medical Terminology", score: 92, color: "from-primary to-accent" },
-                        { name: "Pharmacology", score: 85, color: "from-accent to-chart-3" },
-                        { name: "Nutrition", score: 78, color: "from-chart-3 to-chart-4" },
-                        { name: "Dental Terminology", score: 88, color: "from-chart-4 to-chart-5" },
-                        { name: "Behavioral Health", score: 81, color: "from-chart-5 to-primary" },
+                        { name: "Pharmacology", score: 85, color: "from-primary to-accent" },
+                        { name: "Nutrition", score: 78, color: "from-primary to-accent" },
+                        { name: "Dental Terminology", score: 88, color: "from-primary to-accent" },
+                        { name: "Behavioral Health", score: 81, color: "from-primary to-accent" },
                       ].map((item, idx) => (
                         <div key={idx}>
                           <div className="flex justify-between items-center mb-2">
@@ -619,19 +644,19 @@ export default function HomePage() {
                     num: 2,
                     title: "Complete a focused practice session",
                     desc: "Answer event-specific questions with real-time feedback",
-                    color: "accent"
+                    color: "primary"
                   },
                   {
                     num: 3,
                     title: "Review accuracy, timing, and weak areas",
                     desc: "Detailed analytics show exactly where to improve",
-                    color: "chart-3"
+                    color: "primary"
                   },
                   {
                     num: 4,
                     title: "Revisit missed questions automatically",
                     desc: "Our redemption system ensures you master every topic",
-                    color: "chart-4"
+                    color: "primary"
                   },
                 ].map((step, idx) => (
                   <div
@@ -661,7 +686,7 @@ export default function HomePage() {
         <div className="container py-12 md:py-16">
           <div className="mx-auto max-w-5xl fade-in-section">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-chart-3/20 rounded-3xl blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-accent/20 rounded-3xl blur-2xl" />
               <Card className="relative border border-primary/30 bg-gradient-to-br from-card/90 to-muted/50 backdrop-blur-sm shadow-none">
                 <CardContent className="p-10 md:p-12 text-center">
                   <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">

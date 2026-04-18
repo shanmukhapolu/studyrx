@@ -10,24 +10,24 @@
   --card-foreground: oklch(0.12 0.015 240);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.12 0.015 240);
-  --primary: oklch(0.58 0.2 262);
+  --primary: oklch(0.56 0.19 257);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.95 0.01 250);
   --secondary-foreground: oklch(0.12 0.015 240);
   --muted: oklch(0.96 0.008 250);
   --muted-foreground: oklch(0.45 0.02 252);
-  --accent: oklch(0.66 0.15 196);
+  --accent: oklch(0.62 0.14 222);
   --accent-foreground: oklch(0.99 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.86 0.008 250);
   --input: oklch(0.9 0.008 250);
   --ring: oklch(0.58 0.2 262);
-  --chart-1: oklch(0.50 0.20 240);
-  --chart-2: oklch(0.55 0.18 200);
-  --chart-3: oklch(0.65 0.16 180);
-  --chart-4: oklch(0.58 0.18 260);
-  --chart-5: oklch(0.52 0.14 220);
+  --chart-1: var(--primary);
+  --chart-2: var(--accent);
+  --chart-3: color-mix(in oklab, var(--primary) 75%, var(--accent));
+  --chart-4: color-mix(in oklab, var(--accent) 70%, var(--primary));
+  --chart-5: color-mix(in oklab, var(--primary) 55%, black);
   --radius: 0.875rem;
   --sidebar: oklch(0.99 0.002 264);
   --sidebar-foreground: oklch(0.15 0.01 264);
@@ -121,20 +121,20 @@
 .container {
   margin-inline: auto;
   width: 100%;
-  max-width: 68rem;
-  padding-inline: 1.5rem;
+  max-width: 62rem;
+  padding-inline: 2rem;
 }
 
 @media (min-width: 768px) {
   .container {
-    padding-inline: 2.5rem;
+    padding-inline: 3rem;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
-    max-width: 72rem;
-    padding-inline: 3rem;
+    max-width: 64rem;
+    padding-inline: 4rem;
   }
 }
 
@@ -173,6 +173,25 @@
   
   .animate-fade-in-up {
     animation: fade-in-up 0.6s ease-out;
+  }
+
+  .float-mascot {
+    animation: mascot-float 5.5s ease-in-out infinite;
+  }
+
+  .animate-wave-grid {
+    animation: wave-grid 12s linear infinite;
+  }
+
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .fade-in-section.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
   
   .animate-shake {
@@ -263,6 +282,24 @@
     }
     100% {
       background-position: 0% 50%;
+    }
+  }
+
+  @keyframes mascot-float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes wave-grid {
+    0% {
+      background-position: 0 0, 0 0;
+    }
+    100% {
+      background-position: 44px 0, 0 44px;
     }
   }
 }
