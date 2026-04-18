@@ -31,12 +31,12 @@
   --radius: 1rem;
   --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-  --shadow-soft: 0 2px 4px color-mix(in oklab, var(--foreground) 5%, transparent), 0 10px 24px color-mix(in oklab, var(--foreground) 7%, transparent);
-  --shadow-layered: 0 1px 1px color-mix(in oklab, var(--foreground) 6%, transparent), 0 8px 20px color-mix(in oklab, var(--primary) 9%, transparent);
+  --shadow-soft: 0 1px 3px color-mix(in oklab, var(--foreground) 5%, transparent), 0 6px 14px color-mix(in oklab, var(--foreground) 6%, transparent);
+  --shadow-layered: 0 1px 2px color-mix(in oklab, var(--foreground) 6%, transparent), 0 10px 20px color-mix(in oklab, var(--foreground) 8%, transparent);
 }
 
 .dark {
-  --background: oklch(0.14 0.02 258);
+  --background: oklch(0.16 0.026 262);
   --foreground: oklch(0.95 0.01 250);
   --card: oklch(0.2 0.018 258 / 0.66);
   --card-foreground: oklch(0.95 0.01 250);
@@ -98,11 +98,7 @@
     font-family: var(--font-body);
     line-height: 1.55;
     letter-spacing: -0.01em;
-    background-image:
-      radial-gradient(circle at 12% 10%, color-mix(in oklab, var(--primary) 12%, transparent) 0%, transparent 34%),
-      radial-gradient(circle at 82% 4%, color-mix(in oklab, var(--secondary) 14%, transparent) 0%, transparent 30%),
-      linear-gradient(135deg, color-mix(in oklab, var(--background) 95%, white), var(--background));
-    background-attachment: fixed;
+    background: color-mix(in oklab, var(--background) 98%, white);
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
@@ -133,6 +129,17 @@
     @apply py-16 md:py-20;
   }
 
+  .app-surface {
+    background: color-mix(in oklab, var(--background) 98%, white);
+  }
+
+  .dark .app-surface {
+    background-image:
+      radial-gradient(circle at 15% 0%, color-mix(in oklab, var(--primary) 16%, transparent) 0%, transparent 38%),
+      radial-gradient(circle at 85% 10%, color-mix(in oklab, var(--secondary) 14%, transparent) 0%, transparent 34%),
+      linear-gradient(180deg, color-mix(in oklab, var(--background) 96%, black), var(--background));
+  }
+
   .glass-card {
     @apply border border-white/30 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl;
     box-shadow: var(--shadow-soft);
@@ -148,7 +155,6 @@
       linear-gradient(to right, color-mix(in oklab, var(--primary) 12%, transparent) 1px, transparent 1px),
       linear-gradient(to bottom, color-mix(in oklab, var(--primary) 10%, transparent) 1px, transparent 1px);
     background-size: 48px 48px;
-    mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
   }
 
   .floating-wave {

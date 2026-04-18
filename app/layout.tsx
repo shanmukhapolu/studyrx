@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${dmSans.variable} font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${dmSans.variable} app-surface font-sans antialiased`}>
         <AuthProvider>
           {children}
           <Toaster richColors position="top-right" />

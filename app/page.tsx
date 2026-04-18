@@ -63,13 +63,12 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      <div className="hero-grid fixed inset-0 -z-20" />
-      <div className="floating-wave pointer-events-none fixed inset-x-0 top-[-120px] -z-10 mx-auto h-[320px] w-[70vw] rounded-full" />
-
-      <section className="relative border-b border-border/50">
-        <div className="page-shell section-shell pt-10 md:pt-14">
-          <div className="mb-14 flex items-center justify-end gap-8">
+    <div className="app-surface relative min-h-screen overflow-x-hidden">
+      <section className="relative border-b border-border/40">
+        <div className="hero-grid absolute inset-0" />
+        <div className="floating-wave pointer-events-none absolute inset-x-0 top-[-140px] mx-auto h-[300px] w-[72vw] rounded-full" />
+        <div className="page-shell section-shell relative pt-8 md:pt-10">
+          <div className="absolute -top-2 right-0 flex items-center gap-3 md:-top-4 md:right-2">
             <Button asChild variant="ghost" size="sm">
               <Link href="/auth/signin">Log in</Link>
             </Button>
@@ -87,7 +86,7 @@ export default function HomePage() {
 
               <div className="space-y-5">
                 <h1 className="max-w-2xl text-4xl font-semibold md:text-5xl lg:text-[3.35rem]">
-                  Modern training for students who want to <span className="text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">compete sharper.</span>
+                  Modern training for students who want to <span className="text-primary">compete sharper.</span>
                 </h1>
                 <p className="max-w-xl text-base text-muted-foreground md:text-lg">
                   StudyRx gives you event-aligned practice, trend insights, and smarter review loops in one clean system.
@@ -143,7 +142,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/50">
+      <section className="border-b border-border/40">
         <div className="page-shell section-shell">
           <div className="reveal-up grid gap-4 md:grid-cols-3">
             {metrics.map((metric) => (
@@ -159,7 +158,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/50 bg-muted/20">
+      <section className="border-b border-border/40">
         <div className="page-shell section-shell space-y-10">
           <div className="reveal-up flex items-end justify-between gap-8">
             <div>
@@ -190,7 +189,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/50">
+      <section className="border-b border-border/40">
         <div className="page-shell section-shell">
           <div className="reveal-up mb-8 flex items-end justify-between gap-6">
             <div>
@@ -247,7 +246,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/50 bg-muted/20">
+      <section className="border-b border-border/40">
         <div className="page-shell section-shell">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <Card className="reveal-up overflow-hidden p-0">
@@ -288,7 +287,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="border-t border-border/50 bg-background/70 backdrop-blur-md">
+      <footer className="border-t border-border/40 bg-background/40 backdrop-blur-sm">
         <div className="page-shell flex flex-col items-center justify-between gap-4 py-8 text-sm text-muted-foreground md:flex-row">
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="StudyRx" width={24} height={24} className="h-6 w-6" />

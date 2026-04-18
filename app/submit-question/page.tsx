@@ -81,7 +81,7 @@ export default function SubmitQuestionPage() {
           <SidebarInset>
             <div className="mx-auto max-w-7xl p-6">
               <div className="grid gap-6 lg:grid-cols-3">
-                <Card className="border-primary/20 shadow-xl bg-card/70 backdrop-blur-sm lg:col-span-2">
+                <Card className="border-primary/20 shadow-none bg-card/70 backdrop-blur-md lg:col-span-2">
                 <CardHeader>
                   <CardTitle className="text-3xl">Submit a Question</CardTitle>
                   <p className="text-sm text-muted-foreground">

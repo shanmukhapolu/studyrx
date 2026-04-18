@@ -10,12 +10,11 @@ const totalQuestions = CONTRIBUTORS.reduce((sum, contributor) => sum + contribut
 
 export default function ContributorsPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.20),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(56,189,248,0.18),transparent_35%)]" />
+    <div className="app-surface min-h-screen overflow-x-hidden">
       <div className="mx-auto w-full max-w-7xl px-6 py-10">
-        <section className="relative overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/15 via-background to-accent/10 p-8 md:p-12">
+        <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-card/70 p-8 backdrop-blur-xl md:p-12">
           <div className="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-primary/20 blur-2xl" />
-          <div className="absolute -left-8 bottom-0 h-32 w-32 rounded-full bg-accent/20 blur-2xl" />
+          <div className="absolute -left-8 bottom-0 h-32 w-32 rounded-full bg-secondary/20 blur-2xl" />
           <div className="relative">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <Sparkles className="h-3.5 w-3.5" />
@@ -56,7 +55,7 @@ export default function ContributorsPage() {
           ))}
         </section>
 
-        <section className="mt-8 rounded-2xl border border-primary/20 bg-muted/20 p-6 text-center">
+        <section className="mt-8 rounded-2xl border border-border/60 bg-card/70 p-6 text-center">
           <p className="text-lg font-semibold">Thank you for helping make StudyRx stronger for every competitor.</p>
           <p className="mt-1 text-sm text-muted-foreground">
             Want to help expand question banks? Reach out through the feedback form.
