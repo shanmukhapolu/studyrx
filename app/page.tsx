@@ -5,21 +5,58 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, BarChart3, Brain, Check, ChevronLeft, ChevronRight, Clock, RefreshCw, Sparkles, Target, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, BarChart3, Brain, Check, ChevronLeft, ChevronRight, Clock, RefreshCw, Sparkles, Target, TrendingUp, TriangleAlert, Users } from "lucide-react";
 import { HOSA_EVENTS_DISPLAY_ORDER as HOSA_EVENTS } from "@/lib/events";
 
-const TRACKED_METRICS = [
-  { label: "Accuracy by event", value: "94%", delta: "+11%", icon: Target },
-  { label: "Avg. answer speed", value: "31s", delta: "-6s", icon: Clock },
-  { label: "Retention trend", value: "4.6x", delta: "faster review", icon: RefreshCw },
-  { label: "Weekly momentum", value: "+18%", delta: "consistency", icon: TrendingUp },
+const METRICS = [
+  { label: "Accuracy lift", value: "+17%", hint: "2-week average", icon: TrendingUp },
+  { label: "Avg. response", value: "31s", hint: "target pace", icon: Clock },
+  { label: "Review completion", value: "94%", hint: "with correction loop", icon: RefreshCw },
+  { label: "Consistency", value: "4.6x", hint: "faster retention", icon: Brain },
 ];
 
-const PRACTICE_FLOW = [
-  "Choose your competitive event",
-  "Run a focused question set",
-  "Review misses with explanations",
-  "Repeat with smarter targeting",
+const COMPARISON_ROWS = [
+  {
+    category: "Learning style",
+    studyrx: "Active recall with timing pressure",
+    alternatives: "Mostly passive rereading",
+  },
+  {
+    category: "Error handling",
+    studyrx: "Every miss becomes a tracked correction task",
+    alternatives: "Wrong answers disappear after you move on",
+  },
+  {
+    category: "Content relevance",
+    studyrx: "Event-specific + competition-style",
+    alternatives: "Mixed quality and often off-target",
+  },
+  {
+    category: "Progress clarity",
+    studyrx: "Per-event accuracy + weak-topic surfacing",
+    alternatives: "No clear map of what to fix next",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "I stopped guessing what to study. The weak-topic queue basically built my schedule for me.",
+    name: "Ari K.",
+    event: "Medical Terminology",
+    result: "Top 5 at SLC",
+  },
+  {
+    quote: "The redemption loop was huge. Questions I missed came back at the right time until they finally stuck.",
+    name: "Maya R.",
+    event: "Pathophysiology",
+    result: "ILC qualifier",
+  },
+  {
+    quote: "Feels like training, not cramming. The analytics made our chapter prep way more intentional.",
+    name: "Jordan T.",
+    event: "Behavioral Health",
+    result: "2nd at Regionals",
+  },
 ];
 
 export default function HomePage() {
@@ -42,94 +79,134 @@ export default function HomePage() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden pb-16">
-      <div className="fixed inset-0 -z-30 bg-background" />
-      <div className="fixed inset-0 -z-20 animate-wave-grid bg-[linear-gradient(to_right,color-mix(in_oklab,var(--primary)_22%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--primary)_16%,transparent)_1px,transparent_1px)] bg-[size:34px_34px] opacity-75" />
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_10%,color-mix(in_oklab,var(--primary)_20%,transparent)_0%,transparent_38%),radial-gradient(circle_at_84%_20%,color-mix(in_oklab,var(--accent)_16%,transparent)_0%,transparent_42%),radial-gradient(circle_at_50%_72%,color-mix(in_oklab,var(--primary)_12%,transparent)_0%,transparent_48%)]" />
+      <section className="relative overflow-hidden pt-20 md:pt-24 lg:pt-28">
+        <div className="absolute inset-0 -z-20 bg-background" />
+        <div className="absolute inset-0 -z-10 animate-wave-grid bg-[linear-gradient(to_right,color-mix(in_oklab,var(--primary)_23%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--primary)_18%,transparent)_1px,transparent_1px)] bg-[size:34px_34px] opacity-80" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_10%,color-mix(in_oklab,var(--primary)_22%,transparent)_0%,transparent_40%),radial-gradient(circle_at_84%_20%,color-mix(in_oklab,var(--accent)_18%,transparent)_0%,transparent_42%),linear-gradient(to_bottom,transparent_62%,color-mix(in_oklab,var(--background)_96%,white)_100%)]" />
 
-      <section className="container relative pt-20 md:pt-24 lg:pt-28">
-        <div className="absolute right-0 top-0 z-20 flex gap-3">
-          <Button asChild variant="outline" className="bg-background/80 backdrop-blur-xl">
-            <Link href="/auth/signin">Log In</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/auth/signup">Sign Up</Link>
-          </Button>
-        </div>
-
-        <div className="mx-auto max-w-5xl text-center fade-in-section">
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-border/60 bg-background/75 px-6 py-2 backdrop-blur-xl">
-            <Image src="/logo.png" alt="StudyRx Logo" width={28} height={28} className="h-7 w-7" />
-            <span className="text-sm font-semibold text-foreground">StudyRx · HOSA Competitive Prep</span>
-          </div>
-
-          <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Train with purpose.
-            <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-[shimmer_3.6s_ease-in-out_infinite]">
-              Compete with confidence.
-            </span>
-          </h1>
-
-          <p className="mx-auto mb-8 max-w-3xl text-base text-muted-foreground md:text-lg">
-            StudyRx gives HOSA students structured practice, precise feedback, and clear progress signals so each session moves you forward.
-          </p>
-
-          <div className="mb-10 flex flex-wrap items-center justify-center gap-4">
-            <Button asChild size="lg" className="min-w-44">
-              <Link href="/auth/signup">
-                Start Practicing
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+        <div className="container relative pb-16 md:pb-20">
+          <div className="absolute right-0 top-4 z-20 flex gap-3 md:top-6">
+            <Button asChild variant="outline" className="bg-background/80 backdrop-blur-xl">
+              <Link href="/auth/signin">Log In</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="min-w-44">
-              <Link href="/events">Browse Events</Link>
+            <Button asChild>
+              <Link href="/auth/signup">Sign Up</Link>
             </Button>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {TRACKED_METRICS.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.label} className="glass-card fade-in-section rounded-2xl border-border/50 px-4 py-4 text-left" style={{ transitionDelay: `${idx * 80}ms` }}>
-                  <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/15">
-                    <Icon className="h-5 w-5 text-primary" />
+          <div className="mx-auto max-w-5xl text-center fade-in-section">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-border/60 bg-background/75 px-6 py-2 backdrop-blur-xl">
+              <Image src="/logo.png" alt="StudyRx Logo" width={28} height={28} className="h-7 w-7" />
+              <span className="text-sm font-semibold text-foreground">StudyRx · HOSA Competitive Prep</span>
+            </div>
+
+            <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+              Train with purpose.
+              <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-[shimmer_3.6s_ease-in-out_infinite]">
+                Compete with confidence.
+              </span>
+            </h1>
+
+            <p className="mx-auto mb-8 max-w-3xl text-base text-muted-foreground md:text-lg">
+              StudyRx gives HOSA students structured practice, targeted correction, and progression signals so every session improves real competition outcomes.
+            </p>
+
+            <div className="mb-10 flex flex-wrap items-center justify-center gap-4">
+              <Button asChild size="lg" className="min-w-44">
+                <Link href="/auth/signup">
+                  Start Practicing
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="min-w-44">
+                <Link href="/events">Browse Events</Link>
+              </Button>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {METRICS.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.label} className="glass-card fade-in-section rounded-2xl border-border/50 px-4 py-4 text-left" style={{ transitionDelay: `${idx * 80}ms` }}>
+                    <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/15">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground">{item.label}</p>
+                    <p className="mt-1 text-2xl font-bold text-foreground">{item.value}</p>
+                    <p className="text-sm text-primary">{item.hint}</p>
                   </div>
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">{item.label}</p>
-                  <p className="mt-1 text-2xl font-bold text-foreground">{item.value}</p>
-                  <p className="text-sm text-primary">{item.delta}</p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="container py-16">
-        <div className="grid gap-8 md:grid-cols-2 fade-in-section">
-          <Card className="border-primary/20 bg-card/75">
+        <div className="mb-8 text-center fade-in-section">
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">How StudyRx is different</h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground">If your prep stack is Quizlet + PDFs + textbook highlights, you’re working hard—but not always strategically.</p>
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-primary/20 bg-card/80 fade-in-section">
+          <table className="w-full text-left text-sm md:text-base">
+            <thead className="bg-primary/8 text-foreground">
+              <tr className="border-b border-border/50">
+                <th className="px-4 py-3 font-semibold">Dimension</th>
+                <th className="px-4 py-3 font-semibold text-primary">StudyRx</th>
+                <th className="px-4 py-3 font-semibold">Quizlet / PDFs / Textbooks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON_ROWS.map((row) => (
+                <tr key={row.category} className="border-b border-border/30 last:border-none">
+                  <td className="px-4 py-3 font-medium text-foreground">{row.category}</td>
+                  <td className="px-4 py-3 text-primary">{row.studyrx}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{row.alternatives}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="container py-16">
+        <div className="mb-10 text-center fade-in-section">
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">Inside a real practice session</h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground">Not abstract “architecture”—here’s exactly what a rep looks like from first question to correction loop.</p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-3 fade-in-section">
+          <Card className="border-primary/20 bg-card/80 lg:col-span-2">
             <CardContent className="p-6">
-              <h3 className="mb-5 flex items-center gap-3 text-xl font-semibold text-foreground">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10"><Target className="h-4 w-4 text-primary" /></span>
-                Why this works
-              </h3>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-start gap-3"><span className="mt-2 h-2 w-2 rounded-full bg-primary" />Event-first practice, not generic test prep.</li>
-                <li className="flex items-start gap-3"><span className="mt-2 h-2 w-2 rounded-full bg-primary" />Weak-area visibility after every session.</li>
-                <li className="flex items-start gap-3"><span className="mt-2 h-2 w-2 rounded-full bg-primary" />Review loops that reinforce memory long-term.</li>
-              </ul>
+              <p className="mb-3 text-xs uppercase tracking-wide text-muted-foreground">Sample prompt · Medical Terminology</p>
+              <p className="mb-4 text-lg font-semibold text-foreground">Which term means “abnormal softening of bone?”</p>
+              <div className="grid gap-2 md:grid-cols-2">
+                {["Osteitis", "Osteomalacia", "Osteoma", "Osteotomy"].map((option, idx) => (
+                  <div key={option} className={`rounded-xl border px-3 py-2 text-sm ${idx === 1 ? "border-primary/35 bg-primary/10 text-foreground" : "border-border/50 bg-background/60 text-muted-foreground"}`}>
+                    {String.fromCharCode(65 + idx)}. {option}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm text-muted-foreground">
+                You chose <span className="font-semibold text-foreground">A</span>. Correct answer: <span className="font-semibold text-primary">B (Osteomalacia)</span>. Explanation is shown instantly and the question is stored for scheduled re-test.
+              </div>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/25 bg-gradient-to-br from-primary/10 to-accent/10">
+          <Card className="border-primary/20 bg-card/80">
             <CardContent className="p-6">
-              <h3 className="mb-5 flex items-center gap-3 text-xl font-semibold text-foreground">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground"><Check className="h-4 w-4" /></span>
-                Session architecture
-              </h3>
-              <div className="space-y-3">
-                {PRACTICE_FLOW.map((item, idx) => (
-                  <div key={item} className="flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 px-3 py-2">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">{idx + 1}</span>
-                    <span className="text-sm text-foreground">{item}</span>
+              <h3 className="mb-4 text-lg font-semibold text-foreground">What happens next</h3>
+              <div className="space-y-3 text-sm">
+                {[
+                  "Missed question is saved to your mistake queue.",
+                  "It returns in short interval review.",
+                  "If missed again, interval tightens.",
+                  "If solved twice, interval expands.",
+                ].map((line, idx) => (
+                  <div key={line} className="flex items-start gap-3 rounded-xl border border-border/50 bg-background/60 px-3 py-2">
+                    <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">{idx + 1}</span>
+                    <span className="text-muted-foreground">{line}</span>
                   </div>
                 ))}
               </div>
@@ -139,31 +216,20 @@ export default function HomePage() {
       </section>
 
       <section className="container py-16">
-        <div className="mb-10 text-center fade-in-section">
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Visual feedback that changes how you study</h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">Instead of guessing what to study next, you get immediate analytics and next-step clarity.</p>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] fade-in-section">
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_1fr] fade-in-section">
           <Card className="border-primary/20 bg-card/80">
             <CardContent className="p-7">
-              <h4 className="mb-5 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Live dashboard sample</h4>
+              <h2 className="mb-3 text-2xl font-bold text-foreground md:text-3xl">Mistake Tracking System</h2>
+              <p className="mb-5 text-muted-foreground">This is the core engine: misses are not forgotten—they are transformed into targeted review tasks.</p>
               <div className="space-y-4">
                 {[
-                  { name: "Medical Terminology", score: 92 },
-                  { name: "Pharmacology", score: 85 },
-                  { name: "Nutrition", score: 78 },
-                  { name: "Behavioral Health", score: 81 },
-                  { name: "Dental Terminology", score: 88 },
+                  { title: "Mistakes are stored", text: "Every incorrect response is tagged by event + topic and queued automatically." },
+                  { title: "Re-tested at intervals", text: "Re-appears sooner when unstable, later when mastery improves." },
+                  { title: "Weak topics surface", text: "Topic dashboards expose recurring misses before competition day." },
                 ].map((item) => (
-                  <div key={item.name}>
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground">{item.name}</span>
-                      <span className="text-sm font-semibold text-primary">{item.score}%</span>
-                    </div>
-                    <div className="h-2.5 rounded-full bg-muted">
-                      <div className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-1000" style={{ width: `${item.score}%` }} />
-                    </div>
+                  <div key={item.title} className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
+                    <p className="font-semibold text-foreground">{item.title}</p>
+                    <p className="text-sm text-muted-foreground">{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -172,20 +238,21 @@ export default function HomePage() {
 
           <Card className="border-primary/20 bg-card/80">
             <CardContent className="p-7">
-              <h4 className="mb-5 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Performance mix</h4>
-              <div className="space-y-5">
+              <h4 className="mb-5 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Weak-topic surfacing</h4>
+              <div className="space-y-4">
                 {[
-                  { label: "Strong", percent: 47 },
-                  { label: "Developing", percent: 34 },
-                  { label: "Needs review", percent: 19 },
-                ].map((slice) => (
-                  <div key={slice.label}>
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-sm text-foreground">{slice.label}</span>
-                      <span className="text-sm font-semibold text-primary">{slice.percent}%</span>
+                  { topic: "Prefixes & suffixes", misses: 12 },
+                  { topic: "Pharm categories", misses: 9 },
+                  { topic: "Anatomical planes", misses: 7 },
+                  { topic: "Pathway sequencing", misses: 6 },
+                ].map((item) => (
+                  <div key={item.topic}>
+                    <div className="mb-2 flex items-center justify-between text-sm">
+                      <span className="text-foreground">{item.topic}</span>
+                      <span className="font-semibold text-primary">{item.misses} misses</span>
                     </div>
-                    <div className="h-3 rounded-full bg-muted/80">
-                      <div className="h-full rounded-full bg-gradient-to-r from-primary to-accent" style={{ width: `${slice.percent}%` }} />
+                    <div className="h-2.5 rounded-full bg-muted/80">
+                      <div className="h-full rounded-full bg-gradient-to-r from-primary to-accent" style={{ width: `${item.misses * 6}%` }} />
                     </div>
                   </div>
                 ))}
@@ -197,8 +264,39 @@ export default function HomePage() {
 
       <section className="container py-16">
         <div className="mb-10 text-center fade-in-section">
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Train by real events</h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">Each event has its own flow, standards, and pacing—so the practice should too.</p>
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">Built for HOSA events, not generic prep</h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground">Depth matters. Every event module is structured around real competition expectations.</p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3 fade-in-section">
+          <Card className="border-primary/20 bg-card/80">
+            <CardContent className="p-6 text-center">
+              <BarChart3 className="mx-auto mb-4 h-6 w-6 text-primary" />
+              <p className="mb-1 text-3xl font-bold text-foreground">250+</p>
+              <p className="text-sm text-muted-foreground">questions per major event set</p>
+            </CardContent>
+          </Card>
+          <Card className="border-primary/20 bg-card/80">
+            <CardContent className="p-6 text-center">
+              <Check className="mx-auto mb-4 h-6 w-6 text-primary" />
+              <p className="mb-1 text-3xl font-bold text-foreground">Guideline-aligned</p>
+              <p className="text-sm text-muted-foreground">mapped to official event expectations</p>
+            </CardContent>
+          </Card>
+          <Card className="border-primary/20 bg-card/80">
+            <CardContent className="p-6 text-center">
+              <TriangleAlert className="mx-auto mb-4 h-6 w-6 text-primary" />
+              <p className="mb-1 text-3xl font-bold text-foreground">3 tiers</p>
+              <p className="text-sm text-muted-foreground">Regionals → SLC → ILC progression</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="container py-16">
+        <div className="mb-10 text-center fade-in-section">
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">Train by real events</h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground">Each event has its own pacing and structure. Your practice should match that reality.</p>
         </div>
 
         <div className="relative mx-auto max-w-4xl fade-in-section">
@@ -254,36 +352,28 @@ export default function HomePage() {
 
       <section className="container py-16">
         <div className="mb-10 text-center fade-in-section">
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Who gets value fastest</h2>
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">Early social proof</h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground">What beta users said after switching from passive review workflows.</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3 fade-in-section">
-          {[
-            { icon: Users, title: "HOSA members", text: "Students preparing for event placement with clearer structure." },
-            { icon: Brain, title: "Focused learners", text: "Anyone who wants less chaos and more measurable progress." },
-            { icon: Sparkles, title: "Competitive teams", text: "Chapters building consistent prep systems across events." },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <Card key={item.title} className="border-primary/20 bg-card/75">
-                <CardContent className="p-6 text-center">
-                  <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/12">
-                    <Icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-semibold text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.text}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+          {TESTIMONIALS.map((item) => (
+            <Card key={item.name} className="border-primary/20 bg-card/80">
+              <CardContent className="p-6">
+                <p className="mb-4 text-sm text-muted-foreground">“{item.quote}”</p>
+                <p className="font-semibold text-foreground">{item.name}</p>
+                <p className="text-xs text-primary">{item.event} · {item.result}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
       <section className="container py-16 md:py-20">
         <div className="mx-auto max-w-4xl text-center fade-in-section">
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">Ready to walk into competition prepared?</h2>
+          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">Ready to prep like a finalist?</h2>
           <p className="mx-auto mb-8 max-w-2xl text-base md:text-lg text-muted-foreground">
-            StudyRx gives you the structure, feedback, and momentum to train with confidence from day one to finals.
+            StudyRx combines structure, correction loops, and measurable progress so you can train intentionally from first practice to ILC.
           </p>
           <Button asChild size="lg" className="px-10">
             <Link href="/dashboard">
