@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { HOSA_EVENTS_DISPLAY_ORDER as HOSA_EVENTS } from "@/lib/events";
 import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
+import { getStoredAuth } from "@/lib/rtdb";
 
 const metrics = [
   { label: "Avg Accuracy", value: "89%", detail: "+12% in 4 weeks" },
@@ -58,6 +59,27 @@ function countQuestionsInPayload(payload: unknown): number {
   return 0;
 }
 
+async function fetchRealtimeJson(path: string) {
+  const auth = await getStoredAuth().catch(() => null);
+  const authedUrl = auth?.idToken
+    ? `${FIREBASE_DATABASE_URL}/${path}.json?auth=${encodeURIComponent(auth.idToken)}`
+    : null;
+
+  if (authedUrl) {
+    const authedRes = await fetch(authedUrl).catch(() => null);
+    if (authedRes?.ok) {
+      return authedRes.json();
+    }
+  }
+
+  const publicRes = await fetch(`${FIREBASE_DATABASE_URL}/${path}.json`).catch(() => null);
+  if (publicRes?.ok) {
+    return publicRes.json();
+  }
+
+  return null;
+}
+
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [impactStats, setImpactStats] = useState<ImpactStat[]>([
@@ -87,16 +109,44 @@ export default function HomePage() {
 
   useEffect(() => {
     const loadImpact = async () => {
-      const [stats, questionBank] = await Promise.all([
-        fetch(`${FIREBASE_DATABASE_URL}/admin_stats/sitewide.json`).then((res) => (res.ok ? res.json() : null)).catch(() => null),
-        fetch(`${FIREBASE_DATABASE_URL}/questions.json`).then((res) => (res.ok ? res.json() : null)).catch(() => null),
+      const [stats, localQuestionPacks] = await Promise.all([
+        fetchRealtimeJson("admin_stats/sitewide"),
+        Promise.all(
+          HOSA_EVENTS.map((event) =>
+            fetch(`/questions/${event.id}.json`)
+              .then((res) => (res.ok ? res.json() : []))
+              .catch(() => [])
+          )
+        ),
       ]);
 
+      const localQuestionCount = localQuestionPacks.reduce((sum, pack) => sum + (Array.isArray(pack) ? pack.length : countQuestionsInPayload(pack)), 0);
+      const dbQuestionCount = Number((stats as any)?.contentAnalytics?.totalQuestionsAvailable ?? 0);
+      const totalQuestionBank = Math.max(localQuestionCount, dbQuestionCount);
+      const liveUsers = Number(stats?.adoption?.totalUsers ?? 0);
+      const liveAttempted = Number(stats?.contentAnalytics?.totalQuestionsAttempted ?? 0);
+      const liveSessions = Number(stats?.engagement?.totalSessionsCompleted ?? 0);
+
+      const hasLiveAdminStats = liveUsers > 0 || liveAttempted > 0 || liveSessions > 0;
+      const cachedRaw = typeof window !== "undefined" ? window.localStorage.getItem("studyrx_live_impact") : null;
+      const cached = cachedRaw ? (JSON.parse(cachedRaw) as { users: number; attempted: number; sessions: number } | null) : null;
+
+      const finalUsers = hasLiveAdminStats ? liveUsers : (cached?.users ?? 0);
+      const finalAttempted = hasLiveAdminStats ? liveAttempted : (cached?.attempted ?? 0);
+      const finalSessions = hasLiveAdminStats ? liveSessions : (cached?.sessions ?? 0);
+
+      if (hasLiveAdminStats && typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "studyrx_live_impact",
+          JSON.stringify({ users: liveUsers, attempted: liveAttempted, sessions: liveSessions })
+        );
+      }
+
       setImpactStats([
-        { label: "Total Question Bank", value: countQuestionsInPayload(questionBank) },
-        { label: "Registered Users", value: Number(stats?.adoption?.totalUsers ?? 0) },
-        { label: "Questions Attempted", value: Number(stats?.contentAnalytics?.totalQuestionsAttempted ?? 0) },
-        { label: "Sessions Completed", value: Number(stats?.engagement?.totalSessionsCompleted ?? 0) },
+        { label: "Total Question Bank", value: totalQuestionBank },
+        { label: "Registered Users", value: finalUsers },
+        { label: "Questions Attempted", value: finalAttempted },
+        { label: "Sessions Completed", value: finalSessions },
       ]);
     };
 
