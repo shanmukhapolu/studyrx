@@ -88,7 +88,7 @@ function EventsContent() {
       </header>
 
       <main className="container mx-auto px-6 py-8 max-w-7xl">
-        <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+        <Card className="mb-8 border-primary/20 bg-card/75">
           <CardHeader>
             <CardTitle className="text-lg">Practice Tips</CardTitle>
           </CardHeader>
@@ -150,7 +150,7 @@ function EventsContent() {
               >
                 <CardHeader>
                   <div className="flex items-start justify-between mb-3">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isPublished ? "bg-gradient-to-br from-primary/20 to-secondary/10" : "bg-muted"}`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isPublished ? "bg-primary/12" : "bg-muted"}`}>
                       <Icon className={`h-6 w-6 ${isPublished ? "text-primary" : "text-muted-foreground"}`} />
                     </div>
                     {stats && isPublished && (

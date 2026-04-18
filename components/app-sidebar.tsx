@@ -70,17 +70,17 @@ export function AppSidebar() {
         <SidebarMenu className="space-y-2">
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton
-                asChild
-                isActive={pathname === item.href}
-                tooltip={item.title}
-                className="py-6"
-              >
-                <Link href={item.href}>
-                  <item.icon className="h-5 w-5" />
-                  <span className="text-base">{item.title}</span>
-                </Link>
-              </SidebarMenuButton>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === item.href}
+                  tooltip={item.title}
+                  className="py-3"
+                >
+                  <Link href={item.href}>
+                    <item.icon className="h-4 w-4" />
+                    <span className="text-sm">{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
@@ -94,11 +94,11 @@ export function AppSidebar() {
                   asChild
                   isActive={pathname === "/submit-question"}
                   tooltip="Submit Question"
-                  className="py-6"
+                  className="py-3"
                 >
                   <Link href="/submit-question">
-                    <FileQuestion className="h-5 w-5" />
-                    <span className="text-base">Submit Question</span>
+                    <FileQuestion className="h-4 w-4" />
+                    <span className="text-sm">Submit Question</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

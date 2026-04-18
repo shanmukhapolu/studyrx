@@ -210,7 +210,7 @@ function EventStats({ sessions, eventId, settings, onOpenSession }: { sessions: 
 
   return (
     <div className="space-y-5">
-      <header className="rounded-xl border border-primary/25 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 p-4">
+      <header className="rounded-xl border border-primary/25 bg-card/70 p-4">
         <h2 className="text-xl font-semibold">{getEventName(eventId)} Analytics</h2>
       </header>
 
@@ -476,7 +476,7 @@ function MasteryProjectionCard({ projection }: { projection: MasteryProjection }
   const alreadyMastered = projection.questionsNeeded === 0;
 
   return (
-    <div className="rounded-xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card to-secondary/5 p-4">
+    <div className="rounded-xl border border-primary/30 bg-card/75 p-4">
       <div className="flex items-center gap-2 text-sm font-semibold text-primary">
         <TrendingUp className="h-4 w-4" />
         Time to Mastery

@@ -680,7 +680,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
           
           <Card className="border-primary/20 shadow-none bg-card/50 backdrop-blur-md">
             <CardHeader className="text-center space-y-4 pb-8">
-              <div className="mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+              <div className="mx-auto w-20 h-20 rounded-2xl bg-primary/12 flex items-center justify-center">
                 <Icon className="h-10 w-10 text-primary" />
               </div>
               <CardTitle className="text-4xl font-bold">{eventName}</CardTitle>
@@ -779,7 +779,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="p-8 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl text-center border border-primary/20">
+              <div className="p-8 bg-card/75 rounded-xl text-center border border-primary/20">
                 <h3 className="text-3xl font-bold mb-3">Session Complete</h3>
                 <p className="text-muted-foreground text-lg">
                   Nice work. Review your results or jump into another session whenever you're ready.
@@ -899,7 +899,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
           <CardHeader>
             <div className="h-2 w-full rounded-full bg-muted overflow-hidden mb-5">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all"
+                className="h-full rounded-full bg-primary/70 transition-all"
                 style={{ width: `${((currentQueueIndex + 1) / Math.max(questionQueue.length, 1)) * 100}%` }}
               />
             </div>

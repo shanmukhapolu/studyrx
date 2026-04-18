@@ -31,8 +31,8 @@
   --radius: 1rem;
   --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-  --shadow-soft: 0 1px 3px color-mix(in oklab, var(--foreground) 5%, transparent), 0 6px 14px color-mix(in oklab, var(--foreground) 6%, transparent);
-  --shadow-layered: 0 1px 2px color-mix(in oklab, var(--foreground) 6%, transparent), 0 10px 20px color-mix(in oklab, var(--foreground) 8%, transparent);
+  --shadow-soft: 0 1px 2px color-mix(in oklab, var(--foreground) 4%, transparent);
+  --shadow-layered: 0 1px 3px color-mix(in oklab, var(--foreground) 5%, transparent);
 }
 
 .dark {
@@ -126,7 +126,7 @@
   }
 
   .section-shell {
-    @apply py-16 md:py-20;
+    @apply py-12 md:py-14;
   }
 
   .app-surface {
@@ -158,7 +158,7 @@
   }
 
   .floating-wave {
-    background: linear-gradient(90deg, color-mix(in oklab, var(--primary) 18%, transparent), color-mix(in oklab, var(--secondary) 20%, transparent));
+    background: color-mix(in oklab, var(--primary) 18%, transparent);
     filter: blur(36px);
     animation: drift 8s ease-in-out infinite;
   }

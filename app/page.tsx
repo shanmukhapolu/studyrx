@@ -67,17 +67,23 @@ export default function HomePage() {
       <section className="relative border-b border-border/40">
         <div className="hero-grid absolute inset-0" />
         <div className="floating-wave pointer-events-none absolute inset-x-0 top-[-140px] mx-auto h-[300px] w-[72vw] rounded-full" />
-        <div className="page-shell section-shell relative pt-8 md:pt-10">
-          <div className="absolute top-2 right-0 flex items-center gap-3 md:top-3 md:right-2">
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/auth/signin">Log in</Link>
-            </Button>
-            <Button asChild size="sm">
-              <Link href="/auth/signup">Get started</Link>
-            </Button>
+        <div className="page-shell section-shell relative pt-6 md:pt-8">
+          <div className="mb-10 flex items-center justify-between">
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <Image src="/logo.png" alt="StudyRx Logo" width={28} height={28} className="h-7 w-7" />
+              <span className="text-lg font-semibold text-foreground">StudyRx</span>
+            </Link>
+            <div className="flex items-center gap-3">
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/auth/signin">Log in</Link>
+              </Button>
+              <Button asChild size="sm">
+                <Link href="/auth/signup">Get started</Link>
+              </Button>
+            </div>
           </div>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="grid items-center gap-8 pt-4 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="reveal-up space-y-8">
               <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/60 px-4 py-2 text-xs font-semibold tracking-wide text-primary">
                 <Sparkles className="h-3.5 w-3.5" />
@@ -124,7 +130,7 @@ export default function HomePage() {
                       <span className="font-semibold text-primary">{item.score}%</span>
                     </div>
                     <div className="h-2 overflow-hidden rounded-full bg-muted">
-                      <div className="h-full rounded-full bg-gradient-to-r from-primary to-secondary" style={{ width: `${item.score}%` }} />
+                      <div className="h-full rounded-full bg-primary/70" style={{ width: `${item.score}%` }} />
                     </div>
                   </div>
                 ))}
