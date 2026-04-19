@@ -13,7 +13,7 @@ import { DEFAULT_USER_SETTINGS, storage, type Question, type SessionData, type U
 import { formatDuration } from "@/lib/session-analytics";
 import { getEventById, getEventName } from "@/lib/events";
 import { 
-  Brain, 
+  Brain,
   CheckCircle2, 
   XCircle, 
   Trophy, 

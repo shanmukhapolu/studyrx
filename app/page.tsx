@@ -100,9 +100,9 @@ function useUnderlineReveal() {
 /* ─── static data ─────────────────────────────────────── */
 
 const metrics = [
-  { label: "Avg Accuracy", value: "89%", detail: "+12% in 4 weeks" },
-  { label: "Practice Sessions", value: "14.2", detail: "per learner / week" },
-  { label: "Weak Topic Recovery", value: "2.6x", detail: "faster than random review" },
+  { label: "Avg Accuracy", value: "90.2%", detail: "+12% in 4 weeks" },
+  { label: "Avg Improvement", value: "7.3%", detail: "per user" },
+  { label: "Return Rate", value: "72.7%", detail: "after first session" },
 ];
 
 const features = [
@@ -127,13 +127,13 @@ const howItWorksSteps = [
   {
     step: "01",
     title: "Choose your event",
-    desc: "Select from a library of HOSA competitive events — Medical Terminology, Anatomy, Pharmacology, and more.",
+    desc: "Select from a library of HOSA competitive events: Medical Terminology, Anatomy, Pharmacology, and more.",
     icon: BookOpen,
   },
   {
     step: "02",
     title: "Run a focused session",
-    desc: "Answer curated questions with a built-in timer. Timed or practice mode — you decide the pace.",
+    desc: "Answer curated questions with a built-in timer. Timed or practice mode, you decide the pace.",
     icon: Timer,
   },
   {
@@ -211,7 +211,7 @@ function HeroReadinessCard() {
         </p>
         <Trophy className="h-4 w-4 text-primary" />
       </div>
-      <p className="mb-4 text-xs text-muted-foreground">Anatomy &amp; Physiology · by system</p>
+      <p className="mb-4 text-xs text-muted-foreground">Anatomy &amp; Physiology</p>
       <div className="space-y-3">
         {readinessTopics.map((item) => {
           return (
@@ -327,8 +327,7 @@ function QuestionMockCard({ fillHeight }: { fillHeight?: boolean }) {
             <p className="mt-1 text-muted-foreground">
               <span className="font-medium text-foreground">Osteomalacia</span> combines{" "}
               <em>osteo-</em> (bone) + <em>-malacia</em> (softening), commonly caused by vitamin D
-              deficiency. This question is now in your{" "}
-              <span className="font-medium text-primary">mistake queue</span> for follow-up review.
+              deficiency.
             </p>
           </div>
         )}
@@ -682,9 +681,9 @@ export default function HomePage() {
           {/* mini stat strip */}
           <div className="reveal-up grid gap-px overflow-hidden rounded-xl border border-primary/20 md:grid-cols-3">
             {[
-              { value: "2.6x", label: "Faster weak-topic recovery vs. random review" },
-              { value: "94%", label: "Of users report meaningful score gains in 30 days" },
-              { value: "100%", label: "Of missed questions resurface before your next session" },
+              { value: "250+", label: "Mistakes resurfaced and relearned" },
+              { value: "94.8%", label: "Accuracy on previously missed questions" },
+              { value: "20%", label: "Of total study time spent reviewing mistakes" },
             ].map((stat) => (
               <div key={stat.label} className="bg-primary/5 px-6 py-5">
                 <p className="text-2xl font-semibold text-primary">{stat.value}</p>
