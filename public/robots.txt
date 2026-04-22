@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /settings
+Disallow: /analytics
+Disallow: /auth/
+
+Sitemap: https://studyrx.netlify.app/sitemap.xml
