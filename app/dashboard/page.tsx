@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Clock, Target, TrendingUp, ExternalLink, Sparkles, Zap } from "lucide-react";
 import { DEFAULT_USER_SETTINGS, storage, type UserSettings, type UserStats } from "@/lib/storage";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { useAuth } from "@/components/auth/auth-provider";
@@ -54,9 +54,10 @@ export default function DashboardPage() {
           <div className="flex flex-col flex-1">
             {/* Header */}
             <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-              <div className="flex h-16 items-center gap-4 px-6">
+              <div className="flex h-16 items-center gap-3 px-4 md:gap-4 md:px-6">
+                <SidebarTrigger className="md:hidden" />
                 <div className="flex-1">
-                  <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
+                  <h1 className="text-xl font-bold text-foreground md:text-2xl">Dashboard</h1>
                   <p className="text-sm text-muted-foreground">
                     Hi {profile?.firstName || "there"}, how&apos;s it going? Your practice overview and resources.
                   </p>
@@ -65,7 +66,7 @@ export default function DashboardPage() {
             </header>
 
             {/* Main Content */}
-            <main className="flex-1 p-6 space-y-6">
+            <main className="flex-1 space-y-6 p-4 md:p-6">
               <div className="rounded-2xl glass-card tech-border p-5 bg-card/70">
                 <h2 className="text-lg font-semibold flex items-center gap-2"><Sparkles className="h-5 w-5 text-primary" /> Study Command Center</h2>
                 <p className="text-sm text-muted-foreground mt-1">Track progress, launch practice quickly, and keep your prep streak alive.</p>

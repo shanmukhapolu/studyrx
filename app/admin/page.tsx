@@ -7,7 +7,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { useAuth } from "@/components/auth/auth-provider";
 import { AdminGuard } from "@/components/auth/admin-guard";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -301,6 +301,7 @@ function AdminContent() {
       referralData: buildPieData(onboardedUsers.map((user) => user.referralSource || "")),
       experienceData: buildPieData(onboardedUsers.map((user) => user.experienceLevel || "")),
       goalData: buildPieData(onboardedUsers.map((user) => user.goal || "")),
+      charterOrgData: buildPieData(onboardedUsers.map((user) => user.charterOrganization || "")),
     };
   }, [users]);
   const contentEventRows = useMemo(() => {
@@ -451,13 +452,16 @@ function AdminContent() {
   };
 
   return (
-    <div className="flex-1 overflow-auto p-6">
-      <h1 className="mb-6 text-3xl font-bold">Admin Dashboard</h1>
+    <div className="flex-1 overflow-auto p-4 md:p-6">
+      <div className="mb-4 flex items-center gap-3 md:mb-6">
+        <SidebarTrigger className="md:hidden" />
+        <h1 className="text-2xl font-bold md:text-3xl">Admin Dashboard</h1>
+      </div>
       {loading ? (
         <p className="text-muted-foreground">Loading admin data...</p>
       ) : (
         <Tabs defaultValue="users">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid h-auto w-full grid-cols-2 gap-1 md:grid-cols-3 xl:grid-cols-6">
             <TabsTrigger value="users">User Management</TabsTrigger>
             <TabsTrigger value="stats">Sitewide Stats</TabsTrigger>
             <TabsTrigger value="events">Event Requests</TabsTrigger>
@@ -670,6 +674,7 @@ function AdminContent() {
                   </div>
                 </div>
                 <div className="grid gap-4 xl:grid-cols-2">
+                  <DemographicPieChart title="Charter Organization (State)" data={demographicStats.charterOrgData} />
                   <DemographicPieChart title="Grade" data={demographicStats.gradeData} />
                   <DemographicPieChart title="Referral Source" data={demographicStats.referralData} />
                   <DemographicPieChart title="Experience Level" data={demographicStats.experienceData} />

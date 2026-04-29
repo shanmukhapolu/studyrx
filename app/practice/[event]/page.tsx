@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { DEFAULT_USER_SETTINGS, storage, type Question, type SessionData, type UserSettings } from "@/lib/storage";
 import { formatDuration } from "@/lib/session-analytics";
@@ -833,9 +833,10 @@ function PracticeContent({ eventId }: { eventId: string }) {
   return (
     <div className="flex-1 overflow-auto">
       <div className="border-b border-border/60 bg-card/70 backdrop-blur-xl sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 py-3 md:px-6 md:py-4">
           <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
+              <SidebarTrigger className="md:hidden" />
               <Button
                 variant="ghost"
                 size="sm"
@@ -885,7 +886,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-12 max-w-4xl">
+      <div className="container mx-auto max-w-4xl px-4 py-6 md:px-6 md:py-12">
         {sessionSaveError && (
           <div className="mb-4 rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
             {sessionSaveError}
