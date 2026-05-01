@@ -389,9 +389,20 @@ export const storage = {
 
   getSettings: async (): Promise<UserSettings> => {
     const raw = await dbGet<Partial<UserSettings> | null>("settings", null);
-    return {
+    const merged = {
       ...DEFAULT_USER_SETTINGS,
       ...(raw ?? {}),
+    } as Partial<UserSettings> & { sessionQuestionLimit?: unknown };
+
+    const validLimits: SessionQuestionLimit[] = [10, 25, 50, 100];
+    const normalizedLimit = validLimits.includes(merged.sessionQuestionLimit as SessionQuestionLimit)
+      ? (merged.sessionQuestionLimit as SessionQuestionLimit)
+      : DEFAULT_USER_SETTINGS.sessionQuestionLimit;
+
+    return {
+      accuracyGoal: typeof merged.accuracyGoal === "number" ? merged.accuracyGoal : DEFAULT_USER_SETTINGS.accuracyGoal,
+      showExplanationTime: typeof merged.showExplanationTime === "boolean" ? merged.showExplanationTime : DEFAULT_USER_SETTINGS.showExplanationTime,
+      sessionQuestionLimit: normalizedLimit,
     };
   },
 
