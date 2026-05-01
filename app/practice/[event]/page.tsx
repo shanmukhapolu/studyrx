@@ -10,6 +10,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { DEFAULT_USER_SETTINGS, storage, type Question, type SessionData, type UserSettings } from "@/lib/storage";
+import { todayDateString, updateProgress } from "@/lib/spaced-repetition";
 import { formatDuration } from "@/lib/session-analytics";
 import { getEventById, getEventName } from "@/lib/events";
 import { 
@@ -46,64 +47,17 @@ interface QueueItem {
   isRedemption: boolean;
 }
 
-type PracticeStage = "practice" | "redemption";
-
-function randomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function toQueueItems(questionIds: number[], isRedemption: boolean) {
   return questionIds.map((questionId) => ({ questionId, isRedemption }));
 }
 
-function interleaveFuturePool(baseIds: number[], wrongPool: number[]) {
-  if (wrongPool.length === 0) return baseIds;
-
-  const shuffledWrong = shuffleArray(wrongPool);
-  if (baseIds.length === 0) return shuffledWrong;
-
-  const queue = [...baseIds];
-  let insertIndex = randomInt(5, 10);
-  let wrongIndex = 0;
-
-  while (wrongIndex < shuffledWrong.length && insertIndex < queue.length) {
-    queue.splice(insertIndex, 0, shuffledWrong[wrongIndex]);
-    wrongIndex += 1;
-    insertIndex += randomInt(5, 10) + 1;
-  }
-
-  return queue;
-}
-
-function buildPracticeQueue({
-  questions,
-  remainingQuestions,
-  wrongPool,
-  settings,
-}: {
-  questions: Question[];
-  remainingQuestions: Question[];
-  wrongPool: number[];
-  settings: UserSettings;
-}) {
-  const remainingIds = shuffleArray(remainingQuestions.map((question) => question.id));
-  const validWrongPool = shuffleArray(wrongPool.filter((questionId) => questions.some((question) => question.id === questionId)));
-
-  if (settings.sessionQuestionLimit === "unlimited") {
-    const queueIds = settings.redemptionRoundEnabled ? remainingIds : interleaveFuturePool(remainingIds, validWrongPool);
-    return toQueueItems(queueIds, false);
-  }
-
-  const limit = settings.sessionQuestionLimit;
-  if (settings.redemptionRoundEnabled) {
-    return toQueueItems(remainingIds.slice(0, limit), false);
-  }
-
-  const injectedWrongCount = validWrongPool.length > 0 ? Math.min(validWrongPool.length, Math.max(1, Math.round(limit * (randomInt(10, 20) / 100)))) : 0;
-  const injectedWrongIds = validWrongPool.slice(0, injectedWrongCount);
-  const freshIds = remainingIds.filter((questionId) => !injectedWrongIds.includes(questionId)).slice(0, Math.max(limit - injectedWrongIds.length, 0));
-  const combined = shuffleArray([...freshIds, ...injectedWrongIds]).slice(0, limit);
-  return toQueueItems(combined, false);
+function buildPracticeQueue({ questions, progress, today }: { questions: Question[]; progress: Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>; today: string; }) {
+  const due = questions.filter((q) => {
+    const p = progress[String(q.id)];
+    if (!p) return true;
+    return p.nextDueDate <= today;
+  });
+  return toQueueItems(shuffleArray(due.map((q) => q.id)), false);
 }
 
 export default function PracticePage({ params }: { params: Promise<{ event: string }> }) {
@@ -149,8 +103,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [isEndingSession, setIsEndingSession] = useState(false);
   const [sessionSaveError, setSessionSaveError] = useState<string | null>(null);
   const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
-  const [practiceStage, setPracticeStage] = useState<PracticeStage>("practice");
-  const [sessionWrongQuestionIds, setSessionWrongQuestionIds] = useState<number[]>([]);
+  const [questionProgress, setQuestionProgress] = useState<Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>>({});
   const [baseQueueLength, setBaseQueueLength] = useState(0);
   const [showReportModal, setShowReportModal] = useState(false);
   const [reportReason, setReportReason] = useState("Incorrect answer");
@@ -272,26 +225,19 @@ function PracticeContent({ eventId }: { eventId: string }) {
       const questions: Question[] = await res.json();
       setAllQuestions(questions);
 
-      const [completedQuestions, wrongPool, loadedSettings] = await Promise.all([
-        storage.getCompletedQuestions(eventId),
-        storage.getWrongQuestions(eventId),
+      const [loadedProgress, loadedSettings] = await Promise.all([
+        storage.getQuestionProgress(eventId),
         storage.getSettings(),
       ]);
 
       setSettings(loadedSettings);
 
-      const remainingQuestions = questions.filter((q) => !completedQuestions.includes(q.id));
-
-      if (remainingQuestions.length === 0 && (!wrongPool.length || loadedSettings.redemptionRoundEnabled)) {
+      setQuestionProgress(loadedProgress);
+      const queue = buildPracticeQueue({ questions, progress: loadedProgress, today: todayDateString() });
+      if (queue.length === 0) {
         setIsComplete(true);
         setShowConfetti(true);
       } else {
-        const queue = buildPracticeQueue({
-          questions,
-          remainingQuestions,
-          wrongPool,
-          settings: loadedSettings,
-        });
         setQuestionQueue(queue);
         setBaseQueueLength(queue.length);
       }
@@ -316,8 +262,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const startPractice = () => {
     const newSession: SessionData = storage.createSession(eventId, "practice");
     setSessionData(newSession);
-    setPracticeStage("practice");
-    setSessionWrongQuestionIds([]);
     setSessionSummary(null);
     setHasPersistedSession(false);
     setCurrentQueueIndex(0);
@@ -381,29 +325,15 @@ function PracticeContent({ eventId }: { eventId: string }) {
     
     if (isCorrect) {
       setCorrectCount(prev => prev + 1);
-      void storage.addCompletedQuestion(eventId, currentQuestion.id);
-      if (!currentQueueItem.isRedemption) {
-        void storage.removeWrongQuestion(eventId, currentQuestion.id);
-      }
-      setSessionWrongQuestionIds((prev) => prev.filter((questionId) => questionId !== currentQuestion.id));
+
     } else {
       setIncorrectCount(prev => prev + 1);
-      if (!currentQueueItem.isRedemption) {
-        setSessionWrongQuestionIds((prev) => (prev.includes(currentQuestion.id) ? prev : [...prev, currentQuestion.id]));
-        if (!settings.redemptionRoundEnabled) {
-          void storage.addWrongQuestion(eventId, currentQuestion.id);
-        }
-      } else {
-        setQuestionQueue((prev) => [
-          ...prev,
-          {
-            questionId: currentQuestion.id,
-            isRedemption: true,
-          },
-        ]);
-      }
+
     }
 
+    const nextProgress = { ...questionProgress, [String(currentQuestion.id)]: updateProgress(currentQuestion.id, questionProgress[String(currentQuestion.id)], isCorrect, thinkTime) };
+    setQuestionProgress(nextProgress);
+    void storage.saveQuestionProgress(eventId, nextProgress);
     setIsAnswered(true);
   };
 
@@ -453,19 +383,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
     const nextIndex = currentQueueIndex + 1;
     
     if (nextIndex >= questionQueue.length) {
-      if (practiceStage === "practice" && settings.redemptionRoundEnabled && sessionWrongQuestionIds.length > 0) {
-        const redemptionQueue = toQueueItems(shuffleArray([...new Set(sessionWrongQuestionIds)]), true);
-        setQuestionQueue(redemptionQueue);
-        setCurrentQueueIndex(0);
-        setPracticeStage("redemption");
-        setSelectedAnswer(null);
-        setIsAnswered(false);
-        questionShownAtRef.current = performance.now();
-        thinkHiddenStartRef.current = null;
-        thinkPausedMsRef.current = 0;
-        return;
-      }
-
       setIsComplete(true);
       setShowConfetti(true);
       return;
@@ -569,23 +486,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
     if (!isComplete || hasPersistedSession || !sessionData) return;
     void persistSession();
   }, [isComplete, hasPersistedSession, sessionData]);
-
-  const handleStartRedemptionRound = () => {
-    if (sessionWrongQuestionIds.length === 0) {
-      setIsComplete(true);
-      setShowConfetti(true);
-      return;
-    }
-
-    setPracticeStage("redemption");
-    setQuestionQueue(toQueueItems(shuffleArray([...new Set(sessionWrongQuestionIds)]), true));
-    setCurrentQueueIndex(0);
-    setSelectedAnswer(null);
-    setIsAnswered(false);
-    questionShownAtRef.current = performance.now();
-    thinkHiddenStartRef.current = null;
-    thinkPausedMsRef.current = 0;
-  };
 
   const handleRestart = () => {
     window.location.reload();
@@ -691,7 +591,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
             <CardContent className="space-y-6">
               <div className="space-y-3 p-6 bg-muted/30 rounded-xl">
                 <div className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm">
-                  Session length: <strong>{settings.sessionQuestionLimit === "unlimited" ? "Unlimited" : `${settings.sessionQuestionLimit} questions`}</strong> • Redemption round: <strong>{settings.redemptionRoundEnabled ? "On" : "Off"}</strong>
+                  Session length: <strong>{settings.sessionQuestionLimit === "unlimited" ? "Unlimited" : `${settings.sessionQuestionLimit} questions`}</strong>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -709,11 +609,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
                     <Trophy className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Redemption System</h4>
+                    <h4 className="font-semibold mb-1">Spaced Repetition System</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      {settings.redemptionRoundEnabled
-                        ? "Wrong answers move into a dedicated redemption round until you answer them correctly."
-                        : "Wrong answers are saved into a future review pool and sprinkled into later sessions."}
+                      Questions are rescheduled automatically using a deterministic spaced repetition algorithm.
                     </p>
                   </div>
                 </div>
@@ -724,9 +622,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
                   <div>
                     <h4 className="font-semibold mb-1">Complete Mastery</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      {settings.redemptionRoundEnabled
-                        ? "Practice focuses on your main round first, then finishes with redemption if needed."
-                        : "Practice ends with your session target, while missed questions feed your future review pool."}
+                      Correct and incorrect answers both affect future due dates to prevent memorization gaming.
                     </p>
                   </div>
                 </div>
@@ -872,14 +768,12 @@ function PracticeContent({ eventId }: { eventId: string }) {
             </div>
             {settings.sessionQuestionLimit === "unlimited" && (
               <Button
-                onClick={settings.redemptionRoundEnabled && practiceStage === "practice" ? handleStartRedemptionRound : handleEndSession}
+                onClick={handleEndSession}
                 variant="outline"
                 size="sm"
                 className="bg-transparent font-semibold"
               >
-                {settings.redemptionRoundEnabled && practiceStage === "practice"
-                  ? (sessionWrongQuestionIds.length > 0 ? "Redemption Round" : "Finish Session")
-                  : "End Session"}
+                End Session
               </Button>
             )}
           </div>
@@ -905,15 +799,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
               />
             </div>
             <div className="text-xs text-muted-foreground font-mono mb-2">
-              {practiceStage === "redemption" ? "Redemption" : "Question"} {currentQueueIndex + 1} / {practiceStage === "practice" ? baseQueueLength : questionQueue.length}
+              Question {currentQueueIndex + 1} / {questionQueue.length}
             </div>
             <div className="flex items-center gap-3 mb-4 flex-wrap">
-              {practiceStage === "redemption" && (
-                <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 border border-accent/30 px-5 py-2 text-sm font-bold">
-                  <Trophy className="h-4 w-4 text-accent" />
-                  <span className="text-accent">REDEMPTION</span>
-                </div>
-              )}
               
               {currentQuestion.tag && (
                 <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/30 px-4 py-2 text-sm font-medium">

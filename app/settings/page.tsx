@@ -202,13 +202,6 @@ function SettingsContent() {
               </div>
             </div>
 
-            <ToggleRow
-              label="Enable redemption round"
-              description="When enabled, wrong answers are handled in a dedicated redemption round instead of being saved only for future sessions."
-              checked={settings.redemptionRoundEnabled}
-              onChange={(checked) => setSettings((current) => ({ ...current, redemptionRoundEnabled: checked }))}
-            />
-
             <Button onClick={handleSaveStudySettings} disabled={savingSettings}>
               {savingSettings ? "Saving..." : "Save Study Settings"}
             </Button>
@@ -224,7 +217,7 @@ function SettingsContent() {
             </CardHeader>
             <CardContent className="space-y-5">
               <p className="text-sm text-muted-foreground">
-                This will permanently erase your analytics history, completed progress, current session state, and future wrong-question pool. This cannot be undone.
+                This will permanently erase your analytics history, spaced-repetition progress, and current session state. This cannot be undone.
               </p>
               <div className="flex gap-3 justify-end">
                 <Button variant="outline" className="bg-transparent" onClick={() => setShowResetModal(false)} disabled={resettingData}>Cancel</Button>

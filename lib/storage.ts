@@ -70,14 +70,12 @@ export interface UserSettings {
   accuracyGoal: number;
   sessionQuestionLimit: SessionQuestionLimit;
   showExplanationTime: boolean;
-  redemptionRoundEnabled: boolean;
 }
 
 export const DEFAULT_USER_SETTINGS: UserSettings = {
   accuracyGoal: 90,
   sessionQuestionLimit: 25,
   showExplanationTime: true,
-  redemptionRoundEnabled: true,
 };
 
 function createDeterministicSessionId() {
@@ -158,8 +156,7 @@ async function dbSet(path: string, value: unknown) {
 
 type EventRecord = {
   sessions?: Record<string, Partial<SessionData>>;
-  wrongQuestions?: number[];
-  completedQuestions?: number[];
+  questionProgress?: Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>;
 };
 
 type PersistedSessionRecord = Omit<SessionData, "attempts"> & {
@@ -335,47 +332,14 @@ export const storage = {
     };
   },
 
-  getWrongQuestions: async (eventId: string): Promise<number[]> => {
+
+  getQuestionProgress: async (eventId: string): Promise<Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>> => {
     const eventData = await dbGet<EventRecord | null>(`events/${eventId}`, null);
-    return eventData?.wrongQuestions ?? [];
+    return eventData?.questionProgress ?? {};
   },
 
-  addWrongQuestion: async (eventId: string, questionId: number) => {
-    try {
-      const wrong = await storage.getWrongQuestions(eventId);
-      if (!wrong.includes(questionId)) {
-        wrong.push(questionId);
-        await dbSet(`events/${eventId}/wrongQuestions`, wrong);
-      }
-    } catch (error) {
-      console.warn("Unable to persist wrong question", error);
-    }
-  },
-
-  removeWrongQuestion: async (eventId: string, questionId: number) => {
-    try {
-      const wrong = await storage.getWrongQuestions(eventId);
-      await dbSet(`events/${eventId}/wrongQuestions`, wrong.filter((id) => id !== questionId));
-    } catch (error) {
-      console.warn("Unable to remove wrong question", error);
-    }
-  },
-
-  getCompletedQuestions: async (eventId: string): Promise<number[]> => {
-    const eventData = await dbGet<EventRecord | null>(`events/${eventId}`, null);
-    return eventData?.completedQuestions ?? [];
-  },
-
-  addCompletedQuestion: async (eventId: string, questionId: number) => {
-    try {
-      const completed = await storage.getCompletedQuestions(eventId);
-      if (!completed.includes(questionId)) {
-        completed.push(questionId);
-        await dbSet(`events/${eventId}/completedQuestions`, completed);
-      }
-    } catch (error) {
-      console.warn("Unable to persist completed question", error);
-    }
+  saveQuestionProgress: async (eventId: string, progress: Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>) => {
+    await dbSet(`events/${eventId}/questionProgress`, progress);
   },
 
   getPracticedEvents: async (): Promise<string[]> => {
