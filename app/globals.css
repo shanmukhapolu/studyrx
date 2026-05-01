@@ -358,3 +358,9 @@
   .animation-delay-400 { animation-delay: 0.4s; animation-fill-mode: backwards; }
   .animation-delay-500 { animation-delay: 0.5s; animation-fill-mode: backwards; }
 }
+
+
+/* Keep iconography consistently blue unless locally overridden */
+.lucide {
+  color: hsl(var(--primary));
+}

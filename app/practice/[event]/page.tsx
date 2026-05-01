@@ -54,10 +54,17 @@ function toQueueItems(questionIds: number[], isRedemption: boolean) {
 function buildPracticeQueue({ questions, progress, today, limit }: { questions: Question[]; progress: Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>; today: string; limit: number; }) {
   const due = questions.filter((q) => {
     const p = progress[String(q.id)];
-    if (!p) return true;
-    return p.nextDueDate <= today;
+    return Boolean(p && p.repetitionCount > 0 && p.nextDueDate <= today);
   });
-  return toQueueItems(shuffleArray(due.map((q) => q.id)).slice(0, limit), false);
+  const fresh = questions.filter((q) => {
+    const p = progress[String(q.id)];
+    return !p || p.repetitionCount === 0;
+  });
+
+  const dueIds = shuffleArray(due.map((q) => q.id));
+  const freshIds = shuffleArray(fresh.map((q) => q.id));
+  const queueIds = [...dueIds, ...freshIds].slice(0, limit);
+  return toQueueItems(queueIds, false);
 }
 
 export default function PracticePage({ params }: { params: Promise<{ event: string }> }) {
@@ -235,7 +242,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
       setQuestionProgress(loadedProgress);
       const queue = buildPracticeQueue({ questions, progress: loadedProgress, today: todayDateString(), limit: loadedSettings.sessionQuestionLimit });
-      const dueTotal = questions.filter((q) => { const p = loadedProgress[String(q.id)]; return !p || p.nextDueDate <= todayDateString(); }).length;
+      const dueTotal = questions.filter((q) => { const p = loadedProgress[String(q.id)]; return Boolean(p && p.repetitionCount > 0 && p.nextDueDate <= todayDateString()); }).length;
       setRemainingDueCount(Math.max(0, dueTotal - queue.length));
       if (queue.length === 0) {
         setIsComplete(true);
@@ -837,7 +844,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 
                 if (showResult) {
                   if (isCorrect) {
-                    buttonClasses += " border-accent bg-accent/10 text-accent hover:bg-accent/10";
+                    buttonClasses += " border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20";
                   } else if (isSelected && !isCorrect) {
                     buttonClasses += " border-destructive bg-destructive/10 text-destructive hover:bg-destructive/10";
                   }
@@ -853,7 +860,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
                     disabled={isAnswered}
                     className={buttonClasses}
                   >
-                    <span className="mr-4 flex-shrink-0 font-mono text-sm text-muted-foreground font-bold">
+                    <span className="mr-4 flex-shrink-0 font-mono text-sm text-primary font-bold">
                       {String.fromCharCode(65 + index)}
                     </span>
                     <span className="flex-1">{option}</span>
