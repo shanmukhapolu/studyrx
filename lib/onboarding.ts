@@ -15,9 +15,8 @@ export const EXPERIENCE_LEVEL_OPTIONS = ["First year", "Returning competitor", "
 
 export const GOAL_OPTIONS = ["Just exploring", "Make SLC", "Make ILC"] as const;
 
-export const QUESTION_SESSION_OPTIONS = ["10", "25", "50", "100", "Infinite"] as const;
+export const QUESTION_SESSION_OPTIONS = ["10", "25", "50", "100"] as const;
 
-export const MISSED_QUESTION_HANDLING_OPTIONS = ["Focused Redemption Round", "Spaced Reinforcement"] as const;
 
 export const HOSA_CHARTER_ORGANIZATIONS = [
   "Alabama",
@@ -87,6 +86,5 @@ export interface OnboardingData {
   goal: string;
   charterOrganization: string;
   questionsPerSession: string;
-  missedQuestionHandling: string;
   onboardingCompleted: boolean;
 }

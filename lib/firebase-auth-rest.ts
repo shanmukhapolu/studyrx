@@ -37,7 +37,7 @@ export interface UserRecord {
   missedQuestionHandling?: string;
   onboardingCompleted?: boolean;
   settings?: {
-    sessionQuestionLimit?: 10 | 25 | 50 | 100 | "unlimited";
+    sessionQuestionLimit?: 10 | 25 | 50 | 100;
     redemptionRoundEnabled?: boolean;
   };
 }
@@ -281,7 +281,6 @@ export async function getUserRecord(idToken: string, uid: string): Promise<UserR
       userData.settings && typeof userData.settings === "object"
         ? {
             sessionQuestionLimit:
-              userData.settings.sessionQuestionLimit === "unlimited" ||
               userData.settings.sessionQuestionLimit === 10 ||
               userData.settings.sessionQuestionLimit === 25 ||
               userData.settings.sessionQuestionLimit === 50 ||
