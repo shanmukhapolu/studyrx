@@ -333,13 +333,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           payload.questionsPerSession === "Infinite"
             ? "unlimited"
             : Number(payload.questionsPerSession);
-        const redemptionRoundEnabled = payload.missedQuestionHandling === "Focused Redemption Round";
-
         await upsertUserRecord(currentSession.idToken, currentSession.user.uid, {
           ...payload,
           settings: {
             sessionQuestionLimit: sessionQuestionLimit === "unlimited" ? "unlimited" : (sessionQuestionLimit as 10 | 25 | 50 | 100),
-            redemptionRoundEnabled,
           },
           onboardingCompleted: true,
         });
