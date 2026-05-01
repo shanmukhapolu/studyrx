@@ -360,7 +360,3 @@
 }
 
 
-/* Keep iconography consistently blue unless locally overridden */
-.lucide {
-  color: #3b82f6;
-}
