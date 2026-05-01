@@ -64,7 +64,7 @@ export interface UserStats {
   };
 }
 
-export type SessionQuestionLimit = 10 | 25 | 50 | 100 | "unlimited";
+export type SessionQuestionLimit = 10 | 25 | 50 | 100;
 
 export interface UserSettings {
   accuracyGoal: number;

@@ -329,14 +329,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       },
       completeOnboarding: async (payload) => {
         const currentSession = await getFreshSession();
-        const sessionQuestionLimit =
-          payload.questionsPerSession === "Infinite"
-            ? "unlimited"
-            : Number(payload.questionsPerSession);
+        const sessionQuestionLimit = Number(payload.questionsPerSession) as 10 | 25 | 50 | 100;
         await upsertUserRecord(currentSession.idToken, currentSession.user.uid, {
           ...payload,
           settings: {
-            sessionQuestionLimit: sessionQuestionLimit === "unlimited" ? "unlimited" : (sessionQuestionLimit as 10 | 25 | 50 | 100),
+            sessionQuestionLimit,
           },
           onboardingCompleted: true,
         });

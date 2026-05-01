@@ -57,7 +57,7 @@
             ".validate": "newData.isNumber() && newData.val() >= 50 && newData.val() <= 100"
           },
           "sessionQuestionLimit": {
-            ".validate": "newData.isNumber() && (newData.val() == 10 || newData.val() == 25 || newData.val() == 50 || newData.val() == 100) || (newData.isString() && newData.val() == 'unlimited')"
+            ".validate": "newData.isNumber() && (newData.val() == 10 || newData.val() == 25 || newData.val() == 50 || newData.val() == 100)"
           },
           "showExplanationTime": {
             ".validate": "newData.isBoolean()"

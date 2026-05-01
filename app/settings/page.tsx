@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { DEFAULT_USER_SETTINGS, storage, type SessionQuestionLimit, type UserSettings } from "@/lib/storage";
 
-const sessionOptions: SessionQuestionLimit[] = [10, 25, 50, 100, "unlimited"];
+const sessionOptions: SessionQuestionLimit[] = [10, 25, 50, 100];
 
 export default function SettingsPage() {
   return (
@@ -195,7 +195,7 @@ function SettingsContent() {
                       onClick={() => setSettings((current) => ({ ...current, sessionQuestionLimit: option }))}
                       className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${active ? "border-primary bg-primary/10 text-primary" : "hover:bg-muted/50"}`}
                     >
-                      {option === "unlimited" ? "∞" : option}
+                      {option}
                     </button>
                   );
                 })}

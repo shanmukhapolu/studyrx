@@ -51,13 +51,13 @@ function toQueueItems(questionIds: number[], isRedemption: boolean) {
   return questionIds.map((questionId) => ({ questionId, isRedemption }));
 }
 
-function buildPracticeQueue({ questions, progress, today }: { questions: Question[]; progress: Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>; today: string; }) {
+function buildPracticeQueue({ questions, progress, today, limit }: { questions: Question[]; progress: Record<string, import("@/lib/spaced-repetition").UserQuestionProgress>; today: string; limit: number; }) {
   const due = questions.filter((q) => {
     const p = progress[String(q.id)];
     if (!p) return true;
     return p.nextDueDate <= today;
   });
-  return toQueueItems(shuffleArray(due.map((q) => q.id)), false);
+  return toQueueItems(shuffleArray(due.map((q) => q.id)).slice(0, limit), false);
 }
 
 export default function PracticePage({ params }: { params: Promise<{ event: string }> }) {
@@ -111,6 +111,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [reportDetails, setReportDetails] = useState("");
   const [reportSubmitting, setReportSubmitting] = useState(false);
   const [hasPersistedSession, setHasPersistedSession] = useState(false);
+  const [remainingDueCount, setRemainingDueCount] = useState(0);
   const hasActiveSession = hasStarted && !isComplete;
 
   const questionShownAtRef = useRef<number>(performance.now());
@@ -233,7 +234,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
       setSettings(loadedSettings);
 
       setQuestionProgress(loadedProgress);
-      const queue = buildPracticeQueue({ questions, progress: loadedProgress, today: todayDateString() });
+      const queue = buildPracticeQueue({ questions, progress: loadedProgress, today: todayDateString(), limit: loadedSettings.sessionQuestionLimit });
+      const dueTotal = questions.filter((q) => { const p = loadedProgress[String(q.id)]; return !p || p.nextDueDate <= todayDateString(); }).length;
+      setRemainingDueCount(Math.max(0, dueTotal - queue.length));
       if (queue.length === 0) {
         setIsComplete(true);
         setShowConfetti(true);
@@ -591,7 +594,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
             <CardContent className="space-y-6">
               <div className="space-y-3 p-6 bg-muted/30 rounded-xl">
                 <div className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm">
-                  Session length: <strong>{settings.sessionQuestionLimit === "unlimited" ? "Unlimited" : `${settings.sessionQuestionLimit} questions`}</strong>
+                  Session length: <strong>{`${settings.sessionQuestionLimit} questions`}</strong>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -678,7 +681,9 @@ function PracticeContent({ eventId }: { eventId: string }) {
               <div className="p-8 bg-card/75 rounded-xl text-center border border-primary/20">
                 <h3 className="text-3xl font-bold mb-3">Session Complete</h3>
                 <p className="text-muted-foreground text-lg">
-                  Nice work. Review your results or jump into another session whenever you're ready.
+                  {remainingDueCount > 0
+                    ? `You still have ${remainingDueCount} questions due today. Start another session.`
+                    : "Nice work. Review your results or jump into another session whenever you're ready."}
                 </p>
               </div>
 
@@ -766,16 +771,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 <span className="text-sm text-muted-foreground hidden sm:inline">incorrect</span>
               </div>
             </div>
-            {settings.sessionQuestionLimit === "unlimited" && (
-              <Button
-                onClick={handleEndSession}
-                variant="outline"
-                size="sm"
-                className="bg-transparent font-semibold"
-              >
-                End Session
-              </Button>
-            )}
           </div>
         </div>
       </div>
