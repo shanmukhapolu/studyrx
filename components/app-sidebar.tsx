@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, MessageSquarePlus, Settings, ShieldCheck, UserRound } from "lucide-react";
+import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, Medal, MessageSquarePlus, Settings, ShieldCheck, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -33,6 +33,11 @@ const navItems = [
     title: "Analytics",
     href: "/analytics",
     icon: BarChart3,
+  },
+  {
+    title: "Leaderboard",
+    href: "/leaderboard",
+    icon: Medal,
   },
   {
     title: "Submit Feedback",

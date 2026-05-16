@@ -187,6 +187,36 @@
         ".write": "auth != null"
       }
     },
+
+    "leaderboard": {
+      "users": {
+        ".read": true,
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid",
+          "uid": { ".validate": "newData.isString() && newData.val() === $uid" },
+          "displayName": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80" },
+          "initials": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 3" },
+          "updatedAt": { ".validate": "newData.isString()" },
+          "overall": {
+            "questionsAnswered": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+            "correctAnswers": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+            "accuracy": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
+            "longestStreak": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+            "$otherOverallStat": { ".validate": false }
+          },
+          "events": {
+            "$eventId": {
+              "questionsAnswered": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+              "correctAnswers": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+              "accuracy": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
+              "longestStreak": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+              "$otherEventStat": { ".validate": false }
+            }
+          },
+          "$otherLeaderboardField": { ".validate": false }
+        }
+      }
+    },
     "admin_stats": {
       ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
       ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
