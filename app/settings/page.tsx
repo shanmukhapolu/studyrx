@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { DEFAULT_USER_SETTINGS, storage, type SessionQuestionLimit, type UserSettings } from "@/lib/storage";
 
-const sessionOptions: SessionQuestionLimit[] = [10, 25, 50, 100, "unlimited"];
+const sessionOptions: SessionQuestionLimit[] = [10, 25, 50, 100];
 
 export default function SettingsPage() {
   return (
@@ -195,19 +195,12 @@ function SettingsContent() {
                       onClick={() => setSettings((current) => ({ ...current, sessionQuestionLimit: option }))}
                       className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${active ? "border-primary bg-primary/10 text-primary" : "hover:bg-muted/50"}`}
                     >
-                      {option === "unlimited" ? "∞" : option}
+                      {option}
                     </button>
                   );
                 })}
               </div>
             </div>
-
-            <ToggleRow
-              label="Enable redemption round"
-              description="When enabled, wrong answers are handled in a dedicated redemption round instead of being saved only for future sessions."
-              checked={settings.redemptionRoundEnabled}
-              onChange={(checked) => setSettings((current) => ({ ...current, redemptionRoundEnabled: checked }))}
-            />
 
             <Button onClick={handleSaveStudySettings} disabled={savingSettings}>
               {savingSettings ? "Saving..." : "Save Study Settings"}
@@ -224,7 +217,7 @@ function SettingsContent() {
             </CardHeader>
             <CardContent className="space-y-5">
               <p className="text-sm text-muted-foreground">
-                This will permanently erase your analytics history, completed progress, current session state, and future wrong-question pool. This cannot be undone.
+                This will permanently erase your analytics history, spaced-repetition progress, and current session state. This cannot be undone.
               </p>
               <div className="flex gap-3 justify-end">
                 <Button variant="outline" className="bg-transparent" onClick={() => setShowResetModal(false)} disabled={resettingData}>Cancel</Button>
