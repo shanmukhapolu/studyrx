@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { BarChart3, LockKeyhole, Medal, Trophy, UserRound } from "lucide-react";
+import { BarChart3, Trophy, UserRound } from "lucide-react";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import { useAuth } from "@/components/auth/auth-provider";
@@ -16,7 +15,6 @@ import {
   buildLeaderboardView,
   getLeaderboardUsers,
   getMetricValue,
-  getPublicTop5Leaderboard,
   LEADERBOARD_METRICS,
   LEADERBOARD_MIN_QUESTIONS,
   OVERALL_EVENT_ID,
@@ -96,79 +94,6 @@ function LeaderboardRows({
           </div>
         );
       })}
-    </div>
-  );
-}
-
-function PublicHeader() {
-  return (
-    <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="inline-flex items-center gap-2.5">
-          <Image src="/logo.png" alt="StudyRx" width={26} height={26} className="h-6.5 w-6.5" />
-          <span className="font-heading text-base font-semibold text-foreground">StudyRx</span>
-        </Link>
-        <div className="flex items-center gap-2.5">
-          <Button asChild variant="ghost" size="sm" className="text-sm">
-            <Link href="/auth/signin">Log in</Link>
-          </Button>
-          <Button asChild size="sm" className="text-sm">
-            <Link href="/auth/signup">Sign up</Link>
-          </Button>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function PublicLeaderboard({ rows, loading }: { rows: LeaderboardEntry[]; loading: boolean }) {
-
-  return (
-    <div className="min-h-screen bg-background">
-      <PublicHeader />
-      <main className="mx-auto max-w-6xl space-y-6 px-4 py-10">
-        <div className="space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">Climb the charts. Master your event.</h1>
-          <p className="max-w-2xl text-sm text-muted-foreground md:text-base">See the top StudyRx performers by overall accuracy across published HOSA events.</p>
-        </div>
-
-        <Card className="glass-card w-full overflow-hidden">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Medal className="h-5 w-5 text-primary" /> Top 5 Overall Accuracy</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <div className="space-y-3">
-                {[1, 2, 3, 4, 5].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-muted" />)}
-              </div>
-            ) : rows.length > 0 ? (
-              <div className="relative">
-                <LeaderboardRows rows={rows} metric="accuracy" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-card via-card/85 to-transparent" />
-                <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-background/95 p-4 text-center shadow-sm backdrop-blur">
-                  <LockKeyhole className="mx-auto mb-2 h-5 w-5 text-primary" />
-                  <p className="text-sm font-semibold text-foreground">Create an account or log in to see the rest.</p>
-                  <div className="mt-3 flex justify-center gap-2">
-                    <Button asChild size="sm"><Link href="/auth/signup">Sign up</Link></Button>
-                    <Button asChild size="sm" variant="outline"><Link href="/auth/signin">Log in</Link></Button>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <LeaderboardRows rows={rows} metric="accuracy" />
-                <div className="rounded-xl border border-border bg-muted/20 p-4 text-center">
-                  <p className="text-sm font-semibold text-foreground">Want to be first on the board?</p>
-                  <div className="mt-3 flex justify-center gap-2">
-                    <Button asChild size="sm"><Link href="/auth/signup">Sign up</Link></Button>
-                    <Button asChild size="sm" variant="outline"><Link href="/auth/signin">Log in</Link></Button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </main>
     </div>
   );
 }
@@ -294,28 +219,20 @@ function AuthenticatedLeaderboard({ records, loading }: { records: Record<string
 export default function LeaderboardPage() {
   const { profile, user, loading: authLoading } = useAuth();
   const [records, setRecords] = useState<Record<string, LeaderboardUserRecord>>({});
-  const [publicTop5, setPublicTop5] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
       setLoading(true);
+      const users = await getLeaderboardUsers();
       if (user?.uid) {
-        const users = await getLeaderboardUsers();
         const sessions = await storage.getAllSessions();
         const rawName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user.displayName || user.email;
         users[user.uid] = buildLeaderboardUserRecord(user.uid, rawName, sessions);
-        if (!cancelled) {
-          setRecords(users);
-          setLoading(false);
-        }
-        return;
       }
-
-      const top5 = await getPublicTop5Leaderboard();
       if (!cancelled) {
-        setPublicTop5(top5);
+        setRecords(users);
         setLoading(false);
       }
     };
@@ -339,7 +256,23 @@ export default function LeaderboardPage() {
   }
 
   if (!user) {
-    return <PublicLeaderboard rows={publicTop5} loading={loading} />;
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-6">
+        <Card className="max-w-md text-center">
+          <CardHeader>
+            <CardTitle>Sign in to view leaderboards</CardTitle>
+            <CardDescription>
+              The full leaderboard is available for StudyRx users. Check the homepage for a quick sample preview.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild>
+              <Link href="/auth/signin?next=/leaderboard">Log in</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   return <AuthenticatedLeaderboard records={records} loading={loading} />;

@@ -1,6 +1,5 @@
 import { HOSA_EVENTS } from "@/lib/events";
-import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
-import { rtdbGet } from "@/lib/rtdb";
+import { getStoredAuth, rtdbGet, rtdbSet } from "@/lib/rtdb";
 import type { SessionData } from "@/lib/storage";
 
 export const LEADERBOARD_MIN_QUESTIONS = 10;
@@ -130,49 +129,18 @@ export function buildLeaderboardUserRecord(uid: string, rawName: string | undefi
 }
 
 
-export const PUBLIC_OVERALL_ACCURACY_TOP5_PATH = "publicLeaderboards/overall/accuracy/top5";
-
-function normalizePublicTop5(raw: unknown): LeaderboardEntry[] {
-  const values = Array.isArray(raw)
-    ? raw
-    : raw && typeof raw === "object"
-      ? Object.values(raw as Record<string, unknown>)
-      : [];
-
-  return values
-    .filter((entry): entry is Partial<LeaderboardEntry> => Boolean(entry) && typeof entry === "object")
-    .map((entry) => ({
-      uid: typeof entry.uid === "string" ? entry.uid : `public-${entry.rank ?? "unknown"}`,
-      rank: typeof entry.rank === "number" ? entry.rank : 0,
-      displayName: typeof entry.displayName === "string" ? entry.displayName : "Student",
-      initials: typeof entry.initials === "string" ? entry.initials : "S",
-      eventId: typeof entry.eventId === "string" ? entry.eventId : OVERALL_EVENT_ID,
-      questionsAnswered: typeof entry.questionsAnswered === "number" ? entry.questionsAnswered : 0,
-      correctAnswers: typeof entry.correctAnswers === "number" ? entry.correctAnswers : 0,
-      accuracy: typeof entry.accuracy === "number" ? entry.accuracy : 0,
-      longestStreak: typeof entry.longestStreak === "number" ? entry.longestStreak : 0,
-    }))
-    .filter((entry) => entry.rank > 0 && entry.questionsAnswered >= LEADERBOARD_MIN_QUESTIONS)
-    .sort((a, b) => a.rank - b.rank);
-}
-
-async function fetchPublicJson<T>(path: string, fallback: T): Promise<T> {
-  try {
-    const res = await fetch(`${FIREBASE_DATABASE_URL}/${path}.json`, { cache: "no-store" });
-    if (!res.ok) return fallback;
-    return ((await res.json()) ?? fallback) as T;
-  } catch {
-    return fallback;
-  }
-}
-
-export async function getPublicTop5Leaderboard(): Promise<LeaderboardEntry[]> {
-  const raw = await fetchPublicJson<unknown>(PUBLIC_OVERALL_ACCURACY_TOP5_PATH, []);
-  return normalizePublicTop5(raw);
-}
-
 export async function getLeaderboardUsers(): Promise<Record<string, LeaderboardUserRecord>> {
   return rtdbGet<Record<string, LeaderboardUserRecord>>("leaderboard/users", {});
+}
+
+export async function updateCurrentUserLeaderboard(sessions: SessionData[]) {
+  const auth = await getStoredAuth();
+  if (!auth?.user?.uid) return;
+
+  const userRecord = await rtdbGet<{ name?: string } | string | null>(`users/${auth.user.uid}`, null);
+  const rawName = typeof userRecord === "string" ? userRecord : userRecord?.name || auth.user.displayName || auth.user.email;
+  const record = buildLeaderboardUserRecord(auth.user.uid, rawName, sessions);
+  await rtdbSet(`leaderboard/users/${auth.user.uid}`, record);
 }
 
 function getStatsForEvent(record: LeaderboardUserRecord, eventId: string): LeaderboardStats | null {
