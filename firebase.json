@@ -1,0 +1,11 @@
+{
+  "database": {
+    "rules": "firebase.realtime.rules.json"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default"
+    }
+  ]
+}

@@ -16,6 +16,7 @@ import {
   buildLeaderboardView,
   getLeaderboardUsers,
   getMetricValue,
+  getPublicTop5Leaderboard,
   LEADERBOARD_METRICS,
   LEADERBOARD_MIN_QUESTIONS,
   OVERALL_EVENT_ID,
@@ -120,11 +121,7 @@ function PublicHeader() {
   );
 }
 
-function PublicLeaderboard({ records, loading }: { records: Record<string, LeaderboardUserRecord>; loading: boolean }) {
-  const view = useMemo(
-    () => buildLeaderboardView(records, { eventId: OVERALL_EVENT_ID, metric: "accuracy", topLimit: 5 }),
-    [records]
-  );
+function PublicLeaderboard({ rows, loading }: { rows: LeaderboardEntry[]; loading: boolean }) {
 
   return (
     <div className="min-h-screen bg-background">
@@ -144,9 +141,9 @@ function PublicLeaderboard({ records, loading }: { records: Record<string, Leade
               <div className="space-y-3">
                 {[1, 2, 3, 4, 5].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-muted" />)}
               </div>
-            ) : view.top.length > 0 ? (
+            ) : rows.length > 0 ? (
               <div className="relative">
-                <LeaderboardRows rows={view.top} metric="accuracy" />
+                <LeaderboardRows rows={rows} metric="accuracy" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-card via-card/85 to-transparent" />
                 <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-background/95 p-4 text-center shadow-sm backdrop-blur">
                   <LockKeyhole className="mx-auto mb-2 h-5 w-5 text-primary" />
@@ -159,7 +156,7 @@ function PublicLeaderboard({ records, loading }: { records: Record<string, Leade
               </div>
             ) : (
               <div className="space-y-4">
-                <LeaderboardRows rows={view.top} metric="accuracy" />
+                <LeaderboardRows rows={rows} metric="accuracy" />
                 <div className="rounded-xl border border-border bg-muted/20 p-4 text-center">
                   <p className="text-sm font-semibold text-foreground">Want to be first on the board?</p>
                   <div className="mt-3 flex justify-center gap-2">
@@ -297,20 +294,28 @@ function AuthenticatedLeaderboard({ records, loading }: { records: Record<string
 export default function LeaderboardPage() {
   const { profile, user, loading: authLoading } = useAuth();
   const [records, setRecords] = useState<Record<string, LeaderboardUserRecord>>({});
+  const [publicTop5, setPublicTop5] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
       setLoading(true);
-      const users = await getLeaderboardUsers();
       if (user?.uid) {
+        const users = await getLeaderboardUsers();
         const sessions = await storage.getAllSessions();
         const rawName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user.displayName || user.email;
         users[user.uid] = buildLeaderboardUserRecord(user.uid, rawName, sessions);
+        if (!cancelled) {
+          setRecords(users);
+          setLoading(false);
+        }
+        return;
       }
+
+      const top5 = await getPublicTop5Leaderboard();
       if (!cancelled) {
-        setRecords(users);
+        setPublicTop5(top5);
         setLoading(false);
       }
     };
@@ -334,7 +339,7 @@ export default function LeaderboardPage() {
   }
 
   if (!user) {
-    return <PublicLeaderboard records={records} loading={loading} />;
+    return <PublicLeaderboard rows={publicTop5} loading={loading} />;
   }
 
   return <AuthenticatedLeaderboard records={records} loading={loading} />;

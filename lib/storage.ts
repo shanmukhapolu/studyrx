@@ -1,6 +1,5 @@
 import { FIREBASE_DATABASE_URL } from "@/lib/firebase-config";
 import { getStoredAuth } from "@/lib/rtdb";
-import { updateCurrentUserLeaderboard } from "@/lib/leaderboard";
 
 export interface Question {
   id: number;
@@ -274,13 +273,6 @@ export const storage = {
     };
 
     await dbSet(`events/${immutableSession.event}/sessions/${immutableSession.sessionId}`, persistedSession);
-
-    try {
-      const events = await dbGet<Record<string, EventRecord>>("events", {});
-      await updateCurrentUserLeaderboard(normalizeEventSessions(events));
-    } catch (error) {
-      console.warn("Leaderboard update skipped after session save.", error);
-    }
 
     try {
       await dbSet("currentSession", null);
