@@ -463,9 +463,6 @@ export default function HomePage() {
             <span className="font-heading text-base font-semibold text-foreground">StudyRx</span>
           </Link>
           <div className="flex items-center gap-2.5">
-            <Button asChild variant="ghost" size="sm" className="hidden text-sm sm:inline-flex">
-              <Link href="/leaderboard">Leaderboard</Link>
-            </Button>
             <Button asChild variant="ghost" size="sm" className="text-sm">
               <Link href="/auth/signin">Log in</Link>
             </Button>

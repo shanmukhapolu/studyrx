@@ -15,6 +15,7 @@ import {
   buildLeaderboardView,
   getLeaderboardUsers,
   getMetricValue,
+  updateCurrentUserLeaderboard,
   LEADERBOARD_METRICS,
   LEADERBOARD_MIN_QUESTIONS,
   OVERALL_EVENT_ID,
@@ -224,13 +225,30 @@ export default function LeaderboardPage() {
   useEffect(() => {
     let cancelled = false;
     const load = async () => {
-      setLoading(true);
-      const users = await getLeaderboardUsers();
-      if (user?.uid) {
-        const sessions = await storage.getAllSessions();
-        const rawName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user.displayName || user.email;
-        users[user.uid] = buildLeaderboardUserRecord(user.uid, rawName, sessions);
+      if (!user?.uid) {
+        if (!cancelled) {
+          setRecords({});
+          setLoading(false);
+        }
+        return;
       }
+
+      setLoading(true);
+      const sessions = await storage.getAllSessions();
+      const rawName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user.displayName || user.email;
+      const currentUserRecord = buildLeaderboardUserRecord(user.uid, rawName, sessions);
+
+      if (!cancelled) {
+        setRecords({ [user.uid]: currentUserRecord });
+      }
+
+      void updateCurrentUserLeaderboard(sessions).catch((error) => {
+        console.warn("Leaderboard sync skipped while loading page.", error);
+      });
+
+      const users = await getLeaderboardUsers();
+      users[user.uid] = currentUserRecord;
+
       if (!cancelled) {
         setRecords(users);
         setLoading(false);
