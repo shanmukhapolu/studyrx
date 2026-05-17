@@ -617,33 +617,6 @@ function PracticeContent({ eventId }: { eventId: string }) {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-3 p-6 bg-muted/30 rounded-xl">
-                <div className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm">
-                  Session length: <strong>{`${settings.sessionQuestionLimit} questions`}</strong>
-                </div>
-                <div className="rounded-xl border border-border bg-background/80 px-4 py-3">
-                  <label className="flex flex-col gap-2 text-sm font-medium">
-                    Question difficulty
-                    <select
-                      className="h-10 rounded-md border border-input bg-background px-3 text-sm font-normal"
-                      value={difficultyFilter}
-                      onChange={(selectEvent) => setDifficultyFilter(selectEvent.target.value as DifficultyFilter)}
-                    >
-                      {DIFFICULTY_FILTERS.map((difficulty) => (
-                        <option key={difficulty} value={difficulty}>
-                          {difficulty === "All" ? "All difficulties" : difficulty}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    {difficultyFilter === "All"
-                      ? "Questions will be pulled from the full question bank for this event."
-                      : `Only ${difficultyFilter.toLowerCase()} questions will be pulled from this event's question bank.`}
-                  </p>
-                  {allQuestions.length === 0 && (
-                    <p className="mt-2 text-xs text-destructive">No questions match this difficulty yet.</p>
-                  )}
-                </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Sparkles className="h-5 w-5 text-primary" />
@@ -677,6 +650,40 @@ function PracticeContent({ eventId }: { eventId: string }) {
                     </p>
                   </div>
                 </div>
+              </div>
+
+              <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Session length</p>
+                    <p className="text-lg font-semibold">{settings.sessionQuestionLimit} questions</p>
+                  </div>
+                  <div className="space-y-2 md:text-right">
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Difficulty</p>
+                    <div className="grid grid-cols-4 gap-2">
+                      {DIFFICULTY_FILTERS.map((difficulty) => (
+                        <Button
+                          key={difficulty}
+                          type="button"
+                          variant={difficultyFilter === difficulty ? "default" : "outline"}
+                          size="sm"
+                          className="min-w-0 px-3"
+                          onClick={() => setDifficultyFilter(difficulty)}
+                        >
+                          {difficulty}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  {difficultyFilter === "All"
+                    ? "Pulling from the full question bank for this event."
+                    : `Pulling only ${difficultyFilter.toLowerCase()} questions from this event's question bank.`}
+                </p>
+                {allQuestions.length === 0 && (
+                  <p className="mt-2 text-xs text-destructive">No questions match this difficulty yet.</p>
+                )}
               </div>
 
               <Button
