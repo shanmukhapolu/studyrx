@@ -48,6 +48,146 @@ export const PUBLISHED_LEADERBOARD_EVENTS = HOSA_EVENTS.filter((event) => event.
 
 const publishedEventIds = new Set(PUBLISHED_LEADERBOARD_EVENTS.map((event) => event.id));
 
+type LegacyLeaderboardAttempt = Partial<SessionData["attempts"][number]> & {
+  correct?: boolean;
+  timeSpent?: number;
+  timestamp?: string;
+};
+
+type LegacyLeaderboardSession = Partial<Omit<SessionData, "attempts">> & {
+  attempts?: string | LegacyLeaderboardAttempt[];
+};
+
+type LegacyLeaderboardUser = {
+  name?: string;
+  displayName?: string;
+  email?: string;
+  generalStats?: {
+    questionsAnswered?: number;
+    totalAttempts?: number;
+    accuracy?: number;
+    correctAnswers?: number;
+    longestStreak?: number;
+  };
+  events?: Record<string, {
+    sessions?: Record<string, LegacyLeaderboardSession>;
+    stats?: {
+      questionsAnswered?: number;
+      totalAttempts?: number;
+      accuracy?: number;
+      correctAnswers?: number;
+      longestStreak?: number;
+    };
+  }>;
+};
+
+function parseLegacyAttempts(raw: LegacyLeaderboardSession["attempts"]): LegacyLeaderboardAttempt[] {
+  if (!raw) return [];
+  if (Array.isArray(raw)) return raw;
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed as LegacyLeaderboardAttempt[] : [];
+  } catch {
+    return [];
+  }
+}
+
+function normalizeLegacySession(session: LegacyLeaderboardSession, eventId: string): SessionData {
+  const attempts = parseLegacyAttempts(session.attempts).map((attempt, index) => {
+    const isCorrect = attempt.isCorrect ?? attempt.correct ?? false;
+    const thinkTime = attempt.thinkTime ?? attempt.timeSpent ?? 0;
+    const timestamp = attempt.timestampSubmit ?? attempt.timestampStart ?? attempt.timestamp ?? session.endTimestamp ?? session.endTime ?? session.startTimestamp ?? session.startTime ?? new Date().toISOString();
+
+    return {
+      questionId: attempt.questionId ?? -1,
+      questionIndex: attempt.questionIndex ?? index + 1,
+      category: attempt.category ?? "Unknown",
+      tag: attempt.tag,
+      difficulty: attempt.difficulty ?? "Unknown",
+      isCorrect,
+      thinkTime,
+      explanationTime: attempt.explanationTime ?? 0,
+      timestampStart: attempt.timestampStart ?? attempt.timestamp ?? timestamp,
+      timestampSubmit: attempt.timestampSubmit ?? attempt.timestamp ?? timestamp,
+      isRedemption: attempt.isRedemption,
+      eventId: attempt.eventId ?? session.event ?? session.eventId ?? eventId,
+      correct: isCorrect,
+      timeSpent: thinkTime,
+      timestamp,
+    };
+  });
+  const correctCount = attempts.filter((attempt) => attempt.isCorrect && !attempt.isRedemption).length;
+  const totalQuestions = attempts.filter((attempt) => !attempt.isRedemption).length;
+
+  return {
+    sessionId: session.sessionId ?? `legacy_${eventId}_${session.startTimestamp ?? session.startTime ?? Math.random().toString(36).slice(2)}`,
+    sessionType: session.sessionType ?? "practice",
+    event: session.event ?? session.eventId ?? eventId,
+    startTimestamp: session.startTimestamp ?? session.startTime ?? new Date().toISOString(),
+    endTimestamp: session.endTimestamp ?? session.endTime,
+    totalThinkTime: session.totalThinkTime ?? attempts.reduce((sum, attempt) => sum + attempt.thinkTime, 0),
+    totalExplanationTime: session.totalExplanationTime ?? attempts.reduce((sum, attempt) => sum + attempt.explanationTime, 0),
+    totalQuestions: session.totalQuestions ?? totalQuestions,
+    correctCount: session.correctCount ?? correctCount,
+    accuracy: session.accuracy ?? roundAccuracy(correctCount, totalQuestions),
+    attempts,
+    startTime: session.startTime ?? session.startTimestamp,
+    endTime: session.endTime ?? session.endTimestamp,
+    eventId: session.eventId ?? session.event ?? eventId,
+  };
+}
+
+function legacyStatsToLeaderboardStats(stats: LegacyLeaderboardUser["generalStats"]): LeaderboardStats | null {
+  const questionsAnswered = stats?.questionsAnswered ?? stats?.totalAttempts ?? 0;
+  if (questionsAnswered <= 0) return null;
+
+  const correctAnswers = stats?.correctAnswers ?? Math.round(((stats?.accuracy ?? 0) / 100) * questionsAnswered);
+
+  return {
+    questionsAnswered,
+    correctAnswers,
+    accuracy: stats?.accuracy ?? roundAccuracy(correctAnswers, questionsAnswered),
+    longestStreak: stats?.longestStreak ?? 0,
+  };
+}
+
+function collectLegacySessions(user: LegacyLeaderboardUser): SessionData[] {
+  return Object.entries(user.events ?? {}).flatMap(([eventId, eventRecord]) => {
+    return Object.values(eventRecord.sessions ?? {}).map((session) => normalizeLegacySession(session, eventId));
+  });
+}
+
+function buildLeaderboardUserRecordFromLegacy(uid: string, user: LegacyLeaderboardUser): LeaderboardUserRecord | null {
+  const sessions = collectLegacySessions(user);
+  const rawName = user.name || user.displayName || user.email;
+  const record = buildLeaderboardUserRecord(uid, rawName, sessions);
+  const fallbackOverall = legacyStatsToLeaderboardStats(user.generalStats);
+
+  if (record.overall.questionsAnswered === 0 && fallbackOverall) {
+    record.overall = fallbackOverall;
+  }
+
+  PUBLISHED_LEADERBOARD_EVENTS.forEach((event) => {
+    const fallbackEventStats = legacyStatsToLeaderboardStats(user.events?.[event.id]?.stats);
+    if ((record.events[event.id]?.questionsAnswered ?? 0) === 0 && fallbackEventStats) {
+      record.events[event.id] = fallbackEventStats;
+    }
+  });
+
+  const hasRankableData = record.overall.questionsAnswered >= LEADERBOARD_MIN_QUESTIONS
+    || Object.values(record.events).some((stats) => stats.questionsAnswered >= LEADERBOARD_MIN_QUESTIONS);
+
+  return hasRankableData ? record : null;
+}
+
+function buildLeaderboardUsersFromLegacy(users: Record<string, LegacyLeaderboardUser>): Record<string, LeaderboardUserRecord> {
+  return Object.fromEntries(
+    Object.entries(users)
+      .map(([uid, user]) => [uid, buildLeaderboardUserRecordFromLegacy(uid, user)] as const)
+      .filter((entry): entry is readonly [string, LeaderboardUserRecord] => Boolean(entry[1]))
+  );
+}
+
 function roundAccuracy(correctAnswers: number, questionsAnswered: number) {
   if (questionsAnswered <= 0) return 0;
   return Math.round((correctAnswers / questionsAnswered) * 1000) / 10;
@@ -130,7 +270,25 @@ export function buildLeaderboardUserRecord(uid: string, rawName: string | undefi
 
 
 export async function getLeaderboardUsers(): Promise<Record<string, LeaderboardUserRecord>> {
-  return rtdbGet<Record<string, LeaderboardUserRecord>>("leaderboard/users", {});
+  const publishedUsers = await rtdbGet<Record<string, LeaderboardUserRecord>>("leaderboard/users", {});
+  const legacyUsers = await rtdbGet<Record<string, LegacyLeaderboardUser>>("users", {});
+  const legacyLeaderboardUsers = buildLeaderboardUsersFromLegacy(legacyUsers);
+
+  return {
+    ...legacyLeaderboardUsers,
+    ...publishedUsers,
+  };
+}
+
+export async function backfillLeaderboardFromLegacyUsers() {
+  const legacyUsers = await rtdbGet<Record<string, LegacyLeaderboardUser>>("users", {});
+  const records = buildLeaderboardUsersFromLegacy(legacyUsers);
+
+  await Promise.all(
+    Object.entries(records).map(([uid, record]) => rtdbSet(`leaderboard/users/${uid}`, record))
+  );
+
+  return records;
 }
 
 export async function updateCurrentUserLeaderboard(sessions: SessionData[]) {

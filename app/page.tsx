@@ -30,7 +30,7 @@ import { getStoredAuth } from "@/lib/rtdb";
 function countQuestionsInPayload(payload: unknown): number {
   if (Array.isArray(payload)) return payload.length;
   if (payload && typeof payload === "object") {
-    return Object.values(payload as Record<string, unknown>).reduce(
+    return Object.values(payload as Record<string, unknown>).reduce<number>(
       (sum, v) => sum + countQuestionsInPayload(v),
       0,
     );
@@ -490,7 +490,7 @@ export default function HomePage() {
                   matter most.
                   <svg viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path
-  class="squiggle-path"
+  className="squiggle-path"
   d="M2 7.5 
      C20 0, 40 15, 60 7.5 
      C80 0, 100 15, 120 7.5 
@@ -798,42 +798,43 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="reveal-right relative mx-auto w-full max-w-xl rotate-[-1.5deg] transition-transform duration-300 hover:rotate-[-0.5deg]">
-              <div className="absolute -left-4 top-6 h-10 w-24 rotate-[-10deg] rounded-sm bg-primary/10 shadow-sm backdrop-blur-sm" aria-hidden="true" />
-              <div className="absolute -right-3 bottom-8 h-8 w-20 rotate-6 rounded-sm bg-accent/15 shadow-sm backdrop-blur-sm" aria-hidden="true" />
-              <Card className="relative overflow-hidden border-primary/20 bg-card/95 shadow-[0_24px_70px_rgba(15,23,42,0.16)]">
-                <CardContent className="p-0">
-                  <div className="border-b border-border bg-muted/20 px-5 py-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <Trophy className="h-5 w-5 text-primary" />
-                        <p className="font-semibold text-foreground">Overall accuracy leaders</p>
+            <div className="reveal-right mx-auto w-full max-w-xl lg:mr-0 lg:pr-2">
+              <div className="relative rotate-[-2.5deg] lg:translate-x-4">
+                <div className="absolute -right-3 bottom-8 h-8 w-20 rotate-6 rounded-sm bg-accent/15 shadow-sm backdrop-blur-sm" aria-hidden="true" />
+                <Card className="relative overflow-hidden border-primary/20 bg-card/95 shadow-[0_24px_70px_rgba(15,23,42,0.16)]">
+                  <CardContent className="p-0">
+                    <div className="border-b border-border bg-muted/20 px-5 py-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2">
+                          <Trophy className="h-5 w-5 text-primary" />
+                          <p className="font-semibold text-foreground">Overall accuracy leaders</p>
+                        </div>
+                        <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">Live ranking</span>
                       </div>
-                      <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">Live ranking</span>
+                      <p className="mt-1 text-xs text-muted-foreground">A quick look at how top performers could stack up.</p>
                     </div>
-                    <p className="mt-1 text-xs text-muted-foreground">A quick look at how top performers could stack up.</p>
-                  </div>
-                  <div className="divide-y divide-border">
-                    {leaderboardPreview.map((student) => (
-                      <div key={student.rank} className="grid grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-3">
-                        <div className="flex w-10 items-center justify-center text-lg font-bold">
-                          {student.rank === 1 ? "🥇" : student.rank === 2 ? "🥈" : student.rank === 3 ? "🥉" : `#${student.rank}`}
-                        </div>
-                        <div className="flex min-w-0 items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-                            {student.initials}
+                    <div className="divide-y divide-border">
+                      {leaderboardPreview.map((student) => (
+                        <div key={student.rank} className="grid grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-3">
+                          <div className="flex w-10 items-center justify-center text-lg font-bold">
+                            {student.rank === 1 ? "🥇" : student.rank === 2 ? "🥈" : student.rank === 3 ? "🥉" : `#${student.rank}`}
                           </div>
-                          <div>
-                            <p className="font-semibold text-foreground">{student.name}</p>
-                            <p className="text-xs text-muted-foreground">{student.questions} questions • {student.streak} streak</p>
+                          <div className="flex min-w-0 items-center gap-3">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                              {student.initials}
+                            </div>
+                            <div>
+                              <p className="font-semibold text-foreground">{student.name}</p>
+                              <p className="text-xs text-muted-foreground">{student.questions} questions • {student.streak} streak</p>
+                            </div>
                           </div>
+                          <p className="text-lg font-bold text-foreground">{student.accuracy}</p>
                         </div>
-                        <p className="text-lg font-bold text-foreground">{student.accuracy}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
