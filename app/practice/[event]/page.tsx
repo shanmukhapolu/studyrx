@@ -47,6 +47,10 @@ interface QueueItem {
   isRedemption: boolean;
 }
 
+type DifficultyFilter = "All" | Question["difficulty"];
+
+const DIFFICULTY_FILTERS: DifficultyFilter[] = ["All", "Easy", "Medium", "Hard"];
+
 function toQueueItems(questionIds: number[], isRedemption: boolean) {
   return questionIds.map((questionId) => ({ questionId, isRedemption }));
 }
@@ -119,6 +123,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
   const [reportSubmitting, setReportSubmitting] = useState(false);
   const [hasPersistedSession, setHasPersistedSession] = useState(false);
   const [remainingDueCount, setRemainingDueCount] = useState(0);
+  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>("All");
   const hasActiveSession = hasStarted && !isComplete;
 
   const questionShownAtRef = useRef<number>(performance.now());
@@ -218,7 +223,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
   useEffect(() => {
     if (!eventIsPublished) return;
     loadQuestions();
-  }, [eventId, eventIsPublished]);
+  }, [eventId, eventIsPublished, difficultyFilter]);
 
   const loadQuestions = async () => {
     if (!event || !eventIsPublished) {
@@ -230,7 +235,10 @@ function PracticeContent({ eventId }: { eventId: string }) {
       const res = await fetch(event.questionBankFile);
       if (!res.ok) throw new Error("Failed to load questions");
       
-      const questions: Question[] = await res.json();
+      const questionBank: Question[] = await res.json();
+      const questions = difficultyFilter === "All"
+        ? questionBank
+        : questionBank.filter((question) => question.difficulty === difficultyFilter);
       setAllQuestions(questions);
 
       const [loadedProgress, loadedSettings] = await Promise.all([
@@ -244,12 +252,16 @@ function PracticeContent({ eventId }: { eventId: string }) {
       const queue = buildPracticeQueue({ questions, progress: loadedProgress, today: todayDateString(), limit: loadedSettings.sessionQuestionLimit });
       const dueTotal = questions.filter((q) => { const p = loadedProgress[String(q.id)]; return Boolean(p && p.repetitionCount > 0 && p.nextDueDate <= todayDateString()); }).length;
       setRemainingDueCount(Math.max(0, dueTotal - queue.length));
-      if (queue.length === 0) {
+      setQuestionQueue(queue);
+      setBaseQueueLength(queue.length);
+
+      if (queue.length === 0 && questions.length === 0) {
+        setIsComplete(false);
+      } else if (queue.length === 0) {
         setIsComplete(true);
         setShowConfetti(true);
       } else {
-        setQuestionQueue(queue);
-        setBaseQueueLength(queue.length);
+        setIsComplete(false);
       }
     } catch (error) {
       console.error("Failed to load questions:", error);
@@ -270,6 +282,11 @@ function PracticeContent({ eventId }: { eventId: string }) {
   }, [currentQueueItem]);
 
   const startPractice = () => {
+    if (questionQueue.length === 0) {
+      toast.error("No questions match the selected difficulty yet.");
+      return;
+    }
+
     const newSession: SessionData = storage.createSession(eventId, "practice");
     setSessionData(newSession);
     setSessionSummary(null);
@@ -603,6 +620,30 @@ function PracticeContent({ eventId }: { eventId: string }) {
                 <div className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm">
                   Session length: <strong>{`${settings.sessionQuestionLimit} questions`}</strong>
                 </div>
+                <div className="rounded-xl border border-border bg-background/80 px-4 py-3">
+                  <label className="flex flex-col gap-2 text-sm font-medium">
+                    Question difficulty
+                    <select
+                      className="h-10 rounded-md border border-input bg-background px-3 text-sm font-normal"
+                      value={difficultyFilter}
+                      onChange={(selectEvent) => setDifficultyFilter(selectEvent.target.value as DifficultyFilter)}
+                    >
+                      {DIFFICULTY_FILTERS.map((difficulty) => (
+                        <option key={difficulty} value={difficulty}>
+                          {difficulty === "All" ? "All difficulties" : difficulty}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {difficultyFilter === "All"
+                      ? "Questions will be pulled from the full question bank for this event."
+                      : `Only ${difficultyFilter.toLowerCase()} questions will be pulled from this event's question bank.`}
+                  </p>
+                  {allQuestions.length === 0 && (
+                    <p className="mt-2 text-xs text-destructive">No questions match this difficulty yet.</p>
+                  )}
+                </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Sparkles className="h-5 w-5 text-primary" />
@@ -640,6 +681,7 @@ function PracticeContent({ eventId }: { eventId: string }) {
 
               <Button
                 onClick={startPractice}
+                disabled={questionQueue.length === 0}
                 size="lg"
                 className="w-full text-lg h-14 font-semibold shadow-none"
               >
