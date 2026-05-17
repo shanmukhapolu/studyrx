@@ -40,23 +40,14 @@ export interface LeaderboardView {
 }
 
 export const LEADERBOARD_METRICS: Array<{ id: LeaderboardMetric; label: string; description: string }> = [
-  { id: "accuracy", label: "Accuracy", description: "Correct-answer rate with at least 10 questions answered." },
-  { id: "questionsAnswered", label: "Questions Answered", description: "Total ranked practice questions completed." },
-  { id: "longestStreak", label: "Longest Streak", description: "Best all-time correct-answer streak." },
+  { id: "accuracy", label: "Accuracy", description: "Correct-answer rate. Requires at least 10 questions answered." },
+  { id: "questionsAnswered", label: "Questions Answered", description: "Total ranked practice questions completed. Requires at least 10 questions answered." },
+  { id: "longestStreak", label: "Longest Streak", description: "Best all-time correct-answer streak. Requires at least 10 questions answered." },
 ];
 
 export const PUBLISHED_LEADERBOARD_EVENTS = HOSA_EVENTS.filter((event) => event.published);
 
 const publishedEventIds = new Set(PUBLISHED_LEADERBOARD_EVENTS.map((event) => event.id));
-
-function emptyStats(): LeaderboardStats {
-  return {
-    questionsAnswered: 0,
-    correctAnswers: 0,
-    accuracy: 0,
-    longestStreak: 0,
-  };
-}
 
 function roundAccuracy(correctAnswers: number, questionsAnswered: number) {
   if (questionsAnswered <= 0) return 0;
@@ -138,6 +129,60 @@ export function buildLeaderboardUserRecord(uid: string, rawName: string | undefi
   };
 }
 
+
+type RawLeaderboardUser = {
+  name?: string;
+  email?: string;
+  events?: Record<string, { sessions?: Record<string, Omit<Partial<SessionData>, "attempts"> & { attempts?: string | SessionData["attempts"] }> }>;
+};
+
+function parseAttempts(raw: string | SessionData["attempts"] | undefined): SessionData["attempts"] {
+  if (!raw) return [];
+  if (Array.isArray(raw)) return raw;
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function sessionsFromRawUser(user: RawLeaderboardUser): SessionData[] {
+  return Object.entries(user.events ?? {}).flatMap(([eventId, eventRecord]) => {
+    return Object.entries(eventRecord.sessions ?? {}).map(([sessionId, session]) => {
+      const attempts = parseAttempts(session.attempts);
+      const correctCount = attempts.filter((attempt) => attempt.isCorrect && !attempt.isRedemption).length;
+      const totalQuestions = attempts.filter((attempt) => !attempt.isRedemption).length;
+
+      return {
+        sessionId: session.sessionId ?? sessionId,
+        sessionType: session.sessionType ?? "practice",
+        event: session.event ?? session.eventId ?? eventId,
+        startTimestamp: session.startTimestamp ?? session.startTime ?? new Date(0).toISOString(),
+        endTimestamp: session.endTimestamp ?? session.endTime,
+        totalThinkTime: session.totalThinkTime ?? attempts.reduce((sum, attempt) => sum + (attempt.thinkTime || 0), 0),
+        totalExplanationTime: session.totalExplanationTime ?? attempts.reduce((sum, attempt) => sum + (attempt.explanationTime || 0), 0),
+        totalQuestions: session.totalQuestions ?? totalQuestions,
+        correctCount: session.correctCount ?? correctCount,
+        accuracy: session.accuracy ?? roundAccuracy(correctCount, totalQuestions),
+        attempts,
+        startTime: session.startTime ?? session.startTimestamp,
+        endTime: session.endTime ?? session.endTimestamp,
+        eventId: session.eventId ?? session.event ?? eventId,
+      };
+    });
+  });
+}
+
+function buildLeaderboardUsersFromRawUsers(users: Record<string, RawLeaderboardUser>) {
+  return Object.fromEntries(
+    Object.entries(users).map(([uid, user]) => [
+      uid,
+      buildLeaderboardUserRecord(uid, user.name || user.email, sessionsFromRawUser(user)),
+    ])
+  ) as Record<string, LeaderboardUserRecord>;
+}
+
 async function fetchPublicLeaderboardUsers(): Promise<Record<string, LeaderboardUserRecord>> {
   const url = `${FIREBASE_DATABASE_URL}/leaderboard/users.json`;
   try {
@@ -151,8 +196,15 @@ async function fetchPublicLeaderboardUsers(): Promise<Record<string, Leaderboard
 
 export async function getLeaderboardUsers(): Promise<Record<string, LeaderboardUserRecord>> {
   const publicUsers = await fetchPublicLeaderboardUsers();
-  if (Object.keys(publicUsers).length > 0) return publicUsers;
-  return rtdbGet<Record<string, LeaderboardUserRecord>>("leaderboard/users", {});
+  const authedLeaderboardUsers = await rtdbGet<Record<string, LeaderboardUserRecord>>("leaderboard/users", {});
+  const rawUsers = await rtdbGet<Record<string, RawLeaderboardUser>>("users", {});
+  const usersFromCurrentData = buildLeaderboardUsersFromRawUsers(rawUsers);
+
+  return {
+    ...usersFromCurrentData,
+    ...publicUsers,
+    ...authedLeaderboardUsers,
+  };
 }
 
 export async function updateCurrentUserLeaderboard(sessions: SessionData[]) {

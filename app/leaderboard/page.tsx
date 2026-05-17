@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BarChart3, ChevronRight, LockKeyhole, Medal, Sparkles, Trophy, UserRound } from "lucide-react";
+import { BarChart3, LockKeyhole, Medal, Trophy, UserRound } from "lucide-react";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import { useAuth } from "@/components/auth/auth-provider";
@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
+  buildLeaderboardUserRecord,
   buildLeaderboardView,
   getLeaderboardUsers,
   getMetricValue,
@@ -24,6 +25,7 @@ import {
   type LeaderboardUserRecord,
 } from "@/lib/leaderboard";
 import { getEventName } from "@/lib/events";
+import { storage } from "@/lib/storage";
 import { cn } from "@/lib/utils";
 
 const metricCopy: Record<LeaderboardMetric, { noun: string; rankedIn: string }> = {
@@ -127,55 +129,34 @@ function PublicLeaderboard({ records, loading }: { records: Record<string, Leade
   return (
     <div className="min-h-screen bg-background">
       <PublicHeader />
-      <main className="mx-auto max-w-6xl space-y-8 px-4 py-10">
-        <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
-              <Trophy className="h-3.5 w-3.5" /> Global leaderboard
-            </div>
-            <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              See the most accurate StudyRx competitors.
-            </h1>
-            <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              Public rankings show the top 5 students across published HOSA events. Log in to unlock event filters, top 10 rankings, and your own nearby position.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="/auth/signup">Sign up to see more <ChevronRight className="h-4 w-4" /></Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/auth/signin">Log in</Link>
-              </Button>
-            </div>
-          </div>
+      <main className="mx-auto max-w-6xl space-y-6 px-4 py-10">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">Leaderboard</h1>
 
-          <Card className="glass-card overflow-hidden">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Medal className="h-5 w-5 text-primary" /> Top 5 Overall Accuracy</CardTitle>
-              <CardDescription>Minimum {LEADERBOARD_MIN_QUESTIONS} questions answered across published events.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {loading ? (
-                <div className="space-y-3">
-                  {[1, 2, 3, 4, 5].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-muted" />)}
-                </div>
-              ) : (
-                <div className="relative">
-                  <LeaderboardRows rows={view.top} metric="accuracy" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-card via-card/85 to-transparent" />
-                  <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-background/95 p-4 text-center shadow-sm backdrop-blur">
-                    <LockKeyhole className="mx-auto mb-2 h-5 w-5 text-primary" />
-                    <p className="text-sm font-semibold text-foreground">Create an account or log in to see the full leaderboard.</p>
-                    <div className="mt-3 flex justify-center gap-2">
-                      <Button asChild size="sm"><Link href="/auth/signup">Sign up</Link></Button>
-                      <Button asChild size="sm" variant="outline"><Link href="/auth/signin">Log in</Link></Button>
-                    </div>
+        <Card className="glass-card w-full overflow-hidden">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2"><Medal className="h-5 w-5 text-primary" /> Top 5 Overall Accuracy</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {loading ? (
+              <div className="space-y-3">
+                {[1, 2, 3, 4, 5].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-muted" />)}
+              </div>
+            ) : (
+              <div className="relative">
+                <LeaderboardRows rows={view.top} metric="accuracy" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-card via-card/85 to-transparent" />
+                <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-background/95 p-4 text-center shadow-sm backdrop-blur">
+                  <LockKeyhole className="mx-auto mb-2 h-5 w-5 text-primary" />
+                  <p className="text-sm font-semibold text-foreground">Create an account or log in to see the rest.</p>
+                  <div className="mt-3 flex justify-center gap-2">
+                    <Button asChild size="sm"><Link href="/auth/signup">Sign up</Link></Button>
+                    <Button asChild size="sm" variant="outline"><Link href="/auth/signin">Log in</Link></Button>
                   </div>
                 </div>
-              )}
-            </CardContent>
-          </Card>
-        </section>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </main>
     </div>
   );
@@ -212,56 +193,50 @@ function AuthenticatedLeaderboard({ records, loading }: { records: Record<string
           </header>
 
           <main className="flex-1 space-y-6 p-4 md:p-6">
-            <Card className="glass-card">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2"><Sparkles className="h-5 w-5 text-primary" /> Rankings</CardTitle>
-                <CardDescription>Switch between global and published-event leaderboards. Accuracy requires {LEADERBOARD_MIN_QUESTIONS}+ questions.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
-                  <label className="space-y-2 text-sm font-medium">
-                    <span>Leaderboard</span>
-                    <select
-                      value={eventId}
-                      onChange={(event) => setEventId(event.target.value)}
-                      className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                    >
-                      <option value={OVERALL_EVENT_ID}>All published events</option>
-                      {PUBLISHED_LEADERBOARD_EVENTS.map((event) => (
-                        <option key={event.id} value={event.id}>{event.name}</option>
-                      ))}
-                    </select>
-                  </label>
+            <div className="space-y-4">
+              <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+                <label className="space-y-2 text-sm font-medium">
+                  <span>Leaderboard</span>
+                  <select
+                    value={eventId}
+                    onChange={(event) => setEventId(event.target.value)}
+                    className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  >
+                    <option value={OVERALL_EVENT_ID}>All published events</option>
+                    {PUBLISHED_LEADERBOARD_EVENTS.map((event) => (
+                      <option key={event.id} value={event.id}>{event.name}</option>
+                    ))}
+                  </select>
+                </label>
 
-                  <Tabs value={metric} onValueChange={(value) => setMetric(value as LeaderboardMetric)}>
-                    <TabsList className="grid h-auto grid-cols-1 gap-1 sm:grid-cols-3">
-                      {LEADERBOARD_METRICS.map((item) => (
-                        <TabsTrigger key={item.id} value={item.id} className="px-4 py-2">
-                          {item.label}
-                        </TabsTrigger>
-                      ))}
-                    </TabsList>
-                  </Tabs>
-                </div>
+                <Tabs value={metric} onValueChange={(value) => setMetric(value as LeaderboardMetric)}>
+                  <TabsList className="grid h-auto grid-cols-1 gap-1 sm:grid-cols-3">
+                    {LEADERBOARD_METRICS.map((item) => (
+                      <TabsTrigger key={item.id} value={item.id} className="px-4 py-2">
+                        {item.label}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </Tabs>
+              </div>
 
-                {view.currentUser && (
-                  <div className="grid gap-3 rounded-xl border border-primary/25 bg-primary/5 p-4 md:grid-cols-3">
-                    <div>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground">Your rank</p>
-                      <p className="mt-1 text-2xl font-bold text-foreground">#{view.currentUser.rank}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground">Current metric</p>
-                      <p className="mt-1 text-2xl font-bold text-foreground">{getMetricValue(view.currentUser, metric)}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-widest text-muted-foreground">Ranked students</p>
-                      <p className="mt-1 text-2xl font-bold text-foreground">{view.totalRanked.toLocaleString()}</p>
-                    </div>
+              {view.currentUser && (
+                <div className="grid gap-3 rounded-xl border border-primary/25 bg-primary/5 p-4 md:grid-cols-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">Your rank</p>
+                    <p className="mt-1 text-2xl font-bold text-foreground">#{view.currentUser.rank}</p>
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">Current metric</p>
+                    <p className="mt-1 text-2xl font-bold text-foreground">{getMetricValue(view.currentUser, metric)}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">Ranked students</p>
+                    <p className="mt-1 text-2xl font-bold text-foreground">{view.totalRanked.toLocaleString()}</p>
+                  </div>
+                </div>
+              )}
+            </div>
 
             <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
               <Card className="glass-card">
@@ -306,7 +281,7 @@ function AuthenticatedLeaderboard({ records, loading }: { records: Record<string
 }
 
 export default function LeaderboardPage() {
-  const { user, loading: authLoading } = useAuth();
+  const { profile, user, loading: authLoading } = useAuth();
   const [records, setRecords] = useState<Record<string, LeaderboardUserRecord>>({});
   const [loading, setLoading] = useState(true);
 
@@ -315,6 +290,11 @@ export default function LeaderboardPage() {
     const load = async () => {
       setLoading(true);
       const users = await getLeaderboardUsers();
+      if (user?.uid) {
+        const sessions = await storage.getAllSessions();
+        const rawName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ").trim() || user.displayName || user.email;
+        users[user.uid] = buildLeaderboardUserRecord(user.uid, rawName, sessions);
+      }
       if (!cancelled) {
         setRecords(users);
         setLoading(false);
@@ -327,7 +307,7 @@ export default function LeaderboardPage() {
       cancelled = true;
       window.clearInterval(interval);
     };
-  }, []);
+  }, [profile?.firstName, profile?.lastName, user?.displayName, user?.email, user?.uid]);
 
   if (authLoading) {
     return (
