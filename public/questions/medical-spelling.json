@@ -5443,5 +5443,65 @@
     "category": "Medical Spelling",
     "explanation": "From 'phlyctaina' (blister). The 'phl' cluster followed by 'y' is a classic Greek-derived spelling trap, combined with the complex 'conjunctivitis' suffix.",
     "tag": ""
-  }
+  },
+  {
+  "id":501,
+  "question": "Which of the following is the correct spelling for 'having a rising and falling motion or appearance like that of waves' ?",
+  "options": [
+    "unjulant",
+    "unjulent",
+    "undulant",
+    "undulent"
+  ],
+  "correctAnswer": "undulant",
+  "category": "Medical Spelling",
+  "difficulty": "Easy",
+  "explanation": "“Undulant” is the correct spelling and comes from the Latin “unda,” meaning “wave.” It describes a smooth, wave-like rising and falling motion.",
+  "tag": ""
+},
+{
+  "id":502,
+  "question": "Which of the following is the correct spelling for 'a temporary, diffused redness of the skin, such as blushing or flushing'?",
+  "options": [
+    "rubedo",
+    "rhubedo",
+    "rubido",
+    "ruebido"
+  ],
+  "correctAnswer": "rubedo",
+  "category": "Medical Spelling",
+  "difficulty": "Medium",
+  "explanation": "“Rubedo” is the correct spelling, derived from the Latin “ruber,” meaning “red.” It refers to a temporary redness of the skin, such as blushing or flushing.",
+  "tag": ""
+},
+{
+  "id":503,
+  "question": "Which of the following is the correct spelling for the 'back of the neck'?",
+  "options": [
+    "nuca",
+    "eunecha",
+    "enucha",
+    "nucha"
+  ],
+  "correctAnswer": "nucha",
+  "category": "Medical Spelling",
+  "difficulty": "Easy",
+  "explanation": "Derived from Medieval Latin, which adopted it from the Arabic word nukhāʿ, meaning 'spinal marrow' or 'spinal cord'",
+  "tag": ""
+},
+{
+    "id":504,
+  "question": "Which of the following is the correct spelling for 'relating to or involving the diaphysis'?",
+  "options": [
+    "diaphysiology",
+    "diaphyseal",
+    "diaphysial",
+    "diaphysle"
+  ],
+  "correctAnswer": "diaphyseal",
+  "category": "Medical Spelling",
+  "difficulty": "Medium",
+  "explanation": "Derived from Greek diaphȳ́ (esthai) 'to grow between,' combining dia- (through/between) and physis (growth).",
+  "tag": ""
+}
 ]
