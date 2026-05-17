@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, BarChart3, Trash2, X } from "lucide-react";
+import { Check, BarChart3, Clock, Trash2, X } from "lucide-react";
 import Link from "next/link";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
@@ -109,6 +109,8 @@ type DemographicPieDatum = {
 };
 
 const PIE_COLORS = ["#3b82f6", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#14b8a6", "#f97316", "#a855f7"];
+
+type UserSortFilter = "created-desc" | "last-login-desc" | "last-login-asc" | "practice-time-desc";
 
 function dateLabel(value?: string) {
   if (!value) return "—";
@@ -229,6 +231,7 @@ function AdminContent() {
   const [adminNotes, setAdminNotes] = useState("");
   const [draftNames, setDraftNames] = useState<Record<string, string>>({});
   const [syncingSnapshotHistory, setSyncingSnapshotHistory] = useState(false);
+  const [userSortFilter, setUserSortFilter] = useState<UserSortFilter>("created-desc");
 
   const loadAll = async () => {
     const [usersData, eventReqData, questionSubData, questionReportsData, feedbackData] = await Promise.all([
@@ -261,15 +264,29 @@ function AdminContent() {
     return () => window.clearInterval(interval);
   }, []);
 
-  const sortedUsers = useMemo(
-    () =>
-      Object.entries(users).sort((a, b) => {
-        const aTime = new Date(a[1]?.createdAt || "").getTime();
-        const bTime = new Date(b[1]?.createdAt || "").getTime();
-        return bTime - aTime;
-      }),
-    [users]
-  );
+  const sortedUsers = useMemo(() => {
+    const toTime = (value?: string) => {
+      if (!value) return 0;
+      const parsed = new Date(value).getTime();
+      return Number.isNaN(parsed) ? 0 : parsed;
+    };
+
+    return Object.entries(users).sort((a, b) => {
+      if (userSortFilter === "last-login-desc") {
+        return toTime(b[1]?.lastLogin) - toTime(a[1]?.lastLogin);
+      }
+
+      if (userSortFilter === "last-login-asc") {
+        return toTime(a[1]?.lastLogin) - toTime(b[1]?.lastLogin);
+      }
+
+      if (userSortFilter === "practice-time-desc") {
+        return getUserTotalPracticeSeconds(b[1]) - getUserTotalPracticeSeconds(a[1]);
+      }
+
+      return toTime(b[1]?.createdAt) - toTime(a[1]?.createdAt);
+    });
+  }, [users, userSortFilter]);
 
   const filteredSubmissions = useMemo(() => {
     if (selectedEventFilter === "all") return questionSubmissions;
@@ -471,6 +488,27 @@ function AdminContent() {
           </TabsList>
 
           <TabsContent value="users" className="mt-4 space-y-3">
+            <Card>
+              <CardContent className="flex flex-col gap-3 p-4 text-sm md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="font-semibold">Filter users</p>
+                  <p className="text-xs text-muted-foreground">Sort by account recency, login activity, or total time spent practicing.</p>
+                </div>
+                <label className="flex flex-col gap-1 text-xs font-medium text-muted-foreground md:min-w-72">
+                  User filter
+                  <select
+                    className="h-9 rounded-md border border-input bg-background px-3 text-sm text-foreground"
+                    value={userSortFilter}
+                    onChange={(event) => setUserSortFilter(event.target.value as UserSortFilter)}
+                  >
+                    <option value="created-desc">Newest accounts</option>
+                    <option value="last-login-desc">Last login: most recent</option>
+                    <option value="last-login-asc">Last login: oldest / missing first</option>
+                    <option value="practice-time-desc">Most time spent practicing</option>
+                  </select>
+                </label>
+              </CardContent>
+            </Card>
             {sortedUsers.length === 0 && <p className="text-sm text-muted-foreground">No users found. Check DB rules/role permissions for admin reads.</p>}
             {sortedUsers.map(([uid, user]) => (
               <Card key={uid}>
@@ -479,6 +517,10 @@ function AdminContent() {
                     <p className="font-semibold">{user.name || "Unnamed User"} · {user.role || "user"}</p>
                     <p className="truncate text-muted-foreground">{user.email || uid}</p>
                     <p className="text-xs text-muted-foreground">Created: {dateLabel(user.createdAt)} · Last login: {dateLabel(user.lastLogin)}</p>
+                    <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
+                      <Clock className="h-3 w-3" />
+                      Time spent practicing: {formatStatsDuration(getUserTotalPracticeSeconds(user))}
+                    </p>
                     <div className="mt-2 space-y-1 text-xs text-muted-foreground">
                       <p>
                         Onboarding:{" "}
@@ -1040,6 +1082,12 @@ function MetricItem({ label, value }: { label: string; value: string }) {
       <p className="text-lg font-semibold">{value}</p>
     </div>
   );
+}
+
+function getUserTotalPracticeSeconds(user: UserRecord) {
+  return normalizeUserSessions(user).reduce((sum, session) => {
+    return sum + (session.totalThinkTime || 0) + (session.totalExplanationTime || 0);
+  }, 0);
 }
 
 function normalizeUserSessions(user: UserRecord): SessionData[] {
