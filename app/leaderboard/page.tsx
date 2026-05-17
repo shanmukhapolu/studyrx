@@ -130,7 +130,10 @@ function PublicLeaderboard({ records, loading }: { records: Record<string, Leade
     <div className="min-h-screen bg-background">
       <PublicHeader />
       <main className="mx-auto max-w-6xl space-y-6 px-4 py-10">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">Leaderboard</h1>
+        <div className="space-y-2">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">Climb the charts. Master your event.</h1>
+          <p className="max-w-2xl text-sm text-muted-foreground md:text-base">See the top StudyRx performers by overall accuracy across published HOSA events.</p>
+        </div>
 
         <Card className="glass-card w-full overflow-hidden">
           <CardHeader>
@@ -141,13 +144,24 @@ function PublicLeaderboard({ records, loading }: { records: Record<string, Leade
               <div className="space-y-3">
                 {[1, 2, 3, 4, 5].map((item) => <div key={item} className="h-16 animate-pulse rounded-xl bg-muted" />)}
               </div>
-            ) : (
+            ) : view.top.length > 0 ? (
               <div className="relative">
                 <LeaderboardRows rows={view.top} metric="accuracy" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-card via-card/85 to-transparent" />
                 <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-background/95 p-4 text-center shadow-sm backdrop-blur">
                   <LockKeyhole className="mx-auto mb-2 h-5 w-5 text-primary" />
                   <p className="text-sm font-semibold text-foreground">Create an account or log in to see the rest.</p>
+                  <div className="mt-3 flex justify-center gap-2">
+                    <Button asChild size="sm"><Link href="/auth/signup">Sign up</Link></Button>
+                    <Button asChild size="sm" variant="outline"><Link href="/auth/signin">Log in</Link></Button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <LeaderboardRows rows={view.top} metric="accuracy" />
+                <div className="rounded-xl border border-border bg-muted/20 p-4 text-center">
+                  <p className="text-sm font-semibold text-foreground">Want to be first on the board?</p>
                   <div className="mt-3 flex justify-center gap-2">
                     <Button asChild size="sm"><Link href="/auth/signup">Sign up</Link></Button>
                     <Button asChild size="sm" variant="outline"><Link href="/auth/signin">Log in</Link></Button>

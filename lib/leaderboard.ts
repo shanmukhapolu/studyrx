@@ -183,6 +183,18 @@ function buildLeaderboardUsersFromRawUsers(users: Record<string, RawLeaderboardU
   ) as Record<string, LeaderboardUserRecord>;
 }
 
+
+async function fetchPublicRawUsers(): Promise<Record<string, RawLeaderboardUser>> {
+  const url = `${FIREBASE_DATABASE_URL}/users.json`;
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) return {};
+    return ((await res.json()) ?? {}) as Record<string, RawLeaderboardUser>;
+  } catch {
+    return {};
+  }
+}
+
 async function fetchPublicLeaderboardUsers(): Promise<Record<string, LeaderboardUserRecord>> {
   const url = `${FIREBASE_DATABASE_URL}/leaderboard/users.json`;
   try {
@@ -196,9 +208,13 @@ async function fetchPublicLeaderboardUsers(): Promise<Record<string, Leaderboard
 
 export async function getLeaderboardUsers(): Promise<Record<string, LeaderboardUserRecord>> {
   const publicUsers = await fetchPublicLeaderboardUsers();
+  const publicRawUsers = await fetchPublicRawUsers();
   const authedLeaderboardUsers = await rtdbGet<Record<string, LeaderboardUserRecord>>("leaderboard/users", {});
-  const rawUsers = await rtdbGet<Record<string, RawLeaderboardUser>>("users", {});
-  const usersFromCurrentData = buildLeaderboardUsersFromRawUsers(rawUsers);
+  const authedRawUsers = await rtdbGet<Record<string, RawLeaderboardUser>>("users", {});
+  const usersFromCurrentData = buildLeaderboardUsersFromRawUsers({
+    ...publicRawUsers,
+    ...authedRawUsers,
+  });
 
   return {
     ...usersFromCurrentData,

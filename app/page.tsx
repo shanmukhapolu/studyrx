@@ -456,9 +456,6 @@ export default function HomePage() {
           </Link>
           <div className="flex items-center gap-2.5">
             <Button asChild variant="ghost" size="sm" className="hidden text-sm sm:inline-flex">
-              <Link href="/events">Events</Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm" className="hidden text-sm sm:inline-flex">
               <Link href="/leaderboard">Leaderboard</Link>
             </Button>
             <Button asChild variant="ghost" size="sm" className="text-sm">
