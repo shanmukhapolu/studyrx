@@ -192,7 +192,7 @@
       "users": {
         ".read": "auth != null",
         "$uid": {
-          ".write": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
           "uid": { ".validate": "newData.isString() && newData.val() === $uid" },
           "displayName": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80" },
           "initials": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 3" },

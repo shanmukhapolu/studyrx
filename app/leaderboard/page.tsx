@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
+  backfillLeaderboardFromLegacyUsers,
   buildLeaderboardUserRecord,
   buildLeaderboardView,
   getLeaderboardUsers,
@@ -246,8 +247,19 @@ export default function LeaderboardPage() {
         console.warn("Leaderboard sync skipped while loading page.", error);
       });
 
-      const users = await getLeaderboardUsers();
+      let users = await getLeaderboardUsers();
       users[user.uid] = currentUserRecord;
+
+      if (Object.keys(users).length <= 1) {
+        try {
+          users = {
+            ...(await backfillLeaderboardFromLegacyUsers()),
+            [user.uid]: currentUserRecord,
+          };
+        } catch (error) {
+          console.warn("Legacy leaderboard backfill skipped while loading page.", error);
+        }
+      }
 
       if (!cancelled) {
         setRecords(users);
