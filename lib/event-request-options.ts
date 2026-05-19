@@ -9,6 +9,7 @@ export const EVENT_CATEGORY_OPTIONS: Record<string, string[]> = {
     "Medical Law & Ethics",
     "Medical Math",
     "Medical Reading",
+    "Medical Terminology",
     "Nutrition",
     "Pathophysiology",
     "Pharmacology",
