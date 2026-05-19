@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, MessageSquarePlus, Settings, ShieldCheck, UserRound } from "lucide-react";
+import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, Medal, MessageSquarePlus, Settings, ShieldCheck, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -35,6 +35,11 @@ const navItems = [
     icon: BarChart3,
   },
   {
+    title: "Leaderboard",
+    href: "/leaderboard",
+    icon: Medal,
+  },
+  {
     title: "Submit Feedback",
     href: "/submit-feedback",
     icon: MessageSquarePlus,
@@ -52,29 +57,29 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader className="border-b border-sidebar-border p-6">
+      <SidebarHeader className="border-b border-sidebar-border p-5">
         <Link href="/dashboard" className="flex items-center gap-4">
           <Image
             src="/logo.png"
             alt="StudyRx Logo"
             width={40}
             height={40}
-            className="h-10 w-10"
+            className="h-9 w-9"
           />
           <div className="flex flex-col">
-            <span className="text-xl font-bold text-sidebar-foreground">StudyRx</span>
+            <span className="text-lg font-bold text-sidebar-foreground">StudyRx</span>
           </div>
         </Link>
       </SidebarHeader>
-      <SidebarContent className="p-4">
-        <SidebarMenu className="space-y-3">
+      <SidebarContent className="p-3">
+        <SidebarMenu className="space-y-2">
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
                   isActive={pathname === item.href}
                   tooltip={item.title}
-                  className="px-3 py-4"
+                  className="px-3 py-3"
                 >
                   <Link href={item.href}>
                     <item.icon className="h-5 w-5" />
@@ -88,13 +93,13 @@ export function AppSidebar() {
           <div className="mt-6">
             <SidebarSeparator className="mb-3" />
             <p className="px-2 text-xs font-semibold tracking-wide text-sidebar-foreground/70">CONTRIBUTOR</p>
-            <SidebarMenu className="mt-2 space-y-3">
+            <SidebarMenu className="mt-2 space-y-2">
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
                   isActive={pathname === "/submit-question"}
                   tooltip="Submit Question"
-                  className="px-3 py-4"
+                  className="px-3 py-3"
                 >
                   <Link href="/submit-question">
                     <FileQuestion className="h-5 w-5" />
@@ -106,12 +111,12 @@ export function AppSidebar() {
           </div>
         )}
       </SidebarContent>
-      <SidebarFooter className="border-t border-sidebar-border p-4">
+      <SidebarFooter className="border-t border-sidebar-border p-3">
         <details className="group rounded-xl border border-sidebar-border/70 bg-sidebar-accent/30">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-3">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <UserRound className="h-5 w-5" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <UserRound className="h-4 w-4" />
               </div>
               <div className="min-w-0">
                 <p className="truncate text-sm font-semibold text-sidebar-foreground">{resolvedName}</p>
@@ -121,7 +126,7 @@ export function AppSidebar() {
             <ChevronUp className="h-4 w-4 shrink-0 text-sidebar-foreground/70 transition-transform group-open:rotate-180" />
           </summary>
 
-          <div className="space-y-2 border-t border-sidebar-border/60 px-3 py-3">
+          <div className="space-y-2 border-t border-sidebar-border/60 px-3 py-2.5">
             {isAdmin && (
               <Button asChild size="sm" variant="outline" className="w-full justify-start bg-transparent">
                 <Link href="/admin">

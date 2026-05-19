@@ -30,7 +30,7 @@ import { getStoredAuth } from "@/lib/rtdb";
 function countQuestionsInPayload(payload: unknown): number {
   if (Array.isArray(payload)) return payload.length;
   if (payload && typeof payload === "object") {
-    return Object.values(payload as Record<string, unknown>).reduce(
+    return Object.values(payload as Record<string, unknown>).reduce<number>(
       (sum, v) => sum + countQuestionsInPayload(v),
       0,
     );
@@ -103,6 +103,14 @@ const metrics = [
   { label: "Avg Accuracy", value: "90.2%", detail: "+12% in 4 weeks" },
   { label: "Avg Improvement", value: "7.3%", detail: "per user" },
   { label: "Return Rate", value: "72.7%", detail: "after first session" },
+];
+
+const leaderboardPreview = [
+  { rank: 1, name: "Maya R.", initials: "MR", accuracy: "96.8%", questions: 240, streak: 34 },
+  { rank: 2, name: "Ethan K.", initials: "EK", accuracy: "94.5%", questions: 198, streak: 29 },
+  { rank: 3, name: "Sofia L.", initials: "SL", accuracy: "93.7%", questions: 176, streak: 26 },
+  { rank: 4, name: "Noah P.", initials: "NP", accuracy: "91.9%", questions: 221, streak: 24 },
+  { rank: 5, name: "Ava C.", initials: "AC", accuracy: "90.6%", questions: 164, streak: 21 },
 ];
 
 const features = [
@@ -482,7 +490,7 @@ export default function HomePage() {
                   matter most.
                   <svg viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path
-  class="squiggle-path"
+  className="squiggle-path"
   d="M2 7.5 
      C20 0, 40 15, 60 7.5 
      C80 0, 100 15, 120 7.5 
@@ -769,6 +777,65 @@ export default function HomePage() {
                 aria-label={`Slide ${i + 1}`}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Leaderboard preview ──────────────────────────── */}
+      <section className="border-b border-border">
+        <div className="page-shell section-shell">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="reveal-left underline-trigger space-y-4">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground">Leaderboard</p>
+              <h2 className="text-3xl font-semibold md:text-4xl">
+                Chase the top spot, <span className="underline-highlight">one session at a time.</span>
+              </h2>
+              <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">
+                Compare progress across StudyRx events, celebrate streaks, and keep your practice momentum visible.
+              </p>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/leaderboard">View Leaderboard</Link>
+              </Button>
+            </div>
+
+            <div className="reveal-right mx-auto w-full max-w-xl lg:mr-0 lg:pr-2">
+              <div className="relative rotate-[-2.5deg] lg:translate-x-4">
+                <div className="absolute -right-3 bottom-8 h-8 w-20 rotate-6 rounded-sm bg-accent/15 shadow-sm backdrop-blur-sm" aria-hidden="true" />
+                <Card className="relative overflow-hidden border-primary/20 bg-card/95 shadow-[0_24px_70px_rgba(15,23,42,0.16)]">
+                  <CardContent className="p-0">
+                    <div className="border-b border-border bg-muted/20 px-5 py-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2">
+                          <Trophy className="h-5 w-5 text-primary" />
+                          <p className="font-semibold text-foreground">Overall accuracy leaders</p>
+                        </div>
+                        <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">Live ranking</span>
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">A quick look at how top performers could stack up.</p>
+                    </div>
+                    <div className="divide-y divide-border">
+                      {leaderboardPreview.map((student) => (
+                        <div key={student.rank} className="grid grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-3">
+                          <div className="flex w-10 items-center justify-center text-lg font-bold">
+                            {student.rank === 1 ? "🥇" : student.rank === 2 ? "🥈" : student.rank === 3 ? "🥉" : `#${student.rank}`}
+                          </div>
+                          <div className="flex min-w-0 items-center gap-3">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                              {student.initials}
+                            </div>
+                            <div>
+                              <p className="font-semibold text-foreground">{student.name}</p>
+                              <p className="text-xs text-muted-foreground">{student.questions} questions • {student.streak} streak</p>
+                            </div>
+                          </div>
+                          <p className="text-lg font-bold text-foreground">{student.accuracy}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
