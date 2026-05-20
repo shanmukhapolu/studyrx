@@ -21,7 +21,7 @@ export default function SignUpPage() {
 }
 
 function SignUpContent() {
-  const { signUp, signInWithGoogle, user, onboardingCompleted } = useAuth();
+  const { signUp, signInWithGoogle, user, onboardingCompleted, role } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
 
@@ -37,9 +37,13 @@ function SignUpContent() {
 
   useEffect(() => {
     if (user) {
+      if (role === "chapter_admin") {
+        router.replace(onboardingCompleted ? "/chapter-admin/dashboard" : "/chapter-admin/onboarding");
+        return;
+      }
       router.replace(onboardingCompleted ? next : "/onboarding");
     }
-  }, [next, onboardingCompleted, router, user]);
+  }, [next, onboardingCompleted, role, router, user]);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -72,6 +76,10 @@ function SignUpContent() {
           <CardTitle>Create your StudyRx account</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="grid grid-cols-2 gap-2">
+            <Button type="button" variant="secondary">Sign up as Student</Button>
+            <Button asChild type="button" variant="outline"><Link href="/auth/chapter-signup">Create a Chapter</Link></Button>
+          </div>
           <form onSubmit={onSubmit} className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
               <Input placeholder="First name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />

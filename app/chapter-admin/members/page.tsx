@@ -1,0 +1,3 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export default function ChapterMembersPage(){return <div className="space-y-4"><h1 className="text-2xl font-bold">Members</h1><Card><CardHeader><CardTitle>Invite Members</CardTitle></CardHeader><CardContent>Share chapter code with students to join this chapter.</CardContent></Card><Card><CardHeader><CardTitle>User Management</CardTitle></CardHeader><CardContent><p className="text-sm text-muted-foreground">Actions supported: Edit name, Send password reset, Remove from chapter (without deleting account).</p></CardContent></Card></div>}

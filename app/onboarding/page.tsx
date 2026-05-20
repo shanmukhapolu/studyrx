@@ -31,6 +31,7 @@ const INITIAL_STATE: FormState = {
   goal: "",
   charterOrganization: "",
   questionsPerSession: "",
+  chapterCode: "",
 };
 
 export default function OnboardingPage() {
@@ -171,11 +172,14 @@ export default function OnboardingPage() {
               )}
 
               {step === 7 && (
-                <SingleSelect
-                  options={QUESTION_SESSION_OPTIONS}
-                  value={form.questionsPerSession}
-                  onSelect={(value) => setForm((prev) => ({ ...prev, questionsPerSession: value }))}
-                />
+                <div className="space-y-3">
+                  <SingleSelect
+                    options={QUESTION_SESSION_OPTIONS}
+                    value={form.questionsPerSession}
+                    onSelect={(value) => setForm((prev) => ({ ...prev, questionsPerSession: value }))}
+                  />
+                  <Input placeholder="Optional chapter code" value={form.chapterCode || ""} onChange={(e) => setForm((prev) => ({ ...prev, chapterCode: e.target.value.toUpperCase() }))} />
+                </div>
               )}
             </div>
 

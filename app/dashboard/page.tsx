@@ -205,6 +205,16 @@ export default function DashboardPage() {
                   </Button>
                 </CardContent>
               </Card>
+              <Card className="border-border bg-card/75">
+                <CardHeader>
+                  <CardTitle className="text-foreground">Join a chapter</CardTitle>
+                  <CardDescription className="text-muted-foreground">Enter your chapter code from your chapter admin to connect assignments and chapter analytics.</CardDescription>
+                </CardHeader>
+                <CardContent className="flex gap-3">
+                  <input className="h-10 rounded-md border px-3 text-sm" placeholder="Chapter code (optional)" />
+                  <Button size="sm">Join</Button>
+                </CardContent>
+              </Card>
             </main>
           </div>
           </SidebarInset>

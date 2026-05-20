@@ -18,7 +18,7 @@ export interface UserProfile {
   lastName: string;
 }
 
-export type UserRole = "user" | "contributor" | "admin";
+export type UserRole = "user" | "contributor" | "admin" | "chapter_admin";
 
 export interface UserRecord {
   name: string;
@@ -45,6 +45,7 @@ export interface UserRecord {
 function normalizeUserRole(role: unknown): UserRole {
   if (role === "admin") return "admin";
   if (role === "contributor") return "contributor";
+  if (role === "chapter_admin") return "chapter_admin";
   return "user";
 }
 

@@ -40,6 +40,11 @@ const navItems = [
     icon: Medal,
   },
   {
+    title: "Chapter",
+    href: "/chapter",
+    icon: ShieldCheck,
+  },
+  {
     title: "Submit Feedback",
     href: "/submit-feedback",
     icon: MessageSquarePlus,

@@ -1,0 +1,1 @@
+export default function CreateTestPage(){return <div className="space-y-3"><h1 className="text-2xl font-bold">Create Test</h1><ol className="list-decimal pl-5"><li>Select Event</li><li>Choose Test (premade)</li><li>Assign Members (multi-select)</li><li>Set Deadline</li><li>Review & Create</li></ol></div>}

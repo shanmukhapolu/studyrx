@@ -19,7 +19,7 @@ export default function SignInPage() {
 }
 
 function SignInContent() {
-  const { signIn, signInWithGoogle, user, onboardingCompleted } = useAuth();
+  const { signIn, signInWithGoogle, user, onboardingCompleted, role } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
 
@@ -32,9 +32,13 @@ function SignInContent() {
 
   useEffect(() => {
     if (user) {
+      if (role === "chapter_admin") {
+        router.replace(onboardingCompleted ? "/chapter-admin/dashboard" : "/chapter-admin/onboarding");
+        return;
+      }
       router.replace(onboardingCompleted ? next : "/onboarding");
     }
-  }, [next, onboardingCompleted, router, user]);
+  }, [next, onboardingCompleted, role, router, user]);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -56,6 +60,10 @@ function SignInContent() {
           <CardTitle>Sign In to StudyRx</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="grid grid-cols-2 gap-2">
+            <Button asChild type="button" variant="secondary"><Link href="/auth/signup">Sign up as Student</Link></Button>
+            <Button asChild type="button" variant="outline"><Link href="/auth/chapter-signup">Create a Chapter</Link></Button>
+          </div>
           <form onSubmit={onSubmit} className="space-y-3">
             <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />

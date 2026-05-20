@@ -34,6 +34,7 @@ interface AuthContextValue {
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (input: { firstName: string; lastName: string; email: string; password: string }) => Promise<void>;
+  signUpChapterAdmin: (input: { fullName: string; email: string; password: string }) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   updateName: (input: { firstName: string; lastName: string }) => Promise<void>;
   sendPasswordReset: () => Promise<void>;
@@ -256,6 +257,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(session.user);
         setProfile({ firstName, lastName });
         setRole("user");
+        setOnboardingCompleted(false);
+      },
+      signUpChapterAdmin: async ({ fullName, email, password }) => {
+        let session = ensureSessionUid(await signUpWithEmail(email, password));
+        session = ensureSessionUid(await updateDisplayName(session.idToken, fullName.trim(), session.user.uid));
+        saveSession(session);
+        const now = new Date().toISOString();
+        await upsertUserRecord(session.idToken, session.user.uid, {
+          name: fullName.trim(),
+          email,
+          role: "chapter_admin",
+          createdAt: now,
+          lastLogin: now,
+          onboardingCompleted: false,
+        });
+        setUser(session.user);
+        setProfile(profileFromDisplayName(fullName));
+        setRole("chapter_admin");
         setOnboardingCompleted(false);
       },
       signInWithGoogle: async () => {
