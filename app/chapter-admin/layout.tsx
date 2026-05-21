@@ -1,37 +1,30 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
-
-const items = [
-  { label: "Dashboard", href: "/chapter-admin/dashboard" },
-  { label: "Tests", href: "/chapter-admin/tests" },
-  { label: "Members", href: "/chapter-admin/members" },
-  { label: "Analytics", href: "/chapter-admin/analytics" },
-  { label: "Settings", href: "/chapter-admin/settings" },
-];
+import { ChapterAdminSidebar } from "@/components/chapter-admin-sidebar";
 
 export default function ChapterLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-
   return (
     <AuthGuard requiredRole="chapter_admin">
-      <div className="min-h-screen grid grid-cols-1 md:grid-cols-[240px_1fr]">
-        <aside className="border-r border-border p-4 space-y-2 bg-card/40">
-          <h2 className="text-lg font-bold mb-3">Chapter Admin</h2>
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`block rounded px-3 py-2 text-sm ${pathname === item.href ? "bg-primary/15 font-semibold" : "hover:bg-muted"}`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </aside>
-        <main className="p-6">{children}</main>
+      <div className="flex min-h-screen w-full">
+        <SidebarProvider>
+          <ChapterAdminSidebar />
+          <SidebarInset>
+            <div className="flex flex-col flex-1">
+              <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <div className="flex h-16 items-center gap-3 px-4 md:gap-4 md:px-6">
+                  <SidebarTrigger className="md:hidden" />
+                  <div className="flex-1">
+                    <h1 className="text-xl font-bold text-foreground md:text-2xl">Chapter Admin</h1>
+                    <p className="text-sm text-muted-foreground">Manage your chapter members, tests, and analytics.</p>
+                  </div>
+                </div>
+              </header>
+              <main className="flex-1 space-y-6 p-4 md:p-6">{children}</main>
+            </div>
+          </SidebarInset>
+        </SidebarProvider>
       </div>
     </AuthGuard>
   );

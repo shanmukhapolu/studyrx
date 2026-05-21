@@ -36,7 +36,8 @@ export function AuthGuard({ children, requiredRole }: { children: React.ReactNod
     }
   }, [loading, onboardingCompleted, pathname, requiredRole, role, router, user]);
 
-  if (loading || !user || onboardingCompleted !== true) {
+  const allowChapterOnboarding = requiredRole === "chapter_admin" && pathname === "/chapter-admin/onboarding";
+  if (loading || !user || (onboardingCompleted !== true && !allowChapterOnboarding)) {
     return <div className="p-8 text-muted-foreground">Checking authentication...</div>;
   }
 
