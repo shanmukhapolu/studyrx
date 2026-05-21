@@ -10,12 +10,16 @@ import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/s
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { useAuth } from "@/components/auth/auth-provider";
+import { rtdbGet, rtdbPatch } from "@/lib/rtdb";
 
 export default function DashboardPage() {
-  const { profile } = useAuth();
+  const { profile, user } = useAuth();
   const [stats, setStats] = useState<UserStats | null>(null);
   const [totalSessions, setTotalSessions] = useState(0);
   const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
+  const [chapterCodeInput, setChapterCodeInput] = useState("");
+  const [chapterJoinMessage, setChapterJoinMessage] = useState("");
+  const [joiningChapter, setJoiningChapter] = useState(false);
 
   useEffect(() => {
     const loadStats = async () => {
@@ -44,6 +48,31 @@ export default function DashboardPage() {
   const avgTime = stats?.averageTime
     ? stats.averageTime.toFixed(1)
     : "0";
+
+  const handleJoinChapter = async () => {
+    if (!user?.uid) return;
+    const code = chapterCodeInput.trim().toUpperCase();
+    if (!code) {
+      setChapterJoinMessage("Please enter a chapter code.");
+      return;
+    }
+    setJoiningChapter(true);
+    setChapterJoinMessage("");
+    try {
+      const chapter = await rtdbGet<Record<string, unknown> | null>(`chapters/${code}`, null);
+      if (!chapter) {
+        setChapterJoinMessage("Chapter code not found. Please check and try again.");
+        return;
+      }
+      await rtdbPatch(`users/${user.uid}`, { chapterCode: code });
+      await rtdbPatch(`chapters/${code}/members`, { [user.uid]: true });
+      setChapterJoinMessage("Successfully joined chapter.");
+    } catch {
+      setChapterJoinMessage("Unable to join chapter right now. Please try again.");
+    } finally {
+      setJoiningChapter(false);
+    }
+  };
 
   return (
     <div className="flex min-h-screen w-full">
@@ -210,9 +239,12 @@ export default function DashboardPage() {
                   <CardTitle className="text-foreground">Join a chapter</CardTitle>
                   <CardDescription className="text-muted-foreground">Enter your chapter code from your chapter admin to connect assignments and chapter analytics.</CardDescription>
                 </CardHeader>
-                <CardContent className="flex gap-3">
-                  <input className="h-10 rounded-md border px-3 text-sm" placeholder="Chapter code (optional)" />
-                  <Button size="sm">Join</Button>
+                <CardContent className="space-y-3">
+                  <div className="flex gap-3">
+                    <input className="h-10 rounded-md border px-3 text-sm" placeholder="Chapter code" value={chapterCodeInput} onChange={(e) => setChapterCodeInput(e.target.value.toUpperCase())} />
+                    <Button size="sm" onClick={handleJoinChapter} disabled={joiningChapter}>{joiningChapter ? "Joining..." : "Join"}</Button>
+                  </div>
+                  {chapterJoinMessage && <p className="text-sm text-muted-foreground">{chapterJoinMessage}</p>}
                 </CardContent>
               </Card>
             </main>

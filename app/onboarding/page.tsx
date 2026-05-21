@@ -7,6 +7,7 @@ import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { rtdbGet } from "@/lib/rtdb";
 import {
   EXPERIENCE_LEVEL_OPTIONS,
   GOAL_OPTIONS,
@@ -42,6 +43,7 @@ export default function OnboardingPage() {
   const [search, setSearch] = useState("");
   const [form, setForm] = useState<FormState>(INITIAL_STATE);
   const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
   const progress = (step / TOTAL_STEPS) * 100;
 
   const filteredStates = useMemo(() => {
@@ -80,6 +82,7 @@ export default function OnboardingPage() {
   };
 
   const handleNext = async () => {
+    setError("");
     if (!canContinue) return;
 
     if (step < TOTAL_STEPS) {
@@ -89,6 +92,15 @@ export default function OnboardingPage() {
 
     setSaving(true);
     try {
+      const code = (form.chapterCode || "").trim().toUpperCase();
+      if (code) {
+        const chapter = await rtdbGet<Record<string, unknown> | null>(`chapters/${code}`, null);
+        if (!chapter) {
+          setError("That chapter code does not exist. Leave it blank or use a valid code.");
+          return;
+        }
+        setForm((prev) => ({ ...prev, chapterCode: code }));
+      }
       await completeOnboarding(form);
       router.replace("/dashboard");
     } finally {
@@ -191,6 +203,7 @@ export default function OnboardingPage() {
                 {step === TOTAL_STEPS ? (saving ? "Saving..." : "Finish") : "Next"}
               </Button>
             </div>
+            {error && <p className="mt-2 text-sm text-destructive">{error}</p>}
           </CardContent>
         </Card>
       </div>

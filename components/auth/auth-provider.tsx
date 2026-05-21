@@ -262,6 +262,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       signUpChapterAdmin: async ({ fullName, email, password }) => {
         let session = ensureSessionUid(await signUpWithEmail(email, password));
         session = ensureSessionUid(await updateDisplayName(session.idToken, fullName.trim(), session.user.uid));
+        const parsed = profileFromDisplayName(fullName) || { firstName: fullName.trim(), lastName: "" };
+        try {
+          await saveUserProfile(session.idToken, session.user.uid, parsed);
+        } catch (error) {
+          console.warn("Profile write skipped during chapter admin signup; attempting fresh sign-in token.", error);
+          try {
+            session = ensureSessionUid(await signInWithEmail(email, password));
+            await saveUserProfile(session.idToken, session.user.uid, parsed);
+          } catch (recoveryError) {
+            console.warn("Chapter admin signup recovery profile write also failed; continuing with Auth displayName fallback.", recoveryError);
+          }
+        }
         saveSession(session);
         const now = new Date().toISOString();
         await upsertUserRecord(session.idToken, session.user.uid, {

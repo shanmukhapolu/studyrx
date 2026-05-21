@@ -4,8 +4,10 @@ import Image from "next/image";
 import { BarChart3, ChevronUp, FileQuestion, Home, Layers, LogOut, Medal, MessageSquarePlus, Settings, ShieldCheck, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { useAuth } from "@/components/auth/auth-provider";
+import { rtdbGet } from "@/lib/rtdb";
 import { Button } from "@/components/ui/button";
 import {
   Sidebar,
@@ -55,6 +57,29 @@ export function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const { profile, user, signOut, isAdmin, isContributor } = useAuth();
+  const [showChapterTab, setShowChapterTab] = useState(false);
+  useEffect(() => {
+    let mounted = true;
+    const loadChapterTab = async () => {
+      if (!user?.uid) return;
+      try {
+        const userData = await rtdbGet<{ chapterCode?: string }>(`users/${user.uid}`, {});
+        const code = typeof userData?.chapterCode === "string" ? userData.chapterCode : "";
+        if (!code) {
+          if (mounted) setShowChapterTab(false);
+          return;
+        }
+        const chapter = await rtdbGet<Record<string, unknown> | null>(`chapters/${code}`, null);
+        if (mounted) setShowChapterTab(Boolean(chapter));
+      } catch {
+        if (mounted) setShowChapterTab(false);
+      }
+    };
+    loadChapterTab();
+    return () => {
+      mounted = false;
+    };
+  }, [user?.uid]);
   const hasContributorAccess = isContributor || isAdmin;
   const fallbackName = user?.displayName?.trim() || "Student";
   const resolvedName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || fallbackName;
@@ -78,7 +103,9 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent className="p-3">
         <SidebarMenu className="space-y-2">
-          {navItems.map((item) => (
+          {navItems
+            .filter((item) => item.href !== "/chapter" || showChapterTab)
+            .map((item) => (
             <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild

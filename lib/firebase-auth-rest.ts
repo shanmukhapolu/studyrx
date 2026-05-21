@@ -34,6 +34,7 @@ export interface UserRecord {
   goal?: string;
   charterOrganization?: string;
   questionsPerSession?: string;
+  chapterCode?: string;
   missedQuestionHandling?: string;
   onboardingCompleted?: boolean;
   settings?: {
@@ -277,6 +278,7 @@ export async function getUserRecord(idToken: string, uid: string): Promise<UserR
     goal: typeof userData.goal === "string" ? userData.goal : undefined,
     charterOrganization: typeof userData.charterOrganization === "string" ? userData.charterOrganization : undefined,
     questionsPerSession: typeof userData.questionsPerSession === "string" ? userData.questionsPerSession : undefined,
+    chapterCode: typeof userData.chapterCode === "string" ? userData.chapterCode : undefined,
     onboardingCompleted: userData.onboardingCompleted === true,
     settings:
       userData.settings && typeof userData.settings === "object"
