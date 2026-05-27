@@ -3,8 +3,11 @@
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { ChapterAdminSidebar } from "@/components/chapter-admin-sidebar";
+import { usePathname } from "next/navigation";
 
 export default function ChapterLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const title = pathname.includes("/tests") ? "Tests" : pathname.includes("/members") ? "Members" : pathname.includes("/analytics") ? "Analytics" : pathname.includes("/settings") ? "Settings" : "Dashboard";
   return (
     <AuthGuard requiredRole="chapter_admin">
       <div className="flex min-h-screen w-full">
@@ -16,7 +19,7 @@ export default function ChapterLayout({ children }: { children: React.ReactNode 
                 <div className="flex h-16 items-center gap-3 px-4 md:gap-4 md:px-6">
                   <SidebarTrigger className="md:hidden" />
                   <div className="flex-1">
-                    <h1 className="text-xl font-bold text-foreground md:text-2xl">Chapter Admin</h1>
+                    <h1 className="text-xl font-bold text-foreground md:text-2xl">{title}</h1>
                     <p className="text-sm text-muted-foreground">Manage your chapter members, tests, and analytics.</p>
                   </div>
                 </div>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronUp, Home, FlaskConical, Users, BarChart3, Settings, LogOut, UserRound } from "lucide-react";
+import { ChevronUp, Home, FlaskConical, Users, BarChart3, LogOut, UserRound } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { useAuth } from "@/components/auth/auth-provider";
@@ -14,7 +14,6 @@ const items = [
   { title: "Tests", href: "/chapter-admin/tests", icon: FlaskConical },
   { title: "Members", href: "/chapter-admin/members", icon: Users },
   { title: "Analytics", href: "/chapter-admin/analytics", icon: BarChart3 },
-  { title: "Settings", href: "/chapter-admin/settings", icon: Settings },
 ];
 
 export function ChapterAdminSidebar() {
@@ -62,6 +61,9 @@ export function ChapterAdminSidebar() {
             <ChevronUp className="h-4 w-4 shrink-0 text-sidebar-foreground/70 transition-transform group-open:rotate-180" />
           </summary>
           <div className="space-y-2 border-t border-sidebar-border/60 px-3 py-2.5">
+            <Button asChild size="sm" variant="outline" className="w-full justify-start bg-transparent">
+              <Link href="/chapter-admin/settings">Settings</Link>
+            </Button>
             <Button size="sm" className="w-full justify-start" onClick={() => { signOut(); router.push('/auth/signin'); }}><LogOut className="mr-2 h-4 w-4" />Sign out</Button>
           </div>
         </details>
