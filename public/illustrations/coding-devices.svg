@@ -1,0 +1,60 @@
+<svg width="1600" height="1600" viewBox="0 0 1600 1600" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Coding workstation with computer and phone</title>
+  <desc id="desc">A black, white, and indigo line illustration of a desktop monitor, mobile phone, and developer.</desc>
+  <g stroke="#231F20" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 1290h1300" stroke="#2C2728"/>
+    <rect x="160" y="530" width="910" height="640" rx="34" fill="#fff"/>
+    <path d="M190 560h850v540H190z" fill="#231F20"/>
+    <path d="M190 560h850v58H190z" fill="#5B43E8" stroke="none"/>
+    <circle cx="225" cy="589" r="8" fill="#231F20" stroke="none"/>
+    <circle cx="252" cy="589" r="8" fill="#fff" stroke="none"/>
+    <circle cx="280" cy="589" r="8" fill="#fff" stroke="none"/>
+    <path d="M290 665h76M382 665h148M570 665h170M778 665h100" stroke="#fff"/>
+    <path d="M305 697h78M433 697h146M608 697h150M786 697h148" stroke="#5B43E8"/>
+    <path d="M320 729h78M422 729h184" stroke="#fff"/>
+    <path d="M335 761h74M425 761h220M674 761h103M812 761h115" stroke="#5B43E8"/>
+    <path d="M320 793h78M410 793h124M570 793h120" stroke="#fff"/>
+    <path d="M320 825h76M410 825h110M544 825h44" stroke="#5B43E8"/>
+    <path d="M320 857h77M412 857h152M580 857h76" stroke="#fff"/>
+    <path d="M304 889h41M374 889h172M563 889h78" stroke="#5B43E8"/>
+    <path d="M304 921h72M410 921h60M490 921h134M644 921h254" stroke="#fff"/>
+    <path d="M314 953h148M485 953h103M604 953h130" stroke="#5B43E8"/>
+    <path d="M314 985h220M548 985h98M660 985h290" stroke="#fff"/>
+    <path d="M314 1017h110M443 1017h78M536 1017h76" stroke="#5B43E8"/>
+    <path d="M314 1049h184M520 1049h92M632 1049h140M785 1049h135" stroke="#fff"/>
+    <path d="M365 1081h110M492 1081h108M620 1081h110M750 1081h110" stroke="#5B43E8"/>
+    <path d="M458 1170l-34 100M705 1170l35 100" fill="#231F20"/>
+    <path d="M420 1270h320" stroke-width="28"/>
+
+    <rect x="1160" y="662" width="320" height="610" rx="30" fill="#fff"/>
+    <path d="M1195 720h250v495h-250z" fill="#5B43E8" stroke="none"/>
+    <path d="M1225 760h150M1225 795h190M1225 830h190M1225 865h190" stroke="#fff"/>
+    <rect x="1225" y="900" width="230" height="130" rx="14" fill="none" stroke="#fff"/>
+    <path d="M1225 1020l105-85 65 65 40-40 40 45" stroke="#fff"/>
+    <circle cx="1380" cy="935" r="15" fill="none" stroke="#fff"/>
+    <path d="M1225 1070h190M1225 1105h190" stroke="#fff"/>
+    <rect x="1225" y="1140" width="40" height="40" rx="11" fill="#fff" stroke="none"/>
+    <rect x="1290" y="1140" width="40" height="40" rx="11" fill="#fff" stroke="none"/>
+    <rect x="1355" y="1140" width="40" height="40" rx="11" fill="#fff" stroke="none"/>
+    <rect x="1420" y="1140" width="40" height="40" rx="11" fill="#fff" stroke="none"/>
+    <rect x="1298" y="1235" width="80" height="45" rx="13" fill="none" stroke="#D8D8D8"/>
+
+    <path d="M1160 1180c-90 0-170 50-210-25-28-52-35-175-55-235" stroke="#D8D8D8"/>
+    <ellipse cx="1005" cy="1235" rx="80" ry="22" fill="none"/>
+
+    <path d="M1305 420c-24 16-34 42-24 80 8 33 27 51 61 50 33-1 53-18 62-51 12-46-14-79-62-88" fill="#fff"/>
+    <path d="M1280 425c21 8 27-1 18-27 22 18 43 26 66 29" fill="#fff"/>
+    <path d="M1320 456l-8 30M1352 458c12-1 18 8 14 19-4 12-13 17-27 14"/>
+    <path d="M1318 503c18 7 34 3 47-12"/>
+    <path d="M1304 546l-5 42 42 18 40-18-9-48" fill="#fff"/>
+    <path d="M1298 508c9 17 25 21 48 14"/>
+
+    <path d="M1293 590c80 0 130 44 158 166 12 50-3 71-50 72l-40 2" fill="#5B43E8"/>
+    <path d="M1278 590c-48 28-74 82-78 160" fill="#5B43E8"/>
+    <path d="M1336 628l28 125-112 8" fill="#5B43E8"/>
+    <path d="M1225 752l-145-28 27 92 160 25 55-43" fill="#fff"/>
+    <path d="M1263 840c-10 75 0 167-20 238M1355 832l-22 245" fill="#231F20"/>
+    <path d="M1243 1078c-22-48-53-79-87-91-22-7-26 16-8 52 18 36 54 67 78 69 19 2 25-9 17-30z" fill="#fff"/>
+    <path d="M1332 1078c-24-50-55-82-86-91-24-7-30 17-13 55 18 40 53 70 81 72 22 1 29-12 18-36z" fill="#fff"/>
+  </g>
+</svg>

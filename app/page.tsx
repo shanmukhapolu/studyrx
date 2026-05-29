@@ -201,64 +201,18 @@ const testimonials = [
 
 /* ─── components ────────────────────────────��─────────── */
 
-const readinessTopics = [
-  { name: "Skeletal System",    accuracy: 91, total: 48 },
-  { name: "Muscular System",    accuracy: 84, total: 36 },
-  { name: "Cardiovascular",     accuracy: 77, total: 52 },
-  { name: "Nervous System",     accuracy: 88, total: 44 },
-  { name: "Respiratory System", accuracy: 73, total: 30 },
-  { name: "Endocrine System",   accuracy: 82, total: 27 },
-];
-
-function HeroReadinessCard() {
+function IllustrationPanel({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) {
   return (
-    <div className="reveal-right soft-panel p-6">
-      <div className="mb-1 flex items-center justify-between">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Readiness Snapshot
-        </p>
-        <Trophy className="h-4 w-4 text-primary" />
-      </div>
-      <p className="mb-4 text-xs text-muted-foreground">Anatomy &amp; Physiology</p>
-      <div className="space-y-3">
-        {readinessTopics.map((item) => {
-          return (
-            <div key={item.name}>
-              <div className="mb-1 flex items-center justify-between">
-                <span className="text-xs font-medium text-foreground">{item.name}</span>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs tabular-nums text-muted-foreground">{item.total}q</span>
-                  <span className="text-xs font-semibold tabular-nums text-primary">
-                    {item.accuracy}%
-                  </span>
-                </div>
-              </div>
-              <div className="h-1.5 overflow-hidden rounded-full bg-muted">
-                <div
-                  className="h-full rounded-full bg-primary transition-all duration-700"
-                  style={{ width: `${item.accuracy}%` }}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="mt-4 rounded-lg border border-border bg-muted/40 px-4 py-3">
-        <div className="flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">Total questions answered</p>
-          <p className="text-sm font-semibold tabular-nums text-primary">
-            {readinessTopics.reduce((s, t) => s + t.total, 0)}
-          </p>
-        </div>
-        <div className="mt-1.5 flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">Overall accuracy</p>
-          <p className="text-sm font-semibold tabular-nums text-primary">
-            {Math.round(
-              readinessTopics.reduce((s, t) => s + t.accuracy, 0) / readinessTopics.length
-            )}%
-          </p>
-        </div>
-      </div>
+    <div className="reveal-right relative mx-auto w-full max-w-xl overflow-hidden rounded-3xl border border-primary/20 bg-card/70 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.12)] backdrop-blur">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,var(--primary)_0,transparent_34%)] opacity-[0.07]" aria-hidden="true" />
+      <Image
+        src={src}
+        alt={alt}
+        width={720}
+        height={720}
+        priority={priority}
+        className="relative z-10 h-auto w-full object-contain"
+      />
     </div>
   );
 }
@@ -482,12 +436,12 @@ export default function HomePage() {
               <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-primary">
                 <span className="badge-shimmer pointer-events-none absolute inset-0" />
                 <Sparkles className="h-3 w-3" />
-                Built for high-performance HOSA prep
+                Websites and systems for local teams
               </div>
               <h1 className="max-w-xl text-4xl font-semibold leading-[1.16] text-foreground md:text-5xl lg:text-[3.1rem]">
-                Train smarter for the events that{" "}
+                Where local businesses{" "}
                 <span className="squiggle-wrap text-primary">
-                  matter most.
+                  level up.
                   <svg viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path
   className="squiggle-path"
@@ -506,21 +460,24 @@ export default function HomePage() {
                 </span>
               </h1>
               <p className="max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
-                StudyRx gives you event-aligned practice, adaptive mistake review, and performance
-                analytics in one clean system — so you compete sharper.
+                FluxPoint pairs clean websites, practical automation, and sharp launch support so local teams can look polished and move faster online.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild size="lg" className="btn-glow">
                   <Link href="/dashboard">
-                    Open Dashboard <ArrowRight className="h-4 w-4" />
+                    Start a Project <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link href="/events">Explore Events</Link>
+                  <Link href="/events">See Services</Link>
                 </Button>
               </div>
             </div>
-            <HeroReadinessCard />
+            <IllustrationPanel
+              src="/illustrations/coding-devices.svg"
+              alt="Coding workstation with a desktop computer and phone"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -573,31 +530,39 @@ export default function HomePage() {
 
       {/* ── Core features ─────────────────────────────────── */}
       <section className="border-b border-border">
-        <div className="page-shell section-shell space-y-12">
-          <div className="reveal-up underline-trigger">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Core product edge</p>
-            <h2 className="mt-3 max-w-lg text-3xl font-semibold md:text-4xl">
-              Designed to reduce noise,{" "}
-              <span className="underline-highlight">increase performance.</span>
-            </h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {features.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="reveal-up group rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/40 hover:bg-primary/[0.02] hover:-translate-y-1 hover:shadow-md"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 transition-transform duration-300 group-hover:scale-110">
-                    <Icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="mb-2 text-base font-semibold text-foreground">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-                </div>
-              );
-            })}
+        <div className="page-shell section-shell">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+            <IllustrationPanel
+              src="/illustrations/web-dev-crane.svg"
+              alt="Web development illustration with a robotic arm building a website"
+            />
+            <div className="reveal-left underline-trigger space-y-5">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground">Why FluxPoint?</p>
+              <h2 className="max-w-xl text-3xl font-semibold md:text-4xl">
+                Lean execution meets{" "}
+                <span className="underline-highlight">professional craft.</span>
+              </h2>
+              <p className="max-w-lg text-sm leading-relaxed text-muted-foreground md:text-base">
+                Replace bloated processes with focused design, sharp builds, and practical systems that help local businesses look credible and move faster online.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {features.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={item.title}
+                      className="rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/[0.02] hover:shadow-sm"
+                      style={{ transitionDelay: `${i * 80}ms` }}
+                    >
+                      <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                        <Icon className="h-4 w-4 text-primary" />
+                      </div>
+                      <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
