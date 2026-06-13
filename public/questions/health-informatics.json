@@ -1552,7 +1552,7 @@
       "Notify affected individuals, HHS, and prominent local media outlets within 60 days",
       "Notify affected individuals within 60 days and HHS annually in the next calendar year"
     ],
-    "correctAnswer": "Notify affected individuals and HHS within 60 days of discovery",
+    "correctAnswer": "Notify affected individuals within 60 days and HHS annually in the next calendar year",
     "category": "Health Informatics",
     "difficulty": "Hard",
     "explanation": "The media notification requirement only applies to breaches affecting 500 or more residents of a state or jurisdiction — this breach affects only 450 patients, so media notification is not required. Affected individuals and HHS must both be notified. For breaches under 500, HHS notification may be submitted on an annual log (due within 60 days of the end of the calendar year). For breaches of 500 or more, HHS must be notified immediately (within 60 days of discovery). Individual notification is always required within 60 days of discovery regardless of size.",
