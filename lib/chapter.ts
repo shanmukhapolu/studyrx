@@ -18,6 +18,6 @@ export type ChapterRecord = {
   adminUid: string;
   adminRole?: string;
   createdAt: string;
-  members?: Record<string, boolean | { joinedAt?: string }>;
+  members?: Record<string, boolean | { joinedAt?: string; role?: string }>;
   tests?: Record<string, Omit<ChapterTest, "id">>;
 };

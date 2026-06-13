@@ -28,7 +28,7 @@ export default function ChapterAdminDashboardPage() {
     return () => window.clearInterval(timer);
   }, [user?.uid]);
 
-  const memberCount = Object.values(chapter?.members || {}).filter(Boolean).length;
+  const memberCount = Object.entries(chapter?.members || {}).filter(([uid, value]) => Boolean(value) && uid !== chapter?.adminUid).length;
   const tests = Object.values(chapter?.tests || {});
   const activeCount = tests.filter((test) => test.status !== "completed").length;
   const completedCount = tests.filter((test) => test.status === "completed").length;

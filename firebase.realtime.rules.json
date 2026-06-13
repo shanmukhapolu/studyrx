@@ -184,8 +184,10 @@
         "createdAt": { ".validate": "newData.isString()" },
         "members": {
           "$uid": {
+            ".write": "auth != null && (root.child('chapters').child($chapterCode).child('adminUid').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin' || auth.uid === $uid)",
             ".validate": "newData.isBoolean() || !newData.exists() || newData.hasChild('joinedAt')",
-            "joinedAt": { ".validate": "newData.isString() || !newData.exists()" }
+            "joinedAt": { ".validate": "newData.isString() || !newData.exists()" },
+            "role": { ".validate": "newData.isString() || !newData.exists()" }
           }
         },
         "tests": {

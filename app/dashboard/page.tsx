@@ -67,7 +67,7 @@ export default function DashboardPage() {
         return;
       }
       await rtdbPatch(`users/${user.uid}`, { chapterCode: code });
-      await rtdbPatch(`chapters/${code}/members`, { [user.uid]: { joinedAt: new Date().toISOString() } });
+      await rtdbPatch(`chapters/${code}/members`, { [user.uid]: { joinedAt: new Date().toISOString(), role: "Member" } });
       window.dispatchEvent(new CustomEvent("studyrx:chapter-joined", { detail: { chapterCode: code } }));
       setChapterJoinMessage("Successfully joined chapter. Redirecting...");
       router.push("/chapter");
