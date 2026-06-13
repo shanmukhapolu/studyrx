@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Clock, Target, TrendingUp, ExternalLink, Sparkles, Zap } from "lucide-react";
@@ -14,6 +15,7 @@ import { rtdbGet, rtdbPatch } from "@/lib/rtdb";
 
 export default function DashboardPage() {
   const { profile, user } = useAuth();
+  const router = useRouter();
   const [stats, setStats] = useState<UserStats | null>(null);
   const [totalSessions, setTotalSessions] = useState(0);
   const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
@@ -65,8 +67,10 @@ export default function DashboardPage() {
         return;
       }
       await rtdbPatch(`users/${user.uid}`, { chapterCode: code });
-      await rtdbPatch(`chapters/${code}/members`, { [user.uid]: true });
-      setChapterJoinMessage("Successfully joined chapter.");
+      await rtdbPatch(`chapters/${code}/members`, { [user.uid]: { joinedAt: new Date().toISOString() } });
+      window.dispatchEvent(new CustomEvent("studyrx:chapter-joined", { detail: { chapterCode: code } }));
+      setChapterJoinMessage("Successfully joined chapter. Redirecting...");
+      router.push("/chapter");
     } catch {
       setChapterJoinMessage("Unable to join chapter right now. Please try again.");
     } finally {

@@ -76,8 +76,13 @@ export function AppSidebar() {
       }
     };
     loadChapterTab();
+    const handleChapterJoined = () => {
+      setShowChapterTab(true);
+    };
+    window.addEventListener("studyrx:chapter-joined", handleChapterJoined);
     return () => {
       mounted = false;
+      window.removeEventListener("studyrx:chapter-joined", handleChapterJoined);
     };
   }, [user?.uid]);
   const hasContributorAccess = isContributor || isAdmin;

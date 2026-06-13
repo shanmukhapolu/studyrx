@@ -38,7 +38,7 @@ export default function ChapterOnboardingPage() {
       adminUid: user.uid,
       adminRole,
       createdAt: new Date().toISOString(),
-      members: { [user.uid]: true },
+      members: { [user.uid]: { joinedAt: new Date().toISOString() } },
     });
     await rtdbPatch(`users/${user.uid}`, { chapterCode, onboardingCompleted: true });
     await completeOnboarding({ grade: "", referralSource: "", hosaEvents: [], experienceLevel: "", goal: "", charterOrganization: "", questionsPerSession: "10", chapterCode });
