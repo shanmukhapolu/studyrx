@@ -201,22 +201,38 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="glass-card tech-border bg-card/70 h-fit">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-accent" />
-                    Quick Launch
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex gap-3 flex-wrap pt-0">
-                  <Button asChild variant="secondary">
-                    <Link href="/events">Start Practice</Link>
-                  </Button>
-                  <Button asChild variant="outline">
-                    <Link href="/analytics">Open Analytics</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              <div className="space-y-4">
+                <Card className="glass-card tech-border bg-card/70 h-fit">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Zap className="h-5 w-5 text-accent" />
+                      Quick Launch
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex gap-3 flex-wrap pt-0">
+                    <Button asChild variant="secondary">
+                      <Link href="/events">Start Practice</Link>
+                    </Button>
+                    <Button asChild variant="outline">
+                      <Link href="/analytics">Open Analytics</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-border bg-card/75">
+                  <CardHeader>
+                    <CardTitle className="text-foreground">Join a chapter</CardTitle>
+                    <CardDescription className="text-muted-foreground">Enter your chapter code from your chapter admin to connect assignments and chapter analytics.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex gap-3">
+                      <input className="h-10 rounded-md border px-3 text-sm" placeholder="Chapter code" value={chapterCodeInput} onChange={(e) => setChapterCodeInput(e.target.value.toUpperCase())} />
+                      <Button size="sm" onClick={handleJoinChapter} disabled={joiningChapter}>{joiningChapter ? "Joining..." : "Join"}</Button>
+                    </div>
+                    {chapterJoinMessage && <p className="text-sm text-muted-foreground">{chapterJoinMessage}</p>}
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
               <Card className="border-border bg-card/75">
@@ -236,19 +252,6 @@ export default function DashboardPage() {
                       <ExternalLink className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
-                </CardContent>
-              </Card>
-              <Card className="border-border bg-card/75">
-                <CardHeader>
-                  <CardTitle className="text-foreground">Join a chapter</CardTitle>
-                  <CardDescription className="text-muted-foreground">Enter your chapter code from your chapter admin to connect assignments and chapter analytics.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex gap-3">
-                    <input className="h-10 rounded-md border px-3 text-sm" placeholder="Chapter code" value={chapterCodeInput} onChange={(e) => setChapterCodeInput(e.target.value.toUpperCase())} />
-                    <Button size="sm" onClick={handleJoinChapter} disabled={joiningChapter}>{joiningChapter ? "Joining..." : "Join"}</Button>
-                  </div>
-                  {chapterJoinMessage && <p className="text-sm text-muted-foreground">{chapterJoinMessage}</p>}
                 </CardContent>
               </Card>
             </main>

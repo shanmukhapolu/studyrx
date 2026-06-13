@@ -186,6 +186,31 @@ export async function rtdbPatch(path: string, value: Record<string, unknown>) {
   }
 }
 
+export async function rtdbDelete(path: string) {
+  let request = await authedUrl(path);
+  let res = await fetch(request.url, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${request.idToken}`,
+    },
+  });
+
+  if (res.status === 401 || res.status === 403) {
+    request = await authedUrl(path, { forceRefresh: true });
+    res = await fetch(request.url, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${request.idToken}`,
+      },
+    });
+  }
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Failed to delete ${path}: ${res.status} ${text}`);
+  }
+}
+
 export async function rtdbPost(path: string, value: Record<string, unknown>) {
   let request = await authedUrl(path);
   let res = await fetch(request.url, {
