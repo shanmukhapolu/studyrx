@@ -85,7 +85,7 @@ export default function SubmitQuestionPage() {
                 <CardHeader>
                   <CardTitle className="text-3xl">Submit a Question</CardTitle>
                   <p className="text-sm text-muted-foreground">
-                    Share a high-quality practice question for review by admins. Approved questions can be exported into the static question bank.
+                    Share a high-quality practice question for review by admins. Approved questions will be added to the current question bank.
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -109,7 +109,7 @@ export default function SubmitQuestionPage() {
                   </div>
                   <div>
                     <label className="mb-2 block text-sm font-medium">Topic / Tag</label>
-                    <Input placeholder="e.g. Terminology, Anatomy, Abbreviations" value={tag} onChange={(e) => setTag(e.target.value)} />
+                    <Input placeholder="Should match test plan in HOSA Guidelines" value={tag} onChange={(e) => setTag(e.target.value)} />
                   </div>
                   <div>
                     <label className="mb-2 block text-sm font-medium">Question</label>
