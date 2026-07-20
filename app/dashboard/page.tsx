@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Clock, Target, TrendingUp, ExternalLink, Sparkles, Zap } from "lucide-react";
@@ -10,12 +11,17 @@ import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/s
 import { AppSidebar } from "@/components/app-sidebar";
 import { AuthGuard } from "@/components/auth/auth-guard";
 import { useAuth } from "@/components/auth/auth-provider";
+import { rtdbGet, rtdbPatch } from "@/lib/rtdb";
 
 export default function DashboardPage() {
-  const { profile } = useAuth();
+  const { profile, user } = useAuth();
+  const router = useRouter();
   const [stats, setStats] = useState<UserStats | null>(null);
   const [totalSessions, setTotalSessions] = useState(0);
   const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
+  const [chapterCodeInput, setChapterCodeInput] = useState("");
+  const [chapterJoinMessage, setChapterJoinMessage] = useState("");
+  const [joiningChapter, setJoiningChapter] = useState(false);
 
   useEffect(() => {
     const loadStats = async () => {
@@ -44,6 +50,33 @@ export default function DashboardPage() {
   const avgTime = stats?.averageTime
     ? stats.averageTime.toFixed(1)
     : "0";
+
+  const handleJoinChapter = async () => {
+    if (!user?.uid) return;
+    const code = chapterCodeInput.trim().toUpperCase();
+    if (!code) {
+      setChapterJoinMessage("Please enter a chapter code.");
+      return;
+    }
+    setJoiningChapter(true);
+    setChapterJoinMessage("");
+    try {
+      const chapter = await rtdbGet<Record<string, unknown> | null>(`chapters/${code}`, null);
+      if (!chapter) {
+        setChapterJoinMessage("Chapter code not found. Please check and try again.");
+        return;
+      }
+      await rtdbPatch(`users/${user.uid}`, { chapterCode: code });
+      await rtdbPatch(`chapters/${code}/members`, { [user.uid]: { joinedAt: new Date().toISOString(), role: "Member" } });
+      window.dispatchEvent(new CustomEvent("studyrx:chapter-joined", { detail: { chapterCode: code } }));
+      setChapterJoinMessage("Successfully joined chapter. Redirecting...");
+      router.push("/chapter");
+    } catch {
+      setChapterJoinMessage("Unable to join chapter right now. Please try again.");
+    } finally {
+      setJoiningChapter(false);
+    }
+  };
 
   return (
     <div className="flex min-h-screen w-full">
@@ -168,22 +201,38 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="glass-card tech-border bg-card/70 h-fit">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-accent" />
-                    Quick Launch
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex gap-3 flex-wrap pt-0">
-                  <Button asChild variant="secondary">
-                    <Link href="/events">Start Practice</Link>
-                  </Button>
-                  <Button asChild variant="outline">
-                    <Link href="/analytics">Open Analytics</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              <div className="space-y-4">
+                <Card className="glass-card tech-border bg-card/70 h-fit">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Zap className="h-5 w-5 text-accent" />
+                      Quick Launch
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex gap-3 flex-wrap pt-0">
+                    <Button asChild variant="secondary">
+                      <Link href="/events">Start Practice</Link>
+                    </Button>
+                    <Button asChild variant="outline">
+                      <Link href="/analytics">Open Analytics</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-border bg-card/75">
+                  <CardHeader>
+                    <CardTitle className="text-foreground">Join a chapter</CardTitle>
+                    <CardDescription className="text-muted-foreground">Enter your chapter code from your chapter admin to connect assignments and chapter analytics.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex gap-3">
+                      <input className="h-10 rounded-md border px-3 text-sm" placeholder="Chapter code" value={chapterCodeInput} onChange={(e) => setChapterCodeInput(e.target.value.toUpperCase())} />
+                      <Button size="sm" onClick={handleJoinChapter} disabled={joiningChapter}>{joiningChapter ? "Joining..." : "Join"}</Button>
+                    </div>
+                    {chapterJoinMessage && <p className="text-sm text-muted-foreground">{chapterJoinMessage}</p>}
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
               <Card className="border-border bg-card/75">

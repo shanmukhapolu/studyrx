@@ -5,16 +5,21 @@
     "users": {
       ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
       "$uid": {
-        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin' || (root.child('users').child(auth.uid).child('role').val() === 'chapter_admin' && root.child('users').child($uid).child('chapterCode').val() === root.child('users').child(auth.uid).child('chapterCode').val()))",
         ".write": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
         "name": {
+          ".write": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin' || (root.child('users').child(auth.uid).child('role').val() === 'chapter_admin' && root.child('users').child($uid).child('chapterCode').val() === root.child('users').child(auth.uid).child('chapterCode').val()))",
           ".validate": "newData.isString()"
         },
         "email": {
           ".validate": "newData.isString() || !newData.exists()"
         },
         "role": {
-          ".validate": "newData.val() === 'user' || newData.val() === 'contributor' || newData.val() === 'admin'"
+          ".validate": "newData.val() === 'user' || newData.val() === 'contributor' || newData.val() === 'admin' || newData.val() === 'chapter_admin'"
+        },
+        "chapterCode": {
+          ".write": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin' || (root.child('users').child(auth.uid).child('role').val() === 'chapter_admin' && root.child('users').child($uid).child('chapterCode').val() === root.child('users').child(auth.uid).child('chapterCode').val()))",
+          ".validate": "newData.isString() || !newData.exists()"
         },
         "createdAt": {
           ".validate": "newData.isString() || !newData.exists()"
@@ -60,7 +65,8 @@
             ".validate": "newData.isNumber() && (newData.val() == 10 || newData.val() == 25 || newData.val() == 50 || newData.val() == 100)"
           },
           "showExplanationTime": {
-            ".validate": "newData.isBoolean()"
+            ".validate": "newData.isBoolean() || !newData.exists() || newData.hasChild('joinedAt')",
+            "joinedAt": { ".validate": "newData.isString() || !newData.exists()" }
           },
           "$otherSetting": {
             ".validate": false
@@ -105,7 +111,8 @@
                   "$idx": { ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5" }
                 },
                 "recentCorrectness": {
-                  "$idx": { ".validate": "newData.isBoolean()" }
+                  "$idx": { ".validate": "newData.isBoolean() || !newData.exists() || newData.hasChild('joinedAt')",
+            "joinedAt": { ".validate": "newData.isString() || !newData.exists()" } }
                 }
               }
             },
@@ -159,6 +166,46 @@
         },
         "currentSession": {
           ".validate": "newData.val() == null || newData.hasChildren(['sessionId', 'sessionType', 'event', 'startTimestamp', 'attempts'])"
+        }
+      }
+    },
+    "chapters": {
+      ".read": "auth != null",
+      "$chapterCode": {
+        ".read": "auth != null && (data.child('adminUid').val() === auth.uid || data.child('members').child(auth.uid).exists() || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || ( !data.exists() && newData.child('adminUid').val() === auth.uid && root.child('users').child(auth.uid).child('role').val() === 'chapter_admin') || data.child('adminUid').val() === auth.uid )",
+        "chapterName": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 120" },
+        "schoolName": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 120" },
+        "charterOrganization": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 120" },
+        "affiliation": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 60" },
+        "chapterType": { ".validate": "newData.val() === 'High School' || newData.val() === 'College' || newData.val() === 'Independent'" },
+        "adminUid": { ".validate": "newData.isString() && newData.val().length > 0" },
+        "adminRole": { ".validate": "newData.val() === 'President' || newData.val() === 'Officer' || newData.val() === 'Advisor' || newData.val() === 'Other'" },
+        "createdAt": { ".validate": "newData.isString()" },
+        "members": {
+          "$uid": {
+            ".write": "auth != null && (root.child('chapters').child($chapterCode).child('adminUid').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin' || auth.uid === $uid)",
+            ".validate": "newData.isBoolean() || !newData.exists() || newData.hasChild('joinedAt')",
+            "joinedAt": { ".validate": "newData.isString() || !newData.exists()" },
+            "role": { ".validate": "newData.isString() || !newData.exists()" }
+          }
+        },
+        "tests": {
+          "$testId": {
+            ".read": "auth != null && (root.child('chapters').child($chapterCode).child('adminUid').val() === auth.uid || root.child('chapters').child($chapterCode).child('members').child(auth.uid).exists() || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+            ".write": "auth != null && (root.child('chapters').child($chapterCode).child('adminUid').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+            "eventName": { ".validate": "newData.isString()" },
+            "deadlineAt": { ".validate": "newData.isString()" },
+            "status": { ".validate": "newData.val() === 'active' || newData.val() === 'completed' || !newData.exists()" },
+            "assignedMembers": {
+              "$uid": { ".validate": "newData.isBoolean() || !newData.exists()" }
+            },
+            "results": {
+              "$uid": {
+                ".validate": "newData.hasChildren() || !newData.exists()"
+              }
+            }
+          }
         }
       }
     },

@@ -18,7 +18,7 @@ export interface UserProfile {
   lastName: string;
 }
 
-export type UserRole = "user" | "contributor" | "admin";
+export type UserRole = "user" | "contributor" | "admin" | "chapter_admin";
 
 export interface UserRecord {
   name: string;
@@ -34,6 +34,7 @@ export interface UserRecord {
   goal?: string;
   charterOrganization?: string;
   questionsPerSession?: string;
+  chapterCode?: string;
   missedQuestionHandling?: string;
   onboardingCompleted?: boolean;
   settings?: {
@@ -45,6 +46,7 @@ export interface UserRecord {
 function normalizeUserRole(role: unknown): UserRole {
   if (role === "admin") return "admin";
   if (role === "contributor") return "contributor";
+  if (role === "chapter_admin") return "chapter_admin";
   return "user";
 }
 
@@ -276,6 +278,7 @@ export async function getUserRecord(idToken: string, uid: string): Promise<UserR
     goal: typeof userData.goal === "string" ? userData.goal : undefined,
     charterOrganization: typeof userData.charterOrganization === "string" ? userData.charterOrganization : undefined,
     questionsPerSession: typeof userData.questionsPerSession === "string" ? userData.questionsPerSession : undefined,
+    chapterCode: typeof userData.chapterCode === "string" ? userData.chapterCode : undefined,
     onboardingCompleted: userData.onboardingCompleted === true,
     settings:
       userData.settings && typeof userData.settings === "object"

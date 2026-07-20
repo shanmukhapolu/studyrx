@@ -86,5 +86,6 @@ export interface OnboardingData {
   goal: string;
   charterOrganization: string;
   questionsPerSession: string;
+  chapterCode?: string;
   onboardingCompleted: boolean;
 }
