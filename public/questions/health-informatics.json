@@ -291,7 +291,7 @@
   },
   {
     "id": 29,
-    "question": "Given medication error data (Dosage form: 6%, Name Confusion: 13%, Communication: 19%, Labeling: 20%, Human factors: 52%), which graph type best displays this data?",
+    "question": "Given medication error data (Dosage form: 6%, Name Confusion: 13%, Communication: 19%, Labeling: 20%, Human factors: 42%), which graph type best displays this data?",
     "options": ["Line graph", "Bar chart", "Pie chart", "Data table"],
     "correctAnswer": "Pie chart",
     "category": "Health Informatics",
